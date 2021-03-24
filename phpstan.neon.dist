@@ -1,0 +1,17 @@
+includes:
+    - ./vendor/nunomaduro/larastan/extension.neon
+
+parameters:
+    level: 5
+    paths:
+        - app
+        - database/factories
+        - database/seeders
+        # @TB: Don't include the entire resources folder since it may include
+        # third-party content like mpociot/laravel-apidoc-generator
+        - resources/lang
+        - resources/views
+        - tests
+    inferPrivatePropertyTypeFromConstructor: true
+    # TODO: Concon. ignoreErrors:
+        # TODO: Concon. - '#Function factory invoked with 1 parameter, 0 required.#'
