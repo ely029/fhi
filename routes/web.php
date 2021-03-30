@@ -5,6 +5,7 @@ declare(strict_types=1);
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\RolesController;
 use App\Http\Controllers\Dashboard\UsersController;
+use App\Http\Controllers\EnrolmentRegimentController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,3 +43,4 @@ Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard', 'middleware' 
 });
 
 Route::get('/', [HomeController::class, 'index']);
+Route::post('/enrolment/create', [EnrolmentRegimentController::class, 'create']);
