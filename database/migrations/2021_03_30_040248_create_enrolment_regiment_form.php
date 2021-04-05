@@ -15,7 +15,7 @@ class CreateEnrolmentRegimentForm extends Migration
     {
         Schema::create('enrolment_regiment_form', function (Blueprint $table) {
             $table->id();
-            $table->integer('form_id');
+            $table->unsignedBigInteger('form_id');
             $table->string('treatment_history')->nullable();
             $table->string('registration_group')->nullable();
             $table->string('risk_factor')->nullable();
@@ -25,6 +25,7 @@ class CreateEnrolmentRegimentForm extends Migration
             $table->string('current_weight')->nullable();
             $table->string('suggested_regimen')->nullable();
             $table->string('if_for_empiric_treatment')->nullable();
+            $table->foreign('form_id')->references('id')->on('tb_mac_forms')->onDelete('cascade');
             $table->timestamps();
         });
     }

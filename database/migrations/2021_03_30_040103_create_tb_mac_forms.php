@@ -16,7 +16,6 @@ class CreateTbMacForms extends Migration
         Schema::create('tb_mac_forms', function (Blueprint $table) {
             $table->id();
             $table->integer('submitted_by');
-            $table->integer('user_id');
             $table->integer('patient_id');
             $table->string('status');
             $table->string('level');
