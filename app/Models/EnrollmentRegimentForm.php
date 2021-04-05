@@ -4,11 +4,15 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class EnrolmentRegimentForm extends Model
+class EnrollmentRegimentForm extends Model
 {
-    protected $table = 'enrolment_regiment_form';
+    use HasFactory;
+
+    protected $table = 'enrollment_regiment_form';
+    
     protected $fillable = [
         'treatment_history',
         'registration_group',
