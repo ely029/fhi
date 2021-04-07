@@ -21,4 +21,9 @@ class TBMacForm extends Model
     {
         return $this->hasOne(EnrollmentRegimentForm::class,'form_id');
     }
+
+    public function caseManagementRegimentForm()
+    {
+        return $this->hasOne(CaseManagementRegimentForm::class, 'form_id');
+    }
 }
