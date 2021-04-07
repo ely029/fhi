@@ -28,7 +28,6 @@ class EnrollmentRegimentController extends Controller
 
         $tbForm = TBMacForm::create($request);
         $tbForm->enrollmentForm()->create($request);
-        
 
         return true;
     }

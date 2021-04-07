@@ -46,4 +46,3 @@ Route::get('/', [HomeController::class, 'index']);
 Route::group(['middleware' => 'auth'], static function () {
     Route::post('/enrollment/create', [EnrollmentRegimentController::class, 'create']);
 });
-

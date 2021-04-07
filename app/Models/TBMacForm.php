@@ -10,16 +10,15 @@ use Illuminate\Database\Eloquent\Model;
 class TBMacForm extends Model
 {
     use HasFactory;
-    
     protected $table = 'tb_mac_forms';
 
     protected $fillable = [
-        'submitted_by','form_type','patient_id','status','role_id','region'
+        'submitted_by','form_type','patient_id','status','role_id','region',
     ];
 
     public function enrollmentForm()
     {
-        return $this->hasOne(EnrollmentRegimentForm::class,'form_id');
+        return $this->hasOne(EnrollmentRegimentForm::class, 'form_id');
     }
 
     public function caseManagementRegimentForm()

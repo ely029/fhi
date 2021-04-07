@@ -12,7 +12,6 @@ class EnrollmentRegimentForm extends Model
     use HasFactory;
 
     protected $table = 'enrollment_regiment_form';
-    
     protected $fillable = [
         'treatment_history',
         'registration_group',
