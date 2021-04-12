@@ -1,24 +1,16 @@
-@extends('layouts.app')
-@push('styles')
-    <link href="{{ asset('assets/app/css/home.css') }}" rel="stylesheet">
-@endpush
-@section('content')
-<div class="flex-center position-ref full-height">
-    <div class="content">
-        <div class="title m-b-md">
-            Laravel
-        </div>
+@extends('layouts.admin.dashboard')
 
-        <div class="links">
-            <a href="https://laravel.com/docs">Docs</a>
-            <a href="https://laracasts.com">Laracasts</a>
-            <a href="https://laravel-news.com">News</a>
-            <a href="https://blog.laravel.com">Blog</a>
-            <a href="https://nova.laravel.com">Nova</a>
-            <a href="https://forge.laravel.com">Forge</a>
-            <a href="https://vapor.laravel.com">Vapor</a>
-            <a href="https://github.com/laravel/laravel">GitHub</a>
-        </div>
+@section('content')
+<div class="login">
+    <div class="login__container">
+    <div class="login__card">
+        <div class="login__top"></div>
+        <form class="form">
+        <div class="form__content"><input class="form__input" type="text" placeholder="Email" /><label class="form__label">Email</label></div>
+        <div class="form__content"><input class="form__input" id="js-password" type="password" placeholder="Password" /><label class="form__label">Password</label><i class="fa fa-eye-slash" id="js-eye-password"></i></div>
+        <div class="form__button form__button--space"><a class="button button--transparent" href="">Forgot password </a><a class="button" href="">Login</a></div>
+        </form>
+    </div>
     </div>
 </div>
 @endsection
