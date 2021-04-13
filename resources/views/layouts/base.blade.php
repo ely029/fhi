@@ -112,7 +112,7 @@
         </div>
     <![endif]-->
 
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name') }}
@@ -137,74 +137,35 @@
                     @endauth
                 </ul>
 
-                <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Developer
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            @if(auth()->check() && auth()->user()->hasAccess(request()->route()->action['controller']))
-                                <a class="dropdown-item" target="_blank" href="{{ url('/docs/index.html') }}">API Reference</a>
-                            @endif
-                            @can('viewTelescope')
-                                <a class="dropdown-item" target="_blank" href="{{ route('telescope') }}">Laravel Telescope</a>
-                            @endcan
-                            <a class="dropdown-item" target="_blank" href="mailto:support@thinkbitsolutions.com">Contact Support</a>
-                            <a class="dropdown-item" target="_blank" href="https://www.thinkbitsolutions.com/">ThinkBIT Solutions</a>
-                        </div>
-                    </li>
-                    <!-- Authentication Links -->
-                    @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                        @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
-                        @endif
-                    @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item logout-button" href="#">
-                                    {{ __('Logout') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                    @endguest
-                </ul>
+               
             </div>
         </div>
-    </nav>
+    </nav> --}}
+    <div class="wrapper">
+        @auth
+            @include('partials.sidebar')
+        @endauth
+        {{-- <main class="py-4">
+            @if(session('alert'))
+                <div class="container">
+                    <div class="alert alert-{{ session('alert.context', 'info') }} alert-dismissible fade show" role="alert">
+                        @if(session('alert.title'))
+                            <strong>{{ session('alert.title') }}</strong>
+                        @endif
 
-    <main class="py-4">
-        @if(session('alert'))
-            <div class="container">
-                <div class="alert alert-{{ session('alert.context', 'info') }} alert-dismissible fade show" role="alert">
-                    @if(session('alert.title'))
-                        <strong>{{ session('alert.title') }}</strong>
-                    @endif
+                        {{ session('alert.message') }}
 
-                    {{ session('alert.message') }}
-
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                 </div>
-            </div>
-        @endif
+            @endif
 
+            
+        </main> --}}
         @yield('content')
-    </main>
+    </div>
 
     @stack('scripts')
 

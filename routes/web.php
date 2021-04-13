@@ -25,16 +25,6 @@ Auth::routes();
 Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard', 'middleware' => 'auth'], static function () {
     Route::get('/', [DashboardController::class, 'index']);
 
-    Route::group(['middleware' => 'route.access'], static function () {
-        Route::get('/roles', [RolesController::class, 'index']);
-        Route::get('/roles/create', [RolesController::class, 'create']);
-        Route::post('/roles', [RolesController::class, 'store']);
-        Route::get('/roles/{role}/edit', [RolesController::class, 'edit']);
-        Route::patch('/roles/{role}', [RolesController::class, 'update']);
-        Route::delete('/roles/{role}', [RolesController::class, 'destroy']);
-
-    });
-
     //Approver Admin CRUD    
     Route::group(['middleware' => 'super_admin'], static function () {
 

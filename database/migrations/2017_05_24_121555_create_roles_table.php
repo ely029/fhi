@@ -41,7 +41,7 @@ class CreateRolesTable extends Migration
 
         DB::table('roles')->insert([
             [
-                'name' => 'Approver Admin',
+                'name' => 'Admin',
                 'is_deletable' => false,
                 'is_for_admin' => true,
                 'created_at' => Carbon::now(),

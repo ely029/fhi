@@ -14,7 +14,7 @@ class UsersController extends Controller
     public function index()
     {
         return view('dashboard.users.index', [
-            'users' => User::query()->orderBy('created_at', 'desc')->paginate(),
+            'users' => User::where('role_id',2)->orderBy('created_at', 'desc')->paginate(),
         ]);
     }
 
@@ -68,7 +68,7 @@ class UsersController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->role_id = $request->role_id;
-        $user->photo_alt = $request->photo_alt;
+        // $user->photo_alt = $request->photo_alt;
         $photo = $request->file('photo');
 
         if ($photo !== null) {
