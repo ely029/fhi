@@ -33,6 +33,11 @@ Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard', 'middleware' 
         Route::patch('/roles/{role}', [RolesController::class, 'update']);
         Route::delete('/roles/{role}', [RolesController::class, 'destroy']);
 
+    });
+
+    //Approver Admin CRUD    
+    Route::group(['middleware' => 'super_admin'], static function () {
+
         Route::get('/users', [UsersController::class, 'index']);
         Route::get('/users/create', [UsersController::class, 'create']);
         Route::post('/users', [UsersController::class, 'store']);
@@ -40,6 +45,8 @@ Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard', 'middleware' 
         Route::patch('/users/{user}', [UsersController::class, 'update']);
         Route::delete('/users/{user}', [UsersController::class, 'destroy']);
     });
+    
+
 });
 
 Route::get('/', [HomeController::class, 'index']);

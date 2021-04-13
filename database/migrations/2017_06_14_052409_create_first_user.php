@@ -34,6 +34,17 @@ class CreateFirstUser extends Migration
                 'updated_at' => $now,
             ],
         ]);
+
+        DB::table('users')->insert([
+            [
+                'name' => 'Super Admin',
+                'email' => 'superadmin@etbmac.gov.ph',
+                'password' => bcrypt($password),
+                'role_id' => Role::first()->id,
+                'created_at' => $now,
+                'updated_at' => $now,
+            ],
+        ]);
     }
 
     /**

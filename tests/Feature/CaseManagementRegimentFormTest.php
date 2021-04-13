@@ -16,7 +16,7 @@ class CaseManagementRegimentFormTest extends TestCase
      *
      * @return void
      */
-    public function caseManagementRegimentTableForm()
+    public function testCaseManagementRegimentTableForm()
     {
         $healthCareWorker = User::factory()->create([
             'role_id' => '2',

@@ -1,14 +1,11 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\RolesTest;
 
 use App\Models\EnrollmentRegimentForm;
 use App\Models\TBMacForm;
 use App\Models\User;
-use Faker\Factory;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class HealthCareWorkerTest extends TestCase

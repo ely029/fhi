@@ -35,11 +35,18 @@ class CreateRolesTable extends Migration
 
         // Seed roles
         $role = Role::forceCreate([
-            'name' => 'Admin',
+            'name' => 'Super Admin',
             'is_deletable' => false,
         ]);
 
         DB::table('roles')->insert([
+            [
+                'name' => 'Approver Admin',
+                'is_deletable' => false,
+                'is_for_admin' => true,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
             [
                 'name' => 'Health Care Worker',
                 'is_deletable' => false,
