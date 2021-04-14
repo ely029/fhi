@@ -47,108 +47,11 @@
           </form>
           <hr class="line" />
           <ul class="tabs__list">
-            <li class="tabs__item tabs__item--current">Bacteriological results</li>
-            <li class="tabs__item">Case information</li>
+            <li class="tabs__item tabs__item--current">Case information</li>
             <li class="tabs__item">Remarks &amp; Recommendations</li>
           </ul>
+          
           <div class="tabs__details tabs__details--active">
-            <form class="form" action="">
-              <div class="form__container">
-                <h2 class="section__heading">Screenings</h2>
-                <table class="table table--unset js-table-unset">
-                  <thead>
-                    <tr>
-                      <th class="table__head"></th>
-                      <th class="table__head">Done date</th>
-                      <th class="table__head">Resistance pattern</th>
-                      <th class="table__head">Method used</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="table__row">
-                      <td class="table__details">Screening 1</td>
-                      <td class="table__details">sample</td>
-                      <td class="table__details">sample</td>
-                      <td class="table__details">sample</td>
-                    </tr>
-                    <tr class="table__row">
-                      <td class="table__details">Screening 2</td>
-                      <td class="table__details">sample</td>
-                      <td class="table__details">sample</td>
-                      <td class="table__details">sample</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="form__container">
-                <h2 class="section__heading">LPA information</h2>
-                <table class="table table--unset js-table-unset">
-                  <thead>
-                    <tr>
-                      <th class="table__head"></th>
-                      <th class="table__head">Done date</th>
-                      <th class="table__head">Resistance pattern</th>
-                      <th class="table__head">Method used</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="table__row">
-                      <td class="table__details">LSA</td>
-                      <td class="table__details">sample</td>
-                      <td class="table__details">sample</td>
-                      <td class="table__details">sample</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="form__container">
-                <h2 class="section__heading">DST information</h2>
-                <div class="form__content"><span class="form__text">Tondo Foreshore Health Center Lying-In- IDOTS</span><label class="form__label" for="">Name of laboratory</label></div>
-                <table class="table table--unset js-table-unset">
-                  <thead>
-                    <tr>
-                      <th class="table__head"></th>
-                      <th class="table__head">Done date</th>
-                      <th class="table__head">Resistance pattern</th>
-                      <th class="table__head">Method used</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="table__row">
-                      <td class="table__details">DST</td>
-                      <td class="table__details">sample</td>
-                      <td class="table__details">sample</td>
-                      <td class="table__details">sample</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="form__container">
-                <h2 class="section__heading">DST information</h2>
-                <table class="table table--unset js-table-unset">
-                  <thead>
-                    <tr>
-                      <th class="table__head">Month</th>
-                      <th class="table__head">Done date</th>
-                      <th class="table__head">Smear microscopy</th>
-                      <th class="table__head">TB-LAMP</th>
-                      <th class="table__head">Culture</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="table__row">
-                      <td class="table__details">Screening 1</td>
-                      <td class="table__details">sample</td>
-                      <td class="table__details">sample</td>
-                      <td class="table__details">sample</td>
-                      <td class="table__details">sample</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </form>
-          </div>
-          <div class="tabs__details">
             <form class="form" action="">
               <div class="form__container">
                 <h2 class="section__heading">Treatment information</h2>
