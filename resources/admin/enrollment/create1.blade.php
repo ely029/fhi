@@ -10,7 +10,10 @@
   <div class="section">
     <div class="section__top">
       <h1 class="section__title">Create new enrollment</h1>
-      <div class="breadcrumbs"><a class="breadcrumbs__link" href="enrollment.html">Enrollment Regimen</a><a class="breadcrumbs__link">Create new enrollment</a><a class="breadcrumbs__link"></a></div>
+      <div class="breadcrumbs"><a class="breadcrumbs__link" href="enrollment.html">Enrollment Regimen</a>
+        <a class="breadcrumbs__link">Create new enrollment</a>
+        <a class="breadcrumbs__link"></a>
+      </div>
     </div>
     <div class="section__container">
       <form class="form" id="js-form" action="">

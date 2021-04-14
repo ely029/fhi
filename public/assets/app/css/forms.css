@@ -1,0 +1,23 @@
+.step-2{
+    display: none;
+}
+.step-3{
+    display: none;
+}
+.step-4{
+    display: none;
+}
+
+.has-error > input{
+  
+    border-color: #dc3545 !important;
+}
+
+.has-error > textarea{
+  
+    border-color: #dc3545 !important;
+}
+
+.with-errors{
+    color: #dc3545 !important;
+}

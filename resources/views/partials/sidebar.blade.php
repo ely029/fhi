@@ -5,9 +5,10 @@
         <h3 class="sidebar__title">Reports</h3>
         <ul class="sidebar__list">
           <li class="sidebar__item">
-            <a class="sidebar__link" href="enrollment.html">
+            <a class="sidebar__link" href="{{ url('enrollments') }}">
               <div class="sidebar__wrapper">
-                <img class="image" src="{{ asset('assets/app/img/icon-email.png') }}" alt="Enrollment icon for fhi" /><img class="image image--white" src="src/img/icon-enrollment-white.png" alt="Enrollment icon on hover for fhi" />
+                <img class="image" src="{{ asset('assets/app/img/icon-email.png') }}" alt="Enrollment icon for fhi" />
+                <img class="image image--white" src="{{ asset('assets/app/img/icon-email.png') }}" alt="Enrollment icon on hover for fhi" />
               </div>
               <span class="sidebar__text">Enrollment</span>
             </a>
@@ -15,7 +16,8 @@
           <li class="sidebar__item">
             <a class="sidebar__link" href="case-management.html">
               <div class="sidebar__wrapper">
-                <img class="image" src="{{ asset('assets/app/img/icon-email.png') }}" alt="Case Management icon for fhi" /><img class="image image--white" src="src/img/icon-case-management-white.png" alt="Case management icon on hover for fhi" />
+                <img class="image" src="{{ asset('assets/app/img/icon-email.png') }}" alt="Case Management icon for fhi" />
+                <img class="image image--white" src="{{ asset('assets/app/img/icon-email.png') }}" alt="Case management icon on hover for fhi" />
               </div>
               <span class="sidebar__text">Case Management</span>
             </a>
@@ -23,7 +25,8 @@
           <li class="sidebar__item">
             <a class="sidebar__link" href="treatment.html">
               <div class="sidebar__wrapper">
-                <img class="image" src="{{ asset('assets/app/img/icon-email.png') }}" alt="Treatment Outcome icon for fhi" /><img class="image image--white" src="src/img/icon-treatment-white.png" alt="Treatment Outcome icon on hover for fhi" />
+                <img class="image" src="{{ asset('assets/app/img/icon-email.png') }}" alt="Treatment Outcome icon for fhi" />
+                <img class="image image--white" src="{{ asset('assets/app/img/icon-email.png') }}" alt="Treatment Outcome icon on hover for fhi" />
               </div>
               <span class="sidebar__text">Treatment Outcome</span>
             </a>
@@ -31,7 +34,8 @@
           <li class="sidebar__item">
             <a class="sidebar__link" href="masterlist.html">
               <div class="sidebar__wrapper">
-                <img class="image" src="{{ asset('assets/app/img/icon-email.png') }}" alt="Masterlist icon for fhi" /><img class="image image--white" src="src/img/icon-masterlist-white.png" alt="Masterlist icon on hover for fhi" />
+                <img class="image" src="{{ asset('assets/app/img/icon-email.png') }}" alt="Masterlist icon for fhi" />
+                <img class="image image--white" src="{{ asset('assets/app/img/icon-email.png') }}" alt="Masterlist icon on hover for fhi" />
               </div>
               <span class="sidebar__text">Masterlist</span>
             </a>
@@ -52,7 +56,8 @@
                 <li class="sidebar__item {{ request()->is('dashboard/users*') ? 'active' : null }}">
                     <a class="sidebar__link" href="{{ url('dashboard/users') }}">
                     <div class="sidebar__wrapper">
-                        <img class="image" src="{{ asset('assets/app/img/icon-email.png') }}" alt="User Management icon for fhi" /><img class="image image--white" src="src/img/icon-user-management-white.png" alt="User management icon on hover for fhi" />
+                        <img class="image" src="{{ asset('assets/app/img/icon-email.png') }}" alt="User Management icon for fhi" />
+                        <img class="image image--white" src="{{ asset('assets/app/img/icon-email.png') }}" alt="User management icon on hover for fhi" />
                     </div>
                     <span class="sidebar__text">Admin Management</span>
                     </a>

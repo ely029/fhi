@@ -41,5 +41,7 @@ Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard', 'middleware' 
 
 Route::get('/', [HomeController::class, 'index']);
 Route::group(['middleware' => 'auth'], static function () {
-    Route::post('/enrollment/create', [EnrollmentRegimentController::class, 'create']);
+    Route::get('/enrollments',[EnrollmentRegimentController::class, 'index']);
+    Route::get('/enrollments/create',[EnrollmentRegimentController::class, 'create']);
+    Route::post('/enrollments', [EnrollmentRegimentController::class, 'store']);
 });
