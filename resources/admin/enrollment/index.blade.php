@@ -24,7 +24,7 @@
           <li class="tabs__item">Not for referral (8)</li>
         </ul>
         <div class="tabs__details tabs__details--active">
-          <table class="table table--filter">
+          <table class="table table--filter js-table">
             <thead>
               <tr>
                 <th class="table__head">Presentation No.</th>
@@ -50,7 +50,7 @@
           </table>
         </div>
         <div class="tabs__details">
-          <table class="table table--filter">
+          <table class="table table--filter js-table">
             <thead>
               <tr>
                 <th class="table__head">Presentation No.</th>
@@ -76,7 +76,7 @@
           </table>
         </div>
         <div class="tabs__details">
-          <table class="table table--filter">
+          <table class="table table--filter js-table">
             <thead>
               <tr>
                 <th class="table__head">Presentation No.</th>
@@ -102,7 +102,7 @@
           </table>
         </div>
         <div class="tabs__details">
-          <table class="table table--filter">
+          <table class="table table--filter js-table">
             <thead>
               <tr>
                 <th class="table__head">Presentation No.</th>
@@ -128,7 +128,7 @@
           </table>
         </div>
         <div class="tabs__details">
-          <table class="table table--filter">
+          <table class="table table--filter js-table">
             <thead>
               <tr>
                 <th class="table__head">Presentation No.</th>
