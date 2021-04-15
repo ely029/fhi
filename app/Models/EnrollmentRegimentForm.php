@@ -16,11 +16,10 @@ class EnrollmentRegimentForm extends Model
         'treatment_history',
         'registration_group',
         'risk_factor',
-        'current_bacteriological_status',
-        'dst_from_other_lab',
-        'tb_disease_classification',
+        'drug_susceptibility',
         'current_weight',
         'suggested_regimen',
-        'if_for_empiric_treatment',
+        'suggested_regimen_other','regimen_notes','clinical_status','signs_and_symptoms','vital_signs',
+        'diag_and_lab_findings'
     ];
 }

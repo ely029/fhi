@@ -21,12 +21,15 @@ class CreateEnrollmentRegimentForm extends Migration
             $table->string('treatment_history')->nullable();
             $table->string('registration_group')->nullable();
             $table->string('risk_factor')->nullable();
-            $table->string('current_bacteriological_status')->nullable();
-            $table->string('dst_from_other_lab')->nullable();
-            $table->string('tb_disease_classification')->nullable();
+            $table->string('drug_susceptibility')->nullable();
             $table->string('current_weight')->nullable();
             $table->string('suggested_regimen')->nullable();
-            $table->string('if_for_empiric_treatment')->nullable();
+            $table->string('suggested_regimen_other')->nullable();
+            $table->string('regimen_notes')->nullable();
+            $table->string('clinical_status')->nullable();
+            $table->string('signs_and_symptoms')->nullable();
+            $table->string('vital_signs')->nullable();
+            $table->string('diag_and_lab_findings')->nullable();
             $table->timestamps();
         });
     }

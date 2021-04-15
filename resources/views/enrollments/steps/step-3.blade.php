@@ -22,7 +22,7 @@
         </div>
       </div>
       <div class="form__content">
-        <select class="form__input form__input--select" name="suggested_regimen">
+        <select class="form__input form__input--select" id="suggested-regimen" name="suggested_regimen">
           <option>Regimen 3 SSOR</option>
           <option>Regimen 4 SLOR FQ-S</option>
           <option>Regimen 5 SLOR FQ-R</option>
@@ -38,6 +38,16 @@
         </select>
         <div class="triangle triangle--down"></div>
         <label class="form__label" for="">Suggested regimen</label>
+      </div>
+      <div class="form__content form-group itr-drugs">
+        <input class="form__input" type="text" id="drugs_given" placeholder="Drugs given" />
+        <label class="form__label" for="">Drugs Given</label>
+        <div class="help-block with-errors"></div>
+      </div>
+      <div class="form__content form-group other-regimen">
+        <input class="form__input" type="text" id="others_specify" placeholder="Other Specify" />
+        <label class="form__label" for="">Other Specify</label>
+        <div class="help-block with-errors"></div>
       </div>
       <div class="form__content form-group">
           <textarea class="form__input form__input--message" placeholder="" name="regimen_notes" required>Good Regimen</textarea>

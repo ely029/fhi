@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Models\EnrollmentRegimentForm;
 use App\Models\TBMacForm;
+
 use Illuminate\Support\Facades\Validator;
 
 class EnrollmentRegimentController extends Controller
@@ -12,7 +14,7 @@ class EnrollmentRegimentController extends Controller
 
     public function index()
     {
-        $enrollments = TBMacForm::EnrollmentForms()->orderBy('created_at')->get();
+        $enrollments = TBMacForm::EnrollmentForms()->orderByDesc('created_at')->get();
 
         $forEnrollments = $enrollments->filter(function($item){
             return $item->status == 'New Enrollment';
@@ -43,6 +45,12 @@ class EnrollmentRegimentController extends Controller
         return view('enrollments.form');
     }
 
+    public function show(TBMacForm $tbMacForm)
+    {
+        return view('enrollments.show')
+            ->with('tbMacForm', $tbMacForm);
+    }
+
     public function store()
     {
         $request = request()->all();
@@ -60,10 +68,30 @@ class EnrollmentRegimentController extends Controller
         //     return response()->json($validator->errors(), 422);
         // }
 
-        $tbForm = TBMacForm::create($request);
-        // $tbForm->enrollmentForm()->create($request);
+        $tbMacForm = TBMacForm::create($request);
+        $tbMacForm->enrollmentForm()->create($request);
 
-        return redirect('enrollments')->with([
+        $bacteriologicalStatuses =  ['xpert_mtb_rif','xpert_mtb_rif_ultra','truenat_tb',
+        'lpa','smear_mic','tb_lamp','tb_culture','dst','others','dst_from_other_lab'];
+
+        foreach ($bacteriologicalStatuses as $status)
+        {
+            if (isset($request[$status])) {
+
+                foreach ($request[$status] as $key => $type)
+                {
+                    $tbMacForm->bacteriologicalResults()->create([
+                        'type' => $status == 'others' ? 'Others-'.$request['others-specify'][$key] : $type,
+                        'date_collected' => $request[$type.'-date_collected'][$key],
+                        'name_of_laboratory' => $request[$type.'-name_of_laboratory'][$key],
+                        'result' => $request[$type.'-result'][$key],
+                    ]);
+                } 
+            }
+        }
+    
+
+        return redirect('enrollments/'.$tbMacForm->id)->with([
             'alert.message' => 'New Case for enrollment created.'
         ]);
     }

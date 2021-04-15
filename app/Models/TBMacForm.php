@@ -6,6 +6,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\EnrollmentRegimentForm;
 
 class TBMacForm extends Model
 {
@@ -13,8 +14,26 @@ class TBMacForm extends Model
     protected $table = 'tb_mac_forms';
 
     protected $fillable = [
-        'submitted_by','form_type','patient_id','status','role_id','region',
+        'submitted_by','form_type','patient_id','status','role_id','region','presentation_number'
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($model) {
+
+            $presentationNumber = null;
+            if($model->form_type == 'enrollment'){
+                $max = EnrollmentRegimentForm::count();
+                $presentationNumber = $model->region.'-'.str_pad(strval($max + 1),3,"0",STR_PAD_LEFT);
+            }
+            $model->presentation_number = $presentationNumber;
+            $model->save();
+
+        });
+    }
+
 
     public function enrollmentForm()
     {
@@ -24,6 +43,11 @@ class TBMacForm extends Model
     public function caseManagementRegimentForm()
     {
         return $this->hasOne(CaseManagementRegimentForm::class, 'form_id');
+    }
+
+    public function bacteriologicalResults()
+    {
+        return $this->hasOne(BacteriologicalResult::class, 'form_id');
     }
 
     public function scopeEnrollmentForms($query)
