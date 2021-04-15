@@ -1,9 +1,15 @@
 let currentStep = 1;
+let totalSteps = $("#steps").data('steps');
+
 $.noConflict();
 jQuery( document ).ready(function( $ ) {
     // Code that uses jQuery's $ can follow here.
     $(".button--next").on('click', function(){
 
+        if(currentStep == totalSteps){
+            return;
+        }
+        
         if(checkForms()){
             $('.step-'+currentStep).hide();
             currentStep++;

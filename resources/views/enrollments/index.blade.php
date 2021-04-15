@@ -39,7 +39,7 @@
             <tbody>
               @foreach($enrollments as $enrollment)
                 <tr class="table__row js-view" data-href="{{ url('enrollments/'.$enrollment->id) }}">
-                  <td class="table__details">{{ $enrollment->id }}</td>
+                  <td class="table__details">{{ $enrollment->presentation_number }}</td>
                   <td class="table__details"></td>
                   <td class="table__details"></td>
                   <td class="table__details"></td>

@@ -15,6 +15,8 @@ class CreateTbMacForms extends Migration
     {
         Schema::create('tb_mac_forms', function (Blueprint $table) {
             $table->id();
+
+            $table->string('presentation_number')->nullable();
             $table->unsignedBigInteger('submitted_by');
             $table->foreign('submitted_by')->references('id')->on('users');
 
@@ -31,6 +33,9 @@ class CreateTbMacForms extends Migration
 
             $table->unsignedBigInteger('role_id');
             $table->foreign('role_id')->references('id')->on('roles');
+
+            $table->unsignedBigInteger('linked_tb_mac_form')->nullable();
+
             $table->timestamps();
         });
     }

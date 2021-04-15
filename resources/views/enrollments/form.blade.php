@@ -23,7 +23,7 @@
     <div class="section__container">
         <form class="form" id="js-form" action="{{ url('enrollments') }}" method="post">
           @csrf
-            <div id="smartwizard">
+            <div id="steps" data-steps="4">
               @include('enrollments.steps.step-1')
               @include('enrollments.steps.step-2')
               @include('enrollments.steps.step-3')
@@ -59,5 +59,6 @@
   
   <script src="{{ asset('assets/app/js/bootstrap-validator.js') }}"></script>  
   <script src="{{ asset('assets/app/js/forms.js') }}"></script>  
+  <script src="{{ asset('assets/app/js/enrollments/step-2.js') }}"></script>  
 
 @endsection
