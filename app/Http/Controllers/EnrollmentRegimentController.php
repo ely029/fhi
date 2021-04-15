@@ -47,6 +47,8 @@ class EnrollmentRegimentController extends Controller
 
     public function show(TBMacForm $tbMacForm)
     {
+        $tbMacForm = $tbMacForm->load(['submittedBy','enrollmentForm','bacteriologicalResults','laboratoryResults']);
+
         return view('enrollments.show')
             ->with('tbMacForm', $tbMacForm);
     }
@@ -59,6 +61,7 @@ class EnrollmentRegimentController extends Controller
         $request['status'] = 'New Enrollment';
         $request['role_id'] = 4;
         $request['region'] = 'NCR';
+        $request['cxr_reading'] = $request['cxr_reading'] ? json_encode($request['cxr_reading']) : null;
 
         // $validator = Validator::make($request, [
         //     'role_id' => 'required',
@@ -70,6 +73,7 @@ class EnrollmentRegimentController extends Controller
 
         $tbMacForm = TBMacForm::create($request);
         $tbMacForm->enrollmentForm()->create($request);
+        $tbMacForm->laboratoryResults()->create($request);
 
         $bacteriologicalStatuses =  ['xpert_mtb_rif','xpert_mtb_rif_ultra','truenat_tb',
         'lpa','smear_mic','tb_lamp','tb_culture','dst','others','dst_from_other_lab'];

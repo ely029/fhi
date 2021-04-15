@@ -19,7 +19,7 @@ class EnrollmentRegimentForm extends Model
         'drug_susceptibility',
         'current_weight',
         'suggested_regimen',
-        'suggested_regimen_other','regimen_notes','clinical_status','signs_and_symptoms','vital_signs',
+        'regimen_notes','clinical_status','signs_and_symptoms','vital_signs',
         'diag_and_lab_findings'
     ];
 }

@@ -25,6 +25,14 @@ jQuery( document ).ready(function( $ ) {
             let othersSpecify = $("#others_specify").val();
             $("#others_specify").val('Others-'+othersSpecify);
         }
+
+
+        if($(".other-cxr").is(":checked")){
+            let otherCxr = $("#other-cxr").val();
+            $("#other-cxr").val('Other-'+otherCxr);
+        }
+
+
     });
 
 });
