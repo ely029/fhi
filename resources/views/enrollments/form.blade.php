@@ -61,5 +61,6 @@
   <script src="{{ asset('assets/app/js/forms.js') }}"></script>  
   <script src="{{ asset('assets/app/js/enrollments/step-2.js') }}"></script>  
   <script src="{{ asset('assets/app/js/enrollments/step-3.js') }}"></script>  
+  <script src="{{ asset('assets/app/js/enrollments/step-4.js') }}"></script>  
 
 @endsection

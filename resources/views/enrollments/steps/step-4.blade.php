@@ -2,47 +2,122 @@
     <div class="form__container">
       <h2 class="section__heading">Laboratory results and information</h2>
       <div class="grid">
-        <div class="form__content form__content--small form__content--small__right"><input class="form__input" type="date" placeholder="CXR date" /><label class="form__label" for="">CXR date</label></div>
-        <div class="form__content"><input class="form__input" type="text" placeholder="CXR result" /><label class="form__label" for="">CXR result</label></div>
+        <div class="form__content form__content--small form__content--small__right">
+          <input class="form__input" type="date" name="cxr_date" placeholder="CXR date" />
+          <label class="form__label" for="">CXR date</label>
+        </div>
+        <div class="form__content">
+          <input class="form__input" name="cxr_result" type="text" placeholder="CXR result" />
+          <label class="form__label" for="">CXR result</label>
+        </div>
       </div>
       <div class="grid grid--three grid--close">
         <div class="grid__item">
-          <label class="form__sublabel">Normal<input class="form__trigger" type="checkbox" /><span class="form__checkmark"> </span></label>
-          <label class="form__sublabel">Cavitary<input class="form__trigger" type="checkbox" /><span class="form__checkmark"> </span></label>
-          <label class="form__sublabel">Infilitrates<input class="form__trigger" type="checkbox" /><span class="form__checkmark"> </span></label>
-          <label class="form__sublabel">Nodule<input class="form__trigger" type="checkbox" /><span class="form__checkmark"> </span></label>
-          <label class="form__sublabel">Milliary TB<input class="form__trigger" type="checkbox" /><span class="form__checkmark"> </span></label>
-          <label class="form__sublabel">Intrathoracic Lymphadenopathy<input class="form__trigger" type="checkbox" /><span class="form__checkmark"> </span></label>
+          <label class="form__sublabel">Normal
+            <input class="form__trigger" type="checkbox" name="cxr_reading[]" value="Normal" />
+            <span class="form__checkmark"> </span>
+          </label>
+          <label class="form__sublabel">Cavitary
+            <input class="form__trigger" type="checkbox" name="cxr_reading[]" value="Cavitary" />
+            <span class="form__checkmark"> </span></label>
+          <label class="form__sublabel">Infilitrates
+            <input class="form__trigger" type="checkbox" name="cxr_reading[]" value="Infilitrates" />
+            <span class="form__checkmark"> </span></label>
+          <label class="form__sublabel">Nodule
+            <input class="form__trigger" type="checkbox" name="cxr_reading[]" value="Nodule" />
+            <span class="form__checkmark"> </span></label>
+          <label class="form__sublabel">Milliary TB
+            <input class="form__trigger" type="checkbox" name="cxr_reading[]" value="Milliary TB"/>
+            <span class="form__checkmark"> </span></label>
+          <label class="form__sublabel">Intrathoracic Lymphadenopathy
+            <input class="form__trigger" type="checkbox" name="cxr_reading[]" value="Intrathoracic Lymphadenopathy" />
+            <span class="form__checkmark"> </span>
+          </label>
+        </div>
+        <div class="grid__item form-step-4">
+          <label class="form__sublabel">Endobronchial Spread
+            <input class="form__trigger" type="checkbox" name="cxr_reading[]" value="Endobronchial Spread"/>
+            <span class="form__checkmark"> </span>
+          </label>
+          <label class="form__sublabel">Fibrosis
+            <input class="form__trigger" type="checkbox" name="cxr_reading[]" value="Fibrosis"/>
+            <span class="form__checkmark"> </span>
+          </label>
+          <label class="form__sublabel">Bullae
+            <input class="form__trigger" type="checkbox" name="cxr_reading[]" value="Bullae" />
+            <span class="form__checkmark"> </span>
+          </label>
+          <label class="form__sublabel">Pleural Effusion
+            <input class="form__trigger" type="checkbox" name="cxr_reading[]" value="Pleural Effusion"/>
+            <span class="form__checkmark"> </span>
+          </label>
+          <label class="form__sublabel">Fibrothorax
+            <input class="form__trigger" type="checkbox" name="cxr_reading[]" value="Fibrothorax" />
+            <span class="form__checkmark"> </span>
+          </label>
+          <label class="form__sublabel">Pneumothorax
+            <input class="form__trigger" type="checkbox" name="cxr_reading[]" value="Pneumothorax"/>
+            <span class="form__checkmark"> </span>
+          </label>
         </div>
         <div class="grid__item">
-          <label class="form__sublabel">Endobronchial Spread<input class="form__trigger" type="checkbox" /><span class="form__checkmark"> </span></label>
-          <label class="form__sublabel">Fibrosis<input class="form__trigger" type="checkbox" /><span class="form__checkmark"> </span></label>
-          <label class="form__sublabel">Bullae<input class="form__trigger" type="checkbox" /><span class="form__checkmark"> </span></label>
-          <label class="form__sublabel">Pleural Effusion<input class="form__trigger" type="checkbox" /><span class="form__checkmark"> </span></label>
-          <label class="form__sublabel">Fibrothorax<input class="form__trigger" type="checkbox" /><span class="form__checkmark"> </span></label>
-          <label class="form__sublabel">Pneumothorax<input class="form__trigger" type="checkbox" /><span class="form__checkmark"> </span></label>
+          <label class="form__sublabel">Bronchiectasis
+            <input class="form__trigger" type="checkbox" name="cxr_reading[]" value="Bronchiectasis"/>
+            <span class="form__checkmark"> </span>
+          </label>
+          <label class="form__sublabel">Atelectasis
+            <input class="form__trigger" type="checkbox" name="cxr_reading[]" value="Atelectasis"/>
+            <span class="form__checkmark"> </span>
+          </label>
+          <label class="form__sublabel">Consolidation
+            <input class="form__trigger" type="checkbox" name="cxr_reading[]" value="Consolidation"/>
+            <span class="form__checkmark"> </span>
+          </label>
+          <label class="form__sublabel">Mass
+            <input class="form__trigger" type="checkbox" name="cxr_reading[]" value="Mass"/>
+            <span class="form__checkmark"> </span>
+          </label>
+          <label class="form__sublabel">Other
+            <input class="form__trigger other-cxr" type="checkbox" name="cxr_reading[]" value="Other"/>
+            <span class="form__checkmark"> </span></label>
+            <div class="form__content form-group other-cxr-field">
+              <input class="form__input" type="text" id="other-cxr" placeholder="Specify" />
+              <label class="form__label" for="">Specify Other</label>
+              <div class="help-block with-errors"></div>
+            </div>
         </div>
-        <div class="grid__item">
-          <label class="form__sublabel">Bronchiectasis<input class="form__trigger" type="checkbox" /><span class="form__checkmark"> </span></label>
-          <label class="form__sublabel">Atelectasis<input class="form__trigger" type="checkbox" /><span class="form__checkmark"> </span></label>
-          <label class="form__sublabel">Consolidation<input class="form__trigger" type="checkbox" /><span class="form__checkmark"> </span></label>
-          <label class="form__sublabel">Mass<input class="form__trigger" type="checkbox" /><span class="form__checkmark"> </span></label>
-          <label class="form__sublabel">Other<input class="form__trigger" type="checkbox" /><span class="form__checkmark"> </span></label>
-        </div>
-      </div>
-      <div class="grid">
-        <div class="form__content form__content--small form__content--small__right"><input class="form__input" type="date" placeholder="CT Scan date" /><label class="form__label" for="">CT Scan date</label></div>
-        <div class="form__content"><input class="form__input" type="text" placeholder="CT Scan result" /><label class="form__label" for="">CT Scan result</label></div>
-      </div>
-      <div class="grid">
-        <div class="form__content form__content--small form__content--small__right"><input class="form__input" type="date" placeholder="Ultrasound date" /><label class="form__label" for="">Ultrasound date</label></div>
-        <div class="form__content"><input class="form__input" type="text" placeholder="Ultrasound result" /><label class="form__label" for="">Ultrasound result</label></div>
       </div>
       <div class="grid">
         <div class="form__content form__content--small form__content--small__right">
-          <input class="form__input" type="date" placeholder="Histopatholigical date" /><label class="form__label" for="">Histopatholigical date</label>
+          <input class="form__input" type="date" name="ct_scan_date" placeholder="CT Scan date" />
+          <label class="form__label" for="">CT Scan date</label>
         </div>
-        <div class="form__content"><input class="form__input" type="text" placeholder="Histopatholigical result" /><label class="form__label" for="">Histopatholigical result</label></div>
+        <div class="form__content">
+          <input class="form__input" type="text" name="ct_scan_result" placeholder="CT Scan result" />
+          <label class="form__label" for="">CT Scan result</label>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="form__content form__content--small form__content--small__right">
+          <input class="form__input" type="date" name="ultrasound_date" placeholder="Ultrasound date" />
+          <label class="form__label" for="">Ultrasound date</label>
+        </div>
+        <div class="form__content">
+          <input class="form__input" type="text" name="ultrasound_result" placeholder="Ultrasound result" />
+          <label class="form__label" for="">Ultrasound result</label>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="form__content form__content--small form__content--small__right">
+          <input class="form__input" type="date" name="histopathological_date" placeholder="Histopatholigical date" />
+          <label class="form__label" for="">Histopatholigical date
+
+          </label>
+        </div>
+        <div class="form__content">
+          <input class="form__input" type="text" name="histopathological_result" placeholder="Histopatholigical result" />
+          <label class="form__label" for="">Histopatholigical result</label>
+        </div>
       </div>
     </div>
     <div class="form__container">

@@ -24,7 +24,6 @@ class CreateEnrollmentRegimentForm extends Migration
             $table->string('drug_susceptibility')->nullable();
             $table->string('current_weight')->nullable();
             $table->string('suggested_regimen')->nullable();
-            $table->string('suggested_regimen_other')->nullable();
             $table->string('regimen_notes')->nullable();
             $table->string('clinical_status')->nullable();
             $table->string('signs_and_symptoms')->nullable();

@@ -7,7 +7,7 @@
 
 <div class="section">
     <div class="section__top">
-      <h1 class="section__title">Enrollments</h1>
+      <h1 class="section__title">{{ $tbMacForm->presentation_number }}</h1>
       <div class="breadcrumbs"><a class="breadcrumbs__link" href="{{ url('enrollments') }}">Enrollment Regimen</a>
         <a class="breadcrumbs__link">View {{ $tbMacForm->presentation_number }}</a>
         <a class="breadcrumbs__link"></a>
@@ -23,18 +23,16 @@
             <div class="form--quarter">
               <div class="form__container">
                 <h2 class="section__heading">Patient RAGT 18F<span class="form__text">Facility 2323 &nbsp;&nbsp;&nbsp; Ilocos Norte</span></h2>
-                <div class="form__content"><span class="form__text">New case</span><label class="form__label" for="">Status</label></div>
-                <br />
-                <div class="grid grid--two">
-                  <div class="form__content"><span class="form__text">may</span><label class="form__label" for="">Month of treatment</label></div>
-                  <div class="form__content"><span class="form__text">lorem</span><label class="form__label" for="">Current type of case </label></div>
+                <div class="form__content"><span class="form__text">{{ $tbMacForm->status }}</span>
+                    <label class="form__label" for="">Status</label>
                 </div>
+                <br />
               </div>
               <div class="form__container">
                 <h2 class="section__heading">Healthcare worker</h2>
                 <div class="grid grid--two">
-                  <div class="form__content"><span class="form__text">orem</span><label class="form__label" for="">Primary healthcare worker </label></div>
-                  <div class="form__content"><span class="form__text">12/12/12</span><label class="form__label" for="">Date submitted</label></div>
+                  <div class="form__content"><span class="form__text">{{ $tbMacForm->submittedBy->name }}</span><label class="form__label" for="">Primary healthcare worker </label></div>
+                  <div class="form__content"><span class="form__text">{{ $tbMacForm->created_at->format('m/d/Y') }}</span><label class="form__label" for="">Date submitted</label></div>
                 </div>
               </div>
             </div>
@@ -61,124 +59,179 @@
             <div class="form__container">
               <h2 class="section__heading">Treatment information</h2>
               <div class="grid grid--two">
-                <div class="form__content"><span class="form__text">06/20/2021 ➞ Treatment unit 1 ➞ Drug name 1 5 weeks ➞ Success</span><label class="form__label" for="">Treatment history</label></div>
+                <div class="form__content">
+                    <span class="form__text">{{ $tbMacForm->enrollmentForm->treatment_history }}</span>
+                    <label class="form__label" for="">Treatment history</label></div>
               </div>
               <div class="grid grid--two">
-                <div class="form__content"><span class="form__text">Previous Treatment Outcome Unknown</span><label class="form__label" for="">Registration group</label></div>
-                <div class="form__content"><span class="form__text">lorem</span><label class="form__label" for="">Risk factor</label></div>
+                <div class="form__content">
+                    <span class="form__text">{{ $tbMacForm->enrollmentForm->registration_group }}</span>
+                    <label class="form__label" for="">Registration group</label>
+                </div>
+                <div class="form__content">
+                    <span class="form__text">{{ $tbMacForm->enrollmentForm->risk_factor }}</span>
+                    <label class="form__label" for="">Risk factor</label>
+                </div>
               </div>
             </div>
             <div class="form__container">
               <h2 class="section__heading">Current bacteriological result</h2>
               <ul class="card">
-                <li class="card__item">
-                  <div class="form__container">
-                    <span class="form__text form__text--bold">TB Loop-Mediated Isothermal</span><span class="form__text">Tondo Foreshore Health Center Lying-In- IDOTS</span><span class="form__text">10 June 2021</span>
-                  </div>
-                  <div class="form__container">
-                    <div class="form__content"><span class="form__text">Indeterminate</span><label class="form__label" for="">Result </label></div>
-                  </div>
-                </li>
-                <li class="card__item">
-                  <div class="form__container">
-                    <span class="form__text form__text--bold">TB Loop-Mediated Isothermal</span><span class="form__text">Tondo Foreshore Health Center Lying-In- IDOTS</span><span class="form__text">10 June 2021</span>
-                  </div>
-                  <div class="form__container">
-                    <div class="form__content"><span class="form__text">Indeterminate</span><label class="form__label" for="">Result </label></div>
-                  </div>
-                </li>
-                <li class="card__item">
-                  <div class="form__container">
-                    <span class="form__text form__text--bold">TB Loop-Mediated Isothermal</span><span class="form__text">Tondo Foreshore Health Center Lying-In- IDOTS</span><span class="form__text">10 June 2021</span>
-                  </div>
-                  <div class="form__container">
-                    <div class="form__content"><span class="form__text">Indeterminate</span><label class="form__label" for="">Result </label></div>
-                  </div>
-                </li>
-                <li class="card__item">
-                  <div class="form__container">
-                    <span class="form__text form__text--bold">TB Loop-Mediated Isothermal</span><span class="form__text">Tondo Foreshore Health Center Lying-In- IDOTS</span><span class="form__text">10 June 2021</span>
-                  </div>
-                  <div class="form__container">
-                    <div class="form__content"><span class="form__text">Indeterminate</span><label class="form__label" for="">Result </label></div>
-                  </div>
-                </li>
+                @php
+                $bacteriologicalResults = $tbMacForm->bacteriologicalResults->filter(function($item){
+                      return $item->type != 'dst_from_other_lab';
+                });
+                @endphp
+                @foreach($bacteriologicalResults as $result)
+                    <li class="card__item">
+                    <div class="form__container">
+                        <span class="form__text form__text--bold">{{ $result->name }}</span>
+                        <span class="form__text">{{ $result->name_of_laboratory }}</span>
+                        <span class="form__text">{{ $result->date_collected->format('d F Y') }}</span>
+                    </div>
+                    <div class="form__container">
+                        <div class="form__content">
+                            <span class="form__text">{{ $result->result }}</span>
+                            <label class="form__label" for="">Result </label>
+                        </div>
+                    </div>
+                    </li>   
+                @endforeach
               </ul>
             </div>
             <div class="form__container">
+                <h2 class="section__heading">DST from other laboratory</h2>
+                <ul class="card">
+                  @php
+                      $dstFromOtherLab = $tbMacForm->bacteriologicalResults->filter(function($item){
+                            return $item->type == 'dst_from_other_lab';
+                      });
+                  @endphp
+                  @foreach($dstFromOtherLab as $result)
+                      <li class="card__item">
+                      <div class="form__container">
+                          <span class="form__text">{{ $result->name_of_laboratory }}</span>
+                          <span class="form__text">{{ $result->date_collected->format('d F Y') }}</span>
+                      </div>
+                      <div class="form__container">
+                          <div class="form__content">
+                              <span class="form__text">{{ $result->result }}</span>
+                              <label class="form__label" for="">Result </label>
+                          </div>
+                      </div>
+                      </li>   
+                  @endforeach
+                </ul>
+              </div>
+            <div class="form__container">
               <h2 class="section__heading">Regimen information</h2>
               <div class="grid grid--two">
-                <div class="form__content"><span class="form__text">Stable/Unchange</span><label class="form__label" for="">Facility code</label></div>
-                <div class="form__content"><span class="form__text">45kg</span><label class="form__label" for="">Current weight</label></div>
+                <div class="form__content">
+                    <span class="form__text">{{ $tbMacForm->enrollmentForm->registration_group }}</span>
+                    <label class="form__label" for="">Drug Susceptibility</label></div>
+                <div class="form__content"><span class="form__text">{{ $tbMacForm->enrollmentForm->current_weight }}kg</span>
+                    <label class="form__label" for="">Current weight</label>
+                </div>
               </div>
               <div class="grid grid--two">
-                <div class="form__content"><span class="form__text">Regimen 6b SLOR FQ-S</span><label class="form__label" for="">Current regimen </label></div>
+                <div class="form__content"><span class="form__text">{{ $tbMacForm->enrollmentForm->suggested_regimen }}</span>
+                    <label class="form__label" for="">Suggested Regimen</label>
+                </div>
+                @if(\Str::startsWith($tbMacForm->enrollmentForm->suggested_regimen,'ITR'))
+                    <div class="form__content"><span class="form__text">{{ $tbMacForm->enrollmentForm->suggested_regimen }}</span>
+                        <label class="form__label" for="">ITR Drugs</label>
+                    </div>
+                @endif
               </div>
+              
               <div class="grid grid--two">
                 <div class="form__content">
-                  <span class="form__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum commodo turpis eu elit egestas lobortis. Quisque semper risus nec lacus condimentum consectetur.</span>
+                  <span class="form__text">{{ $tbMacForm->enrollmentForm->regimen_notes }}</span>
                   <label class="form__label" for="">Regimen notes</label>
                 </div>
               </div>
             </div>
             <div class="form__container">
-              <h2 class="section__heading">Suggested regimen</h2>
+              <h2 class="section__heading">If for treatment of clinically diagnosed cases</h2>
               <div class="grid grid--two">
-                <div class="form__content"><span class="form__text">ITR</span><label class="form__label" for="">Suggested regiment</label></div>
-                <div class="form__content"><span class="form__text">lorem</span><label class="form__label" for="">ITR Drugs</label></div>
+                <div class="form__content">
+                    <span class="form__text">{{ $tbMacForm->enrollmentForm->clinical_status }}</span>
+                    <label class="form__label" for="">Clinical Status</label>
+                </div>
+                
               </div>
               <div class="grid grid--two">
                 <div class="form__content">
-                  <span class="form__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum commodo turpis eu elit egestas lobortis. Quisque semper risus nec lacus condimentum consectetur.</span>
-                  <label class="form__label" for="">Suggested Regimen notes</label>
+                  <span class="form__text">{{ $tbMacForm->enrollmentForm->vital_signs }}</span>
+                  <label class="form__label" for="">Vital signs</label>
                 </div>
               </div>
               <div class="grid grid--two">
-                <div class="form__content"><span class="form__text">Bacteriologically-confirmd XDR-TB</span><label class="form__label" for="">Update type of case, if applicable</label></div>
+                <div class="form__content">
+                    <span class="form__text">{{ $tbMacForm->enrollmentForm->diag_and_lab_findings }}</span>
+                    <label class="form__label" for="">Pertinent diagnostic and laboratory findings</label>
+                </div>
+              </div>
+              <div class="grid grid--two">
+                <div class="form__content">
+                    <span class="form__text">{{ $tbMacForm->enrollmentForm->signs_and_symptoms }}</span>
+                    <label class="form__label" for="">Signs and symptoms</label>
+                </div>
               </div>
             </div>
             <div class="form__container">
               <h2 class="section__heading">Laboratory results and information</h2>
               <div class="grid grid--two">
-                <div class="form__content"><span class="form__text">12/12/12</span><label class="form__label" for="">CXR date</label></div>
+                <div class="form__content">
+                    <span class="form__text">
+                        {{ $tbMacForm->laboratoryResults->cxr_date ? $tbMacForm->laboratoryResults->cxr_date->format('m/d/y') : '' }}</span>
+                    <label class="form__label" for="">CXR date</label>
+                </div>
                 <div class="form__content">
                   <span class="form__text">
-                    lorem <br />
-                    lorem <br />
-                    lorem
+                    {{ $tbMacForm->laboratoryResults->cxr_result }}
+                    @if($cxrReadings = $tbMacForm->laboratoryResults->cxr_reading)
+                        @foreach($cxrReadings as $cxrReading)
+                            {{ $cxrReading }} </br>
+                        @endforeach
+                    @endif
                   </span>
                   <label class="form__label" for="">CXR result</label>
                 </div>
               </div>
               <div class="grid grid--two">
-                <div class="form__content"><span class="form__text">12/12/12</span><label class="form__label" for="">CT Scan date</label></div>
+                <div class="form__content">
+                    <span class="form__text">
+                        {{ $tbMacForm->laboratoryResults->ct_scan_date ? $tbMacForm->laboratoryResults->ct_scan_date->format('m/d/y') : '' }}</span>
+                    <label class="form__label" for="">CT Scan date</label>
+                </div>
                 <div class="form__content">
                   <span class="form__text">
-                    lorem <br />
-                    lorem <br />
-                    lorem
+                    {{ $tbMacForm->laboratoryResults->ct_scan_result }}
                   </span>
                   <label class="form__label" for="">CT Scan result</label>
                 </div>
               </div>
               <div class="grid grid--two">
-                <div class="form__content"><span class="form__text">12/12/12</span><label class="form__label" for="">Ultrasound date</label></div>
+                <div class="form__content">
+                    <span class="form__text">{{ $tbMacForm->laboratoryResults->ultrasound_date ? $tbMacForm->laboratoryResults->ultrasound_date->format('m/d/y') : '' }}</span>
+                    <label class="form__label" for="">Ultrasound date</label>
+                </div>
                 <div class="form__content">
                   <span class="form__text">
-                    lorem <br />
-                    lorem <br />
-                    lorem
+                    {{ $tbMacForm->laboratoryResults->ultrasound_result }}
                   </span>
                   <label class="form__label" for="">Ultrasound result</label>
                 </div>
               </div>
               <div class="grid grid--two">
-                <div class="form__content"><span class="form__text">12/12/12</span><label class="form__label" for="">Histopatholigical date</label></div>
+                <div class="form__content">
+                    <span class="form__text">{{ $tbMacForm->laboratoryResults->hispathological_date ? $tbMacForm->laboratoryResults->hispathological_date->format('m/d/y') : '' }}</span>
+                    <label class="form__label" for="">Histopatholigical date</label>
+                </div>
                 <div class="form__content">
                   <span class="form__text">
-                    lorem <br />
-                    lorem <br />
-                    lorem
+                    {{ $tbMacForm->laboratoryResults->hispathological_result }}
                   </span>
                   <label class="form__label" for="">Histopatholigical result</label>
                 </div>
@@ -187,15 +240,15 @@
             <div class="form__container">
               <h2 class="section__heading">Related media</h2>
               <ul class="form__gallery">
+                {{-- <li class="form__gallery-item"><img class="image" src="src/img/placeholder.jpg" alt="Placeholder" /></li>
                 <li class="form__gallery-item"><img class="image" src="src/img/placeholder.jpg" alt="Placeholder" /></li>
-                <li class="form__gallery-item"><img class="image" src="src/img/placeholder.jpg" alt="Placeholder" /></li>
-                <li class="form__gallery-item"><img class="image" src="src/img/placeholder.jpg" alt="Placeholder" /></li>
+                <li class="form__gallery-item"><img class="image" src="src/img/placeholder.jpg" alt="Placeholder" /></li> --}}
               </ul>
             </div>
           </form>
         </div>
         <div class="tabs__details">
-          <form class="form form--half" action="">
+          {{-- <form class="form form--half" action="">
             <h2 class="section__heading">Remarks | Recommendations</h2>
             <div class="form__container form__container--remarks">
               <img class="image image--user" src="src/img/icon-user.png" alt="user icon" />
@@ -215,7 +268,7 @@
                 </span>
               </div>
             </div>
-          </form>
+          </form> --}}
         </div>
       </div>
 

@@ -34,6 +34,10 @@ class TBMacForm extends Model
         });
     }
 
+    public function submittedBy()
+    {
+        return $this->belongsTo(User::class,'submitted_by');
+    }
 
     public function enrollmentForm()
     {
@@ -47,7 +51,12 @@ class TBMacForm extends Model
 
     public function bacteriologicalResults()
     {
-        return $this->hasOne(BacteriologicalResult::class, 'form_id');
+        return $this->hasMany(BacteriologicalResult::class, 'form_id');
+    }
+
+    public function laboratoryResults()
+    {
+        return $this->hasOne(LaboratoryResult::class, 'form_id');
     }
 
     public function scopeEnrollmentForms($query)
