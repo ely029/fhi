@@ -43,5 +43,7 @@ Route::get('/', [HomeController::class, 'index']);
 Route::group(['middleware' => 'auth'], static function () {
     Route::get('/enrollments',[EnrollmentRegimentController::class, 'index']);
     Route::get('/enrollments/create',[EnrollmentRegimentController::class, 'create']);
+    Route::get('/enrollments/{tbMacForm}',[EnrollmentRegimentController::class,'show']);
+
     Route::post('/enrollments', [EnrollmentRegimentController::class, 'store']);
 });

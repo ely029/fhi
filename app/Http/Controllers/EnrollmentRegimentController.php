@@ -45,6 +45,12 @@ class EnrollmentRegimentController extends Controller
         return view('enrollments.form');
     }
 
+    public function show(TBMacForm $tbMacForm)
+    {
+        return view('enrollments.show')
+            ->with('tbMacForm', $tbMacForm);
+    }
+
     public function store()
     {
         $request = request()->all();
@@ -62,8 +68,8 @@ class EnrollmentRegimentController extends Controller
         //     return response()->json($validator->errors(), 422);
         // }
 
-        $tbForm = TBMacForm::create($request);
-        $tbForm->enrollmentForm()->create($request);
+        $tbMacForm = TBMacForm::create($request);
+        $tbMacForm->enrollmentForm()->create($request);
 
         $bacteriologicalStatuses =  ['xpert_mtb_rif','xpert_mtb_rif_ultra','truenat_tb',
         'lpa','smear_mic','tb_lamp','tb_culture','dst','others','dst_from_other_lab'];
@@ -74,7 +80,7 @@ class EnrollmentRegimentController extends Controller
 
                 foreach ($request[$status] as $key => $type)
                 {
-                    $tbForm->bacteriologicalResults()->create([
+                    $tbMacForm->bacteriologicalResults()->create([
                         'type' => $status == 'others' ? 'Others-'.$request['others-specify'][$key] : $type,
                         'date_collected' => $request[$type.'-date_collected'][$key],
                         'name_of_laboratory' => $request[$type.'-name_of_laboratory'][$key],
@@ -85,7 +91,7 @@ class EnrollmentRegimentController extends Controller
         }
     
 
-        return redirect('enrollments')->with([
+        return redirect('enrollments/'.$tbMacForm->id)->with([
             'alert.message' => 'New Case for enrollment created.'
         ]);
     }

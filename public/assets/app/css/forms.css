@@ -21,3 +21,11 @@
 .with-errors{
     color: #dc3545 !important;
 }
+
+.itr-drugs{
+    display: none;
+}
+
+.other-regimen{
+    display: none;
+}
