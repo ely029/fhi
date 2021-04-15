@@ -45,5 +45,6 @@ Route::group(['middleware' => 'auth'], static function () {
     Route::get('/enrollments/create',[EnrollmentRegimentController::class, 'create']);
     Route::get('/enrollments/{tbMacForm}',[EnrollmentRegimentController::class,'show']);
 
+    Route::get('/enrollments/{tbMacForm}/{fileName}/attachment',[EnrollmentRegimentController::class,'showAttachment']);
     Route::post('/enrollments', [EnrollmentRegimentController::class, 'store']);
 });

@@ -15,7 +15,6 @@
     {{-- @TB: If you need custom scripts for dashboard place it in assets/dashboard/js/ --}}
     <script src="{{ asset('assets/app/js/app.js') }}"></script>
     <script src="{{ asset('assets/app/js/main.js') }}"></script>
-    <script src="{{ asset('assets/app/js/dropzone.js') }}"></script>
     <script src="{{ asset('assets/dashboard/js/logout.js') }}"></script>
    
     @yield('additional_scripts')

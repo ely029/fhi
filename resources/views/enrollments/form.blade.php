@@ -21,7 +21,7 @@
     @include('partials.alerts')
 
     <div class="section__container">
-        <form class="form" id="enrollment-form" action="{{ url('enrollments') }}" method="post">
+        <form class="form" id="enrollment-form" action="{{ url('enrollments') }}" method="post" enctype="multipart/form-data">
           @csrf
             <div id="steps" data-steps="4">
               @include('enrollments.steps.step-1')
@@ -58,7 +58,10 @@
 @section('additional_scripts')
   
   <script src="{{ asset('assets/app/js/bootstrap-validator.js') }}"></script>  
-  <script src="{{ asset('assets/app/js/forms.js') }}"></script>  
+  <script src="{{ asset('assets/app/js/forms.js') }}"></script>
+
+  <script src="{{ asset('assets/app/js/dropzone.js') }}"></script>  
+  <script src="{{ asset('assets/app/js/dropzoneInit.js') }}"></script>
   <script src="{{ asset('assets/app/js/enrollments/step-2.js') }}"></script>  
   <script src="{{ asset('assets/app/js/enrollments/step-3.js') }}"></script>  
   <script src="{{ asset('assets/app/js/enrollments/step-4.js') }}"></script>  

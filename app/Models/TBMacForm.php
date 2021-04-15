@@ -59,6 +59,11 @@ class TBMacForm extends Model
         return $this->hasOne(LaboratoryResult::class, 'form_id');
     }
 
+    public function attachments()
+    {
+        return $this->hasMany(TBMacFormAttachment::class, 'form_id');
+    }
+
     public function scopeEnrollmentForms($query)
     {
         return $query->where('form_type','enrollment');

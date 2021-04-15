@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Models\EnrollmentRegimentForm;
 use App\Models\TBMacForm;
-
+use App\Models\TBMacFormAttachment;
 use Illuminate\Support\Facades\Validator;
 
 class EnrollmentRegimentController extends Controller
@@ -47,7 +47,7 @@ class EnrollmentRegimentController extends Controller
 
     public function show(TBMacForm $tbMacForm)
     {
-        $tbMacForm = $tbMacForm->load(['submittedBy','enrollmentForm','bacteriologicalResults','laboratoryResults']);
+        $tbMacForm = $tbMacForm->load(['submittedBy','enrollmentForm','bacteriologicalResults','laboratoryResults','attachments']);
 
         return view('enrollments.show')
             ->with('tbMacForm', $tbMacForm);
@@ -61,8 +61,7 @@ class EnrollmentRegimentController extends Controller
         $request['status'] = 'New Enrollment';
         $request['role_id'] = 4;
         $request['region'] = 'NCR';
-        $request['cxr_reading'] = $request['cxr_reading'] ? json_encode($request['cxr_reading']) : null;
-
+        $request['cxr_reading'] = isset($request['cxr_reading']) ? json_encode($request['cxr_reading']) : null;
         // $validator = Validator::make($request, [
         //     'role_id' => 'required',
         // ]);
@@ -72,8 +71,19 @@ class EnrollmentRegimentController extends Controller
         // }
 
         $tbMacForm = TBMacForm::create($request);
+
         $tbMacForm->enrollmentForm()->create($request);
         $tbMacForm->laboratoryResults()->create($request);
+
+        if (isset($request['attachments'])) {
+            foreach($request['attachments'] as $key => $file)
+            {
+                $file->storeAs(TBMacFormAttachment::PATH_PREFIX.'/'.$tbMacForm->presentation_number, ($key+1).'.'.$file->extension());   
+                $tbMacForm->attachments()->create([
+                    'extension' => $file->extension()
+                ]);
+            }
+        }
 
         $bacteriologicalStatuses =  ['xpert_mtb_rif','xpert_mtb_rif_ultra','truenat_tb',
         'lpa','smear_mic','tb_lamp','tb_culture','dst','others','dst_from_other_lab'];
@@ -98,5 +108,16 @@ class EnrollmentRegimentController extends Controller
         return redirect('enrollments/'.$tbMacForm->id)->with([
             'alert.message' => 'New Case for enrollment created.'
         ]);
+    }
+
+    public function showAttachment(TBMacForm $tbMacForm, $fileName)
+    {
+        $path = 'private/enrollments/'.$tbMacForm->presentation_number.'/'.$fileName;
+
+        if (\Storage::exists($path)) {
+            return response(\Storage::get($path))->header('Content-Type', 'image/jpeg');
+        }else{
+            abort(404, "File does not exist!");
+        }
     }
 }

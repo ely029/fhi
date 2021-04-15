@@ -240,9 +240,14 @@
             <div class="form__container">
               <h2 class="section__heading">Related media</h2>
               <ul class="form__gallery">
-                {{-- <li class="form__gallery-item"><img class="image" src="src/img/placeholder.jpg" alt="Placeholder" /></li>
-                <li class="form__gallery-item"><img class="image" src="src/img/placeholder.jpg" alt="Placeholder" /></li>
-                <li class="form__gallery-item"><img class="image" src="src/img/placeholder.jpg" alt="Placeholder" /></li> --}}
+                @foreach($tbMacForm->attachments as $key => $attachment)
+                  <li class="form__gallery-item">
+                    @php
+                      $fileName = ($key+1).'.'.$attachment->extension;
+                    @endphp
+                    <img class="image" src="{{ url('enrollments/'.$tbMacForm->id.'/'.$fileName.'/attachment') }}" alt="Placeholder" />
+                  </li>
+                @endforeach
               </ul>
             </div>
           </form>
