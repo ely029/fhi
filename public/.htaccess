@@ -346,17 +346,17 @@ AddDefaultCharset utf-8
 #     https://www.iana.org/assignments/well-known-uris/well-known-uris.xhtml
 #     https://tools.ietf.org/html/draft-ietf-acme-acme-12
 
-<IfModule mod_rewrite.c>
-   RewriteEngine On
-   RewriteCond %{HTTPS} !=on
+# <IfModule mod_rewrite.c>
+  # RewriteEngine On
+  # RewriteCond %{HTTPS} !=on
    # @TB: Disable redirection in Homestead
-   RewriteCond %{ENV:APACHE_RUN_USER} !=vagrant
+   # RewriteCond %{ENV:APACHE_RUN_USER} !=vagrant
    # (1)
    # RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/
    # RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[\w-]+$
    # RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
-   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-</IfModule>
+   # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+# </IfModule>
 
 # ----------------------------------------------------------------------
 # | Suppressing the `www.` at the beginning of URLs                    |

@@ -23,8 +23,15 @@
             <div class="form--quarter">
               <div class="form__container">
                 <h2 class="section__heading">Patient RAGT 18F<span class="form__text">Facility 2323 &nbsp;&nbsp;&nbsp; Ilocos Norte</span></h2>
+<<<<<<< HEAD
+                <div class="form__content"><span class="form__text">New case</span><label class="form__label" for="">Status</label></div>
+                <br />
+                <div class="grid grid--two">
+                  <div class="form__content"><span class="form__text">may</span><label class="form__label" for="">Month of treatment</label></div>
+=======
                 <div class="form__content"><span class="form__text">{{ $tbMacForm->status }}</span>
                     <label class="form__label" for="">Status</label>
+>>>>>>> a54a1b4447477d5c663461d40fedfab80024aa7a
                 </div>
                 <br />
               </div>
