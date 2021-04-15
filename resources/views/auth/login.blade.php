@@ -1,11 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="login">
+<form class="login" method="POST" action="{{ route('login') }}">
     <div class="login__container">
     <div class="login__card">
         <div class="login__top"></div>
-            <form class="form" method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="form__content">
                     <input class="form__input form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" 
@@ -28,8 +27,8 @@
                     @enderror
                 </div>
                 <div class="form__button form__button--space"><a class="button button--transparent" href="">Forgot password </a><button type="submit" class="button" >Login</button></div>
-            </form>
+            
     </div>
     </div>
-</div>
+</form>
 @endsection

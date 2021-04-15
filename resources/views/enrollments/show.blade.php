@@ -27,7 +27,6 @@
                 <br />
                 <div class="grid grid--two">
                   <div class="form__content"><span class="form__text">may</span><label class="form__label" for="">Month of treatment</label></div>
-                  <div class="form__content"><span class="form__text">lorem</span><label class="form__label" for="">Current type of case </label></div>
                 </div>
               </div>
               <div class="form__container">

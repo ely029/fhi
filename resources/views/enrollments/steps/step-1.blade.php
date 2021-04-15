@@ -90,24 +90,24 @@
       </div>
     </div>
     <div class="grid grid--three grid--close form-step-1">
-        <div class="form__content form-group">
+        <div class="form__content ">
           <input class="form__input" type="text" placeholder="First name" name="first_name" required value="Juan"/>
           <label class="form__label" for="">First name</label>
           <div class="help-block with-errors"></div>
         </div>
-        <div class="form__content form-group">
+        <div class="form__content ">
           <input class="form__input" type="text" placeholder="Last name" name="last_name" required value="Dela Crux"/>
           <label class="form__label" for="">Last name</label>
           <div class="help-block with-errors"></div>
         </div>
-        <div class="form__content form-group">
+        <div class="form__content ">
             <input class="form__input" type="text" placeholder="Middle name" name="middle_name" required value="L"/>
             <label class="form__label" for="">Middle name</label>
             <div class="help-block with-errors"></div>
         </div>
     </div>
     <div class="grid grid--two form-step-1">
-      <div class="form__content form-group">
+      <div class="form__content ">
         <input class="form__input" type="date" placeholder="Birthday" name="birthday" required value="1990-01-01"/>
         <label class="form__label" for="">Birthday</label>
         <div class="help-block with-errors"></div>
