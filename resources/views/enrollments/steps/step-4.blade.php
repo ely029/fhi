@@ -130,6 +130,7 @@
         <div class="dz-default dz-message dropzoneDragArea" id="dropzoneDragArea">
           <div class="gallery">
             <div class="gallery__container">
+              <input class="gallery__trigger" type="file">
               <div class="gallery__icon">
                 <img class="image" src="{{ asset('assets/app/img/icon-upload.png') }}" alt="Upload icon" /></div>
               <span class="gallery__text">Drag and drop or click to upload</span>
