@@ -210,6 +210,45 @@
                   </span>
                 </div>
               </div>
+              <div class="modal js-modal">
+                <div class="modal__background js-modal-background"></div>
+                <div class="modal__container">
+                  <div class="modal__box">
+                    <h2 class="modal__title">Confirm Enrollment</h2>
+                    <p class="modal__text">You are about to confirm 'Enrollment' for this case and patient. If you have additional remarks, enter them below.</p>
+                    <form class="form">
+                      <div class="form__content"><textarea class="form__input form__input--message" placeholder="Enter remarks"></textarea><label class="form__label" for="">Remarks</label></div>
+                    </form>
+                    <div class="modal__button"><input class="button" type="submit" value="Submit" /></div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal js-modal">
+                <div class="modal__background js-modal-background"></div>
+                <div class="modal__container">
+                  <div class="modal__box">
+                    <h2 class="modal__title">Confirm Not for enrollment</h2>
+                    <p class="modal__text">You are about to confirm 'Not for ennrollment' for this case and patient. If you have additional remarks, enter them below.</p>
+                    <form class="form">
+                      <div class="form__content"><textarea class="form__input form__input--message" placeholder="Enter remarks"></textarea><label class="form__label" for="">Remarks</label></div>
+                    </form>
+                    <div class="modal__button"><input class="button" type="submit" value="Submit" /></div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal js-modal">
+                <div class="modal__background js-modal-background"></div>
+                <div class="modal__container">
+                  <div class="modal__box">
+                    <h2 class="modal__title">Resubmit new enrolment</h2>
+                    <p class="modal__text">You are about to resubmit a new enrolment. Please read and prepare the requested information and documents the remarks and recommendations section.</p>
+                    <form class="form">
+                      <div class="form__content"><textarea class="form__input form__input--message" placeholder="Enter remarks"></textarea><label class="form__label" for="">Remarks</label></div>
+                    </form>
+                    <div class="modal__button"><input class="button" type="submit" value="Resubmit" /></div>
+                  </div>
+                </div>
+              </div>
             </form>
           </div>
         </div>
