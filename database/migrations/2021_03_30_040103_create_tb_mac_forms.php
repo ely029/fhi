@@ -21,7 +21,7 @@ class CreateTbMacForms extends Migration
             $table->foreign('submitted_by')->references('id')->on('users');
 
             $table->string('form_type');
-            $table->unsignedBigInteger('patient_id')->nullable();
+            $table->unsignedBigInteger('patient_id');
             
             $table->string('status');
             $table->string('level')->default('regional');

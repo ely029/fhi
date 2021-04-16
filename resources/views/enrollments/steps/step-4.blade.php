@@ -147,6 +147,9 @@
         </ul>
         <div id="file-uploads">
         </div>
+        <div class="fallback"> <!-- this is the fallback if JS isn't working -->
+          <input name="file" type="file" multiple />
+      </div>
         <input type="file" multiple name="attachments[]" class="attachment-upload" id="attachments">
       </div>
     </div>

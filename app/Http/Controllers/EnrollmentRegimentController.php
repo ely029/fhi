@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Models\EnrollmentRegimentForm;
+use App\Models\Patient;
 use App\Models\TBMacForm;
 use App\Models\TBMacFormAttachment;
 use Illuminate\Support\Facades\Validator;
@@ -47,7 +48,7 @@ class EnrollmentRegimentController extends Controller
 
     public function show(TBMacForm $tbMacForm)
     {
-        $tbMacForm = $tbMacForm->load(['submittedBy','enrollmentForm','bacteriologicalResults','laboratoryResults','attachments']);
+        $tbMacForm = $tbMacForm->load(['submittedBy','enrollmentForm','bacteriologicalResults','laboratoryResults','attachments','patient']);
 
         return view('enrollments.show')
             ->with('tbMacForm', $tbMacForm);
@@ -62,6 +63,7 @@ class EnrollmentRegimentController extends Controller
         $request['role_id'] = 4;
         $request['region'] = 'NCR';
         $request['cxr_reading'] = isset($request['cxr_reading']) ? json_encode($request['cxr_reading']) : null;
+        $request['is_from_itis'] = false;
         // $validator = Validator::make($request, [
         //     'role_id' => 'required',
         // ]);
@@ -70,6 +72,9 @@ class EnrollmentRegimentController extends Controller
         //     return response()->json($validator->errors(), 422);
         // }
 
+        $patient = Patient::create($request);
+        
+        $request['patient_id'] = $patient->id;
         $tbMacForm = TBMacForm::create($request);
 
         $tbMacForm->enrollmentForm()->create($request);

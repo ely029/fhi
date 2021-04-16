@@ -39,6 +39,11 @@ class TBMacForm extends Model
         return $this->belongsTo(User::class,'submitted_by');
     }
 
+    public function patient()
+    {
+        return $this->belongsTo(Patient::class);
+    }
+
     public function enrollmentForm()
     {
         return $this->hasOne(EnrollmentRegimentForm::class, 'form_id');

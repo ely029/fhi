@@ -1,9 +1,12 @@
 <div class="form__tab step-1">
     <h2 class="section__heading">Patient Information</h2>
     <div class="grid grid--two">
-      <div class="form__content"><input class="form__input" type="number" min="0" placeholder="Facility code" /><label class="form__label" for="">Facility code</label></div>
       <div class="form__content">
-        <select class="form__input form__input--select">
+        <input class="form__input" type="number" min="0" placeholder="Facility code" name="facility_code" />
+        <label class="form__label" for="">Facility code</label>
+      </div>
+      <div class="form__content">
+        <select class="form__input form__input--select" name="province">
           <option value="Metro Manila">Metro Manila</option>
           <option value="Abra">Abra</option>
           <option value="Agusan del Norte">Agusan del Norte</option>
