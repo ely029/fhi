@@ -41,13 +41,13 @@
           <div class="form__trigger-content" id="js-toggle-content-enroll1">
             <div id="js-section1">
               <div class="grid grid--three grid--close form-step-2">
-                <div class="form__content ">
+                <div class="form__content form-group">
                   <input type="hidden" class="xpert_mtb_rif"  value="xpert_mtb_rif"/>
                   <input class="form__input xpert_mtb_rif-field" type="date"  name="xpert_mtb_rif-date_collected[]" placeholder="Date collected" />
                   <label class="form__label" for="">Date collected</label>
                   <div class="help-block with-errors"></div>
                 </div>
-                <div class="form__content ">
+                <div class="form__content form-group">
                   <input class="form__input xpert_mtb_rif-field" type="text" placeholder="Name of laboratory" name="xpert_mtb_rif-name_of_laboratory[]"/>
                   <label class="form__label" for="">Name of laboratory</label>
                   <div class="help-block with-errors"></div>
@@ -76,15 +76,17 @@
           </label>
           <div class="form__trigger-content" id="js-toggle-content-enroll2">
             <div id="js-section2">
-              <div class="grid grid--three grid--close">
-                <div class="form__content">
+              <div class="grid grid--three grid--close form-step-2">
+                <div class="form__content form-group">
                   <input type="hidden" class="xpert_mtb_rif_ultra"  value="xpert_mtb_rif_ultra"/>
-                  <input class="form__input" type="date" name="xpert_mtb_rif_ultra-date_collected[]" placeholder="Date collected" />
+                  <input class="form__input xpert_mtb_rif_ultra-field" type="date" name="xpert_mtb_rif_ultra-date_collected[]" placeholder="Date collected" />
                   <label class="form__label" for="">Date collected</label>
+                  <div class="help-block with-errors"></div>
                 </div>
-                <div class="form__content">
-                  <input class="form__input" type="text" placeholder="Name of laboratory" name="xpert_mtb_rif_ultra-name_of_laboratory[]"/>
+                <div class="form__content form-group">
+                  <input class="form__input xpert_mtb_rif_ultra-field" type="text" placeholder="Name of laboratory" name="xpert_mtb_rif_ultra-name_of_laboratory[]"/>
                   <label class="form__label" for="">Name of laboratory</label>
+                  <div class="help-block with-errors"></div>
                 </div>
                 <div class="form__content">
                 <select class="form__input form__input--select" name="xpert_mtb_rif_ultra-result[]">
@@ -111,15 +113,17 @@
           </label>
           <div class="form__trigger-content" id="js-toggle-content-enroll3">
             <div id="js-section3">
-              <div class="grid grid--three grid--close">
-                <div class="form__content">
+              <div class="grid grid--three grid--close form-step-2">
+                <div class="form__content form-group">
                   <input type="hidden" class="truenat_tb"  value="truenat_tb"/>
-                  <input class="form__input" type="date" placeholder="Date collected" name="truenat_tb-date_collected[]" />
+                  <input class="form__input truenat_tb-field" type="date" placeholder="Date collected" name="truenat_tb-date_collected[]" />
                   <label class="form__label" for="">Date collected</label>
+                  <div class="help-block with-errors"></div>
                 </div>
-                <div class="form__content">
-                  <input class="form__input" type="text" placeholder="Name of laboratory" name="truenat_tb-name_of_laboratory[]" />
+                <div class="form__content form-group">
+                  <input class="form__input truenat_tb-field" type="text" placeholder="Name of laboratory" name="truenat_tb-name_of_laboratory[]" />
                   <label class="form__label" for="">Name of laboratory</label>
+                  <div class="help-block with-errors"></div>
                 </div>
                 <div class="form__content">
                   <select class="form__input form__input--select" name="truenat_tb-result[]">
@@ -146,24 +150,75 @@
           </label>
           <div class="form__trigger-content" id="js-toggle-content-enroll4">
             <div id="js-section4">
-              <div class="grid grid--three grid--close">
-                <div class="form__content">
+              <div class="grid grid--three grid--close form-step-2">
+                <div class="form__content form-group">
                   <input type="hidden" class="lpa"  value="lpa"/>
-                  <input class="form__input" type="date" placeholder="Date collected" name="lpa-date_collected[]" />
+                  <input class="form__input lpa-field" type="date" placeholder="Date collected" name="lpa-date_collected[]" />
                   <label class="form__label" for="">Date collected</label>
+                  <div class="help-block with-errors"></div>
                 </div>
-                <div class="form__content">
-                  <input class="form__input" type="text" placeholder="Name of laboratory" name="lpa-name_of_laboratory[]" />
+                <div class="form__content form-group">
+                  <input class="form__input lpa-field" type="text" placeholder="Name of laboratory" name="lpa-name_of_laboratory[]" />
                   <label class="form__label" for="">Name of laboratory</label>
+                  <div class="help-block with-errors"></div>
                 </div>
-                <div class="form__content">
+                <div class="form__content form-group">
                  
-
+          
                   <label class="form__label" for="">Result</label>
-                  <label class="form__sublabel" >MTB Detected, Fluoroquinolone Resistance Detected
-                    <input class="form__trigger" type="checkbox" />
+                  <label class="form__sublabel">MTB Detected, Fluoroquinolone Resistance Detected
+                    <input class="form__trigger lpa-field" type="checkbox" name="lpa-0-result[]" value="MTB Detected, Fluoroquinolone Resistance Detected" />
+                    <span class="form__checkmark"></span>
+                  </label>
+                  <label class="form__sublabel" >MTB Detected, Fluoroquinolone Resistance Not Detected
+                    <input class="form__trigger lpa-field" type="checkbox" name="lpa-0-result[]" value="MTB Detected, Fluoroquinolone Resistance Not Detected" />
                     <span class="form__checkmark"> </span>
                   </label>
+                  <label class="form__sublabel" >MTB Detected, Fluoroquinolone Resistance Indeterminate
+                    <input class="form__trigger lpa-field" type="checkbox"  name="lpa-0-result[]" value="MTB Detected, Fluoroquinolone Resistance Indeterminate"/>
+                    <span class="form__checkmark"> </span>
+                  </label>
+                  <label class="form__sublabel" >MTB Detected, Second-line Injectable Resistance Detected
+                    <input class="form__trigger lpa-field" type="checkbox" name="lpa-0-result[]" value="MTB Detected, Second-line Injectable Resistance Detected" />
+                    <span class="form__checkmark"> </span>
+                  </label>
+                  <label class="form__sublabel" >MTB Detected, Second-line Injectable Resistance Indeterminate
+                    <input class="form__trigger lpa-field" type="checkbox"  name="lpa-0-result[]"  value="MTB Detected, Second-line Injectable Resistance Indeterminate"/>
+                    <span class="form__checkmark"> </span>
+                  </label>
+                  <label class="form__sublabel" >MTB Detected, High Dose Isoniazid Resistance Detected
+                    <input class="form__trigger lpa-field" type="checkbox"  name="lpa-0-result[]" value="MTB Detected, High Dose Isoniazid Resistance Detected"/>
+                    <span class="form__checkmark"> </span>
+                  </label>
+                  <label class="form__sublabel" >MTB Detected, High Dose Isoniazid Resistance Not Detected
+                    <input class="form__trigger lpa-field" type="checkbox" name="lpa-0-result[]" value="MTB Detected, High Dose Isoniazid Resistance Not Detected"/>
+                    <span class="form__checkmark"> </span>
+                  </label>
+                  <label class="form__sublabel" >MTB Detected, High Dose Isoniazid Resistance Indeterminate
+                    <input class="form__trigger lpa-field" type="checkbox" name="lpa-0-result[]" value="MTB Detected, High Dose Isoniazid Resistance Indeterminate"/>
+                    <span class="form__checkmark"> </span>
+                  </label>
+                  <label class="form__sublabel" >MTB Detected, Low Dose Isoniazid Resistance Detected
+                    <input class="form__trigger lpa-field" type="checkbox" name="lpa-0-result[]"  value="MTB Detected, Low Dose Isoniazid Resistance Detected"/>
+                    <span class="form__checkmark"> </span>
+                  </label>
+                  <label class="form__sublabel" >MTB Detected, Low Dose Isoniazid Resistance Not Detected
+                    <input class="form__trigger lpa-field" type="checkbox" name="lpa-0-result[]" value="MTB Detected, Low Dose Isoniazid Resistance Not Detected"/>
+                    <span class="form__checkmark"> </span>
+                  </label>
+                  <label class="form__sublabel" >MTB Detected, Low Dose Isoniazid Resistance Indeterminate
+                    <input class="form__trigger lpa-field" type="checkbox" name="lpa-0-result[]" value="MTB Detected, Low Dose Isoniazid Resistance Indeterminate"/>
+                    <span class="form__checkmark"> </span>
+                  </label>
+                  <label class="form__sublabel" >MTB Not Detected
+                    <input class="form__trigger lpa-field" type="checkbox" name="lpa-0-result[]" value="MTB Not Detected" />
+                    <span class="form__checkmark"> </span>
+                  </label>
+                  <label class="form__sublabel" >Invalid
+                    <input class="form__trigger lpa-field" type="checkbox" name="lpa-0-result[]" value="Invalid" />
+                    <span class="form__checkmark"> </span>
+                  </label>
+                  <div class="help-block with-errors"></div>
                 </div>
                 <img class="image image--close image--relative js-delete-section4" src="{{ asset('assets/app/img/icon-close.png') }}" />
               </div>
@@ -177,14 +232,15 @@
             <span class="form__checkmark"> </span></label>
           <div class="form__trigger-content" id="js-toggle-content-enroll5">
             <div id="js-section5">
-              <div class="grid grid--three grid--close">
-                <div class="form__content">
+              <div class="grid grid--three grid--close form-step-2">
+                <div class="form__content form-group">
                   <input type="hidden" class="smear_mic"  value="smear_mic"/>
-                  <input class="form__input" type="date" placeholder="Date collected" name="smear_mic-date_collected[]" />
+                  <input class="form__input smear_mic-field" type="date" placeholder="Date collected" name="smear_mic-date_collected[]" />
                   <label class="form__label" for="">Date collected</label>
+                  <div class="help-block with-errors"></div>
                 </div>
-                <div class="form__content">
-                  <input class="form__input" type="text" placeholder="Name of laboratory" name="smear_mic-name_of_laboratory[]" />
+                <div class="form__content form-group">
+                  <input class="form__input smear_mic-field" type="text" placeholder="Name of laboratory" name="smear_mic-name_of_laboratory[]" />
                   <label class="form__label" for="">Name of laboratory</label>
                 </div>
                 <div class="form__content">
@@ -211,15 +267,17 @@
           </label>
           <div class="form__trigger-content" id="js-toggle-content-enroll6">
             <div id="js-section6">
-              <div class="grid grid--three grid--close">
-                <div class="form__content">
+              <div class="grid grid--three grid--close form-step-2">
+                <div class="form__content form-group">
                   <input type="hidden" class="tb_lamp"  value="tb_lamp"/>
-                  <input class="form__input" type="date" placeholder="Date collected" name="tb_lamp-date_collected[]" />
+                  <input class="form__input tb_lamp-field" type="date" placeholder="Date collected" name="tb_lamp-date_collected[]" />
                   <label class="form__label" for="">Date collected</label>
+                  <div class="help-block with-errors"></div>
                 </div>
-                <div class="form__content">
-                  <input class="form__input" type="text" placeholder="Name of laboratory" name="tb_lamp-name_of_laboratory[]" />
+                <div class="form__content form-group">
+                  <input class="form__input tb_lamp-field" type="text" placeholder="Name of laboratory" name="tb_lamp-name_of_laboratory[]" />
                   <label class="form__label" for="">Name of laboratory</label>
+                  <div class="help-block with-errors"></div>
                 </div>
                 <div class="form__content">
                   <select class="form__input form__input--select" name="tb_lamp-result[]">
@@ -243,15 +301,17 @@
           </label>
           <div class="form__trigger-content" id="js-toggle-content-enroll8">
             <div id="js-section8">
-              <div class="grid grid--three grid--close">
-                <div class="form__content">
+              <div class="grid grid--three grid--close form-step-2">
+                <div class="form__content form-group">
                   <input type="hidden" class="tb_culture"  value="tb_culture"/>
-                  <input class="form__input" type="date" placeholder="Date collected" name="tb_culture-date_collected[]" />
+                  <input class="form__input tb_culture-field" type="date" placeholder="Date collected" name="tb_culture-date_collected[]" />
                   <label class="form__label" for="">Date collected</label>
+                  <div class="help-block with-errors"></div>
                 </div>
-                <div class="form__content">
-                  <input class="form__input" type="text" placeholder="Name of laboratory" name="tb_culture-name_of_laboratory[]" />
+                <div class="form__content form-group">
+                  <input class="form__input tb_culture-field" type="text" placeholder="Name of laboratory" name="tb_culture-name_of_laboratory[]" />
                   <label class="form__label" for="">Name of laboratory</label>
+                  <div class="help-block with-errors"></div>
                 </div>
                 <div class="form__content">
                   <select class="form__input form__input--select" name="tb_culture-result[]">
@@ -276,17 +336,19 @@
           </label>
           <div class="form__trigger-content" id="js-toggle-content-enroll9">
             <div id="js-section9">
-              <div class="grid grid--three grid--close">
-                <div class="form__content">
+              <div class="grid grid--three grid--close form-step-2">
+                <div class="form__content form-group">
                   <input type="hidden" class="dst"  value="dst"/>
-                  <input class="form__input" type="date" placeholder="Date collected" name="dst-date_collected[]" />
+                  <input class="form__input dst-field" type="date" placeholder="Date collected" name="dst-date_collected[]" />
                   <label class="form__label" for="">Date collected</label>
+                  <div class="help-block with-errors"></div>
                 </div>
-                <div class="form__content">
-                  <input class="form__input" type="text" placeholder="Name of laboratory" name="dst-name_of_laboratory[]" />
+                <div class="form__content form-group">
+                  <input class="form__input dst-field" type="text" placeholder="Name of laboratory" name="dst-name_of_laboratory[]" />
                   <label class="form__label" for="">Name of laboratory</label>
+                  <div class="help-block with-errors"></div>
                 </div>
-                <div class="form__content">
+                <div class="form__content form-group">
                   <select class="form__input form__input--select dst_option" name="dst-result[]">
                     <option>H-Susceptible</option>
                     <option>H-Resistance</option>
@@ -313,9 +375,10 @@
                     <option>Am-Not Done</option>
                     <option>Other (please specify)</option>
                   </select>
-
+                 
                   <div class="triangle triangle--down"></div>
                   <label class="form__label" for="">Result</label>
+                  <div class="help-block with-errors"></div>
                 </div>
                 <img class="image image--close image--relative js-delete-section9" src="{{ asset('assets/app/img/icon-close.png') }}" />
               </div>
@@ -330,24 +393,28 @@
           </label>
           <div class="form__trigger-content" id="js-toggle-content-enroll10">
             <div id="js-section10">
-              <div class="js-section-others">
-                <div class="form__content">
+              <div class="js-section-others form-step-2">
+                <div class="form__content form-group">
                   <input type="hidden" class="others"  value="others"/>
-                  <input class="form__input" type="text" placeholder="Please specify" name="others-specify[]" />
+                  <input class="form__input others-field" type="text" placeholder="Please specify" name="others-specify[]" />
                   <label class="form__label" for="">Please specify</label>
+                  <div class="help-block with-errors"></div>
                 </div>
                 <div class="grid grid--three grid--close">
-                  <div class="form__content">
-                    <input class="form__input" type="date" placeholder="Date done" name="others-date_collected[]"/>
+                  <div class="form__content form-group">
+                    <input class="form__input others-field" type="date" placeholder="Date done" name="others-date_collected[]"/>
                     <label class="form__label" for="">Date done</label>
+                    <div class="help-block with-errors"></div>
                   </div>
-                  <div class="form__content">
-                    <input class="form__input" type="text" placeholder="Name of laboratory" name="others-name_of_laboratory[]"/>
+                  <div class="form__content form-group">
+                    <input class="form__input others-field" type="text" placeholder="Name of laboratory" name="others-name_of_laboratory[]"/>
                     <label class="form__label" for="">Name of laboratory</label>
+                    <div class="help-block with-errors"></div>
                   </div>
-                  <div class="form__content">
-                    <input class="form__input" type="text" placeholder="Result" name="others-result[]"/>
+                  <div class="form__content form-group">
+                    <input class="form__input others-field" type="text" placeholder="Result" name="others-result[]"/>
                     <label class="form__label" for="">Result</label>
+                    <div class="help-block with-errors"></div>
                   </div>
                   <img class="image image--close image--relative js-delete-section10" src="{{ asset('assets/app/img/icon-close.png') }}" />
                 </div>
@@ -367,19 +434,22 @@
             <span class="form__checkmark"> </span></label>
           <div class="form__trigger-content" id="js-toggle-content-enroll11">
             <div id="js-section11">
-              <div class="grid grid--three grid--close">
-                <div class="form__content">
+              <div class="grid grid--three grid--close form-step-2">
+                <div class="form__content form-group">
                   <input type="hidden" class="dst_from_other_lab"  value="dst_from_other_lab"/>
-                  <input class="form__input" type="date" placeholder="Date collected" name="dst_from_other_lab-date_collected[]"/>
+                  <input class="form__input dst_from_other_lab-field" type="date" placeholder="Date collected" name="dst_from_other_lab-date_collected[]"/>
                   <label class="form__label" for="">Date collected</label>
+                  <div class="help-block with-errors"></div>
                 </div>
-                <div class="form__content">
-                  <input class="form__input" type="text" placeholder="Name of laboratory" name="dst_from_other_lab-name_of_laboratory[]"/>
+                <div class="form__content form-group">
+                  <input class="form__input dst_from_other_lab-field" type="text" placeholder="Name of laboratory" name="dst_from_other_lab-name_of_laboratory[]"/>
                   <label class="form__label" for="">Name of laboratory</label>
+                  <div class="help-block with-errors"></div>
                 </div>
-                <div class="form__content">
-                  <input class="form__input" type="text" placeholder="Result" name="dst_from_other_lab-result[]"/>
+                <div class="form__content form-group">
+                  <input class="form__input dst_from_other_lab-field" type="text" placeholder="Result" name="dst_from_other_lab-result[]"/>
                   <label class="form__label" for="">Result</label>
+                  <div class="help-block with-errors"></div>
                 </div>
                 <img class="image image--close image--relative js-delete-section11" src="{{ asset('assets/app/img/icon-close.png') }}" />
               </div>

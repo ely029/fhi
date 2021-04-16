@@ -103,7 +103,7 @@ class EnrollmentRegimentController extends Controller
                         'type' => $status == 'others' ? 'Others-'.$request['others-specify'][$key] : $type,
                         'date_collected' => $request[$type.'-date_collected'][$key],
                         'name_of_laboratory' => $request[$type.'-name_of_laboratory'][$key],
-                        'result' => $request[$type.'-result'][$key],
+                        'result' => $type == 'lpa' ? json_encode($request[$type.'-'.$key.'-result']) : $request[$type.'-result'][$key],
                     ]);
                 } 
             }

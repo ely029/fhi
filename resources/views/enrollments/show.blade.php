@@ -92,7 +92,14 @@
                     </div>
                     <div class="form__container">
                         <div class="form__content">
+                          @if(is_array($result->result))
+                            @foreach($result->result as $finalResult)
+                              <span class="form__text">{{ $finalResult }}</span>
+                            @endforeach
+                          
+                          @else
                             <span class="form__text">{{ $result->result }}</span>
+                          @endif
                             <label class="form__label" for="">Result </label>
                         </div>
                     </div>

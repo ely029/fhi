@@ -42,4 +42,12 @@ class BacteriologicalResult extends Model
         return Str::startsWith($this->type,'Others') ? $this->type : self::LABEL[$this->type];
     }
 
+    public function getResultAttribute($value)
+    {
+        if($this->type == 'lpa'){
+            return json_decode($value);
+        }
+        return $value;
+    }
+
 }
