@@ -17,13 +17,14 @@
       <div class="section__container">
 
         @include('partials.alerts')
+        @include('partials.modal', $tbMacForm)
 
         <form class="form" action="">
           <div class="grid grid--two grid--unset">
             <div class="form--quarter">
               <div class="form__container">
-                <h2 class="section__heading">Patient {{ $tbMacForm->patient->code }}
-                  <span class="form__text">Facility {{ $tbMacForm->patient->facility_code }} &nbsp;&nbsp;&nbsp; {{ $tbMacForm->patient->province }}</span></h2>
+              <h2 class="section__heading">Patient {{ $tbMacForm->patient->code }}
+                  <span class="form__text">Facility  {{ $tbMacForm->patient->facility_code }}  &nbsp;&nbsp;&nbsp;  {{ $tbMacForm->patient->province }} </span></h2>
                 <div class="form__content"><span class="form__text">{{ $tbMacForm->status }}</span>
                     <label class="form__label" for="">Status</label>
                 </div>
@@ -37,6 +38,57 @@
                 </div>
               </div>
             </div>
+            @if (auth()->user()->role_id == 4)
+            <div class="grid grid--action">
+              <div class="form__content">
+                <select id="refer" class="form__input form__input--select">
+                  <option value="1">Refer to R-TBMac</option>
+                  <option value="2">Not for Referal</option>
+                </select>
+                <div class="triangle triangle--down"></div>
+                <label class="form__label" for="">Action</label>
+              </div>
+              <button id="refer-button" class="button js-trigger" type="button">Confirm</button>
+            </div>
+            @endif
+            @if (auth()->user()->role_id == 5)
+            <div class="grid grid--action">
+              <div class="form__content">
+                <select id="refer" class="form__input form__input--select">
+                  <option value="3">Not Recommended for Enrolment</option>
+                  <option value="4">Recommend for Enrolment</option>
+                  <option value="5">Need for details</option>
+                </select>
+                <div class="triangle triangle--down"></div>
+                <label class="form__label" for="">Action</label>
+              </div>
+              <button id="refer-button" class="button js-trigger" type="button">Confirm</button>
+            </div>
+            @endif
+            @if (auth()->user()->role_id == 6)
+            <div class="grid grid--action">
+              <div class="form__content">
+                <select id="refer" class="form__input form__input--select">
+                  <option value="6">For Enrollment</option>
+                  <option value="7">Not for Enrollment</option>
+                  <option value="8">Need Further details</option>
+                  <option value="9">Refer to N-TBMac</option>
+                </select>
+                <div class="triangle triangle--down"></div>
+                <label class="form__label" for="">Action</label>
+              </div>
+              <button id="refer-button" class="button js-trigger" type="button">Confirm</button>
+            </div>
+            @endif
+            @if (auth()->user()->role_id == 7)
+            <div class="grid grid--action">
+              <div class="form__content">
+                <label class="form__label" for="">Action</label>
+              </div>
+              <button id="create-recommendation" class="button js-trigger" type="button">Create Recommendation</button>
+            </div>
+            @endif
+            @if (auth()->user()->role_id == 3)
             <div class="grid grid--action">
               <div class="form__content">
                 <select class="form__input form__input--select">
@@ -47,6 +99,7 @@
               </div>
               <button class="button" type="button">Confirm</button>
             </div>
+            @endif
           </div>
         </form>
         <hr class="line" />
@@ -197,12 +250,12 @@
                 </div>
                 <div class="form__content">
                   <span class="form__text">
-                    {{ $tbMacForm->laboratoryResults->cxr_result }}
-                    @if($cxrReadings = $tbMacForm->laboratoryResults->cxr_reading)
-                        @foreach($cxrReadings as $cxrReading)
-                            {{ $cxrReading }} </br>
-                        @endforeach
-                    @endif
+               {{ $tbMacForm->laboratoryResults->cxr_result }}
+              @if($cxrReadings = $tbMacForm->laboratoryResults->cxr_reading)
+                  @foreach($cxrReadings as $cxrReading)
+                      {{ $cxrReading }} </br>
+                  @endforeach
+              @endif
                   </span>
                   <label class="form__label" for="">CXR result</label>
                 </div>
@@ -261,27 +314,29 @@
           </form>
         </div>
         <div class="tabs__details">
-          {{-- <form class="form form--half" action="">
+        @if (Auth::user()->role_id === 4 || Auth::user()->role_id == 5 || Auth::user()->role_id == 6 || Auth::user()->role_id == 7)
+        <form class="form form--half" action="">
             <h2 class="section__heading">Remarks | Recommendations</h2>
+            @foreach($tbMacForm->recommendations as $recommendation)
             <div class="form__container form__container--remarks">
-              <img class="image image--user" src="src/img/icon-user.png" alt="user icon" />
+              <img class="image image--user" src="{{ asset('assets\app\img\icon-user.png')}}" alt="user icon" />
               <div class="form__container">
                 <div class="grid grid--two">
-                  <h2 class="section__heading section__heading--healthworker">[Healthcare worker name]<span class="form__label">[Role] | [Region]</span></h2>
-                  <label class="form__label">06 June 2021</label>
+                  <h2 class="section__heading section__heading--healthworker">{{ $recommendation->users->name}}<span class="form__label">{{ $recommendation->roles->name }} | [Region]</span></h2>
+                  <label class="form__label">{{ $recommendation->created_at->format('d M, Y')}}</label>
                 </div>
                 <div class="form__container form__container--remarks form__container--actions">
-                  <img class="image image--flag" src="src/img/icon-flag.png" alt="action icon" />
-                  <div class="form__content"><span class="form__text form__text--green">New case</span><label class="form__label form__label--green">Action</label></div>
+                  <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
+                  <div class="form__content"><span class="form__text form__text--green">{{$recommendation->status }}</span><label class="form__label form__label--green">Action</label></div>
                 </div>
                 <span class="form__text">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum commodo turpis eu elit egestas lobortis. Quisque semper risus nec lacus condimentum consectetur. Quisque facilisis nibh a tincidunt gravida. Aliquam ut
-                  velit magna. Nullam eu felis nunc. Sed at neque porttitor sapien convallis suscipit at pulvinar orci. Aliquam quis sodales massa, sed dictum magna. Vestibulum quis risus non eros sollicitudin tristique vel eget urna.
-                  Donec at diam libero. Donec iaculis velit in enim pretium vulputate.
+                  {{$recommendation->recommendation }}
                 </span>
               </div>
             </div>
-          </form> --}}
+            @endforeach
+          </form>
+        @endif
         </div>
       </div>
 

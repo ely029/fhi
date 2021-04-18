@@ -14,7 +14,7 @@ class UsersController extends Controller
     public function index()
     {
         return view('dashboard.users.index', [
-            'users' => User::where('role_id',2)->orderBy('created_at', 'desc')->paginate(),
+            'users' => User::where('role_id', 2)->orderBy('created_at', 'desc')->paginate(),
         ]);
     }
 

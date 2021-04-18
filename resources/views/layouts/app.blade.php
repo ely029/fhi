@@ -16,6 +16,7 @@
     <script src="{{ asset('assets/app/js/app.js') }}"></script>
     <script src="{{ asset('assets/app/js/main.js') }}"></script>
     <script src="{{ asset('assets/dashboard/js/logout.js') }}"></script>
+    <script src="{{ asset('assets/dashboard/js/modal.js') }}"></script>
    
     @yield('additional_scripts')
 
