@@ -204,9 +204,7 @@
                     <div class="form__content"><span class="form__text form__text--green">New case</span><label class="form__label form__label--green">Action</label></div>
                   </div>
                   <span class="form__text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum commodo turpis eu elit egestas lobortis. Quisque semper risus nec lacus condimentum consectetur. Quisque facilisis nibh a tincidunt gravida. Aliquam ut
-                    velit magna. Nullam eu felis nunc. Sed at neque porttitor sapien convallis suscipit at pulvinar orci. Aliquam quis sodales massa, sed dictum magna. Vestibulum quis risus non eros sollicitudin tristique vel eget urna.
-                    Donec at diam libero. Donec iaculis velit in enim pretium vulputate.
+
                   </span>
                 </div>
               </div>
