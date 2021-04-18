@@ -22,7 +22,7 @@
                   <br />
                   <div class="grid grid--two">
                     <div class="form__content"><span class="form__text">may</span><label class="form__label" for="">Month of treatment</label></div>
-                    <div class="form__content"><span class="form__text">lorem</span><label class="form__label" for="">Current type of case </label></div>
+                    <div class="form__content"><span class="form__text"></span><label class="form__label" for="">Current type of case </label></div>
                   </div>
                 </div>
                 <div class="form__container">
@@ -60,7 +60,7 @@
                 </div>
                 <div class="grid grid--two">
                   <div class="form__content"><span class="form__text">Previous Treatment Outcome Unknown</span><label class="form__label" for="">Registration group</label></div>
-                  <div class="form__content"><span class="form__text">lorem</span><label class="form__label" for="">Risk factor</label></div>
+                  <div class="form__content"><span class="form__text"></span><label class="form__label" for="">Risk factor</label></div>
                 </div>
               </div>
               <div class="form__container">
@@ -111,7 +111,7 @@
                 </div>
                 <div class="grid grid--two">
                   <div class="form__content">
-                    <span class="form__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum commodo turpis eu elit egestas lobortis. Quisque semper risus nec lacus condimentum consectetur.</span>
+                    <span class="form__text"></span>
                     <label class="form__label" for="">Regimen notes</label>
                   </div>
                 </div>
@@ -120,11 +120,11 @@
                 <h2 class="section__heading">Suggested regimen</h2>
                 <div class="grid grid--two">
                   <div class="form__content"><span class="form__text">ITR</span><label class="form__label" for="">Suggested regiment</label></div>
-                  <div class="form__content"><span class="form__text">lorem</span><label class="form__label" for="">ITR Drugs</label></div>
+                  <div class="form__content"><span class="form__text"></span><label class="form__label" for="">ITR Drugs</label></div>
                 </div>
                 <div class="grid grid--two">
                   <div class="form__content">
-                    <span class="form__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum commodo turpis eu elit egestas lobortis. Quisque semper risus nec lacus condimentum consectetur.</span>
+                    <span class="form__text"></span>
                     <label class="form__label" for="">Suggested Regimen notes</label>
                   </div>
                 </div>
@@ -138,9 +138,7 @@
                   <div class="form__content"><span class="form__text">12/12/12</span><label class="form__label" for="">CXR date</label></div>
                   <div class="form__content">
                     <span class="form__text">
-                      lorem <br />
-                      lorem <br />
-                      lorem
+                      
                     </span>
                     <label class="form__label" for="">CXR result</label>
                   </div>
@@ -149,9 +147,7 @@
                   <div class="form__content"><span class="form__text">12/12/12</span><label class="form__label" for="">CT Scan date</label></div>
                   <div class="form__content">
                     <span class="form__text">
-                      lorem <br />
-                      lorem <br />
-                      lorem
+                      
                     </span>
                     <label class="form__label" for="">CT Scan result</label>
                   </div>
@@ -160,9 +156,7 @@
                   <div class="form__content"><span class="form__text">12/12/12</span><label class="form__label" for="">Ultrasound date</label></div>
                   <div class="form__content">
                     <span class="form__text">
-                      lorem <br />
-                      lorem <br />
-                      lorem
+                      
                     </span>
                     <label class="form__label" for="">Ultrasound result</label>
                   </div>
@@ -171,9 +165,7 @@
                   <div class="form__content"><span class="form__text">12/12/12</span><label class="form__label" for="">Histopatholigical date</label></div>
                   <div class="form__content">
                     <span class="form__text">
-                      lorem <br />
-                      lorem <br />
-                      lorem
+                      
                     </span>
                     <label class="form__label" for="">Histopatholigical result</label>
                   </div>
