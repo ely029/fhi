@@ -24,6 +24,7 @@ class SuperAdminMiddlewareTest extends TestCase
         $this->actingAs($approverAdmin);
 
         $request = Request::create('/dashboard/users');
+        $e = '';
 
         try {
             $this->handleRequestWithMustBeSuperAdminMiddleware($request);
@@ -46,6 +47,7 @@ class SuperAdminMiddlewareTest extends TestCase
         $this->actingAs($superAdmin);
 
         $request = Request::create('/dashboard/users');
+        $response = '';
 
         try {
             $response = $this->handleRequestWithMustBeSuperAdminMiddleware($request);

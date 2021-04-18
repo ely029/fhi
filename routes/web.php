@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Dashboard\DashboardController;
-use App\Http\Controllers\Dashboard\RolesController;
 use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\EnrollmentRegimentController;
 use App\Http\Controllers\HomeController;
@@ -25,9 +24,8 @@ Auth::routes();
 Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard', 'middleware' => 'auth'], static function () {
     Route::get('/', [DashboardController::class, 'index']);
 
-    //Approver Admin CRUD    
+    //Approver Admin CRUD
     Route::group(['middleware' => 'super_admin'], static function () {
-
         Route::get('/users', [UsersController::class, 'index']);
         Route::get('/users/create', [UsersController::class, 'create']);
         Route::post('/users', [UsersController::class, 'store']);
@@ -35,16 +33,15 @@ Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard', 'middleware' 
         Route::patch('/users/{user}', [UsersController::class, 'update']);
         Route::delete('/users/{user}', [UsersController::class, 'destroy']);
     });
-    
-
 });
 
 Route::get('/', [HomeController::class, 'index']);
 Route::group(['middleware' => 'auth'], static function () {
-    Route::get('/enrollments',[EnrollmentRegimentController::class, 'index']);
-    Route::get('/enrollments/create',[EnrollmentRegimentController::class, 'create']);
-    Route::get('/enrollments/{tbMacForm}',[EnrollmentRegimentController::class,'show']);
+    Route::get('/enrollments', [EnrollmentRegimentController::class, 'index']);
+    Route::get('/enrollments/create', [EnrollmentRegimentController::class, 'create']);
+    Route::get('/enrollments/{tbMacForm}', [EnrollmentRegimentController::class,'show']);
 
-    Route::get('/enrollments/{tbMacForm}/{fileName}/attachment',[EnrollmentRegimentController::class,'showAttachment']);
+    Route::get('/enrollments/{tbMacForm}/{fileName}/attachment', [EnrollmentRegimentController::class,'showAttachment']);
     Route::post('/enrollments', [EnrollmentRegimentController::class, 'store']);
+    Route::post('/enrollments/sent-recommendation', 'App\Http\Controllers\EnrollmentRegimentController@sendRecommendation')->name('enrolment.sendRecommendation');
 });

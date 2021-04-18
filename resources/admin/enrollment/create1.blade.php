@@ -20,7 +20,7 @@
         <div class="form__tab">
           <h2 class="section__heading">Patient Information</h2>
           <div class="grid grid--two">
-            <div class="form__content"><input class="form__input" type="number" min="0" placeholder="Facility code" /><label class="form__label" for="">Facility code</label></div>
+            <div class="form__content"><input class="form__input" type="number"  placeholder="Facility code" /><label class="form__label" for="">Facility code</label></div>
             <div class="form__content">
               <select class="form__input form__input--select">
                 <option value="Metro Manila">Metro Manila</option>

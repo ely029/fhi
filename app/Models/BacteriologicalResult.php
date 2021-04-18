@@ -8,6 +8,31 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Str;
 
+/**
+ * App\Models\BacteriologicalResult
+ *
+ * @property int $id
+ * @property int $form_id
+ * @property string $type
+ * @property \Illuminate\Support\Carbon $date_collected
+ * @property string $name_of_laboratory
+ * @property string $result
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read mixed $name
+ * @method static \Illuminate\Database\Eloquent\Builder|BacteriologicalResult newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|BacteriologicalResult newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|BacteriologicalResult query()
+ * @method static \Illuminate\Database\Eloquent\Builder|BacteriologicalResult whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BacteriologicalResult whereDateCollected($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BacteriologicalResult whereFormId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BacteriologicalResult whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BacteriologicalResult whereNameOfLaboratory($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BacteriologicalResult whereResult($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BacteriologicalResult whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BacteriologicalResult whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class BacteriologicalResult extends Model
 {
     use HasFactory;
@@ -29,17 +54,15 @@ class BacteriologicalResult extends Model
         'type',
         'date_collected',
         'name_of_laboratory',
-        'result'
+        'result',
     ];
 
     protected $casts = [
-        'date_collected' => 'date'
+        'date_collected' => 'date',
     ];
-
 
     public function getNameAttribute()
     {
-        return Str::startsWith($this->type,'Others') ? $this->type : self::LABEL[$this->type];
+        return Str::startsWith($this->type, 'Others') ? $this->type : self::LABEL[$this->type];
     }
-
 }
