@@ -120,8 +120,9 @@ class TBMacForm extends Model
         static::created(function ($model) {
             $presentationNumber = null;
             if ($model->form_type === 'enrollment') {
-                $max = EnrollmentRegimentForm::count();
-                $presentationNumber = $model->region.'-'.str_pad(strval($max + 1), 3, '0', STR_PAD_LEFT);
+                $max = TBMacForm::whereHas('enrollmentForm')
+                ->where('region', $model->region)->count();
+                $presentationNumber = $model->region.'-'.str_pad(strval($max + 1), 4, '0', STR_PAD_LEFT);
             }
             $model->presentation_number = $presentationNumber;
             $model->save();

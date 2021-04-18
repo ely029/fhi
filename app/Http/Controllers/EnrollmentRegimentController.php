@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Models\BacteriologicalResult;
 use App\Models\Recommendation;
 use App\Models\TBMacForm;
 use App\Models\TBMacFormAttachment;
@@ -101,17 +102,8 @@ class EnrollmentRegimentController extends Controller
             }
         }
 
-        $bacteriologicalStatuses = ['xpert_mtb_rif','xpert_mtb_rif_ultra','truenat_tb',
-            'lpa',
-            'smear_mic',
-            'tb_lamp',
-            'tb_culture',
-            'dst',
-            'others',
-            'dst_from_other_lab',
-        ];
-
-        foreach ($bacteriologicalStatuses as $status) {
+        foreach (BacteriologicalResult::LABEL as $status => $label)
+        {
             if (isset($request[$status])) {
                 $this->createBacteriologicalStatus($request, $tbMacForm, $status);
             }
