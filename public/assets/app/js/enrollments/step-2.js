@@ -22,6 +22,30 @@ jQuery( document ).ready(function( $ ) {
     });
 
 
+    $(document).on("click","#js-add-section4", function(){
+       
+            
+                // const e= document.getElementById("js-section4").innerHTML;
+                const field = $("#js-section4");
+                const cloned = field.clone();
+                cloned.find('input[type="checkbox"]').attr('name','lpa-1-result[]');
+
+                $("#js-section4").append(cloned);
+                $("#js-add-section4").hide();
+                $(".js-delete-section4").show();
+            
+        
+    });
+
+    $(document).on('click',".lpa-field",function(){
+        if($(this).is(":checked")){
+            $('.lpa-field').removeAttr('required');
+        }else{
+            $('.lpa-field').attr('required', true);
+            
+        }
+    });
+    
 });
 
 
