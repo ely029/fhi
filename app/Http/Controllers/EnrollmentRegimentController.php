@@ -113,16 +113,7 @@ class EnrollmentRegimentController extends Controller
 
         foreach ($bacteriologicalStatuses as $status) {
             if (isset($request[$status])) {
-
-                foreach ($request[$status] as $key => $type)
-                {
-                    $tbMacForm->bacteriologicalResults()->create([
-                        'type' => $status == 'others' ? 'Others-'.$request['others-specify'][$key] : $type,
-                        'date_collected' => $request[$type.'-date_collected'][$key],
-                        'name_of_laboratory' => $request[$type.'-name_of_laboratory'][$key],
-                        'result' => $type == 'lpa' ? json_encode($request[$type.'-'.$key.'-result']) : $request[$type.'-result'][$key],
-                    ]);
-                } 
+                $this->createBacteriologicalStatus($request, $tbMacForm, $status);
             }
         }
 
@@ -174,6 +165,18 @@ class EnrollmentRegimentController extends Controller
         return redirect('enrollments/'.$request['form_id'])->with([
             'alert.message' => 'Recommendation successfully sent',
         ]);
+    }
+
+    private function createBacteriologicalStatus($request, $tbMacForm, $status)
+    {
+        foreach ($request[$status] as $key => $type) {
+            $tbMacForm->bacteriologicalResults()->create([
+                'type' => $status === 'others' ? 'Others-'.$request['others-specify'][$key] : $type,
+                'date_collected' => $request[$type.'-date_collected'][$key],
+                'name_of_laboratory' => $request[$type.'-name_of_laboratory'][$key],
+                'result' => $type === 'lpa' ? json_encode($request[$type.'-'.$key.'-result']) : $request[$type.'-result'][$key],
+            ]);
+        }
     }
 
     private function regionalRecommendations($request)

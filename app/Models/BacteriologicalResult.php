@@ -68,10 +68,9 @@ class BacteriologicalResult extends Model
 
     public function getResultAttribute($value)
     {
-        if($this->type == 'lpa'){
+        if ($this->type === 'lpa') {
             return json_decode($value);
         }
         return $value;
     }
-
 }
