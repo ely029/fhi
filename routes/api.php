@@ -6,6 +6,7 @@ declare(strict_types=1);
 // use Illuminate\Http\Request;
 
 use App\Http\Controllers\Api\CronJobController;
+use App\Http\Controllers\Api\EnrollmentsController;
 use App\Http\Controllers\Api\Users\FcmRegistrationTokensController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,4 +41,14 @@ Route::group([
 
     // Normally done when the user logs out
     Route::delete('/{user}/fcm_registration_tokens', [FcmRegistrationTokensController::class, 'destroy']);
+});
+
+Route::group([
+    'middleware' => ['auth.once'],
+], static function () {
+    
+    Route::get('/enrollments', [EnrollmentsController::class, 'index']);
+    Route::get('/enrollments/{tbMacForm}',[EnrollmentsController::class, 'show']);
+    Route::get('/enrollments/{tbMacForm}/{fileName}/attachment',[EnrollmentsController::class,'showAttachment']);
+    Route::post('/enrollments', [EnrollmentsController::class, 'store']);
 });

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Models\Filters\TBMacFormFilters;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\EnrollmentRegimentForm;
@@ -72,5 +73,9 @@ class TBMacForm extends Model
     public function scopeEnrollmentForms($query)
     {
         return $query->where('form_type','enrollment');
+    }
+
+    public function scopeFilter($query, TBMacFormFilters $filters){
+        return $filters->apply($query);
     }
 }

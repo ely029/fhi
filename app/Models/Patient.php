@@ -45,6 +45,6 @@ class Patient extends Model
 
     public function getCodeAttribute()
     {
-        return $this->initials.$this->age.$this->gender_initial;
+        return $this->initials.' '.$this->age.' '.$this->gender_initial;
     }
 }
