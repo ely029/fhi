@@ -137,7 +137,7 @@
         <label class="form__label" for="">Current drug susceptibility</label>
     </div>
     </div>
-    <div class="form__button form__button--space form__button--pagination"><button class="button button--back" type="button">Back</button><button class="button button--next" type="button">Next</button>
+    <div class="form__button form__button--space form__button--pagination"><button class="button button--back" type="button">Back</button><button class="button button--next" type="button">Next</button></div>
 </div>
 
 <div class="modal js-modal">

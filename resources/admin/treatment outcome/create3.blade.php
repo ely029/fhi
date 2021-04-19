@@ -84,7 +84,7 @@
         <div class="form__content"><textarea class="form__input form__input--message" placeholder="Remarks"></textarea><label class="form__label" for="">Remarks</label></div>
       </div>
     </div>
-      <div class="form__button form__button--space form__button--pagination"><button class="button button--back" type="button">Back</button><button class="button button--next" type="button">Next</button>
+    <div class="form__button form__button--space form__button--pagination"><button class="button button--back" type="button">Back</button><input class="button button--next" type="submit" value="Submit"></div>
     </form>
   </div>
 </div>
