@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'View Enrollments')
-@section('description', 'View Enrollments')
+@section('title', 'Create Enrollments')
+@section('description', 'Create Enrollments')
 
 @section('additional_styles')
     <link type="text/css" href="{{ asset('assets/app/css/forms.css') }}" rel="stylesheet">

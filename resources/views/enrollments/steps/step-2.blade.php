@@ -1,8 +1,8 @@
 <div class="form__tab step-2">
     <div class="form__container form-step-2">
       <h2 class="section__heading">Case information 1</h2>
-      <div class="form__content ">
-        <textarea class="form__input form__input--message" name="treatment_history" required placeholder="Treatment Started ➞ Name of Treatment Unit ➞ Treatment Regimen (Drugs and Duration) ➞ Outcome">NONE</textarea>
+      <div class="form__content form-group">
+        <textarea class="form__input form__input--message" name="treatment_history" required placeholder="Treatment Started ➞ Name of Treatment Unit ➞ Treatment Regimen (Drugs and Duration) ➞ Outcome"></textarea>
         <label class="form__label" for="">Treatment History</label>
         <div class="help-block with-errors"></div>
       </div>

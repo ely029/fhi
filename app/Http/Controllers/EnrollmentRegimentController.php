@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Models\BacteriologicalResult;
+use App\Models\Patient;
 use App\Models\Recommendation;
 use App\Models\TBMacForm;
 use App\Models\TBMacFormAttachment;
@@ -13,7 +14,9 @@ class EnrollmentRegimentController extends Controller
 {
     public function index()
     {
-        $enrollments = TBMacForm::EnrollmentForms()->orderByDesc('created_at')->get();
+        $enrollments = TBMacForm::EnrollmentForms()
+        ->with(['patient','enrollmentForm'])
+        ->orderByDesc('created_at')->get();
 
         $newEnrollment = $enrollments->filter(function ($item) {
             return $item->status === 'New Enrollment';
@@ -97,7 +100,10 @@ class EnrollmentRegimentController extends Controller
         // if ($validator->fails()) {
         //     return response()->json($validator->errors(), 422);
         // }
-        $request['patient_id'] = 0;
+
+        $patient = Patient::create($request);
+
+        $request['patient_id'] = $patient->id;
         $tbMacForm = TBMacForm::create($request);
 
         $tbMacForm->enrollmentForm()->create($request);

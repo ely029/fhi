@@ -146,19 +146,20 @@
             <img class="image image--gallery" data-dz-thumbnail />
             <img class="image image--close" src="{{ asset('assets/app/img/icon-close.png') }}" data-dz-remove /></li>
         </ul>
-        <div id="file-uploads">
+        {{-- <div id="file-uploads">
         </div>
         <div class="fallback"> <!-- this is the fallback if JS isn't working -->
           <input name="file" type="file" multiple />
-      </div>
+      </div> --}}
         <input type="file" multiple name="attachments[]" class="attachment-upload" id="attachments">
       </div>
     </div>
-    <div class="form__container">
+    <div class="form__container form-step-4">
       <h2 class="section__heading">Remarks</h2>
-      <div class="form__content">
-          <textarea class="form__input form__input--message" placeholder="Remarks" name="remarks">This is a new enrollment</textarea>
+      <div class="form__content form-group">
+          <textarea class="form__input form__input--message" placeholder="Remarks" name="remarks" required></textarea>
           <label class="form__label" for="">Remarks</label>
+          <div class="help-block with-errors"></div>
         </div>
     </div>
   </div>

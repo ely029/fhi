@@ -76,7 +76,7 @@
       </div>
       <a class="sidebar__footer" id="navbarDropdown" data-toggle="dropdown">
         <div class="sidebar__footer-content">
-          <h2 class="sidebar__footer-heading">My Account</h2>
+          <h2 class="sidebar__footer-heading">{{ auth()->user()->name }}</h2>
           <span class="sidebar__footer-span">Role | Region</span>
         </div>
         <div class="arrow arrow--right">
