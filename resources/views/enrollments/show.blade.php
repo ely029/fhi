@@ -23,7 +23,7 @@
           <div class="grid grid--two grid--unset">
             <div class="form--quarter">
               <div class="form__container">
-              <h2 class="section__heading">Patient {{ $tbMacForm->patient->code }}
+              <h2 class="section__heading">Patient {{-- {{ $tbMacForm->patient->code }} --}}
                   <span class="form__text">Facility  {{ $tbMacForm->patient->facility_code }}  &nbsp;&nbsp;&nbsp;  {{ $tbMacForm->patient->province }} </span></h2>
                 <div class="form__content"><span class="form__text">{{ $tbMacForm->status }}</span>
                     <label class="form__label" for="">Status</label>
@@ -57,7 +57,7 @@
                 <select id="refer" class="form__input form__input--select">
                   <option value="3">Not Recommended for Enrolment</option>
                   <option value="4">Recommend for Enrolment</option>
-                  <option value="5">Need for details</option>
+                  <option value="5">Need further details</option>
                 </select>
                 <div class="triangle triangle--down"></div>
                 <label class="form__label" for="">Action</label>
@@ -80,7 +80,7 @@
               <button id="refer-button" class="button js-trigger" type="button">Confirm</button>
             </div>
             @endif
-            @if (auth()->user()->role_id == 7)
+            @if (auth()->user()->role_id == 7 || auth()->user()->role_id == 8)
             <div class="grid grid--action">
               <div class="form__content">
                 <label class="form__label" for="">Action</label>
@@ -250,12 +250,12 @@
                 </div>
                 <div class="form__content">
                   <span class="form__text">
-               {{ $tbMacForm->laboratoryResults->cxr_result }}
+               {{-- {{ $tbMacForm->laboratoryResults->cxr_result }}
               @if($cxrReadings = $tbMacForm->laboratoryResults->cxr_reading)
                   @foreach($cxrReadings as $cxrReading)
                       {{ $cxrReading }} </br>
                   @endforeach
-              @endif
+              @endif --}}
                   </span>
                   <label class="form__label" for="">CXR result</label>
                 </div>
