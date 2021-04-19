@@ -39,16 +39,7 @@
                 </div>
               </div>
             </div>
-            <div class="grid grid--action">
-              <div class="form__content">
-                <select class="form__input form__input--select">
-                  <option>New</option>
-                </select>
-                <div class="triangle triangle--down"></div>
-                <label class="form__label" for="">Action</label>
-              </div>
-              <button class="button" type="button">Confirm</button>
-            </div>
+
           </div>
         </form>
         <hr class="line" />
@@ -323,16 +314,7 @@
                   </div>
                 </div>
               </div>
-              <div class="grid grid--action">
-                <div class="form__content">
-                  <select class="form__input form__input--select">
-                    <option>New</option>
-                  </select>
-                  <div class="triangle triangle--down"></div>
-                  <label class="form__label" for="">Action</label>
-                </div>
-                <button class="button" type="button">Confirm</button>
-              </div>
+              
             </div>
           </form>
           <hr class="line" />
