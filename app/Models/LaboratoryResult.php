@@ -19,8 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $ct_scan_result
  * @property \Illuminate\Support\Carbon|null $ultrasound_date
  * @property string|null $ultrasound_result
- * @property \Illuminate\Support\Carbon|null
- *  $hispathological_date
+ * @property \Illuminate\Support\Carbon|null $hispathological_date
  * @property string|null $hispathological_result
  * @property string|null $remarks
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -44,6 +43,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|LaboratoryResult whereUpdatedAt($value)
  * @mixin \Eloquent
  */
+
 class LaboratoryResult extends Model
 {
     use HasFactory;
