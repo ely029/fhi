@@ -314,7 +314,7 @@
           </form>
         </div>
         <div class="tabs__details">
-        @if (Auth::user()->role_id === 4 || Auth::user()->role_id == 5 || Auth::user()->role_id == 6 || Auth::user()->role_id == 7)
+         @if (Auth::user()->role_id === 4 || Auth::user()->role_id == 5 || Auth::user()->role_id == 6 || Auth::user()->role_id == 7)
         <form class="form form--half" action="">
             <h2 class="section__heading">Remarks | Recommendations</h2>
             @foreach($tbMacForm->recommendations as $recommendation)
@@ -330,7 +330,7 @@
                   <div class="form__content"><span class="form__text form__text--green">{{$recommendation->status }}</span><label class="form__label form__label--green">Action</label></div>
                 </div>
                 <span class="form__text">
-                  {{$recommendation->recommendation }}
+                  {{$recommendation->recommendations }}
                 </span>
               </div>
             </div>

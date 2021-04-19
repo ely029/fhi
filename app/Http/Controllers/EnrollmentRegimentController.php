@@ -54,7 +54,7 @@ class EnrollmentRegimentController extends Controller
             return $item->status === 'For Enrollment';
         });
 
-        $withRecommendation = TBMacForm::with('recommendations')->get();
+        $withRecommendation = Recommendation::with('tbMacForms')->where('recommendation', '<>', null)->get();
 
         return view('enrollments.index')
             ->with('enrollments', $enrollments)
@@ -78,8 +78,7 @@ class EnrollmentRegimentController extends Controller
 
     public function show(TBMacForm $tbMacForm)
     {
-        $tbMacForm = $tbMacForm->load(['submittedBy','enrollmentForm','bacteriologicalResults','laboratoryResults','attachments', 'patient', 'recommendations']);
-
+        $tbMacForm = $tbMacForm->load(['submittedBy','enrollmentForm','bacteriologicalResults','laboratoryResults','attachments', 'patient']);
         return view('enrollments.show')
             ->with('tbMacForm', $tbMacForm);
     }
