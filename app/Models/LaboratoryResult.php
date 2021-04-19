@@ -19,7 +19,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $ct_scan_result
  * @property \Illuminate\Support\Carbon|null $ultrasound_date
  * @property string|null $ultrasound_result
- * @property \Illuminate\Support\Carbon|null $hispathological_date
+ * @property \Illuminate\Support\Carbon|null
+ *  $hispathological_date
  * @property string|null $hispathological_result
  * @property string|null $remarks
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -46,8 +47,6 @@ use Illuminate\Database\Eloquent\Model;
 class LaboratoryResult extends Model
 {
     use HasFactory;
-    public $histopathological_date;
-    public $histopathological_result;
 
     protected $fillable = [
         'ct_scan_date',
