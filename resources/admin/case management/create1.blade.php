@@ -6,12 +6,12 @@
     </div>
     <div class="grid grid--two">
     <div class="form__content"><input class="form__input" id="first-name" type="text" placeholder="First name" /><label class="form__label" for="">First name</label></div>
-    <div class="form__content"><input class="form__input js-enable" type="text" placeholder="Middle name" /><label class="form__label" for="">Middle name</label></div>
+    <div class="form__content"><input class="form__input " type="text" placeholder="Middle name" /><label class="form__label" for="">Middle name</label></div>
     </div>
     <div class="grid grid--two">
-    <div class="form__content"><input class="form__input js-enable" type="number" min="0" placeholder="Facility code" /><label class="form__label" for="">Facility code</label></div>
+    <div class="form__content"><input class="form__input " type="number" min="0" placeholder="Facility code" /><label class="form__label" for="">Facility code</label></div>
     <div class="form__content">
-        <select class="form__input form__input--select js-enable" disabled>
+        <select class="form__input form__input--select " disabled>
         <option value="Metro Manila">Metro Manila</option>
         <option value="Abra">Abra</option>
         <option value="Agusan del Norte">Agusan del Norte</option>
@@ -98,9 +98,9 @@
     </div>
     </div>
     <div class="grid grid--two">
-    <div class="form__content"><input class="form__input js-disabled" type="date" placeholder="Birthday" /><label class="form__label" for="">Birthday</label></div>
+    <div class="form__content"><input class="form__input " type="date" placeholder="Birthday" /><label class="form__label" for="">Birthday</label></div>
     <div class="form__content">
-        <select class="form__input form__input--select js-disabled">
+        <select class="form__input form__input--select ">
         <option>Male</option>
         <option>Female</option>
         </select>
@@ -110,7 +110,7 @@
     </div>
     <div class="grid grid--two">
     <div class="form__content">
-        <select class="form__input form__input--select js-disabled">
+        <select class="form__input form__input--select ">
         <option>January</option>
         <option>February</option>
         <option>March</option>
@@ -128,7 +128,7 @@
         <label class="form__label" for="">Month of treatment</label>
     </div>
     <div class="form__content">
-        <select class="form__input form__input--select js-disabled">
+        <select class="form__input form__input--select ">
         <option> </option>
         <option> </option>
         <option> </option>
