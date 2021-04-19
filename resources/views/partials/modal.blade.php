@@ -24,8 +24,8 @@
                     <form class="form" method="POST" action="{{ route('enrolment.sendRecommendation')}}">
                     @csrf
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
-                       <input type="hidden" name="status" value="Not for Referral"/>
-                      <div class="form__content"><textarea name=".recommendation" class="form__input form__input--message" placeholder="Enter remarks"></textarea><label class="form__label" for="">Remarks</label></div>
+                       <input type="hidden" name="status" value="Not For Referral"/>
+                      <div class="form__content"><textarea name="recommendation" class="form__input form__input--message" placeholder="Enter remarks"></textarea><label class="form__label" for="">Remarks</label></div>
                       <div class="modal__button"><input class="button" type="submit" value="Submit" /></div>
                     </form>
                   </div>
@@ -41,7 +41,7 @@
                     <form class="form" method="POST" action="{{ route('enrolment.sendRecommendation')}}">
                     @csrf
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
-                       <input type="hidden" name="status" value="Not Recommended for Enrolment"/>
+                       <input type="hidden" name="status" value="Not For Enrollment"/>
                       <div class="form__content"><textarea name="recommendation" class="form__input form__input--message" placeholder="Enter remarks"></textarea><label class="form__label" for="">Remarks</label></div>
                       <div class="modal__button"><input class="button" type="submit" value="Submit" /></div>
                     </form>
@@ -75,7 +75,7 @@
                     <form class="form" method="POST" action="{{ route('enrolment.sendRecommendation')}}">
                     @csrf
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
-                       <input type="hidden" name="status" value="Recommend for Enrolment"/>
+                       <input type="hidden" name="status" value="For Enrollment"/>
                       <div class="form__content"><textarea name="recommendation" class="form__input form__input--message" placeholder="Enter remarks"></textarea><label class="form__label" for="">Remarks</label></div>
                       <div class="modal__button"><input class="button" type="submit" value="Submit" /></div>
                     </form>
@@ -92,7 +92,7 @@
                     <form class="form" method="POST" action="{{ route('enrolment.sendRecommendation')}}">
                     @csrf
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
-                       <input type="hidden" name="status" value="Not for Enrollment"/>
+                       <input type="hidden" name="status" value="Not For Enrollment"/>
                       <div class="form__content"><textarea name="recommendation" class="form__input form__input--message" placeholder="Enter remarks"></textarea><label class="form__label" for="">Remarks</label></div>
                       <div class="modal__button"><input class="button" type="submit" value="Submit" /></div>
                     </form>

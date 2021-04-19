@@ -81,7 +81,17 @@ class EnrollmentsController extends Controller
         {
             if (isset($request[$status])) {
 
-                foreach (json_decode($request[$status]) as $item)
+                $this->createBacteriologicalStatus($request, $status, $tbMacForm);
+            }
+        }
+
+        return response()->json('Enrollment form submitted successfully');
+
+    }
+
+    private function createBacteriologicalStatus($request, $status, $tbMacForm)
+    {
+        foreach (json_decode($request[$status]) as $item)
                 {
                     $item = (array) $item;
 
@@ -91,12 +101,7 @@ class EnrollmentsController extends Controller
                         'name_of_laboratory' => $item['name_of_laboratory'],
                         'result' => $status == 'lpa' ? json_encode($item['result']) : $item['result'],
                     ]);
-                } 
-            }
-        }
-
-        return response()->json('Enrollment form submitted successfully');
-
+                }
     }
 
     public function show(TBMacForm $tbMacForm)

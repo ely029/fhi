@@ -38,6 +38,7 @@ $('document').ready(function(){
     });
 
     $('#create-recommendation').click(function(){
+        alert('f');
         $('#create-recommendation').modal('show');
     });
 });
