@@ -19,7 +19,7 @@ class EnrollmentsController extends Controller
         $enrollments = TBMacForm::EnrollmentForms()
             ->filter($filters)
             ->with(['patient','enrollmentForm'])
-            ->where('submitted_by', auth()->user()->id)
+            ->where($this->getDynamicQuery()['condition'], $this->getDynamicQuery()['value'])
             ->orderByDesc('created_at')->paginate(10);
         $data = $enrollments->map(function ($item) {
             return [
@@ -54,6 +54,7 @@ class EnrollmentsController extends Controller
         $request['role_id'] = 4;
         $request['region'] = 'NCR';
         $request['is_from_itis'] = false;
+        $request['suggested_regimen'] = $this->handleSuggestedRegimen($request);
 
         $patient = Patient::create($request);
         $request['patient_id'] = $patient->id;
@@ -206,5 +207,32 @@ class EnrollmentsController extends Controller
                 'result' => $status === 'lpa' ? json_encode($item['result']) : $item['result'],
             ]);
         }
+    }
+
+    private function handleSuggestedRegimen($request)
+    {
+        if ($request['suggested_regimen'] === 'ITR') {
+            $regimen = 'ITR-'.$request['itr_drugs'];
+        } elseif ($request['suggested_regimen'] === 'Other (specify)') {
+            $regimen = 'Others-'.$request['suggested_regimen_others'];
+        }
+        return $regimen;
+    }
+
+    private function getDynamicQuery()
+    {
+        $condition = 'submitted_by';
+        $value = auth()->user()->id;
+
+        if (request('role') === 'secretariat') {
+            $condition = 'region';
+            // change to auth user region
+            $value = 'NCR';
+        }
+
+        return [
+            'condition' => $condition,
+            'value' => $value,
+        ];
     }
 }
