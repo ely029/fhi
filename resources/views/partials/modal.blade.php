@@ -3,7 +3,7 @@
                 <div class="modal__container">
                   <div class="modal__box">
                     <h2 class="modal__title">Refer To R-TBMac</h2>
-                    <p class="modal__text">You are about to confirm 'Enrollment' for this case and patient. If you have additional remarks, enter them below.</p>
+                    <p class="modal__text">You are about to confirm 'Refer To R-TBMac' for this case and patient. If you have additional remarks, enter them below.</p>
                     <form class="form" method="POST" action="{{ route('enrolment.sendRecommendation')}}">
                     @csrf
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
@@ -134,13 +134,13 @@
                 </div>
             </div>
 
-            <div class="modal js-modal" id="create-recommendation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal js-modal" id="create-recom" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal__background js-modal-background"></div>
                 <div class="modal__container">
                   <div class="modal__box">
                     <h2 class="modal__title">Create Recommendation</h2>
-                    <p class="modal__text"></p>
-                    <form class="form" method="POST" action="">
+                    <p class="modal__text">You are about to confirm and set this case to 'Refer to N-TBMac' If you have additional remarks. enter them below.</p>
+                    <form class="form" method="POST" action="{{ route('enrolment.sendRecommendation')}}">
                     @csrf
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
                        <input type="hidden" name="status" value="Refer to N-TBMac"/>

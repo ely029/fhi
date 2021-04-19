@@ -85,7 +85,7 @@
               <div class="form__content">
                 <label class="form__label" for="">Action</label>
               </div>
-              <button id="create-recommendation" class="button js-trigger" type="button">Create Recommendation</button>
+              <button  class="button js-trigger create-recom" type="button">Create Recommendation</button>
             </div>
             @endif
             @if (auth()->user()->role_id == 3)

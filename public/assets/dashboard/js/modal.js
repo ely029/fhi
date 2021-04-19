@@ -1,4 +1,9 @@
 $('document').ready(function(){
+
+    $('.create-recom').click(function(){
+        $('#create-recom').modal('show');
+    });
+
     $('#refer-button').click(function(){
             if ($('#refer').val() == '1') {
                 $('#refer-to-regional').modal('show');
@@ -35,10 +40,5 @@ $('document').ready(function(){
             if ($('#refer').val() == '9') {
                 $('#refer-to-ntbmac').modal('show');
             }
-    });
-
-    $('#create-recommendation').click(function(){
-        alert('f');
-        $('#create-recommendation').modal('show');
     });
 });

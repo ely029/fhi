@@ -112,7 +112,10 @@ class TBMacForm extends Model
     {
         return $query->where('form_type', 'enrollment');
     }
-
+    public function scopeFilter($query, TBMacFormFilters $filters)
+    {
+        return $filters->apply($query);
+    }
     protected static function boot()
     {
         parent::boot();
@@ -121,15 +124,11 @@ class TBMacForm extends Model
             $presentationNumber = null;
             if ($model->form_type === 'enrollment') {
                 $max = TBMacForm::whereHas('enrollmentForm')
-                ->where('region', $model->region)->count();
+                    ->where('region', $model->region)->count();
                 $presentationNumber = $model->region.'-'.str_pad(strval($max + 1), 4, '0', STR_PAD_LEFT);
             }
             $model->presentation_number = $presentationNumber;
             $model->save();
         });
-    }
-
-    public function scopeFilter($query, TBMacFormFilters $filters){
-        return $filters->apply($query);
     }
 }

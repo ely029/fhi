@@ -46,9 +46,8 @@ Route::group([
 Route::group([
     'middleware' => ['auth.once'],
 ], static function () {
-    
     Route::get('/enrollments', [EnrollmentsController::class, 'index']);
-    Route::get('/enrollments/{tbMacForm}',[EnrollmentsController::class, 'show']);
-    Route::get('/enrollments/{tbMacForm}/{fileName}/attachment',[EnrollmentsController::class,'showAttachment']);
+    Route::get('/enrollments/{tbMacForm}', [EnrollmentsController::class, 'show']);
+    Route::get('/enrollments/{tbMacForm}/{fileName}/attachment', [EnrollmentsController::class, 'showAttachment']);
     Route::post('/enrollments', [EnrollmentsController::class, 'store']);
 });

@@ -1,13 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models\Filters;
 
-use App\Models\Filters\Filters;
+use App\Models\Filters\Filters as filter;
 
-class TBMacFormFilters extends Filters
+class TBMacFormFilters extends filter
 {
     protected $filters = [
-        'status'
+        'status',
     ];
 
     protected function status($string)

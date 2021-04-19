@@ -15,8 +15,8 @@ class EnrollmentRegimentController extends Controller
     public function index()
     {
         $enrollments = TBMacForm::EnrollmentForms()
-        ->with(['patient','enrollmentForm'])
-        ->orderByDesc('created_at')->get();
+            ->with(['patient','enrollmentForm'])
+            ->orderByDesc('created_at')->get();
 
         $newEnrollment = $enrollments->filter(function ($item) {
             return $item->status === 'New Enrollment';
@@ -118,8 +118,7 @@ class EnrollmentRegimentController extends Controller
             }
         }
 
-        foreach (BacteriologicalResult::LABEL as $status => $label)
-        {
+        foreach (BacteriologicalResult::LABEL as $status => $label) {
             if (isset($request[$status])) {
                 $this->createBacteriologicalStatus($request, $tbMacForm, $status);
             }
@@ -128,16 +127,6 @@ class EnrollmentRegimentController extends Controller
         return redirect('enrollments/'.$tbMacForm->id)->with([
             'alert.message' => 'New Case for enrollment created.',
         ]);
-    }
-
-    public function showAttachment(TBMacForm $tbMacForm, $fileName)
-    {
-        $path = 'private/enrollments/'.$tbMacForm->presentation_number.'/'.$fileName;
-
-        if (\Storage::exists($path)) {
-            return response(\Storage::get($path))->header('Content-Type', 'image/jpeg');
-        }
-        abort(404, 'File does not exist!');
     }
     public function sendRecommendation()
     {
@@ -153,6 +142,16 @@ class EnrollmentRegimentController extends Controller
         if (auth()->user()->role_id === 6) {
             return $this->regionalChairRecommendation($request);
         }
+    }
+
+    public function showAttachment(TBMacForm $tbMacForm, $fileName)
+    {
+        $path = 'private/enrollments/'.$tbMacForm->presentation_number.'/'.$fileName;
+
+        if (\Storage::exists($path)) {
+            return response(\Storage::get($path))->header('Content-Type', 'image/jpeg');
+        }
+        abort(404, 'File does not exist!');
     }
 
     private function secretariatRecommendation($request)
@@ -222,7 +221,6 @@ class EnrollmentRegimentController extends Controller
             $request['submitted_by'] = auth()->user()->id;
             $request['role_id'] = auth()->user()->role_id;
             Recommendation::create($request);
-
         }
         if ($request['status'] === 'Need Further Details') {
             $tbMacForm = TBMacForm::find($request['form_id']);

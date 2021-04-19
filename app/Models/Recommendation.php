@@ -51,6 +51,6 @@ class Recommendation extends Model
 
     public function tbMacForms()
     {
-        return $this->hasMany(TBMacForm::class, 'form_id');
+        return $this->hasMany(TBMacForm::class, 'id');
     }
 }

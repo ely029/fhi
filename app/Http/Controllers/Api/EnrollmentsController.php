@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\Filters\TBMacFormFilters;
 use App\Http\Controllers\Controller;
 use App\Models\BacteriologicalResult;
+use App\Models\Filters\TBMacFormFilters;
 use App\Models\Patient;
 use App\Models\TBMacForm;
 use App\Models\TBMacFormAttachment;
@@ -21,31 +21,30 @@ class EnrollmentsController extends Controller
             ->with(['patient','enrollmentForm'])
             ->where('submitted_by', auth()->user()->id)
             ->orderByDesc('created_at')->paginate(10);
-        
-        $data = $enrollments->map(function($item){
-                return [
-                    'id' => $item->id,
-                    'patient_code' => $item->patient->code,
-                    'date_created' => $item->created_at->format('M d, Y'),
-                    'facility_code' => $item->patient->facility_code,
-                    'status' => $item->status,
-                    'drug_susceptibility' => $item->enrollmentForm->drug_susceptibility,
-                ];
+        $data = $enrollments->map(function ($item) {
+            return [
+                'id' => $item->id,
+                'patient_code' => $item->patient->code,
+                'date_created' => $item->created_at->format('M d, Y'),
+                'facility_code' => $item->patient->facility_code,
+                'status' => $item->status,
+                'drug_susceptibility' => $item->enrollmentForm->drug_susceptibility,
+            ];
         });
 
         return response()->json([
-            'data' => $data
+            'data' => $data,
         ]);
     }
 
     public function store()
     {
-        $validator = \Validator::make(request()->all(),$this->rules());
+        $validator = \Validator::make(request()->all(), $this->rules());
 
-        if($validator->fails()){
+        if ($validator->fails()) {
             return response()->json([
                 'errors' => $validator->errors(),
-            ],422);
+            ], 422);
         }
 
         $request = request()->all();
@@ -56,86 +55,60 @@ class EnrollmentsController extends Controller
         $request['region'] = 'NCR';
         $request['is_from_itis'] = false;
 
-
         $patient = Patient::create($request);
-        
         $request['patient_id'] = $patient->id;
         $tbMacForm = TBMacForm::create($request);
-
         $tbMacForm->enrollmentForm()->create($request);
         $tbMacForm->laboratoryResults()->create($request);
 
-
         if (isset($request['attachments'])) {
-            foreach($request['attachments'] as $key => $file)
-            {
-                $file->storeAs(TBMacFormAttachment::PATH_PREFIX.'/'.$tbMacForm->presentation_number, ($key+1).'.'.$file->extension());   
+            foreach ($request['attachments'] as $key => $file) {
+                $file->storeAs(TBMacFormAttachment::PATH_PREFIX.'/'.$tbMacForm->presentation_number, ($key + 1).'.'.$file->extension());
                 $tbMacForm->attachments()->create([
-                    'extension' => $file->extension()
+                    'extension' => $file->extension(),
                 ]);
             }
         }
 
-
-        foreach (BacteriologicalResult::LABEL as $status => $label)
-        {
+        foreach (BacteriologicalResult::LABEL as $status => $label) {
             if (isset($request[$status])) {
-
                 $this->createBacteriologicalStatus($request, $status, $tbMacForm);
             }
         }
-
         return response()->json('Enrollment form submitted successfully');
-
-    }
-
-    private function createBacteriologicalStatus($request, $status, $tbMacForm)
-    {
-        foreach (json_decode($request[$status]) as $item)
-                {
-                    $item = (array) $item;
-
-                    $tbMacForm->bacteriologicalResults()->create([
-                        'type' => $status == 'others' ? 'Others-'.$item['specify'] : $status,
-                        'date_collected' => $item['date_collected'],
-                        'name_of_laboratory' => $item['name_of_laboratory'],
-                        'result' => $status == 'lpa' ? json_encode($item['result']) : $item['result'],
-                    ]);
-                }
     }
 
     public function show(TBMacForm $tbMacForm)
     {
         $tbMacForm = $tbMacForm->load(['submittedBy','enrollmentForm','bacteriologicalResults','laboratoryResults','attachments','patient']);
         $tbBacteriologicalResults = $tbMacForm->bacteriologicalResults;
-        $bacteriologicalResults = $tbBacteriologicalResults->filter(function($item){
-                return $item->type != 'dst_from_other_lab';
-        })->map(function($item){
+        $bacteriologicalResults = $tbBacteriologicalResults->filter(function ($item) {
+            return $item->type !== 'dst_from_other_lab';
+        })->map(function ($item) {
             return [
                 'name' => $item->name,
                 'name_of_laboratory' => $item->name_of_laboratory,
                 'date_collected' => $item->date_collected->format('d F Y'),
-                'result' => $item->result
+                'result' => $item->result,
             ];
         })->values();
 
-        $dstFromOtherLab = $tbBacteriologicalResults->filter(function($item){
-            return $item->type == 'dst_from_other_lab';
-        })->map(function($item){
+        $dstFromOtherLab = $tbBacteriologicalResults->filter(function ($item) {
+            return $item->type === 'dst_from_other_lab';
+        })->map(function ($item) {
             return [
                 'name' => $item->name,
                 'name_of_laboratory' => $item->name_of_laboratory,
                 'date_collected' => $item->date_collected->format('d F Y'),
-                'result' => $item->result
+                'result' => $item->result,
             ];
         })->values();
 
         $attachments = [];
-        foreach($tbMacForm->attachments as $key => $attachment)
-        {
-            $fileName = ($key+1).'.'.$attachment->extension;
+        foreach ($tbMacForm->attachments as $key => $attachment) {
+            $fileName = ($key + 1).'.'.$attachment->extension;
             $attachments[] = [
-                'url' => url('api/enrollments/'.$tbMacForm->id.'/'.$fileName.'/attachment') 
+                'url' => url('api/enrollments/'.$tbMacForm->id.'/'.$fileName.'/attachment'),
             ];
         }
 
@@ -153,7 +126,7 @@ class EnrollmentsController extends Controller
             'drug_susceptibility' => $tbMacForm->enrollmentForm->drug_susceptibility,
             'current_weight' => $tbMacForm->enrollmentForm->current_weight,
             'suggested_regimen' => $tbMacForm->enrollmentForm->suggested_regimen,
-            'itr_drugs' => Str::startsWith($tbMacForm->enrollmentForm->suggested_regimen,'ITR') ? $tbMacForm->enrollmentForm->suggested_regimen : null,
+            'itr_drugs' => Str::startsWith($tbMacForm->enrollmentForm->suggested_regimen, 'ITR') ? $tbMacForm->enrollmentForm->suggested_regimen : null,
             'regiment_notes' => $tbMacForm->enrollmentForm->regimen_notes,
             'clinical_status' => $tbMacForm->enrollmentForm->clinical_status,
             'vital_signs' => $tbMacForm->enrollmentForm->vital_signs,
@@ -173,6 +146,16 @@ class EnrollmentsController extends Controller
         ];
 
         return response()->json($data);
+    }
+
+    public function showAttachment(TBMacForm $tbMacForm, $fileName)
+    {
+        $path = 'private/enrollments/'.$tbMacForm->presentation_number.'/'.$fileName;
+
+        if (\Storage::exists($path)) {
+            return response(\Storage::get($path))->header('Content-Type', 'image/jpeg');
+        }
+        abort(404, 'File does not exist!');
     }
 
     protected function rules()
@@ -208,18 +191,20 @@ class EnrollmentsController extends Controller
             'histopathological_date' => 'nullable|date_format:Y-m-d',
             'histopathological_result' => 'nullable',
             'remarks' => 'required',
-            'attachments.*' => 'nullable|image|max:10000'
+            'attachments.*' => 'nullable|image|max:10000',
         ];
     }
 
-    public function showAttachment(TBMacForm $tbMacForm, $fileName)
+    private function createBacteriologicalStatus($request, $status, $tbMacForm)
     {
-        $path = 'private/enrollments/'.$tbMacForm->presentation_number.'/'.$fileName;
-
-        if (\Storage::exists($path)) {
-            return response(\Storage::get($path))->header('Content-Type', 'image/jpeg');
-        }else{
-            abort(404, "File does not exist!");
+        foreach (json_decode($request[$status]) as $item) {
+            $item = (array) $item;
+            $tbMacForm->bacteriologicalResults()->create([
+                'type' => $status === 'others' ? 'Others-'.$item['specify'] : $status,
+                'date_collected' => $item['date_collected'],
+                'name_of_laboratory' => $item['name_of_laboratory'],
+                'result' => $status === 'lpa' ? json_encode($item['result']) : $item['result'],
+            ]);
         }
     }
 }
