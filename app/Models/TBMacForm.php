@@ -34,6 +34,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\LaboratoryResult|null $laboratoryResults
  * @property-read \App\Models\Patient $patient
  * @property-read \App\Models\User $submittedBy
+ * @property object $recommendations
  * @method static \Illuminate\Database\Eloquent\Builder|TBMacForm enrollmentForms()
  * @method static \Database\Factories\TBMacFormFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|TBMacForm newModelQuery()
