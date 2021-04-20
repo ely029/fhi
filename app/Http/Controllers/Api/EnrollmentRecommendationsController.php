@@ -49,7 +49,6 @@ class EnrollmentRecommendationsController extends Controller
                 'errors' => $validator->errors(),
             ], 422);
         }
-
         if (auth()->user()->role_id === 4) {
             $this->secretariatRecommendation($tbMacForm, $request);
         } elseif (auth()->user()->role_id === 5) {
@@ -60,9 +59,28 @@ class EnrollmentRecommendationsController extends Controller
             $this->ntbMacRecommendation($tbMacForm, $request);
         } elseif (auth()->user()->role_id === 8) {
             $this->ntbMacChairRecommendation($tbMacForm, $request);
+        } elseif (auth()->user()->role_id === 3) {
+            $this->healthWorkerRecommendation($tbMacForm, $request);
         }
 
         return response()->json('Recommendation successfully sent');
+    }
+
+    private function healthWorkerRecommendation($tbMacForm, $request)
+    {
+        if ($request['status'] === 'Not For Enrollment') {
+            $tbMacForm->status = $request['status'];
+            $tbMacForm->save();
+            $request['submitted_by'] = auth()->user()->id;
+            $request['role_id'] = auth()->user()->role_id;
+            Recommendation::create($request);
+        } else {
+            $tbMacForm->status = $request['status'];
+            $tbMacForm->save();
+            $request['submitted_by'] = auth()->user()->id;
+            $request['role_id'] = auth()->user()->role_id;
+            Recommendation::create($request);
+        }
     }
 
     private function secretariatRecommendation($tbMacForm, $request)
