@@ -5,11 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Models\BacteriologicalResult;
-use App\Models\Patient;
-use App\Models\Recommendation;
 use App\Models\TBMacForm;
-use App\Models\TBMacFormAttachment;
-use Illuminate\Support\Str;
 
 class ResubmitEnrollmentController extends Controller
 {
@@ -22,7 +18,7 @@ class ResubmitEnrollmentController extends Controller
         return view('enrollments.resubmit.form')
             ->with('tbMacForm', $tbMacForm);
     }
-   
+
     public function show(TBMacForm $tbMacForm)
     {
         $tbMacForm = $tbMacForm->load(['submittedBy','enrollmentForm','bacteriologicalResults','laboratoryResults','attachments', 'patient']);
@@ -35,7 +31,7 @@ class ResubmitEnrollmentController extends Controller
         $request = request()->all();
         unset($request['_token']);
         $request['status'] = 'New Enrollment';
-        $request['cxr_reading'] = isset($request['cxr_reading']) ? $request['cxr_reading'] : null;
+        $request['cxr_reading'] = $request['cxr_reading'] ?? null;
 
         $tbMacForm->patient->update($request);
 
@@ -59,7 +55,7 @@ class ResubmitEnrollmentController extends Controller
                 $this->createBacteriologicalStatus($request, $tbMacForm, $status);
             }
         }
-        
+
         return redirect('enrollments/'.$tbMacForm->id)->with([
             'alert.message' => 'Enrollment resubmitted successfully.',
         ]);
@@ -76,5 +72,4 @@ class ResubmitEnrollmentController extends Controller
             ]);
         }
     }
-   
 }
