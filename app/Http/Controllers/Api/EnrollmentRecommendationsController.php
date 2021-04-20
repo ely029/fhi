@@ -11,15 +11,14 @@ use Illuminate\Support\Str;
 
 class EnrollmentRecommendationsController extends Controller
 {
-
     public function index()
     {
         $withRecommendations = Recommendation::with('tbMacForms')
-        ->whereHas('tbMacForms', function($query) {
-            // to update with auth user region
-            $query->where('region', 'NCR');
-        })
-        ->where('recommendation', '<>', null)->paginate(10);
+            ->whereHas('tbMacForms', function ($query) {
+                // to update with auth user region
+                $query->where('region', 'NCR');
+            })
+            ->where('recommendation', '<>', null)->paginate(10);
 
         $data = $withRecommendations->map(function ($item) {
             return [
@@ -35,7 +34,6 @@ class EnrollmentRecommendationsController extends Controller
         return response()->json([
             'data' => $data,
         ]);
-
     }
 
     public function store(TBMacForm $tbMacForm)
@@ -88,12 +86,9 @@ class EnrollmentRecommendationsController extends Controller
     {
         $tbMacForm->status = 'Referred to regional chair';
         $tbMacForm->save();
-        if ($request['status'] === 'Not recommended for enrollment')
-        {
+        if ($request['status'] === 'Not recommended for enrollment') {
             $request['status'] = 'Not For Enrollment';
-        }
-        elseif ($request['status'] === 'Recommend for enrollment')
-        {
+        } elseif ($request['status'] === 'Recommend for enrollment') {
             $request['status'] = 'For Enrollment';
         }
 
@@ -142,20 +137,16 @@ class EnrollmentRecommendationsController extends Controller
 
     private function statusValidation()
     {
-        if(auth()->user()->role_id === 4)
-        {
+        if (auth()->user()->role_id === 4) {
             return 'required|in:Refer to RTBMAC,Not For Referral';
         }
-        elseif(auth()->user()->role_id === 5)
-        {
+        if (auth()->user()->role_id === 5) {
             return 'required|in:Recommend for enrollment,Not recommended for enrollment,Need Further Details';
         }
-        elseif(auth()->user()->role_id === 6)
-        {
+        if (auth()->user()->role_id === 6) {
             return 'required|in:For Enrollment,Not for Enrollment,Need Further Details,Refer to N-TBMac';
         }
-        elseif(auth()->user()->role_id === 7 || auth()->user()->role_id === 8)
-        {
+        if (auth()->user()->role_id === 7 || auth()->user()->role_id === 8) {
             return 'nullable';
         }
     }

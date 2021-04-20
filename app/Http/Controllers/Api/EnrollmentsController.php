@@ -81,7 +81,7 @@ class EnrollmentsController extends Controller
 
     public function show(TBMacForm $tbMacForm)
     {
-        $tbMacForm = $tbMacForm->load(['submittedBy','enrollmentForm','bacteriologicalResults','laboratoryResults','attachments','patient']);
+        $tbMacForm = $tbMacForm->load(['submittedBy','enrollmentForm','bacteriologicalResults','laboratoryResults','attachments','patient','recommendations']);
         $tbBacteriologicalResults = $tbMacForm->bacteriologicalResults;
         $bacteriologicalResults = $tbBacteriologicalResults->filter(function ($item) {
             return $item->type !== 'dst_from_other_lab';
@@ -113,7 +113,7 @@ class EnrollmentsController extends Controller
             ];
         }
 
-        $recommendations = $tbMacForm->recommendations->map(function($item){
+        $recommendations = $tbMacForm->recommendations->map(function ($item) {
             return [
                 'name' => $item->users->name,
                 'role' => $item->users->role->name,
@@ -122,7 +122,6 @@ class EnrollmentsController extends Controller
                 'recommendation' => $item->recommendation,
             ];
         });
-
 
         $data = [
             'date_created' => $tbMacForm->created_at->format('M d, Y'),
@@ -241,7 +240,7 @@ class EnrollmentsController extends Controller
             $condition = 'region';
             // change to auth user region
             $value = 'NCR';
-        } elseif(in_array(auth()->user()->role_id, [7,8])) {
+        } elseif (in_array(auth()->user()->role_id, [7,8])) {
             $condition = 'form_type';
             $value = 'enrollment';
         }
