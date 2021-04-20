@@ -23,7 +23,7 @@
           <div class="grid grid--two grid--unset">
             <div class="form--quarter">
               <div class="form__container">
-              <h2 class="section__heading">Patient {{-- {{ $tbMacForm->patient->code }} --}}
+              <h2 class="section__heading">Patient  {{ $tbMacForm->patient->code }}
                   <span class="form__text">Facility  {{ $tbMacForm->patient->facility_code }}  &nbsp;&nbsp;&nbsp;  {{ $tbMacForm->patient->province }} </span></h2>
                 <div class="form__content"><span class="form__text">{{ $tbMacForm->status }}</span>
                     <label class="form__label" for="">Status</label>
