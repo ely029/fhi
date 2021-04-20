@@ -211,9 +211,10 @@ class EnrollmentsController extends Controller
 
     private function handleSuggestedRegimen($request)
     {
-        if ($request['suggested_regimen'] === 'ITR') {
+        $regimen = $request['suggested_regimen'];
+        if ($regimen === 'ITR') {
             $regimen = 'ITR-'.$request['itr_drugs'];
-        } elseif ($request['suggested_regimen'] === 'Other (specify)') {
+        } elseif ($regimen === 'Other (specify)') {
             $regimen = 'Others-'.$request['suggested_regimen_others'];
         }
         return $regimen;
