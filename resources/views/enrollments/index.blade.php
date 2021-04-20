@@ -33,7 +33,7 @@
                 <th class="table__head">Age</th>
                 <th class="table__head">Gender</th>
                 <th class="table__head">Drug Susceptibility</th>
-                <th class="table__head">Date Submitted to RTB Mac</th>
+                <th class="table__head">Date submitted to RTB MAC</th>
                 <th class="table__head">Status</th>
               </tr>
             </thead>
@@ -61,7 +61,7 @@
                 <th class="table__head">Age</th>
                 <th class="table__head">Gender</th>
                 <th class="table__head">Drug Susceptibility</th>
-                <th class="table__head">Date Submitted to RTB Mac</th>
+                <th class="table__head">Date Submitted to RTB MAC</th>
                 <th class="table__head">Status</th>
               </tr>
             </thead>
@@ -89,7 +89,7 @@
                 <th class="table__head">Age</th>
                 <th class="table__head">Gender</th>
                 <th class="table__head">Drug Susceptibility</th>
-                <th class="table__head">Date Submitted to RTB Mac</th>
+                <th class="table__head">Date Submitted to RTB MAC</th>
                 <th class="table__head">Status</th>
               </tr>
             </thead>
@@ -117,7 +117,7 @@
                 <th class="table__head">Age</th>
                 <th class="table__head">Gender</th>
                 <th class="table__head">Drug Susceptibility</th>
-                <th class="table__head">Date Submitted to RTB Mac</th>
+                <th class="table__head">Date Submitted to RTB MAC</th>
                 <th class="table__head">Status</th>
               </tr>
             </thead>
@@ -145,7 +145,7 @@
                 <th class="table__head">Age</th>
                 <th class="table__head">Gender</th>
                 <th class="table__head">Drug Susceptibility</th>
-                <th class="table__head">Date Submitted to RTB Mac</th>
+                <th class="table__head">Date Submitted to RTB MAC</th>
                 <th class="table__head">Status</th>
               </tr>
             </thead>
@@ -186,7 +186,7 @@
                 <th class="table__head">Gender</th>
                 <th class="table__head">Province</th>
                 <th class="table__head">Drug Susceptibility</th>
-                <th class="table__head">Date Submitted to RTB Mac</th>
+                <th class="table__head">Date Submitted to RTB MAC</th>
                 <th class="table__head">Status</th>
               </tr>
             </thead>
@@ -198,7 +198,7 @@
                   <td class="table__details">{{ empty($enrollment->patient->age) ? '' : $enrollment->patient->age}}</td>
                   <td class="table__details">{{ empty($enrollment->patient->gender) ? '' : $enrollment->patient->gender}}</td>
                   <td class="table__details">{{ empty($enrollment->patient->province) ? '' : $enrollment->patient->province}}</td>
-                  <td class="table__details">{{ empty($enrollment->drug_susceptibility) ? '' : $enrollment->drug_susceptibility}}</td>
+                  <td class="table__details">{{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility}}</td>
                   <td class="table__details">{{ empty($enrollment->created_at->format('M d, Y')) ? '' : $enrollment->created_at->format('M d, Y')}}</td>
                   <td class="table__details">{{ $enrollment->status }}</td>
                 </tr>
@@ -216,7 +216,7 @@
                 <th class="table__head">Gender</th>
                 <th class="table__head">Province</th>
                 <th class="table__head">Drug Susceptibility</th>
-                <th class="table__head">Date Submitted to RTB Mac</th>
+                <th class="table__head">Date Submitted to RTB MAC</th>
                 <th class="table__head">Status</th>
               </tr>
             </thead>
@@ -228,7 +228,7 @@
                   <td class="table__details">{{ empty($enrollment->patient->age) ? '' : $enrollment->patient->age}}</td>
                   <td class="table__details">{{ empty($enrollment->patient->gender) ? '' : $enrollment->patient->gender}}</td>
                   <td class="table__details">{{ empty($enrollment->patient->province) ? '' : $enrollment->patient->province}}</td>
-                  <td class="table__details">{{ empty($enrollment->drug_susceptibility) ? '' : $enrollment->drug_susceptibility}}</td>
+                  <td class="table__details">{{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility}}</td>
                   <td class="table__details">{{ empty($enrollment->created_at->format('M d, Y')) ? '' : $enrollment->created_at->format('M d, Y')}}</td>
                   <td class="table__details">{{ $enrollment->status }}</td>
                 </tr>
@@ -257,7 +257,7 @@
                 <th class="table__head">Facility Code</th>
                 <th class="table__head">Province</th>
                 <th class="table__head">Patient</th>
-                <th class="table__head">Bacteriological Status</th>
+                <th class="table__head">Drug Susceptibility</th>
                 <th class="table__head">Remarks</th>
                 <th class="table__head">Date</th>
                 <th class="table__head">Status</th>
@@ -271,9 +271,7 @@
                   <td class="table__details">{{ empty($enrollment->patient->province) ? '' : $enrollment->patient->province}}</td>
                   <td class="table__details">{{ empty($enrollment->patient->code) ? '' : $enrollment->patient->code}}</td>
                   <td class="table__details">
-                  @foreach($enrollment->bacteriological_results as $br)
-                  {{ $br->type }}
-                  @endforeach
+                  {{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility}}
                   </td>
                   <td class="table__details">{{ $enrollment->remarks }}</td>
                   <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
@@ -291,7 +289,7 @@
                 <th class="table__head">Facility Code</th>
                 <th class="table__head">Province</th>
                 <th class="table__head">Patient</th>
-                <th class="table__head">Bacteriological Status</th>
+                <th class="table__head">Drug Susceptibility</th>
                 <th class="table__head">Remarks</th>
                 <th class="table__head">Date</th>
                 <th class="table__head">Status</th>
@@ -305,9 +303,7 @@
                   <td class="table__details">{{ empty($enrollment->tbMacForms->patient->province) ? '' : $enrollment->tbMacForms->patient->province}}</td>
                   <td class="table__details"></td>
                   <td class="table__details">
-                  @foreach($enrollment->tbMacForms->bacteriologicalResults as $br)
-                  {{ $br->type }}
-                  @endforeach
+                  {{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility}}
                   </td>
                   <td class="table__details">{{ $enrollment->tbMacForms->remarks }}</td>
                   <td class="table__details">{{ $enrollment->tbMacForms->created_at->format('M d, Y')}}</td>
@@ -325,7 +321,7 @@
                 <th class="table__head">Facility Code</th>
                 <th class="table__head">Province</th>
                 <th class="table__head">Patient</th>
-                <th class="table__head">Bacteriological Status</th>
+                <th class="table__head">Drug Susceptibility</th>
                 <th class="table__head">Remarks</th>
                 <th class="table__head">Date</th>
                 <th class="table__head">Status</th>
@@ -339,9 +335,7 @@
                   <td class="table__details">{{ empty($enrollment->patient->province) ? '' : $enrollment->patient->province}}</td>
                   <td class="table__details"></td>
                   <td class="table__details">
-                  @foreach($enrollment->bacteriologicalResults as $br)
-                  {{ $br->type }} <br/>
-                  @endforeach
+                  {{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility}}
                   </td>
                   <td class="table__details">{{ $enrollment->remarks }}</td>
                   <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
@@ -386,7 +380,7 @@
                   <td class="table__details">{{ empty($enrollment->patient->age) ? '' : $enrollment->patient->age}}</td>
                   <td class="table__details">{{ empty($enrollment->patient->gender) ? '' : $enrollment->patient->gender}}</td>
                   <td class="table__details">{{ empty($enrollment->patient->province) ? '' : $enrollment->patient->province}}</td>
-                  <td class="table__details">{{ $enrollment->drug_susceptibility }}</td>
+                  <td class="table__details">{{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility}}</td>
                   <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
                   <td class="table__details">{{ $enrollment->status }}</td>
                 </tr>
@@ -416,7 +410,7 @@
                   <td class="table__details">{{ empty($enrollment->tbMacForms->patient->age) ? '' : $enrollment->tbMacForms->patient->age}}</td>
                   <td class="table__details">{{ empty($enrollment->tbMacForms->patient->gender) ? '' : $enrollment->tbMacForms->patient->gender}}</td>
                   <td class="table__details">{{ empty($enrollment->tbMacForms->patient->province) ? '' : $enrollment->tbMacForms->patient->province}}</td>
-                  <td class="table__details">{{ $enrollment->tbMacForms->drug_susceptibility }}</td>
+                  <td class="table__details">{{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility}}</td>
                   <td class="table__details">{{ $enrollment->tbMacForms->created_at->format('M d, Y')}}</td>
                   <td class="table__details">{{ $enrollment->tbMacForms->status }}</td>
                 </tr>
@@ -446,7 +440,7 @@
                   <td class="table__details">{{ empty($enrollment->patient->age) ? '' : $enrollment->patient->age}}</td>
                   <td class="table__details">{{ empty($enrollment->patient->gender) ? '' : $enrollment->patient->gender}}</td>
                   <td class="table__details">{{ empty($enrollment->patient->province) ? '' : $enrollment->patient->province}}</td>
-                  <td class="table__details">{{ $enrollment->drug_susceptibility }}</td>
+                  <td class="table__details">{{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility}}</td>
                   <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
                   <td class="table__details">{{ $enrollment->status }}</td>
                 </tr>
@@ -474,7 +468,7 @@
                 <th class="table__head">Facility Code</th>
                 <th class="table__head">Region & Province</th>
                 <th class="table__head">Patient</th>
-                <th class="table__head">Bacteriological Status</th>
+                <th class="table__head">Drug Susceptibility</th>
                 <th class="table__head">Remarks</th>
                 <th class="table__head">Date</th>
                 <th class="table__head">Status</th>
@@ -487,11 +481,7 @@
                   <td class="table__details">{{ empty($enrollment->patient->facility_code) ? '' : $enrollment->patient->facility_code}}</td>
                   <td class="table__details">NCR - {{ empty($enrollment->patient->province) ? '' : $enrollment->patient->province }}</td>
                   <td class="table__details">{{ empty($enrollment->patient->code) ? '' : $enrollment->patient->code}}</td>
-                  <td class="table__details">
-                  @foreach($enrollment->bacteriologicalResults as $br)
-                  {{ $br->type }}<br/>
-                  @endforeach
-                  </td>
+                  <td class="table__details">{{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility}}</td>
                   <td class="table__details">{{ $enrollment->remarks }}</td>
                   <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
                   <td class="table__details">{{ $enrollment->status }}</td>
@@ -508,7 +498,7 @@
                 <th class="table__head">Facility Code</th>
                 <th class="table__head">Region & Province</th>
                 <th class="table__head">Patient</th>
-                <th class="table__head">Bacteriological Status</th>
+                <th class="table__head">Drug Susceptibility</th>
                 <th class="table__head">Remarks</th>
                 <th class="table__head">Date</th>
                 <th class="table__head">Status</th>
@@ -520,11 +510,7 @@
                   <td class="table__details">{{ empty($enrollment->patient->facility_code) ? '' : $enrollment->patient->facility_code}}</td>
                   <td class="table__details">NCR - {{ empty($enrollment->patient->province) ? '' : $enrollment->patient->province }}</td>
                   <td class="table__details">{{ empty($enrollment->patient->code) ? '' : $enrollment->patient->code}}</td>
-                  <td class="table__details">
-                  @foreach($enrollment->bacteriologicalResults as $br)
-                  {{ $br->type }}<br/>
-                  @endforeach
-                  </td>
+                  <td class="table__details">{{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility}}</td>
                   <td class="table__details">{{ $enrollment->remarks }}</td>
                   <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
                   <td class="table__details">{{ $enrollment->status }}</td>
@@ -555,7 +541,7 @@
                   <td class="table__details">{{ empty($enrollment->patient->age) ? '' : $enrollment->patient->age}}</td>
                   <td class="table__details">{{ empty($enrollment->patient->gender) ? '' : $enrollment->patient->gender}}</td>
                   <td class="table__details">{{ empty($enrollment->patient->province) ? '' : $enrollment->patient->province}}</td>
-                  <td class="table__details">{{ $enrollment->drug_susceptibility }}</td>
+                  <td class="table__details">{{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility}}</td>
                   <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
                   <td class="table__details">{{ $enrollment->status }}</td>
                 </tr>
@@ -584,7 +570,7 @@
                 <th class="table__head">Facility Code</th>
                 <th class="table__head">Region & Province</th>
                 <th class="table__head">Patient</th>
-                <th class="table__head">Bacteriological Status</th>
+                <th class="table__head">Drug Susceptibility</th>
                 <th class="table__head">Remarks</th>
                 <th class="table__head">Date</th>
                 <th class="table__head">Status</th>
@@ -598,9 +584,7 @@
                   <td class="table__details">NCR - {{ empty($enrollment->patient->province) ? '' : $enrollment->patient->province}}</td>
                   <td class="table__details">{{ empty($enrollment->patient->code) ? '' : $enrollment->patient->code}}</td>
                   <td class="table__details">
-                  @foreach($enrollment->bacteriologicalResults as $br)
-                  {{ $br->type }}<br/>
-                  @endforeach
+                  {{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility}}
                   </td>
                   <td class="table__details">{{ $enrollment->remarks }}</td>
                   <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
@@ -618,7 +602,7 @@
                 <th class="table__head">Facility Code</th>
                 <th class="table__head">Region & Province</th>
                 <th class="table__head">Patient</th>
-                <th class="table__head">Bacteriological Status</th>
+                <th class="table__head">Drug Susceptibility</th>
                 <th class="table__head">Remarks</th>
                 <th class="table__head">Date</th>
                 <th class="table__head">Status</th>
@@ -632,9 +616,7 @@
                   <td class="table__details">NCR - {{ empty($enrollment->patient->province) ? '' : $enrollment->patient->province}}</td>
                   <td class="table__details">{{ empty($enrollment->patient->code) ? '' : $enrollment->patient->code}}</td>
                   <td class="table__details">
-                  @foreach($enrollment->bacteriologicalResults as $br)
-                  {{ $br->type }}<br/>
-                  @endforeach
+                  {{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility}}
                   </td>
                   <td class="table__details">{{ $enrollment->remarks }}</td>
                   <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
