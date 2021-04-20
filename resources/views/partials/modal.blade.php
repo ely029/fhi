@@ -71,7 +71,7 @@
                 <div class="modal__container">
                   <div class="modal__box">
                     <h2 class="modal__title">Recommend for Enrolment</h2>
-                    <p class="modal__text">You are about to confirm and set this case to 'Not Recommended for Enrolment' If you have additional remarks. enter them below.</p>
+                    <p class="modal__text">You are about to confirm and set this case to 'Recommend for Enrolment' If you have additional remarks. enter them below.</p>
                     <form class="form" method="POST" action="{{ route('enrolment.sendRecommendation')}}">
                     @csrf
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
@@ -139,7 +139,7 @@
                 <div class="modal__container">
                   <div class="modal__box">
                     <h2 class="modal__title">Create Recommendation</h2>
-                    <p class="modal__text">You are about to confirm and set this case to 'Refer to N-TBMac' If you have additional remarks. enter them below.</p>
+                    <p class="modal__text"></p>
                     <form class="form" method="POST" action="{{ route('enrolment.sendRecommendation')}}">
                     @csrf
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>

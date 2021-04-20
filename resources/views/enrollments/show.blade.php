@@ -91,14 +91,15 @@
             @if (auth()->user()->role_id == 3)
             <div class="grid grid--action">
               <div class="form__content">
-                <select class="form__input form__input--select">
-                  <option>New</option>
+                <select id="refer" class="form__input form__input--select">
+                  <option value="6">For Enrollment</option>
+                  <option value="7">Not for Enrollment</option>
                 </select>
                 <div class="triangle triangle--down"></div>
                 <label class="form__label" for="">Action</label>
               </div>
-              <button class="button" type="button">Confirm</button>
-            </div>
+              <button id="refer-button" class="button js-trigger" type="button">Confirm</button>
+            </div>>
             @endif
           </div>
         </form>

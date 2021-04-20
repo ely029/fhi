@@ -131,6 +131,9 @@ class EnrollmentRegimentController extends Controller
     public function sendRecommendation()
     {
         $request = request()->all();
+        if (auth()->user()->role_id === 3) {
+            return $this->healthWorkerRecommendation($request);
+        }
         if (auth()->user()->role_id === 4) {
             return $this->secretariatRecommendation($request);
         }
@@ -150,6 +153,28 @@ class EnrollmentRegimentController extends Controller
         if (auth()->user()->role_id === 8) {
             return $this->ntbMacChairRecommendation($request);
         }
+    }
+
+    private function healthWorkerRecommendation($request)
+    {
+        $tbMacForm = TBMacForm::find($request['form_id']);
+        if ($request['status'] === 'Not For Enrollment') {
+            $tbMacForm->status = $request['status'];
+            $tbMacForm->save();
+            $request['submitted_by'] = auth()->user()->id;
+            $request['role_id'] = auth()->user()->role_id;
+            Recommendation::create($request);
+        } else {
+            $tbMacForm->status = $request['status'];
+            $tbMacForm->save();
+            $request['submitted_by'] = auth()->user()->id;
+            $request['role_id'] = auth()->user()->role_id;
+            Recommendation::create($request);
+        }
+
+        return redirect('enrollments/'.$request['form_id'])->with([
+            'alert.message' => 'Recommendation successfully sent',
+        ]);
     }
 
     public function showAttachment(TBMacForm $tbMacForm, $fileName)
