@@ -155,6 +155,18 @@ class EnrollmentRegimentController extends Controller
         }
     }
 
+    public function showAttachment(TBMacForm $tbMacForm, $fileName)
+    {
+        $path = 'private/enrollments/'.$tbMacForm->presentation_number.'/'.$fileName;
+
+        if (\Storage::exists($path)) {
+            if (Str::endsWith($fileName, '.pdf') || Str::endsWith($fileName, '.xls') || Str::endsWith($fileName, '.xlsx') || Str::endsWith($fileName, '.csv') || Str::endsWith($fileName, '.docx')) {
+                return response()->file(public_path('assets/app/img/icon-upload.png'));
+            }
+            return response(\Storage::get($path))->header('Content-Type', 'image/jpeg');
+        }
+        return response()->file(public_path('assets/app/img/placeholder.jpg'));
+    }
     private function healthWorkerRecommendation($request)
     {
         $tbMacForm = TBMacForm::find($request['form_id']);
@@ -175,19 +187,6 @@ class EnrollmentRegimentController extends Controller
         return redirect('enrollments/'.$request['form_id'])->with([
             'alert.message' => 'Recommendation successfully sent',
         ]);
-    }
-
-    public function showAttachment(TBMacForm $tbMacForm, $fileName)
-    {
-        $path = 'private/enrollments/'.$tbMacForm->presentation_number.'/'.$fileName;
-
-        if (\Storage::exists($path)) {
-            if (Str::endsWith($fileName, '.pdf') || Str::endsWith($fileName, '.xls') || Str::endsWith($fileName, '.xlsx') || Str::endsWith($fileName, '.csv') || Str::endsWith($fileName, '.docx')) {
-                return response()->file(public_path('assets/app/img/icon-upload.png'));
-            }
-            return response(\Storage::get($path))->header('Content-Type', 'image/jpeg');
-        }
-        return response()->file(public_path('assets/app/img/placeholder.jpg'));
     }
     private function ntbMacChairRecommendation($request)
     {
