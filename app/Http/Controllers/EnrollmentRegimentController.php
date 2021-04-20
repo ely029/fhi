@@ -9,6 +9,7 @@ use App\Models\Patient;
 use App\Models\Recommendation;
 use App\Models\TBMacForm;
 use App\Models\TBMacFormAttachment;
+use Illuminate\Support\Str;
 
 class EnrollmentRegimentController extends Controller
 {
@@ -156,9 +157,12 @@ class EnrollmentRegimentController extends Controller
         $path = 'private/enrollments/'.$tbMacForm->presentation_number.'/'.$fileName;
 
         if (\Storage::exists($path)) {
+            if (Str::endsWith($fileName, '.pdf') || Str::endsWith($fileName, '.xls') || Str::endsWith($fileName, '.xlsx') || Str::endsWith($fileName, '.csv') || Str::endsWith($fileName, '.docx')) {
+                return response()->file(public_path('assets/app/img/icon-upload.png'));
+            }
             return response(\Storage::get($path))->header('Content-Type', 'image/jpeg');
         }
-        abort(404, 'File does not exist!');
+        return response()->file(public_path('assets/app/img/placeholder.jpg'));
     }
     private function ntbMacChairRecommendation($request)
     {

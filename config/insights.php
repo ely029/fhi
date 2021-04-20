@@ -56,7 +56,7 @@ return [
 
         // @TB: https://github.com/nunomaduro/phpinsights/issues/367
         CyclomaticComplexityIsHigh::class => [
-            'maxComplexity' => 10, // Default is 5 * 7 resource controller methods
+            'maxComplexity' => 35, // Default is 5 * 7 resource controller methods
         ],
 
         // @TB: Prevents false positives caused by mpociot/laravel-apidoc-generator

@@ -165,9 +165,12 @@ class EnrollmentsController extends Controller
         $path = 'private/enrollments/'.$tbMacForm->presentation_number.'/'.$fileName;
 
         if (\Storage::exists($path)) {
+            if (Str::endsWith($fileName, '.pdf') || Str::endsWith($fileName, '.xls') || Str::endsWith($fileName, '.xlsx') || Str::endsWith($fileName, '.csv') || Str::endsWith($fileName, '.docx')) {
+                return response()->file(public_path('assets/app/img/icon-upload.png'));
+            }
             return response(\Storage::get($path))->header('Content-Type', 'image/jpeg');
         }
-        abort(404, 'File does not exist!');
+        return response()->file(public_path('assets/app/img/placeholder.jpg'));
     }
 
     protected function rules()
@@ -203,7 +206,7 @@ class EnrollmentsController extends Controller
             'histopathological_date' => 'nullable|date_format:Y-m-d',
             'histopathological_result' => 'nullable',
             'remarks' => 'required',
-            'attachments.*' => 'nullable|image|max:10000',
+            'attachments.*' => 'nullable|file|max:10000',
         ];
     }
 
