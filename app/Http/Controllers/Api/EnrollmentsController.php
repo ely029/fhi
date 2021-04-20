@@ -113,6 +113,17 @@ class EnrollmentsController extends Controller
             ];
         }
 
+        $recommendations = $tbMacForm->recommendations->map(function($item){
+            return [
+                'name' => $item->users->name,
+                'role' => $item->users->role->name,
+                'date_created' => $item->created_at->format('d M, Y'),
+                'status' => $item->status,
+                'recommendation' => $item->recommendation,
+            ];
+        });
+
+
         $data = [
             'date_created' => $tbMacForm->created_at->format('M d, Y'),
             'patient_code' => $tbMacForm->patient->code,
@@ -144,6 +155,7 @@ class EnrollmentsController extends Controller
             'histopathological_result' => $tbMacForm->laboratoryResults->hispathological_result,
             'remarks' => $tbMacForm->laboratoryResults->remarks,
             'attachments' => $attachments,
+            'recommendations' => $recommendations,
         ];
 
         return response()->json($data);
