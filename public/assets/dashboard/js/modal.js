@@ -40,5 +40,9 @@ $('document').ready(function(){
             if ($('#refer').val() == '9') {
                 $('#refer-to-ntbmac').modal('show');
             }
+            // for resubmit enrollment option
+            if($('#refer').val() == 'Resubmit Enrollment') {
+                $("#resubmit-enrollment-modal").modal('show');
+            }
     });
 });

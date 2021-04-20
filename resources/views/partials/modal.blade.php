@@ -150,3 +150,21 @@
                   </div>
                 </div>
             </div>
+
+<div class="modal js-modal" id="resubmit-enrollment-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal__background js-modal-background"></div>
+      <div class="modal__container">
+          <div class="modal__box">
+            <h2 class="modal__title">Resubmit new enrollment</h2>
+              <p class="modal__text"></p>
+                  <div class="form__content">
+                      You are about to resubmit a new enrollment. Please read and prepare the requested information and documents
+                      the remarks and recommendations section.
+                  </div> 
+                  <div class="modal__button">
+                    <a href="{{ url('resubmit/enrollment/'.$tbMacForm->id) }}" class="button">Resubmit</a>
+                  </div>
+               
+      </div>
+  </div>
+</div>

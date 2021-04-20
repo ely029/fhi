@@ -94,6 +94,9 @@
                 <select id="refer" class="form__input form__input--select">
                   <option value="6">For Enrollment</option>
                   <option value="7">Not for Enrollment</option>
+                  @if($tbMacForm->status == 'Not For Referral' || $tbMacFor->status == 'Need Further Details')
+                    <option value="Resubmit Enrollment">Resubmit Enrollment</option>
+                  @endif
                 </select>
                 <div class="triangle triangle--down"></div>
                 <label class="form__label" for="">Action</label>
