@@ -125,7 +125,7 @@ class TBMacForm extends Model
             if ($model->form_type === 'enrollment') {
                 $max = TBMacForm::where('form_type', '=', 'enrollment')
                     ->where('region', $model->region)->count();
-                $presentationNumber = $model->region.'-'.str_pad(strval($max + 1), 4, '0', STR_PAD_LEFT);
+                $presentationNumber = $model->region.'-'.str_pad(strval($max), 4, '0', STR_PAD_LEFT);
             }
             $model->presentation_number = $presentationNumber;
             $model->save();

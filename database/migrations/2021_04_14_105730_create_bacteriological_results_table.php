@@ -21,7 +21,7 @@ class CreateBacteriologicalResultsTable extends Migration
             $table->string('type');
             $table->date('date_collected');
             $table->string('name_of_laboratory');
-            $table->string('result');
+            $table->text('result');
 
             $table->timestamps();
         });
