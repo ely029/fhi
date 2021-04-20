@@ -28,6 +28,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read int|null $attachments_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BacteriologicalResult[] $bacteriologicalResults
  * @property-read int|null $bacteriological_results_count
+ * @property object $recommendations
  * @property-read \App\Models\CaseManagementRegimentForm|null $caseManagementRegimentForm
  * @property-read EnrollmentRegimentForm|null $enrollmentForm
  * @property-read \App\Models\LaboratoryResult|null $laboratoryResults
