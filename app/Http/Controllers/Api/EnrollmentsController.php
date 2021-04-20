@@ -225,10 +225,13 @@ class EnrollmentsController extends Controller
         $condition = 'submitted_by';
         $value = auth()->user()->id;
 
-        if (request('role') === 'secretariat') {
+        if (in_array(auth()->user()->role_id, [4,5,6])) {
             $condition = 'region';
             // change to auth user region
             $value = 'NCR';
+        } elseif(in_array(auth()->user()->role_id, [7,8])) {
+            $condition = 'form_type';
+            $value = 'enrollment';
         }
 
         return [
