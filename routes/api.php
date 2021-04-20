@@ -51,5 +51,6 @@ Route::group([
     Route::get('/enrollments/{tbMacForm}', [EnrollmentsController::class, 'show']);
     Route::get('/enrollments/{tbMacForm}/{fileName}/attachment', [EnrollmentsController::class, 'showAttachment']);
     Route::post('/enrollments', [EnrollmentsController::class, 'store']);
+    Route::get('/enrollments-with-recommendation',[EnrollmentRecommendationsController::class, 'index']);
     Route::post('/enrollments/{tbMacForm}/recommendation', [EnrollmentRecommendationsController::class, 'store']);
 });
