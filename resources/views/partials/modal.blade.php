@@ -143,7 +143,7 @@
                     <form class="form" method="POST" action="{{ route('enrolment.sendRecommendation')}}">
                     @csrf
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
-                       <input type="hidden" name="status" value="Refer to N-TBMac"/>
+                       <input type="hidden" name="status" value="0"/>
                       <div class="form__content"><textarea name="recommendation" class="form__input form__input--message" placeholder="Enter remarks"></textarea><label class="form__label" for="">Remarks</label></div>
                       <div class="modal__button"><input class="button" type="submit" value="Submit" /></div>
                     </form>

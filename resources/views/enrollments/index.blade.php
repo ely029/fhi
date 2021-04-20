@@ -593,7 +593,110 @@
                   <td class="table__details">{{ $enrollment->remarks }}</td>
                   <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
                   <td class="table__details">{{ $enrollment->status }}</td>
-                </tr
+                </tr>
+            @endforeach
+            </tbody>
+          </table>
+        </div>
+        <div class="tabs__details">
+          <table class="table table--filter js-table">
+          <thead>
+          <tr>
+                <th class="table__head">Presentation No.</th>
+                <th class="table__head">Patient</th>
+                <th class="table__head">Age</th>
+                <th class="table__head">Gender</th>
+                <th class="table__head">Province</th>
+                <th class="table__head">Drug Susceptibility</th>
+                <th class="table__head">Date</th>
+                <th class="table__head">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach($allEnrollment as $enrollment)
+              <tr class="table__row js-view" data-href="{{ url('enrollments/'.$enrollment->id) }}">
+                  <td class="table__details">{{ $enrollment->presentation_number }}</td>
+                  <td class="table__details">{{ empty($enrollment->patient->name) ? '' : $enrollment->patient->name}}</td>
+                  <td class="table__details">{{ empty($enrollment->patient->age) ? '' : $enrollment->patient->age}}</td>
+                  <td class="table__details">{{ empty($enrollment->patient->gender) ? '' : $enrollment->patient->gender}}</td>
+                  <td class="table__details">{{ empty($enrollment->patient->province) ? '' : $enrollment->patient->province}}</td>
+                  <td class="table__details">{{ $enrollment->remarks }}</td>
+                  <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
+                  <td class="table__details">{{ $enrollment->status }}</td>
+                </tr>
+            @endforeach
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    @endif
+
+    @if (Auth::user()->role_id === 8)
+    <div class="section__container">
+      @include('partials.alerts')
+
+      <div class="section__content">
+        <ul class="tabs__list tabs__list--table">
+          <li class="tabs__item tabs__item--current">Referred Enrolments ({{ $referredToNationalChair->count() }})</li>
+          <li class="tabs__item">All Enrollments ({{ $allEnrollment->count() }})</li>
+        </ul>
+        <div class="tabs__details tabs__details--active">
+          <table class="table table--filter js-table">
+            <thead>
+              <tr>
+                <th class="table__head">Presentation No.</th>
+                <th class="table__head">Facility Code</th>
+                <th class="table__head">Region & Province</th>
+                <th class="table__head">Patient</th>
+                <th class="table__head">Bacteriological Status</th>
+                <th class="table__head">Remarks</th>
+                <th class="table__head">Date</th>
+                <th class="table__head">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach($referredToNationalChair as $enrollment)
+                <tr class="table__row js-view" data-href="{{ url('enrollments/'.$enrollment->id) }}">
+                  <td class="table__details">{{ $enrollment->presentation_number }}</td>
+                  <td class="table__details">{{ empty($enrollment->patient->facility_code) ? '' : $enrollment->patient->facility_code}}</td>
+                  <td class="table__details"></td>
+                  <td class="table__details">{{ empty($enrollment->patient->name) ? '' : $enrollment->patient->name}}</td>
+                  <td class="table__details"></td>
+                  <td class="table__details">{{ $enrollment->remarks }}</td>
+                  <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
+                  <td class="table__details">{{ $enrollment->status }}</td>
+                </tr>
+              @endforeach
+            </tbody>
+          </table>
+        </div>
+        <div class="tabs__details">
+          <table class="table table--filter js-table">
+          <thead>
+          <tr>
+                <th class="table__head">Presentation No.</th>
+                <th class="table__head">Facility Code</th>
+                <th class="table__head">Region & Province</th>
+                <th class="table__head">Patient</th>
+                <th class="table__head">Bacteriological Status</th>
+                <th class="table__head">Remarks</th>
+                <th class="table__head">Date</th>
+                <th class="table__head">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach($allEnrollment as $enrollment)
+              <tr class="table__row js-view" data-href="{{ url('enrollments/'.$enrollment->id) }}">
+                  <td class="table__details">{{ $enrollment->presentation_number }}</td>
+                  <td class="table__details">{{ empty($enrollment->patient->facility_code) ? '' : $enrollment->patient->facility_code}}</td>
+                  <td class="table__details"></td>
+                  <td class="table__details">{{ empty($enrollment->patient->name) ? '' : $enrollment->patient->name}}</td>
+                  <td class="table__details"></td>
+                  <td class="table__details">{{ $enrollment->remarks }}</td>
+                  <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
+                  <td class="table__details">{{ $enrollment->status }}</td>
+                </tr>
             @endforeach
             </tbody>
           </table>

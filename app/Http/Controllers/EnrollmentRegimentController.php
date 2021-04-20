@@ -141,6 +141,14 @@ class EnrollmentRegimentController extends Controller
         if (auth()->user()->role_id === 6) {
             return $this->regionalChairRecommendation($request);
         }
+
+        if (auth()->user()->role_id === 7) {
+            return $this->ntbMacRecommendation($request);
+        }
+
+        if (auth()->user()->role_id === 8) {
+            return $this->ntbMacChairRecommendation($request);
+        }
     }
 
     public function showAttachment(TBMacForm $tbMacForm, $fileName)
@@ -151,6 +159,30 @@ class EnrollmentRegimentController extends Controller
             return response(\Storage::get($path))->header('Content-Type', 'image/jpeg');
         }
         abort(404, 'File does not exist!');
+    }
+    private function ntbMacChairRecommendation($request)
+    {
+        $request['submitted_by'] = auth()->user()->id;
+        $request['role_id'] = auth()->user()->role_id;
+        Recommendation::create($request);
+
+        return redirect('enrollments/'.$request['form_id'])->with([
+            'alert.message' => 'Recommendation successfully sent',
+        ]);
+    }
+
+    private function ntbMacRecommendation($request)
+    {
+        $tbMacForm = TBMacForm::find($request['form_id']);
+        $tbMacForm->status = 'Referred to national chair';
+        $tbMacForm->save();
+        $request['submitted_by'] = auth()->user()->id;
+        $request['role_id'] = auth()->user()->role_id;
+        Recommendation::create($request);
+
+        return redirect('enrollments/'.$request['form_id'])->with([
+            'alert.message' => 'Recommendation successfully sent',
+        ]);
     }
 
     private function secretariatRecommendation($request)
