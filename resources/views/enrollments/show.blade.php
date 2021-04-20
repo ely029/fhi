@@ -249,17 +249,17 @@
               <div class="grid grid--two">
                 <div class="form__content">
                     <span class="form__text">
-                        {{ $tbMacForm->laboratoryResults->cxr_date ? $tbMacForm->laboratoryResults->cxr_date->format('m/d/y') : '' }}</span>
+                        {{ empty($tbMacForm->laboratoryResults->cxr_date) ? ''  : $tbMacForm->laboratoryResults->cxr_date->format('m/d/y') }}</span>
                     <label class="form__label" for="">CXR date</label>
                 </div>
                 <div class="form__content">
                   <span class="form__text">
-               {{-- {{ $tbMacForm->laboratoryResults->cxr_result }}
-              @if($cxrReadings = $tbMacForm->laboratoryResults->cxr_reading)
-                  @foreach($cxrReadings as $cxrReading)
-                      {{ $cxrReading }} </br>
-                  @endforeach
-              @endif --}}
+                {{ $tbMacForm->laboratoryResults->cxr_result }}
+                <br/>
+              @if($cxrReadings = empty($tbMacForm->laboratoryResults->cxr_reading) ? '' : $tbMacForm->laboratoryResults->cxr_reading)
+                      {{ $cxrReadings }}
+                  
+              @endif
                   </span>
                   <label class="form__label" for="">CXR result</label>
                 </div>
@@ -267,7 +267,7 @@
               <div class="grid grid--two">
                 <div class="form__content">
                     <span class="form__text">
-                        {{ $tbMacForm->laboratoryResults->ct_scan_date ? $tbMacForm->laboratoryResults->ct_scan_date->format('m/d/y') : '' }}</span>
+                        {{ empty($tbMacForm->laboratoryResults->ct_scan_date) ? '' : $tbMacForm->laboratoryResults->ct_scan_date->format('m/d/y') }}</span>
                     <label class="form__label" for="">CT Scan date</label>
                 </div>
                 <div class="form__content">
@@ -279,7 +279,7 @@
               </div>
               <div class="grid grid--two">
                 <div class="form__content">
-                    <span class="form__text">{{ $tbMacForm->laboratoryResults->ultrasound_date ? $tbMacForm->laboratoryResults->ultrasound_date->format('m/d/y') : '' }}</span>
+                    <span class="form__text">{{ empty($tbMacForm->laboratoryResults->ultrasound_date) ? '' : $tbMacForm->laboratoryResults->ultrasound_date->format('m/d/y') }}</span>
                     <label class="form__label" for="">Ultrasound date</label>
                 </div>
                 <div class="form__content">
@@ -291,12 +291,12 @@
               </div>
               <div class="grid grid--two">
                 <div class="form__content">
-                    <span class="form__text">{{ $tbMacForm->laboratoryResults->hispathological_date ? $tbMacForm->laboratoryResults->hispathological_date->format('m/d/y') : '' }}</span>
+                    <span class="form__text">{{ empty($tbMacForm->laboratoryResults->histopathological_date) ? '' : $tbMacForm->laboratoryResults->histopathological_date->format('m/d/y') }}</span>
                     <label class="form__label" for="">Histopatholigical date</label>
                 </div>
                 <div class="form__content">
                   <span class="form__text">
-                    {{ $tbMacForm->laboratoryResults->hispathological_result }}
+                    {{ empty($tbMacForm->laboratoryResults->histopathological_result) ? '' : $tbMacForm->laboratoryResults->histopathological_result }}
                   </span>
                   <label class="form__label" for="">Histopatholigical result</label>
                 </div>
