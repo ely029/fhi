@@ -258,7 +258,6 @@
                 <th class="table__head">Province</th>
                 <th class="table__head">Patient</th>
                 <th class="table__head">Drug Susceptibility</th>
-                <th class="table__head">Remarks</th>
                 <th class="table__head">Date</th>
                 <th class="table__head">Status</th>
               </tr>
@@ -273,7 +272,6 @@
                   <td class="table__details">
                   {{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility}}
                   </td>
-                  <td class="table__details">{{ $enrollment->remarks }}</td>
                   <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
                   <td class="table__details">{{ $enrollment->status }}</td>
                 </tr>
@@ -290,7 +288,6 @@
                 <th class="table__head">Province</th>
                 <th class="table__head">Patient</th>
                 <th class="table__head">Drug Susceptibility</th>
-                <th class="table__head">Remarks</th>
                 <th class="table__head">Date</th>
                 <th class="table__head">Status</th>
               </tr>
@@ -301,7 +298,6 @@
                   <td class="table__details">{{ $enrollment->tbMacForms->presentation_number }}</td>
                   <td class="table__details">{{ empty($enrollment->tbMacForms->patient->facility_code) ? '' : $enrollment->tbMacForms->patient->facility_code}}</td>
                   <td class="table__details">{{ empty($enrollment->tbMacForms->patient->province) ? '' : $enrollment->tbMacForms->patient->province}}</td>
-                  <td class="table__details"></td>
                   <td class="table__details">
                   {{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility}}
                   </td>
@@ -322,7 +318,6 @@
                 <th class="table__head">Province</th>
                 <th class="table__head">Patient</th>
                 <th class="table__head">Drug Susceptibility</th>
-                <th class="table__head">Remarks</th>
                 <th class="table__head">Date</th>
                 <th class="table__head">Status</th>
               </tr>
@@ -333,7 +328,6 @@
                   <td class="table__details">{{ $enrollment->presentation_number }}</td>
                   <td class="table__details">{{ empty($enrollment->patient->facility_code) ? '' : $enrollment->patient->facility_code}}</td>
                   <td class="table__details">{{ empty($enrollment->patient->province) ? '' : $enrollment->patient->province}}</td>
-                  <td class="table__details"></td>
                   <td class="table__details">
                   {{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility}}
                   </td>
@@ -414,7 +408,7 @@
                   <td class="table__details">{{ empty($enrollment->tbMacForms->patient->age) ? '' : $enrollment->tbMacForms->patient->age}}</td>
                   <td class="table__details">{{ empty($enrollment->tbMacForms->patient->gender) ? '' : $enrollment->tbMacForms->patient->gender}}</td>
                   <td class="table__details">{{ empty($enrollment->tbMacForms->patient->province) ? '' : $enrollment->tbMacForms->patient->province}}</td>
-                  <td class="table__details">{{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility}}</td>
+                  <td class="table__details">{{ empty($enrollment->drug_susceptibility) ? '' : $enrollment->drug_susceptibility}}</td>
                   <td class="table__details">{{ $enrollment->tbMacForms->created_at->format('M d, Y')}}</td>
                   <td class="table__details">{{ $enrollment->tbMacForms->status }}</td>
                 </tr>
