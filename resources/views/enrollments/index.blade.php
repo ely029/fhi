@@ -558,7 +558,7 @@
                   <td class="table__details">NCR - {{ empty($enrollment->patient->province) ? '' : $enrollment->patient->province}}</td>
                   <td class="table__details">{{ empty($enrollment->patient->code) ? '' : $enrollment->patient->code}}</td>
                   <td class="table__details">
-                  {{ empty($enrollment->drug_susceptibility) ? '' : $enrollment->tbMacForms->enrollmentForm->drug_susceptibility}}
+                  {{ empty($enrollment->drug_susceptibility) ? '' : $enrollment->drug_susceptibility}}
                   </td>
                   <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
                   <td class="table__details">{{ $enrollment->status }}</td>
