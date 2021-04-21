@@ -179,11 +179,12 @@
           @php
             $fileName = ($key+1).'.'.$attachment->extension;
           @endphp
-          <img class="image image--gallery" src="{{ url('enrollments/'.$tbMacForm->id.'/'.$fileName.'/attachment') }}"/>
-          <img class="image image--close" src="{{ asset('assets/app/img/icon-close.png') }}" />
+          <img class="image exist-attach-{{ $key }}" src="{{ url('enrollments/'.$tbMacForm->id.'/'.$fileName.'/attachment') }}"/>
+          <button type="button" class="btn btn-danger remove-attachment exist-attach-{{ $key }}" 
+          data-filename="{{ $fileName }}" data-key="{{ $key }}">Remove</button>
         @endforeach
       </li>
-  
+      <input type="hidden"  name="attachments-to-remove" id="attachments-to-remove">
     </ul>
     <div class="form__container form-step-4">
       <h2 class="section__heading">Remarks</h2>

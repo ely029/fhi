@@ -385,6 +385,11 @@ jQuery( document ).ready(function( $ ) {
         $(".other-cxr-field").show();
     }
 
-
+    let toRemoveAttachments = [];
+    $(".remove-attachment").on('click', function(){
+        toRemoveAttachments.push($(this).data('filename'));
+        $(".exist-attach-"+$(this).data('key')).remove();
+        $("#attachments-to-remove").val(JSON.stringify(toRemoveAttachments));
+    });
 
 });

@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 
 use App\Models\BacteriologicalResult;
 use App\Models\TBMacForm;
+use App\Models\TBMacFormAttachment;
+use Illuminate\Support\Facades\Storage;
 
 class ResubmitEnrollmentController extends Controller
 {
@@ -39,14 +41,19 @@ class ResubmitEnrollmentController extends Controller
         $tbMacForm->enrollmentForm->update($request);
         $tbMacForm->laboratoryResults->update($request);
 
-        // if (isset($request['attachments'])) {
-        //     foreach ($request['attachments'] as $key => $file) {
-        //         $file->storeAs(TBMacFormAttachment::PATH_PREFIX.'/'.$tbMacForm->presentation_number, ($key + 1).'.'.$file->extension());
-        //         $tbMacForm->attachments()->create([
-        //             'extension' => $file->extension(),
-        //         ]);
-        //     }
-        // }
+        if ($request['attachments-to-remove']) {
+            $this->removeAttachments($tbMacForm, $request);
+        }
+
+        if (isset($request['attachments'])) {
+            foreach ($request['attachments'] as $key => $file) {
+                $file->storeAs(TBMacFormAttachment::PATH_PREFIX.'/'.$tbMacForm->presentation_number, ($tbMacForm->attachments()->count() + 1).'.'.$file->extension());
+                $tbMacForm->attachments()->create([
+                    'extension' => $file->extension(),
+                ]);
+            }
+        }
+
         $tbMacForm->bacteriologicalResults()->delete();
 
         foreach (BacteriologicalResult::LABEL as $status => $label) {
@@ -68,6 +75,18 @@ class ResubmitEnrollmentController extends Controller
                 'name_of_laboratory' => $request[$type.'-name_of_laboratory'][$key],
                 'result' => $type === 'lpa' ? json_encode($request[$type.'-'.$key.'-result']) : $request[$type.'-result'][$key],
             ]);
+        }
+    }
+
+    private function removeAttachments($tbMacForm, $request)
+    {
+        foreach (json_decode($request['attachments-to-remove']) as $toRemove) {
+            $path = 'private/enrollments/'.$tbMacForm->presentation_number.'/'.$toRemove;
+            if (Storage::exists($path)) {
+                Storage::delete($path);
+            }
+            $key = explode('.', $toRemove);
+            $tbMacForm->attachments[(int) $key[0] - 1]->delete();
         }
     }
 }
