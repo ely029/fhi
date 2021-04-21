@@ -173,7 +173,7 @@
 
       <div class="section__content">
         <ul class="tabs__list tabs__list--table">
-          <li class="tabs__item tabs__item--current">Pending ({{ $forEnrollments->count() }})</li>
+          <li class="tabs__item tabs__item--current">Pending ({{ $newEnrollment->count() }})</li>
           <li class="tabs__item">All Enrollments ({{ $allEnrollment->count() }})</li>
         </ul>
         <div class="tabs__details tabs__details--active">
@@ -192,7 +192,7 @@
               </tr>
             </thead>
             <tbody>
-              @foreach($forEnrollments as $enrollment)
+              @foreach($newEnrollment as $enrollment)
                 <tr class="table__row js-view" data-href="{{ url('enrollments/'.$enrollment->id) }}">
                   <td class="table__details">{{ $enrollment->presentation_number }}</td>
                   <td class="table__details">{{ $enrollment->patient->facility_code }}</td>
@@ -561,7 +561,7 @@
       <div class="section__content">
         <ul class="tabs__list tabs__list--table">
           <li class="tabs__item tabs__item--current">Referred Enrolments ({{ $referredToNationalChair->count() }})</li>
-          <li class="tabs__item">All Enrollments ({{ $enrollmentSubmittedByrtbmacChair->tbMacForms->count() }})</li>
+          <li class="tabs__item">All Enrollments ({{ $enrollmentSubmittedByrtbmacChair->count() }})</li>
         </ul>
         <div class="tabs__details tabs__details--active">
           <table class="table table--filter js-table">
