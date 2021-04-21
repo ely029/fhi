@@ -17,24 +17,16 @@ class EnrollmentRegimentController extends Controller
     {
         $enrollments = TBMacForm::EnrollmentForms()
             ->with(['patient','enrollmentForm'])
+            ->where($this->getDynamicQuery()['condition'], $this->getDynamicQuery()['value'])
             ->orderByDesc('created_at')->get();
 
-        $newEnrollment = $enrollments->filter(function ($item) {
-            return $item->status === 'New Enrollment';
-        });
-
-        $notForEnrollments = $enrollments->filter(function ($item) {
-            return $item->status === 'Not For Enrollment';
-        });
-
-        $needFurtherDetails = $enrollments->filter(function ($item) {
-            return $item->status === 'Need Further Details';
-        });
-
-        $notForReferrals = $enrollments->filter(function ($item) {
-            return $item->status === 'Not For Referral';
-        });
-
+        if (auth()->user()->role_id === 3) {
+            return $this->getHealthCareWorkerIndex($enrollments);
+        }
+        if (auth()->user()->role_id === 4) {
+            return $this->getRegionalSecretariatIndex($enrollments);
+        }
+        
         $referredToRegional = $enrollments->filter(function ($item) {
             return $item->status === 'Referred to Regional';
         });
@@ -51,9 +43,6 @@ class EnrollmentRegimentController extends Controller
             return $item->status === 'Referred to national chair';
         });
 
-        $forEnrollments = $enrollments->filter(function ($item) {
-            return $item->status === 'For Enrollment';
-        });
 
         $enrollmentSubmittedByRTBMACChair = $enrollments->filter(function ($item) {
             return $item->role_id === 7;
@@ -67,10 +56,6 @@ class EnrollmentRegimentController extends Controller
 
         return view('enrollments.index')
             ->with('enrollments', $enrollments)
-            ->with('forEnrollments', $forEnrollments)
-            ->with('notForEnrollments', $notForEnrollments)
-            ->with('needFurtherDetails', $needFurtherDetails)
-            ->with('notForReferrals', $notForReferrals)
             ->with('allEnrollment', $enrollments)
             ->with('referredToRegional', $referredToRegional)
             ->with('referredToRegionalChair', $referredToRegionalChair)
@@ -78,8 +63,7 @@ class EnrollmentRegimentController extends Controller
             ->with('withRecommendations', $withRecommendation)
             ->with('referredToNationalChair', $referredToNationalChair)
             ->with('enrollmentSubmittedByrtbmacChair', $enrollmentSubmittedByRTBMACChair)
-            ->with('enrollmentSubmittedToRegionalChair', $enrollmentSubmittedToRegionalChair)
-            ->with('newEnrollments', $newEnrollment);
+            ->with('enrollmentSubmittedToRegionalChair', $enrollmentSubmittedToRegionalChair);
     }
 
     public function create()
@@ -324,5 +308,62 @@ class EnrollmentRegimentController extends Controller
         return redirect('enrollments/'.$request['form_id'])->with([
             'alert.message' => 'Recommendation successfully sent',
         ]);
+    }
+    
+    private function getDynamicQuery() {
+        $condition = 'submitted_by';
+        $value = auth()->user()->id;
+
+        if (in_array(auth()->user()->role_id, [4,5,6])) {
+            $condition = 'region';
+            // change to auth user region
+            $value = 'NCR';
+        } elseif (in_array(auth()->user()->role_id, [7,8])) {
+            $condition = 'form_type';
+            $value = 'enrollment';
+        }
+
+        return [
+            'condition' => $condition,
+            'value' => $value,
+        ];
+    }
+
+    private function getHealthCareWorkerIndex($enrollments) {
+
+        $forEnrollments = $enrollments->filter(function ($item) {
+            return $item->status === 'For Enrollment';
+        });
+
+        $notForEnrollments = $enrollments->filter(function ($item) {
+            return $item->status === 'Not For Enrollment';
+        });
+
+        $needFurtherDetails = $enrollments->filter(function ($item) {
+            return $item->status === 'Need Further Details';
+        });
+
+        $notForReferrals = $enrollments->filter(function ($item) {
+            return $item->status === 'Not For Referral';
+        });
+
+        
+        return view('enrollments.index')
+            ->with('enrollments', $enrollments)
+            ->with('forEnrollments', $forEnrollments)
+            ->with('notForEnrollments', $notForEnrollments)
+            ->with('needFurtherDetails', $needFurtherDetails)
+            ->with('notForReferrals', $notForReferrals);
+    }
+
+    private function getRegionalSecretariatIndex($enrollments) {
+
+        $newEnrollments = $enrollments->filter(function ($item) {
+            return $item->status === 'New Enrollment';
+        });
+
+        return view('enrollments.index')
+            ->with('newEnrollments', $newEnrollments)
+            ->with('allEnrollment', $enrollments);
     }
 }
