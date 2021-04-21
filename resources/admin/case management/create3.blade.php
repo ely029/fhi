@@ -76,9 +76,9 @@
     <div class="form__container">
         <div class="grid">
         <div class="form__content form__content--small form__content--small__right">
-            <input class="form__input" type="date" placeholder="Histopatholigical date" /><label class="form__label" for="">Histopatholigical date</label>
+            <input class="form__input" type="date" placeholder="Histopathological date" /><label class="form__label" for="">Histopathological date</label>
         </div>
-        <div class="form__content"><input class="form__input" type="text" placeholder="Histopatholigical result" /><label class="form__label" for="">Histopatholigical result</label></div>
+        <div class="form__content"><input class="form__input" type="text" placeholder="Histopathological result" /><label class="form__label" for="">Histopathological result</label></div>
         </div>
     </div>
     </div>

@@ -128,14 +128,14 @@
       </div>
       <div class="grid">
         <div class="form__content form__content--small form__content--small__right">
-          <input class="form__input" type="date" name="histopathological_date" placeholder="Histopatholigical date" value="{{ $tbMacForm->laboratoryResults->histopathological_date ? $tbMacForm->laboratoryResults->histopathological_date->format('Y-m-d') : '' }}" />
-          <label class="form__label" for="">Histopatholigical date
+          <input class="form__input" type="date" name="histopathological_date" placeholder="Histopathological date" value="{{ $tbMacForm->laboratoryResults->histopathological_date ? $tbMacForm->laboratoryResults->histopathological_date->format('Y-m-d') : '' }}" />
+          <label class="form__label" for="">Histopathological date
 
           </label>
         </div>
         <div class="form__content">
-          <input class="form__input" type="text" name="histopathological_result" placeholder="Histopatholigical result" value="{{ $tbMacForm->laboratoryResults->histopathological_result }}" />
-          <label class="form__label" for="">Histopatholigical result</label>
+          <input class="form__input" type="text" name="histopathological_result" placeholder="Histopathological result" value="{{ $tbMacForm->laboratoryResults->histopathological_result }}" />
+          <label class="form__label" for="">Histopathological result</label>
         </div>
       </div>
     </div>

@@ -109,14 +109,14 @@
       </div>
       <div class="grid">
         <div class="form__content form__content--small form__content--small__right">
-          <input class="form__input" type="date" name="histopathological_date" placeholder="Histopatholigical date" />
-          <label class="form__label" for="">Histopatholigical date
+          <input class="form__input" type="date" name="histopathological_date" placeholder="Histopathological date" />
+          <label class="form__label" for="">Histopathological date
 
           </label>
         </div>
         <div class="form__content">
-          <input class="form__input" type="text" name="histopathological_result" placeholder="Histopatholigical result" />
-          <label class="form__label" for="">Histopatholigical result</label>
+          <input class="form__input" type="text" name="histopathological_result" placeholder="Histopathological result" />
+          <label class="form__label" for="">Histopathological result</label>
         </div>
       </div>
     </div>

@@ -162,12 +162,12 @@
                   </div>
                 </div>
                 <div class="grid grid--two">
-                  <div class="form__content"><span class="form__text">12/12/12</span><label class="form__label" for="">Histopatholigical date</label></div>
+                  <div class="form__content"><span class="form__text">12/12/12</span><label class="form__label" for="">Histopathological date</label></div>
                   <div class="form__content">
                     <span class="form__text">
                       
                     </span>
-                    <label class="form__label" for="">Histopatholigical result</label>
+                    <label class="form__label" for="">Histopathological result</label>
                   </div>
                 </div>
               </div>
