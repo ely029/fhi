@@ -478,6 +478,7 @@
               </tr>
             </thead>
             <tbody>
+              @if (!empty($referredToNational))
               @foreach($referredToNational as $enrollment)
                 <tr class="table__row js-view" data-href="{{ url('enrollments/'.$enrollment->id) }}">
                   <td class="table__details">{{ $enrollment->presentation_number }}</td>
@@ -489,6 +490,7 @@
                   <td class="table__details">{{ $enrollment->status }}</td>
                 </tr>
               @endforeach
+              @endif
             </tbody>
           </table>
         </div>
@@ -506,7 +508,8 @@
               </tr>
             </thead>
             <tbody>
-              @foreach($allEnrollment as $enrollment)
+            @if(!empty($allEnrollment))
+            @foreach($allEnrollment as $enrollment)
               <tr class="table__row js-view" data-href="{{ url('enrollments/'.$enrollment->id) }}">
               <td class="table__details">{{ $enrollment->presentation_number }}</td>
                   <td class="table__details">{{ empty($enrollment->patient['facility_code']) ? '' : $enrollment->patient['facility_code']}}</td>
@@ -517,6 +520,7 @@
                   <td class="table__details">{{ $enrollment->status }}</td>
                 </tr>
             @endforeach
+            @endif
             </tbody>
           </table>
         </div>
