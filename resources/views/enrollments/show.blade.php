@@ -324,7 +324,7 @@
                       return $item->role_id === 4 || $item->role_id === 6;
               });
           @endphp
-         @if (Auth::user()->role_id == 6 || Auth::user()->role_id == 7)
+         @if (Auth::user()->role_id == 7)
         <form class="form form--half" action="">
             <h2 class="section__heading">Remarks | Recommendations</h2>
             @foreach($recommendations as $recommendation)
@@ -361,6 +361,38 @@
         <form class="form form--half" action="">
           <h2 class="section__heading">Remarks | Recommendations</h2>
           @foreach($secretariatrecommendations as $secretariat)
+          <div class="form__container form__container--remarks">
+            <img class="image image--user" src="{{ asset('assets\app\img\icon-user.png')}}" alt="user icon" />
+            <div class="form__container">
+              <div class="grid grid--two">
+                <h2 class="section__heading section__heading--healthworker">{{ $secretariat->users->name}}<span class="form__label">{{ $secretariat->users->role->name }} | [Region]</span></h2>
+                <label class="form__label">{{ $secretariat->created_at->format('d M, Y')}}</label>
+              </div>
+              <div class="form__container form__container--remarks form__container--actions">
+                <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
+                
+                <div class="form__content"><span class="form__text form__text--green">{{$secretariat->status }}</span><label class="form__label form__label--green">Action</label></div>
+           
+              </div>
+              <span class="form__text">
+                {{$secretariat->recommendation }}
+              </span>
+            </div>
+          </div>
+          @endforeach
+        </form>
+        @endif
+
+        @php
+            $recommendations1 = $tbMacForm->recommendations;
+            $regionalTBMacChairRecommendations = $recommendations1->filter(function($item){
+                      return $item->role_id === 3 || $item->role_id === 4 || $item->role_id === 5 || $item->role_id === 6;
+              });
+          @endphp
+        @if(auth()->user()->role_id === 6)
+        <form class="form form--half" action="">
+          <h2 class="section__heading">Remarks | Recommendations</h2>
+          @foreach($regionalTBMacChairRecommendations as $secretariat)
           <div class="form__container form__container--remarks">
             <img class="image image--user" src="{{ asset('assets\app\img\icon-user.png')}}" alt="user icon" />
             <div class="form__container">
@@ -441,7 +473,7 @@
         @endif
         @php
             $nationalChairRecommendations = $recommendations->filter(function($item){
-                      return $item->role_id === 6 || $item->role_id === 7;
+                      return $item->role_id === 6;
               });
           @endphp
         @if(auth()->user()->role_id === 8)

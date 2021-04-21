@@ -59,6 +59,10 @@ class EnrollmentRegimentController extends Controller
             return $item->role_id === 7;
         });
 
+        $enrollmentSubmittedToRegionalChair = $enrollments->filter(function ($item) {
+            return $item->role_id === 3 || $item->role_id === 4;
+        });
+
         $withRecommendation = Recommendation::with('tbMacForms')->where('recommendation', '<>', null)->get();
 
         return view('enrollments.index')
@@ -74,6 +78,7 @@ class EnrollmentRegimentController extends Controller
             ->with('withRecommendations', $withRecommendation)
             ->with('referredToNationalChair', $referredToNationalChair)
             ->with('enrollmentSubmittedByrtbmacChair', $enrollmentSubmittedByRTBMACChair)
+            ->with('enrollmentSubmittedToRegionalChair', $enrollmentSubmittedToRegionalChair)
             ->with('newEnrollments', $newEnrollment);
     }
 
@@ -178,12 +183,14 @@ class EnrollmentRegimentController extends Controller
         $tbMacForm = TBMacForm::find($request['form_id']);
         if ($request['status'] === 'Not For Enrollment') {
             $tbMacForm->status = $request['status'];
+            $tbMacForm->role_id = auth()->user()->role_id;
             $tbMacForm->save();
             $request['submitted_by'] = auth()->user()->id;
             $request['role_id'] = auth()->user()->role_id;
             Recommendation::create($request);
         } else {
             $tbMacForm->status = $request['status'];
+            $tbMacForm->role_id = auth()->user()->role_id;
             $tbMacForm->save();
             $request['submitted_by'] = auth()->user()->id;
             $request['role_id'] = auth()->user()->role_id;
@@ -231,6 +238,7 @@ class EnrollmentRegimentController extends Controller
             Recommendation::create($request);
         } else {
             $tbMacForm->status = 'Referred to Regional';
+            $tbMacForm->role_id = auth()->user()->role_id;
             $tbMacForm->save();
             $request['submitted_by'] = auth()->user()->id;
             $request['role_id'] = auth()->user()->role_id;
