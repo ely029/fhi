@@ -115,3 +115,11 @@ function provinces()
         'Zamboanga Sibugay',
     ];
 }
+
+function roleNameById()
+{
+    return [
+        3 => 'HealthCareWorker',
+        4 => 'RegionalSecretariat',
+    ];
+}

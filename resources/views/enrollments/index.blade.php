@@ -173,7 +173,7 @@
 
       <div class="section__content">
         <ul class="tabs__list tabs__list--table">
-          <li class="tabs__item tabs__item--current">Pending ({{ $newEnrollment->count() }})</li>
+          <li class="tabs__item tabs__item--current">Pending ({{ $newEnrollments->count() }})</li>
           <li class="tabs__item">All Enrollments ({{ $allEnrollment->count() }})</li>
         </ul>
         <div class="tabs__details tabs__details--active">
@@ -192,7 +192,7 @@
               </tr>
             </thead>
             <tbody>
-              @foreach($newEnrollment as $enrollment)
+              @foreach($newEnrollments as $enrollment)
                 <tr class="table__row js-view" data-href="{{ url('enrollments/'.$enrollment->id) }}">
                   <td class="table__details">{{ $enrollment->presentation_number }}</td>
                   <td class="table__details">{{ $enrollment->patient->facility_code }}</td>

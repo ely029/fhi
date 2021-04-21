@@ -39,13 +39,17 @@ Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard', 'middleware' 
 Route::get('/', [HomeController::class, 'index']);
 Route::group(['middleware' => 'auth'], static function () {
     Route::get('/enrollments', [EnrollmentRegimentController::class, 'index']);
-    Route::get('/enrollments/create', [EnrollmentRegimentController::class, 'create']);
+
+    Route::group(['middleware' => 'health_care_worker'], static function () {
+        Route::get('/enrollments/create', [EnrollmentRegimentController::class, 'create']);
+        Route::post('/enrollments', [EnrollmentRegimentController::class, 'store']);
+        Route::post('resubmit/enrollment/{tbMacForm}', [ResubmitEnrollmentController::class, 'resubmit']);
+    });
+
     Route::get('/enrollments/{tbMacForm}', [EnrollmentRegimentController::class,'show']);
 
     Route::get('/enrollments/{tbMacForm}/{fileName}/attachment', [EnrollmentRegimentController::class,'showAttachment']);
     Route::get('/enrollments/{tbMacForm}/{fileName}/download', [EnrollmentRegimentController::class,'downloadAttachment']);
-    Route::post('/enrollments', [EnrollmentRegimentController::class, 'store']);
     Route::post('/enrollments/sent-recommendation', 'App\Http\Controllers\EnrollmentRegimentController@sendRecommendation')->name('enrolment.sendRecommendation');
     Route::get('resubmit/enrollment/{tbMacForm}', [ResubmitEnrollmentController::class, 'edit']);
-    Route::post('resubmit/enrollment/{tbMacForm}', [ResubmitEnrollmentController::class, 'resubmit']);
 });
