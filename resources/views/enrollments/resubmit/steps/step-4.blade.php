@@ -26,8 +26,8 @@
           <label class="form__sublabel">Nodule
             <input class="form__trigger" type="checkbox" name="cxr_reading[]" value="Nodule" {{ $tbMacForm->laboratoryResults->cxr_reading ? (in_array('Nodule', $tbMacForm->laboratoryResults->cxr_reading) ? 'checked' : '') : ''}}/>
             <span class="form__checkmark"> </span></label>
-          <label class="form__sublabel">Milliary TB
-            <input class="form__trigger" type="checkbox" name="cxr_reading[]" value="Milliary TB" {{ $tbMacForm->laboratoryResults->cxr_reading ? (in_array('Milliary TB', $tbMacForm->laboratoryResults->cxr_reading) ? 'checked' : '') : ''}}/>
+          <label class="form__sublabel">Miliary TB
+            <input class="form__trigger" type="checkbox" name="cxr_reading[]" value="Miliary TB" {{ $tbMacForm->laboratoryResults->cxr_reading ? (in_array('Miliary TB', $tbMacForm->laboratoryResults->cxr_reading) ? 'checked' : '') : ''}}/>
             <span class="form__checkmark"> </span></label>
           <label class="form__sublabel">Intrathoracic Lymphadenopathy
             <input class="form__trigger" type="checkbox" name="cxr_reading[]" value="Intrathoracic Lymphadenopathy" {{ $tbMacForm->laboratoryResults->cxr_reading ? (in_array('Intrathoracic Lymphadenopathy', $tbMacForm->laboratoryResults->cxr_reading) ? 'checked' : '') : ''}}/>

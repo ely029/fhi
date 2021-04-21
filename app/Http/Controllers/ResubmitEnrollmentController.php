@@ -18,7 +18,6 @@ class ResubmitEnrollmentController extends Controller
         return view('enrollments.resubmit.form')
             ->with('tbMacForm', $tbMacForm);
     }
-
     public function show(TBMacForm $tbMacForm)
     {
         $tbMacForm = $tbMacForm->load(['submittedBy','enrollmentForm','bacteriologicalResults','laboratoryResults','attachments', 'patient']);
@@ -55,7 +54,6 @@ class ResubmitEnrollmentController extends Controller
                 $this->createBacteriologicalStatus($request, $tbMacForm, $status);
             }
         }
-
         return redirect('enrollments/'.$tbMacForm->id)->with([
             'alert.message' => 'Enrollment resubmitted successfully.',
         ]);
