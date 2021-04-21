@@ -167,6 +167,10 @@
                  
           
                   <label class="form__label" for="">Result</label>
+                  <label class="form__sublabel" >MTB Detected, Second-line Injectable Resistance Not Detected
+                    <input class="form__trigger lpa-field" type="checkbox" name="lpa-0-result[]" value="MTB Detected, Second-line Injectable Resistance Not Detected" />
+                    <span class="form__checkmark"> </span>
+                  </label>
                   <label class="form__sublabel">MTB Detected, Fluoroquinolone Resistance Detected
                     <input class="form__trigger lpa-field" type="checkbox" name="lpa-0-result[]" value="MTB Detected, Fluoroquinolone Resistance Detected" />
                     <span class="form__checkmark"></span>
@@ -213,10 +217,6 @@
                   </label>
                   <label class="form__sublabel" >MTB Not Detected
                     <input class="form__trigger lpa-field" type="checkbox" name="lpa-0-result[]" value="MTB Not Detected" />
-                    <span class="form__checkmark"> </span>
-                  </label>
-                  <label class="form__sublabel" >MTB Detected, Second-line Injectable Resistance Not Detected
-                    <input class="form__trigger lpa-field" type="checkbox" name="lpa-0-result[]" value="MTB Detected, Second-line Injectable Resistance Not Detected" />
                     <span class="form__checkmark"> </span>
                   </label>
                   <label class="form__sublabel" >Invalid

@@ -55,6 +55,10 @@ class EnrollmentRegimentController extends Controller
             return $item->status === 'For Enrollment';
         });
 
+        $enrollmentSubmittedByRTBMACChair = $enrollments->filter(function ($item) {
+            return $item->role_id === 7;
+        });
+
         $withRecommendation = Recommendation::with('tbMacForms')->where('recommendation', '<>', null)->get();
 
         return view('enrollments.index')
@@ -69,6 +73,7 @@ class EnrollmentRegimentController extends Controller
             ->with('referredToNational', $referredToNational)
             ->with('withRecommendations', $withRecommendation)
             ->with('referredToNationalChair', $referredToNationalChair)
+            ->with('enrollmentSubmittedByrtbmacChair', $enrollmentSubmittedByRTBMACChair)
             ->with('newEnrollments', $newEnrollment);
     }
 
@@ -204,6 +209,7 @@ class EnrollmentRegimentController extends Controller
     {
         $tbMacForm = TBMacForm::find($request['form_id']);
         $tbMacForm->status = 'Referred to national chair';
+        $tbMacForm->role_id = auth()->user()->role_id;
         $tbMacForm->save();
         $request['submitted_by'] = auth()->user()->id;
         $request['role_id'] = auth()->user()->role_id;
