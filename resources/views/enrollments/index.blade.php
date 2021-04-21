@@ -561,7 +561,7 @@
       <div class="section__content">
         <ul class="tabs__list tabs__list--table">
           <li class="tabs__item tabs__item--current">Referred Enrolments ({{ $referredToNationalChair->count() }})</li>
-          <li class="tabs__item">All Enrollments ({{ $enrollmentSubmittedByrtbmacChair->count() }})</li>
+          <li class="tabs__item">All Enrollments ({{ $enrollmentSubmittedByrtbmacChair->tbMacForms->count() }})</li>
         </ul>
         <div class="tabs__details tabs__details--active">
           <table class="table table--filter js-table">
@@ -579,15 +579,15 @@
             <tbody>
               @foreach($referredToNationalChair as $enrollment)
               <tr class="table__row js-view" data-href="{{ url('enrollments/'.$enrollment->id) }}">
-                  <td class="table__details">{{ $enrollment->presentation_number }}</td>
-                  <td class="table__details">{{ empty($enrollment->patient->facility_code) ? '' : $enrollment->patient->facility_code}}</td>
-                  <td class="table__details">NCR - {{ empty($enrollment->patient->province) ? '' : $enrollment->patient->province}}</td>
-                  <td class="table__details">{{ empty($enrollment->patient->code) ? '' : $enrollment->patient->code}}</td>
+                  <td class="table__details">{{ $enrollment->tbMacForms->patient->presentation_number }}</td>
+                  <td class="table__details">{{ empty($enrollment->tbMacForms->patient->facility_code) ? '' : $enrollment->tbMacForms->patient->facility_code}}</td>
+                  <td class="table__details">NCR - {{ empty($enrollment->tbMacForms->patient->province) ? '' : $enrollment->tbMacForms->patient->province}}</td>
+                  <td class="table__details">{{ empty($enrollment->tbMacForms->patient->code) ? '' : $enrollment->tbMacForms->patient->code}}</td>
                   <td class="table__details">
-                  {{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility}}
+                  {{ empty($enrollment->tbMacForms->enrollmentForm->drug_susceptibility) ? '' : $enrollment->tbMacForms->enrollmentForm->drug_susceptibility}}
                   </td>
-                  <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
-                  <td class="table__details">{{ $enrollment->status }}</td>
+                  <td class="table__details">{{ $enrollment->tbMacForms->created_at->format('M d, Y')}}</td>
+                  <td class="table__details">{{ $enrollment->tbMacForms->status }}</td>
                 </tr>
               @endforeach
             </tbody>

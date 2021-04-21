@@ -331,10 +331,17 @@
                       return $item->role_id === 4 || $item->role_id === 6;
               });
           @endphp
+
+          @php
+            $recommendations3 = $tbMacForm->recommendations;
+            $nationalTBMacRecommendations = $recommendations3->filter(function($item){
+                      return $item->role_id === 6;
+              });
+          @endphp
          @if (Auth::user()->role_id == 7)
         <form class="form form--half" action="">
             <h2 class="section__heading">Remarks | Recommendations</h2>
-            @foreach($recommendations as $recommendation)
+            @foreach($nationalTBMacRecommendations as $recommendation)
             <div class="form__container form__container--remarks">
               <img class="image image--user" src="{{ asset('assets\app\img\icon-user.png')}}" alt="user icon" />
               <div class="form__container">
@@ -480,7 +487,7 @@
         @endif
         @php
             $nationalChairRecommendations = $recommendations->filter(function($item){
-                      return $item->role_id === 6;
+                      return $item->role_id === 6 || $item->role_id === 7;
               });
           @endphp
         @if(auth()->user()->role_id === 8)
