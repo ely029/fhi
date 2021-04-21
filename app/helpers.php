@@ -116,7 +116,8 @@ function provinces()
     ];
 }
 
-function roleNameById() {
+function roleNameById()
+{
     return [
         3 => 'HealthCareWorker',
         4 => 'RegionalSecretariat',

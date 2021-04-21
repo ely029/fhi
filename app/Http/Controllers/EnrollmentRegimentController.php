@@ -26,7 +26,7 @@ class EnrollmentRegimentController extends Controller
         if (auth()->user()->role_id === 4) {
             return $this->getRegionalSecretariatIndex($enrollments);
         }
-        
+
         $referredToRegional = $enrollments->filter(function ($item) {
             return $item->status === 'Referred to Regional';
         });
@@ -42,7 +42,6 @@ class EnrollmentRegimentController extends Controller
         $referredToNationalChair = $enrollments->filter(function ($item) {
             return $item->status === 'Referred to national chair';
         });
-
 
         $enrollmentSubmittedByRTBMACChair = $enrollments->filter(function ($item) {
             return $item->role_id === 7;
@@ -309,8 +308,9 @@ class EnrollmentRegimentController extends Controller
             'alert.message' => 'Recommendation successfully sent',
         ]);
     }
-    
-    private function getDynamicQuery() {
+
+    private function getDynamicQuery()
+    {
         $condition = 'submitted_by';
         $value = auth()->user()->id;
 
@@ -329,8 +329,8 @@ class EnrollmentRegimentController extends Controller
         ];
     }
 
-    private function getHealthCareWorkerIndex($enrollments) {
-
+    private function getHealthCareWorkerIndex($enrollments)
+    {
         $forEnrollments = $enrollments->filter(function ($item) {
             return $item->status === 'For Enrollment';
         });
@@ -347,7 +347,6 @@ class EnrollmentRegimentController extends Controller
             return $item->status === 'Not For Referral';
         });
 
-        
         return view('enrollments.index')
             ->with('enrollments', $enrollments)
             ->with('forEnrollments', $forEnrollments)
@@ -356,8 +355,8 @@ class EnrollmentRegimentController extends Controller
             ->with('notForReferrals', $notForReferrals);
     }
 
-    private function getRegionalSecretariatIndex($enrollments) {
-
+    private function getRegionalSecretariatIndex($enrollments)
+    {
         $newEnrollments = $enrollments->filter(function ($item) {
             return $item->status === 'New Enrollment';
         });

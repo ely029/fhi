@@ -45,7 +45,7 @@ Route::group(['middleware' => 'auth'], static function () {
         Route::post('/enrollments', [EnrollmentRegimentController::class, 'store']);
         Route::post('resubmit/enrollment/{tbMacForm}', [ResubmitEnrollmentController::class, 'resubmit']);
     });
-    
+
     Route::get('/enrollments/{tbMacForm}', [EnrollmentRegimentController::class,'show']);
 
     Route::get('/enrollments/{tbMacForm}/{fileName}/attachment', [EnrollmentRegimentController::class,'showAttachment']);
