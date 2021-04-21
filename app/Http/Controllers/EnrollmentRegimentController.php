@@ -167,6 +167,14 @@ class EnrollmentRegimentController extends Controller
         }
         return response()->file(public_path('assets/app/img/placeholder.jpg'));
     }
+
+    public function downloadAttachment(TBMacForm $tbMacForm, $fileName)
+    {
+        $path = 'private/enrollments/'.$tbMacForm->presentation_number.'/'.$fileName;
+        if (\Storage::exists($path)) {
+            return \Storage::download($path, $tbMacForm->presentation_number.'-'.$fileName);
+        }
+    }
     private function healthWorkerRecommendation($request)
     {
         $tbMacForm = TBMacForm::find($request['form_id']);

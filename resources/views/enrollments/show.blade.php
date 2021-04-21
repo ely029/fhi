@@ -310,7 +310,9 @@
                     @php
                       $fileName = ($key+1).'.'.$attachment->extension;
                     @endphp
+                    <a href="{{ url('enrollments/'.$tbMacForm->id.'/'.$fileName.'/download') }}">
                     <img class="image" src="{{ url('enrollments/'.$tbMacForm->id.'/'.$fileName.'/attachment') }}" alt="Placeholder" />
+                    </a>
                   </li>
                 @endforeach
               </ul>
