@@ -55,6 +55,14 @@ class EnrollmentRegimentController extends Controller
             return $item->status === 'For Enrollment';
         });
 
+        $enrollmentSubmittedByRTBMACChair = $enrollments->filter(function ($item) {
+            return $item->role_id === 7;
+        });
+
+        $enrollmentSubmittedToRegionalChair = $enrollments->filter(function ($item) {
+            return $item->role_id === 3 || $item->role_id === 4;
+        });
+
         $withRecommendation = Recommendation::with('tbMacForms')->where('recommendation', '<>', null)->get();
 
         return view('enrollments.index')
@@ -69,6 +77,8 @@ class EnrollmentRegimentController extends Controller
             ->with('referredToNational', $referredToNational)
             ->with('withRecommendations', $withRecommendation)
             ->with('referredToNationalChair', $referredToNationalChair)
+            ->with('enrollmentSubmittedByrtbmacChair', $enrollmentSubmittedByRTBMACChair)
+            ->with('enrollmentSubmittedToRegionalChair', $enrollmentSubmittedToRegionalChair)
             ->with('newEnrollments', $newEnrollment);
     }
 
@@ -79,7 +89,8 @@ class EnrollmentRegimentController extends Controller
 
     public function show(TBMacForm $tbMacForm)
     {
-        $tbMacForm = $tbMacForm->load(['submittedBy','enrollmentForm','bacteriologicalResults','laboratoryResults','attachments', 'patient']);
+        $tbMacForm = $tbMacForm->load(['submittedBy','enrollmentForm','bacteriologicalResults','attachments', 'patient']);
+
         return view('enrollments.show')
             ->with('tbMacForm', $tbMacForm);
     }
@@ -92,7 +103,7 @@ class EnrollmentRegimentController extends Controller
         $request['status'] = 'New Enrollment';
         $request['role_id'] = 4;
         $request['region'] = 'NCR';
-        $request['cxr_reading'] = isset($request['cxr_reading']) ? json_encode($request['cxr_reading']) : null;
+        $request['cxr_reading'] = $request['cxr_reading'] ?? null;
         // $validator = Validator::make($request, [
         //     'role_id' => 'required',
         // ]);
@@ -155,28 +166,6 @@ class EnrollmentRegimentController extends Controller
         }
     }
 
-    private function healthWorkerRecommendation($request)
-    {
-        $tbMacForm = TBMacForm::find($request['form_id']);
-        if ($request['status'] === 'Not For Enrollment') {
-            $tbMacForm->status = $request['status'];
-            $tbMacForm->save();
-            $request['submitted_by'] = auth()->user()->id;
-            $request['role_id'] = auth()->user()->role_id;
-            Recommendation::create($request);
-        } else {
-            $tbMacForm->status = $request['status'];
-            $tbMacForm->save();
-            $request['submitted_by'] = auth()->user()->id;
-            $request['role_id'] = auth()->user()->role_id;
-            Recommendation::create($request);
-        }
-
-        return redirect('enrollments/'.$request['form_id'])->with([
-            'alert.message' => 'Recommendation successfully sent',
-        ]);
-    }
-
     public function showAttachment(TBMacForm $tbMacForm, $fileName)
     {
         $path = 'private/enrollments/'.$tbMacForm->presentation_number.'/'.$fileName;
@@ -188,6 +177,37 @@ class EnrollmentRegimentController extends Controller
             return response(\Storage::get($path))->header('Content-Type', 'image/jpeg');
         }
         return response()->file(public_path('assets/app/img/placeholder.jpg'));
+    }
+
+    public function downloadAttachment(TBMacForm $tbMacForm, $fileName)
+    {
+        $path = 'private/enrollments/'.$tbMacForm->presentation_number.'/'.$fileName;
+        if (\Storage::exists($path)) {
+            return \Storage::download($path, $tbMacForm->presentation_number.'-'.$fileName);
+        }
+    }
+    private function healthWorkerRecommendation($request)
+    {
+        $tbMacForm = TBMacForm::find($request['form_id']);
+        if ($request['status'] === 'Not For Enrollment') {
+            $tbMacForm->status = $request['status'];
+            $tbMacForm->role_id = auth()->user()->role_id;
+            $tbMacForm->save();
+            $request['submitted_by'] = auth()->user()->id;
+            $request['role_id'] = auth()->user()->role_id;
+            Recommendation::create($request);
+        } else {
+            $tbMacForm->status = $request['status'];
+            $tbMacForm->role_id = auth()->user()->role_id;
+            $tbMacForm->save();
+            $request['submitted_by'] = auth()->user()->id;
+            $request['role_id'] = auth()->user()->role_id;
+            Recommendation::create($request);
+        }
+
+        return redirect('enrollments/'.$request['form_id'])->with([
+            'alert.message' => 'Recommendation successfully sent',
+        ]);
     }
     private function ntbMacChairRecommendation($request)
     {
@@ -204,6 +224,7 @@ class EnrollmentRegimentController extends Controller
     {
         $tbMacForm = TBMacForm::find($request['form_id']);
         $tbMacForm->status = 'Referred to national chair';
+        $tbMacForm->role_id = auth()->user()->role_id;
         $tbMacForm->save();
         $request['submitted_by'] = auth()->user()->id;
         $request['role_id'] = auth()->user()->role_id;
@@ -225,6 +246,7 @@ class EnrollmentRegimentController extends Controller
             Recommendation::create($request);
         } else {
             $tbMacForm->status = 'Referred to Regional';
+            $tbMacForm->role_id = auth()->user()->role_id;
             $tbMacForm->save();
             $request['submitted_by'] = auth()->user()->id;
             $request['role_id'] = auth()->user()->role_id;

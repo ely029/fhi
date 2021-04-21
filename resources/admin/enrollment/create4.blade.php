@@ -27,7 +27,7 @@
                 <label class="form__sublabel">Cavitary<input class="form__trigger" type="checkbox" /><span class="form__checkmark"> </span></label>
                 <label class="form__sublabel">Infilitrates<input class="form__trigger" type="checkbox" /><span class="form__checkmark"> </span></label>
                 <label class="form__sublabel">Nodule<input class="form__trigger" type="checkbox" /><span class="form__checkmark"> </span></label>
-                <label class="form__sublabel">Milliary TB<input class="form__trigger" type="checkbox" /><span class="form__checkmark"> </span></label>
+                <label class="form__sublabel">Miliary TB<input class="form__trigger" type="checkbox" /><span class="form__checkmark"> </span></label>
                 <label class="form__sublabel">Intrathoracic Lymphadenopathy<input class="form__trigger" type="checkbox" /><span class="form__checkmark"> </span></label>
               </div>
               <div class="grid__item">

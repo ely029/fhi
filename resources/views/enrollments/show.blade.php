@@ -94,6 +94,9 @@
                 <select id="refer" class="form__input form__input--select">
                   <option value="6">For Enrollment</option>
                   <option value="7">Not for Enrollment</option>
+                  @if($tbMacForm->status == 'Not For Referral' || $tbMacForm->status == 'Need Further Details')
+                    <option value="Resubmit Enrollment">Resubmit Enrollment</option>
+                  @endif
                 </select>
                 <div class="triangle triangle--down"></div>
                 <label class="form__label" for="">Action</label>
@@ -246,17 +249,22 @@
               <div class="grid grid--two">
                 <div class="form__content">
                     <span class="form__text">
-                        {{ $tbMacForm->laboratoryResults->cxr_date ? $tbMacForm->laboratoryResults->cxr_date->format('m/d/y') : '' }}</span>
+                        {{ empty($tbMacForm->laboratoryResults->cxr_date) ? ''  : $tbMacForm->laboratoryResults->cxr_date->format('m/d/y') }}</span>
                     <label class="form__label" for="">CXR date</label>
                 </div>
                 <div class="form__content">
                   <span class="form__text">
-               {{-- {{ $tbMacForm->laboratoryResults->cxr_result }}
-              @if($cxrReadings = $tbMacForm->laboratoryResults->cxr_reading)
-                  @foreach($cxrReadings as $cxrReading)
-                      {{ $cxrReading }} </br>
-                  @endforeach
-              @endif --}}
+                {{ $tbMacForm->laboratoryResults->cxr_result }}
+                <br/>
+                @if($tbMacForm->laboratoryResults->cxr_reading)
+                    @foreach($tbMacForm->laboratoryResults->cxr_reading as $cxrReading)
+                      {{ $cxrReading }}
+                    @endforeach
+                @endif
+                {{-- @if($cxrReadings = empty($tbMacForm->laboratoryResults->cxr_reading) ? '' : $tbMacForm->laboratoryResults->cxr_reading)
+                        {{ $cxrReadings }}
+                    
+                @endif --}}
                   </span>
                   <label class="form__label" for="">CXR result</label>
                 </div>
@@ -264,7 +272,7 @@
               <div class="grid grid--two">
                 <div class="form__content">
                     <span class="form__text">
-                        {{ $tbMacForm->laboratoryResults->ct_scan_date ? $tbMacForm->laboratoryResults->ct_scan_date->format('m/d/y') : '' }}</span>
+                        {{ empty($tbMacForm->laboratoryResults->ct_scan_date) ? '' : $tbMacForm->laboratoryResults->ct_scan_date->format('m/d/y') }}</span>
                     <label class="form__label" for="">CT Scan date</label>
                 </div>
                 <div class="form__content">
@@ -276,7 +284,7 @@
               </div>
               <div class="grid grid--two">
                 <div class="form__content">
-                    <span class="form__text">{{ $tbMacForm->laboratoryResults->ultrasound_date ? $tbMacForm->laboratoryResults->ultrasound_date->format('m/d/y') : '' }}</span>
+                    <span class="form__text">{{ empty($tbMacForm->laboratoryResults->ultrasound_date) ? '' : $tbMacForm->laboratoryResults->ultrasound_date->format('m/d/y') }}</span>
                     <label class="form__label" for="">Ultrasound date</label>
                 </div>
                 <div class="form__content">
@@ -288,12 +296,12 @@
               </div>
               <div class="grid grid--two">
                 <div class="form__content">
-                    <span class="form__text">{{ $tbMacForm->laboratoryResults->hispathological_date ? $tbMacForm->laboratoryResults->hispathological_date->format('m/d/y') : '' }}</span>
+                    <span class="form__text">{{ empty($tbMacForm->laboratoryResults->histopathological_date) ? '' : $tbMacForm->laboratoryResults->histopathological_date->format('m/d/y') }}</span>
                     <label class="form__label" for="">Histopatholigical date</label>
                 </div>
                 <div class="form__content">
                   <span class="form__text">
-                    {{ $tbMacForm->laboratoryResults->hispathological_result }}
+                    {{ empty($tbMacForm->laboratoryResults->histopathological_result) ? '' : $tbMacForm->laboratoryResults->histopathological_result }}
                   </span>
                   <label class="form__label" for="">Histopatholigical result</label>
                 </div>
@@ -307,7 +315,9 @@
                     @php
                       $fileName = ($key+1).'.'.$attachment->extension;
                     @endphp
+                    <a href="{{ url('enrollments/'.$tbMacForm->id.'/'.$fileName.'/download') }}">
                     <img class="image" src="{{ url('enrollments/'.$tbMacForm->id.'/'.$fileName.'/attachment') }}" alt="Placeholder" />
+                    </a>
                   </li>
                 @endforeach
               </ul>
@@ -321,7 +331,7 @@
                       return $item->role_id === 4 || $item->role_id === 6;
               });
           @endphp
-         @if (Auth::user()->role_id === 4 || Auth::user()->role_id == 5 || Auth::user()->role_id == 6 || Auth::user()->role_id == 7 || Auth::user()->role_id == 8)
+         @if (Auth::user()->role_id == 7)
         <form class="form form--half" action="">
             <h2 class="section__heading">Remarks | Recommendations</h2>
             @foreach($recommendations as $recommendation)
@@ -348,10 +358,135 @@
             @endforeach
           </form>
         @endif
+        @php
+            $recommendations1 = $tbMacForm->recommendations;
+            $secretariatrecommendations = $recommendations1->filter(function($item){
+                      return $item->role_id === 3;
+              });
+          @endphp
+        @if(auth()->user()->role_id === 4)
+        <form class="form form--half" action="">
+          <h2 class="section__heading">Remarks | Recommendations</h2>
+          @foreach($secretariatrecommendations as $secretariat)
+          <div class="form__container form__container--remarks">
+            <img class="image image--user" src="{{ asset('assets\app\img\icon-user.png')}}" alt="user icon" />
+            <div class="form__container">
+              <div class="grid grid--two">
+                <h2 class="section__heading section__heading--healthworker">{{ $secretariat->users->name}}<span class="form__label">{{ $secretariat->users->role->name }} | [Region]</span></h2>
+                <label class="form__label">{{ $secretariat->created_at->format('d M, Y')}}</label>
+              </div>
+              <div class="form__container form__container--remarks form__container--actions">
+                <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
+                
+                <div class="form__content"><span class="form__text form__text--green">{{$secretariat->status }}</span><label class="form__label form__label--green">Action</label></div>
+           
+              </div>
+              <span class="form__text">
+                {{$secretariat->recommendation }}
+              </span>
+            </div>
+          </div>
+          @endforeach
+        </form>
+        @endif
+
+        @php
+            $recommendations1 = $tbMacForm->recommendations;
+            $regionalTBMacChairRecommendations = $recommendations1->filter(function($item){
+                      return $item->role_id === 3 || $item->role_id === 4 || $item->role_id === 5 || $item->role_id === 6;
+              });
+          @endphp
+        @if(auth()->user()->role_id === 6)
+        <form class="form form--half" action="">
+          <h2 class="section__heading">Remarks | Recommendations</h2>
+          @foreach($regionalTBMacChairRecommendations as $secretariat)
+          <div class="form__container form__container--remarks">
+            <img class="image image--user" src="{{ asset('assets\app\img\icon-user.png')}}" alt="user icon" />
+            <div class="form__container">
+              <div class="grid grid--two">
+                <h2 class="section__heading section__heading--healthworker">{{ $secretariat->users->name}}<span class="form__label">{{ $secretariat->users->role->name }} | [Region]</span></h2>
+                <label class="form__label">{{ $secretariat->created_at->format('d M, Y')}}</label>
+              </div>
+              <div class="form__container form__container--remarks form__container--actions">
+                <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
+                
+                <div class="form__content"><span class="form__text form__text--green">{{$secretariat->status }}</span><label class="form__label form__label--green">Action</label></div>
+           
+              </div>
+              <span class="form__text">
+                {{$secretariat->recommendation }}
+              </span>
+            </div>
+          </div>
+          @endforeach
+        </form>
+        @endif
+
+        @php
+            $recommendations1 = $tbMacForm->recommendations;
+            $regionalrecommendations = $recommendations1->filter(function($item){
+                      return $item->role_id === 3 || $item->role_id === 4 || $item->role_id === 5 || $item->role_id === 6 || $item->role_id === 7 || $item->role_id === 8;
+              });
+          @endphp
+        @if(auth()->user()->role_id === 5)
+        <form class="form form--half" action="">
+          <h2 class="section__heading">Remarks | Recommendations</h2>
+          @foreach($regionalrecommendations as $secretariat)
+          <div class="form__container form__container--remarks">
+            <img class="image image--user" src="{{ asset('assets\app\img\icon-user.png')}}" alt="user icon" />
+            <div class="form__container">
+              <div class="grid grid--two">
+                <h2 class="section__heading section__heading--healthworker">{{ $secretariat->users->name}}<span class="form__label">{{ $secretariat->users->role->name }} | [Region]</span></h2>
+                <label class="form__label">{{ $secretariat->created_at->format('d M, Y')}}</label>
+              </div>
+              <div class="form__container form__container--remarks form__container--actions">
+                <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
+                
+                <div class="form__content"><span class="form__text form__text--green">{{$secretariat->status }}</span><label class="form__label form__label--green">Action</label></div>
+           
+              </div>
+              <span class="form__text">
+                {{$secretariat->recommendation }}
+              </span>
+            </div>
+          </div>
+          @endforeach
+        </form>
+        @endif
         @if(auth()->user()->role_id === 3)
         <form class="form form--half" action="">
           <h2 class="section__heading">Remarks | Recommendations</h2>
           @foreach($forHealthCareWorkerRecommendations as $forHealthCareWorkerRecommendation)
+          <div class="form__container form__container--remarks">
+            <img class="image image--user" src="{{ asset('assets\app\img\icon-user.png')}}" alt="user icon" />
+            <div class="form__container">
+              <div class="grid grid--two">
+                <h2 class="section__heading section__heading--healthworker">{{ $forHealthCareWorkerRecommendation->users->name}}<span class="form__label">{{ $forHealthCareWorkerRecommendation->users->role->name }} | [Region]</span></h2>
+                <label class="form__label">{{ $forHealthCareWorkerRecommendation->created_at->format('d M, Y')}}</label>
+              </div>
+              <div class="form__container form__container--remarks form__container--actions">
+                <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
+                
+                <div class="form__content"><span class="form__text form__text--green">{{$forHealthCareWorkerRecommendation->status }}</span><label class="form__label form__label--green">Action</label></div>
+           
+              </div>
+              <span class="form__text">
+                {{$forHealthCareWorkerRecommendation->recommendation }}
+              </span>
+            </div>
+          </div>
+          @endforeach
+        </form>
+        @endif
+        @php
+            $nationalChairRecommendations = $recommendations->filter(function($item){
+                      return $item->role_id === 6;
+              });
+          @endphp
+        @if(auth()->user()->role_id === 8)
+        <form class="form form--half" action="">
+          <h2 class="section__heading">Remarks | Recommendations</h2>
+          @foreach($nationalChairRecommendations as $forHealthCareWorkerRecommendation)
           <div class="form__container form__container--remarks">
             <img class="image image--user" src="{{ asset('assets\app\img\icon-user.png')}}" alt="user icon" />
             <div class="form__container">

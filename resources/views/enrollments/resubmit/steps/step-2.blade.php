@@ -2,26 +2,27 @@
     <div class="form__container form-step-2">
       <h2 class="section__heading">Case information 1</h2>
       <div class="form__content form-group">
-        <textarea class="form__input form__input--message" name="treatment_history" required placeholder="Treatment Started ➞ Name of Treatment Unit ➞ Treatment Regimen (Drugs and Duration) ➞ Outcome"></textarea>
+        <textarea class="form__input form__input--message" name="treatment_history" required placeholder="Treatment Started ➞ Name of Treatment Unit ➞ Treatment Regimen (Drugs and Duration) ➞ Outcome">{{ $tbMacForm->enrollmentForm->treatment_history }}</textarea>
         <label class="form__label" for="">Treatment History</label>
         <div class="help-block with-errors"></div>
       </div>
       <div class="grid grid--two">
         <div class="form__content">
-          <select class="form__input form__input--select" name="registration_group">
+          <input type="hidden" id="registration_group" value="{{ $tbMacForm->enrollmentForm->registration_group }}">
+          <select class="form__input form__input--select" name="registration_group" id="registration-group-select">
             <option>New</option>
             <option>Relapse</option>
             <option>Treatment After Lost to Follow-up (TALF)</option>
             <option>Treatment After Failure (TAF)</option>
-            <option>Previous Treatment Outcome</option>
-            <option>Unknown (PTOU)</option>
+            <option>Previous Treatment Outcome Unknown (PTOU)</option>
             <option>Unknown History</option>
           </select>
           <div class="triangle triangle--down"></div>
           <label class="form__label" for="">Registration group</label>
         </div>
         <div class="form__content">
-          <select class="form__input form__input--select" name="risk_factor">
+          <input type="hidden" id="risk_factor" value="{{ $tbMacForm->enrollmentForm->risk_factor }}">
+          <select class="form__input form__input--select" name="risk_factor" id="risk_factor-select">
             <option>Retreatment</option>
             <option>Close Contact of a Confirmed DR-TB</option>
             <option>Non-converter of a DS-TB Regimen</option>
@@ -35,6 +36,20 @@
       <h2 class="section__heading">Current bacteriological result</h2>
       <ul class="form__group">
         <li class="form__group-item">
+          @php
+            $bacteriologicalResults = $tbMacForm->bacteriologicalResults->filter(function ($item) {
+            return $item->type !== 'dst_from_other_lab';
+            })->map(function ($item) {
+                return [
+                    'name' => $item->name,
+                    'name_of_laboratory' => $item->name_of_laboratory,
+                    'date_collected' => $item->date_collected->format('d F Y'),
+                    'result' => $item->result,
+                ];
+            })->values();
+
+          @endphp
+          <input type="hidden" id="bacteriological_status" value="{{ json_encode($bacteriologicalResults) }}"> 
           <label class="form__sublabel" id="enroll1">Xpert MTB/RIF 
             <input class="form__trigger bacteriological-check" data-type="xpert_mtb_rif" id="js-toggle-enroll1" type="checkbox" />
             <span class="form__checkmark"></span>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\EnrollmentRegimentController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ResubmitEnrollmentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,6 +43,9 @@ Route::group(['middleware' => 'auth'], static function () {
     Route::get('/enrollments/{tbMacForm}', [EnrollmentRegimentController::class,'show']);
 
     Route::get('/enrollments/{tbMacForm}/{fileName}/attachment', [EnrollmentRegimentController::class,'showAttachment']);
+    Route::get('/enrollments/{tbMacForm}/{fileName}/download', [EnrollmentRegimentController::class,'downloadAttachment']);
     Route::post('/enrollments', [EnrollmentRegimentController::class, 'store']);
     Route::post('/enrollments/sent-recommendation', 'App\Http\Controllers\EnrollmentRegimentController@sendRecommendation')->name('enrolment.sendRecommendation');
+    Route::get('resubmit/enrollment/{tbMacForm}', [ResubmitEnrollmentController::class, 'edit']);
+    Route::post('resubmit/enrollment/{tbMacForm}', [ResubmitEnrollmentController::class, 'resubmit']);
 });
