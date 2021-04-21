@@ -13,7 +13,8 @@
             <option>Relapse</option>
             <option>Treatment After Lost to Follow-up (TALF)</option>
             <option>Treatment After Failure (TAF)</option>
-            <option>Previous Treatment Outcome Unknown (PTOU)</option>
+            <option>Previous Treatment Outcome</option>
+            <option>Unknown (PTOU)</option>
             <option>Unknown History</option>
           </select>
           <div class="triangle triangle--down"></div>
@@ -212,6 +213,10 @@
                   </label>
                   <label class="form__sublabel" >MTB Not Detected
                     <input class="form__trigger lpa-field" type="checkbox" name="lpa-0-result[]" value="MTB Not Detected" />
+                    <span class="form__checkmark"> </span>
+                  </label>
+                  <label class="form__sublabel" >MTB Detected, Second-line Injectable Resistance Not Detected
+                    <input class="form__trigger lpa-field" type="checkbox" name="lpa-0-result[]" value="MTB Detected, Second-line Injectable Resistance Not Detected" />
                     <span class="form__checkmark"> </span>
                   </label>
                   <label class="form__sublabel" >Invalid

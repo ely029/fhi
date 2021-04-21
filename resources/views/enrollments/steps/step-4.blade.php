@@ -26,8 +26,8 @@
           <label class="form__sublabel">Nodule
             <input class="form__trigger" type="checkbox" name="cxr_reading[]" value="Nodule" />
             <span class="form__checkmark"> </span></label>
-          <label class="form__sublabel">Milliary TB
-            <input class="form__trigger" type="checkbox" name="cxr_reading[]" value="Milliary TB"/>
+          <label class="form__sublabel">Miliary TB
+            <input class="form__trigger" type="checkbox" name="cxr_reading[]" value="Miliary TB"/>
             <span class="form__checkmark"> </span></label>
           <label class="form__sublabel">Intrathoracic Lymphadenopathy
             <input class="form__trigger" type="checkbox" name="cxr_reading[]" value="Intrathoracic Lymphadenopathy" />

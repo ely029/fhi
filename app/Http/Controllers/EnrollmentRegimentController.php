@@ -80,6 +80,7 @@ class EnrollmentRegimentController extends Controller
     public function show(TBMacForm $tbMacForm)
     {
         $tbMacForm = $tbMacForm->load(['submittedBy','enrollmentForm','bacteriologicalResults','attachments', 'patient']);
+
         return view('enrollments.show')
             ->with('tbMacForm', $tbMacForm);
     }
