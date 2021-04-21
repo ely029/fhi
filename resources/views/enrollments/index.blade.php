@@ -461,8 +461,8 @@
 
       <div class="section__content">
         <ul class="tabs__list tabs__list--table">
-          <li class="tabs__item tabs__item--current">Referred Enrolments ({{ $referredToNational->count() }})</li>
-          <li class="tabs__item">All Enrollments ({{ $allEnrollment->count() }})</li>
+          <li class="tabs__item tabs__item--current">Referred Enrolments ({{ $referred->count() }})</li>
+          <li class="tabs__item">All Enrollments ({{ $allEnrollments->count() }})</li>
         </ul>
         <div class="tabs__details tabs__details--active">
           <table class="table table--filter js-table">
@@ -478,8 +478,8 @@
               </tr>
             </thead>
             <tbody>
-              @if (!empty($referredToNational))
-              @foreach($referredToNational as $enrollment)
+              @if (!empty($referred))
+              @foreach($referred as $enrollment)
                 <tr class="table__row js-view" data-href="{{ url('enrollments/'.$enrollment->id) }}">
                   <td class="table__details">{{ $enrollment->presentation_number }}</td>
                   <td class="table__details">{{ empty($enrollment->patient['facility_code']) ? '' : $enrollment->patient['facility_code']}}</td>
@@ -508,8 +508,8 @@
               </tr>
             </thead>
             <tbody>
-            @if(!empty($allEnrollment))
-            @foreach($allEnrollment as $enrollment)
+            @if(!empty($allEnrollments))
+            @foreach($allEnrollments as $enrollment)
               <tr class="table__row js-view" data-href="{{ url('enrollments/'.$enrollment->id) }}">
               <td class="table__details">{{ $enrollment->presentation_number }}</td>
                   <td class="table__details">{{ empty($enrollment->patient['facility_code']) ? '' : $enrollment->patient['facility_code']}}</td>
