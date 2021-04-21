@@ -561,7 +561,7 @@
       <div class="section__content">
         <ul class="tabs__list tabs__list--table">
           <li class="tabs__item tabs__item--current">Referred Enrolments ({{ $referredToNationalChair->count() }})</li>
-          <li class="tabs__item">All Enrollments ({{ $enrollmentSubmittedByrtbmacChair->tbMacForms->count() }})</li>
+          <li class="tabs__item">All Enrollments ({{ $enrollmentSubmittedByrtbmacChair->count() }})</li>
         </ul>
         <div class="tabs__details tabs__details--active">
           <table class="table table--filter js-table">
