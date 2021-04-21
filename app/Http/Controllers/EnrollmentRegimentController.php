@@ -61,6 +61,7 @@ class EnrollmentRegimentController extends Controller
         });
 
         $withRecommendation = Recommendation::with('tbMacForms')->where('recommendation', '<>', null)->get();
+        $withRecommendationForRTBMac = Recommendation::with('tbMacForms')->where('status', 'For Enrollment')->where('status', 'Not For Enrollment')->where('status', 'Need Further Details')->get();
 
         return view('enrollments.index')
             ->with('enrollments', $enrollments)
@@ -71,6 +72,7 @@ class EnrollmentRegimentController extends Controller
             ->with('withRecommendations', $withRecommendation)
             ->with('referredToNationalChair', $referredToNationalChair)
             ->with('enrollmentSubmittedByrtbmacChair', $enrollmentSubmittedByRTBMACChair)
+            ->with('withRecommendationForRTBMac', $withRecommendationForRTBMac)
             ->with('enrollmentSubmittedToRegionalChair', $enrollmentSubmittedToRegionalChair);
     }
 
@@ -371,7 +373,7 @@ class EnrollmentRegimentController extends Controller
     private function getRegionalSecretariatIndex($enrollments)
     {
         $newEnrollments = $enrollments->filter(function ($item) {
-            return $item->status === 'New Enrollment';
+            return in_array($item->status, ['New Enrollment','For Enrollment','Not For Referral','Need Further Details']);
         });
 
         return view('enrollments.index')
