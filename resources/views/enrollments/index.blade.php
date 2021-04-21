@@ -44,7 +44,7 @@
                   <td class="table__details">{{ $enrollment->patient->code }}</td>
                   <td class="table__details">{{ $enrollment->patient->age }}</td>
                   <td class="table__details">{{ $enrollment->patient->gender }}</td>
-                  <td class="table__details">{{ $enrollment->drug_susceptibility }}</td>
+                  <td class="table__details">{{ empty($enrollment->drug_susceptibility) ? '' : $enrollment->drug_susceptibility }}</td>
                   <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
                   <td class="table__details">{{ $enrollment->status }}</td>
                 </tr>
@@ -72,7 +72,7 @@
                   <td class="table__details">{{ $enrollment->patient->code }}</td>
                   <td class="table__details">{{ $enrollment->patient->age }}</td>
                   <td class="table__details">{{ $enrollment->patient->gender }}</td>
-                  <td class="table__details">{{ $enrollment->drug_susceptibility }}</td>
+                  <td class="table__details">{{ empty($enrollment->drug_susceptibility) ? '' : $enrollment->drug_susceptibility }}</td>
                   <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
                   <td class="table__details">{{ $enrollment->status }}</td>
                 </tr>
@@ -100,7 +100,7 @@
                   <td class="table__details">{{ $enrollment->patient->code }}</td>
                   <td class="table__details">{{ $enrollment->patient->age }}</td>
                   <td class="table__details">{{ $enrollment->patient->gender }}</td>
-                  <td class="table__details">{{ $enrollment->drug_susceptibility }}</td>
+                  <td class="table__details">{{ empty($enrollment->drug_susceptibility) ? '' : $enrollment->drug_susceptibility }}</td>
                   <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
                   <td class="table__details">{{ $enrollment->status }}</td>
                 </tr>
@@ -128,7 +128,7 @@
                   <td class="table__details">{{ $enrollment->patient->code }}</td>
                   <td class="table__details">{{ $enrollment->patient->age }}</td>
                   <td class="table__details">{{ $enrollment->patient->gender }}</td>
-                  <td class="table__details">{{ $enrollment->drug_susceptibility }}</td>
+                  <td class="table__details">{{ empty($enrollment->drug_susceptibility) ? '' : $enrollment->drug_susceptibility }}</td>
                   <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
                   <td class="table__details">{{ $enrollment->status }}</td>
                 </tr>
@@ -156,7 +156,7 @@
                   <td class="table__details">{{ $enrollment->patient->code }}</td>
                   <td class="table__details">{{ $enrollment->patient->age }}</td>
                   <td class="table__details">{{ $enrollment->patient->gender }}</td>
-                  <td class="table__details">{{ $enrollment->drug_susceptibility }}</td>
+                  <td class="table__details">{{ empty($enrollment->drug_susceptibility) ? '' : $enrollment->drug_susceptibility }}</td>
                   <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
                   <td class="table__details">{{ $enrollment->status }}</td>
                 </tr>
