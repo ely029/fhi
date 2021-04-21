@@ -256,10 +256,15 @@
                   <span class="form__text">
                 {{ $tbMacForm->laboratoryResults->cxr_result }}
                 <br/>
-              @if($cxrReadings = empty($tbMacForm->laboratoryResults->cxr_reading) ? '' : $tbMacForm->laboratoryResults->cxr_reading)
-                      {{ $cxrReadings }}
-                  
-              @endif
+                @if($tbMacForm->laboratoryResults->cxr_reading)
+                    @foreach($tbMacForm->laboratoryResults->cxr_reading as $cxrReading)
+                      {{ $cxrReading }}
+                    @endforeach
+                @endif
+                {{-- @if($cxrReadings = empty($tbMacForm->laboratoryResults->cxr_reading) ? '' : $tbMacForm->laboratoryResults->cxr_reading)
+                        {{ $cxrReadings }}
+                    
+                @endif --}}
                   </span>
                   <label class="form__label" for="">CXR result</label>
                 </div>

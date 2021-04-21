@@ -103,7 +103,7 @@ class EnrollmentRegimentController extends Controller
         $request['status'] = 'New Enrollment';
         $request['role_id'] = 4;
         $request['region'] = 'NCR';
-        $request['cxr_reading'] = isset($request['cxr_reading']) ? json_encode($request['cxr_reading']) : null;
+        $request['cxr_reading'] = $request['cxr_reading'] ?? null;
         // $validator = Validator::make($request, [
         //     'role_id' => 'required',
         // ]);
