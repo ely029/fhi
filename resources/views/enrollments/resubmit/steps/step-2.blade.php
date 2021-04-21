@@ -43,13 +43,25 @@
                 return [
                     'name' => $item->name,
                     'name_of_laboratory' => $item->name_of_laboratory,
-                    'date_collected' => $item->date_collected->format('d F Y'),
+                    'date_collected' => $item->date_collected->format('Y-m-d'),
+                    'result' => $item->result,
+                ];
+            })->values();
+
+            $dstOtherLab = $tbMacForm->bacteriologicalResults->filter(function ($item) {
+            return $item->type == 'dst_from_other_lab';
+            })->map(function ($item) {
+                return [
+                    'name' => $item->name,
+                    'name_of_laboratory' => $item->name_of_laboratory,
+                    'date_collected' => $item->date_collected->format('Y-m-d'),
                     'result' => $item->result,
                 ];
             })->values();
 
           @endphp
           <input type="hidden" id="bacteriological_status" value="{{ json_encode($bacteriologicalResults) }}"> 
+          <input type="hidden" id="dst_other_lab" value="{{ json_encode($dstOtherLab) }}"> 
           <label class="form__sublabel" id="enroll1">Xpert MTB/RIF 
             <input class="form__trigger bacteriological-check" data-type="xpert_mtb_rif" id="js-toggle-enroll1" type="checkbox" />
             <span class="form__checkmark"></span>
