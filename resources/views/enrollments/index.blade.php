@@ -560,8 +560,8 @@
                   <td class="table__details">
                   {{ empty($enrollment->tbMacForms->enrollmentForm->drug_susceptibility) ? '' : $enrollment->tbMacForms->enrollmentForm->drug_susceptibility}}
                   </td>
-                  <td class="table__details">{{ $enrollment->tbMacForms->created_at->format('M d, Y')}}</td>
-                  <td class="table__details">{{ $enrollment->tbMacForms->status }}</td>
+                  <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
+                  <td class="table__details">{{ $enrollment->status }}</td>
                 </tr>
               @endforeach
             </tbody>
