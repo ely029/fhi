@@ -36,11 +36,18 @@ jQuery( document ).ready(function( $ ) {
             
         
     });
-
+    let lpaCheckBoxChecked  = false; 
     $(document).on('click',".lpa-field",function(){
+        if(lpaCheckBoxChecked){
+            return;
+        }
         if($(this).is(":checked")){
+            
             $('.lpa-field').removeAttr('required');
-        }else{
+            lpaCheckBoxChecked = true;
+        }
+        else
+        {
             $('.lpa-field').attr('required', true);
             
         }
