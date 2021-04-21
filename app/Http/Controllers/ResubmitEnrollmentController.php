@@ -11,7 +11,7 @@ class ResubmitEnrollmentController extends Controller
 {
     public function edit(TBMacForm $tbMacForm)
     {
-        if ($tbMacForm->status !== 'Not For Referral') {
+        if (! in_array($tbMacForm->status, ['Not For Referral','Need Further Details'])) {
             abort(403);
         }
 
