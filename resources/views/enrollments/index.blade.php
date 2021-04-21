@@ -553,12 +553,12 @@
             <tbody>
               @foreach($pending as $enrollment)
               <tr class="table__row js-view" data-href="{{ url('enrollments/'.$enrollment->id) }}">
-                  <td class="table__details">{{ $enrollment->patient->presentation_number }}</td>
+                  <td class="table__details">{{ $enrollment->presentation_number }}</td>
                   <td class="table__details">{{ empty($enrollment->patient->facility_code) ? '' : $enrollment->patient->facility_code}}</td>
                   <td class="table__details">NCR - {{ empty($enrollment->patient->province) ? '' : $enrollment->patient->province}}</td>
                   <td class="table__details">{{ empty($enrollment->patient->code) ? '' : $enrollment->patient->code}}</td>
                   <td class="table__details">
-                  {{ empty($enrollment->tbMacForms->enrollmentForm->drug_susceptibility) ? '' : $enrollment->tbMacForms->enrollmentForm->drug_susceptibility}}
+                  {{ empty($enrollment->drug_susceptibility) ? '' : $enrollment->tbMacForms->enrollmentForm->drug_susceptibility}}
                   </td>
                   <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
                   <td class="table__details">{{ $enrollment->status }}</td>
