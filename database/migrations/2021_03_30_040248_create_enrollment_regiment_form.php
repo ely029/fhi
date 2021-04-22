@@ -18,7 +18,7 @@ class CreateEnrollmentRegimentForm extends Migration
                 $table->id();
                 $table->unsignedBigInteger('form_id');
                 $table->foreign('form_id')->references('id')->on('tb_mac_forms')->onDelete('cascade');
-                
+         
                 $table->string('treatment_history')->nullable();
                 $table->string('registration_group')->nullable();
                 $table->string('risk_factor')->nullable();
