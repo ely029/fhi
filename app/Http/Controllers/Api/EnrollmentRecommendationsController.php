@@ -137,6 +137,7 @@ class EnrollmentRecommendationsController extends Controller
     {
         $request['form_id'] = $tbMacForm->id;
         $tbMacForm->status = 'Referred to national chair';
+        $request['status'] = 0;
         $tbMacForm->save();
         $request['submitted_by'] = auth()->user()->id;
         $request['role_id'] = auth()->user()->role_id;
@@ -158,6 +159,7 @@ class EnrollmentRecommendationsController extends Controller
             Recommendation::create($request);
         }
         $request['form_id'] = $tbMacForm->id;
+        $request['status'] = 0;
         $request['submitted_by'] = auth()->user()->id;
         $request['role_id'] = auth()->user()->role_id;
         $request['recommendation'] = $request['remarks'];
