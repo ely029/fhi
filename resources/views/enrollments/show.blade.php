@@ -118,7 +118,7 @@
               <h2 class="section__heading">Treatment information</h2>
               <div class="grid grid--two">
                 <div class="form__content">
-                    <span class="form__text">{{ $tbMacForm->enrollmentForm->treatment_history }}</span>
+                    <span class="form__text">{{ empty($tbMacForm->enrollmentForm->treatment_history) ? '' : $tbMacForm->enrollmentForm->treatment_history }}</span>
                     <label class="form__label" for="">Treatment history</label></div>
               </div>
               <div class="grid grid--two">

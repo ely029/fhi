@@ -30,12 +30,6 @@ class CreateEnrollmentRegimentForm extends Migration
                 $table->string('signs_and_symptoms')->nullable();
                 $table->string('vital_signs')->nullable();
                 $table->string('diag_and_lab_findings')->nullable();
-                $table->longText('treatment_history')->change();
-                $table->longText('clinical_status')->change();
-                $table->longText('signs_and_symptoms')->change();
-                $table->longText('vital_signs')->change();
-                $table->longText('diag_and_lab_findings')->change();
-                $table->longText('suggested_regimen')->change();
                 $table->timestamps();
             });
         }
