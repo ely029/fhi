@@ -28,7 +28,7 @@ class EnrollmentsController extends Controller
                 'date_created' => $item->created_at->format('M d, Y'),
                 'facility_code' => $item->patient->facility_code,
                 'status' => $item->status,
-                'drug_susceptibility' => $item->enrollmentForm->drug_susceptibility,
+                'drug_susceptibility' => $item->enrollmentForm->drug_susceptibility ?? null,
             ];
         });
 
