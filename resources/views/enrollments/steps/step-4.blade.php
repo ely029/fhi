@@ -2,7 +2,7 @@
     <div class="form__container">
       <h2 class="section__heading">Laboratory results and information</h2>
       <div class="grid">
-        <div class="form__content form__content--small form__content--small__right">
+        <div class="form__content form-groupform__content--small form__content--small__right">
           <input class="form__input" type="date" name="cxr_date" placeholder="CXR date" />
           <label class="form__label" for="">CXR date</label>
         </div>
@@ -80,7 +80,7 @@
           <label class="form__sublabel">Other
             <input class="form__trigger other-cxr" type="checkbox" name="cxr_reading[]" value="Other"/>
             <span class="form__checkmark"> </span></label>
-            <div class="form__content  other-cxr-field">
+            <div class="form__content form-group other-cxr-field">
               <div class="help-block with-errors"></div>
               <input class="form__input" type="text" id="other-cxr" placeholder="Specify" />
               <label class="form__label" for="">Specify Other</label>
@@ -89,7 +89,7 @@
         </div>
       </div>
       <div class="grid">
-        <div class="form__content form__content--small form__content--small__right">
+        <div class="form__content form-groupform__content--small form__content--small__right">
           <input class="form__input" type="date" name="ct_scan_date" placeholder="CT Scan date" />
           <label class="form__label" for="">CT Scan date</label>
         </div>
@@ -99,7 +99,7 @@
         </div>
       </div>
       <div class="grid">
-        <div class="form__content form__content--small form__content--small__right">
+        <div class="form__content form-groupform__content--small form__content--small__right">
           <input class="form__input" type="date" name="ultrasound_date" placeholder="Ultrasound date" />
           <label class="form__label" for="">Ultrasound date</label>
         </div>
@@ -109,7 +109,7 @@
         </div>
       </div>
       <div class="grid">
-        <div class="form__content form__content--small form__content--small__right">
+        <div class="form__content form-groupform__content--small form__content--small__right">
           <input class="form__input" type="date" name="histopathological_date" placeholder="Histopathological date" />
           <label class="form__label" for="">Histopathological date
 
@@ -157,7 +157,7 @@
     </div>
     <div class="form__container form-step-4">
       <h2 class="section__heading">Remarks</h2>
-      <div class="form__content ">
+      <div class="form__content form-group">
         <div class="help-block with-errors"></div>
           <textarea class="form__input form__input--message" placeholder="Remarks" name="remarks" required></textarea>
           <label class="form__label" for="">Remarks</label>
