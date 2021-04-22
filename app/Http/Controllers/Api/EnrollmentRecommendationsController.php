@@ -156,7 +156,6 @@ class EnrollmentRecommendationsController extends Controller
             $request['recommendation'] = $request['remarks'];
             Recommendation::create($request);
         }
-        if ($request['status'] === 'Referred back to regional chair') {
             $tbMacForm1->status = $request['status'];
             $tbMacForm1->role_id = auth()->user()->role_id;
             $tbMacForm1->save();
@@ -165,7 +164,6 @@ class EnrollmentRecommendationsController extends Controller
             $request['role_id'] = auth()->user()->role_id;
             $request['recommendation'] = $request['remarks'];
             Recommendation::create($request);
-        }
     }
 
     private function statusValidation()
