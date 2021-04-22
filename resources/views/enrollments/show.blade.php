@@ -102,7 +102,7 @@
                 <label class="form__label" for="">Action</label>
               </div>
               <button id="refer-button" class="button js-trigger" type="button">Confirm</button>
-            </div>>
+            </div>
             @endif
           </div>
         </form>
