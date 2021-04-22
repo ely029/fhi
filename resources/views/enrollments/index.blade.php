@@ -352,8 +352,8 @@
 
       <div class="section__content">
         <ul class="tabs__list tabs__list--table">
-          <li class="tabs__item tabs__item--current">Pending ({{ $referred->count() }})</li>
-          <li class="tabs__item">Pending Recommendation ({{ $allEnrollments->count() }})</li>
+          <li class="tabs__item tabs__item--current">Referred enrolments ({{ $referred->count() }})</li>
+          <li class="tabs__item">Pending from NTB MAC chair ({{ $allEnrollments->count() }})</li>
           <li class="tabs__item">All Enrollments ({{ $allEnrollments->count() }})</li>
         </ul>
         <div class="tabs__details tabs__details--active">
