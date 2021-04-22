@@ -81,6 +81,7 @@ class EnrollmentRecommendationsController extends Controller
             $request['form_id'] = $tbMacForm->id;
             $request['submitted_by'] = auth()->user()->id;
             $request['role_id'] = auth()->user()->role_id;
+            $request['recommendation'] = $request['remarks'];
             Recommendation::create($request);
         }
     }
