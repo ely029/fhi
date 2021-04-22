@@ -15,10 +15,10 @@
           <div class="triangle triangle--down"></div>
           <label class="form__label" for="">Drug susceptibility</label>
         </div>
-        <div class="form__content form-groupform__content--small ">
+        <div class="form__content form-group form__content--small ">
           <div class="help-block with-errors"></div>
-            <input class="form__input" type="number" name="current_weight" placeholder="Current weight (kg)" required />
-            <label class="form__label" for="">Current weight (kg)</label>
+          <input class="form__input" type="number" name="current_weight" placeholder="Current weight (kg)" required />
+          <label class="form__label" for="">Current weight (kg)</label>
             
         </div>
       </div>
