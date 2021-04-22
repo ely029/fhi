@@ -80,10 +80,11 @@
           <label class="form__sublabel">Other
             <input class="form__trigger other-cxr" type="checkbox" name="cxr_reading[]" value="Other"/>
             <span class="form__checkmark"> </span></label>
-            <div class="form__content form-group other-cxr-field">
+            <div class="form__content  other-cxr-field">
+              <div class="help-block with-errors"></div>
               <input class="form__input" type="text" id="other-cxr" placeholder="Specify" />
               <label class="form__label" for="">Specify Other</label>
-              <div class="help-block with-errors"></div>
+              
             </div>
         </div>
       </div>
@@ -156,10 +157,11 @@
     </div>
     <div class="form__container form-step-4">
       <h2 class="section__heading">Remarks</h2>
-      <div class="form__content form-group">
+      <div class="form__content ">
+        <div class="help-block with-errors"></div>
           <textarea class="form__input form__input--message" placeholder="Remarks" name="remarks" required></textarea>
           <label class="form__label" for="">Remarks</label>
-          <div class="help-block with-errors"></div>
+          
         </div>
     </div>
   </div>
