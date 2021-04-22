@@ -2,9 +2,10 @@
     <h2 class="section__heading">Patient Information</h2>
     <div class="grid grid--two form-step-1">
       <div class="form__content form-group">
+        <div class="help-block with-errors"></div>
         <input class="form__input" type="number" min="0" placeholder="Facility code" name="facility_code" required/>
         <label class="form__label" for="">Facility code</label>
-        <div class="help-block with-errors"></div>
+        
       </div>
       <div class="form__content">
         <select class="form__input form__input--select" name="province">
@@ -95,26 +96,30 @@
     </div>
     <div class="grid grid--three grid--close form-step-1">
         <div class="form__content form-group">
+          <div class="help-block with-errors"></div>
           <input class="form__input" type="text" placeholder="First name" name="first_name" required/>
           <label class="form__label" for="">First name</label>
-          <div class="help-block with-errors"></div>
+          
         </div>
         <div class="form__content form-group">
+          <div class="help-block with-errors"></div>
           <input class="form__input" type="text" placeholder="Last name" name="last_name" required/>
           <label class="form__label" for="">Last name</label>
-          <div class="help-block with-errors"></div>
+          
         </div>
         <div class="form__content form-group">
-            <input class="form__input" type="text" placeholder="Middle name" name="middle_name" required/>
-            <label class="form__label" for="">Middle name</label>
-            <div class="help-block with-errors"></div>
+          <div class="help-block with-errors"></div>
+          <input class="form__input" type="text" placeholder="Middle name" name="middle_name" required/>
+          <label class="form__label" for="">Middle name</label>
+            
         </div>
     </div>
     <div class="grid grid--two form-step-1">
       <div class="form__content form-group">
+        <div class="help-block with-errors"></div>
         <input class="form__input" type="date" placeholder="Birthday" name="birthday" required/>
         <label class="form__label" for="">Birthday</label>
-        <div class="help-block with-errors"></div>
+        
       </div>
       <div class="form__content">
         <select class="form__input form__input--select" name="gender">

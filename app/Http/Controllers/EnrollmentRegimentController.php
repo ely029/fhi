@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Enrollments\StoreRequest;
 use App\Models\BacteriologicalResult;
 use App\Models\Patient;
 use App\Models\Recommendation;
@@ -61,7 +62,6 @@ class EnrollmentRegimentController extends Controller
         });
 
         $withRecommendation = Recommendation::with('tbMacForms')->where('recommendation', '<>', null)->get();
-        $withRecommendationForRTBMac = Recommendation::with('tbMacForms')->where('status', 'For Enrollment')->where('status', 'Not For Enrollment')->where('status', 'Need Further Details')->get();
 
         return view('enrollments.index')
             ->with('enrollments', $enrollments)
@@ -72,7 +72,6 @@ class EnrollmentRegimentController extends Controller
             ->with('withRecommendations', $withRecommendation)
             ->with('referredToNationalChair', $referredToNationalChair)
             ->with('enrollmentSubmittedByrtbmacChair', $enrollmentSubmittedByRTBMACChair)
-            ->with('withRecommendationForRTBMac', $withRecommendationForRTBMac)
             ->with('enrollmentSubmittedToRegionalChair', $enrollmentSubmittedToRegionalChair);
     }
 
@@ -89,22 +88,15 @@ class EnrollmentRegimentController extends Controller
             ->with('tbMacForm', $tbMacForm);
     }
 
-    public function store()
+    public function store(StoreRequest $request)
     {
-        $request = request()->all();
+        $request = $request->all();
         $request['submitted_by'] = auth()->user()->id;
         $request['form_type'] = 'enrollment';
         $request['status'] = 'New Enrollment';
         $request['role_id'] = 4;
         $request['region'] = 'NCR';
         $request['cxr_reading'] = $request['cxr_reading'] ?? null;
-        // $validator = Validator::make($request, [
-        //     'role_id' => 'required',
-        // ]);
-
-        // if ($validator->fails()) {
-        //     return response()->json($validator->errors(), 422);
-        // }
 
         $patient = Patient::create($request);
 
@@ -373,7 +365,7 @@ class EnrollmentRegimentController extends Controller
     private function getRegionalSecretariatIndex($enrollments)
     {
         $newEnrollments = $enrollments->filter(function ($item) {
-            return in_array($item->status, ['New Enrollment','For Enrollment','Not For Referral','Need Further Details']);
+            return $item->status === 'New Enrollment';
         });
 
         return view('enrollments.index')
