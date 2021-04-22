@@ -43,7 +43,6 @@ class EnrollmentRecommendationsController extends Controller
             'remarks' => 'required',
             'status' => $this->statusValidation(),
         ]);
-
         if ($validator->fails()) {
             return response()->json([
                 'errors' => $validator->errors(),
@@ -59,7 +58,7 @@ class EnrollmentRecommendationsController extends Controller
             $this->ntbMacRecommendation($tbMacForm, $request);
         } elseif (auth()->user()->role_id === 8) {
             $this->ntbMacChairRecommendation($tbMacForm, $request);
-        } elseif (auth()->user()->role_id === 3) {
+        } else {
             $this->healthWorkerRecommendation($tbMacForm, $request);
         }
 
@@ -71,12 +70,15 @@ class EnrollmentRecommendationsController extends Controller
         if ($request['status'] === 'Not For Enrollment') {
             $tbMacForm->status = $request['status'];
             $tbMacForm->save();
+            $request['form_id'] = $tbMacForm->id;
             $request['submitted_by'] = auth()->user()->id;
             $request['role_id'] = auth()->user()->role_id;
+            $request['recommendation'] = $request['remarks'];
             Recommendation::create($request);
         } else {
             $tbMacForm->status = $request['status'];
             $tbMacForm->save();
+            $request['form_id'] = $tbMacForm->id;
             $request['submitted_by'] = auth()->user()->id;
             $request['role_id'] = auth()->user()->role_id;
             Recommendation::create($request);
@@ -176,6 +178,9 @@ class EnrollmentRecommendationsController extends Controller
         }
         if (auth()->user()->role_id === 6) {
             return 'required|in:For Enrollment,Not for Enrollment,Need Further Details,Refer to N-TBMac';
+        }
+        if (auth()->user()->role_id === 3) {
+            return 'required|in:For Enrollment,Not For Enrollment';
         }
         if (auth()->user()->role_id === 7 || auth()->user()->role_id === 8) {
             return 'nullable';
