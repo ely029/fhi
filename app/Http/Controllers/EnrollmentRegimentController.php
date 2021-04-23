@@ -62,6 +62,7 @@ class EnrollmentRegimentController extends Controller
         });
 
         $withRecommendation = Recommendation::with('tbMacForms')->where('recommendation', '<>', null)->get();
+        $withRecommendationForRTBMac = Recommendation::with('tbMacForms')->where('role_id', 5)->get();
 
         return view('enrollments.index')
             ->with('enrollments', $enrollments)
@@ -69,6 +70,7 @@ class EnrollmentRegimentController extends Controller
             ->with('referredToRegional', $referredToRegional)
             ->with('referredToRegionalChair', $referredToRegionalChair)
             ->with('referredToNational', $referredToNational)
+            ->with('withRecommendationForRTBMac', $withRecommendationForRTBMac)
             ->with('withRecommendations', $withRecommendation)
             ->with('referredToNationalChair', $referredToNationalChair)
             ->with('enrollmentSubmittedByrtbmacChair', $enrollmentSubmittedByRTBMACChair)
@@ -391,10 +393,15 @@ class EnrollmentRegimentController extends Controller
             return in_array($item->status, ['New Enrollment','Referred to Regional']);
         });
 
+        $referredToRegional = $enrollments->filter(function ($item) {
+            return $item->status === 'Referred To Regional';
+        });
+
         return view('enrollments.index')
             ->with('referred', $referred)
             ->with('pendingFromNTBMacChair', $pendingFromNTBMacChair)
             ->with('completed', $completed)
+            ->with('referredToRegional', $referredToRegional)
             ->with('allEnrollments', $allEnrollments);
     }
 
