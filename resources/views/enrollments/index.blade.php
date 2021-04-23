@@ -601,7 +601,7 @@
       <div class="section__content">
         <ul class="tabs__list tabs__list--table">
           <li class="tabs__item tabs__item--current">Referred Enrolments ({{ $pending->count() }})</li>
-          <li class="tabs__item tabs__item--current">Completed ({{ $completed->count() }})</li>
+          <li class="tabs__item ">Completed ({{ $completed->count() }})</li>
           <li class="tabs__item">All Enrollments ({{ $allEnrollments->count() }})</li>
         </ul>
         <div class="tabs__details tabs__details--active">
