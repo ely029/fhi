@@ -45,7 +45,7 @@
                   <td class="table__details">{{ $enrollment->patient->age }}</td>
                   <td class="table__details">{{ $enrollment->patient->gender }}</td>
                   <td class="table__details">{{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility }}</td>
-                  <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
+                  <td class="table__details">{{ $enrollment->created_at->format('m-d-Y')}}</td>
                   <td class="table__details">{{ $enrollment->status }}</td>
                 </tr>
               @endforeach
@@ -73,7 +73,7 @@
                   <td class="table__details">{{ $enrollment->patient->age }}</td>
                   <td class="table__details">{{ $enrollment->patient->gender }}</td>
                   <td class="table__details">{{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility }}</td>
-                  <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
+                  <td class="table__details">{{ $enrollment->created_at->format('m-d-Y')}}</td>
                   <td class="table__details">{{ $enrollment->status }}</td>
                 </tr>
             @endforeach
@@ -101,7 +101,7 @@
                   <td class="table__details">{{ $enrollment->patient->age }}</td>
                   <td class="table__details">{{ $enrollment->patient->gender }}</td>
                   <td class="table__details">{{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility }}</td>
-                  <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
+                  <td class="table__details">{{ $enrollment->created_at->format('m-d-Y')}}</td>
                   <td class="table__details">{{ $enrollment->status }}</td>
                 </tr>
             @endforeach
@@ -129,7 +129,7 @@
                   <td class="table__details">{{ $enrollment->patient->age }}</td>
                   <td class="table__details">{{ $enrollment->patient->gender }}</td>
                   <td class="table__details">{{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility }}</td>
-                  <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
+                  <td class="table__details">{{ $enrollment->created_at->format('m-d-Y')}}</td>
                   <td class="table__details">{{ $enrollment->status }}</td>
                 </tr>
               @endforeach
@@ -157,7 +157,7 @@
                   <td class="table__details">{{ $enrollment->patient->age }}</td>
                   <td class="table__details">{{ $enrollment->patient->gender }}</td>
                   <td class="table__details">{{ empty($enrollment->drug_susceptibility) ? '' : $enrollment->drug_susceptibility }}</td>
-                  <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
+                  <td class="table__details">{{ $enrollment->created_at->format('m-d-Y')}}</td>
                   <td class="table__details">{{ $enrollment->status }}</td>
                 </tr>
               @endforeach
@@ -201,7 +201,7 @@
                   <td class="table__details">{{ empty($enrollment->patient->gender) ? '' : $enrollment->patient->gender}}</td>
                   <td class="table__details">{{ empty($enrollment->patient->province) ? '' : $enrollment->patient->province}}</td>
                   <td class="table__details">{{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility}}</td>
-                  <td class="table__details">{{ empty($enrollment->created_at->format('M d, Y')) ? '' : $enrollment->created_at->format('M d, Y')}}</td>
+                  <td class="table__details">{{ empty($enrollment->created_at->format('m-d-Y')) ? '' : $enrollment->created_at->format('m-d-Y')}}</td>
                   <td class="table__details">{{ $enrollment->status }}</td>
                 </tr>
               @endforeach
@@ -233,7 +233,7 @@
                   <td class="table__details">{{ empty($enrollment->patient->gender) ? '' : $enrollment->patient->gender}}</td>
                   <td class="table__details">{{ empty($enrollment->patient->province) ? '' : $enrollment->patient->province}}</td>
                   <td class="table__details">{{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility}}</td>
-                  <td class="table__details">{{ empty($enrollment->created_at->format('M d, Y')) ? '' : $enrollment->created_at->format('M d, Y')}}</td>
+                  <td class="table__details">{{ empty($enrollment->created_at->format('m-d-Y')) ? '' : $enrollment->created_at->format('m-d-Y')}}</td>
                   <td class="table__details">{{ $enrollment->status }}</td>
                 </tr>
             @endforeach
@@ -276,7 +276,7 @@
                   <td class="table__details">
                   {{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility}}
                   </td>
-                  <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
+                  <td class="table__details">{{ $enrollment->created_at->format('m-d-Y')}}</td>
                   <td class="table__details">{{ $enrollment->status }}</td>
                 </tr>
               @endforeach
@@ -306,7 +306,7 @@
                   {{ empty($enrollment->tbMacForms->patient->code) ? '' : $enrollment->tbMacForms->patient->code}}
                   </td>
                   <td class="table__details">{{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility }}</td>
-                  <td class="table__details">{{ $enrollment->tbMacForms->created_at->format('M d, Y')}}</td>
+                  <td class="table__details">{{ $enrollment->tbMacForms->created_at->format('m-d-Y')}}</td>
                   <td class="table__details">{{ $enrollment->tbMacForms->status }}</td>
                 </tr>
             @endforeach
@@ -336,7 +336,7 @@
                   {{ empty($enrollment->patient->code) ? '' : $enrollment->patient->code}}
                   </td>
                   <td class="table__details">{{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility }}</td>
-                  <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
+                  <td class="table__details">{{ $enrollment->created_at->format('m-d-Y')}}</td>
                   <td class="table__details">{{ $enrollment->status }}</td>
                 </tr>
             @endforeach
@@ -381,7 +381,7 @@
                   <td class="table__details">{{ empty($enrollment->patient->gender) ? '' : $enrollment->patient->gender}}</td>
                   <td class="table__details">{{ empty($enrollment->patient->province) ? '' : $enrollment->patient->province}}</td>
                   <td class="table__details">{{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility}}</td>
-                  <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
+                  <td class="table__details">{{ $enrollment->created_at->format('m-d-Y')}}</td>
                   <td class="table__details">{{ $enrollment->status }}</td>
                 </tr>
               @endforeach
@@ -413,7 +413,7 @@
                   <td class="table__details">{{ empty($enrollment->patient->gender) ? '' : $enrollment->patient->gender}}</td>
                   <td class="table__details">{{ empty($enrollment->patient->province) ? '' : $enrollment->patient->province}}</td>
                   <td class="table__details">{{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility}}</td>
-                  <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
+                  <td class="table__details">{{ $enrollment->created_at->format('m-d-Y')}}</td>
                   <td class="table__details">{{ $enrollment->status }}</td>
                 </tr>
               @endforeach
@@ -445,7 +445,7 @@
                   <td class="table__details">{{ empty($enrollment->patient->gender) ? '' : $enrollment->patient->gender}}</td>
                   <td class="table__details">{{ empty($enrollment->patient->province) ? '' : $enrollment->patient->province}}</td>
                   <td class="table__details">{{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility}}</td>
-                  <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
+                  <td class="table__details">{{ $enrollment->created_at->format('m-d-Y')}}</td>
                   <td class="table__details">{{ $enrollment->status }}</td>
                 </tr>
             @endforeach
@@ -486,7 +486,7 @@
                   <td class="table__details">NCR - {{ empty($enrollment->patient['province']) ? '' : $enrollment->patient['province'] }}</td>
                   <td class="table__details">{{ empty($enrollment->patient['code']) ? '' : $enrollment->patient['code']}}</td>
                   <td class="table__details">{{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility}}</td>
-                  <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
+                  <td class="table__details">{{ $enrollment->created_at->format('m-d-Y')}}</td>
                   <td class="table__details">{{ $enrollment->status }}</td>
                 </tr>
               @endforeach
@@ -516,7 +516,7 @@
                   <td class="table__details">NCR - {{ empty($enrollment->patient['province']) ? '' : $enrollment->patient['province'] }}</td>
                   <td class="table__details">{{ empty($enrollment->patient['code']) ? '' : $enrollment->patient['code']}}</td>
                   <td class="table__details">{{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility}}</td>
-                  <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
+                  <td class="table__details">{{ $enrollment->created_at->format('m-d-Y')}}</td>
                   <td class="table__details">{{ $enrollment->status }}</td>
                 </tr>
             @endforeach
@@ -560,7 +560,7 @@
                   <td class="table__details">
                   {{ empty($enrollment->drug_susceptibility) ? '' : $enrollment->drug_susceptibility}}
                   </td>
-                  <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
+                  <td class="table__details">{{ $enrollment->created_at->format('m-d-Y')}}</td>
                   <td class="table__details">{{ $enrollment->status }}</td>
                 </tr>
               @endforeach
@@ -590,7 +590,7 @@
                   <td class="table__details">
                   {{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility}}
                   </td>
-                  <td class="table__details">{{ $enrollment->created_at->format('M d, Y')}}</td>
+                  <td class="table__details">{{ $enrollment->created_at->format('m-d-Y')}}</td>
                   <td class="table__details">{{ $enrollment->status }}</td>
                 </tr>
             @endforeach
