@@ -137,57 +137,99 @@ jQuery( document ).ready(function( $ ) {
         // xpertmtb
         $("input[name='xpert_mtb_rif-date_collected[]']")
             .map(function(key) {
-                return $(this).val(xpertmtb[key].date_collected);
+                if(xpertmtb[key])
+                {
+                    return $(this).val(xpertmtb[key].date_collected);
+                }
+          
             });
 
         $("input[name='xpert_mtb_rif-name_of_laboratory[]']")
             .map(function(key) {
-                return $(this).val(xpertmtb[key].name_of_laboratory);
+                if(xpertmtb[key])
+                {
+                    return $(this).val(xpertmtb[key].name_of_laboratory);
+                }
+               
         });
 
         $("select[name='xpert_mtb_rif-result[]']")
             .map(function(key) {
-                return $(this).val(xpertmtb[key].result);
+                if(xpertmtb[key])
+                {
+                    return $(this).val(xpertmtb[key].result);
+                }
+  
         });
         // xpertmtb_ultra
         $("input[name='xpert_mtb_rif_ultra-date_collected[]']")
             .map(function(key) {
-                return $(this).val(xpertmtb_ultra[key].date_collected);
+                if(xpertmtb_ultra[key])
+                {
+                     return $(this).val(xpertmtb_ultra[key].date_collected);
+                }
+               
             });
 
         $("input[name='xpert_mtb_rif_ultra-name_of_laboratory[]']")
             .map(function(key) {
-                return $(this).val(xpertmtb_ultra[key].name_of_laboratory);
+                if(xpertmtb_ultra[key])
+                {
+                    return $(this).val(xpertmtb_ultra[key].name_of_laboratory);
+                }
+       
         });
 
         $("select[name='xpert_mtb_rif_ultra-result[]']")
             .map(function(key) {
-                return $(this).val(xpertmtb_ultra[key].result);
+                if(xpertmtb_ultra[key])
+                {
+                    return $(this).val(xpertmtb_ultra[key].result);
+                }
+              
         });
         // trunat tb
         $("input[name='truenat_tb-date_collected[]']")
             .map(function(key) {
-                return $(this).val(trunat_tb[key].date_collected);
+                if(trunat_tb[key])
+                {
+                    return $(this).val(trunat_tb[key].date_collected);
+                }
             });
 
         $("input[name='truenat_tb-name_of_laboratory[]']")
             .map(function(key) {
-                return $(this).val(trunat_tb[key].name_of_laboratory);
+                if(trunat_tb[key])
+                {
+                    return $(this).val(trunat_tb[key].name_of_laboratory);
+                }
+                
         });
 
         $("select[name='truenat_tb-result[]']")
             .map(function(key) {
-                return $(this).val(trunat_tb[key].result);
+                if(trunat_tb[key])
+                {
+                    return $(this).val(trunat_tb[key].result);
+                }
         });
         //lpa
         $("input[name='lpa-date_collected[]']")
             .map(function(key) {
-                return $(this).val(lpa[key].date_collected);
+                if(lpa[key])
+                {
+                    return $(this).val(lpa[key].date_collected);
+                }
+
+      
             });
 
         $("input[name='lpa-name_of_laboratory[]']")
             .map(function(key) {
-                return $(this).val(lpa[key].name_of_laboratory);
+                if(lpa[key]){
+                     return $(this).val(lpa[key].name_of_laboratory);
+                }
+               
         });
 
         $("input[name='lpa-0-result[]']")
@@ -221,110 +263,169 @@ jQuery( document ).ready(function( $ ) {
         // smear mic
         $("input[name='smear_mic-date_collected[]']")
             .map(function(key) {
-               
-                return $(this).val(smear_mic[key].date_collected);
+               if(smear_mic[key])
+               {
+                    return $(this).val(smear_mic[key].date_collected);
+               }
+  
             });
 
         $("input[name='smear_mic-name_of_laboratory[]']")
             .map(function(key) {
-                return $(this).val(smear_mic[key].name_of_laboratory);
+                if(smear_mic[key])
+                {
+                    return $(this).val(smear_mic[key].name_of_laboratory);
+                }
+         
         });
 
         $("select[name='smear_mic-result[]']")
             .map(function(key) {
-                return $(this).val(smear_mic[key].result);
+                if(smear_mic[key])
+                {
+                    return $(this).val(smear_mic[key].result);
+                }
+              
         });
 
         // tb lamp
         $("input[name='tb_lamp-date_collected[]']")
             .map(function(key) {
-               
-                return $(this).val(tb_lamp[key].date_collected);
+                if(tb_lamp[key])
+                {
+                    return $(this).val(tb_lamp[key].date_collected);
+                }
+              
             });
 
         $("input[name='tb_lamp-name_of_laboratory[]']")
             .map(function(key) {
-                return $(this).val(tb_lamp[key].name_of_laboratory);
+                if(tb_lamp[key])
+                {
+                    return $(this).val(tb_lamp[key].name_of_laboratory);
+                }
+
+                
         });
 
         $("select[name='tb_lamp-result[]']")
             .map(function(key) {
-                return $(this).val(tb_lamp[key].result);
+                if(tb_lamp[key])
+                {
+                    return $(this).val(tb_lamp[key].result);
+                }
+               
         });
 
         // tb culture
         $("input[name='tb_culture-date_collected[]']")
             .map(function(key) {
-               
-                return $(this).val(tb_culture[key].date_collected);
+                if(tb_culture[key]){
+                    return $(this).val(tb_culture[key].date_collected);
+                }
+                
             });
 
         $("input[name='tb_culture-name_of_laboratory[]']")
             .map(function(key) {
-                return $(this).val(tb_culture[key].name_of_laboratory);
+                if(tb_culture[key])
+                {
+                    return $(this).val(tb_culture[key].name_of_laboratory);
+                }
+         
         });
 
         $("select[name='tb_culture-result[]']")
             .map(function(key) {
-                return $(this).val(tb_culture[key].result);
+                if(tb_culture[key])
+                {
+                    return $(this).val(tb_culture[key].result);
+                }
+
+                
         });
 
         // dst
         $("input[name='dst-date_collected[]']")
             .map(function(key) {
-               
-                return $(this).val(dst[key].date_collected);
+               if(dst[key]){
+                   return $(this).val(dst[key].date_collected);
+               }
+                
             });
 
         $("input[name='dst-name_of_laboratory[]']")
             .map(function(key) {
-                return $(this).val(dst[key].name_of_laboratory);
+                if(dst[key]){
+                    return $(this).val(dst[key].name_of_laboratory);
+                }
+              
         });
 
         $("select[name='dst-result[]']")
             .map(function(key) {
-                return $(this).val(dst[key].result);
+                if(dst[key]){
+                    return $(this).val(dst[key].result);
+                }
+                
         });
 
         // others
         $("input[name='others-date_collected[]']")
             .map(function(key) {
-               
-                return $(this).val(others[key].date_collected);
+               if(others[key]){
+                    return $(this).val(others[key].date_collected);
+               }
+                
             });
 
         $("input[name='others-specify[]']")
             .map(function(key) {
-               
-                return $(this).val(others[key].name.substr(7));
+                if(others[key]){
+                    return $(this).val(others[key].name.substr(7));
+                }
+                
             });
 
         $("input[name='others-name_of_laboratory[]']")
             .map(function(key) {
-                return $(this).val(others[key].name_of_laboratory);
+                if(others[key]){
+                    return $(this).val(others[key].name_of_laboratory);
+                }
+                
         });
 
         $("input[name='others-result[]']")
             .map(function(key) {
-                return $(this).val(others[key].result);
+                if(others[key]){
+                    return $(this).val(others[key].result);
+                }
+              
         });
 
          // dst from other lab
          $("input[name='dst_from_other_lab-date_collected[]']")
          .map(function(key) {
-            
-             return $(this).val(dstOtherLab[key].date_collected);
+            if(dstOtherLab[key]){
+                return $(this).val(dstOtherLab[key].date_collected);
+            }
+          
          });
 
         $("input[name='dst_from_other_lab-name_of_laboratory[]']")
             .map(function(key) {
+                if(dstOtherLab[key]){
+                    return $(this).val(dstOtherLab[key].name_of_laboratory);
+                }
                 
-                return $(this).val(dstOtherLab[key].name_of_laboratory);
             });
 
         $("input[name='dst_from_other_lab-result[]']")
             .map(function(key) {
-                return $(this).val(dstOtherLab[key].result);
+                if(dstOtherLab[key]){
+                    return $(this).val(dstOtherLab[key].result);
+                }
+                
         });
 
         isStep1Clicked = true;
