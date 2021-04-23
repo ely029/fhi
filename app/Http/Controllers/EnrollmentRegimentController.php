@@ -393,10 +393,15 @@ class EnrollmentRegimentController extends Controller
             return in_array($item->status, ['New Enrollment','Referred to Regional']);
         });
 
+        $referredToRegional = $enrollments->filter(function ($item) {
+            return $item->status === 'Referred To Regional';
+        });
+
         return view('enrollments.index')
             ->with('referred', $referred)
             ->with('pendingFromNTBMacChair', $pendingFromNTBMacChair)
             ->with('completed', $completed)
+            ->with('referredToRegional', $referredToRegional)
             ->with('allEnrollments', $allEnrollments);
     }
 
