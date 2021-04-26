@@ -9,7 +9,7 @@
     <br />
     <br />
     <form class="form form--quarter">
-      <div class="grid grid--two grid--unset">
+      <div class="grid grid--two grid--start">
         <div class="form__content"><span class="form__text">john</span><label class="form__label">Username</label></div>
         <div class="form__content"><span class="form__text">Healthcare</span><label class="form__label">Role </label></div>
       </div>

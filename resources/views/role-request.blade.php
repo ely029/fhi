@@ -1,11 +1,10 @@
 @extends('layouts.admin.dashboard')
 
 @section('content')
-<div class="login">
+<form class="login">
   <div class="login__container">
     <div class="login__card">
       <div class="login__top"></div>
-      <form class="form">
         <h2 class="section__title section__title--small">Welcome [name]</h2>
         <p class="login__details">
           Before you can begin, please select your role from the list. <br />
@@ -26,8 +25,8 @@
           <label class="form__label">Role select</label>
         </div>
         <div class="form__button form__button--end"><a class="button" href="">Submit</a></div>
-      </form>
+      
     </div>
   </div>
-</div>
+</form>
 @endsection
