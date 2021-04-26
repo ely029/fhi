@@ -118,7 +118,7 @@ class EnrollmentsController extends Controller
                 'name' => $item->users->name,
                 'role' => $item->users->role->name,
                 'date_created' => $item->created_at->format('d M, Y'),
-                'status' => $item->status,
+                'status' => $item->status === 0 ? '' : $item->status,
                 'recommendation' => $item->recommendation,
             ];
         });
@@ -129,7 +129,7 @@ class EnrollmentsController extends Controller
             'facility_code' => $tbMacForm->patient->facility_code,
             'status' => $tbMacForm->status,
             'date_submitted_to_rtb_mac' => '',
-            'treatment_history' => $tbMacForm->enrollmentForm->treatment_history,
+            'treatment_history' => $tbMacForm->enrollmentForm->treatment_history ? $tbMacForm->enrollmentForm->treatment_history : '',
             'registration_group' => $tbMacForm->enrollmentForm->registration_group,
             'risk_factor' => $tbMacForm->enrollmentForm->risk_factor,
             'bacteriological_results' => $bacteriologicalResults,
