@@ -28,7 +28,7 @@
                     <label class="form__label">Password</label><i class="fa fa-eye-slash" id="js-eye-password"></i>
                     
                 </div>
-                <div class="form__button form__button--space"><a class="button button--transparent" href="">Forgot password </a><button type="submit" class="button" >Login</button></div>
+                <div class="form__button form__button--space"><a class="button button--transparent" href="change-password.html">Forgot password </a><button type="submit" class="button" >Login</button></div>
             
     </div>
     </div>
