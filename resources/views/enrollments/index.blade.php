@@ -390,7 +390,7 @@
             </tbody>
           </table>
         </div>
-        <div class="tabs__details tabs__details--active">
+        <div class="tabs__details">
           <table class="table table--filter js-table">
             <thead>
               <tr>
@@ -634,7 +634,7 @@
             </tbody>
           </table>
         </div>
-        <div class="tabs__details tabs__details--active">
+        <div class="tabs__details">
           <table class="table table--filter js-table">
             <thead>
               <tr>
