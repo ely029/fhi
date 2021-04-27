@@ -123,6 +123,18 @@ class TBMacForm extends Model
     {
         return $filters->apply($query);
     }
+
+    public function getPresentationNumberAttribute($value)
+    {
+        $prefix = 'E-';
+        switch ($this->form_type) {
+            case 'case_management':
+                $prefix = 'C-';
+                break;
+        }
+        return $prefix.$value;
+    }
+
     protected static function boot()
     {
         parent::boot();

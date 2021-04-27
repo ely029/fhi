@@ -55,5 +55,7 @@ Route::group(['middleware' => 'auth'], static function () {
     Route::get('resubmit/enrollment/{tbMacForm}', [ResubmitEnrollmentController::class, 'edit']);
 
     Route::get('/case-management', [CaseManagementController::class, 'index']);
+    
+    Route::get('/case-management/{tbMacForm}', [CaseManagementController::class,'show']);
     Route::get('/case-management/create', [CaseManagementController::class, 'create']);
 });

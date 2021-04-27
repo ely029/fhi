@@ -31,6 +31,14 @@ class CaseManagementController extends Controller
         return view('case-management.create.form');
     }
 
+    public function show(TBMacForm $tbMacForm)
+    {
+        $tbMacForm = $tbMacForm->load(['submittedBy','enrollmentForm','bacteriologicalResults','attachments', 'patient']);
+
+        return view('case-management.show')
+            ->with('tbMacForm', $tbMacForm);
+    }
+
     private function getHealthCareWorkerIndex($cases)
     {
         // $forEnrollments = $enrollments->filter(function ($item) {
