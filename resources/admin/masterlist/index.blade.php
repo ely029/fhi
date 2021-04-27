@@ -8,7 +8,7 @@
       <div class="form__container">
         <h2 class="section__heading">TB Medical Advisory Committee Masterlist</h2>
         <div class="form--quarter">
-          <div class="grid grid--three">
+          <div class="grid grid--three grid--end">
             <div class="form__content"><input class="form__input" type="date" /><label class="form__label" for="">Start date</label></div>
             <div class="form__content"><input class="form__input" type="date" /><label class="form__label" for="">End date</label></div>
             <button class="button button--masterlist" type="button">Apply</button>
