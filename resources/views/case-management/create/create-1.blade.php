@@ -1,17 +1,17 @@
 <div class="form__tab step-1">
     <h2 class="section__heading">Patient Information</h2>
     <div class="grid grid--two form-step-1">
-    <div class="form__content"><input class="form__input" id="tb-number" name="presentation_number" type="number" min="0" placeholder="TB Case number" /><label class="form__label" for="">TB Case number</label></div>
-    <div class="form__content"><input class="form__input" id="last-name" type="text" placeholder="Last name" /><label class="form__label" for="">Last name</label></div>
+    <div class="form__content"><input class="form__input" id="tbNumber" name="presentation_number" type="number" min="0" placeholder="TB Case number" /><label class="form__label" for="">TB Case number</label></div>
+    <div class="form__content"><input class="form__input" id="lastName" type="text" placeholder="Last name" /><label class="form__label" for="">Last name</label></div>
     </div>
     <div class="grid grid--two">
-    <div class="form__content"><input name="first_name" class="form__input" id="first-name" type="text" placeholder="First name" /><label class="form__label" for="">First name</label></div>
-    <div class="form__content"><input class="form__input" name="middle_name" type="text" placeholder="Middle name" /><label class="form__label" for="">Middle name</label></div>
+    <div class="form__content"><input name="first_name" class="form__input" id="firstName" type="text" placeholder="First name" /><label class="form__label" for="">First name</label></div>
+    <div class="form__content"><input class="form__input" id="middleName" name="middle_name" type="text" placeholder="Middle name" /><label class="form__label" for="">Middle name</label></div>
     </div>
     <div class="grid grid--two">
-    <div class="form__content"><input class="form__input " type="number" min="0" placeholder="Facility code" /><label class="form__label" for="">Facility code</label></div>
+    <div class="form__content"><input class="form__input " id="facilityCode" type="number" min="0" placeholder="Facility code" /><label class="form__label" for="">Facility code</label></div>
     <div class="form__content">
-        <select class="form__input form__input--select " name="province">
+        <select class="form__input form__input--select " id="province" name="province">
         <option value="Metro Manila">Metro Manila</option>
         <option value="Abra">Abra</option>
         <option value="Agusan del Norte">Agusan del Norte</option>
@@ -98,9 +98,9 @@
     </div>
     </div>
     <div class="grid grid--two">
-    <div class="form__content"><input class="form__input " name="birthday" type="date" placeholder="Birthday" /><label class="form__label" for="">Birthday</label></div>
+    <div class="form__content"><input class="form__input " id="birthday" name="birthday" type="date" placeholder="Birthday" /><label class="form__label" for="">Birthday</label></div>
     <div class="form__content">
-        <select class="form__input form__input--select " name="gender">
+        <select class="form__input form__input--select " id="gender" name="gender">
         <option>Male</option>
         <option>Female</option>
         </select>
@@ -110,7 +110,7 @@
     </div>
     <div class="grid grid--two">
     <div class="form__content">
-        <select class="form__input form__input--select" name="month_of_treatment">
+        <select class="form__input form__input--select" id="treatmentMonth" name="month_of_treatment">
         <option value="0">0</option>
         <option value="1st">1st</option>
         <option value="2nd">2nd</option>
@@ -120,7 +120,7 @@
         <label class="form__label" for="">Month of treatment</label>
     </div>
     <div class="form__content">
-        <select class="form__input form__input--select" name="current_drug_susceptibility">
+        <select class="form__input form__input--select" id="drugSusceptibility" name="current_drug_susceptibility">
         <option value="Drug-susceptible (for enrollment note)">Drug-susceptible (for enrollment note)</option>
         <option value="Bacteriologically-confirmed RR-TB">Bacteriologically-confirmed RR-TB</option>
         <option value="Bacteriologically-confirmed MDR-TB">Bacteriologically-confirmed MDR-TB</option>
