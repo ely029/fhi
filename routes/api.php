@@ -7,7 +7,6 @@ declare(strict_types=1);
 
 use App\Http\Controllers\Api\CronJobController;
 use App\Http\Controllers\Api\EnrollmentRecommendationsController;
-use App\Http\Controllers\Api\EnrollmentResubmitController;
 use App\Http\Controllers\Api\EnrollmentsController;
 use App\Http\Controllers\Api\Users\FcmRegistrationTokensController;
 use Illuminate\Support\Facades\Route;
@@ -54,6 +53,4 @@ Route::group([
     Route::post('/enrollments', [EnrollmentsController::class, 'store']);
     Route::get('/enrollments-with-recommendation', [EnrollmentRecommendationsController::class, 'index']);
     Route::post('/enrollments/{tbMacForm}/recommendation', [EnrollmentRecommendationsController::class, 'store']);
-    Route::get('/enrollment/resubmit/{tbMacForm}', [EnrollmentResubmitController::class, 'editPage']);
-    Route::post('/enrollment/resubmit/{tbMacForm}', [EnrollmentResubmitController::class, 'resubmit']);
 });
