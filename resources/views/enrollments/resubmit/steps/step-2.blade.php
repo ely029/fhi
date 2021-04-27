@@ -2,9 +2,10 @@
     <div class="form__container form-step-2">
       <h2 class="section__heading">Case information 1</h2>
       <div class="form__content form-group">
+      <div class="help-block with-errors"></div>
         <textarea class="form__input form__input--message" name="treatment_history" required placeholder="Treatment Started ➞ Name of Treatment Unit ➞ Treatment Regimen (Drugs and Duration) ➞ Outcome">{{ $tbMacForm->enrollmentForm->treatment_history }}</textarea>
         <label class="form__label" for="">Treatment History</label>
-        <div class="help-block with-errors"></div>
+        
       </div>
       <div class="grid grid--two">
         <div class="form__content">
@@ -70,15 +71,17 @@
             <div id="js-section1">
               <div class="grid grid--three grid--close form-step-2">
                 <div class="form__content form-group">
+                <div class="help-block with-errors"></div>
                   <input type="hidden" class="xpert_mtb_rif"  value="xpert_mtb_rif"/>
                   <input class="form__input xpert_mtb_rif-field" type="date"  name="xpert_mtb_rif-date_collected[]" placeholder="Date collected" />
                   <label class="form__label" for="">Date collected</label>
-                  <div class="help-block with-errors"></div>
+                  
                 </div>
                 <div class="form__content form-group">
+                  <div class="help-block with-errors"></div>
                   <input class="form__input xpert_mtb_rif-field" type="text" placeholder="Name of laboratory" name="xpert_mtb_rif-name_of_laboratory[]"/>
                   <label class="form__label" for="">Name of laboratory</label>
-                  <div class="help-block with-errors"></div>
+                  
                 </div>
                 <div class="form__content">
                   <select class="form__input form__input--select" name="xpert_mtb_rif-result[]">
@@ -106,15 +109,17 @@
             <div id="js-section2">
               <div class="grid grid--three grid--close form-step-2">
                 <div class="form__content form-group">
+                  <div class="help-block with-errors"></div>
                   <input type="hidden" class="xpert_mtb_rif_ultra"  value="xpert_mtb_rif_ultra"/>
                   <input class="form__input xpert_mtb_rif_ultra-field" type="date" name="xpert_mtb_rif_ultra-date_collected[]" placeholder="Date collected" />
                   <label class="form__label" for="">Date collected</label>
-                  <div class="help-block with-errors"></div>
+                  
                 </div>
                 <div class="form__content form-group">
+                  <div class="help-block with-errors"></div>
                   <input class="form__input xpert_mtb_rif_ultra-field" type="text" placeholder="Name of laboratory" name="xpert_mtb_rif_ultra-name_of_laboratory[]"/>
                   <label class="form__label" for="">Name of laboratory</label>
-                  <div class="help-block with-errors"></div>
+                  
                 </div>
                 <div class="form__content">
                 <select class="form__input form__input--select" name="xpert_mtb_rif_ultra-result[]">
@@ -143,15 +148,17 @@
             <div id="js-section3">
               <div class="grid grid--three grid--close form-step-2">
                 <div class="form__content form-group">
+                  <div class="help-block with-errors"></div>
                   <input type="hidden" class="truenat_tb"  value="truenat_tb"/>
                   <input class="form__input truenat_tb-field" type="date" placeholder="Date collected" name="truenat_tb-date_collected[]" />
                   <label class="form__label" for="">Date collected</label>
-                  <div class="help-block with-errors"></div>
+                  
                 </div>
                 <div class="form__content form-group">
+                  <div class="help-block with-errors"></div>
                   <input class="form__input truenat_tb-field" type="text" placeholder="Name of laboratory" name="truenat_tb-name_of_laboratory[]" />
                   <label class="form__label" for="">Name of laboratory</label>
-                  <div class="help-block with-errors"></div>
+                  
                 </div>
                 <div class="form__content">
                   <select class="form__input form__input--select" name="truenat_tb-result[]">
@@ -180,19 +187,21 @@
             <div id="js-section4">
               <div class="grid grid--three grid--close form-step-2">
                 <div class="form__content form-group">
+                  <div class="help-block with-errors"></div>
                   <input type="hidden" class="lpa"  value="lpa"/>
                   <input class="form__input lpa-field" type="date" placeholder="Date collected" name="lpa-date_collected[]" />
                   <label class="form__label" for="">Date collected</label>
-                  <div class="help-block with-errors"></div>
+                  
                 </div>
                 <div class="form__content form-group">
+                  <div class="help-block with-errors"></div>
                   <input class="form__input lpa-field" type="text" placeholder="Name of laboratory" name="lpa-name_of_laboratory[]" />
                   <label class="form__label" for="">Name of laboratory</label>
-                  <div class="help-block with-errors"></div>
+                  
                 </div>
                 <div class="form__content form-group">
                  
-          
+                <div class="help-block with-errors"></div>
                   <label class="form__label" for="">Result</label>
                   <label class="form__sublabel" >MTB Detected, Second-line Injectable Resistance Not Detected
                     <input class="form__trigger lpa-field" type="checkbox" name="lpa-0-result[]" value="MTB Detected, Second-line Injectable Resistance Not Detected" />
@@ -250,7 +259,7 @@
                     <input class="form__trigger lpa-field" type="checkbox" name="lpa-0-result[]" value="Invalid" />
                     <span class="form__checkmark"> </span>
                   </label>
-                  <div class="help-block with-errors"></div>
+                  
                 </div>
                 <img class="image image--close image--relative js-delete-section4" src="{{ asset('assets/app/img/icon-close.png') }}" />
               </div>

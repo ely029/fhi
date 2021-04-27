@@ -48,7 +48,7 @@
                 <div class="triangle triangle--down"></div>
                 <label class="form__label" for="">Action</label>
               </div>
-              <button id="refer-button" class="button js-trigger" type="button">Confirm</button>
+              <button id="refer-button" class="button button--masterlist js-trigger" type="button">Confirm</button>
             </div>
             @endif
             @if (auth()->user()->role_id == 5)
@@ -62,7 +62,7 @@
                 <div class="triangle triangle--down"></div>
                 <label class="form__label" for="">Action</label>
               </div>
-              <button id="refer-button" class="button js-trigger" type="button">Confirm</button>
+              <button id="refer-button" class="button button--masterlist js-trigger" type="button">Confirm</button>
             </div>
             @endif
             @if (auth()->user()->role_id == 6)
@@ -77,7 +77,7 @@
                 <div class="triangle triangle--down"></div>
                 <label class="form__label" for="">Action</label>
               </div>
-              <button id="refer-button" class="button js-trigger" type="button">Confirm</button>
+              <button id="refer-button" class="button button--masterlist js-trigger" type="button">Confirm</button>
             </div>
             @endif
             @if (auth()->user()->role_id == 7 || auth()->user()->role_id == 8)
@@ -101,7 +101,7 @@
                 <div class="triangle triangle--down"></div>
                 <label class="form__label" for="">Action</label>
               </div>
-              <button id="refer-button" class="button js-trigger" type="button">Confirm</button>
+              <button id="refer-button" class="button button--masterlist js-trigger" type="button">Confirm</button>
             </div>
             @endif
           </div>

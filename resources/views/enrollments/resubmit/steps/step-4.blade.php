@@ -189,9 +189,10 @@
     <div class="form__container form-step-4">
       <h2 class="section__heading">Remarks</h2>
       <div class="form__content form-group">
+      <div class="help-block with-errors"></div>
           <textarea class="form__input form__input--message" placeholder="Remarks" name="remarks" required>{{ $tbMacForm->laboratoryResults->remarks }}</textarea>
           <label class="form__label" for="">Remarks</label>
-          <div class="help-block with-errors"></div>
+          
         </div>
     </div>
   </div>
