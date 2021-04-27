@@ -23,7 +23,6 @@ class CaseManagementController extends Controller
             case 5:
                 return $this->getHealthCareWorkerIndex($cases);
         }
-       
     }
 
     public function create()
@@ -41,28 +40,8 @@ class CaseManagementController extends Controller
 
     private function getHealthCareWorkerIndex($cases)
     {
-        // $forEnrollments = $enrollments->filter(function ($item) {
-        //     return $item->status === 'For Enrollment';
-        // });
-
-        // $notForEnrollments = $enrollments->filter(function ($item) {
-        //     return $item->status === 'Not For Enrollment';
-        // });
-
-        // $needFurtherDetails = $enrollments->filter(function ($item) {
-        //     return $item->status === 'Need Further Details';
-        // });
-
-        // $notForReferrals = $enrollments->filter(function ($item) {
-        //     return $item->status === 'Not For Referral';
-        // });
-
         return view('case-management.index')
-        ->with('cases', $cases);
-            // ->with('forEnrollments', $forEnrollments)
-            // ->with('notForEnrollments', $notForEnrollments)
-            // ->with('needFurtherDetails', $needFurtherDetails)
-            // ->with('notForReferrals', $notForReferrals);
+            ->with('cases', $cases);
     }
 
     private function getDynamicQuery()
