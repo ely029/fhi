@@ -7,11 +7,11 @@
           <form class="form form--quarter" action="">
             <h2 class="section__heading">Healthcare worker</h2>
             <div class="grid grid--two">
-              <div class="form__content"><span class="form__text">Lorem</span><label class="form__label" for="">First name</label></div>
-              <div class="form__content"><span class="form__text">Lorem</span><label class="form__label" for="">Last name</label></div>
+              <div class="form__content"><span class="form__text">Sample</span><label class="form__label" for="">First name</label></div>
+              <div class="form__content"><span class="form__text">Sample</span><label class="form__label" for="">Last name</label></div>
             </div>
             <div class="grid grid--two">
-              <div class="form__content"><span class="form__text">lorem@gmail.com</span><label class="form__label" for="">Email address</label></div>
+              <div class="form__content"><span class="form__text">sample@gmail.com</span><label class="form__label" for="">Email address</label></div>
               <div class="form__content"><span class="form__text">10/10/10</span><label class="form__label" for="">Joining date</label></div>
             </div>
             <div class="form__button form__button--pagination"><button class="button button--accept button--back">Accept</button><button class="button button--decline button--next js-trigger" type="button">Decline</button></div>
