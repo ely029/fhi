@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\CaseManagementController;
+use App\Http\Controllers\CaseManagementRecommendationController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\EnrollmentRegimentController;
@@ -58,4 +59,5 @@ Route::group(['middleware' => 'auth'], static function () {
 
     Route::get('/case-management/{tbMacForm}', [CaseManagementController::class,'show']);
     Route::get('/case-management/create', [CaseManagementController::class, 'create']);
+    Route::post('/case-management/{tbMacForm}/recommendation', [CaseManagementRecommendationController::class,'store']);
 });
