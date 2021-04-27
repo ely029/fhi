@@ -113,10 +113,28 @@ class TBMacForm extends Model
     {
         return $query->where('form_type', 'enrollment');
     }
+
+    public function scopeCaseManagementForms($query)
+    {
+        return $query->where('form_type', 'case_management');
+    }
+
     public function scopeFilter($query, TBMacFormFilters $filters)
     {
         return $filters->apply($query);
     }
+
+    public function getPresentationNumberAttribute($value)
+    {
+        $prefix = 'E-';
+        switch ($this->form_type) {
+            case 'case_management':
+                $prefix = 'C-';
+                break;
+        }
+        return $prefix.$value;
+    }
+
     protected static function boot()
     {
         parent::boot();
