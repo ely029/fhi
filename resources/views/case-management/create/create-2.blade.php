@@ -1,6 +1,6 @@
-<div class="form__tab">
+<div class="form__tab step-2">
     <h2 class="section__heading">Bacteriological results and status</h2>
-    <div class="form__container">
+    <div class="form__container form-step-2">
     <table class="table table--unset js-table-unset">
         <thead>
         <tr>

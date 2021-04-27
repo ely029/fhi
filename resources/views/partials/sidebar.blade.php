@@ -14,7 +14,7 @@
             </a>
           </li>
           <li class="sidebar__item">
-            <a class="sidebar__link" href="case-management.html">
+            <a class="sidebar__link" href="{{ url('case-management')}}">
               <div class="sidebar__wrapper">
                 <img class="image" src="{{ asset('assets/app/img/icon-case-management.png') }}" alt="Case Management icon for fhi" />
                 <img class="image image--white" src="{{ asset('assets/app/img/icon-case-management-white.png') }}" alt="Case management icon on hover for fhi" />
