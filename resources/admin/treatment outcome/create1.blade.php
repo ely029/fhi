@@ -17,17 +17,17 @@
       <div class="form__tab">
         <h2 class="section__heading">Patient Information</h2>
         <div class="grid grid--two">
-          <div class="form__content"><input class="form__input" id="tb-number" type="number" min="0" placeholder="TB Case number" /><label class="form__label" for="">Case number</label></div>
-          <div class="form__content"><input class="form__input" id="last-name" type="text" placeholder="Last name" /><label class="form__label" for="">Last name</label></div>
+          <div class="form__content"><input class="form__input" id="tbNumber" type="number" min="0" placeholder="TB Case number" /><label class="form__label" for="">Case number</label></div>
+          <div class="form__content"><input class="form__input" id="lastName" type="text" placeholder="Last name" /><label class="form__label" for="">Last name</label></div>
         </div>
         <div class="grid grid--two">
-          <div class="form__content"><input class="form__input" id="first-name" type="text" placeholder="First name" /><label class="form__label" for="">First name</label></div>
-          <div class="form__content"><input class="form__input" type="text" placeholder="Middle name" /><label class="form__label" for="">Middle name</label></div>
+          <div class="form__content"><input class="form__input" id="firstName" type="text" placeholder="First name" /><label class="form__label" for="">First name</label></div>
+          <div class="form__content"><input class="form__input" id="middleName" type="text" placeholder="Middle name" /><label class="form__label" for="">Middle name</label></div>
         </div>
         <div class="grid grid--two">
-          <div class="form__content"><input class="form__input" type="number" min="0" placeholder="Facility code" /><label class="form__label" for="">Facility code</label></div>
+          <div class="form__content"><input class="form__input" id="facilityCode" type="number" min="0" placeholder="Facility code" /><label class="form__label" for="">Facility code</label></div>
           <div class="form__content">
-            <select class="form__input form__input--select" disabled>
+            <select class="form__input form__input--select" id="province" disabled>
             <option value="Metro Manila">Metro Manila</option>
             <option value="Abra">Abra</option>
             <option value="Agusan del Norte">Agusan del Norte</option>
@@ -114,9 +114,9 @@
         </div>
         </div>
         <div class="grid grid--two">
-          <div class="form__content"><input class="form__input" type="date" placeholder="Birthday" /><label class="form__label" for="">Birthday</label></div>
+          <div class="form__content"><input class="form__input" id="birthday" type="date" placeholder="Birthday" /><label class="form__label" for="">Birthday</label></div>
           <div class="form__content">
-            <select class="form__input form__input--select">
+            <select class="form__input form__input--select" id="gender">
             <option>Male</option>
             <option>Female</option>
             </select>
@@ -126,14 +126,14 @@
         </div>
         <div class="grid grid--two">
           <div class="form__content">
-            <select class="form__input form__input--select">
+            <select class="form__input form__input--select" id="drugSusceptibility">
             <option> </option>
             </select>
             <div class="triangle triangle--down"></div>
             <label class="form__label" for="">Drug susceptibility</label>
           </div>
           <div class="form__content">
-            <select class="form__input form__input--select">
+            <select class="form__input form__input--select" id="outcome">
             <option> </option>
             <option> </option>
             <option> </option>
