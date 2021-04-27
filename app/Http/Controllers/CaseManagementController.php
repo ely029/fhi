@@ -21,7 +21,9 @@ class CaseManagementController extends Controller
             case 4:
                 return $this->getRegionalSecretariatIndex($cases);
             case 5:
-                return $this->getHealthCareWorkerIndex($cases);
+                return $this->getRegionalTBMacIndex($cases);
+            case 6:
+                return $this->getRTBMacChairIndex($cases);
         }
     }
 
@@ -72,6 +74,48 @@ class CaseManagementController extends Controller
 
         return view('case-management.index')
             ->with('pending', $pending)
+            ->with('allCases', $cases);
+    }
+
+    private function getRegionalTBMacIndex($cases)
+    {
+        $pending = $cases->filter(function ($item) {
+            return $item->status === 'Referred to Regional';
+        });
+
+        $withRecommendations = $cases->filter(function ($item) {
+            return in_array($item->status, ['For approval','Other suggestions','Need Further Details','Referred to National']);
+        });
+
+        $completed = $cases->filter(function ($item) {
+            return $item->status === 'Referred to Regional Chair';
+        });
+
+        return view('case-management.index')
+            ->with('pending', $pending)
+            ->with('withRecommendations', $withRecommendations)
+            ->with('completed', $completed)
+            ->with('allCases', $cases);
+    }
+
+    private function getRTBMacChairIndex($cases)
+    {
+        $pending = $cases->filter(function ($item) {
+            return $item->status === 'Referred back to regional chair';
+        });
+
+        $referredCases = $cases->filter(function ($item) {
+            return $item->status === 'Referred to Regional Chair';
+        });
+
+        $completed = $cases->filter(function ($item) {
+            return in_array($item->status, ['For approval','Other suggestions','Need Further Details']);
+        });
+
+        return view('case-management.index')
+            ->with('pending', $pending)
+            ->with('referredCases', $referredCases)
+            ->with('completed', $completed)
             ->with('allCases', $cases);
     }
 }

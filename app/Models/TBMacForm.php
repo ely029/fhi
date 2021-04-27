@@ -112,7 +112,13 @@ class TBMacForm extends Model
     public function regionalRecommendations()
     {
         return $this->hasMany(Recommendation::class, 'form_id')
-            ->whereIn('role_id',[3,4,6]);
+            ->whereIn('role_id', [3,4,6]);
+    }
+
+    public function rtbMacRecommendations()
+    {
+        return $this->hasMany(Recommendation::class, 'form_id')
+            ->whereIn('role_id', [3,4,5,6,8]);
     }
 
     public function scopeEnrollmentForms($query)

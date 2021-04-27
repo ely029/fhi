@@ -85,7 +85,7 @@
                 </div>
 
                 {{-- Regional Secretariat --}}
-                @if(auth()->user()->role_id == 4)
+                @if(auth()->user()->role_id == 4 && request('from_tab') == 'pending')
                     <div class="grid grid--action">
                         <div class="form__content">
                             <select id="action-dropdown" class="form__input form__input--select">
@@ -99,6 +99,38 @@
                     </div>
                 @endif
 
+                {{-- Regional TB Mac --}}
+                @if(auth()->user()->role_id == 5 && request('from_tab') == 'pending')
+                  <div class="grid grid--action">
+                      <div class="form__content">
+                          <select id="action-dropdown" class="form__input form__input--select">
+                          <option value="Recommend for Approval">Recommend for Approval</option>
+                          <option value="Recommend for other suggestions">Recommend for other suggestions</option>
+                          <option value="Recommend for need further details">Recommend for need further details </option>
+                          </select>
+                          <div class="triangle triangle--down"></div>
+                          <label class="form__label" for="">Action</label>
+                      </div>
+                  <button id="recommendation-button" class="button button--masterlist js-trigger" type="button">Confirm</button>
+                  </div>
+                @endif
+
+                {{-- Regional TB Mac Chair --}}
+                @if(auth()->user()->role_id == 6 && (request('from_tab') == 'referred' || request('from_tab') == 'pending'))
+                    <div class="grid grid--action">
+                        <div class="form__content">
+                            <select id="action-dropdown" class="form__input form__input--select">
+                            <option value="For approval">Approve</option>
+                            <option value="Other suggestions">Other suggestions</option>
+                            <option value="Need Further Details">Need Further Details</option>
+                            <option value="Referred to National">Refer to N-TBMac</option>
+                            </select>
+                            <div class="triangle triangle--down"></div>
+                            <label class="form__label" for="">Action</label>
+                        </div>
+                    <button id="recommendation-button" class="button button--masterlist js-trigger" type="button">Confirm</button>
+                    </div>
+                @endif
                 
 
               </div>
@@ -346,6 +378,10 @@
                 if(auth()->user()->id == 4)
                 {
                     $recommendations = $tbMacForm->regionalRecommendations;
+                }
+                if(auth()->user()->id == 5 || auth()->user()->id == 6)
+                {
+                    $recommendations = $tbMacForm->rtbMacRecommendations;
                 }
                 
               @endphp

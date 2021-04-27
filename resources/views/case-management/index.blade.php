@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Enrollment')
+@section('title', 'Case Management')
 @section('description', 'Dashboard')
 
 @section('content')
@@ -17,6 +17,12 @@
   @endif
   @if (auth()->user()->role_id === 4)
     @include('case-management.indexes.regional-secretariat')
+  @endif
+  @if (auth()->user()->role_id === 5)
+    @include('case-management.indexes.rtb-mac')
+  @endif
+  @if (auth()->user()->role_id === 6)
+    @include('case-management.indexes.rtb-mac-chair')
   @endif
   </div>
 
