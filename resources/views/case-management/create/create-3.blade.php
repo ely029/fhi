@@ -1,5 +1,5 @@
-<div class="form__tab">
-    <div class="form__container">
+<div class="form__tab step-3">
+    <div class="form__container form-step-3">
     <h2 class="section__heading">Treatment information</h2>
     <div class="grid grid--two">
         <div class="form__content"><input class="form__input" type="number" placeholder="Current weight (kg)" /><label class="form__label" for="">Current weight (kg)</label></div>
@@ -41,8 +41,8 @@
     </div>
     </div>
 </div>
-<div class="form__tab">
-    <div class="form__container">
+<div class="form__tab step-3">
+    <div class="form__container form-step-3">
     <h2 class="section__heading">Laboratory results and information</h2>
     <div class="form__container">
         <div class="grid">
@@ -110,6 +110,6 @@
     <h2 class="section__heading">Remarks</h2>
     <div class="form__content"><textarea class="form__input form__input--message" placeholder="Remarks"></textarea><label class="form__label" for="">Remarks</label></div>
     </div>
+    <div class="form__button form__button--space form__button--pagination"><button class="button button--back" type="button">Back</button><input class="button button--next" type="submit" value="Submit"></div>
 </div>
-<div class="form__button form__button--space form__button--pagination"><button class="button button--back" type="button">Back</button><input class="button button--next" type="submit" value="Submit"></div>
 </div>

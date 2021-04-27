@@ -1,17 +1,17 @@
-<div class="form__tab">
+<div class="form__tab step-1">
     <h2 class="section__heading">Patient Information</h2>
-    <div class="grid grid--two">
-    <div class="form__content"><input class="form__input" id="tb-number" type="number" min="0" placeholder="TB Case number" /><label class="form__label" for="">TB Case number</label></div>
+    <div class="grid grid--two form-step-1">
+    <div class="form__content"><input class="form__input" id="tb-number" name="presentation_number" type="number" min="0" placeholder="TB Case number" /><label class="form__label" for="">TB Case number</label></div>
     <div class="form__content"><input class="form__input" id="last-name" type="text" placeholder="Last name" /><label class="form__label" for="">Last name</label></div>
     </div>
     <div class="grid grid--two">
-    <div class="form__content"><input class="form__input" id="first-name" type="text" placeholder="First name" /><label class="form__label" for="">First name</label></div>
-    <div class="form__content"><input class="form__input " type="text" placeholder="Middle name" /><label class="form__label" for="">Middle name</label></div>
+    <div class="form__content"><input name="first_name" class="form__input" id="first-name" type="text" placeholder="First name" /><label class="form__label" for="">First name</label></div>
+    <div class="form__content"><input class="form__input" name="middle_name" type="text" placeholder="Middle name" /><label class="form__label" for="">Middle name</label></div>
     </div>
     <div class="grid grid--two">
     <div class="form__content"><input class="form__input " type="number" min="0" placeholder="Facility code" /><label class="form__label" for="">Facility code</label></div>
     <div class="form__content">
-        <select class="form__input form__input--select " disabled>
+        <select class="form__input form__input--select " name="province">
         <option value="Metro Manila">Metro Manila</option>
         <option value="Abra">Abra</option>
         <option value="Agusan del Norte">Agusan del Norte</option>
@@ -98,9 +98,9 @@
     </div>
     </div>
     <div class="grid grid--two">
-    <div class="form__content"><input class="form__input " type="date" placeholder="Birthday" /><label class="form__label" for="">Birthday</label></div>
+    <div class="form__content"><input class="form__input " name="birthday" type="date" placeholder="Birthday" /><label class="form__label" for="">Birthday</label></div>
     <div class="form__content">
-        <select class="form__input form__input--select ">
+        <select class="form__input form__input--select " name="gender">
         <option>Male</option>
         <option>Female</option>
         </select>
@@ -110,34 +110,31 @@
     </div>
     <div class="grid grid--two">
     <div class="form__content">
-        <select class="form__input form__input--select ">
-        <option>January</option>
-        <option>February</option>
-        <option>March</option>
-        <option>April</option>
-        <option>May</option>
-        <option>June</option>
-        <option>July</option>
-        <option>August</option>
-        <option>September</option>
-        <option>October</option>
-        <option>November </option>
-        <option>December</option>
+        <select class="form__input form__input--select" name="month_of_treatment">
+        <option value="0">0</option>
+        <option value="1st">1st</option>
+        <option value="2nd">2nd</option>
+        <option value="3rd">3rd</option>
         </select>
         <div class="triangle triangle--down"></div>
         <label class="form__label" for="">Month of treatment</label>
     </div>
     <div class="form__content">
-        <select class="form__input form__input--select ">
-        <option> </option>
-        <option> </option>
-        <option> </option>
+        <select class="form__input form__input--select" name="current_drug_susceptibility">
+        <option value="Drug-susceptible (for enrollment note)">Drug-susceptible (for enrollment note)</option>
+        <option value="Bacteriologically-confirmed RR-TB">Bacteriologically-confirmed RR-TB</option>
+        <option value="Bacteriologically-confirmed MDR-TB">Bacteriologically-confirmed MDR-TB</option>
+        <option value="Bacteriologically-confirmed XDR-TB">Bacteriologically-confirmed XDR-TB</option>
+        <option value="Bacteriologically-confirmed Pre-XDR-TB">Bacteriologically-confirmed Pre-XDR-TB</option>
+        <option value="Bacteriologically-confirmed XDR-TB">Bacteriologically-confirmed XDR-TB</option>
+        <option value="Clinically-confirmed MDR-TB">Clinically-confirmed MDR-TB</option>
+        <option value="Other Drug-resistant TB">Other Drug-resistant TB</option>
         </select>
         <div class="triangle triangle--down"></div>
         <label class="form__label" for="">Current drug susceptibility</label>
     </div>
     </div>
-    <div class="form__button form__button--space form__button--pagination"><button class="button button--back" type="button">Back</button><button class="button button--next" type="button">Next</button></div>
+    <div class="form__button form__button--space form__button--pagination"><button class="button button--next" type="button">Next</button></div>
 </div>
 
 <div class="modal js-modal">

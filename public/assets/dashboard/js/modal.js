@@ -1,3 +1,4 @@
+$.noConflict();
 $('document').ready(function(){
 
     $('.create-recom').click(function(){
