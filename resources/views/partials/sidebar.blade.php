@@ -56,41 +56,39 @@
                 <li class="sidebar__item {{ request()->is('dashboard/users*') ? 'active' : null }}">
                     <a class="sidebar__link" href="{{ url('dashboard/users') }}">
                     <div class="sidebar__wrapper">
-                        <img class="image" src="{{ asset('assets/app/img/icon-admin-management.png') }}" alt="User Management icon for fhi" />
-                        <img class="image image--white" src="{{ asset('assets/app/img/icon-admin-management-white.png') }}" alt="User management icon on hover for fhi" />
+                        <img class="image" src="{{ asset('assets/app/img/icon-role-management.png') }}" alt="role Management icon for fhi" />
+                        <img class="image image--white" src="{{ asset('assets/app/img/icon-role-management-white.png') }}" alt="role management icon on hover for fhi" />
                     </div>
-                    <span class="sidebar__text">Admin Management</span>
+                    <span class="sidebar__text">Role Management</span>
+                    </a>
+                </li>
+                <li class="sidebar__item {{ request()->is('') ? 'active' : null }}">
+                    <a class="sidebar__link" href="{{ url('') }}">
+                    <div class="sidebar__wrapper">
+                        <img class="image" src="{{ asset('assets/app/img/icon-feedback.png') }}" alt="feedback Management icon for fhi" />
+                        <img class="image image--white" src="{{ asset('assets/app/img/icon-feedback-white.png') }}" alt="feedback management icon on hover for fhi" />
+                    </div>
+                    <span class="sidebar__text">Feedback</span>
                     </a>
                 </li>
             @endif
             {{-- <li class="sidebar__item">
-                <a class="sidebar__link" href="user-log.html">
+                <a class="sidebar__link" href="activity-log.html">
                 <div class="sidebar__wrapper">
-                    <img class="image" src="{{ asset('assets/app/img/icon-user-log.png') }}" alt="User logs icon for fhi" /><img class="image image--white" src="{{ asset('assets/app/img/icon-user-log-white.png') }}" alt="User logs icon on hover for fhi" />
+                    <img class="image" src="{{ asset('assets/app/img/icon-activity-log.png') }}" alt="activity logs icon for fhi" /><img class="image image--white" src="{{ asset('assets/app/img/icon-activity-log-white.png') }}" alt="activity logs icon on hover for fhi" />
                 </div>
-                <span class="sidebar__text">User log</span>
+                <span class="sidebar__text">Activity log</span>
                 </a>
             </li> --}}
             </ul>
         @endif
       </div>
-      <a class="sidebar__footer" id="navbarDropdown" data-toggle="dropdown">
+      <a class="sidebar__footer" href="">
         <div class="sidebar__footer-content">
           <h2 class="sidebar__footer-heading">{{ auth()->user()->name }}</h2>
           <span class="sidebar__footer-span">Role | Region</span>
         </div>
-        <div class="arrow arrow--right">
-            
-        </div>
+        <div class="arrow arrow--right"></div>
       </a>
-      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item logout-button" href="#">
-                {{ __('Logout') }}
-            </a>
-
-            <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                @csrf
-            </form>
-    </div>
     </div>
   </div>
