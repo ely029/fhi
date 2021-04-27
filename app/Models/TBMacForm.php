@@ -121,6 +121,12 @@ class TBMacForm extends Model
             ->whereIn('role_id', [3,4,5,6,8]);
     }
 
+    public function ntbMacRecommendations()
+    {
+        return $this->hasMany(Recommendation::class, 'form_id')
+            ->whereIn('role_id', [3,6,7,8]);
+    }
+
     public function scopeEnrollmentForms($query)
     {
         return $query->where('form_type', 'enrollment');

@@ -131,6 +131,16 @@
                     <button id="recommendation-button" class="button button--masterlist js-trigger" type="button">Confirm</button>
                     </div>
                 @endif
+
+                 {{-- National TB Mac --}}
+                 @if((auth()->user()->role_id == 7 || auth()->user()->role_id == 8) && request('from_tab') == 'referred')
+                 <div class="grid grid--action">
+                    <div class="form__content">
+                      <label class="form__label" for="">Action</label>
+                    </div>
+                    <button class="button js-trigger create-recommendation" data-role="{{ auth()->user()->role_id }}" type="button">Create Recommendation</button>
+                  </div>
+                @endif
                 
 
               </div>
@@ -382,6 +392,10 @@
                 if(auth()->user()->id == 5 || auth()->user()->id == 6)
                 {
                     $recommendations = $tbMacForm->rtbMacRecommendations;
+                }
+                if(auth()->user()->id == 7 || auth()->user()->id == 8)
+                {
+                    $recommendations = $tbMacForm->ntbMacRecommendations;
                 }
                 
               @endphp

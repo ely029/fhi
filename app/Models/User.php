@@ -102,10 +102,10 @@ class User extends Authenticatable
         return $this->hasMany(Social::class);
     }
 
-    // public function hasAccess($route)
-    // {
-    //     return $this->role->hasAccess($route);
-    // }
+    public function hasAccess($route)
+    {
+        return $this->role->hasAccess($route);
+    }
 
     public function getPhotoNameAttribute()
     {

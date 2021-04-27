@@ -24,6 +24,12 @@
   @if (auth()->user()->role_id === 6)
     @include('case-management.indexes.rtb-mac-chair')
   @endif
+  @if (auth()->user()->role_id === 7)
+    @include('case-management.indexes.ntb-mac')
+  @endif
+  @if (auth()->user()->role_id === 8)
+    @include('case-management.indexes.ntb-mac-chair')
+  @endif
   </div>
 
 </div>

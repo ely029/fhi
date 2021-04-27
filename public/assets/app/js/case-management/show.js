@@ -44,4 +44,17 @@ jQuery( document ).ready(function( $ ) {
 
         $("#modal-form").find('input[name="status"]').val(action);
     });
+
+    $(".create-recommendation").click(function(){
+        // $("#ntbmac-modal").modal('show');
+        $("#modal-text").text('Create Recommendation');
+        
+        if($(this).data('role') == 7){
+            $("#modal-form").find('input[name="status"]').val('Referred to National Chair');
+        }else if($(this).data('role') == 8)
+        {
+            $("#modal-form").find('input[name="status"]').val('Referred back to regional chair');
+        }
+     
+    });
 });
