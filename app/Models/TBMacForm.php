@@ -113,6 +113,12 @@ class TBMacForm extends Model
     {
         return $query->where('form_type', 'enrollment');
     }
+
+    public function scopeCaseManagementForms($query)
+    {
+        return $query->where('form_type', 'case_management');
+    }
+
     public function scopeFilter($query, TBMacFormFilters $filters)
     {
         return $filters->apply($query);
