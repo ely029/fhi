@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property int $form_id
  * @property string $extension
+ * @property string $file_name
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|TBMacFormAttachment newModelQuery()
@@ -31,6 +32,6 @@ class TBMacFormAttachment extends Model
     protected $table = 'tb_mac_form_attachments';
 
     protected $fillable = [
-        'extension',
+        'extension', 'file_name',
     ];
 }

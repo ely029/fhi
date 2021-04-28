@@ -47,8 +47,10 @@ class ResubmitEnrollmentController extends Controller
 
         if (isset($request['attachments'])) {
             foreach ($request['attachments'] as $key => $file) {
-                $file->storeAs(TBMacFormAttachment::PATH_PREFIX.'/'.$tbMacForm->presentation_number, ($tbMacForm->attachments()->count() + 1).'.'.$file->extension());
+                $fileName = $file->getClientOriginalName();
+                $file->storeAs(TBMacFormAttachment::PATH_PREFIX.'/'.$tbMacForm->presentation_number, $fileName);
                 $tbMacForm->attachments()->create([
+                    'file_name' => $fileName,
                     'extension' => $file->extension(),
                 ]);
             }
@@ -85,8 +87,7 @@ class ResubmitEnrollmentController extends Controller
             if (Storage::exists($path)) {
                 Storage::delete($path);
             }
-            $key = explode('.', $toRemove);
-            $tbMacForm->attachments[(int) $key[0] - 1]->delete();
+            $tbMacForm->attachments()->where('file_name', $toRemove)->delete();
         }
     }
 }

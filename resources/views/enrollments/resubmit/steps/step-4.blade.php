@@ -176,12 +176,9 @@
     <ul class="gallery__list">
       <li class="gallery__item">
         @foreach($tbMacForm->attachments as $key => $attachment)
-          @php
-            $fileName = ($key+1).'.'.$attachment->extension;
-          @endphp
-          <img class="image exist-attach-{{ $key }}" src="{{ url('enrollments/'.$tbMacForm->id.'/'.$fileName.'/attachment') }}"/>
+          <img class="image exist-attach-{{ $key }}" src="{{ url('enrollments/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment') }}"/>
           <button type="button" class="btn btn-danger remove-attachment exist-attach-{{ $key }}" 
-          data-filename="{{ $fileName }}" data-key="{{ $key }}">Remove</button>
+          data-filename="{{ $attachment->file_name }}" data-key="{{ $key }}">Remove</button>
         @endforeach
       </li>
       <input type="hidden"  name="attachments-to-remove" id="attachments-to-remove">

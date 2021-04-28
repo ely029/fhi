@@ -1,5 +1,5 @@
-$.noConflict();
-$('document').ready(function(){
+// $.noConflict();
+jQuery( document ).ready(function( $ ) {
 
     $('.create-recom').click(function(){
         $('#create-recom').modal('show');

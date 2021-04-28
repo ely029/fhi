@@ -312,12 +312,10 @@
               <ul class="form__gallery">
                 @foreach($tbMacForm->attachments as $key => $attachment)
                   <li class="form__gallery-item">
-                    @php
-                      $fileName = ($key+1).'.'.$attachment->extension;
-                    @endphp
-                    <a href="{{ url('enrollments/'.$tbMacForm->id.'/'.$fileName.'/download') }}">
-                    <img class="image" src="{{ url('enrollments/'.$tbMacForm->id.'/'.$fileName.'/attachment') }}" alt="Placeholder" />
-                    </a>
+                    <a href="{{ url('enrollments/'.$tbMacForm->id.'/'.$attachment->file_name.'/download') }}">
+                    <img class="image" src="{{ url('enrollments/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment') }}" alt="Placeholder" />
+                      <p>{{ $attachment->file_name }}</p>
+                  </a>
                   </li>
                 @endforeach
               </ul>
