@@ -1,8 +1,8 @@
-let currentStep = 1;
-let totalSteps = $("#steps").data('steps');
-
-$.noConflict();
+// $.noConflict();
 jQuery( document ).ready(function( $ ) {
+
+    let currentStep = 1;
+    let totalSteps = $("#steps").data('steps');
     // Code that uses jQuery's $ can follow here.
     $(".button--next").on('click', function(){
 

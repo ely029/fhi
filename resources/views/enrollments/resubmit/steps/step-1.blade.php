@@ -1,5 +1,5 @@
 <div class="form__tab step-1">
-    <h2 class="section__heading">Patient Information</h2>
+    <h2 class="section__heading">Patient information</h2>
     <div class="grid grid--two form-step-1">
       <div class="form__content form-group">
         <input class="form__input" type="number" min="0" placeholder="Facility code" name="facility_code" required value="{{ $tbMacForm->patient->facility_code }}"/>
@@ -45,7 +45,7 @@
           <option value="Female" {{ $tbMacForm->patient->gender == 'Female' ? 'selected' : '' }}>Female</option>
         </select>
         <div class="triangle triangle--down"></div>
-        <label class="form__label" for="">Gender</label>
+        <label class="form__label" for="">Sex</label>
       </div>
     </div>
   </div>

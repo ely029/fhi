@@ -1,5 +1,5 @@
 <div class="form__tab step-1">
-    <h2 class="section__heading">Patient Information</h2>
+    <h2 class="section__heading">Patient information</h2>
     <div class="grid grid--two form-step-1">
       <div class="form__content form-group">
         <div class="help-block with-errors"></div>
@@ -127,7 +127,7 @@
           <option value="Female">Female</option>
         </select>
         <div class="triangle triangle--down"></div>
-        <label class="form__label" for="">Gender</label>
+        <label class="form__label" for="">Sex</label>
       </div>
     </div>
   </div>

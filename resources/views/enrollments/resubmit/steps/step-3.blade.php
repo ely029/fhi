@@ -44,13 +44,13 @@
       <div class="form__content itr-drugs">
       <div class="help-block with-errors"></div>
         <input class="form__input" type="text" id="drugs_given" placeholder="Drugs given" />
-        <label class="form__label" for="">Drugs Given</label>
+        <label class="form__label" for="">Drugs given</label>
        
       </div>
       <div class="form__content  other-regimen">
         <div class="help-block with-errors"></div>
         <input class="form__input" type="text" id="others_specify" placeholder="Other Specify" />
-        <label class="form__label" for="">Other Specify</label>
+        <label class="form__label" for="">Other specify</label>
         
       </div>
       <div class="form__content form-group">

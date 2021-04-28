@@ -3,7 +3,7 @@ jQuery( document ).ready(function( $ ) {
     $('#recommendation-button').click(function(){
         let action = $("#action-dropdown").val();
         if(action == 'Referred to Regional'){
-            $("#modal-title").text('Refer To R-TBMac');
+            $("#modal-title").text('Refer To R-TB MAC');
             $("#modal-text").text("You are about to confirm 'Refer To R-TBMac' for this case and patient. If you have additional remarks, enter them below.");
         }
         if(action == 'Not for Referral'){
@@ -38,8 +38,8 @@ jQuery( document ).ready(function( $ ) {
             $("#modal-text").text("You are about to send this case back to a healthcare worker tagged as 'Need Further Details.' If you have additional remarks, enter them below.");
         }
         if(action == 'Referred to National'){
-            $("#modal-title").text('Refer To N-TBMac');
-            $("#modal-text").text("You are about to send this case to National TBMAC. If you have additional remarks, enter them below.");
+            $("#modal-title").text('Refer To N-TB MAC');
+            $("#modal-text").text("You are about to send this case to National TB MAC. If you have additional remarks, enter them below.");
         }
 
         $("#modal-form").find('input[name="status"]').val(action);

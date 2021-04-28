@@ -8,7 +8,7 @@
 <div class="section">
     <div class="section__top">
       <h1 class="section__title">Enrollments</h1>
-      <div class="breadcrumbs"><a class="breadcrumbs__link">Enrollment Regimen</a><a class="breadcrumbs__link"></a><a class="breadcrumbs__link"></a></div>
+      <div class="breadcrumbs"><a class="breadcrumbs__link">Enrollment regimen</a><a class="breadcrumbs__link"></a><a class="breadcrumbs__link"></a></div>
     </div>
     @if (Auth::user()->role_id === 3)
     <div class="section__container">
@@ -28,12 +28,12 @@
           <table class="table table--filter js-table">
             <thead>
               <tr>
-                <th class="table__head">Presentation No.</th>
-                <th class="table__head">Patient Initials</th>
+                <th class="table__head">Presentation no.</th>
+                <th class="table__head">Patient initials</th>
                 <th class="table__head">Age</th>
-                <th class="table__head">Gender</th>
-                <th class="table__head">Drug Susceptibility</th>
-                <th class="table__head">Date submitted to RTB MAC</th>
+                <th class="table__head">Sex</th>
+                <th class="table__head">Drug susceptibility</th>
+                <th class="table__head">Date submitted to R-TB MAC</th>
                 <th class="table__head">Status</th>
               </tr>
             </thead>
@@ -56,12 +56,12 @@
           <table class="table table--filter js-table">
             <thead>
               <tr>
-                <th class="table__head">Presentation No.</th>
-                <th class="table__head">Patient Initials</th>
+                <th class="table__head">Presentation no.</th>
+                <th class="table__head">Patient initials</th>
                 <th class="table__head">Age</th>
-                <th class="table__head">Gender</th>
-                <th class="table__head">Drug Susceptibility</th>
-                <th class="table__head">Date Submitted to RTB MAC</th>
+                <th class="table__head">Sex</th>
+                <th class="table__head">Drug susceptibility</th>
+                <th class="table__head">Date submitted to R-TB MAC</th>
                 <th class="table__head">Status</th>
               </tr>
             </thead>
@@ -84,12 +84,12 @@
           <table class="table table--filter js-table">
             <thead>
               <tr>
-                <th class="table__head">Presentation No.</th>
-                <th class="table__head">Patient Initials</th>
+                <th class="table__head">Presentation no.</th>
+                <th class="table__head">Patient initials</th>
                 <th class="table__head">Age</th>
-                <th class="table__head">Gender</th>
-                <th class="table__head">Drug Susceptibility</th>
-                <th class="table__head">Date Submitted to RTB MAC</th>
+                <th class="table__head">Sex</th>
+                <th class="table__head">Drug susceptibility</th>
+                <th class="table__head">Date submitted to R-TB MAC</th>
                 <th class="table__head">Status</th>
               </tr>
             </thead>
@@ -112,12 +112,12 @@
           <table class="table table--filter js-table">
             <thead>
               <tr>
-                <th class="table__head">Presentation No.</th>
-                <th class="table__head">Patient Initials</th>
+                <th class="table__head">Presentation no.</th>
+                <th class="table__head">Patient initials</th>
                 <th class="table__head">Age</th>
-                <th class="table__head">Gender</th>
-                <th class="table__head">Drug Susceptibility</th>
-                <th class="table__head">Date Submitted to RTB MAC</th>
+                <th class="table__head">Sex</th>
+                <th class="table__head">Drug susceptibility</th>
+                <th class="table__head">Date submitted to R-TB MAC</th>
                 <th class="table__head">Status</th>
               </tr>
             </thead>
@@ -140,12 +140,12 @@
           <table class="table table--filter js-table">
             <thead>
               <tr>
-                <th class="table__head">Presentation No.</th>
-                <th class="table__head">Patient Initials</th>
+                <th class="table__head">Presentation no.</th>
+                <th class="table__head">Patient initials</th>
                 <th class="table__head">Age</th>
-                <th class="table__head">Gender</th>
-                <th class="table__head">Drug Susceptibility</th>
-                <th class="table__head">Date Submitted to RTB MAC</th>
+                <th class="table__head">Sex</th>
+                <th class="table__head">Drug susceptibility</th>
+                <th class="table__head">Date submitted to R-TB MAC</th>
                 <th class="table__head">Status</th>
               </tr>
             </thead>
@@ -174,7 +174,7 @@
       <div class="section__content">
         <ul class="tabs__list tabs__list--table">
           <li class="tabs__item tabs__item--current">Pending ({{ $newEnrollments->count() }})</li>
-          <li class="tabs__item">All Enrollments ({{ $allEnrollment->count() }})</li>
+          <li class="tabs__item">All enrollments ({{ $allEnrollment->count() }})</li>
         </ul>
         <div class="tabs__details tabs__details--active">
           <table class="table table--filter js-table">
@@ -184,10 +184,10 @@
                 <th class="table__head">Facility Code</th>
                 <th class="table__head">Patient Initials</th>
                 <th class="table__head">Age</th>
-                <th class="table__head">Gender</th>
+                <th class="table__head">Sex</th>
                 <th class="table__head">Province</th>
                 <th class="table__head">Drug Susceptibility</th>
-                <th class="table__head">Date Submitted to RTB MAC</th>
+                <th class="table__head">Date Submitted to R-TB MAC</th>
                 <th class="table__head">Status</th>
               </tr>
             </thead>
@@ -216,10 +216,10 @@
                 <th class="table__head">Facility Code</th>
                 <th class="table__head">Patient Initials</th>
                 <th class="table__head">Age</th>
-                <th class="table__head">Gender</th>
+                <th class="table__head">Sex</th>
                 <th class="table__head">Province</th>
                 <th class="table__head">Drug Susceptibility</th>
-                <th class="table__head">Date Submitted to RTB MAC</th>
+                <th class="table__head">Date Submitted to R-TB MAC</th>
                 <th class="table__head">Status</th>
               </tr>
             </thead>
@@ -353,7 +353,7 @@
       <div class="section__content">
         <ul class="tabs__list tabs__list--table">
           <li class="tabs__item tabs__item--current">Referred enrolments ({{ $referred->count() }})</li>
-          <li class="tabs__item">Pending from N-TBMAC chair ({{ $allEnrollments->count() }})</li>
+          <li class="tabs__item">Pending from N-TB MAC chair ({{ $allEnrollments->count() }})</li>
           <li class="tabs__item">Elevated Enrollment ({{ $referredToRegional->count() }})</li>
           <li class="tabs__item">Completed ({{ $allEnrollments->count() }})</li>
           <li class="tabs__item">All Enrollments ({{ $allEnrollments->count() }})</li>
@@ -362,13 +362,13 @@
           <table class="table table--filter js-table">
             <thead>
               <tr>
-                <th class="table__head">Presentation No.</th>
-                <th class="table__head">Facility Code</th>
+                <th class="table__head">Presentation no.</th>
+                <th class="table__head">Facility code</th>
                 <th class="table__head">Patient</th>
                 <th class="table__head">Age</th>
-                <th class="table__head">Gender</th>
+                <th class="table__head">Sex</th>
                 <th class="table__head">Province</th>
-                <th class="table__head">Drug Susceptibility</th>
+                <th class="table__head">Drug susceptibility</th>
                 <th class="table__head">Date</th>
                 <th class="table__head">Status</th>
               </tr>
@@ -394,13 +394,13 @@
           <table class="table table--filter js-table">
             <thead>
               <tr>
-                <th class="table__head">Presentation No.</th>
-                <th class="table__head">Facility Code</th>
+                <th class="table__head">Presentation no.</th>
+                <th class="table__head">Facility code</th>
                 <th class="table__head">Patient</th>
                 <th class="table__head">Age</th>
-                <th class="table__head">Gender</th>
+                <th class="table__head">Sex</th>
                 <th class="table__head">Province</th>
-                <th class="table__head">Drug Susceptibility</th>
+                <th class="table__head">Drug susceptibility</th>
                 <th class="table__head">Date</th>
                 <th class="table__head">Status</th>
               </tr>
@@ -426,13 +426,13 @@
           <table class="table table--filter js-table">
           <thead>
           <tr>
-                <th class="table__head">Presentation No.</th>
-                <th class="table__head">Facility Code</th>
+                <th class="table__head">Presentation no.</th>
+                <th class="table__head">Facility code</th>
                 <th class="table__head">Patient</th>
                 <th class="table__head">Age</th>
-                <th class="table__head">Gender</th>
+                <th class="table__head">Sex</th>
                 <th class="table__head">Province</th>
-                <th class="table__head">Drug Susceptibility</th>
+                <th class="table__head">Drug susceptibility</th>
                 <th class="table__head">Date</th>
                 <th class="table__head">Status</th>
               </tr>
@@ -458,13 +458,13 @@
           <table class="table table--filter js-table">
           <thead>
           <tr>
-                <th class="table__head">Presentation No.</th>
-                <th class="table__head">Facility Code</th>
+                <th class="table__head">Presentation no.</th>
+                <th class="table__head">Facility code</th>
                 <th class="table__head">Patient</th>
                 <th class="table__head">Age</th>
-                <th class="table__head">Gender</th>
+                <th class="table__head">Sex</th>
                 <th class="table__head">Province</th>
-                <th class="table__head">Drug Susceptibility</th>
+                <th class="table__head">Drug susceptibility</th>
                 <th class="table__head">Date</th>
                 <th class="table__head">Status</th>
               </tr>
@@ -490,13 +490,13 @@
           <table class="table table--filter js-table">
           <thead>
           <tr>
-                <th class="table__head">Presentation No.</th>
-                <th class="table__head">Facility Code</th>
+                <th class="table__head">Presentation no.</th>
+                <th class="table__head">Facility code</th>
                 <th class="table__head">Patient</th>
                 <th class="table__head">Age</th>
-                <th class="table__head">Gender</th>
+                <th class="table__head">Sex</th>
                 <th class="table__head">Province</th>
-                <th class="table__head">Drug Susceptibility</th>
+                <th class="table__head">Drug susceptibility</th>
                 <th class="table__head">Date</th>
                 <th class="table__head">Status</th>
               </tr>
@@ -527,18 +527,18 @@
 
       <div class="section__content">
         <ul class="tabs__list tabs__list--table">
-          <li class="tabs__item tabs__item--current">Referred Enrolments ({{ $referred->count() }})</li>
-          <li class="tabs__item">All Enrollments ({{ $allEnrollments->count() }})</li>
+          <li class="tabs__item tabs__item--current">Referred enrolments ({{ $referred->count() }})</li>
+          <li class="tabs__item">All enrollments ({{ $allEnrollments->count() }})</li>
         </ul>
         <div class="tabs__details tabs__details--active">
           <table class="table table--filter js-table">
             <thead>
               <tr>
-                <th class="table__head">Presentation No.</th>
-                <th class="table__head">Facility Code</th>
-                <th class="table__head">Region & Province</th>
+                <th class="table__head">Presentation no.</th>
+                <th class="table__head">Facility code</th>
+                <th class="table__head">Region & province</th>
                 <th class="table__head">Patient</th>
-                <th class="table__head">Drug Susceptibility</th>
+                <th class="table__head">Drug susceptibility</th>
                 <th class="table__head">Date</th>
                 <th class="table__head">Status</th>
               </tr>
@@ -564,11 +564,11 @@
           <table class="table table--filter js-table">
           <thead>
           <tr>
-                <th class="table__head">Presentation No.</th>
-                <th class="table__head">Facility Code</th>
-                <th class="table__head">Region & Province</th>
+                <th class="table__head">Presentation no.</th>
+                <th class="table__head">Facility code</th>
+                <th class="table__head">Region & province</th>
                 <th class="table__head">Patient</th>
-                <th class="table__head">Drug Susceptibility</th>
+                <th class="table__head">Drug susceptibility</th>
                 <th class="table__head">Date</th>
                 <th class="table__head">Status</th>
               </tr>
@@ -600,19 +600,19 @@
 
       <div class="section__content">
         <ul class="tabs__list tabs__list--table">
-          <li class="tabs__item tabs__item--current">Referred Enrolments ({{ $pending->count() }})</li>
+          <li class="tabs__item tabs__item--current">Referred enrolments ({{ $pending->count() }})</li>
           <li class="tabs__item ">Completed ({{ $completed->count() }})</li>
-          <li class="tabs__item">All Enrollments ({{ $allEnrollments->count() }})</li>
+          <li class="tabs__item">All enrollments ({{ $allEnrollments->count() }})</li>
         </ul>
         <div class="tabs__details tabs__details--active">
           <table class="table table--filter js-table">
             <thead>
               <tr>
-                <th class="table__head">Presentation No.</th>
-                <th class="table__head">Facility Code</th>
-                <th class="table__head">Region & Province</th>
+                <th class="table__head">Presentation no.</th>
+                <th class="table__head">Facility code</th>
+                <th class="table__head">Region & province</th>
                 <th class="table__head">Patient</th>
-                <th class="table__head">Drug Susceptibility</th>
+                <th class="table__head">Drug susceptibility</th>
                 <th class="table__head">Date</th>
                 <th class="table__head">Status</th>
               </tr>
@@ -638,11 +638,11 @@
           <table class="table table--filter js-table">
             <thead>
               <tr>
-                <th class="table__head">Presentation No.</th>
-                <th class="table__head">Facility Code</th>
-                <th class="table__head">Region & Province</th>
+                <th class="table__head">Presentation no.</th>
+                <th class="table__head">Facility code</th>
+                <th class="table__head">Region & province</th>
                 <th class="table__head">Patient</th>
-                <th class="table__head">Drug Susceptibility</th>
+                <th class="table__head">Drug susceptibility</th>
                 <th class="table__head">Date</th>
                 <th class="table__head">Status</th>
               </tr>
@@ -668,11 +668,11 @@
           <table class="table table--filter js-table">
           <thead>
           <tr>
-                <th class="table__head">Presentation No.</th>
-                <th class="table__head">Facility Code</th>
-                <th class="table__head">Region & Province</th>
+                <th class="table__head">Presentation no.</th>
+                <th class="table__head">Facility code</th>
+                <th class="table__head">Region & province</th>
                 <th class="table__head">Patient</th>
-                <th class="table__head">Drug Susceptibility</th>
+                <th class="table__head">Drug susceptibility</th>
                 <th class="table__head">Date</th>
                 <th class="table__head">Status</th>
               </tr>

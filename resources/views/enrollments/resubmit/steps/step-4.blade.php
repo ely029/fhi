@@ -109,11 +109,11 @@
       <div class="grid">
         <div class="form__content form__content--small form__content--small__right">
           <input class="form__input" type="date" name="ct_scan_date" placeholder="CT Scan date" value="{{ $tbMacForm->laboratoryResults->ct_scan_date ? $tbMacForm->laboratoryResults->ct_scan_date->format('Y-m-d') : '' }}"/>
-          <label class="form__label" for="">CT Scan date</label>
+          <label class="form__label" for="">CT scan date</label>
         </div>
         <div class="form__content">
           <input class="form__input" type="text" name="ct_scan_result" placeholder="CT Scan result" value="{{ $tbMacForm->laboratoryResults->ct_scan_result }}" />
-          <label class="form__label" for="">CT Scan result</label>
+          <label class="form__label" for="">CT scan result</label>
         </div>
       </div>
       <div class="grid">
@@ -140,7 +140,7 @@
       </div>
     </div>
     <div class="form__container">
-      <h2 class="section__heading">Related Media (CXR, CTSCAN etc.)</h2>
+      <h2 class="section__heading">Related media (CXR, CTSCAN etc.)</h2>
       <div class="form__warning">
         <img class="image image--warning" src="{{ asset('assets/app/img/icon-warning.png') }}" alt="warning icon" />
         <p>Please make sure patient name is NOT included in your photo uploads</p>
@@ -198,5 +198,5 @@
   </div>
   <div class="form__button form__button--space form__button--pagination step-4">
     <a class="button button--back">Back</a>
-    <button class="button button--next" type="submit">Resubmit Enrollment</button>
+    <button class="button button--next" type="submit">Resubmit enrollment</button>
   </div>

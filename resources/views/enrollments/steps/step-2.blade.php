@@ -4,7 +4,7 @@
       <div class="form__content form-group">
         <div class="help-block with-errors"></div>
         <textarea class="form__input form__input--message" name="treatment_history" required placeholder="Treatment Started ➞ Name of Treatment Unit ➞ Treatment Regimen (Drugs and Duration) ➞ Outcome"></textarea>
-        <label class="form__label" for="">Treatment History</label>
+        <label class="form__label" for="">Treatment history</label>
         
       </div>
       <div class="grid grid--two">

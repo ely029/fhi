@@ -8,7 +8,7 @@
 <div class="section">
     <div class="section__top">
       <h1 class="section__title">{{ $tbMacForm->presentation_number }}</h1>
-      <div class="breadcrumbs"><a class="breadcrumbs__link" href="{{ url('enrollments') }}">Enrollment Regimen</a>
+      <div class="breadcrumbs"><a class="breadcrumbs__link" href="{{ url('enrollments') }}">Enrollment regimen</a>
         <a class="breadcrumbs__link">View {{ $tbMacForm->presentation_number }}</a>
         <a class="breadcrumbs__link"></a>
       </div>
@@ -31,9 +31,9 @@
                 <br />
               </div>
               <div class="form__container">
-                <h2 class="section__heading">Healthcare worker</h2>
+                <h2 class="section__heading">Health Care Worker</h2>
                 <div class="grid grid--two">
-                  <div class="form__content"><span class="form__text">{{ $tbMacForm->submittedBy->name }}</span><label class="form__label" for="">Primary healthcare worker </label></div>
+                  <div class="form__content"><span class="form__text">{{ $tbMacForm->submittedBy->name }}</span><label class="form__label" for="">Primary Health Care Worker </label></div>
                   <div class="form__content"><span class="form__text">{{ $tbMacForm->created_at->format('m-d-Y') }}</span><label class="form__label" for="">Date submitted</label></div>
                 </div>
               </div>
@@ -42,7 +42,7 @@
             <div class="grid grid--action">
               <div class="form__content">
                 <select id="refer" class="form__input form__input--select">
-                  <option value="1">Refer to R-TBMac</option>
+                  <option value="1">Refer to R-TB MAC</option>
                   <option value="2">Not for Referal</option>
                 </select>
                 <div class="triangle triangle--down"></div>
@@ -193,14 +193,14 @@
               <div class="grid grid--two">
                 <div class="form__content">
                     <span class="form__text">{{ $tbMacForm->enrollmentForm->registration_group }}</span>
-                    <label class="form__label" for="">Drug Susceptibility</label></div>
+                    <label class="form__label" for="">Drug susceptibility</label></div>
                 <div class="form__content"><span class="form__text">{{ $tbMacForm->enrollmentForm->current_weight }}kg</span>
                     <label class="form__label" for="">Current weight</label>
                 </div>
               </div>
               <div class="grid grid--two">
                 <div class="form__content"><span class="form__text">{{ $tbMacForm->enrollmentForm->suggested_regimen }}</span>
-                    <label class="form__label" for="">Suggested Regimen</label>
+                    <label class="form__label" for="">Suggested regimen</label>
                 </div>
                 @if(\Str::startsWith($tbMacForm->enrollmentForm->suggested_regimen,'ITR'))
                     <div class="form__content"><span class="form__text">{{ $tbMacForm->enrollmentForm->suggested_regimen }}</span>
@@ -273,13 +273,13 @@
                 <div class="form__content">
                     <span class="form__text">
                         {{ empty($tbMacForm->laboratoryResults->ct_scan_date) ? '' : $tbMacForm->laboratoryResults->ct_scan_date->format('m-d-Y') }}</span>
-                    <label class="form__label" for="">CT Scan date</label>
+                    <label class="form__label" for="">CT scan date</label>
                 </div>
                 <div class="form__content">
                   <span class="form__text">
                     {{ $tbMacForm->laboratoryResults->ct_scan_result }}
                   </span>
-                  <label class="form__label" for="">CT Scan result</label>
+                  <label class="form__label" for="">CT scan result</label>
                 </div>
               </div>
               <div class="grid grid--two">

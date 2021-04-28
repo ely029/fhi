@@ -91,11 +91,11 @@
       <div class="grid">
         <div class="form__content form-groupform__content--small form__content--small__right">
           <input class="form__input" type="date" name="ct_scan_date" placeholder="CT Scan date" />
-          <label class="form__label" for="">CT Scan date</label>
+          <label class="form__label" for="">CT scan date</label>
         </div>
         <div class="form__content">
           <input class="form__input" type="text" name="ct_scan_result" placeholder="CT Scan result" />
-          <label class="form__label" for="">CT Scan result</label>
+          <label class="form__label" for="">CT scan result</label>
         </div>
       </div>
       <div class="grid">
@@ -122,7 +122,7 @@
       </div>
     </div>
     <div class="form__container">
-      <h2 class="section__heading">Related Media (CXR, CTSCAN etc.)</h2>
+      <h2 class="section__heading">Related media (CXR, CTSCAN etc.)</h2>
       <div class="form__warning">
         <img class="image image--warning" src="{{ asset('assets/app/img/icon-warning.png') }}" alt="warning icon" />
         <p>Please make sure patient name is NOT included in your photo uploads</p>
@@ -167,5 +167,5 @@
   </div>
   <div class="form__button form__button--space form__button--pagination step-4">
     <a class="button button--back">Back</a>
-    <button class="button button--next" type="submit">Create New Enrollment</button>
+    <button class="button button--next" type="submit">Create new enrollment</button>
   </div>

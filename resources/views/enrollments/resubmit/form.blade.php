@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Resubmit Enrollment')
-@section('description', 'Resubmit Enrollment')
+@section('title', 'Resubmit enrollment')
+@section('description', 'Resubmit enrollment')
 
 @section('additional_styles')
     <link type="text/css" href="{{ asset('assets/app/css/forms.css') }}" rel="stylesheet">
@@ -11,9 +11,9 @@
 
 <div class="section">
     <div class="section__top">
-      <h1 class="section__title">Resubmit Enrollment</h1>
+      <h1 class="section__title">Resubmit enrollment</h1>
       <div class="breadcrumbs"><a class="breadcrumbs__link" href="{{ url('enrollments/'.$tbMacForm->id) }}">View {{ $tbMacForm->presentation_number }}</a>
-        <a class="breadcrumbs__link">Resubmit Enrollment</a>
+        <a class="breadcrumbs__link">Resubmit enrollment</a>
         <a class="breadcrumbs__link"></a>
       </div>
     </div>

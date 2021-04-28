@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Create Enrollments')
-@section('description', 'Create Enrollments')
+@section('title', 'Create enrollments')
+@section('description', 'Create enrollments')
 
 @section('additional_styles')
     <link type="text/css" href="{{ asset('assets/app/css/forms.css') }}" rel="stylesheet">
@@ -12,7 +12,7 @@
 <div class="section">
     <div class="section__top">
       <h1 class="section__title">Create new enrollment</h1>
-      <div class="breadcrumbs"><a class="breadcrumbs__link" href="{{ url('enrollments') }}">Enrollment Regimen</a>
+      <div class="breadcrumbs"><a class="breadcrumbs__link" href="{{ url('enrollments') }}">Enrollment regimen</a>
         <a class="breadcrumbs__link">Create new enrollment</a>
         <a class="breadcrumbs__link"></a>
       </div>

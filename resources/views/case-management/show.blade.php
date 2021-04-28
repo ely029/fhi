@@ -89,7 +89,7 @@
                     <div class="grid grid--action">
                         <div class="form__content">
                             <select id="action-dropdown" class="form__input form__input--select">
-                            <option value="Referred to Regional">Refer to R-TBMac</option>
+                            <option value="Referred to Regional">Refer to R-TB MAC</option>
                             <option value="Not for Referral">Not for Referral</option>
                             </select>
                             <div class="triangle triangle--down"></div>
@@ -123,7 +123,7 @@
                             <option value="For approval">Approve</option>
                             <option value="Other suggestions">Other suggestions</option>
                             <option value="Need Further Details">Need Further Details</option>
-                            <option value="Referred to National">Refer to N-TBMac</option>
+                            <option value="Referred to National">Refer to N-TB MAC</option>
                             </select>
                             <div class="triangle triangle--down"></div>
                             <label class="form__label" for="">Action</label>
