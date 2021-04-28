@@ -298,7 +298,7 @@
       <div class="tabs__details-sub">
         <form class="form" action="">
           <div class="grid grid--two grid--start">
-            <div class="form--quarter">
+            <div class="form--half">
               <div class="form__container">
                 <h2 class="section__heading">Patient RAGT 18F<span class="form__text">Facility 2323 &nbsp;&nbsp;&nbsp; Ilocos Norte</span></h2>
                 <div class="form__content"><span class="form__text">New case</span><label class="form__label" for="">Status</label></div>
