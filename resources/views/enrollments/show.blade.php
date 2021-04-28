@@ -339,6 +339,21 @@
          @if (Auth::user()->role_id == 7)
         <form class="form form--half" action="">
             <h2 class="section__heading">Remarks | Recommendations</h2>
+            <div class="form__container form__container--remarks">
+              <img class="image image--user" src="{{ asset('assets\app\img\icon-user.png')}}" alt="user icon" />
+              <div class="form__container">
+                <div class="grid grid--two">
+                  <label class="form__label">{{ $tbMacForm->created_at->format('d M, Y')}}</label>
+                </div>
+                <div class="form__container form__container--remarks form__container--actions">
+                  <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
+                  <div class="form__content"><span class="form__text form__text--green">Remarks</span><label class="form__label form__label--green">Action</label></div>
+                </div>
+                <span class="form__text">
+                  {{ $tbMacForm->laboratoryResults->remarks }}
+                </span>
+              </div>
+            </div>
             @foreach($nationalTBMacRecommendations as $recommendation)
             <div class="form__container form__container--remarks">
               <img class="image image--user" src="{{ asset('assets\app\img\icon-user.png')}}" alt="user icon" />
@@ -372,6 +387,21 @@
         @if(auth()->user()->role_id === 4)
         <form class="form form--half" action="">
           <h2 class="section__heading">Remarks | Recommendations</h2>
+          <div class="form__container form__container--remarks">
+            <img class="image image--user" src="{{ asset('assets\app\img\icon-user.png')}}" alt="user icon" />
+            <div class="form__container">
+              <div class="grid grid--two">
+                <label class="form__label">{{ $tbMacForm->created_at->format('d M, Y')}}</label>
+              </div>
+              <div class="form__container form__container--remarks form__container--actions">
+                <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
+                <div class="form__content"><span class="form__text form__text--green">Remarks</span><label class="form__label form__label--green">Action</label></div>
+              </div>
+              <span class="form__text">
+                {{ $tbMacForm->laboratoryResults->remarks }}
+              </span>
+            </div>
+          </div>
           @foreach($secretariatrecommendations as $secretariat)
           <div class="form__container form__container--remarks">
             <img class="image image--user" src="{{ asset('assets\app\img\icon-user.png')}}" alt="user icon" />
@@ -404,6 +434,21 @@
         @if(auth()->user()->role_id === 6)
         <form class="form form--half" action="">
           <h2 class="section__heading">Remarks | Recommendations</h2>
+          <div class="form__container form__container--remarks">
+            <img class="image image--user" src="{{ asset('assets\app\img\icon-user.png')}}" alt="user icon" />
+            <div class="form__container">
+              <div class="grid grid--two">
+                <label class="form__label">{{ $tbMacForm->created_at->format('d M, Y')}}</label>
+              </div>
+              <div class="form__container form__container--remarks form__container--actions">
+                <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
+                <div class="form__content"><span class="form__text form__text--green">Remarks</span><label class="form__label form__label--green">Action</label></div>
+              </div>
+              <span class="form__text">
+                {{ $tbMacForm->laboratoryResults->remarks }}
+              </span>
+            </div>
+          </div>
           @foreach($regionalTBMacChairRecommendations as $secretariat)
           <div class="form__container form__container--remarks">
             <img class="image image--user" src="{{ asset('assets\app\img\icon-user.png')}}" alt="user icon" />
@@ -436,6 +481,21 @@
         @if(auth()->user()->role_id === 5)
         <form class="form form--half" action="">
           <h2 class="section__heading">Remarks | Recommendations</h2>
+          <div class="form__container form__container--remarks">
+            <img class="image image--user" src="{{ asset('assets\app\img\icon-user.png')}}" alt="user icon" />
+            <div class="form__container">
+              <div class="grid grid--two">
+                <label class="form__label">{{ $tbMacForm->created_at->format('d M, Y')}}</label>
+              </div>
+              <div class="form__container form__container--remarks form__container--actions">
+                <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
+                <div class="form__content"><span class="form__text form__text--green">Remarks</span><label class="form__label form__label--green">Action</label></div>
+              </div>
+              <span class="form__text">
+                {{ $tbMacForm->laboratoryResults->remarks }}
+              </span>
+            </div>
+          </div>
           @foreach($regionalrecommendations as $secretariat)
           <div class="form__container form__container--remarks">
             <img class="image image--user" src="{{ asset('assets\app\img\icon-user.png')}}" alt="user icon" />
@@ -461,6 +521,21 @@
         @if(auth()->user()->role_id === 3)
         <form class="form form--half" action="">
           <h2 class="section__heading">Remarks | Recommendations</h2>
+          <div class="form__container form__container--remarks">
+            <img class="image image--user" src="{{ asset('assets\app\img\icon-user.png')}}" alt="user icon" />
+            <div class="form__container">
+              <div class="grid grid--two">
+                <label class="form__label">{{ $tbMacForm->created_at->format('d M, Y')}}</label>
+              </div>
+              <div class="form__container form__container--remarks form__container--actions">
+                <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
+                <div class="form__content"><span class="form__text form__text--green">Remarks</span><label class="form__label form__label--green">Action</label></div>
+              </div>
+              <span class="form__text">
+                {{ $tbMacForm->laboratoryResults->remarks }}
+              </span>
+            </div>
+          </div>
           @foreach($forHealthCareWorkerRecommendations as $forHealthCareWorkerRecommendation)
           <div class="form__container form__container--remarks">
             <img class="image image--user" src="{{ asset('assets\app\img\icon-user.png')}}" alt="user icon" />
@@ -491,6 +566,21 @@
         @if(auth()->user()->role_id === 8)
         <form class="form form--half" action="">
           <h2 class="section__heading">Remarks | Recommendations</h2>
+          <div class="form__container form__container--remarks">
+            <img class="image image--user" src="{{ asset('assets\app\img\icon-user.png')}}" alt="user icon" />
+            <div class="form__container">
+              <div class="grid grid--two">
+                <label class="form__label">{{ $tbMacForm->created_at->format('d M, Y')}}</label>
+              </div>
+              <div class="form__container form__container--remarks form__container--actions">
+                <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
+                <div class="form__content"><span class="form__text form__text--green">Remarks</span><label class="form__label form__label--green">Action</label></div>
+              </div>
+              <span class="form__text">
+                {{ $tbMacForm->laboratoryResults->remarks }}
+              </span>
+            </div>
+          </div>
           @foreach($nationalChairRecommendations as $forHealthCareWorkerRecommendation)
           <div class="form__container form__container--remarks">
             <img class="image image--user" src="{{ asset('assets\app\img\icon-user.png')}}" alt="user icon" />
