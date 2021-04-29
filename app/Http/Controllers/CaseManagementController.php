@@ -54,6 +54,7 @@ class CaseManagementController extends Controller
         $patient = Patient::create($request);
         $caseManagementLabResult = new CaseManagementLaboratoryResults();
         $caseManagementBactResult = new CaseManagementBacteriologicalResults();
+        $caseManagementAttachment = new CaseManagementAttachments();
         $request['status'] = 'New Case';
         $request['region'] = 'NCR';
         $request['role_id'] = 4;
@@ -75,14 +76,7 @@ class CaseManagementController extends Controller
         $caseManagementBactResult->dstCreation($form, $request);
 
         if (isset($request['attachments'])) {
-            foreach ($request['attachments'] as $key => $file) {
-                $fileName = $file->getClientOriginalName();
-                $file->storeAs(CaseManagementAttachments::PATH_PREFIX.'/'.$form->presentation_number, $fileName);
-                $form->caseManagementAttachment()->create([
-                    'file_name' => $fileName,
-                    'extension' => $file->extension(),
-                ]);
-            }
+            $caseManagementAttachment->createAttachment($request, $form);
         }
 
         //Month DST

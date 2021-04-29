@@ -5,6 +5,7 @@ declare(strict_types=1);
 // @TB: https://laravel.com/docs/controllers#route-caching
 // use Illuminate\Http\Request;
 
+use App\Http\Controllers\Api\CaseManagementController;
 use App\Http\Controllers\Api\CronJobController;
 use App\Http\Controllers\Api\EnrollmentRecommendationsController;
 use App\Http\Controllers\Api\EnrollmentsController;
@@ -53,4 +54,5 @@ Route::group([
     Route::post('/enrollments', [EnrollmentsController::class, 'store']);
     Route::get('/enrollments-with-recommendation', [EnrollmentRecommendationsController::class, 'index']);
     Route::post('/enrollments/{tbMacForm}/recommendation', [EnrollmentRecommendationsController::class, 'store']);
+    Route::get('/case-management', [CaseManagementController::class, 'index']);
 });

@@ -17,10 +17,9 @@
     <label class="form__label" for="">Reason for case management presentation</label>
         </div> -->
         <div class="form-group">
-            <label for="inputEmail"></label>
+            <label class="form__label" for="">Reason for case management presentation</label>
             <textarea name="reason_case_management_presentation" class="form-control form__input" id="inputEmail" placeholder="" required></textarea>
             <div class="invalid-feedback">This field is required.</div>
-            <label class="form__label" for="">Reason for case management presentation</label>
         </div>
     </div>
     <div class="form__container form-step-3">

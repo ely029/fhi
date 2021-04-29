@@ -11,7 +11,7 @@ class CaseManagementAttachments extends Model
 {
     use HasFactory;
 
-    public const PATH_PREFIX = 'private/enrollments';
+    public const PATH_PREFIX = 'private/case-management';
 
     protected $table = 'case_management_attachments';
     protected $fillable = [
@@ -19,4 +19,16 @@ class CaseManagementAttachments extends Model
         'form_id',
         'extension',
     ];
+
+    public function createAttachment($request, $form)
+    {
+        foreach ($request['attachments'] as $key => $file) {
+            $fileName = $file->getClientOriginalName();
+            $file->storeAs(CaseManagementAttachments::PATH_PREFIX.'/'.$form->presentation_number, $fileName);
+            $form->caseManagementAttachment()->create([
+                'file_name' => $fileName,
+                'extension' => $file->extension(),
+            ]);
+        }
+    }
 }

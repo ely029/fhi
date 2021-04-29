@@ -132,17 +132,16 @@
     </div>
     <div class="form__content">
         <select class="form__input form__input--select" id="drugSusceptibility" name="current_drug_susceptibility">
-        <option value="Drug-susceptible (for enrollment note)">Drug-susceptible (for enrollment note)</option>
+        <option value="Drug-susceptible (for enrollment note)">Drug-susceptible</option>
         <option value="Bacteriologically-confirmed RR-TB">Bacteriologically-confirmed RR-TB</option>
         <option value="Bacteriologically-confirmed MDR-TB">Bacteriologically-confirmed MDR-TB</option>
-        <option value="Bacteriologically-confirmed XDR-TB">Bacteriologically-confirmed XDR-TB</option>
         <option value="Bacteriologically-confirmed Pre-XDR-TB">Bacteriologically-confirmed Pre-XDR-TB</option>
         <option value="Bacteriologically-confirmed XDR-TB">Bacteriologically-confirmed XDR-TB</option>
         <option value="Clinically-confirmed MDR-TB">Clinically-confirmed MDR-TB</option>
         <option value="Other Drug-resistant TB">Other Drug-resistant TB</option>
         </select>
         <div class="triangle triangle--down"></div>
-        <label class="form__label" for="">Current drug susceptibility</label>
+        <label class="form__label" for="">Updated drug susceptibility</label>
     </div>
     </div>
     <div class="form__button form__button--space form__button--pagination"><button class="button button--next" type="button">Next</button></div>
