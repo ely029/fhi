@@ -21,7 +21,7 @@
 
         <form class="form" action="">
           <div class="grid grid--two grid--start">
-            <div class="form--quarter">
+            <div class="form--half">
               <div class="form__container">
               <h2 class="section__heading">Patient  {{ $tbMacForm->patient->code }}
                   <span class="form__text">Facility  {{ $tbMacForm->patient->facility_code }}  &nbsp;&nbsp;&nbsp;  {{ $tbMacForm->patient->province }} </span></h2>
