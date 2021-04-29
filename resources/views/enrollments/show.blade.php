@@ -38,7 +38,8 @@
                 </div>
               </div>
             </div>
-            @if (auth()->user()->role_id == 4)
+            {{-- Regional Secretariat --}}
+            @if (auth()->user()->role_id == 4 && request('from_tab') == 'pending')
             <div class="grid grid--action">
               <div class="form__content">
                 <select id="refer" class="form__input form__input--select">
@@ -51,7 +52,8 @@
               <button id="refer-button" class="button button--masterlist js-trigger" type="button">Confirm</button>
             </div>
             @endif
-            @if (auth()->user()->role_id == 5)
+             {{-- Regional TB Mac --}}
+            @if (auth()->user()->role_id == 5 && request('from_tab') == 'pending')
             <div class="grid grid--action">
               <div class="form__content">
                 <select id="refer" class="form__input form__input--select">
@@ -65,14 +67,15 @@
               <button id="refer-button" class="button button--masterlist js-trigger" type="button">Confirm</button>
             </div>
             @endif
-            @if (auth()->user()->role_id == 6)
+             {{-- Regional TB Mac Chair --}}
+            @if (auth()->user()->role_id == 6 && (request('from_tab') == 'referred' || request('from_tab') == 'pending'))
             <div class="grid grid--action">
               <div class="form__content">
                 <select id="refer" class="form__input form__input--select">
                   <option value="6">For Enrollment</option>
                   <option value="7">Not for Enrollment</option>
                   <option value="8">Need Further details</option>
-                  <option value="9">Refer to N-TBMac</option>
+                  <option value="9">Refer to N-TB MAC</option>
                 </select>
                 <div class="triangle triangle--down"></div>
                 <label class="form__label" for="">Action</label>
@@ -80,7 +83,8 @@
               <button id="refer-button" class="button button--masterlist js-trigger" type="button">Confirm</button>
             </div>
             @endif
-            @if (auth()->user()->role_id == 7 || auth()->user()->role_id == 8)
+            {{-- National TB Mac && Chair --}}
+            @if ((auth()->user()->role_id == 7 || auth()->user()->role_id == 8) && request('from_tab') == 'referred')
             <div class="grid grid--action">
               <div class="form__content">
                 <label class="form__label" for="">Action</label>

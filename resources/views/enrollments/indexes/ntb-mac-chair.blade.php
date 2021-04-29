@@ -5,26 +5,26 @@
       <ul class="tabs__list tabs__list--table">
         <li class="tabs__item tabs__item--current">Pending ({{ $pending->count() }})</li>
         <li class="tabs__item">Completed ({{ $completed->count() }})</li>
-        <li class="tabs__item">All Enrollments ({{ $allEnrollments->count() }})</li>
+        <li class="tabs__item">All enrollments ({{ $allEnrollments->count() }})</li>
       </ul>
       <div class="tabs__details tabs__details--active">
         <table class="table table--filter js-table">
           <thead>
             <tr>
-            <th class="table__head">Presentation No.</th>
-              <th class="table__head">Facility Code</th>
+            <th class="table__head">Presentation no.</th>
+              <th class="table__head">Facility code</th>
               <th class="table__head">Province</th>
               <th class="table__head">Patient</th>
               <th class="table__head">Age</th>
-              <th class="table__head">Gender</th>
-              <th class="table__head">Drug Susceptibility</th>
+              <th class="table__head">Sex</th>
+              <th class="table__head">Drug susceptibility</th>
               <th class="table__head">Date submitted by Health Care Worker</th>
               <th class="table__head">Status</th>
             </tr>
           </thead>
           <tbody>
             @foreach($pending as $enrollment)
-              <tr class="table__row js-view" data-href="{{ url('enrollments/'.$enrollment->id) }}">
+              <tr class="table__row js-view" data-href="{{ url('enrollments/'.$enrollment->id.'?from_tab=referred') }}">
                 <td class="table__details">{{ $enrollment->presentation_number }}</td>
                 <td class="table__details">{{ empty($enrollment->patient->facility_code) ? '' : $enrollment->patient->facility_code}}</td>
                 <td class="table__details">{{ empty($enrollment->patient->province) ? '' : $enrollment->patient->province}}</td>
@@ -44,13 +44,13 @@
         <table class="table table--filter js-table">
           <thead>
             <tr>
-                <th class="table__head">Presentation No.</th>
-                <th class="table__head">Facility Code</th>
+                <th class="table__head">Presentation no.</th>
+                <th class="table__head">Facility code</th>
                 <th class="table__head">Province</th>
                 <th class="table__head">Patient</th>
                 <th class="table__head">Age</th>
-                <th class="table__head">Gender</th>
-                <th class="table__head">Drug Susceptibility</th>
+                <th class="table__head">Sex</th>
+                <th class="table__head">Drug susceptibility</th>
                 <th class="table__head">Date submitted by Health Care Worker</th>
                 <th class="table__head">Status</th>
             </tr>
@@ -77,13 +77,13 @@
         <table class="table table--filter js-table">
           <thead>
             <tr>
-              <th class="table__head">Presentation No.</th>
-              <th class="table__head">Facility Code</th>
+              <th class="table__head">Presentation no.</th>
+              <th class="table__head">Facility code</th>
               <th class="table__head">Province</th>
               <th class="table__head">Patient</th>
               <th class="table__head">Age</th>
-              <th class="table__head">Gender</th>
-              <th class="table__head">Drug Susceptibility</th>
+              <th class="table__head">Sex</th>
+              <th class="table__head">Drug susceptibility</th>
               <th class="table__head">Date submitted by Health Care Worker</th>
               <th class="table__head">Status</th>
             </tr>
