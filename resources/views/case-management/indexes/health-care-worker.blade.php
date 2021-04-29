@@ -1,6 +1,5 @@
 <div class="section__container">
     <a class="button button--create" href="{{url('case-management/create') }}">Create new case</a>
-    <div class="alert"><span class="alert__text">New case management created</span><button class="button button--transparent js-hide-alert">CLOSE</button></div>
     <div class="section__content">
     <ul class="tabs__list tabs__list--table">
         <li class="tabs__item tabs__item--current">All enrollments</li>
