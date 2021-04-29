@@ -26,7 +26,7 @@ class CaseManagementController extends Controller
                 'date_created' => $item->created_at->format('Y-m-d'),
                 'facility_code' => $item->patient->facility_code,
                 'status' => $item->status,
-                'drug_susceptibility' => $item->caseManagementForm->current_drug_susceptibility === '' ? 'null' : $item->caseManagementForm->current_drug_susceptibility,
+                'drug_susceptibility' => $item->caseManagementForm->current_drug_susceptibility ?? null,
             ];
         });
 
