@@ -73,35 +73,6 @@
     <p class="email__text" style="color: #000;
   font-size: 20px;
   margin-top: 30px;">© 2020 e-TB MAC. All rights reserved.</p>
-    <ul class="email__footer-list" style="width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  padding: 0;">
-        <li class="email__footer-item" style="display: inline-block;
-  width: 35px;
-  height: 35px;">
-        <a href="" class="email__footer-link" style="width: 100%;
-  height: 100%;"><img class="image" style="width: 100%;
-  -o-object-fit: cover;
-  object-fit: cover;
-  height: 100%;
-  -webkit-transition: 0.3s;
-  -o-transition: 0.3s;
-  transition: 0.3s;" src="src/img/icon-fb.png" alt="facebook icon" /></a>
-        </li>
-        <li class="email__footer-item" style="display: inline-block;
-  width: 35px;
-  height: 35px;">
-        <a href="" class="email__footer-link" style="width: 100%;
-  height: 100%;"><img class="image" style="width: 100%;
-  -o-object-fit: cover;
-  object-fit: cover;
-  height: 100%;
-  -webkit-transition: 0.3s;
-  -o-transition: 0.3s;
-  transition: 0.3s;" src="src/img/icon-ig.png" alt="ig icon" /></a>
-        </li>
-    </ul>
     <div class="email__logo" style=""><img class="image" src="src/img/logo.png" alt="logo of fhi"  style="width: 100%;
   -o-object-fit: cover;
   object-fit: cover;

@@ -21,60 +21,20 @@ class EnrollmentRegimentController extends Controller
             ->where($this->getDynamicQuery()['condition'], $this->getDynamicQuery()['value'])
             ->orderByDesc('created_at')->get();
 
-        if (auth()->user()->role_id === 3) {
-            return $this->getHealthCareWorkerIndex($enrollments);
+        switch (auth()->user()->role_id) {
+            case 3:
+                return $this->getHealthCareWorkerIndex($enrollments);
+            case 4:
+                return $this->getRegionalSecretariatIndex($enrollments);
+            case 5:
+                return $this->getRegionalTBMacIndex($enrollments);
+            case 6:
+                return $this->getRegionalTBMacChairIndex($enrollments);
+            case 7:
+                return $this->getNationalTBMacIndex($enrollments);
+            case 8:
+                return $this->getNationalTBMacChairIndex($enrollments);
         }
-        if (auth()->user()->role_id === 4) {
-            return $this->getRegionalSecretariatIndex($enrollments);
-        }
-        if (auth()->user()->role_id === 6) {
-            return $this->getRegionalTBMacChairIndex($enrollments);
-        }
-        if (auth()->user()->role_id === 7) {
-            return $this->getNationalTBMacIndex($enrollments);
-        }
-        if (auth()->user()->role_id === 8) {
-            return $this->getNationalTBMacChairIndex($enrollments);
-        }
-
-        $referredToRegional = $enrollments->filter(function ($item) {
-            return $item->status === 'Referred to Regional';
-        });
-
-        $referredToRegionalChair = $enrollments->filter(function ($item) {
-            return $item->status === 'Referred to regional chair';
-        });
-
-        $referredToNational = $enrollments->filter(function ($item) {
-            return $item->status === 'Referred to national';
-        });
-
-        $referredToNationalChair = $enrollments->filter(function ($item) {
-            return $item->status === 'Referred to national chair';
-        });
-
-        $enrollmentSubmittedByRTBMACChair = $enrollments->filter(function ($item) {
-            return $item->role_id === 7;
-        });
-
-        $enrollmentSubmittedToRegionalChair = $enrollments->filter(function ($item) {
-            return $item->role_id === 3 || $item->role_id === 4;
-        });
-
-        $withRecommendation = Recommendation::with('tbMacForms')->where('recommendation', '<>', null)->get();
-        $withRecommendationForRTBMac = Recommendation::with('tbMacForms')->where('role_id', 5)->get();
-
-        return view('enrollments.index')
-            ->with('enrollments', $enrollments)
-            ->with('allEnrollment', $enrollments)
-            ->with('referredToRegional', $referredToRegional)
-            ->with('referredToRegionalChair', $referredToRegionalChair)
-            ->with('referredToNational', $referredToNational)
-            ->with('withRecommendationForRTBMac', $withRecommendationForRTBMac)
-            ->with('withRecommendations', $withRecommendation)
-            ->with('referredToNationalChair', $referredToNationalChair)
-            ->with('enrollmentSubmittedByrtbmacChair', $enrollmentSubmittedByRTBMACChair)
-            ->with('enrollmentSubmittedToRegionalChair', $enrollmentSubmittedToRegionalChair);
     }
 
     public function create()
@@ -368,13 +328,29 @@ class EnrollmentRegimentController extends Controller
 
     private function getRegionalSecretariatIndex($enrollments)
     {
-        $newEnrollments = $enrollments->filter(function ($item) {
+        $pending = $enrollments->filter(function ($item) {
             return $item->status === 'New Enrollment';
         });
 
         return view('enrollments.index')
-            ->with('newEnrollments', $newEnrollments)
+            ->with('pending', $pending)
             ->with('allEnrollment', $enrollments);
+    }
+
+    private function getRegionalTBMacIndex($enrollments)
+    {
+        $pending = $enrollments->filter(function ($item) {
+            return $item->status === 'Referred to Regional';
+        });
+
+        $withRecommendations = $enrollments->filter(function ($item) {
+            return in_array($item->status, ['For Enrollment','Not for Referral','Not For Enrollment','Need Further Details','Referred to regional chair']);
+        });
+
+        return view('enrollments.index')
+            ->with('pending', $pending)
+            ->with('withRecommendations', $withRecommendations)
+            ->with('allEnrollments', $enrollments);
     }
 
     private function getRegionalTBMacChairIndex($enrollments)

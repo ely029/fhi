@@ -1,5 +1,7 @@
 <div class="sidebar">
-    <div class="sidebar__logo"></div>
+  <div class="sidebar__logo">
+    <div class="sidebar__logo-wrapper"><img class="image" src="{{ asset('assets/app/img/logo.png') }}" alt="fhi Logo" /></div>
+  </div>
     <div class="sidebar__container">
       <div class="sidebar__menu">
         <h3 class="sidebar__title">Reports</h3>

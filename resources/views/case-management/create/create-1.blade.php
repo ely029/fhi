@@ -153,7 +153,7 @@
     <div class="modal__box">
     <h2 class="modal__title">Finding match in database</h2>
     <p class="modal__text">Please make sure First name, Last name, Middle name, Birthday, and Gender are correct.</p>
-    <div class="modal__button modal__button--center"><img class="modal__loader" src="src/img/loader.gif" alt="Loader animated" /></div>
+    <div class="modal__button modal__button--center"><div class="loader"></div></div>
     </div>
 </div>
 </div>
