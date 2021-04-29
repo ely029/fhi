@@ -381,19 +381,19 @@
               <h2 class="section__heading">Remarks | Recommendations</h2>
               @php
               
-                if(auth()->user()->id == 3)
+                if(auth()->user()->role_id == 3)
                 {
                     $recommendations = $tbMacForm->recommendations;
                 }
-                if(auth()->user()->id == 4)
+                if(auth()->user()->role_id == 4)
                 {
                     $recommendations = $tbMacForm->regionalRecommendations;
                 }
-                if(auth()->user()->id == 5 || auth()->user()->id == 6)
+                if(auth()->user()->role_id == 5 || auth()->user()->role_id == 6)
                 {
                     $recommendations = $tbMacForm->rtbMacRecommendations;
                 }
-                if(auth()->user()->id == 7 || auth()->user()->id == 8)
+                if(auth()->user()->role_id == 7 || auth()->user()->role_id == 8)
                 {
                     $recommendations = $tbMacForm->ntbMacRecommendations;
                 }
