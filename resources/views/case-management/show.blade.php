@@ -399,7 +399,22 @@
                 }
                 
               @endphp
-             {{-- @foreach($recommendations as $recommendation)
+              <div class="form__container form__container--remarks">
+                <img class="image image--user" src="{{ asset('assets\app\img\icon-user.png')}}" alt="user icon" />
+                <div class="form__container">
+                  <div class="grid grid--two">
+                    <label class="form__label">{{ $tbMacForm->created_at->format('d M, Y')}}</label>
+                  </div>
+                  <div class="form__container form__container--remarks form__container--actions">
+                    <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
+                    <div class="form__content"><span class="form__text form__text--green">Remarks</span><label class="form__label form__label--green">Action</label></div>
+                  </div>
+                  <span class="form__text">
+                    {{ $tbMacForm->caseManagementLaboratoryResults[0]->remarks }}
+                  </span>
+                </div>
+              </div>
+             @foreach($recommendations as $recommendation)
               <div class="form__container form__container--remarks">
                 <img class="image image--user" src="{{ asset('assets\app\img\icon-user.png')}}" alt="user icon" />
                 <div class="form__container">
@@ -418,7 +433,7 @@
                   </span>
                 </div>
               </div>
-              @endforeach --}}
+              @endforeach
             </form>
           </div>
         </div>
