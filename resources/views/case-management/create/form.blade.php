@@ -21,7 +21,7 @@
     @include('partials.alerts')
 
     <div class="section__container">
-        <form class="form" id="enrollment-form" action="{{ url('enrollments') }}" method="post" enctype="multipart/form-data">
+        <form class="form" id="enrollment-form" action="{{ url('case-management/create') }}" method="post" enctype="multipart/form-data">
           @csrf
             <div id="steps" data-steps="4">
               @include('case-management.create.create-1')
@@ -61,8 +61,7 @@
 
   <script src="{{ asset('assets/app/js/dropzone.js') }}"></script>  
   <script src="{{ asset('assets/app/js/dropzoneInit.js') }}"></script>
-  <script src="{{ asset('assets/app/js/enrollments/step-2.js') }}"></script>  
-  <script src="{{ asset('assets/app/js/enrollments/step-3.js') }}"></script>  
-  <script src="{{ asset('assets/app/js/enrollments/step-4.js') }}"></script>  
+  <script src="{{ asset('assets/app/js/case-management/create-2.js') }}"></script>   
+  <script src="{{ asset('assets/app/js/case-management/create-3.js') }}"></script>   
 
 @endsection

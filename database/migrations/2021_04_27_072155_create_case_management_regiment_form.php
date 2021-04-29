@@ -26,7 +26,6 @@ class CreateCaseManagementRegimentForm extends Migration
             $table->string('suggested_weight')->default('');
             $table->string('updated_type_of_case')->default('');
             $table->string('suggested_regimen')->default('');
-            $table->string('current_drug_susceptibility')->default('');
             $table->string('if_for_empiric_treatment')->default('');
             $table->timestamps();
         });

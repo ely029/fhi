@@ -399,7 +399,7 @@
                 }
                 
               @endphp
-              @foreach($recommendations as $recommendation)
+             {{-- @foreach($recommendations as $recommendation)
               <div class="form__container form__container--remarks">
                 <img class="image image--user" src="{{ asset('assets\app\img\icon-user.png')}}" alt="user icon" />
                 <div class="form__container">
@@ -418,7 +418,7 @@
                   </span>
                 </div>
               </div>
-              @endforeach
+              @endforeach --}}
             </form>
           </div>
         </div>

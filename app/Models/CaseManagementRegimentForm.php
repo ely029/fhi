@@ -46,4 +46,18 @@ class CaseManagementRegimentForm extends Model
 {
     use HasFactory;
     protected $table = 'case_management_regiment_form';
+
+    protected $fillable = [
+        'month_of_treatment',
+        'current_type_of_case',
+        'current_regiment',
+        'reason_case_management_presentation',
+        'current_weight',
+        'suggested_weight',
+        'updated_type_of_case',
+        'suggested_regimen',
+        'current_drug_susceptibility',
+        'itr_drugs',
+        'suggested_regimen_notes',
+    ];
 }

@@ -1,16 +1,25 @@
 <div class="form__tab step-1">
     <h2 class="section__heading">Patient Information</h2>
     <div class="grid grid--two form-step-1">
-    <div class="form__content"><input class="form__input" id="tbNumber" name="presentation_number" type="number" min="0" placeholder="TB Case number" /><label class="form__label" for="">TB Case number</label></div>
-    <div class="form__content"><input class="form__input" id="lastName" type="text" placeholder="Last name" /><label class="form__label" for="">Last name</label></div>
+    <div class="form__content form-group">
+    <div class="help-block with-errors"></div>
+    <input class="form__input" id="tbNumber" name="presentation_number" type="number" min="0" placeholder="TB Case number" required/><label class="form__label" for="">TB Case number</label></div>
+    <div class="form__content form-group">
+    <div class="help-block with-errors"></div>
+    <input class="form__input" id="lastName" name="last_name" type="text" placeholder="Last name" required /><label class="form__label" for="">Last name</label></div>
     </div>
-    <div class="grid grid--two">
-    <div class="form__content"><input name="first_name" class="form__input" id="firstName" type="text" placeholder="First name" /><label class="form__label" for="">First name</label></div>
-    <div class="form__content"><input class="form__input" id="middleName" name="middle_name" type="text" placeholder="Middle name" /><label class="form__label" for="">Middle name</label></div>
+    <div class="grid grid--two form-step-1">
+    <div class="form__content form-group">
+    <div class="help-block with-errors"></div>
+    <input name="first_name" class="form__input" required id="firstName" type="text" placeholder="First name" /><label class="form__label" for="">First name</label></div>
+    <div class="form__content form-group">
+    <div class="help-block with-errors"></div>
+    <input class="form__input" id="middleName" required name="middle_name" type="text" placeholder="Middle name" /><label class="form__label" for="">Middle name</label></div>
     </div>
-    <div class="grid grid--two">
-    <div class="form__content"><input class="form__input " id="facilityCode" type="number" min="0" placeholder="Facility code" /><label class="form__label" for="">Facility code</label></div>
-    <div class="form__content">
+    <div class="grid grid--two form-step-1">
+    <div class="help-block with-errors"></div>
+    <div class="form__content form-group"><input class="form__input " required id="facilityCode" type="number" min="0" placeholder="Facility code" name="facility_code" /><label class="form__label" for="">Facility code</label></div>
+    <div class="form__content form-group">
         <select class="form__input form__input--select " id="province" name="province">
         <option value="Metro Manila">Metro Manila</option>
         <option value="Abra">Abra</option>
@@ -97,8 +106,10 @@
         <label class="form__label" for="">Province</label>
     </div>
     </div>
-    <div class="grid grid--two">
-    <div class="form__content"><input class="form__input " id="birthday" name="birthday" type="date" placeholder="Birthday" /><label class="form__label" for="">Birthday</label></div>
+    <div class="grid grid--two form-step-1">
+    <div class="form__content form-group">
+    <div class="help-block with-errors"></div>
+    <input class="form__input " id="birthday" required name="birthday" type="date" placeholder="Birthday" /><label class="form__label" for="">Birthday</label></div>
     <div class="form__content">
         <select class="form__input form__input--select " id="gender" name="gender">
         <option>Male</option>
@@ -108,7 +119,7 @@
         <label class="form__label" for="">Gender</label>
     </div>
     </div>
-    <div class="grid grid--two">
+    <div class="grid grid--two form-step-1">
     <div class="form__content">
         <select class="form__input form__input--select" id="treatmentMonth" name="month_of_treatment">
         <option value="0">0</option>
@@ -143,7 +154,7 @@
     <div class="modal__box">
     <h2 class="modal__title">Finding match in database</h2>
     <p class="modal__text">Please make sure First name, Last name, Middle name, Birthday, and Gender are correct.</p>
-    <div class="modal__button modal__button--center"><div class="loader"></div></div>
+    <div class="modal__button modal__button--center"><img class="modal__loader" src="src/img/loader.gif" alt="Loader animated" /></div>
     </div>
 </div>
 </div>

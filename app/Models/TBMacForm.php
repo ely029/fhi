@@ -99,6 +99,11 @@ class TBMacForm extends Model
         return $this->hasMany(TBMacFormAttachment::class, 'form_id');
     }
 
+    public function caseManagementAttachment()
+    {
+        return $this->hasMany(CaseManagementAttachments::class, 'form_id');
+    }
+
     public function recommendation()
     {
         return $this->belongsTo(Recommendation::class, 'form_id');
@@ -125,6 +130,21 @@ class TBMacForm extends Model
     {
         return $this->hasMany(Recommendation::class, 'form_id')
             ->whereIn('role_id', [3,6,7,8]);
+    }
+
+    public function caseManagementForm()
+    {
+        return $this->hasOne(CaseManagementRegimentForm::class, 'form_id');
+    }
+
+    public function caseManagementLaboratoryResults()
+    {
+        return $this->hasMany(CaseManagementLaboratoryResults::class, 'form_id');
+    }
+
+    public function caseManagementBacteriologicalResults()
+    {
+        return $this->hasMany(CaseManagementBacteriologicalResults::class, 'form_id');
     }
 
     public function scopeEnrollmentForms($query)
@@ -161,6 +181,11 @@ class TBMacForm extends Model
             $presentationNumber = null;
             if ($model->form_type === 'enrollment') {
                 $max = TBMacForm::where('form_type', '=', 'enrollment')
+                    ->where('region', $model->region)->count();
+                $presentationNumber = $model->region.'-'.str_pad(strval($max), 4, '0', STR_PAD_LEFT);
+            }
+            if ($model->form_type === 'case_management') {
+                $max = TBMacForm::where('form_type', '=', 'case_management')
                     ->where('region', $model->region)->count();
                 $presentationNumber = $model->region.'-'.str_pad(strval($max), 4, '0', STR_PAD_LEFT);
             }

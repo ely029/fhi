@@ -57,7 +57,8 @@ Route::group(['middleware' => 'auth'], static function () {
 
     Route::get('/case-management', [CaseManagementController::class, 'index']);
 
-    Route::get('/case-management/{tbMacForm}', [CaseManagementController::class,'show']);
+    Route::get('/case-management/show/{tbMacForm}', [CaseManagementController::class,'show']);
     Route::get('/case-management/create', [CaseManagementController::class, 'create']);
+    Route::post('/case-management/create', [CaseManagementController::class, 'store']);
     Route::post('/case-management/{tbMacForm}/recommendation', [CaseManagementRecommendationController::class,'store']);
 });

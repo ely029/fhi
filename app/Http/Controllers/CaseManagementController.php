@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Models\CaseManagementAttachments;
+use App\Models\CaseManagementBacteriologicalResults;
+use App\Models\CaseManagementLaboratoryResults;
+use App\Models\Patient;
 use App\Models\TBMacForm;
 
 class CaseManagementController extends Controller
@@ -42,6 +46,58 @@ class CaseManagementController extends Controller
 
         return view('case-management.show')
             ->with('tbMacForm', $tbMacForm);
+    }
+
+    public function store()
+    {
+        $request = request()->all();
+        $patient = Patient::create($request);
+        $caseManagementLabResult = new CaseManagementLaboratoryResults();
+        $caseManagementBactResult = new CaseManagementBacteriologicalResults();
+        $request['status'] = 'New Case';
+        $request['region'] = 'NCR';
+        $request['role_id'] = 4;
+        $request['form_type'] = 'case_management';
+        $request['patient_id'] = $patient->id;
+        $request['submitted_by'] = auth()->user()->id;
+        $form = TBMacForm::create($request);
+        $request['form_id'] = $form->id;
+
+        //Screening 1
+        $caseManagementLabResult->screeningOneCreation($form, $request);
+        //Screening 2
+        $caseManagementLabResult->screeningTwoCreation($form, $request);
+
+        //LPA
+        $caseManagementBactResult->lpaCreation($form, $request);
+
+        //DST
+        $caseManagementBactResult->dstCreation($form, $request);
+
+        if (isset($request['attachments'])) {
+            foreach ($request['attachments'] as $key => $file) {
+                $fileName = $file->getClientOriginalName();
+                $file->storeAs(CaseManagementAttachments::PATH_PREFIX.'/'.$form->presentation_number, $fileName);
+                $form->caseManagementAttachment()->create([
+                    'file_name' => $fileName,
+                    'extension' => $file->extension(),
+                ]);
+            }
+        }
+
+        //Month DST
+        $count = count($request['date_collected']) - 1;
+        for ($eee = 0; $eee <= $count; $eee++) {
+            $screen = $count + 1;
+            $caseManagementBactResult->monthDSTCreation($screen, $eee, $request, $form);
+        }
+        $request['cxr_date'] = ! isset($request['cxr_date']) ? '' : $request['cxr_date'];
+        $form->caseManagementForm()->create($request);
+        $form->caseManagementLaboratoryResults()->create($request);
+
+        return redirect('case-management/show/'.$form->id)->with([
+            'alert.message' => 'New Case created.',
+        ]);
     }
 
     private function getHealthCareWorkerIndex($cases)
