@@ -21,23 +21,19 @@ class EnrollmentRegimentController extends Controller
             ->where($this->getDynamicQuery()['condition'], $this->getDynamicQuery()['value'])
             ->orderByDesc('created_at')->get();
 
-        if (auth()->user()->role_id === 3) {
-            return $this->getHealthCareWorkerIndex($enrollments);
-        }
-        if (auth()->user()->role_id === 4) {
-            return $this->getRegionalSecretariatIndex($enrollments);
-        }
-        if (auth()->user()->role_id === 5) {
-            return $this->getRegionalTBMacIndex($enrollments);
-        }
-        if (auth()->user()->role_id === 6) {
-            return $this->getRegionalTBMacChairIndex($enrollments);
-        }
-        if (auth()->user()->role_id === 7) {
-            return $this->getNationalTBMacIndex($enrollments);
-        }
-        if (auth()->user()->role_id === 8) {
-            return $this->getNationalTBMacChairIndex($enrollments);
+        switch (auth()->user()->role_id) {
+            case 3:
+                return $this->getHealthCareWorkerIndex($enrollments);
+            case 4:
+                return $this->getRegionalSecretariatIndex($enrollments);
+            case 5:
+                return $this->getRegionalTBMacIndex($enrollments);
+            case 6:
+                return $this->getRegionalTBMacChairIndex($enrollments);
+            case 7:
+                return $this->getNationalTBMacIndex($enrollments);
+            case 8:
+                return $this->getNationalTBMacChairIndex($enrollments);
         }
     }
 
