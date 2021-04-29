@@ -32,7 +32,8 @@ class CaseManagementRegimentFormTest extends TestCase
         ]);
 
         $caseManagementRegimentForm = CaseManagementRegimentForm::factory()->create([
-            'form_id' => $tbMacForm->id
+            'form_id' => $tbMacForm->id,
+            'suggested_regimen_notes' => '',
         ]);
 
         $this->assertDatabaseHas('tb_mac_forms', [
