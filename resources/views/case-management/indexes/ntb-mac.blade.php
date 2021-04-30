@@ -14,7 +14,7 @@
               <th class="table__head">Presentation No.</th>
               <th class="table__head">Patient Initials</th>
               <th class="table__head">Age</th>
-              <th class="table__head">Gender</th>
+              <th class="table__head">Sex</th>
               <th class="table__head">Current Drug Susceptibility</th>
               <th class="table__head">Date submitted by Health Care Worker</th>
               <th class="table__head">Status</th>
@@ -42,7 +42,7 @@
                 <th class="table__head">Presentation No.</th>
                 <th class="table__head">Patient Initials</th>
                 <th class="table__head">Age</th>
-                <th class="table__head">Gender</th>
+                <th class="table__head">Sex</th>
                 <th class="table__head">Current Drug Susceptibility</th>
                 <th class="table__head">Date submitted by Health Care Worker</th>
                 <th class="table__head">Status</th>
@@ -70,7 +70,7 @@
                 <th class="table__head">Presentation No.</th>
                 <th class="table__head">Patient Initials</th>
                 <th class="table__head">Age</th>
-                <th class="table__head">Gender</th>
+                <th class="table__head">Sex</th>
                 <th class="table__head">Current Drug Susceptibility</th>
                 <th class="table__head">Date submitted by Health Care Worker</th>
                 <th class="table__head">Status</th>
