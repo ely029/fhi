@@ -6,7 +6,6 @@ namespace App\Http\Controllers;
 
 use App\Models\CaseManagementAttachments;
 use App\Models\CaseManagementBacteriologicalResults;
-use App\Models\CaseManagementLaboratoryResults;
 use App\Models\Patient;
 use App\Models\TBMacForm;
 
@@ -15,7 +14,7 @@ class CaseManagementController extends Controller
     public function index()
     {
         $cases = TBMacForm::CaseManagementForms()
-            ->with(['patient','enrollmentForm'])
+            ->with(['patient','caseManagementForm'])
             ->where($this->getDynamicQuery()['condition'], $this->getDynamicQuery()['value'])
             ->orderByDesc('created_at')->get();
 
@@ -42,7 +41,7 @@ class CaseManagementController extends Controller
 
     public function show(TBMacForm $tbMacForm)
     {
-        $tbMacForm = $tbMacForm->load(['submittedBy','enrollmentForm','bacteriologicalResults','attachments', 'patient']);
+        $tbMacForm = $tbMacForm->load(['submittedBy','caseManagementForm','bacteriologicalResults', 'caseManagementLaboratoryResults', 'attachments', 'patient']);
 
         return view('case-management.show')
             ->with('tbMacForm', $tbMacForm);
@@ -51,8 +50,9 @@ class CaseManagementController extends Controller
     public function store()
     {
         $request = request()->all();
+        $request['first_name'] = '';
+        $request['middle_name'] = '';
         $patient = Patient::create($request);
-        $caseManagementLabResult = new CaseManagementLaboratoryResults();
         $caseManagementBactResult = new CaseManagementBacteriologicalResults();
         $caseManagementAttachment = new CaseManagementAttachments();
         $request['status'] = 'New Case';
@@ -65,9 +65,9 @@ class CaseManagementController extends Controller
         $request['form_id'] = $form->id;
 
         //Screening 1
-        $caseManagementLabResult->screeningOneCreation($form, $request);
+        $caseManagementBactResult->screeningOneCreation($form, $request);
         //Screening 2
-        $caseManagementLabResult->screeningTwoCreation($form, $request);
+        $caseManagementBactResult->screeningTwoCreation($form, $request);
 
         //LPA
         $caseManagementBactResult->lpaCreation($form, $request);
@@ -96,8 +96,29 @@ class CaseManagementController extends Controller
 
     private function getHealthCareWorkerIndex($cases)
     {
+        $forApproval = $cases->filter(function ($item) {
+            return $item->status === 'For Approval';
+        });
+        $forFollowUp = $cases->filter(function ($item) {
+            return $item->status === 'For Follow Up';
+        });
+        $otherSuggestion = $cases->filter(function ($item) {
+            return $item->status === 'Other Suggestion';
+        });
+        $needFurtherDetails = $cases->filter(function ($item) {
+            return $item->status === 'Need Further Details';
+        });
+        $notForReferral = $cases->filter(function ($item) {
+            return $item->status === 'Not For Referral';
+        });
         return view('case-management.index')
-            ->with('cases', $cases);
+            ->with('cases', $cases)
+            ->with('forApproval', $forApproval)
+            ->with('forFollowUp', $forFollowUp)
+            ->with('allCases', $cases)
+            ->with('needFurtherDetails', $needFurtherDetails)
+            ->with('otherSuggestion', $otherSuggestion)
+            ->with('notForReferral', $notForReferral);
     }
 
     private function getDynamicQuery()

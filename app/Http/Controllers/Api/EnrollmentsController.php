@@ -110,6 +110,7 @@ class EnrollmentsController extends Controller
             $fileName = ($key + 1).'.'.$attachment->extension;
             $attachments[] = [
                 'url' => url('api/enrollments/'.$tbMacForm->id.'/'.$fileName.'/attachment'),
+                'filename' => $attachment->file_name,
             ];
         }
 

@@ -147,6 +147,36 @@ class TBMacForm extends Model
         return $this->hasMany(CaseManagementBacteriologicalResults::class, 'form_id');
     }
 
+    public function screenOne()
+    {
+        return $this->hasMany(CaseManagementBacteriologicalResults::class, 'form_id')
+            ->where('label', 'Screening 1')
+            ->where('smear_microscopy', '')
+            ->where('tb_lamp', '')
+            ->where('culture', '');
+    }
+
+    public function screenTwo()
+    {
+        return $this->hasMany(CaseManagementBacteriologicalResults::class, 'form_id')
+            ->where('label', 'Screening 2')
+            ->where('smear_microscopy', '')
+            ->where('tb_lamp', '')
+            ->where('culture', '');
+    }
+
+    public function lpa()
+    {
+        return $this->hasMany(CaseManagementBacteriologicalResults::class, 'form_id')
+            ->where('label', 'LPA');
+    }
+
+    public function dst()
+    {
+        return $this->hasMany(CaseManagementBacteriologicalResults::class, 'form_id')
+            ->where('label', 'DST');
+    }
+
     public function scopeEnrollmentForms($query)
     {
         return $query->where('form_type', 'enrollment');

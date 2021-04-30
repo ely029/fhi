@@ -51,7 +51,7 @@
           </thead>
           <tbody>
             @foreach($pending as $enrollment)
-            <tr class="table__row js-view" data-href="{{ url('case-management/'.$enrollment->id.'?from_tab=pending') }}">
+            <tr class="table__row js-view" data-href="{{ url('case-management/show/'.$enrollment->id.'?from_tab=pending') }}">
               <td class="table__details">{{ $enrollment->presentation_number }}</td>
               <td class="table__details">{{ empty($enrollment->patient->initials) ? '' : $enrollment->patient->initials}}</td>
               <td class="table__details">{{ empty($enrollment->patient->age) ? '' : $enrollment->patient->age}}</td>
@@ -79,7 +79,7 @@
           </thead>
           <tbody>
             @foreach($completed as $enrollment)
-            <tr class="table__row js-view" data-href="{{ url('case-management/'.$enrollment->id) }}">
+            <tr class="table__row js-view" data-href="{{ url('case-management/show/'.$enrollment->id) }}">
               <td class="table__details">{{ $enrollment->presentation_number }}</td>
               <td class="table__details">{{ empty($enrollment->patient->initials) ? '' : $enrollment->patient->initials}}</td>
               <td class="table__details">{{ empty($enrollment->patient->age) ? '' : $enrollment->patient->age}}</td>
@@ -107,7 +107,7 @@
           </thead>
           <tbody>
             @foreach($allCases as $enrollment)
-            <tr class="table__row js-view" data-href="{{ url('case-management/'.$enrollment->id) }}">
+            <tr class="table__row js-view" data-href="{{ url('case-management/show/'.$enrollment->id) }}">
               <td class="table__details">{{ $enrollment->presentation_number }}</td>
               <td class="table__details">{{ empty($enrollment->patient->initials) ? '' : $enrollment->patient->initials}}</td>
               <td class="table__details">{{ empty($enrollment->patient->age) ? '' : $enrollment->patient->age}}</td>
