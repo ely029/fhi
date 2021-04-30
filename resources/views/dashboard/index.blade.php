@@ -4,6 +4,6 @@
 @section('description', 'Dashboard')
 
 @section('content')
-    <div class="container">
+    <div class="section__container">
     </div>
 @endsection
