@@ -53,15 +53,15 @@
           <tbody>
             @foreach($withRecommendations as $enrollment)
             <tr class="table__row js-view" data-href="{{ url('enrollments/'.$enrollment->id) }}">
-                <td class="table__details">{{ $enrollment->tbMacForms->presentation_number }}</td>
-                <td class="table__details">{{ empty($enrollment->tbMacForms->patient->facility_code) ? '' : $enrollment->tbMacForms->patient->facility_code}}</td>
-                <td class="table__details">{{ empty($enrollment->tbMacForms->patient->province) ? '' : $enrollment->tbMacForms->patient->province}}</td>
+                <td class="table__details">{{ $enrollment->presentation_number }}</td>
+                <td class="table__details">{{ empty($enrollment->patient->facility_code) ? '' : $enrollment->patient->facility_code}}</td>
+                <td class="table__details">{{ empty($enrollment->patient->province) ? '' : $enrollment->patient->province}}</td>
                 <td class="table__details">
-                {{ empty($enrollment->tbMacForms->patient->code) ? '' : $enrollment->tbMacForms->patient->code}}
+                {{ empty($enrollment->patient->code) ? '' : $enrollment->patient->code}}
                 </td>
                 <td class="table__details">{{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility }}</td>
-                <td class="table__details">{{ $enrollment->tbMacForms->created_at->format('m-d-Y')}}</td>
-                <td class="table__details">{{ $enrollment->tbMacForms->status }}</td>
+                <td class="table__details">{{ $enrollment->created_at->format('m-d-Y')}}</td>
+                <td class="table__details">{{ $enrollment->status }}</td>
               </tr>
           @endforeach
           </tbody>

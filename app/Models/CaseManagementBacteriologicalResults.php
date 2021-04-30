@@ -51,6 +51,38 @@ class CaseManagementBacteriologicalResults extends Model
         ]);
     }
 
+    public function screeningOneCreation($form, $request)
+    {
+        CaseManagementBacteriologicalResults::create([
+            'label' => 'Screening 1',
+            'form_id' => $form->id,
+            'date_collected' => $request['date_collected_screening_1'],
+            'resistance_pattern' => $request['ressitance_pattern_screening_1'],
+            'method_used' => ! isset($request['method_used_screening_1']) ? '' : $request['method_used_screening_1'],
+            'cxr_date' => Carbon::now()->timestamp,
+            'ct_scan_date' => Carbon::now()->timestamp,
+            'histhopathological_date' => Carbon::now()->timestamp,
+            'histhopathological_result' => ! isset($request['histhopathological_result']) ? '' : $request['histhopathological_result'],
+            'remarks' => 'null',
+        ]);
+    }
+
+    public function screeningTwoCreation($form, $request)
+    {
+        CaseManagementBacteriologicalResults::create([
+            'label' => 'Screening 2',
+            'form_id' => $form->id,
+            'date_collected' => ! isset($request['date_collected_screening_2']) ? Carbon::now()->timestamp : $request['date_collected_screening_2'],
+            'resistance_pattern' => $request['ressitance_pattern_screening_2'] ?? null,
+            'method_used' => $request['method_used_screening_2'] ?? null,
+            'cxr_date' => Carbon::now()->timestamp,
+            'ct_scan_date' => Carbon::now()->timestamp,
+            'histhopathological_date' => Carbon::now()->timestamp,
+            'histhopathological_result' => ! isset($request['histhopathological_result']) ? '' : $request['histhopathological_result'],
+            'remarks' => 'null',
+        ]);
+    }
+
     public function monthDSTCreation($screen, $eee, $request, $form)
     {
         CaseManagementBacteriologicalResults::create([
@@ -61,5 +93,10 @@ class CaseManagementBacteriologicalResults extends Model
             'culture' => $request['culture'][$eee],
             'form_id' => $form->id,
         ]);
+    }
+
+    public function tbMacForm()
+    {
+        return $this->hasOne(TBMacForm::class, 'id');
     }
 }

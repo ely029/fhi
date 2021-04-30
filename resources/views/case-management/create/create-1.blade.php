@@ -9,12 +9,7 @@
     <input class="form__input" id="lastName" name="last_name" type="text" placeholder="Last name" required /><label class="form__label" for="">Last name</label></div>
     </div>
     <div class="grid grid--two form-step-1">
-    <div class="form__content form-group">
-    <div class="help-block with-errors"></div>
-    <input name="first_name" class="form__input" required id="firstName" type="text" placeholder="First name" /><label class="form__label" for="">First name</label></div>
-    <div class="form__content form-group">
-    <div class="help-block with-errors"></div>
-    <input class="form__input" id="middleName" required name="middle_name" type="text" placeholder="Middle name" /><label class="form__label" for="">Middle name</label></div>
+    
     </div>
     <div class="grid grid--two form-step-1">
     <div class="help-block with-errors"></div>
@@ -141,7 +136,7 @@
         <option value="Other Drug-resistant TB">Other Drug-resistant TB</option>
         </select>
         <div class="triangle triangle--down"></div>
-        <label class="form__label" for="">Updated drug susceptibility</label>
+        <label class="form__label" for="">Current drug susceptibility</label>
     </div>
     </div>
     <div class="form__button form__button--space form__button--pagination"><button class="button button--next" type="button">Next</button></div>
@@ -153,7 +148,7 @@
     <div class="modal__box">
     <h2 class="modal__title">Finding match in database</h2>
     <p class="modal__text">Please make sure First name, Last name, Middle name, Birthday, and Gender are correct.</p>
-    <div class="modal__button modal__button--center"><div class="loader"></div></div>
+    <div class="modal__button modal__button--center"><img class="modal__loader" src="src/img/loader.gif" alt="Loader animated" /></div>
     </div>
 </div>
 </div>

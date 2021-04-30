@@ -14,7 +14,7 @@
               <th class="table__head">Presentation No.</th>
               <th class="table__head">Patient Initials</th>
               <th class="table__head">Age</th>
-              <th class="table__head">Gender</th>
+              <th class="table__head">Sex</th>
               <th class="table__head">Current Drug Susceptibility</th>
               <th class="table__head">Date submitted by Health Care Worker</th>
               <th class="table__head">Status</th>
@@ -42,7 +42,7 @@
                 <th class="table__head">Presentation No.</th>
                 <th class="table__head">Patient Initials</th>
                 <th class="table__head">Age</th>
-                <th class="table__head">Gender</th>
+                <th class="table__head">Sex</th>
                 <th class="table__head">Current Drug Susceptibility</th>
                 <th class="table__head">Date submitted by Health Care Worker</th>
                 <th class="table__head">Status</th>
@@ -50,7 +50,7 @@
           </thead>
           <tbody>
             @foreach($completed as $enrollment)
-            <tr class="table__row js-view" data-href="{{ url('case-management/'.$enrollment->id) }}">
+            <tr class="table__row js-view" data-href="{{ url('case-management/show/'.$enrollment->id) }}">
               <td class="table__details">{{ $enrollment->presentation_number }}</td>
               <td class="table__details">{{ empty($enrollment->patient->initials) ? '' : $enrollment->patient->initials}}</td>
               <td class="table__details">{{ empty($enrollment->patient->age) ? '' : $enrollment->patient->age}}</td>
@@ -70,7 +70,7 @@
                 <th class="table__head">Presentation No.</th>
                 <th class="table__head">Patient Initials</th>
                 <th class="table__head">Age</th>
-                <th class="table__head">Gender</th>
+                <th class="table__head">Sex</th>
                 <th class="table__head">Current Drug Susceptibility</th>
                 <th class="table__head">Date submitted by Health Care Worker</th>
                 <th class="table__head">Status</th>
@@ -78,7 +78,7 @@
           </thead>
           <tbody>
             @foreach($allCases as $enrollment)
-            <tr class="table__row js-view" data-href="{{ url('case-management/'.$enrollment->id) }}">
+            <tr class="table__row js-view" data-href="{{ url('case-management/show/'.$enrollment->id) }}">
               <td class="table__details">{{ $enrollment->presentation_number }}</td>
               <td class="table__details">{{ empty($enrollment->patient->initials) ? '' : $enrollment->patient->initials}}</td>
               <td class="table__details">{{ empty($enrollment->patient->age) ? '' : $enrollment->patient->age}}</td>
