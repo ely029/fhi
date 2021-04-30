@@ -62,9 +62,9 @@
                         <span class="form__text">2121</span>
                         <label class="form__label" for="">TB case number</label></div>
                     <div class="form__content">
-                        <span class="form__text">may</span>
+                        <span class="form__text">{{$tbMacForm->caseManagementForm->month_of_treatment}}</span>
                         <label class="form__label" for="">Month of treatment</label></div>
-                    <div class="form__content"><span class="form__text">
+                    <div class="form__content">{{ $tbMacForm->casemanagementForm->current_drug_susceptibility}}<span class="form__text">
                         </span>
                         <label class="form__label" for="">Current drug susceptibility</label>
                     </div>
@@ -167,18 +167,28 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="table__row">
-                      <td class="table__details">Screening 1</td>
-                      <td class="table__details">sample</td>
-                      <td class="table__details">sample</td>
-                      <td class="table__details">sample</td>
+                  @php
+                  $screenone = $tbMacForm->screenOne;
+                  $screenTwo = $tbMacForm->screenTwo;
+                  $lpa = $tbMacForm->lpa;
+                  $dst = $tbMacForm->dst;
+                  @endphp
+                  @foreach($screenone as $screen)
+                  <tr class="table__row">
+                      <td class="table__details">{{$screen->label}}</td>
+                      <td class="table__details">{{ $screen->date_collected->format('Y-m-d') }}</td>
+                      <td class="table__details">{{ $screen->resistance_pattern }}</td>
+                      <td class="table__details">{{$screen->method_used }}</td>
                     </tr>
+                  @endforeach
+                    @foreach($screenTwo as $screen)
                     <tr class="table__row">
-                      <td class="table__details">Screening 2</td>
-                      <td class="table__details">sample</td>
-                      <td class="table__details">sample</td>
-                      <td class="table__details">sample</td>
+                      <td class="table__details">{{$screen->label}}</td>
+                      <td class="table__details">{{ $screen->date_collected->format('Y-m-d') }}</td>
+                      <td class="table__details">{{ $screen->resistance_pattern }}</td>
+                      <td class="table__details">{{$screen->method_used }}</td>
                     </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>
@@ -193,11 +203,13 @@
                     </tr>
                   </thead>
                   <tbody>
+                    @foreach($lpa as $a)
                     <tr class="table__row">
-                      <td class="table__details">LSA</td>
-                      <td class="table__details">sample</td>
-                      <td class="table__details">sample</td>
+                      <td class="table__details">{{ $a->label}}</td>
+                      <td class="table__details">{{ $a->date_collected->format('Y-m-d')}}</td>
+                      <td class="table__details">{{ $a->resistance_pattern }}</td>
                     </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>
@@ -213,11 +225,14 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="table__row">
-                      <td class="table__details">DST</td>
-                      <td class="table__details">sample</td>
-                      <td class="table__details">sample</td>
+                  @foreach($dst as $a)
+                  <tr class="table__row">
+                      <td class="table__details">{{ $a->label}}</td>
+                      <td class="table__details">{{ $a->date_collected->format('Y-m-d')}}</td>
+                      <td class="table__details">{{ $a->resistance_pattern }}</td>
                     </tr>
+                  @endforeach
+                    
                   </tbody>
                 </table>
               </div>
@@ -248,17 +263,17 @@
           </div>
           <div class="tabs__details">
             <form class="form" action="">
-              <div class="form__container">
+              {{-- <div class="form__container">
                 <h2 class="section__heading">Treatment information</h2>
                 <div class="grid grid--two">
                   <div class="form__content"><span class="form__text">06/20/2021 ➞ Treatment unit 1 ➞ Drug name 1 5 weeks ➞ Success</span><label class="form__label" for="">Treatment history</label></div>
                 </div>
                 <div class="grid grid--two">
-                  <div class="form__content"><span class="form__text">Previous Treatment Outcome Unknown</span><label class="form__label" for="">Registration group</label></div>
-                  <div class="form__content"><span class="form__text"></span><label class="form__label" for="">Risk factor</label></div>
+                 <div class="form__content"><span class="form__text">Previous Treatment Outcome Unknown</span><label class="form__label" for="">Registration group</label></div>
+                  <div class="form__content"><span class="form__text"></span><label class="form__label" for="">Risk factor</label></div>  
                 </div>
-              </div>
-              <div class="form__container">
+              </div> --}}
+             {{-- <div class="form__container">
                 <h2 class="section__heading">Current bacteriological result</h2>
                 <ul class="card">
                   <li class="card__item">
@@ -294,12 +309,12 @@
                     </div>
                   </li>
                 </ul>
-              </div>
+              </div> --}}
               <div class="form__container">
                 <h2 class="section__heading">Regimen information</h2>
                 <div class="grid grid--two">
                   <div class="form__content"><span class="form__text">Stable/Unchange</span><label class="form__label" for="">Facility code</label></div>
-                  <div class="form__content"><span class="form__text">45kg</span><label class="form__label" for="">Current weight</label></div>
+                  <div class="form__content"><span class="form__text">{{$tbMacForm->caseManagementForm->current_weight }}kg</span><label class="form__label" for="">Current weight</label></div>
                 </div>
                 <div class="grid grid--two">
                   <div class="form__content"><span class="form__text">Regimen 6b SLOR FQ-S</span><label class="form__label" for="">Current regimen </label></div>
@@ -314,65 +329,70 @@
               <div class="form__container">
                 <h2 class="section__heading">Suggested regimen</h2>
                 <div class="grid grid--two">
-                  <div class="form__content"><span class="form__text">ITR</span><label class="form__label" for="">Suggested regiment</label></div>
-                  <div class="form__content"><span class="form__text"></span><label class="form__label" for="">ITR Drugs</label></div>
+                  <div class="form__content"><span class="form__text">{{ $tbMacForm->caseManagementForm->suggested_regimen}}</span><label class="form__label" for="">Suggested regiment</label></div>
+                  <div class="form__content"><span class="form__text">{{ $tbMacForm->caseManagementForm->itr_drugs }}</span><label class="form__label" for="">ITR Drugs</label></div>
                 </div>
                 <div class="grid grid--two">
                   <div class="form__content">
-                    <span class="form__text"></span>
+                    <span class="form__text">{{ $tbMacForm->caseManagementForm->suggested_regimen_notes}}</span>
                     <label class="form__label" for="">Suggested Regimen notes</label>
                   </div>
                 </div>
                 <div class="grid grid--two">
-                  <div class="form__content"><span class="form__text">Bacteriologically-confirmd XDR-TB</span><label class="form__label" for="">Update type of case, if applicable</label></div>
+                  <div class="form__content"><span class="form__text">{{ $tbMacForm->caseManagementForm->updated_type_of_case}}</span><label class="form__label" for="">Update type of case, if applicable</label></div>
                 </div>
               </div>
+              @foreach ($tbMacForm->caseManagementLaboratoryResults as $results)
               <div class="form__container">
                 <h2 class="section__heading">Laboratory results and information</h2>
                 <div class="grid grid--two">
-                  <div class="form__content"><span class="form__text">12/12/12</span><label class="form__label" for="">CXR date</label></div>
+                  <div class="form__content"><span class="form__text">{{ $results->cxr_date->format('Y-m-d') }}</span><label class="form__label" for="">CXR date</label></div>
                   <div class="form__content">
                     <span class="form__text">
-                      
+                      {{ $results->cxr_result}}
                     </span>
                     <label class="form__label" for="">CXR result</label>
                   </div>
                 </div>
                 <div class="grid grid--two">
-                  <div class="form__content"><span class="form__text">12/12/12</span><label class="form__label" for="">CT Scan date</label></div>
+                  <div class="form__content"><span class="form__text">{{ $results->ct_scan_date->format('Y-m-d')}}</span><label class="form__label" for="">CT Scan date</label></div>
                   <div class="form__content">
                     <span class="form__text">
-                      
+                      {{ $results->ct_scan_result }}
                     </span>
                     <label class="form__label" for="">CT Scan result</label>
                   </div>
                 </div>
                 <div class="grid grid--two">
-                  <div class="form__content"><span class="form__text">12/12/12</span><label class="form__label" for="">Ultrasound date</label></div>
+                  <div class="form__content"><span class="form__text">{{ $results->ultra_sound_date->format('Y-m-d')}}</span><label class="form__label" for="">Ultrasound date</label></div>
                   <div class="form__content">
                     <span class="form__text">
-                      
+                      {{ $results->ultra_sound_result }}
                     </span>
                     <label class="form__label" for="">Ultrasound result</label>
                   </div>
                 </div>
                 <div class="grid grid--two">
-                  <div class="form__content"><span class="form__text">12/12/12</span><label class="form__label" for="">Histopathological date</label></div>
+                  <div class="form__content"><span class="form__text">{{ $results->histhopathological_date->format('Y-m-d')}}</span><label class="form__label" for="">Histopathological date</label></div>
                   <div class="form__content">
                     <span class="form__text">
-                      
+                      {{ $results->histhopathological_result }}
                     </span>
                     <label class="form__label" for="">Histopathological result</label>
                   </div>
                 </div>
               </div>
+              @endforeach
               <div class="form__container">
                 <h2 class="section__heading">Related media</h2>
-                <ul class="form__gallery">
-                  <li class="form__gallery-item"><img class="image" src="src/img/placeholder.jpg" alt="Placeholder" /></li>
-                  <li class="form__gallery-item"><img class="image" src="src/img/placeholder.jpg" alt="Placeholder" /></li>
-                  <li class="form__gallery-item"><img class="image" src="src/img/placeholder.jpg" alt="Placeholder" /></li>
-                </ul>
+                @foreach($tbMacForm->caseManagementAttachment as $key => $attachment)
+                  <li class="form__gallery-item">
+                    <a href="{{ url('case-management/'.$tbMacForm->id.'/'.$attachment->file_name.'/download') }}">
+                    <img class="image" src="{{ url('enrollments/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment') }}" alt="Placeholder" />
+                      <p>{{ $attachment->file_name }}</p>
+                  </a>
+                  </li>
+                @endforeach
               </div>
             </form>
           </div>
