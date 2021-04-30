@@ -71,11 +71,11 @@
                   </div>
                 </div>
                 <div class="form__container">
-                  <h2 class="section__heading">Healthcare worker</h2>
+                  <h2 class="section__heading">Health Care Worker</h2>
                   <div class="grid grid--two">
                     <div class="form__content">
                         <span class="form__text">{{ $tbMacForm->submittedBy->name }}</span>
-                        <label class="form__label" for="">Primary healthcare worker </label>
+                        <label class="form__label" for="">Primary Health Care Worker </label>
                     </div>
                     <div class="form__content">
                         <span class="form__text">{{ $tbMacForm->created_at->format('m-d-Y') }}</span>

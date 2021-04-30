@@ -225,7 +225,7 @@
               <div class="grid grid--two">
                 <div class="form__content">
                     <span class="form__text">{{ $tbMacForm->enrollmentForm->clinical_status }}</span>
-                    <label class="form__label" for="">Clinical Status</label>
+                    <label class="form__label" for="">Clinical status</label>
                 </div>
                 
               </div>
