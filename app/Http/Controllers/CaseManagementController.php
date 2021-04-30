@@ -82,7 +82,7 @@ class CaseManagementController extends Controller
         //Month DST
         $count = count($request['date_collected']) - 1;
         for ($eee = 0; $eee <= $count; $eee++) {
-            $screen = $count + 1;
+            $screen = $eee + 1;
             $caseManagementBactResult->monthDSTCreation($screen, $eee, $request, $form);
         }
         $request['cxr_date'] = ! isset($request['cxr_date']) ? '' : $request['cxr_date'];

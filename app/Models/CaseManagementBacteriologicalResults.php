@@ -35,7 +35,6 @@ class CaseManagementBacteriologicalResults extends Model
             'label' => 'LPA',
             'date_collected' => ! isset($request['date_collected_lpa']) ? Carbon::now()->timestamp : $request['date_collected_lpa'],
             'resistance_pattern' => ! isset($request['resistance_pattern_lpa']) ? '' : $request['resistance_pattern_lpa'],
-            'method_used' => ! isset($request['method_used_lpa']) ? '' : $request['method_used_lpa'],
             'form_id' => $form->id,
         ]);
     }
@@ -46,7 +45,6 @@ class CaseManagementBacteriologicalResults extends Model
             'label' => 'DST',
             'date_collected' => ! isset($request['date_collected_dst']) ? Carbon::now()->timestamp : $request['date_collected_dst'],
             'resistance_pattern' => ! isset($request['resistance_pattern_dst']) ? '' : $request['resistance_pattern_dst'],
-            'method_used' => ! isset($request['method_used_dst']) ? '' : $request['method_used_dst'],
             'form_id' => $form->id,
         ]);
     }
@@ -91,6 +89,19 @@ class CaseManagementBacteriologicalResults extends Model
             'smear_microscopy' => $request['smear_microscopy'][$eee],
             'tb_lamp' => $request['tb_lamp'][$eee],
             'culture' => $request['culture'][$eee],
+            'form_id' => $form->id,
+        ]);
+    }
+
+    public function monthDSTCreationMobile($screen, $eee, $request, $form)
+    {
+        $item = json_decode($request['month_dst'], true);
+        CaseManagementBacteriologicalResults::create([
+            'label' => 'Screening '. $screen,
+            'date_collected' => ! isset($item[$eee]['date_collected']) ? Carbon::now()->timestamp : $item[$eee]['date_collected'],
+            'smear_microscopy' => $item[$eee]['smear_microscopy'],
+            'tb_lamp' => $item[$eee]['tb_lamp'],
+            'culture' => $item[$eee]['culture'],
             'form_id' => $form->id,
         ]);
     }

@@ -55,4 +55,5 @@ Route::group([
     Route::get('/enrollments-with-recommendation', [EnrollmentRecommendationsController::class, 'index']);
     Route::post('/enrollments/{tbMacForm}/recommendation', [EnrollmentRecommendationsController::class, 'store']);
     Route::get('/case-management', [CaseManagementController::class, 'index']);
+    Route::post('/case-management', [CaseManagementController::class, 'store']);
 });

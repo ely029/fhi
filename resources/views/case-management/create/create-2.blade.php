@@ -68,7 +68,6 @@
             <th class="table__head"></th>
             <th class="table__head">Date collected</th>
             <th class="table__head">Resistance pattern</th>
-            <th class="table__head">Method Used</th>
         </tr>
         </thead>
         <tbody>
@@ -85,14 +84,6 @@
                 <div class="triangle triangle--down"></div>
             </div>
             </td>
-            <td class="table__details">
-            <div class="form__content">
-                <select id="method_used_3"class="form__input form__input--select form__input--full" name="method_used_lpa">
-                <option value='MTB Detected, Rifampicin Resistance Detected'>MTB Detected, Rifampicin Resistance Detected</option><option value='MTB Detected, Rifampicin Resistance Not Detected'>MTB Detected, Rifampicin Resistance Not Detected</option><option value='MTB Detected, Rifampicin Resistance Indeterminate'>MTB Detected, Rifampicin Resistance Indeterminate</option><option value='MTB Not Detected'>MTB Not Detected</option><option value='Invalid/No Result/Error'>Invalid/No Result/Error</option>
-                </select>
-                <div class="triangle triangle--down"></div>
-            </div>
-            </td>
         </tr>
         <tr class="table__row">
             <td class="table__details">DST</td>
@@ -103,14 +94,6 @@
                 <option value="For Xpert MTB/RIF">Xpert MTB/RIF</option>
                 <option value="For Xpert MTB/RIF ULTRA">Xpert MTB/RIF ULTRA</option>
                 <option value="Truenat">Truenat</option>
-                </select>
-                <div class="triangle triangle--down"></div>
-            </div>
-            </td>
-            <td class="table__details">
-            <div class="form__content">
-                <select id="method_used_4"class="form__input form__input--select form__input--full" name="method_used_dst">
-                <option value='MTB Detected, Rifampicin Resistance Detected'>MTB Detected, Rifampicin Resistance Detected</option><option value='MTB Detected, Rifampicin Resistance Not Detected'>MTB Detected, Rifampicin Resistance Not Detected</option><option value='MTB Detected, Rifampicin Resistance Indeterminate'>MTB Detected, Rifampicin Resistance Indeterminate</option><option value='MTB Not Detected'>MTB Not Detected</option><option value='Invalid/No Result/Error'>Invalid/No Result/Error</option>
                 </select>
                 <div class="triangle triangle--down"></div>
             </div>
