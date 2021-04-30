@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $form_id
  * @property string $month_of_treatment
  * @property string $current_type_of_case
+ * @property string $itr_drugs
  * @property string $current_regiment
  * @property string $reason_case_management_presentation
  * @property string $current_weight

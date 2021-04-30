@@ -56,4 +56,5 @@ Route::group([
     Route::post('/enrollments/{tbMacForm}/recommendation', [EnrollmentRecommendationsController::class, 'store']);
     Route::get('/case-management', [CaseManagementController::class, 'index']);
     Route::post('/case-management', [CaseManagementController::class, 'store']);
+    Route::get('/case-management/{tbMacForm}', [CaseManagementController::class, 'show']);
 });

@@ -117,10 +117,26 @@
     <div class="grid grid--two form-step-1">
     <div class="form__content">
         <select class="form__input form__input--select" id="treatmentMonth" name="month_of_treatment">
-        <option value="0">0</option>
         <option value="1st">1st</option>
         <option value="2nd">2nd</option>
         <option value="3rd">3rd</option>
+        <option value="4th">4th</option>
+        <option value="5th">5th</option>
+        <option value="6th">6th</option>
+        <option value="7th">7th</option>
+        <option value="8th">8th</option>
+        <option value="9th">9th</option>
+        <option value="10th">10th</option>
+        <option value="11th">11th</option>
+        <option value="12th">12th</option>
+        <option value="13th">13th</option>
+        <option value="14th">14th</option>
+        <option value="15th">15th</option>
+        <option value="16th">16th</option>
+        <option value="17th">17th</option>
+        <option value="18th">18th</option>
+        <option value="19th">19th</option>
+        <option value="20th">20th</option>
         </select>
         <div class="triangle triangle--down"></div>
         <label class="form__label" for="">Month of treatment</label>

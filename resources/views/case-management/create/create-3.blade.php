@@ -7,7 +7,7 @@
         <input class="form__input" type="number" name="current_weight" placeholder="Current weight (kg)" required /><label class="form__label" for="">Current weight (kg)</label></div>
     </div>
     <div class="form__content form-group">
-    <input class="form__input" type="text" required name="current_regiment" placeholder="Current Regiment" />
+    <input class="form__input" type="text" required name="current_regimen" placeholder="Current Regiment" />
         <label class="form__label" for="">Current regimen</label>
     </div>
     <!-- <div class="form__content form-group">
@@ -41,7 +41,7 @@
     </div>
     <div class="form__content form-group">
     <div class="help-block with-errors"></div>
-    <input class="form__input" name="itr_drugs" required type="text" placeholder="Please specify (if ITR is chosen)"/><label class="form__label" for="">ITR drugs</label>
+    <input class="form__input" name="itr_drugs" required type="text" placeholder="Please specify (+ITR is chosen)"/><label class="form__label" for="">ITR drugs</label>
     </div>
     <div class="form__content form-group">
     <div class="help-block with-errors"></div>

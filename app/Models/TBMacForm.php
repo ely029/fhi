@@ -27,8 +27,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\TBMacFormAttachment[] $attachments
  * @property-read int|null $attachments_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BacteriologicalResult[] $bacteriologicalResults
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CaseManagementBacteriologicalResults[] $caseManagementBacteriologicalResults
  * @property-read int|null $bacteriological_results_count
  * @property-read \App\Models\CaseManagementRegimentForm|null $caseManagementRegimentForm
+ * @property-read \App\Models\CaseManagementRegimentForm|null $caseManagementForm
  * @property-read EnrollmentRegimentForm|null $enrollmentForm
  * @property-read \App\Models\LaboratoryResult|null $laboratoryResults
  * @property-read \App\Models\Patient $patient
@@ -77,11 +79,6 @@ class TBMacForm extends Model
     public function enrollmentForm()
     {
         return $this->hasOne(EnrollmentRegimentForm::class, 'form_id');
-    }
-
-    public function caseManagementRegimentForm()
-    {
-        return $this->hasOne(CaseManagementRegimentForm::class, 'form_id');
     }
 
     public function bacteriologicalResults()
