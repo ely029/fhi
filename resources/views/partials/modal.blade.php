@@ -2,8 +2,8 @@
                 <div class="modal__background js-modal-background"></div>
                 <div class="modal__container">
                   <div class="modal__box">
-                    <h2 class="modal__title">Refer To R-TB Mac</h2>
-                    <p class="modal__text">You are about to confirm 'Refer To R-TB Mac' for this case and patient. If you have additional remarks, enter them below.</p>
+                    <h2 class="modal__title">Refer To R-TB MAC</h2>
+                    <p class="modal__text">You are about to confirm 'Refer To R-TB MAC' for this case and patient. If you have additional remarks, enter them below.</p>
                     <form class="form" method="POST" action="{{ route('enrolment.sendRecommendation')}}">
                     @csrf
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
@@ -121,8 +121,8 @@
                 <div class="modal__background js-modal-background"></div>
                 <div class="modal__container">
                   <div class="modal__box">
-                    <h2 class="modal__title">Refer to N-TB Mac</h2>
-                    <p class="modal__text">You are about to confirm and set this case to 'Refer to N-TB Mac' If you have additional remarks. enter them below.</p>
+                    <h2 class="modal__title">Refer to N-TB MAC</h2>
+                    <p class="modal__text">You are about to confirm and set this case to 'Refer to N-TB MAC' If you have additional remarks. enter them below.</p>
                     <form class="form" method="POST" action="{{ route('enrolment.sendRecommendation')}}">
                     @csrf
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
