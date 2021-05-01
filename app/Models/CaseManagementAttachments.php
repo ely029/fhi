@@ -48,6 +48,7 @@ class CaseManagementAttachments extends Model
             $form->caseManagementAttachment()->create([
                 'file_name' => $fileName,
                 'extension' => $file->extension(),
+                'form_id' => $form->id,
             ]);
         }
     }
