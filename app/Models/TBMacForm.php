@@ -27,17 +27,42 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\TBMacFormAttachment[] $attachments
  * @property-read int|null $attachments_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BacteriologicalResult[] $bacteriologicalResults
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CaseManagementBacteriologicalResults[] $caseManagementBacteriologicalResults
  * @property-read int|null $bacteriological_results_count
- * @property-read \App\Models\CaseManagementRegimentForm|null $caseManagementRegimentForm
+ * @property-read \App\Models\CaseManagementAttachments $caseManagementAttachment
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CaseManagementAttachments[] $caseManagementAttachments
+ * @property-read int|null $case_management_attachments_count
+ * @property-read \App\Models\CaseManagementBacteriologicalResults $caseManagementBacteriologicalResult
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CaseManagementBacteriologicalResults[] $caseManagementBacteriologicalResults
+ * @property-read int|null $case_management_bacteriological_results_count
  * @property-read \App\Models\CaseManagementRegimentForm|null $caseManagementForm
- * @property-read EnrollmentRegimentForm|null $enrollmentForm
+ * @property-read \App\Models\CaseManagementLaboratoryResults $caseManagementLaboratoryResult
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CaseManagementLaboratoryResults[] $caseManagementLaboratoryResults
+ * @property-read int|null $case_management_laboratory_results_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CaseManagementBacteriologicalResults[] $dst
+ * @property-read int|null $dst_count
+ * @property-read \App\Models\EnrollmentRegimentForm|null $enrollmentForm
  * @property-read \App\Models\LaboratoryResult|null $laboratoryResults
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CaseManagementBacteriologicalResults[] $lpa
+ * @property-read int|null $lpa_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Recommendation[] $ntbMacRecommendations
+ * @property-read int|null $ntb_mac_recommendations_count
  * @property-read \App\Models\Patient $patient
+ * @property-read \App\Models\Recommendation $recommendation
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Recommendation[] $recommendations
+ * @property-read int|null $recommendations_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Recommendation[] $regionalRecommendations
+ * @property-read int|null $regional_recommendations_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Recommendation[] $rtbMacRecommendations
+ * @property-read int|null $rtb_mac_recommendations_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CaseManagementBacteriologicalResults[] $screenOne
+ * @property-read int|null $screen_one_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CaseManagementBacteriologicalResults[] $screenTwo
+ * @property-read int|null $screen_two_count
  * @property-read \App\Models\User $submittedBy
- * @property object $recommendations
+ * @method static \Illuminate\Database\Eloquent\Builder|TBMacForm caseManagementForms()
  * @method static \Illuminate\Database\Eloquent\Builder|TBMacForm enrollmentForms()
  * @method static \Database\Factories\TBMacFormFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|TBMacForm filter(\App\Models\Filters\TBMacFormFilters $filters)
  * @method static \Illuminate\Database\Eloquent\Builder|TBMacForm newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|TBMacForm newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|TBMacForm query()
@@ -96,9 +121,14 @@ class TBMacForm extends Model
         return $this->hasMany(TBMacFormAttachment::class, 'form_id');
     }
 
-    public function caseManagementAttachment()
+    public function caseManagementAttachments()
     {
         return $this->hasMany(CaseManagementAttachments::class, 'form_id');
+    }
+
+    public function caseManagementAttachment()
+    {
+        return $this->belongsTo(CaseManagementAttachments::class, 'form_id');
     }
 
     public function recommendation()
@@ -134,14 +164,19 @@ class TBMacForm extends Model
         return $this->hasOne(CaseManagementRegimentForm::class, 'form_id');
     }
 
+    public function caseManagementLaboratoryResult()
+    {
+        return $this->hasOne(CaseManagementLaboratoryResults::class, 'form_id');
+    }
+
     public function caseManagementLaboratoryResults()
     {
         return $this->hasMany(CaseManagementLaboratoryResults::class, 'form_id');
     }
 
-    public function caseManagementBacteriologicalResults()
+    public function caseManagementBacteriologicalResult()
     {
-        return $this->hasMany(CaseManagementBacteriologicalResults::class, 'form_id');
+        return $this->belongsTo(CaseManagementBacteriologicalResults::class, 'form_id');
     }
 
     public function screenOne()
@@ -151,6 +186,14 @@ class TBMacForm extends Model
             ->where('smear_microscopy', '')
             ->where('tb_lamp', '')
             ->where('culture', '');
+    }
+
+    public function monthlyScreening()
+    {
+        return $this->hasMany(CaseManagementBacteriologicalResults::class, 'form_id')
+            ->where('smear_microscopy', '<>', '')
+            ->where('tb_lamp', '<>', '')
+            ->where('culture', '<>', '');
     }
 
     public function screenTwo()

@@ -172,6 +172,7 @@
                   $screenTwo = $tbMacForm->screenTwo;
                   $lpa = $tbMacForm->lpa;
                   $dst = $tbMacForm->dst;
+                  $monthlyScreening = $tbMacForm->monthlyScreening;
                   @endphp
                   @foreach($screenone as $screen)
                   <tr class="table__row">
@@ -249,13 +250,15 @@
                     </tr>
                   </thead>
                   <tbody>
+                    @foreach($monthlyScreening as $a)
                     <tr class="table__row">
-                      <td class="table__details">Screening 1</td>
-                      <td class="table__details">sample</td>
-                      <td class="table__details">sample</td>
-                      <td class="table__details">sample</td>
-                      <td class="table__details">sample</td>
+                      <td class="table__details">{{$a->label}}</td>
+                      <td class="table__details">{{$a->date_collected->format('Y-m-d')}}</td>
+                      <td class="table__details">{{$a->smear_microscopy}}</td>
+                      <td class="table__details">{{$a->tb_lamp}}</td>
+                      <td class="table__details">{{$a->culture}}</td>
                     </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>
@@ -319,12 +322,12 @@
                 <div class="grid grid--two">
                   <div class="form__content"><span class="form__text">Regimen 6b SLOR FQ-S</span><label class="form__label" for="">Current regimen </label></div>
                 </div>
-                <div class="grid grid--two">
+                <!-- <div class="grid grid--two">
                   <div class="form__content">
                     <span class="form__text"></span>
                     <label class="form__label" for="">Regimen notes</label>
                   </div>
-                </div>
+                </div> -->
               </div>
               <div class="form__container">
                 <h2 class="section__heading">Suggested regimen</h2>
@@ -385,7 +388,7 @@
               @endforeach
               <div class="form__container">
                 <h2 class="section__heading">Related media</h2>
-                @foreach($tbMacForm->caseManagementAttachment as $key => $attachment)
+                @foreach($tbMacForm->caseManagementAttachments as $key => $attachment)
                   <li class="form__gallery-item">
                     <a href="{{ url('case-management/'.$tbMacForm->id.'/'.$attachment->file_name.'/download') }}">
                     <img class="image" src="{{ url('enrollments/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment') }}" alt="Placeholder" />

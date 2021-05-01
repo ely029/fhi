@@ -14,7 +14,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $form_id
  * @property string $month_of_treatment
  * @property string $current_type_of_case
- * @property string $itr_drugs
  * @property string $current_regiment
  * @property string $reason_case_management_presentation
  * @property string $current_weight
@@ -24,20 +23,26 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $if_for_empiric_treatment
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string $current_drug_susceptibility
+ * @property string $itr_drugs
+ * @property string $suggested_regimen_notes
  * @method static \Database\Factories\CaseManagementRegimentFormFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm query()
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm whereCurrentDrugSusceptibility($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm whereCurrentRegiment($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm whereCurrentTypeOfCase($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm whereCurrentWeight($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm whereFormId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm whereIfForEmpiricTreatment($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm whereItrDrugs($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm whereMonthOfTreatment($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm whereReasonCaseManagementPresentation($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm whereSuggestedRegimen($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm whereSuggestedRegimenNotes($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm whereSuggestedWeight($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm whereUpdatedTypeOfCase($value)
