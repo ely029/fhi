@@ -21,7 +21,7 @@ class CaseManagementResubmitController extends Controller
         $submitted_by = $tbMacForm->submittedBy->name;
         $date_submitted = $tbMacForm->created_at->format('M d, Y');
         $status = $tbMacForm->status;
-        $suggested_regimen = $tbMacForm->caseManagementForm->suggested_regimen === '' ? ''  : $tbMacForm->caseManagementForm->suggested_regimen;
+        $suggested_regimen = $tbMacForm->caseManagementForm->suggested_regimen === '' ? '' : $tbMacForm->caseManagementForm->suggested_regimen;
         $suggested_regimen_notes = $tbMacForm->caseManagementForm->suggested_regimen_notes;
         $current_regimen = $tbMacForm->caseManagementForm->current_regiment;
         $current_weight = $tbMacForm->caseManagementForm->current_weight;
