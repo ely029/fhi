@@ -179,6 +179,11 @@ class TBMacForm extends Model
         return $this->belongsTo(CaseManagementBacteriologicalResults::class, 'form_id');
     }
 
+    public function caseManagementBacteriologicalResults()
+    {
+        return $this->hasMany(CaseManagementBacteriologicalResults::class, 'form_id');
+    }
+
     public function screenOne()
     {
         return $this->hasMany(CaseManagementBacteriologicalResults::class, 'form_id')
