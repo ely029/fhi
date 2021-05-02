@@ -80,6 +80,7 @@ class CaseManagementController extends Controller
         }
         $request['cxr_date'] = ! isset($request['cxr_date']) ? Carbon::now()->timestamp : $request['cxr_date'];
         $form->caseManagementForm()->create($request);
+        unset($request['remarks']);
         $form->caseManagementLaboratoryResults()->create($request);
 
         return response()->json('New Case Successfully Created', 200);
