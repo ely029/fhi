@@ -46,7 +46,7 @@
         </thead>
         <tbody>
         @foreach($forApproval as $case)
-        <tr class="table__row js-view" data-href="view-case.html">
+        <tr class="table__row js-view" data-href="{{url('/case-management/show/'.$cases->id)}}">
         <td class="table__details">{{$cases->presentation_number}}</td>
             <td class="table__details">{{$cases->patient->facility_code}}</td>
             <td class="table__details">{{$cases->patient->code}}</td>
@@ -70,7 +70,7 @@
         </thead>
         <tbody>
         @foreach($forFollowUp as $case)
-        <tr class="table__row js-view" data-href="view-case.html">
+        <tr class="table__row js-view" data-href="{{url('/case-management/show/'.$cases->id)}}">
         <td class="table__details">{{$cases->presentation_number}}</td>
             <td class="table__details">{{$cases->patient->facility_code}}</td>
             <td class="table__details">{{$cases->patient->code}}</td>
@@ -94,7 +94,7 @@
         </thead>
         <tbody>
         @foreach($otherSuggestion as $case)
-        <tr class="table__row js-view" data-href="view-case.html">
+        <tr class="table__row js-view" data-href="{{url('/case-management/show/'.$cases->id)}}">
         <td class="table__details">{{$cases->presentation_number}}</td>
             <td class="table__details">{{$cases->patient->facility_code}}</td>
             <td class="table__details">{{$cases->patient->code}}</td>
@@ -118,7 +118,7 @@
         </thead>
         <tbody>
         @foreach($notForReferral as $case)
-        <tr class="table__row js-view" data-href="view-case.html">
+        <tr class="table__row js-view" data-href="{{url('/case-management/show/'.$cases->id)}}">
         <td class="table__details">{{$cases->presentation_number}}</td>
             <td class="table__details">{{$cases->patient->facility_code}}</td>
             <td class="table__details">{{$cases->patient->code}}</td>

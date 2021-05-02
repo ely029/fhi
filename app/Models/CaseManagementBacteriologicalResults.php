@@ -92,7 +92,6 @@ class CaseManagementBacteriologicalResults extends Model
             'ct_scan_date' => Carbon::now()->timestamp,
             'histhopathological_date' => Carbon::now()->timestamp,
             'histhopathological_result' => ! isset($request['histhopathological_result']) ? '' : $request['histhopathological_result'],
-            'remarks' => 'null',
         ]);
     }
 

@@ -219,7 +219,8 @@ class TBMacForm extends Model
     public function dst()
     {
         return $this->hasMany(CaseManagementBacteriologicalResults::class, 'form_id')
-            ->where('label', 'DST');
+            ->where('label', 'DST')
+            ->where('smear_microscopy', '');
     }
 
     public function scopeEnrollmentForms($query)

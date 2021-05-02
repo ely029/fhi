@@ -21,12 +21,13 @@ class CaseManagementResubmitController extends Controller
         $submitted_by = $tbMacForm->submittedBy->name;
         $date_submitted = $tbMacForm->created_at->format('M d, Y');
         $status = $tbMacForm->status;
-        $suggested_regimen = $tbMacForm->caseManagementForm->suggested_regimen === '' ? '' : $tbMacForm->caseManagementForm->suggested_regimen;
+        $suggested_regimen = $tbMacForm->caseManagementForm->suggested_regimen ?? null;
         $suggested_regimen_notes = $tbMacForm->caseManagementForm->suggested_regimen_notes;
         $current_regimen = $tbMacForm->caseManagementForm->current_regiment;
         $current_weight = $tbMacForm->caseManagementForm->current_weight;
         $patient_code = $tbMacForm->patient->code;
         $itr_drugs = $tbMacForm->caseManagementForm->itr_drugs;
+        $case_number = $tbMacForm->caseManagementForm->case_number ?? null;
         $regimen_notes = '';
         $updated_type_of_case = $tbMacForm->caseManagementForm->updated_type_of_case;
         $screeningOne = $tbBacteriologicalResults->filter(function ($item) {
@@ -99,6 +100,7 @@ class CaseManagementResubmitController extends Controller
             'screening_two' => $screeningTwo,
             'lpa' => $lpa,
             'dst' => $dst,
+            'case_number' => $case_number,
             'monthly_screening' => $monthly_screening,
         ];
 

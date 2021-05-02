@@ -1,5 +1,5 @@
 jQuery( document ).ready(function( $ ) {
-
+$('.hide--button').hide();
     $('#recommendation-button').click(function(){
         let action = $("#action-dropdown").val();
         if(action == 'Referred to Regional'){
@@ -40,6 +40,15 @@ jQuery( document ).ready(function( $ ) {
         if(action == 'Referred to National'){
             $("#modal-title").text('Refer To N-TB MAC');
             $("#modal-text").text("You are about to send this case to National TB MAC. If you have additional remarks, enter them below.");
+        }
+
+        if(action == 'Resubmit Case Management') {
+            $('textarea[name="recommendation"]').hide();
+            $('button').hide();
+            $("#modal-title").text('Resubmit Case Management');
+            $('#modal-text').text("You are about to resubmit a new case management. Please read and prepare the requested information and documents and the remarks and recommendations section");
+            $('label').hide();
+            $('.hide--button').show();
         }
 
         $("#modal-form").find('input[name="status"]').val(action);

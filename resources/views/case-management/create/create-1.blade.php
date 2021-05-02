@@ -3,7 +3,7 @@
     <div class="grid grid--two form-step-1">
     <div class="form__content form-group">
     <div class="help-block with-errors"></div>
-    <input class="form__input" id="tbNumber" name="presentation_number" type="number" min="0" placeholder="TB Case number" required/><label class="form__label" for="">TB Case number</label></div>
+    <input class="form__input" id="tbNumber" name="case_number" type="number" min="0" placeholder="TB Case number" required/><label class="form__label" for="">TB Case number</label></div>
     <div class="form__content form-group">
     <div class="help-block with-errors"></div>
     <input class="form__input" id="lastName" name="last_name" type="text" placeholder="Last name" required /><label class="form__label" for="">Last name</label></div>
@@ -12,8 +12,9 @@
     
     </div>
     <div class="grid grid--two form-step-1">
-    <div class="help-block with-errors"></div>
-    <div class="form__content form-group"><input class="form__input " required id="facilityCode" type="number" min="0" placeholder="Facility code" name="facility_code" /><label class="form__label" for="">Facility code</label></div>
+    <div class="form__content form-group">
+    <div class="help-block with-errors"></div>    
+    <input class="form__input" id="facilityCode" type="number" min="0" placeholder="Facility code" name="facility_code" required/><label class="form__label" for="">Facility code</label></div>
     <div class="form__content form-group">
         <select class="form__input form__input--select " id="province" name="province">
         <option value="Metro Manila">Metro Manila</option>

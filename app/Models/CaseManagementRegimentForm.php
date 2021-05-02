@@ -64,6 +64,9 @@ class CaseManagementRegimentForm extends Model
         'suggested_regimen',
         'current_drug_susceptibility',
         'itr_drugs',
+        'latest_comparative_cxr_reading',
         'suggested_regimen_notes',
+        'remarks',
+        'case_number',
     ];
 }

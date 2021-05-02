@@ -54,7 +54,6 @@ class CaseManagementLaboratoryResults extends Model
         'form_id',
         'cxr_date',
         'label',
-        'latest_comparative_cxr_reading',
         'cxr_result',
         'ct_scan_date',
         'ct_scan_result',
