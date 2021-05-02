@@ -17,19 +17,19 @@ class CaseManagementResubmitController extends Controller
     {
         $tbMacForm = $tbMacForm->load(['submittedBy','caseManagementForm','caseManagementBacteriologicalResults','caseManagementLaboratoryResults','caseManagementAttachment','patient','recommendations']);
         $tbBacteriologicalResults = $tbMacForm->caseManagementBacteriologicalResults;
-        $presentation_number = $tbMacForm->presentation_number;
-        $submitted_by = $tbMacForm->submittedBy->name;
+        $presentation_number = $tbMacForm->presentation_number ?? null;
+        $submitted_by = $tbMacForm->submittedBy->name ?? null;
         $date_submitted = $tbMacForm->created_at->format('M d, Y');
         $status = $tbMacForm->status;
         $suggested_regimen = $tbMacForm->caseManagementForm->suggested_regimen ?? null;
-        $suggested_regimen_notes = $tbMacForm->caseManagementForm->suggested_regimen_notes;
-        $current_regimen = $tbMacForm->caseManagementForm->current_regiment;
-        $current_weight = $tbMacForm->caseManagementForm->current_weight;
+        $suggested_regimen_notes = $tbMacForm->caseManagementForm->suggested_regimen_notes ?? null;
+        $current_regimen = $tbMacForm->caseManagementForm->current_regiment ?? null;
+        $current_weight = $tbMacForm->caseManagementForm->current_weight ?? null;
         $patient_code = $tbMacForm->patient->code;
-        $itr_drugs = $tbMacForm->caseManagementForm->itr_drugs;
+        $itr_drugs = $tbMacForm->caseManagementForm->itr_drugs ?? null;
         $case_number = $tbMacForm->caseManagementForm->case_number ?? null;
         $regimen_notes = '';
-        $updated_type_of_case = $tbMacForm->caseManagementForm->updated_type_of_case;
+        $updated_type_of_case = $tbMacForm->caseManagementForm->updated_type_of_case ?? null;
         $screeningOne = $tbBacteriologicalResults->filter(function ($item) {
             return $item->label === 'Screening 1' && $item->resistance_pattern !== '' && $item->method_used !== '';
         })->map(function ($item) {
