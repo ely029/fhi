@@ -61,7 +61,7 @@
     <div class="form__container">
     <h2 class="section__heading">Related Media (CXR, CTSCAN etc.)</h2>
     <div class="form__warning">
-        <img class="image image--warning" src="src/img/icon-warning.png" alt="warning icon" />
+        <img class="image image--warning" src="{{ asset('assets/app/img/icon-warning.png') }}" alt="warning icon" />
         <p>Please make sure patient name is NOT included in your photo uploads</p>
     </div>
     <div class="grid grid--two">
@@ -93,7 +93,7 @@
         </div>
         <input type="file" multiple name="attachments[]" class="attachment-upload" id="attachments">
         <ul class="gallery__list" id="gallery-preview">
-        <li class="gallery__item dz-preview dz-file-preview" id="gallery-container"><img class="image image--gallery" data-dz-thumbnail /><img class="image image--close" src="src/img/icon-close.png" data-dz-remove /></li>
+        <li class="gallery__item dz-preview dz-file-preview" id="gallery-container"><img class="image image--gallery" data-dz-thumbnail /><img class="image image--close" src="{{ asset('assets/app/img/icon-close.png') }}" data-dz-remove /></li>
         </ul>
     </div>
     </div>
