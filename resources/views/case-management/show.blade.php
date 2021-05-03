@@ -67,7 +67,7 @@
                         <label class="form__label" for="">Month of treatment</label></div>
                     <div class="form__content">{{ empty($tbMacForm->casemanagementForm->current_drug_susceptibility) ? '' : $tbMacForm->casemanagementForm->current_drug_susceptibility}}<span class="form__text">
                         </span>
-                        <label class="form__label" for="">Current drug susceptibility</label>
+                        <label class="form__label" for="">Updated drug susceptibility</label>
                     </div>
                   </div>
                 </div>
@@ -412,9 +412,9 @@
                 <h2 class="section__heading">Related media</h2>
                 @foreach($tbMacForm->caseManagementAttachments as $key => $attachment)
                   <li class="form__gallery-item">
-                    <a href="{{ url('case-management/'.$tbMacForm->id.'/'.$attachment->file_name.'/download') }}">
+                    <a class="form__gallery-link" href="{{ url('case-management/'.$tbMacForm->id.'/'.$attachment->file_name.'/download') }}">
                     <img class="image" src="{{ url('case-management/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment') }}" alt="Placeholder" />
-                      <p>{{ $attachment->file_name }}</p>
+                      <p class="form__gallery-text">{{ $attachment->file_name }}</p>
                   </a>
                   </li>
                 @endforeach
@@ -453,9 +453,10 @@
                   </div>
                   <div class="form__container form__container--remarks form__container--actions">
                     <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
-                    <div class="form__content"><span class="form__text form__text--green">Remarks</span><label class="form__label form__label--green">Action</label></div>
+                    <div class="form__content"><span class="form__text form__text--green">New Case</span><label class="form__label form__label--green">Action</label></div>
                   </div>
                   <span class="form__text">
+                    {{ $tbMacForm->caseManagementForm->remarks }}
                   </span>
                 </div>
               </div>

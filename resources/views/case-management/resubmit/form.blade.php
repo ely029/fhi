@@ -27,6 +27,7 @@
               @include('case-management.resubmit.create-1')
               @include('case-management.resubmit.create-2')
               @include('case-management.resubmit.create-3')
+              @include('case-management.resubmit.create-4')
             </div>
         </form>
   

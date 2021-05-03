@@ -30,4 +30,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'itis' => [
+        'url' => env('ITIS_URL'),
+        'key' => env('ITIS_SYSTEM_KEY')
+    ],
 ];

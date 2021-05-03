@@ -7,7 +7,6 @@
           <form class="form" action="">
             <div class="form__content"><span class="form__text">sample</span><label class="form__label" for="">Title</label></div>
             <div class="form__content"><span class="form__text">sample</span><label class="form__label" for="">Message </label></div>
-            <div class="form__button form__button--end"><button class="button button--decline">Delete</button></div>
           </form>
         </div>
       </div>

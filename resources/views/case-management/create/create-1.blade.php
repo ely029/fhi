@@ -153,7 +153,7 @@
         <option value="Other Drug-resistant TB">Other Drug-resistant TB</option>
         </select>
         <div class="triangle triangle--down"></div>
-        <label class="form__label" for="">Current drug susceptibility</label>
+        <label class="form__label" for="">Updated drug susceptibility</label>
     </div>
     </div>
     <div class="form__button form__button--space form__button--pagination"><button class="button button--next" type="button">Next</button></div>
