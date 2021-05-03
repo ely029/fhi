@@ -59,7 +59,7 @@ Route::group([
     Route::get('/case-management', [CaseManagementController::class, 'index']);
     Route::post('/case-management', [CaseManagementController::class, 'store']);
 
-    Route::get('itis/get/patient',[ITISController::class, 'getPatient']); 
+    Route::get('itis/get/patient', [ITISController::class, 'getPatient']);
     Route::get('/case-management/{tbMacForm}', [CaseManagementController::class, 'show']);
     Route::post('/case-management/{tbMacForm}/resubmit', [CaseManagementResubmitController::class, 'reSubmit']);
     Route::get('/case-management/resubmit/{tbMacForm}', [CaseManagementResubmitController::class, 'edit']);
