@@ -2,31 +2,35 @@
     <a class="button button--create" href="{{url('case-management/create') }}">Create new case</a>
     <div class="section__content">
     <ul class="tabs__list tabs__list--table">
-        <li class="tabs__item tabs__item--current">All Cases</li>
+        <li class="tabs__item tabs__item--current">All Cases ({{$allCases->count()}})</li>
         <li class="tabs__item">For approval ({{$forApproval->count()}})</li>
-        <li class="tabs__item">For follow up ({{$forFollowUp->count()}})</li>
-        <li class="tabs__item">Other suggestion ({{$otherSuggestion->count()}})</li>
+        <li class="tabs__item">Other suggestions ({{$otherSuggestion->count()}})</li>
+        <li class="tabs__item">Need further details ({{$needFurtherDetails->count()}})</li>
         <li class="tabs__item">Not for referral ({{$notForReferral->count()}})</li>
     </ul>
     <div class="tabs__details tabs__details--active">
         <table class="table table--filter js-table">
         <thead>
             <tr>
-            <th class="table__head">Case no.</th>
-            <th class="table__head">Facility Code</th>
-            <th class="table__head">Patient</th>
-            <th class="table__head">Date</th>
-            <th class="table__head">Status</th>
+                <th class="table__head">Presentation no.</th>
+                <th class="table__head">Patient initials</th>
+                <th class="table__head">Age</th>
+                <th class="table__head">Sex</th>
+                <th class="table__head">Updated drug susceptibility</th>
+                <th class="table__head">Date submitted by Health Care Worker</th>
+                <th class="table__head">Status</th>
             </tr>
         </thead>
         <tbody>
         @foreach($allCases as $case)
         <tr class="table__row js-view" data-href="{{url('/case-management/show/'.$case->id)}}">
-            <td class="table__details">{{$case->presentation_number}}</td>
-            <td class="table__details">{{$case->patient->facility_code}}</td>
-            <td class="table__details">{{$case->patient->code}}</td>
-            <td class="table__details">{{$case->created_at->format('m-d-Y')}}</td>
-            <td class="table__details">{{$case->status}}</td>
+            <td class="table__details">{{ $case->presentation_number }}</td>
+            <td class="table__details">{{ empty($case->patient->initials) ? '' : $case->patient->initials}}</td>
+            <td class="table__details">{{ empty($case->patient->age) ? '' : $case->patient->age}}</td>
+            <td class="table__details">{{ empty($case->patient->gender) ? '' : $case->patient->gender}}</td>
+            <td class="table__details">{{ $case->caseManagementForm->current_drug_susceptibility ?? '' }}</td>
+            <td class="table__details">{{ $case->created_at->format('M d, Y')}}</td>
+            <td class="table__details">{{ $case->status }}</td>
             </tr>
         @endforeach
             
@@ -37,21 +41,25 @@
         <table class="table table--filter js-table">
         <thead>
             <tr>
-            <th class="table__head">Case no.</th>
-            <th class="table__head">Faculty Code</th>
-            <th class="table__head">Patient</th>
-            <th class="table__head">Date</th>
-            <th class="table__head">Status</th>
+                <th class="table__head">Presentation no.</th>
+                <th class="table__head">Patient initials</th>
+                <th class="table__head">Age</th>
+                <th class="table__head">Sex</th>
+                <th class="table__head">Updated drug susceptibility</th>
+                <th class="table__head">Date submitted by Health Care Worker</th>
+                <th class="table__head">Status</th>
             </tr>
         </thead>
         <tbody>
         @foreach($forApproval as $case)
         <tr class="table__row js-view" data-href="{{url('/case-management/show/'.$case->id)}}">
-        <td class="table__details">{{$cases->presentation_number}}</td>
-            <td class="table__details">{{$case->patient->facility_code}}</td>
-            <td class="table__details">{{$case->patient->code}}</td>
-            <td class="table__details">{{$case->created_at->format('m-d-Y')}}</td>
-            <td class="table__details">{{$case->status}}</td>
+            <td class="table__details">{{ $case->presentation_number }}</td>
+            <td class="table__details">{{ empty($case->patient->initials) ? '' : $case->patient->initials}}</td>
+            <td class="table__details">{{ empty($case->patient->age) ? '' : $case->patient->age}}</td>
+            <td class="table__details">{{ empty($case->patient->gender) ? '' : $case->patient->gender}}</td>
+            <td class="table__details">{{ $case->caseManagementForm->current_drug_susceptibility ?? '' }}</td>
+            <td class="table__details">{{ $case->created_at->format('M d, Y')}}</td>
+            <td class="table__details">{{ $case->status }}</td>
             </tr>
         @endforeach
         </tbody>
@@ -61,47 +69,27 @@
         <table class="table table--filter js-table">
         <thead>
             <tr>
-            <th class="table__head">Case no.</th>
-            <th class="table__head">Faculty Code</th>
-            <th class="table__head">Patient</th>
-            <th class="table__head">Date</th>
-            <th class="table__head">Status</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($forFollowUp as $case)
-        <tr class="table__row js-view" data-href="{{url('/case-management/show/'.$case->id)}}">
-        <td class="table__details">{{$case->presentation_number}}</td>
-            <td class="table__details">{{$case->patient->facility_code}}</td>
-            <td class="table__details">{{$case->patient->code}}</td>
-            <td class="table__details">{{$case->created_at->format('m-d-Y')}}</td>
-            <td class="table__details">{{$case->status}}</td>
-            </tr>
-        @endforeach
-        </tbody>
-        </table>
-    </div>
-    <div class="tabs__details">
-        <table class="table table--filter js-table">
-        <thead>
-            <tr>
-            <th class="table__head">Case no.</th>
-            <th class="table__head">Faculty Code</th>
-            <th class="table__head">Patient</th>
-            <th class="table__head">Date</th>
-            <th class="table__head">Status</th>
+                <th class="table__head">Presentation no.</th>
+                <th class="table__head">Patient initials</th>
+                <th class="table__head">Age</th>
+                <th class="table__head">Sex</th>
+                <th class="table__head">Updated drug susceptibility</th>
+                <th class="table__head">Date submitted by Health Care Worker</th>
+                <th class="table__head">Status</th>
             </tr>
         </thead>
         <tbody>
         @foreach($otherSuggestion as $case)
         <tr class="table__row js-view" data-href="{{url('/case-management/show/'.$case->id)}}">
-        <td class="table__details">{{$case->presentation_number}}</td>
-            <td class="table__details">{{$case->patient->facility_code}}</td>
-            <td class="table__details">{{$case->patient->code}}</td>
-            <td class="table__details">{{$case->created_at->format('m-d-Y')}}</td>
-            <td class="table__details">{{$case->status}}</td>
+            <td class="table__details">{{ $case->presentation_number }}</td>
+            <td class="table__details">{{ empty($case->patient->initials) ? '' : $case->patient->initials}}</td>
+            <td class="table__details">{{ empty($case->patient->age) ? '' : $case->patient->age}}</td>
+            <td class="table__details">{{ empty($case->patient->gender) ? '' : $case->patient->gender}}</td>
+            <td class="table__details">{{ $case->caseManagementForm->current_drug_susceptibility ?? '' }}</td>
+            <td class="table__details">{{ $case->created_at->format('M d, Y')}}</td>
+            <td class="table__details">{{ $case->status }}</td>
             </tr>
-        @endforeach>
+        @endforeach
         </tbody>
         </table>
     </div>
@@ -109,22 +97,54 @@
         <table class="table table--filter js-table">
         <thead>
             <tr>
-            <th class="table__head">Case no.</th>
-            <th class="table__head">Faculty Code</th>
-            <th class="table__head">Patient</th>
-            <th class="table__head">Date</th>
-            <th class="table__head">Status</th>
+                <th class="table__head">Presentation no.</th>
+                <th class="table__head">Patient initials</th>
+                <th class="table__head">Age</th>
+                <th class="table__head">Sex</th>
+                <th class="table__head">Updated drug susceptibility</th>
+                <th class="table__head">Date submitted by Health Care Worker</th>
+                <th class="table__head">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach($needFurtherDetails as $case)
+        <tr class="table__row js-view" data-href="{{url('/case-management/show/'.$case->id)}}">
+            <td class="table__details">{{ $case->presentation_number }}</td>
+            <td class="table__details">{{ empty($case->patient->initials) ? '' : $case->patient->initials}}</td>
+            <td class="table__details">{{ empty($case->patient->age) ? '' : $case->patient->age}}</td>
+            <td class="table__details">{{ empty($case->patient->gender) ? '' : $case->patient->gender}}</td>
+            <td class="table__details">{{ $case->caseManagementForm->current_drug_susceptibility ?? '' }}</td>
+            <td class="table__details">{{ $case->created_at->format('M d, Y')}}</td>
+            <td class="table__details">{{ $case->status }}</td>
+            </tr>
+        @endforeach
+        </tbody>
+        </table>
+    </div>
+    <div class="tabs__details">
+        <table class="table table--filter js-table">
+        <thead>
+            <tr>
+                <th class="table__head">Presentation no.</th>
+                <th class="table__head">Patient initials</th>
+                <th class="table__head">Age</th>
+                <th class="table__head">Sex</th>
+                <th class="table__head">Updated drug susceptibility</th>
+                <th class="table__head">Date submitted by Health Care Worker</th>
+                <th class="table__head">Status</th>
             </tr>
         </thead>
         <tbody>
         @foreach($notForReferral as $case)
         <tr class="table__row js-view" data-href="{{url('/case-management/show/'.$case->id)}}">
-        <td class="table__details">{{$case->presentation_number}}</td>
-            <td class="table__details">{{$case->patient->facility_code}}</td>
-            <td class="table__details">{{$case->patient->code}}</td>
-            <td class="table__details">{{$case->created_at->format('m-d-Y')}}</td>
-            <td class="table__details">{{$case->status}}</td>
-            </tr>
+            <td class="table__details">{{ $case->presentation_number }}</td>
+            <td class="table__details">{{ empty($case->patient->initials) ? '' : $case->patient->initials}}</td>
+            <td class="table__details">{{ empty($case->patient->age) ? '' : $case->patient->age}}</td>
+            <td class="table__details">{{ empty($case->patient->gender) ? '' : $case->patient->gender}}</td>
+            <td class="table__details">{{ $case->caseManagementForm->current_drug_susceptibility ?? '' }}</td>
+            <td class="table__details">{{ $case->created_at->format('M d, Y')}}</td>
+            <td class="table__details">{{ $case->status }}</td>
+        </tr>
         @endforeach
         </tbody>
         </table>

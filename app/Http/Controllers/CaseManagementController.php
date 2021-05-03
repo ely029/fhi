@@ -100,9 +100,6 @@ class CaseManagementController extends Controller
         $forApproval = $cases->filter(function ($item) {
             return $item->status === 'For Approval';
         });
-        $forFollowUp = $cases->filter(function ($item) {
-            return $item->status === 'For Follow Up';
-        });
         $otherSuggestion = $cases->filter(function ($item) {
             return $item->status === 'Other Suggestion';
         });
@@ -113,9 +110,7 @@ class CaseManagementController extends Controller
             return $item->status === 'Not for Referral';
         });
         return view('case-management.index')
-            ->with('cases', $cases)
             ->with('forApproval', $forApproval)
-            ->with('forFollowUp', $forFollowUp)
             ->with('allCases', $cases)
             ->with('needFurtherDetails', $needFurtherDetails)
             ->with('otherSuggestion', $otherSuggestion)
