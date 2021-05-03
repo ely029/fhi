@@ -60,7 +60,7 @@
                   <br />
                   <div class="grid grid--three">
                     <div class="form__content">
-                        <span class="form__text">{{ $tbMacForm->caseManagementForm->case_number}}</span>
+                        <span class="form__text">{{ empty($tbMacForm->caseManagementForm->case_number) ? '' : $tbMacForm->caseManagementForm->case_number}}</span>
                         <label class="form__label" for="">TB case number</label></div>
                     <div class="form__content">
                         <span class="form__text">{{empty($tbMacForm->caseManagementForm->month_of_treatment) ? '' :$tbMacForm->caseManagementForm->month_of_treatment}}</span>
