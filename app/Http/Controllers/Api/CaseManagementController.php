@@ -112,6 +112,9 @@ class CaseManagementController extends Controller
         $ultra_sound_result = $tbMacForm->caseManagementLaboratoryResult->ultra_sound_result ?? null;
         $histhopathological_date = $tbMacForm->caseManagementLaboratoryResult->histhopathological_date->format('M d, Y') ?? null;
         $histhopathological_result = $tbMacForm->caseManagementLaboratoryResult->histhopathological_result ?? null;
+        $cxr_date = $tbMacForm->caseManagementLaboratoryResult->cxr_date->format('M d, Y') ?? null;
+        $cxr_result = $tbMacForm->caseManagementLaboratoryResult->cxr_result ?? null;
+        $remarks = $tbMacForm->caseManagementForm->remarks ?? null;
         $screeningOne = $tbBacteriologicalResults->filter(function ($item) {
             return $item->label === 'Screening 1' && $item->resistance_pattern !== '' && $item->method_used !== '';
         })->map(function ($item) {
@@ -173,7 +176,7 @@ class CaseManagementController extends Controller
         }
         $data = [
             'presentation_number' => $presentation_number, 'current_drug_susceptibility' => $current_drug_susceptibility, 'submitted_by' => $submitted_by, 'date_submitted' => $date_submitted, 'created_at' => $created_at,
-            'current_weight' => $current_weight, 'itr_drugs' => $itr_drugs, 'facility_code' => $facility_code, 'updated_type_of_case' => $updated_type_of_case, 'suggested_regimen_notes' => $suggested_regimen_notes, 'current_regiment' => $current_regimen, 'suggested_regimen' => $suggested_regimen, 'status' => $status, 'ct_scan_date' => $ct_scan_date, 'ct_scan_result' => $ct_scan_result, 'ultra_sound_date' => $ultra_sound_date, 'latest_comparative_cxr_reading' => $latest_comparative_cxr_reading, 'ultra_sound_result' => $ultra_sound_result,
+            'current_weight' => $current_weight, 'itr_drugs' => $itr_drugs, 'facility_code' => $facility_code, 'updated_type_of_case' => $updated_type_of_case, 'suggested_regimen_notes' => $suggested_regimen_notes, 'current_regiment' => $current_regimen, 'suggested_regimen' => $suggested_regimen, 'status' => $status, 'ct_scan_date' => $ct_scan_date, 'ct_scan_result' => $ct_scan_result, 'ultra_sound_date' => $ultra_sound_date, 'latest_comparative_cxr_reading' => $latest_comparative_cxr_reading, 'ultra_sound_result' => $ultra_sound_result, 'cxr_date' => $cxr_date, 'cxr_result' => $cxr_result, 'remarks' => $remarks,
             'hispathological_date' => $histhopathological_date,
             'hispathological_result' => $histhopathological_result,
             'regimen_notes' => $regimen_notes,
