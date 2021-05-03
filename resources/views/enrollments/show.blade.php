@@ -352,7 +352,7 @@
                 </div>
                 <div class="form__container form__container--remarks form__container--actions">
                   <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
-                  <div class="form__content"><span class="form__text form__text--green">Remarks</span><label class="form__label form__label--green">Action</label></div>
+                  <div class="form__content"><span class="form__text form__text--green">New Enrolment</span><label class="form__label form__label--green">Action</label></div>
                 </div>
                 <span class="form__text">
                   {{ $tbMacForm->laboratoryResults->remarks }}
@@ -401,7 +401,7 @@
               </div>
               <div class="form__container form__container--remarks form__container--actions">
                 <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
-                <div class="form__content"><span class="form__text form__text--green">Remarks</span><label class="form__label form__label--green">Action</label></div>
+                <div class="form__content"><span class="form__text form__text--green">New Enrolment</span><label class="form__label form__label--green">Action</label></div>
               </div>
               <span class="form__text">
                 {{ $tbMacForm->laboratoryResults->remarks }}
@@ -449,7 +449,7 @@
               </div>
               <div class="form__container form__container--remarks form__container--actions">
                 <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
-                <div class="form__content"><span class="form__text form__text--green">Remarks</span><label class="form__label form__label--green">Action</label></div>
+                <div class="form__content"><span class="form__text form__text--green">New Enrolment</span><label class="form__label form__label--green">Action</label></div>
               </div>
               <span class="form__text">
                 {{ $tbMacForm->laboratoryResults->remarks }}
@@ -497,7 +497,7 @@
               </div>
               <div class="form__container form__container--remarks form__container--actions">
                 <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
-                <div class="form__content"><span class="form__text form__text--green">Remarks</span><label class="form__label form__label--green">Action</label></div>
+                <div class="form__content"><span class="form__text form__text--green">New Enrolment</span><label class="form__label form__label--green">Action</label></div>
               </div>
               <span class="form__text">
                 {{ $tbMacForm->laboratoryResults->remarks }}
@@ -538,7 +538,7 @@
               </div>
               <div class="form__container form__container--remarks form__container--actions">
                 <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
-                <div class="form__content"><span class="form__text form__text--green">Remarks</span><label class="form__label form__label--green">Action</label></div>
+                <div class="form__content"><span class="form__text form__text--green">New Enrolment</span><label class="form__label form__label--green">Action</label></div>
               </div>
               <span class="form__text">
                 {{ $tbMacForm->laboratoryResults->remarks }}
@@ -584,7 +584,7 @@
               </div>
               <div class="form__container form__container--remarks form__container--actions">
                 <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
-                <div class="form__content"><span class="form__text form__text--green">Remarks</span><label class="form__label form__label--green">Action</label></div>
+                <div class="form__content"><span class="form__text form__text--green">New Enrolment</span><label class="form__label form__label--green">Action</label></div>
               </div>
               <span class="form__text">
                 {{ $tbMacForm->laboratoryResults->remarks }}
