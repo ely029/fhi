@@ -546,7 +546,7 @@ AddDefaultCharset utf-8
     <If "%{THE_REQUEST} =~ m#\s\/(?!telescope|docs\/api)\/?#">
         Header set Content-Security-Policy "default-src 'none';\
             base-uri 'none';\
-            connect-src jsd-widget.atlassian.com mgas.prod.public.atl-paas.net bam.nr-data.net;\
+            connect-src 'self' jsd-widget.atlassian.com mgas.prod.public.atl-paas.net bam.nr-data.net;\
             form-action 'self';\
             font-src 'self' data:;\
             frame-ancestors 'none';\
