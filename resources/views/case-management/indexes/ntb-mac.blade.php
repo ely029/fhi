@@ -27,7 +27,7 @@
                 <td class="table__details">{{ empty($case->patient->initials) ? '' : $case->patient->initials}}</td>
                 <td class="table__details">{{ empty($case->patient->age) ? '' : $case->patient->age}}</td>
                 <td class="table__details">{{ empty($case->patient->gender) ? '' : $case->patient->gender}}</td>
-                <td class="table__details">{{ empty($case->caseManagementRegimentForm->current_drug_susceptibility) ? '' : $case->caseManagementRegimentForm->current_drug_susceptibility}}</td>
+                <td class="table__details">{{ $case->caseManagementForm->current_drug_susceptibility ?? ''}}</td>
                 <td class="table__details">{{ $case->created_at->format('M d, Y')}}</td>
                 <td class="table__details">{{ $case->status }}</td>
               </tr>
@@ -43,11 +43,7 @@
                 <th class="table__head">Patient initials</th>
                 <th class="table__head">Age</th>
                 <th class="table__head">Sex</th>
-<<<<<<< HEAD
                 <th class="table__head">Updated drug susceptibility</th>
-=======
-                <th class="table__head">Updated srug susceptibility</th>
->>>>>>> f78e3e9f39df7f457e2c437462fc6819778294e2
                 <th class="table__head">Date submitted by Health Care Worker</th>
                 <th class="table__head">Status</th>
               </tr>
@@ -59,7 +55,7 @@
                 <td class="table__details">{{ empty($case->patient->initials) ? '' : $case->patient->initials}}</td>
                 <td class="table__details">{{ empty($case->patient->age) ? '' : $case->patient->age}}</td>
                 <td class="table__details">{{ empty($case->patient->gender) ? '' : $case->patient->gender}}</td>
-                <td class="table__details">{{ empty($case->caseManagementRegimentForm->current_drug_susceptibility) ? '' : $case->caseManagementRegimentForm->current_drug_susceptibility}}</td>
+                <td class="table__details">{{ $case->caseManagementForm->current_drug_susceptibility ?? ''}}</td>
                 <td class="table__details">{{ $case->created_at->format('M d, Y')}}</td>
                 <td class="table__details">{{ $case->status }}</td>
             </tr>
@@ -87,7 +83,7 @@
                 <td class="table__details">{{ empty($case->patient->initials) ? '' : $case->patient->initials}}</td>
                 <td class="table__details">{{ empty($case->patient->age) ? '' : $case->patient->age}}</td>
                 <td class="table__details">{{ empty($case->patient->gender) ? '' : $case->patient->gender}}</td>
-                <td class="table__details">{{ empty($case->caseManagementRegimentForm->current_drug_susceptibility) ? '' : $case->caseManagementRegimentForm->current_drug_susceptibility}}</td>
+                <td class="table__details">{{ $case->caseManagementForm->current_drug_susceptibility ?? ''}}</td>
                 <td class="table__details">{{ $case->created_at->format('M d, Y')}}</td>
                 <td class="table__details">{{ $case->status }}</td>
             </tr>
