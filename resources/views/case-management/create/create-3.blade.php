@@ -7,7 +7,7 @@
         <input class="form__input" type="number" name="current_weight" placeholder="Current weight (kg)" required /><label class="form__label" for="">Current weight (kg)</label></div>
     </div>
     <div class="form__content form-group">
-    <input class="form__input" type="text" required name="current_regimen" placeholder="Current Regiment" />
+    <input class="form__input" type="text" required name="current_regiment" placeholder="Current Regiment" />
         <label class="form__label" for="">Current regimen</label>
     </div>
     <!-- <div class="form__content form-group">
@@ -165,9 +165,9 @@
     </div>
     </div>
     <div class="form__container form-step-3">
-    <div class="help-block with-errors"></div>
     <h2 class="section__heading">Remarks</h2>
     <div class="form__content form-group">
+    <div class="help-block with-errors"></div>
     <textarea class="form__input form__input--message" required name="remarks" placeholder="Remarks"></textarea><label class="form__label" for="">Remarks</label></div>
     </div>
     <div class="form__button form__button--space form__button--pagination"><button class="button button--back" type="button">Back</button><button class="button button--next" type="submit">Submit</button></div>

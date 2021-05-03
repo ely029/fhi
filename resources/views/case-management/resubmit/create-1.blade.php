@@ -3,7 +3,7 @@
     <div class="grid grid--two form-step-1">
     <div class="form__content form-group">
     <div class="help-block with-errors"></div>
-    <input class="form__input" id="tbNumber" name="case_number" value="{{ $tbMacForm->caseManagementForm->case_number }}" type="text" min="0" placeholder="TB Case number" required/><label class="form__label" for="">TB Case number</label></div>
+    <input class="form__input" id="tbNumber" name="case_number" value="{{ $tbMacForm->caseManagementForm->case_number }}" type="number" min="0" placeholder="TB Case number" required/><label class="form__label" for="">TB Case number</label></div>
     <div class="form__content form-group">
     <div class="help-block with-errors"></div>
     <input class="form__input" id="lastName" name="last_name" value="{{ $tbMacForm->patient->last_name }}" type="text" placeholder="Last name" required /><label class="form__label" for="">Last name</label></div>

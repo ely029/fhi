@@ -1,7 +1,7 @@
 <div class="form__tab step-2">
     <h2 class="section__heading">Bacteriological results and status</h2>
     <div class="form__container form-step-2">
-    <table class="table table--unset js-table-unset">
+    <table class="table table--unset js-table-unset" id="screening-table-1">
         <thead>
         <tr>
             <th class="table__head"></th>
@@ -12,7 +12,7 @@
         </thead>
         <tbody>
         <tr class="table__row">
-            <td class="table__details">Screening 1</td>
+            <td class="table__details">Screening <span class="screening-counter">1</span></td>
             <td class="table__details">
             <input class="form__input form__input--full" type="date" name="date_collected_screening_1" /></td>
             <td class="table__details">
@@ -102,12 +102,11 @@
         </tbody>
     </table>
     </div>
-    <div id="count">
+    {{--<div id="count">
         <input type="hidden" value="B" name="count[]"/>
-    </div>
-    <input type="text" value="0" id="count_row"/>
+    </div> --}}
     <div class="form__container form-step-2">
-    <table class="table table--unset js-table-unset js-table-rows">
+    <table class="table table--unset js-table-unset js-table-rows" id="m-screening">
         <thead>
         <tr>
             <th class="table__head">Month</th>
@@ -119,7 +118,7 @@
         </thead>
         <tbody id="screenings">
         <tr class="table__row">
-            <td class="table__details">B</td>
+            <td class="table__details"><span class="base">B</span><span></span></td>
             <td class="table__details"><input class="form__input form__input--full" type="date" name="date_collected[]" /></td>
             <td class="table__details">
             <div class="form__content">

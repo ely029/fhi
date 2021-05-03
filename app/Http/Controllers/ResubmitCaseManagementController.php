@@ -27,7 +27,6 @@ class ResubmitCaseManagementController extends Controller
         $caseManagementAttachment = new CaseManagementAttachments();
         $caseManagementBactResult = new CaseManagementBacteriologicalResults();
         $request['status'] = 'New Case';
-        CaseManagementAttachments::where('form_id', $tbMacForm->id)->delete();
         $tbMacForm->patient->update($request);
         $tbMacForm->update($request);
         $tbMacForm->caseManagementForm->update($request);
@@ -44,11 +43,14 @@ class ResubmitCaseManagementController extends Controller
             $caseManagementBactResult->monthDSTCreation($screen, $eee, $request, $tbMacForm);
         }
         if (isset($request['attachments'])) {
+            CaseManagementAttachments::where('form_id', $tbMacForm->id)->delete();
             $caseManagementAttachment->createAttachment($request, $tbMacForm);
         }
         $request['cxr_reading'] = $request['cxr_reading'] ?? null;
         unset($request['remarks']);
         $tbMacForm->caseManagementLaboratoryResult->update($request);
-        return response()->json('Case Management Resubmit Successfully');
+        return redirect('case-management/show/'.$tbMacForm->id)->with([
+            'alert.message' => 'Case Management resubmitted successfully.',
+        ]);
     }
 }

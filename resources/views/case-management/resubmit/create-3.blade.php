@@ -7,7 +7,7 @@
         <input class="form__input" type="number" name="current_weight" value="{{ $tbMacForm->caseManagementForm->current_weight }}" placeholder="Current weight (kg)" required /><label class="form__label" for="">Current weight (kg)</label></div>
     </div>
     <div class="form__content form-group">
-    <input class="form__input" type="text" value="{{ $tbMacForm->caseManagementForm->current_regiment }}" required name="current_regimen" placeholder="Current Regiment" />
+    <input class="form__input" type="text" value="{{ empty($tbMacForm->caseManagementForm->current_regiment) ? '' : $tbMacForm->caseManagementForm->current_regiment }}" required name="current_regimen" placeholder="Current Regiment" />
         <label class="form__label" for="">Current regimen</label>
     </div>
     <!-- <div class="form__content form-group">

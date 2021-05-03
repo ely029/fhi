@@ -51,6 +51,16 @@ $('.hide--button').hide();
             $('.hide--button').show();
         }
 
+        if(action == 'Not Resolved'){
+            $("#modal-title").text('Not Resolved');
+            $("#modal-text").text("You are about to recommend this case for not resolved. If you have additional remarks, enter them below.");
+        }
+
+        if(action == 'Resolved'){
+            $("#modal-title").html('Resolved');
+            $("#modal-text").html("You are about to recommend this case for resolved. If you have additional remarks, enter them below.");
+        }
+
         $("#modal-form").find('input[name="status"]').val(action);
     });
 
