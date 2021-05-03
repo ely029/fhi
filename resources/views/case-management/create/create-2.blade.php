@@ -1,7 +1,7 @@
 <div class="form__tab step-2">
     <h2 class="section__heading">Bacteriological results and status</h2>
     <div class="form__container form-step-2">
-    <table class="table table--unset js-table-unset">
+    <table class="table table--unset js-table-unset" id="screening-table-1">
         <thead>
         <tr>
             <th class="table__head"></th>
@@ -12,7 +12,7 @@
         </thead>
         <tbody>
         <tr class="table__row">
-            <td class="table__details">Screening 1</td>
+            <td class="table__details">Screening <span class="screening-counter">1</span></td>
             <td class="table__details">
             <input class="form__input form__input--full" type="date" name="date_collected_screening_1" /></td>
             <td class="table__details">
@@ -102,8 +102,11 @@
         </tbody>
     </table>
     </div>
+    {{--<div id="count">
+        <input type="hidden" value="B" name="count[]"/>
+    </div> --}}
     <div class="form__container form-step-2">
-    <table class="table table--unset js-table-unset js-table-rows">
+    <table class="table table--unset js-table-unset js-table-rows" id="m-screening">
         <thead>
         <tr>
             <th class="table__head">Month</th>
@@ -113,9 +116,9 @@
             <th class="table__head">Culture</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody id="screenings">
         <tr class="table__row">
-            <td class="table__details">1</td>
+            <td class="table__details"><span class="base">B</span><span></span></td>
             <td class="table__details"><input class="form__input form__input--full" type="date" name="date_collected[]" /></td>
             <td class="table__details">
             <div class="form__content">
@@ -153,7 +156,7 @@
         </tr>
         </tbody>
     </table>
-    <button class="button button--transparent button--add js-add-row" type="button">Add more</button>
+    <button class="button button--transparent button--add js-add-row" id="case-management-add-button" type="button">Add more</button>
     </div>
     <div class="form__button form__button--space form__button--pagination"><button class="button button--back" type="button">Back</button><button class="button button--next" type="button">Next</button></div>
 </div>

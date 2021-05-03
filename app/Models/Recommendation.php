@@ -13,9 +13,14 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property int $form_id
  * @property string $recommendation
+ * @property string $status
+ * @property int $role_id
+ * @property int $submitted_by
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property object $users
+ * @property-read \App\Models\Role $roles
+ * @property-read \App\Models\TBMacForm $tbMacForms
+ * @property-read \App\Models\User $users
  * @method static \Illuminate\Database\Eloquent\Builder|Recommendation newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Recommendation newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Recommendation query()
@@ -23,6 +28,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Recommendation whereFormId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Recommendation whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Recommendation whereRecommendation($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Recommendation whereRoleId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Recommendation whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Recommendation whereSubmittedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Recommendation whereUpdatedAt($value)
  * @mixin \Eloquent
  */

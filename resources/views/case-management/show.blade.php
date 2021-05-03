@@ -32,6 +32,7 @@
                         </div>
                    <div class="modal__button">
                        <button class="button" type="submit">Submit</button>
+                       <a href="{{ url('/case-management/resubmit/'.$tbMacForm->id)}}"class="button hide--button">Submit</a>
                     </div>
                 </form>
               </div>
@@ -59,14 +60,14 @@
                   <br />
                   <div class="grid grid--three">
                     <div class="form__content">
-                        <span class="form__text">2121</span>
+                        <span class="form__text">{{ empty($tbMacForm->caseManagementForm->case_number) ? '' : $tbMacForm->caseManagementForm->case_number}}</span>
                         <label class="form__label" for="">TB case number</label></div>
                     <div class="form__content">
-                        <span class="form__text">{{$tbMacForm->caseManagementForm->month_of_treatment}}</span>
+                        <span class="form__text">{{empty($tbMacForm->caseManagementForm->month_of_treatment) ? '' :$tbMacForm->caseManagementForm->month_of_treatment}}</span>
                         <label class="form__label" for="">Month of treatment</label></div>
-                    <div class="form__content">{{ $tbMacForm->casemanagementForm->current_drug_susceptibility}}<span class="form__text">
+                    <div class="form__content">{{ empty($tbMacForm->casemanagementForm->current_drug_susceptibility) ? '' : $tbMacForm->casemanagementForm->current_drug_susceptibility}}<span class="form__text">
                         </span>
-                        <label class="form__label" for="">Current drug susceptibility</label>
+                        <label class="form__label" for="">Updated drug susceptibility</label>
                     </div>
                   </div>
                 </div>
@@ -84,11 +85,27 @@
                   </div>
                 </div>
 
-                {{-- Regional Secretariat --}}
-                @if(auth()->user()->role_id == 4 && request('from_tab') == 'pending')
-                    <div class="grid grid--action">
+                {{-- Hea;th Care Worker --}}
+                @if(auth()->user()->role_id == 3 && $tbMacForm->status == 'Not for Referral' || $tbMacForm->status == 'Need Further Details')
+                    <div class="grid grid--action-case-management">
                         <div class="form__content">
                             <select id="action-dropdown" class="form__input form__input--select">
+                            <option value="Resolved">Resolved</option>
+                            <option value="Not Resolved">Not Resolved</option>
+                            <option value="Resubmit Case Management">Resubmit Case Management</option>
+                            </select>
+                            <div class="triangle triangle--down"></div>
+                            <label class="form__label" for="">Action</label>
+                        </div>
+                    <button id="recommendation-button" class="button button--masterlist js-trigger" type="button">Confirm</button>
+                    </div>
+                @endif
+
+                {{-- Regional Secretariat --}}
+                @if(auth()->user()->role_id == 4 && request('from_tab') == 'pending')
+                    <div class="grid grid--action-case-management">
+                        <div class="form__content">
+                            <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
                             <option value="Referred to Regional">Refer to R-TB MAC</option>
                             <option value="Not for Referral">Not for Referral</option>
                             </select>
@@ -101,9 +118,9 @@
 
                 {{-- Regional TB Mac --}}
                 @if(auth()->user()->role_id == 5 && request('from_tab') == 'pending')
-                  <div class="grid grid--action">
+                  <div class="grid grid--action-case-management">
                       <div class="form__content">
-                          <select id="action-dropdown" class="form__input form__input--select">
+                          <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
                           <option value="Recommend for Approval">Recommend for Approval</option>
                           <option value="Recommend for other suggestions">Recommend for other suggestions</option>
                           <option value="Recommend for need further details">Recommend for need further details </option>
@@ -117,9 +134,9 @@
 
                 {{-- Regional TB Mac Chair --}}
                 @if(auth()->user()->role_id == 6 && (request('from_tab') == 'referred' || request('from_tab') == 'pending'))
-                    <div class="grid grid--action">
+                    <div class="grid grid--action-case-management">
                         <div class="form__content">
-                            <select id="action-dropdown" class="form__input form__input--select">
+                            <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
                             <option value="For approval">Approve</option>
                             <option value="Other suggestions">Other suggestions</option>
                             <option value="Need Further Details">Need Further Details</option>
@@ -134,7 +151,7 @@
 
                  {{-- National TB Mac --}}
                  @if((auth()->user()->role_id == 7 || auth()->user()->role_id == 8) && request('from_tab') == 'referred')
-                 <div class="grid grid--action">
+                 <div class="grid grid--action-case-management">
                     <div class="form__content">
                       <label class="form__label" for="">Action</label>
                     </div>
@@ -172,6 +189,7 @@
                   $screenTwo = $tbMacForm->screenTwo;
                   $lpa = $tbMacForm->lpa;
                   $dst = $tbMacForm->dst;
+                  $monthlyScreening = $tbMacForm->monthlyScreening;
                   @endphp
                   @foreach($screenone as $screen)
                   <tr class="table__row">
@@ -249,13 +267,15 @@
                     </tr>
                   </thead>
                   <tbody>
+                    @foreach($monthlyScreening as $a)
                     <tr class="table__row">
-                      <td class="table__details">Screening 1</td>
-                      <td class="table__details">sample</td>
-                      <td class="table__details">sample</td>
-                      <td class="table__details">sample</td>
-                      <td class="table__details">sample</td>
+                      <td class="table__details">{{$a->label}}</td>
+                      <td class="table__details">{{$a->date_collected->format('Y-m-d')}}</td>
+                      <td class="table__details">{{$a->smear_microscopy}}</td>
+                      <td class="table__details">{{$a->tb_lamp}}</td>
+                      <td class="table__details">{{$a->culture}}</td>
                     </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>
@@ -313,15 +333,15 @@
               <div class="form__container">
                 <h2 class="section__heading">Regimen information</h2>
                 <div class="grid grid--two">
-                  <div class="form__content"><span class="form__text">Stable/Unchange</span><label class="form__label" for="">Facility code</label></div>
-                  <div class="form__content"><span class="form__text">{{$tbMacForm->caseManagementForm->current_weight }}kg</span><label class="form__label" for="">Current weight</label></div>
+                  <div class="form__content"><span class="form__text">{{ $tbMacForm->patient->facility_code }}</span><label class="form__label" for="">Facility code</label></div>
+                  <div class="form__content"><span class="form__text">{{ empty($tbMacForm->caseManagementForm->current_weight) ? '' : $tbMacForm->caseManagementForm->current_weight }}kg</span><label class="form__label" for="">Current weight</label></div>
                 </div>
                 <div class="grid grid--two">
-                  <div class="form__content"><span class="form__text">Regimen 6b SLOR FQ-S</span><label class="form__label" for="">Current regimen </label></div>
+                  <div class="form__content"><span class="form__text">{{ empty($tbMacForm->caseManagementForm->current_regiment) ? '' : $tbMacForm->caseManagementForm->current_regiment}}</span><label class="form__label" for="">Current regimen </label></div>
                 </div>
                 <div class="grid grid--two">
                   <div class="form__content">
-                    <span class="form__text"></span>
+                    <span class="form__text">{{ empty($tbMacForm->caseManagementForm->remarks) ? '' : $tbMacForm->caseManagementForm->remarks}}</span>
                     <label class="form__label" for="">Regimen notes</label>
                   </div>
                 </div>
@@ -329,17 +349,21 @@
               <div class="form__container">
                 <h2 class="section__heading">Suggested regimen</h2>
                 <div class="grid grid--two">
-                  <div class="form__content"><span class="form__text">{{ $tbMacForm->caseManagementForm->suggested_regimen}}</span><label class="form__label" for="">Suggested regiment</label></div>
-                  <div class="form__content"><span class="form__text">{{ $tbMacForm->caseManagementForm->itr_drugs }}</span><label class="form__label" for="">ITR Drugs</label></div>
+                  <div class="form__content"><span class="form__text">{{ empty($tbMacForm->caseManagementForm->suggested_regimen) ? '' : $tbMacForm->caseManagementForm->suggested_regimen}}</span><label class="form__label" for="">Suggested regiment</label></div>
+                  <div class="form__content"><span class="form__text">{{ empty($tbMacForm->caseManagementForm->itr_drugs) ? '' : $tbMacForm->caseManagementForm->itr_drugs }}</span><label class="form__label" for="">ITR Drugs</label></div>
                 </div>
                 <div class="grid grid--two">
                   <div class="form__content">
-                    <span class="form__text">{{ $tbMacForm->caseManagementForm->suggested_regimen_notes}}</span>
+                    <span class="form__text">{{ empty($tbMacForm->caseManagementForm->latest_comparative_cxr_reading) ? '' : $tbMacForm->caseManagementForm->latest_comparative_cxr_reading}}</span>
+                    <label class="form__label" for="">Latest Comparative CXR Reading</label>
+                  </div>
+                  <div class="form__content">
+                    <span class="form__text">{{ empty($tbMacForm->caseManagementForm->suggested_regimen_notes) ? '' : $tbMacForm->caseManagementForm->suggested_regimen_notes}}</span>
                     <label class="form__label" for="">Suggested Regimen notes</label>
                   </div>
                 </div>
                 <div class="grid grid--two">
-                  <div class="form__content"><span class="form__text">{{ $tbMacForm->caseManagementForm->updated_type_of_case}}</span><label class="form__label" for="">Update type of case, if applicable</label></div>
+                  <div class="form__content"><span class="form__text">{{ empty($tbMacForm->caseManagementForm->updated_type_of_case) ? '' : $tbMacForm->caseManagementForm->updated_type_of_case}}</span><label class="form__label" for="">Updated Drug Susceptibility</label></div>
                 </div>
               </div>
               @foreach ($tbMacForm->caseManagementLaboratoryResults as $results)
@@ -383,12 +407,13 @@
                 </div>
               </div>
               @endforeach
+              
               <div class="form__container">
                 <h2 class="section__heading">Related media</h2>
-                @foreach($tbMacForm->caseManagementAttachment as $key => $attachment)
+                @foreach($tbMacForm->caseManagementAttachments as $key => $attachment)
                   <li class="form__gallery-item">
                     <a href="{{ url('case-management/'.$tbMacForm->id.'/'.$attachment->file_name.'/download') }}">
-                    <img class="image" src="{{ url('enrollments/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment') }}" alt="Placeholder" />
+                    <img class="image" src="{{ url('case-management/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment') }}" alt="Placeholder" />
                       <p>{{ $attachment->file_name }}</p>
                   </a>
                   </li>
@@ -431,7 +456,6 @@
                     <div class="form__content"><span class="form__text form__text--green">New Case</span><label class="form__label form__label--green">Action</label></div>
                   </div>
                   <span class="form__text">
-                    {{ $tbMacForm->caseManagementLaboratoryResults[0]->remarks }}
                   </span>
                 </div>
               </div>

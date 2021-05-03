@@ -19,15 +19,9 @@
                 <div class="modal__background js-modal-background"></div>
                 <div class="modal__container">
                   <div class="modal__box">
-<<<<<<< HEAD
-                    <h2 class="modal__title">Not For Referral</h2>
-                    <p class="modal__text">You are about to decline and set this case to 'Not for Referral' If you have additional remarks. enter them below.</p>
-                    <form class="form" method="POST" action="{{ route('enrolment.sendRecommendation')}}">
-=======
                     <h2 class="modal__title">Not For Referal</h2>
                     <p class="modal__text">You are about to decline and set this case to 'Not for Referal' If you have additional remarks. enter them below.</p>
                     <form class="form form--full" method="POST" action="{{ route('enrolment.sendRecommendation')}}">
->>>>>>> 1411ca35df6fbcf30377f46d324f417a54d1c71d
                     @csrf
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
                        <input type="hidden" name="status" value="Not For Referral"/>

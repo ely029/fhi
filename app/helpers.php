@@ -116,6 +116,133 @@ function provinces()
     ];
 }
 
+function month_treatment()
+{
+    return [
+        '1st',
+        '2nd',
+        '3rd',
+        '4th',
+        '5th',
+        '6th',
+        '7th',
+        '8th',
+        '9th',
+        '10th',
+        '11th',
+        '12th',
+        '13th',
+        '14th',
+        '15th',
+        '16th',
+        '17th',
+        '18th',
+        '19th',
+        '20th',
+    ];
+}
+
+function current_drug_susceptibility()
+{
+    return [
+        'Drug-susceptible',
+        'Bacteriologically-confirmed RR-TB',
+        'Bacteriologically-confirmed MDR-TB',
+        'Bacteriologically-confirmed Pre-XDR-TB',
+        'Bacteriologically-confirmed XDR-TB',
+        'Clinically-confirmed MDR-TB',
+    ];
+}
+
+function resistance_pattern()
+{
+    return [
+        'For Xpert MTB/RIF',
+        'For Xpert MTB/RIF ULTRA',
+        'Truenat',
+    ];
+}
+
+function method_used()
+{
+    return [
+        'MTB Detected, Rifampicin Resistance Detected',
+        'MTB Detected, Rifampicin Resistance Not Detected',
+        'MTB Detected, Rifampicin Resistance Indeterminate',
+        'MTB Not Detected',
+        'Indeterminate',
+        'MTB Detected Trace, Rifampicin Resistance',
+        'Invalid/No Result/Error',
+    ];
+}
+
+function smear_microscopy()
+{
+    return [
+        '0',
+        '+n',
+        '1+',
+        '2+',
+        '3+',
+    ];
+}
+
+function tb_lamp()
+{
+    return [
+        'Positive',
+        'Negative',
+        'Indeterminate',
+    ];
+}
+
+function culture()
+{
+    return [
+        'Positive',
+        'Negative',
+        'Non-tuberculous Mycobacteria (NTM)',
+        'Contaminated',
+    ];
+}
+
+function suggested_regimen()
+{
+    return [
+        'Regimen 3 SSOR',
+        'Regimen 4 SLOR FQ-S',
+        'Regimen 5 SLOR FQ-R',
+        'Regimen 6a SLOR FQ-S',
+        'Regimen 6b SLOR FQ-S',
+        'Regimen 6c SLOR FQ-S',
+        'Regimen 7a SLOR FQ-R',
+        'Regimen 7b SLOR FQ-R',
+        'Regimen 7c SLOR FQ-R',
+    ];
+}
+
+function updated_type_of_case()
+{
+    return [
+        'Drug-susceptibility',
+        'Bacteriologically-confirmed RR-TB',
+        'Bacteriologically-confirmed MDR-TB',
+        'Bacteriologically-confirmed Pre-XDR-TB',
+        'Bacteriologically-confirmed XDR-TB',
+        'Clinically-confirmed MDR-TB',
+        'Other Drug-resistant TB',
+    ];
+}
+
+function latest_comparative_cxr_reading()
+{
+    return [
+        'Improved',
+        'Stable/Unchanged',
+        'Worsened',
+    ];
+}
+
 function roleNameById()
 {
     return [

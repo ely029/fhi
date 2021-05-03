@@ -43,7 +43,11 @@
                 <th class="table__head">Patient initials</th>
                 <th class="table__head">Age</th>
                 <th class="table__head">Sex</th>
+<<<<<<< HEAD
+                <th class="table__head">Updated drug susceptibility</th>
+=======
                 <th class="table__head">Updated srug susceptibility</th>
+>>>>>>> f78e3e9f39df7f457e2c437462fc6819778294e2
                 <th class="table__head">Date submitted by Health Care Worker</th>
                 <th class="table__head">Status</th>
               </tr>
