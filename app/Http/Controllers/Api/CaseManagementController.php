@@ -7,9 +7,9 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\CaseManagementAttachments;
 use App\Models\CaseManagementBacteriologicalResults;
-use App\Models\CaseManagementLaboratoryResults;
 use App\Models\Filters\TBMacFormFilters;
 use App\Models\Patient;
+use App\Models\Recommendation;
 use App\Models\TBMacForm;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -90,6 +90,7 @@ class CaseManagementController extends Controller
     {
         $tbMacForm = $tbMacForm->load(['submittedBy','caseManagementForm','caseManagementBacteriologicalResults','caseManagementLaboratoryResults','caseManagementAttachment','patient','recommendations']);
         $tbBacteriologicalResults = $tbMacForm->caseManagementBacteriologicalResults;
+        $recommendations = $tbMacForm->recommendations;
         $presentation_number = $tbMacForm->presentation_number;
         $submitted_by = $tbMacForm->submittedBy->name;
         $date_submitted = $tbMacForm->created_at->format('M d, Y');
@@ -125,6 +126,15 @@ class CaseManagementController extends Controller
                 'method_used' => $item->method_used,
             ];
         })->values();
+        $recommendation = $recommendations->map(function ($item) {
+            return [
+                'name' => $item->users->name,
+                'role' => $item->users->role->name,
+                'date_created' => $item->created_at->format('d M, Y'),
+                'status' => $item->status === '0' ? '' : $item->status,
+                'recommendation' => $item->recommendation,
+            ];
+        })->values();
         $screeningTwo = $tbBacteriologicalResults->filter(function ($item) {
             return $item->label === 'Screening 2' && $item->resistance_pattern !== '' && $item->method_used !== '';
         })->map(function ($item) {
@@ -153,7 +163,6 @@ class CaseManagementController extends Controller
                 'resistance_pattern' => $item->resistance_pattern,
             ];
         })->values();
-
         $monthly_screening = $tbBacteriologicalResults->filter(function ($item) {
             return $item->resistance_pattern === '' && $item->method_used === '';
         })->map(function ($item) {
@@ -165,7 +174,6 @@ class CaseManagementController extends Controller
                 'culture' => $item->culture,
             ];
         })->values();
-
         $attachments = [];
         foreach ($tbMacForm->caseManagementAttachments as $key => $attachment) {
             $fileName = ($key + 1).'.'.$attachment->extension;
@@ -176,16 +184,8 @@ class CaseManagementController extends Controller
         }
         $data = [
             'presentation_number' => $presentation_number, 'current_drug_susceptibility' => $current_drug_susceptibility, 'submitted_by' => $submitted_by, 'date_submitted' => $date_submitted, 'created_at' => $created_at,
-            'current_weight' => $current_weight, 'itr_drugs' => $itr_drugs, 'facility_code' => $facility_code, 'updated_type_of_case' => $updated_type_of_case, 'suggested_regimen_notes' => $suggested_regimen_notes, 'current_regiment' => $current_regimen, 'suggested_regimen' => $suggested_regimen, 'status' => $status, 'ct_scan_date' => $ct_scan_date, 'ct_scan_result' => $ct_scan_result, 'ultra_sound_date' => $ultra_sound_date, 'latest_comparative_cxr_reading' => $latest_comparative_cxr_reading, 'ultra_sound_result' => $ultra_sound_result, 'cxr_date' => $cxr_date, 'cxr_result' => $cxr_result, 'remarks' => $remarks, 'hispathological_date' => $histhopathological_date, 'hispathological_result' => $histhopathological_result, 'regimen_notes' => $regimen_notes,
-            'patient_code' => $patient_code,
-            'screening_one' => $screeningOne,
-            'screening_two' => $screeningTwo,
-            'attachments' => $attachments,
-            'lpa' => $lpa,
-            'dst' => $dst,
-            'monthly_screening' => $monthly_screening,
+            'current_weight' => $current_weight, 'itr_drugs' => $itr_drugs, 'facility_code' => $facility_code, 'updated_type_of_case' => $updated_type_of_case, 'suggested_regimen_notes' => $suggested_regimen_notes, 'current_regiment' => $current_regimen, 'suggested_regimen' => $suggested_regimen, 'status' => $status, 'ct_scan_date' => $ct_scan_date, 'ct_scan_result' => $ct_scan_result, 'ultra_sound_date' => $ultra_sound_date, 'latest_comparative_cxr_reading' => $latest_comparative_cxr_reading, 'ultra_sound_result' => $ultra_sound_result, 'cxr_date' => $cxr_date, 'cxr_result' => $cxr_result, 'remarks' => $remarks, 'hispathological_date' => $histhopathological_date, 'hispathological_result' => $histhopathological_result, 'regimen_notes' => $regimen_notes, 'recommendations' => $recommendation, 'patient_code' => $patient_code, 'screening_one' => $screeningOne, 'screening_two' => $screeningTwo, 'attachments' => $attachments, 'lpa' => $lpa, 'dst' => $dst, 'monthly_screening' => $monthly_screening,
         ];
-
         return response()->json($data);
     }
 
