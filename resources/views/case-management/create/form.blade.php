@@ -27,6 +27,7 @@
               @include('case-management.create.create-1')
               @include('case-management.create.create-2')
               @include('case-management.create.create-3')
+              @include('case-management.create.create-4')
             </div>
         </form>
   
