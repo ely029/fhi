@@ -6,6 +6,7 @@ declare(strict_types=1);
 // use Illuminate\Http\Request;
 
 use App\Http\Controllers\Api\CaseManagementController;
+use App\Http\Controllers\Api\CaseManagementRecommendationController;
 use App\Http\Controllers\Api\CaseManagementResubmitController;
 use App\Http\Controllers\Api\CronJobController;
 use App\Http\Controllers\Api\EnrollmentRecommendationsController;
@@ -63,4 +64,5 @@ Route::group([
     Route::get('/case-management/{tbMacForm}', [CaseManagementController::class, 'show']);
     Route::post('/case-management/{tbMacForm}/resubmit', [CaseManagementResubmitController::class, 'reSubmit']);
     Route::get('/case-management/resubmit/{tbMacForm}', [CaseManagementResubmitController::class, 'edit']);
+    Route::post('/case-management/{tbMacForm}/recommendations', [CaseManagementRecommendationController::class, 'store']);
 });
