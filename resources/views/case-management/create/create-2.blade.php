@@ -1,7 +1,7 @@
 <div class="form__tab step-2">
     <h2 class="section__heading">Bacteriological results and status</h2>
     <div class="form__container form-step-2">
-    <table class="table table--unset js-table-unset">
+    <table class="table table--unset js-table-unset" id="screening-table-1">
         <thead>
         <tr>
             <th class="table__head"></th>
@@ -12,7 +12,7 @@
         </thead>
         <tbody>
         <tr class="table__row">
-            <td class="table__details">Screening 1</td>
+            <td class="table__details">Screening <span class="screening-counter">1</span></td>
             <td class="table__details">
             <input class="form__input form__input--full" type="date" name="date_collected_screening_1" /></td>
             <td class="table__details">
@@ -68,7 +68,6 @@
             <th class="table__head"></th>
             <th class="table__head">Date collected</th>
             <th class="table__head">Resistance pattern</th>
-            <th class="table__head">Method Used</th>
         </tr>
         </thead>
         <tbody>
@@ -81,14 +80,6 @@
                 <option value="For Xpert MTB/RIF">Xpert MTB/RIF</option>
                 <option value="For Xpert MTB/RIF ULTRA">Xpert MTB/RIF ULTRA</option>
                 <option value="Truenat">Truenat</option>
-                </select>
-                <div class="triangle triangle--down"></div>
-            </div>
-            </td>
-            <td class="table__details">
-            <div class="form__content">
-                <select id="method_used_3"class="form__input form__input--select form__input--full" name="method_used_lpa">
-                <option value='MTB Detected, Rifampicin Resistance Detected'>MTB Detected, Rifampicin Resistance Detected</option><option value='MTB Detected, Rifampicin Resistance Not Detected'>MTB Detected, Rifampicin Resistance Not Detected</option><option value='MTB Detected, Rifampicin Resistance Indeterminate'>MTB Detected, Rifampicin Resistance Indeterminate</option><option value='MTB Not Detected'>MTB Not Detected</option><option value='Invalid/No Result/Error'>Invalid/No Result/Error</option>
                 </select>
                 <div class="triangle triangle--down"></div>
             </div>
@@ -107,20 +98,15 @@
                 <div class="triangle triangle--down"></div>
             </div>
             </td>
-            <td class="table__details">
-            <div class="form__content">
-                <select id="method_used_4"class="form__input form__input--select form__input--full" name="method_used_dst">
-                <option value='MTB Detected, Rifampicin Resistance Detected'>MTB Detected, Rifampicin Resistance Detected</option><option value='MTB Detected, Rifampicin Resistance Not Detected'>MTB Detected, Rifampicin Resistance Not Detected</option><option value='MTB Detected, Rifampicin Resistance Indeterminate'>MTB Detected, Rifampicin Resistance Indeterminate</option><option value='MTB Not Detected'>MTB Not Detected</option><option value='Invalid/No Result/Error'>Invalid/No Result/Error</option>
-                </select>
-                <div class="triangle triangle--down"></div>
-            </div>
-            </td>
         </tr>
         </tbody>
     </table>
     </div>
+    {{--<div id="count">
+        <input type="hidden" value="B" name="count[]"/>
+    </div> --}}
     <div class="form__container form-step-2">
-    <table class="table table--unset js-table-unset js-table-rows">
+    <table class="table table--unset js-table-unset js-table-rows" id="m-screening">
         <thead>
         <tr>
             <th class="table__head">Month</th>
@@ -130,9 +116,9 @@
             <th class="table__head">Culture</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody id="screenings">
         <tr class="table__row">
-            <td class="table__details">1</td>
+            <td class="table__details"><span class="base">B</span><span></span></td>
             <td class="table__details"><input class="form__input form__input--full" type="date" name="date_collected[]" /></td>
             <td class="table__details">
             <div class="form__content">
@@ -170,7 +156,7 @@
         </tr>
         </tbody>
     </table>
-    <button class="button button--transparent button--add js-add-row" type="button">Add more</button>
+    <button class="button button--transparent button--add js-add-row" id="case-management-add-button" type="button">Add more</button>
     </div>
     <div class="form__button form__button--space form__button--pagination"><button class="button button--back" type="button">Back</button><button class="button button--next" type="button">Next</button></div>
 </div>

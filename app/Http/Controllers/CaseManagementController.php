@@ -82,11 +82,12 @@ class CaseManagementController extends Controller
         //Month DST
         $count = count($request['date_collected']) - 1;
         for ($eee = 0; $eee <= $count; $eee++) {
-            $screen = $count + 1;
+            $screen = $eee + 1;
             $caseManagementBactResult->monthDSTCreation($screen, $eee, $request, $form);
         }
         $request['cxr_date'] = ! isset($request['cxr_date']) ? '' : $request['cxr_date'];
         $form->caseManagementForm()->create($request);
+        unset($request['remarks']);
         $form->caseManagementLaboratoryResults()->create($request);
 
         return redirect('case-management/show/'.$form->id)->with([
@@ -109,7 +110,7 @@ class CaseManagementController extends Controller
             return $item->status === 'Need Further Details';
         });
         $notForReferral = $cases->filter(function ($item) {
-            return $item->status === 'Not For Referral';
+            return $item->status === 'Not for Referral';
         });
         return view('case-management.index')
             ->with('cases', $cases)

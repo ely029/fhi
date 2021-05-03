@@ -8,6 +8,7 @@ use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\EnrollmentRegimentController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ResubmitCaseManagementController;
 use App\Http\Controllers\ResubmitEnrollmentController;
 use Illuminate\Support\Facades\Route;
 
@@ -46,6 +47,8 @@ Route::group(['middleware' => 'auth'], static function () {
         Route::get('/enrollments/create', [EnrollmentRegimentController::class, 'create']);
         Route::post('/enrollments', [EnrollmentRegimentController::class, 'store']);
         Route::post('resubmit/enrollment/{tbMacForm}', [ResubmitEnrollmentController::class, 'resubmit']);
+        Route::get('/case-management/resubmit/{tbMacForm}', [ResubmitCaseManagementController::class, 'edit']);
+        Route::post('/case-management/resubmit/{tbMacForm}', [ResubmitCaseManagementController::class, 'reSubmit']);
     });
 
     Route::get('/enrollments/{tbMacForm}', [EnrollmentRegimentController::class,'show']);

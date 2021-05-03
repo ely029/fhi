@@ -19,8 +19,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $ct_scan_result
  * @property \Illuminate\Support\Carbon|null $ultrasound_date
  * @property string|null $ultrasound_result
- * @property \Illuminate\Support\Carbon|null $hispathological_date
- * @property string|null $hispathological_result
+ * @property \Illuminate\Support\Carbon|null $histopathological_date
+ * @property string|null $histopathological_result
  * @property string|null $remarks
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at

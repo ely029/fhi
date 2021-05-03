@@ -70,8 +70,8 @@
                 <div class="modal__background js-modal-background"></div>
                 <div class="modal__container">
                   <div class="modal__box">
-                    <h2 class="modal__title">Recommend for Enrolment</h2>
-                    <p class="modal__text">You are about to confirm and set this case to 'Recommend for Enrolment' If you have additional remarks. enter them below.</p>
+                    <h2 class="modal__title">Recommend for Enrollment</h2>
+                    <p class="modal__text">You are about to confirm and set this case to 'Recommend for Enrollment' If you have additional remarks. enter them below.</p>
                     <form class="form form--full" method="POST" action="{{ route('enrolment.sendRecommendation')}}">
                     @csrf
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>

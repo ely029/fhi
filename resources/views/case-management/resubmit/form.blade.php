@@ -21,12 +21,12 @@
     @include('partials.alerts')
 
     <div class="section__container">
-        <form class="form" id="enrollment-form" action="{{ url('case-management/create') }}" method="post" enctype="multipart/form-data">
+        <form class="form" id="enrollment-form" action="{{ url('case-management/resubmit/'.$tbMacForm->id) }}" method="post" enctype="multipart/form-data">
           @csrf
             <div id="steps" data-steps="4">
-              @include('case-management.create.create-1')
-              @include('case-management.create.create-2')
-              @include('case-management.create.create-3')
+              @include('case-management.resubmit.create-1')
+              @include('case-management.resubmit.create-2')
+              @include('case-management.resubmit.create-3')
             </div>
         </form>
   
@@ -62,6 +62,6 @@
   <script src="{{ asset('assets/app/js/dropzone.js') }}"></script>  
   <script src="{{ asset('assets/app/js/dropzoneInit.js') }}"></script>
   <script src="{{ asset('assets/app/js/case-management/create-2.js') }}"></script>   
-  <script src="{{ asset('assets/app/js/case-management/create-3.js') }}"></script>
+  <script src="{{ asset('assets/app/js/case-management/create-3.js') }}"></script>   
 
 @endsection

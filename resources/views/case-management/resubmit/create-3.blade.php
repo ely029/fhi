@@ -4,10 +4,10 @@
     <div class="grid grid--two form-group">
         <div class="form__content">
         <div class="help-block with-errors"></div>
-        <input class="form__input" type="number" name="current_weight" placeholder="Current weight (kg)" required /><label class="form__label" for="">Current weight (kg)</label></div>
+        <input class="form__input" type="number" name="current_weight" value="{{ $tbMacForm->caseManagementForm->current_weight }}" placeholder="Current weight (kg)" required /><label class="form__label" for="">Current weight (kg)</label></div>
     </div>
     <div class="form__content form-group">
-    <input class="form__input" type="text" required name="current_regiment" placeholder="Current Regiment" />
+    <input class="form__input" type="text" value="{{ empty($tbMacForm->caseManagementForm->current_regiment) ? '' : $tbMacForm->caseManagementForm->current_regiment }}" required name="current_regimen" placeholder="Current Regiment" />
         <label class="form__label" for="">Current regimen</label>
     </div>
     <!-- <div class="form__content form-group">
@@ -18,7 +18,7 @@
         </div> -->
         <div class="form-group">
             <label class="form__label" for="">Reason for case management presentation</label>
-            <textarea name="reason_case_management_presentation" class="form-control form__input" id="inputEmail" placeholder="" required></textarea>
+            <textarea name="reason_case_management_presentation" class="form-control form__input" id="inputEmail" placeholder="" required>{{ $tbMacForm->caseManagementForm->reason_case_management_presentation }}</textarea>
             <div class="invalid-feedback">This field is required.</div>
         </div>
     </div>
@@ -26,38 +26,28 @@
     <h2 class="section__heading"></h2>
     <div class="form__content">
         <select class="form__input form__input--select" name="suggested_regimen">
-        <option value="Regimen 3 SSOR">Regimen 3 SSOR</option>
-        <option value="Regimen 4 SLOR FQ-S">Regimen 4 SLOR FQ-S</option>
-        <option value="Regimen 5 SLOR FQ-R">Regimen 5 SLOR FQ-R</option>
-        <option value="Regimen 6a SLOR FQ-S">Regimen 6a SLOR FQ-S</option>
-        <option value="Regimen 6b SLOR FQ-S">Regimen 6b SLOR FQ-S</option>
-        <option value="Regimen 6c SLOR FQ-S">Regimen 6c SLOR FQ-S</option>
-        <option value="Regimen 7a SLOR FQ-R">Regimen 7a SLOR FQ-R</option>
-        <option value="Regimen 7b SLOR FQ-R">Regimen 7b SLOR FQ-R</option>
-        <option value="Regimen 7c SLOR FQ-R">Regimen 7c SLOR FQ-R</option>
+        @foreach(suggested_regimen() as $sr)
+        <option value="{{ $sr }}" {{$tbMacForm->caseManagementForm->suggested_regimen === $sr ? 'selected' : ''}}>{{ $sr }}</option>
+        @endforeach
         </select>
         <div class="triangle triangle--down"></div>
         <label class="form__label" for="">Suggested regiment</label>
     </div>
     <div class="form__content form-group">
     <div class="help-block with-errors"></div>
-    <input class="form__input" name="itr_drugs" required type="text" placeholder="Please specify (+ITR is chosen)"/><label class="form__label" for="">ITR drugs</label>
+    <input class="form__input" name="itr_drugs" value="{{$tbMacForm->caseManagementForm->itr_drugs}}" required type="text" placeholder="Please specify (+ITR is chosen)"/><label class="form__label" for="">ITR drugs</label>
     </div>
     <div class="form__content form-group">
     <div class="help-block with-errors"></div>
-    <textarea required class="form__input form__input--message" name="suggested_regimen_notes"> </textarea>
+    <textarea required class="form__input form__input--message" name="suggested_regimen_notes">{{ $tbMacForm->caseManagementForm->suggested_regimen_notes }}</textarea>
     <label class="form__label" for="">Suggested regiment notes</label>
     </div>
     <div class="grid grid--two">
         <div class="form__content">
         <select class="form__input form__input--select" name="updated_type_of_case">
-            <option value="Drug-susceptibility">Drug-susceptibility</option>
-            <option value="Bacteriologically-confirmed RR-TB">Bacteriologically-confirmed RR-TB</option>
-            <option value="Bacteriologically-confirmed MDR-TB">Bacteriologically-confirmed MDR-TB</option>
-            <option value="Bacteriologically-confirmed Pre-XDR-TB">Bacteriologically-confirmed Pre-XDR-TB</option>
-            <option value="Bacteriologically-confirmed XDR-TB">Bacteriologically-confirmed XDR-TB</option>
-            <option value="Clinically-confirmed MDR-TB">Clinically-confirmed MDR-TB</option>
-            <option value="Other Drug-resistant TB">Other Drug-resistant TB</option>
+            @foreach(updated_type_of_case() as $case)
+            <option value="{{ $case }}" {{$tbMacForm->caseManagementForm->updated_type_of_case === $case ? 'selected' : ''}}>{{ $case }}</option>
+            @endforeach
         </select>
         <div class="triangle triangle--down"></div>
         <label class="form__label" for="">Updated type of case (optional)</label>
@@ -72,12 +62,12 @@
         <div class="grid">
         <div class="form__content form-group form__content--small form__content--small__right">
         <div class="help-block with-errors"></div>
-        <input class="form__input" required name="cxr_date" type="date" placeholder="CXR date" /><label class="form__label" for="">CXR date</label></div>
+        <input class="form__input" required name="cxr_date" type="date" value="{{ $tbMacForm->caseManagementLaboratoryResult->cxr_date->format('Y-m-d')}}" placeholder="CXR date" /><label class="form__label" for="">CXR date</label></div>
         <div class="form__content">
             <select class="form__input form__input--select" name="latest_comparative_cxr_reading">
-            <option value="Improved">Improved</option>
-            <option value="Stable/Unchanged">Stable/Unchanged</option>
-            <option value="Worsened">Worsened</option>
+            @foreach(latest_comparative_cxr_reading() as $reading)
+            <option value="{{ $reading }}" {{$tbMacForm->caseManagementForm->latest_comparative_cxr_reading === $reading ? 'selected' : ''}}>{{ $reading }}</option>
+            @endforeach
             </select>
             <div class="triangle triangle--down"></div>
             <label class="form__label" for="">Latest comparative CXR Reading</label>
@@ -87,7 +77,7 @@
     <div class="form__container form-step-3">
         <div class="form__content form-group">
         <div class="help-block with-errors"></div>
-        <input name="cxr_result" class="form__input" type="text" required placeholder="CXR result" />
+        <input name="cxr_result" value="{{ $tbMacForm->caseManagementLaboratoryResult->cxr_result}}" class="form__input" type="text" required placeholder="CXR result" />
         <span class="error"></span>
         <label class="form__label" for="">CXR result</label></div>
     </div>
@@ -95,11 +85,11 @@
         <div class="grid">
         <div class="help-block with-errors"></div>
         <div class="form__content form-group form__content--small form__content--small__right">
-        <input class="form__input" type="date" required name="ct_scan_date" placeholder="CT scan date" /><label class="form__label" for="">CT scan date</label></div>
+        <input class="form__input" value="{{ $tbMacForm->caseManagementLaboratoryResult->ct_scan_date->format('Y-m-d')}}" type="date" required name="ct_scan_date" placeholder="CT scan date" /><label class="form__label" for="">CT scan date</label></div>
         <span class="error"></span>
         <div class="form__content form-group">
         <div class="help-block with-errors"></div>
-        <input class="form__input" name="ct_scan_result" required type="text" placeholder="CT scan result" /><label class="form__label" for="">CT scan result</label></div>
+        <input class="form__input" name="ct_scan_result" required type="text" placeholder="CT scan result" value="{{ $tbMacForm->caseManagementLaboratoryResult->ct_scan_result}}" /><label class="form__label" for="">CT scan result</label></div>
         <span class="error"></span>
         </div>
     </div>
@@ -107,21 +97,21 @@
         <div class="grid">
         <div class="form__content form-group form__content--small form__content--small__right">
         <div class="help-block with-errors"></div>
-        <input name="ultra_sound_date" required class="form__input" name="ultra_sound_date" type="date" placeholder="Ultrasound date" /><label class="form__label" for="">Ultrasound date</label></div>
+        <input name="ultra_sound_date" required class="form__input" name="ultra_sound_date" type="date" placeholder="Ultrasound date" value="{{ $tbMacForm->caseManagementLaboratoryResult->ultra_sound_date->format('Y-m-d')}}"/><label class="form__label" for="">Ultrasound date</label></div>
         <div class="form__content form-group">
         <div class="help-block with-errors"></div>
-        <input class="form__input" type="text" required name="ultra_sound_result" placeholder="Ultrasound result" /><label class="form__label" for="">Ultrasound result</label></div>
+        <input class="form__input" type="text" required name="ultra_sound_result" placeholder="Ultrasound result" value="{{ $tbMacForm->caseManagementLaboratoryResult->ultra_sound_result}}"/><label class="form__label" for="">Ultrasound result</label></div>
         </div>
     </div>
     <div class="form__container form-step-3">
         <div class="grid">
         <div class="form__content form-group form__content--small form__content--small__right">
         <div class="help-block with-errors"></div>
-            <input class="form__input" type="date" required name="histhopathological_date" placeholder="Histopathological date" /><label class="form__label" for="">Histopathological date</label>
+            <input class="form__input" type="date" required name="histhopathological_date" placeholder="Histopathological date" value="{{ $tbMacForm->caseManagementLaboratoryResult->histhopathological_date->format('Y-m-d')}}"/><label class="form__label" for="">Histopathological date</label>
         </div>
         <div class="form__content form-group">
         <div class="help-block with-errors"></div>
-        <input name="histhopathological_result" required class="form__input" type="text" placeholder="Histopathological result" /><label class="form__label" for="">Histopathological result</label></div>
+        <input name="histhopathological_result" required class="form__input" type="text" placeholder="Histopathological result" value="{{ $tbMacForm->caseManagementLaboratoryResult->histhopathological_result}}"/><label class="form__label" for="">Histopathological result</label></div>
         </div>
     </div>
     </div>
@@ -149,7 +139,7 @@
             <div class="gallery__container">
               <input class="gallery__trigger" type="file">
               <div class="gallery__icon">
-                <img class="image" src="{{ asset('assets/app/img/icon-upload.png') }}" alt="Upload icon" /></div>
+                <img class="image" src="" alt="Upload icon" /></div>
               <span class="gallery__text">Drag and drop or click to upload</span>
               <span class="gallery__text gallery__text--gray">
                 Recommendation: <br />
@@ -165,10 +155,10 @@
     </div>
     </div>
     <div class="form__container form-step-3">
+    <div class="help-block with-errors"></div>
     <h2 class="section__heading">Remarks</h2>
     <div class="form__content form-group">
-    <div class="help-block with-errors"></div>
-    <textarea class="form__input form__input--message" required name="remarks" placeholder="Remarks"></textarea><label class="form__label" for="">Remarks</label></div>
+    <textarea class="form__input form__input--message" required name="remarks" placeholder="Remarks">{{ $tbMacForm->caseManagementForm->remarks}}</textarea><label class="form__label" for="">Remarks</label></div>
     </div>
     <div class="form__button form__button--space form__button--pagination"><button class="button button--back" type="button">Back</button><button class="button button--next" type="submit">Submit</button></div>
 </div>

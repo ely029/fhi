@@ -32,7 +32,7 @@ jQuery( document ).ready(function( $ ) {
             $("#other-cxr").val('Other-'+otherCxr);
         }
 
-
+        $('.button--next').prop('disabled', true);
     });
 
 });

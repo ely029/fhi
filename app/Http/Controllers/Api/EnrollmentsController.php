@@ -119,7 +119,7 @@ class EnrollmentsController extends Controller
                 'name' => $item->users->name,
                 'role' => $item->users->role->name,
                 'date_created' => $item->created_at->format('d M, Y'),
-                'status' => $item->status === 0 ? '' : $item->status,
+                'status' => $item->status === '0' ? '' : $item->status,
                 'recommendation' => $item->recommendation,
             ];
         });
