@@ -53,5 +53,6 @@
         <label class="form__label" for="">Updated type of case (optional)</label>
         </div>
     </div>
-    </div>
+    <div class="form__button form__button--space form__button--pagination"><button class="button button--back" type="button">Back</button><button class="button button--next" type="button">Next</button></div>
+</div>
 </div>
