@@ -4,7 +4,7 @@ $('.hide--button').hide();
         let action = $("#action-dropdown").val();
         if(action == 'Referred to Regional'){
             $("#modal-title").text('Refer To R-TB MAC');
-            $("#modal-text").text("You are about to confirm 'Refer To R-TBMac' for this case and patient. If you have additional remarks, enter them below.");
+            $("#modal-text").text("You are about to confirm 'Refer To R-TB MAC' for this case and patient. If you have additional remarks, enter them below.");
         }
         if(action == 'Not for Referral'){
             $("#modal-title").text('Not For Referral');
