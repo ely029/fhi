@@ -17,22 +17,27 @@ class CaseManagementResubmitController extends Controller
     {
         $tbMacForm = $tbMacForm->load(['submittedBy','caseManagementForm','caseManagementBacteriologicalResults','caseManagementLaboratoryResults','caseManagementAttachment','patient','recommendations']);
         $tbBacteriologicalResults = $tbMacForm->caseManagementBacteriologicalResults;
-        $presentation_number = $tbMacForm->presentation_number ?? null;
-        $submitted_by = $tbMacForm->submittedBy->name ?? null;
+        $presentation_number = $tbMacForm->presentation_number;
+        $submitted_by = $tbMacForm->submittedBy->name;
         $date_submitted = $tbMacForm->created_at->format('M d, Y');
         $status = $tbMacForm->status;
+        $created_at = $tbMacForm->created_at->format('M d, Y');
+        $facility_code = $tbMacForm->patient->facility_code;
         $suggested_regimen = $tbMacForm->caseManagementForm->suggested_regimen ?? null;
         $suggested_regimen_notes = $tbMacForm->caseManagementForm->suggested_regimen_notes ?? null;
         $current_regimen = $tbMacForm->caseManagementForm->current_regiment ?? null;
         $current_weight = $tbMacForm->caseManagementForm->current_weight ?? null;
         $patient_code = $tbMacForm->patient->code;
-        $current_drug_susceptibility = $tbMacForm->caseManagementForm->current_drug_susceptibility ?? null;
         $itr_drugs = $tbMacForm->caseManagementForm->itr_drugs ?? null;
-        $case_number = $tbMacForm->caseManagementForm->case_number ?? null;
         $regimen_notes = '';
-        $created_at = $tbMacForm->created_at->format('M d, Y');
-        $facility_code = $tbMacForm->patient->facility_code;
+        $current_drug_susceptibility = $tbMacForm->caseManagementForm->current_drug_susceptibility ?? null;
         $updated_type_of_case = $tbMacForm->caseManagementForm->updated_type_of_case ?? null;
+        $ct_scan_date = $tbMacForm->caseManagementLaboratoryResult->ct_scan_date->format('M d, Y');
+        $ct_scan_result = $tbMacForm->caseManagementLaboratoryResult->ct_scan_result;
+        $ultra_sound_date = $tbMacForm->caseManagementLaboratoryResult->ultra_sound_date->format('M d, Y');
+        $ultra_sound_result = $tbMacForm->caseManagementLaboratoryResult->ultra_sound_result;
+        $histhopathological_date = $tbMacForm->caseManagementLaboratoryResult->histhopathological_date->format('M d, Y');
+        $histhopathological_result = $tbMacForm->caseManagementLaboratoryResult->histhopathological_result;
         $screeningOne = $tbBacteriologicalResults->filter(function ($item) {
             return $item->label === 'Screening 1' && $item->resistance_pattern !== '' && $item->method_used !== '';
         })->map(function ($item) {
@@ -53,7 +58,6 @@ class CaseManagementResubmitController extends Controller
                 'method_used' => $item->method_used,
             ];
         })->values();
-
         $lpa = $tbBacteriologicalResults->filter(function ($item) {
             return $item->label === 'LPA';
         })->map(function ($item) {
@@ -63,7 +67,6 @@ class CaseManagementResubmitController extends Controller
                 'resistance_pattern' => $item->resistance_pattern,
             ];
         })->values();
-
         $dst = $tbBacteriologicalResults->filter(function ($item) {
             return $item->label === 'DST';
         })->map(function ($item) {
@@ -73,7 +76,6 @@ class CaseManagementResubmitController extends Controller
                 'resistance_pattern' => $item->resistance_pattern,
             ];
         })->values();
-
         $monthly_screening = $tbBacteriologicalResults->filter(function ($item) {
             return $item->resistance_pattern === '' && $item->method_used === '';
         })->map(function ($item) {
@@ -85,28 +87,28 @@ class CaseManagementResubmitController extends Controller
                 'culture' => $item->culture,
             ];
         })->values();
+        $attachments = [];
+        foreach ($tbMacForm->caseManagementAttachments as $key => $attachment) {
+            $fileName = ($key + 1).'.'.$attachment->extension;
+            $attachments[] = [
+                'url' => url('api/enrollments/'.$tbMacForm->id.'/'.$fileName.'/attachment'),
+                'filename' => $attachment->file_name,
+            ];
+        }
 
         $data = [
-            'presentation_number' => $presentation_number,
-            'current_drug_susceptibility' => $current_drug_susceptibility,
-            'submitted_by' => $submitted_by,
-            'date_submitted' => $date_submitted,
-            'created_at' => $created_at,
-            'facility_code' => $facility_code,
-            'current_weight' => $current_weight,
-            'itr_drugs' => $itr_drugs,
-            'updated_type_of_case' => $updated_type_of_case,
-            'suggested_regimen_notes' => $suggested_regimen_notes,
-            'current_regiment' => $current_regimen,
-            'suggested_regimen' => $suggested_regimen,
-            'status' => $status,
-            'regiment_notes' => $regimen_notes,
+            'presentation_number' => $presentation_number, 'current_drug_susceptibility' => $current_drug_susceptibility, 'submitted_by' => $submitted_by, 'date_submitted' => $date_submitted, 'created_at' => $created_at,
+            'current_weight' => $current_weight, 'itr_drugs' => $itr_drugs, 'facility_code' => $facility_code, 'updated_type_of_case' => $updated_type_of_case, 'suggested_regimen_notes' => $suggested_regimen_notes, 'current_regiment' => $current_regimen, 'suggested_regimen' => $suggested_regimen, 'status' => $status, 'ct_scan_date' => $ct_scan_date, 'ct_scan_result' => $ct_scan_result, 'ultra_sound_date' => $ultra_sound_date,
+            'ultra_sound_result' => $ultra_sound_result,
+            'hispathological_date' => $histhopathological_date,
+            'hispathological_result' => $histhopathological_result,
+            'regimen_notes' => $regimen_notes,
             'patient_code' => $patient_code,
             'screening_one' => $screeningOne,
             'screening_two' => $screeningTwo,
+            'attachments' => $attachments,
             'lpa' => $lpa,
             'dst' => $dst,
-            'case_number' => $case_number,
             'monthly_screening' => $monthly_screening,
         ];
 

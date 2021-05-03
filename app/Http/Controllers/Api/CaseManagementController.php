@@ -105,6 +105,12 @@ class CaseManagementController extends Controller
         $regimen_notes = '';
         $current_drug_susceptibility = $tbMacForm->caseManagementForm->current_drug_susceptibility ?? null;
         $updated_type_of_case = $tbMacForm->caseManagementForm->updated_type_of_case ?? null;
+        $ct_scan_date = $tbMacForm->caseManagementLaboratoryResult->ct_scan_date->format('M d, Y') ?? null;
+        $ct_scan_result = $tbMacForm->caseManagementLaboratoryResult->ct_scan_result ?? null;
+        $ultra_sound_date = $tbMacForm->caseManagementLaboratoryResult->ultra_sound_date->format('M d, Y') ?? null;
+        $ultra_sound_result = $tbMacForm->caseManagementLaboratoryResult->ultra_sound_result ?? null;
+        $histhopathological_date = $tbMacForm->caseManagementLaboratoryResult->histhopathological_date->format('M d, Y') ?? null;
+        $histhopathological_result = $tbMacForm->caseManagementLaboratoryResult->histhopathological_result ?? null;
         $screeningOne = $tbBacteriologicalResults->filter(function ($item) {
             return $item->label === 'Screening 1' && $item->resistance_pattern !== '' && $item->method_used !== '';
         })->map(function ($item) {
@@ -125,7 +131,6 @@ class CaseManagementController extends Controller
                 'method_used' => $item->method_used,
             ];
         })->values();
-
         $lpa = $tbBacteriologicalResults->filter(function ($item) {
             return $item->label === 'LPA';
         })->map(function ($item) {
@@ -135,7 +140,6 @@ class CaseManagementController extends Controller
                 'resistance_pattern' => $item->resistance_pattern,
             ];
         })->values();
-
         $dst = $tbBacteriologicalResults->filter(function ($item) {
             return $item->label === 'DST';
         })->map(function ($item) {
@@ -158,24 +162,25 @@ class CaseManagementController extends Controller
             ];
         })->values();
 
+        $attachments = [];
+        foreach ($tbMacForm->caseManagementAttachments as $key => $attachment) {
+            $fileName = ($key + 1).'.'.$attachment->extension;
+            $attachments[] = [
+                'url' => url('api/enrollments/'.$tbMacForm->id.'/'.$fileName.'/attachment'),
+                'filename' => $attachment->file_name,
+            ];
+        }
         $data = [
-            'presentation_number' => $presentation_number,
-            'current_drug_susceptibility' => $current_drug_susceptibility,
-            'submitted_by' => $submitted_by,
-            'date_submitted' => $date_submitted,
-            'created_at' => $created_at,
-            'current_weight' => $current_weight,
-            'itr_drugs' => $itr_drugs,
-            'facility_code' => $facility_code,
-            'updated_type_of_case' => $updated_type_of_case,
-            'suggested_regimen_notes' => $suggested_regimen_notes,
-            'current_regiment' => $current_regimen,
-            'suggested_regimen' => $suggested_regimen,
-            'status' => $status,
+            'presentation_number' => $presentation_number, 'current_drug_susceptibility' => $current_drug_susceptibility, 'submitted_by' => $submitted_by, 'date_submitted' => $date_submitted, 'created_at' => $created_at,
+            'current_weight' => $current_weight, 'itr_drugs' => $itr_drugs, 'facility_code' => $facility_code, 'updated_type_of_case' => $updated_type_of_case, 'suggested_regimen_notes' => $suggested_regimen_notes, 'current_regiment' => $current_regimen, 'suggested_regimen' => $suggested_regimen, 'status' => $status, 'ct_scan_date' => $ct_scan_date, 'ct_scan_result' => $ct_scan_result, 'ultra_sound_date' => $ultra_sound_date,
+            'ultra_sound_result' => $ultra_sound_result,
+            'hispathological_date' => $histhopathological_date,
+            'hispathological_result' => $histhopathological_result,
             'regimen_notes' => $regimen_notes,
             'patient_code' => $patient_code,
             'screening_one' => $screeningOne,
             'screening_two' => $screeningTwo,
+            'attachments' => $attachments,
             'lpa' => $lpa,
             'dst' => $dst,
             'monthly_screening' => $monthly_screening,
