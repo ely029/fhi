@@ -29,6 +29,8 @@ class CaseManagementResubmitController extends Controller
         $itr_drugs = $tbMacForm->caseManagementForm->itr_drugs ?? null;
         $case_number = $tbMacForm->caseManagementForm->case_number ?? null;
         $regimen_notes = '';
+        $created_at = $tbMacForm->created_at->format('M d, Y');
+        $facility_code = $tbMacForm->patient->facility_code;
         $updated_type_of_case = $tbMacForm->caseManagementForm->updated_type_of_case ?? null;
         $screeningOne = $tbBacteriologicalResults->filter(function ($item) {
             return $item->label === 'Screening 1' && $item->resistance_pattern !== '' && $item->method_used !== '';
@@ -87,6 +89,8 @@ class CaseManagementResubmitController extends Controller
             'presentation_number' => $presentation_number,
             'submitted_by' => $submitted_by,
             'date_submitted' => $date_submitted,
+            'created_at' => $created_at,
+            'facility_code' => $facility_code,
             'current_weight' => $current_weight,
             'itr_drugs' => $itr_drugs,
             'updated_type_of_case' => $updated_type_of_case,

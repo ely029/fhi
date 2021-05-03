@@ -94,14 +94,16 @@ class CaseManagementController extends Controller
         $submitted_by = $tbMacForm->submittedBy->name;
         $date_submitted = $tbMacForm->created_at->format('M d, Y');
         $status = $tbMacForm->status;
-        $suggested_regimen = $tbMacForm->caseManagementForm->suggested_regimen !== '' ? $tbMacForm->caseManagementForm->suggested_regimen : '';
-        $suggested_regimen_notes = $tbMacForm->caseManagementForm->suggested_regimen_notes;
-        $current_regimen = $tbMacForm->caseManagementForm->current_regiment;
-        $current_weight = $tbMacForm->caseManagementForm->current_weight;
+        $created_at = $tbMacForm->created_at->format('M d, Y');
+        $facility_code = $tbMacForm->patient->facility_code;
+        $suggested_regimen = $tbMacForm->caseManagementForm->suggested_regimen ?? null;
+        $suggested_regimen_notes = $tbMacForm->caseManagementForm->suggested_regimen_notes ?? null;
+        $current_regimen = $tbMacForm->caseManagementForm->current_regiment ?? null;
+        $current_weight = $tbMacForm->caseManagementForm->current_weight ?? null;
         $patient_code = $tbMacForm->patient->code;
-        $itr_drugs = $tbMacForm->caseManagementForm->itr_drugs;
+        $itr_drugs = $tbMacForm->caseManagementForm->itr_drugs ?? null;
         $regimen_notes = '';
-        $updated_type_of_case = $tbMacForm->caseManagementForm->updated_type_of_case;
+        $updated_type_of_case = $tbMacForm->caseManagementForm->updated_type_of_case ?? null;
         $screeningOne = $tbBacteriologicalResults->filter(function ($item) {
             return $item->label === 'Screening 1' && $item->resistance_pattern !== '' && $item->method_used !== '';
         })->map(function ($item) {
@@ -159,14 +161,16 @@ class CaseManagementController extends Controller
             'presentation_number' => $presentation_number,
             'submitted_by' => $submitted_by,
             'date_submitted' => $date_submitted,
+            'created_at' => $created_at,
             'current_weight' => $current_weight,
             'itr_drugs' => $itr_drugs,
+            'facility_code' => $facility_code,
             'updated_type_of_case' => $updated_type_of_case,
             'suggested_regimen_notes' => $suggested_regimen_notes,
             'current_regiment' => $current_regimen,
             'suggested_regimen' => $suggested_regimen,
             'status' => $status,
-            'regiment_notes' => $regimen_notes,
+            'regimen_notes' => $regimen_notes,
             'patient_code' => $patient_code,
             'screening_one' => $screeningOne,
             'screening_two' => $screeningTwo,

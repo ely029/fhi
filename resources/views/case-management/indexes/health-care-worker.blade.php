@@ -20,13 +20,13 @@
             </tr>
         </thead>
         <tbody>
-        @foreach($allCases as $cases)
-        <tr class="table__row js-view" data-href="{{url('/case-management/show/'.$cases->id)}}">
-            <td class="table__details">{{$cases->presentation_number}}</td>
-            <td class="table__details">{{$cases->patient->facility_code}}</td>
-            <td class="table__details">{{$cases->patient->code}}</td>
-            <td class="table__details">{{$cases->created_at->format('m-d-Y')}}</td>
-            <td class="table__details">{{$cases->status}}</td>
+        @foreach($allCases as $case)
+        <tr class="table__row js-view" data-href="{{url('/case-management/show/'.$case->id)}}">
+            <td class="table__details">{{$case->presentation_number}}</td>
+            <td class="table__details">{{$case->patient->facility_code}}</td>
+            <td class="table__details">{{$case->patient->code}}</td>
+            <td class="table__details">{{$case->created_at->format('m-d-Y')}}</td>
+            <td class="table__details">{{$case->status}}</td>
             </tr>
         @endforeach
             
@@ -46,12 +46,12 @@
         </thead>
         <tbody>
         @foreach($forApproval as $case)
-        <tr class="table__row js-view" data-href="{{url('/case-management/show/'.$cases->id)}}">
+        <tr class="table__row js-view" data-href="{{url('/case-management/show/'.$case->id)}}">
         <td class="table__details">{{$cases->presentation_number}}</td>
-            <td class="table__details">{{$cases->patient->facility_code}}</td>
-            <td class="table__details">{{$cases->patient->code}}</td>
-            <td class="table__details">{{$cases->created_at->format('m-d-Y')}}</td>
-            <td class="table__details">{{$cases->status}}</td>
+            <td class="table__details">{{$case->patient->facility_code}}</td>
+            <td class="table__details">{{$case->patient->code}}</td>
+            <td class="table__details">{{$case->created_at->format('m-d-Y')}}</td>
+            <td class="table__details">{{$case->status}}</td>
             </tr>
         @endforeach
         </tbody>
@@ -70,12 +70,12 @@
         </thead>
         <tbody>
         @foreach($forFollowUp as $case)
-        <tr class="table__row js-view" data-href="{{url('/case-management/show/'.$cases->id)}}">
-        <td class="table__details">{{$cases->presentation_number}}</td>
-            <td class="table__details">{{$cases->patient->facility_code}}</td>
-            <td class="table__details">{{$cases->patient->code}}</td>
-            <td class="table__details">{{$cases->created_at->format('m-d-Y')}}</td>
-            <td class="table__details">{{$cases->status}}</td>
+        <tr class="table__row js-view" data-href="{{url('/case-management/show/'.$case->id)}}">
+        <td class="table__details">{{$case->presentation_number}}</td>
+            <td class="table__details">{{$case->patient->facility_code}}</td>
+            <td class="table__details">{{$case->patient->code}}</td>
+            <td class="table__details">{{$case->created_at->format('m-d-Y')}}</td>
+            <td class="table__details">{{$case->status}}</td>
             </tr>
         @endforeach
         </tbody>
@@ -94,12 +94,12 @@
         </thead>
         <tbody>
         @foreach($otherSuggestion as $case)
-        <tr class="table__row js-view" data-href="{{url('/case-management/show/'.$cases->id)}}">
-        <td class="table__details">{{$cases->presentation_number}}</td>
-            <td class="table__details">{{$cases->patient->facility_code}}</td>
-            <td class="table__details">{{$cases->patient->code}}</td>
-            <td class="table__details">{{$cases->created_at->format('m-d-Y')}}</td>
-            <td class="table__details">{{$cases->status}}</td>
+        <tr class="table__row js-view" data-href="{{url('/case-management/show/'.$case->id)}}">
+        <td class="table__details">{{$case->presentation_number}}</td>
+            <td class="table__details">{{$case->patient->facility_code}}</td>
+            <td class="table__details">{{$case->patient->code}}</td>
+            <td class="table__details">{{$case->created_at->format('m-d-Y')}}</td>
+            <td class="table__details">{{$case->status}}</td>
             </tr>
         @endforeach>
         </tbody>
@@ -118,12 +118,12 @@
         </thead>
         <tbody>
         @foreach($notForReferral as $case)
-        <tr class="table__row js-view" data-href="{{url('/case-management/show/'.$cases->id)}}">
-        <td class="table__details">{{$cases->presentation_number}}</td>
-            <td class="table__details">{{$cases->patient->facility_code}}</td>
-            <td class="table__details">{{$cases->patient->code}}</td>
-            <td class="table__details">{{$cases->created_at->format('m-d-Y')}}</td>
-            <td class="table__details">{{$cases->status}}</td>
+        <tr class="table__row js-view" data-href="{{url('/case-management/show/'.$case->id)}}">
+        <td class="table__details">{{$case->presentation_number}}</td>
+            <td class="table__details">{{$case->patient->facility_code}}</td>
+            <td class="table__details">{{$case->patient->code}}</td>
+            <td class="table__details">{{$case->created_at->format('m-d-Y')}}</td>
+            <td class="table__details">{{$case->status}}</td>
             </tr>
         @endforeach
         </tbody>
