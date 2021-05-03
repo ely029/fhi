@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\CaseManagementController;
 use App\Http\Controllers\Api\CronJobController;
 use App\Http\Controllers\Api\EnrollmentRecommendationsController;
 use App\Http\Controllers\Api\EnrollmentsController;
+use App\Http\Controllers\Api\ITISController;
 use App\Http\Controllers\Api\Users\FcmRegistrationTokensController;
 use Illuminate\Support\Facades\Route;
 
@@ -56,4 +57,6 @@ Route::group([
     Route::post('/enrollments/{tbMacForm}/recommendation', [EnrollmentRecommendationsController::class, 'store']);
     Route::get('/case-management', [CaseManagementController::class, 'index']);
     Route::post('/case-management', [CaseManagementController::class, 'store']);
+
+    Route::get('itis/get/patient',[ITISController::class, 'getPatient']);
 });
