@@ -412,9 +412,9 @@
                 <h2 class="section__heading">Related media</h2>
                 @foreach($tbMacForm->caseManagementAttachments as $key => $attachment)
                   <li class="form__gallery-item">
-                    <a href="{{ url('case-management/'.$tbMacForm->id.'/'.$attachment->file_name.'/download') }}">
+                    <a class="form__gallery-link" href="{{ url('case-management/'.$tbMacForm->id.'/'.$attachment->file_name.'/download') }}">
                     <img class="image" src="{{ url('case-management/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment') }}" alt="Placeholder" />
-                      <p>{{ $attachment->file_name }}</p>
+                      <p class="form__gallery-text">{{ $attachment->file_name }}</p>
                   </a>
                   </li>
                 @endforeach
