@@ -410,6 +410,7 @@
               
               <div class="form__container">
                 <h2 class="section__heading">Related media</h2>
+                <ul class="form__gallery">
                 @foreach($tbMacForm->caseManagementAttachments as $key => $attachment)
                   <li class="form__gallery-item">
                     <a class="form__gallery-link" href="{{ url('case-management/'.$tbMacForm->id.'/'.$attachment->file_name.'/download') }}">
@@ -418,6 +419,7 @@
                   </a>
                   </li>
                 @endforeach
+              </ul>
               </div>
             </form>
           </div>
