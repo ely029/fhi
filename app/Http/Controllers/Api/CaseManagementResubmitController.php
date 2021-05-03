@@ -26,6 +26,7 @@ class CaseManagementResubmitController extends Controller
         $current_regimen = $tbMacForm->caseManagementForm->current_regiment ?? null;
         $current_weight = $tbMacForm->caseManagementForm->current_weight ?? null;
         $patient_code = $tbMacForm->patient->code;
+        $current_drug_susceptibility = $tbMacForm->caseManagementForm->current_drug_susceptibility ?? null;
         $itr_drugs = $tbMacForm->caseManagementForm->itr_drugs ?? null;
         $case_number = $tbMacForm->caseManagementForm->case_number ?? null;
         $regimen_notes = '';
@@ -87,6 +88,7 @@ class CaseManagementResubmitController extends Controller
 
         $data = [
             'presentation_number' => $presentation_number,
+            'current_drug_susceptibility' => $current_drug_susceptibility,
             'submitted_by' => $submitted_by,
             'date_submitted' => $date_submitted,
             'created_at' => $created_at,

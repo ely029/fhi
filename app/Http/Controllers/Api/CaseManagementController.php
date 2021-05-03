@@ -103,6 +103,7 @@ class CaseManagementController extends Controller
         $patient_code = $tbMacForm->patient->code;
         $itr_drugs = $tbMacForm->caseManagementForm->itr_drugs ?? null;
         $regimen_notes = '';
+        $current_drug_susceptibility = $tbMacForm->caseManagementForm->current_drug_susceptibility ?? null;
         $updated_type_of_case = $tbMacForm->caseManagementForm->updated_type_of_case ?? null;
         $screeningOne = $tbBacteriologicalResults->filter(function ($item) {
             return $item->label === 'Screening 1' && $item->resistance_pattern !== '' && $item->method_used !== '';
@@ -159,6 +160,7 @@ class CaseManagementController extends Controller
 
         $data = [
             'presentation_number' => $presentation_number,
+            'current_drug_susceptibility' => $current_drug_susceptibility,
             'submitted_by' => $submitted_by,
             'date_submitted' => $date_submitted,
             'created_at' => $created_at,
