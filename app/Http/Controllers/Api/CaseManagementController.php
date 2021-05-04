@@ -85,7 +85,6 @@ class CaseManagementController extends Controller
 
     public function show(TBMacForm $tbMacForm)
     {
-
         $tbMacForm = $tbMacForm->load(['submittedBy','caseManagementForm','caseManagementBacteriologicalResults','caseManagementLaboratoryResults','caseManagementAttachment','patient','recommendations']);
         $tbBacteriologicalResults = $tbMacForm->caseManagementBacteriologicalResults;
         $recommendations = $tbMacForm->recommendations;
@@ -132,7 +131,7 @@ class CaseManagementController extends Controller
                 'status' => $item->status === '0' ? '' : $item->status,
                 'recommendation' => $item->recommendation,
             ];
-                        })->values();
+        })->values();
         $screeningTwo = $tbBacteriologicalResults->filter(function ($item) {
             return $item->label === 'Screening 2' && $item->resistance_pattern !== '' && $item->method_used !== '';
         })->map(function ($item) {
