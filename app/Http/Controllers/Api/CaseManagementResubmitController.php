@@ -10,6 +10,7 @@ use App\Models\CaseManagementBacteriologicalResults;
 use App\Models\CaseManagementLaboratoryResults;
 use App\Models\TBMacForm;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CaseManagementResubmitController extends Controller
 {
@@ -66,7 +67,7 @@ class CaseManagementResubmitController extends Controller
             return $item->label === 'LPA';
         })->map(function ($item) {
             return [
-                'label' => $item->label,
+                'label' => Str::startsWith($item->label, 'Other (Specify)') ? $item->others : $item->label,
                 'date_collected' => $item->date_collected->format('d F Y'),
                 'resistance_pattern' => $item->resistance_pattern,
             ];
@@ -75,7 +76,7 @@ class CaseManagementResubmitController extends Controller
             return $item->label === 'DST';
         })->map(function ($item) {
             return [
-                'label' => $item->label,
+                'label' => Str::startsWith($item->label, 'Other (Specify)') ? $item->others : $item->label,
                 'date_collected' => $item->date_collected->format('d F Y'),
                 'resistance_pattern' => $item->resistance_pattern,
             ];
@@ -120,6 +121,10 @@ class CaseManagementResubmitController extends Controller
         $tbMacForm->patient->update($request);
         $tbMacForm->update($request);
         $tbMacForm->caseManagementForm->update($request);
+        //LPA
+        $caseManagementBactResult->lpaUpdate($tbMacForm, $request);
+        //DST
+        $caseManagementBactResult->dstUpdate($tbMacForm, $request);
         //Screening 1
         $caseManagementBactResult->screeningOneUpdate($tbMacForm, $request);
         //Screening 2
