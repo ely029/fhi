@@ -13,6 +13,7 @@ use App\Models\Recommendation;
 use App\Models\TBMacForm;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
 
 class CaseManagementController extends Controller
 {
@@ -97,13 +98,13 @@ class CaseManagementController extends Controller
         $status = $tbMacForm->status;
         $created_at = $tbMacForm->created_at->format('M d, Y');
         $facility_code = $tbMacForm->patient->facility_code;
-        $suggested_regimen = $tbMacForm->caseManagementForm->suggested_regimen ?? null;
+        $suggested_regimen = Str::startsWith($tbMacForm->caseManagementForm->suggested_regimen, 'ITR') ? $tbMacForm->caseManagementForm->suggested_regimen : null;
         $suggested_regimen_notes = $tbMacForm->caseManagementForm->suggested_regimen_notes ?? null;
         $current_regimen = $tbMacForm->caseManagementForm->current_regiment ?? null;
         $current_weight = $tbMacForm->caseManagementForm->current_weight ?? null;
         $patient_code = $tbMacForm->patient->code;
         $itr_drugs = $tbMacForm->caseManagementForm->itr_drugs ?? null;
-        $regimen_notes = '';
+        $regimen_notes = $tbMacForm->caseManagementForm->reason_case_management_presentation;
         $latest_comparative_cxr_reading = $tbMacForm->caseManagementForm->latest_comparative_cxr_reading;
         $current_drug_susceptibility = $tbMacForm->caseManagementForm->current_drug_susceptibility ?? null;
         $updated_type_of_case = $tbMacForm->caseManagementForm->updated_type_of_case ?? null;
