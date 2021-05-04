@@ -28,7 +28,7 @@
                 <td class="table__details">{{ empty($case->patient->initials) ? '' : $case->patient->initials}}</td>
                 <td class="table__details">{{ empty($case->patient->age) ? '' : $case->patient->age}}</td>
                 <td class="table__details">{{ empty($case->patient->gender) ? '' : $case->patient->gender}}</td>
-                <td class="table__details">{{ $case->caseManagementForm->current_drug_susceptibility ?? '' }}</td>
+                <td class="table__details">{{ $case->caseManagementForm->updated_type_of_case ?? '' }}</td>
                 <td class="table__details">{{ $case->created_at->format('M d, Y')}}</td>
                 <td class="table__details">{{ $case->status }}</td>
               </tr>
@@ -56,7 +56,7 @@
               <td class="table__details">{{ empty($case->patient->initials) ? '' : $case->patient->initials}}</td>
               <td class="table__details">{{ empty($case->patient->age) ? '' : $case->patient->age}}</td>
               <td class="table__details">{{ empty($case->patient->gender) ? '' : $case->patient->gender}}</td>
-              <td class="table__details">{{ $case->caseManagementForm->current_drug_susceptibility ?? ''}}</td>
+              <td class="table__details">{{ $case->caseManagementForm->updated_type_of_case ?? ''}}</td>
               <td class="table__details">{{ $case->created_at->format('M d, Y')}}</td>
               <td class="table__details">{{ $case->status }}</td>
             </tr>
@@ -84,7 +84,7 @@
               <td class="table__details">{{ empty($case->patient->initials) ? '' : $case->patient->initials}}</td>
               <td class="table__details">{{ empty($case->patient->age) ? '' : $case->patient->age}}</td>
               <td class="table__details">{{ empty($case->patient->gender) ? '' : $case->patient->gender}}</td>
-              <td class="table__details">{{ $case->caseManagementForm->current_drug_susceptibility ?? ''}}</td>
+              <td class="table__details">{{ $case->caseManagementForm->updated_type_of_case ?? ''}}</td>
               <td class="table__details">{{ $case->created_at->format('M d, Y')}}</td>
               <td class="table__details">{{ $case->status }}</td>
             </tr>
@@ -112,7 +112,7 @@
               <td class="table__details">{{ empty($case->patient->initials) ? '' : $case->patient->initials}}</td>
               <td class="table__details">{{ empty($case->patient->age) ? '' : $case->patient->age}}</td>
               <td class="table__details">{{ empty($case->patient->gender) ? '' : $case->patient->gender}}</td>
-              <td class="table__details">{{ $case->caseManagementForm->current_drug_susceptibility ?? ''}}</td>
+              <td class="table__details">{{ $case->caseManagementForm->updated_type_of_case ?? ''}}</td>
               <td class="table__details">{{ $case->created_at->format('M d, Y')}}</td>
               <td class="table__details">{{ $case->status }}</td>
             </tr>
