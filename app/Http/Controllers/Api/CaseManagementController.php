@@ -74,7 +74,6 @@ class CaseManagementController extends Controller
             $screen = $eee + 1;
             $caseManagementBactResult->monthDSTCreationMobile($screen, $eee, $request, $form);
         }
-        CaseManagementBacteriologicalResults::where('form_id', $form->id)->where('count', '')->delete();
         $request['cxr_date'] = ! isset($request['cxr_date']) ? Carbon::now()->timestamp : $request['cxr_date'];
         $request['itr_drugs'] = ! isset($request['itr_drugs']) ? '' : $request['itr_drugs'];
         $form->caseManagementForm()->create($request);
@@ -162,7 +161,7 @@ class CaseManagementController extends Controller
             ];
         })->values();
         $monthly_screening = $tbBacteriologicalResults->filter(function ($item) {
-            return $item->resistance_pattern === '' && $item->method_used === '';
+            return $item->resistance_pattern === '' && $item->method_used === '' && $item->count !== '';
         })->map(function ($item) {
             return [
                 'label' => 'Month '.$item->count,

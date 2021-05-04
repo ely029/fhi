@@ -92,7 +92,7 @@ class CaseManagementResubmitController extends Controller
             ];
         })->values();
         $monthly_screening = $tbBacteriologicalResults->filter(function ($item) {
-            return $item->resistance_pattern === '' && $item->method_used === '';
+            return $item->resistance_pattern === '' && $item->method_used === '' && $item->count !== '';
         })->map(function ($item) {
             return [
                 'label' => 'Month '.$item->count,
