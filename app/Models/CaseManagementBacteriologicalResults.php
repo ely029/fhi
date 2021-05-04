@@ -112,7 +112,7 @@ class CaseManagementBacteriologicalResults extends Model
         CaseManagementBacteriologicalResults::create([
             'label' => 'Screening 2',
             'form_id' => $form->id,
-            'date_collected' => ! isset($request['date_collected_screening_2']) ? Carbon::now()->timestamp : $request['date_collected_screening_2'],
+            'date_collected' => ! isset($request['date_collected_screening_2']) ? Carbon::now()->format('Y-m-d') : $request['date_collected_screening_2'],
             'resistance_pattern' => $request['ressitance_pattern_screening_2'] ?? null,
             'method_used' => $request['method_used_screening_2'] ?? null,
             'cxr_date' => Carbon::now()->timestamp,
@@ -126,7 +126,7 @@ class CaseManagementBacteriologicalResults extends Model
     {
         CaseManagementBacteriologicalResults::where(['form_id' => $form->id, 'label' => 'Screening 2'])->update([
             'label' => 'Screening 2',
-            'date_collected' => ! isset($request['date_collected_screening_2']) ? Carbon::now()->timestamp : $request['date_collected_screening_2'],
+            'date_collected' => ! isset($request['date_collected_screening_2']) ? Carbon::now()->format('Y-m-d') : $request['date_collected_screening_2'],
             'resistance_pattern' => $request['ressitance_pattern_screening_2'] ?? null,
             'method_used' => $request['method_used_screening_2'] ?? null,
         ]);

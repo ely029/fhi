@@ -12,7 +12,7 @@
 <div class="section">
     <div class="section__top">
       <h1 class="section__title">Create new Case</h1>
-      <div class="breadcrumbs"><a class="breadcrumbs__link" href="{{ url('enrollments') }}">Case Management</a>
+      <div class="breadcrumbs"><a class="breadcrumbs__link" href="{{ url('case-management') }}">Case Management</a>
         <a class="breadcrumbs__link">Create new Case</a>
         <a class="breadcrumbs__link"></a>
       </div>
@@ -64,5 +64,6 @@
   <script src="{{ asset('assets/app/js/dropzoneInit.js') }}"></script>
   <script src="{{ asset('assets/app/js/case-management/create-2.js') }}"></script>   
   <script src="{{ asset('assets/app/js/case-management/create-3.js') }}"></script>   
+  <script src="{{ asset('assets/app/js/case-management/resubmit.js') }}"></script> 
 
 @endsection

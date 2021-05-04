@@ -11,10 +11,12 @@
         </tr>
         </thead>
         <tbody>
-        <tr class="table__row">
+        <tr class="table__row form-step-2">
             <td class="table__details">Screening <span class="screening-counter">1</span></td>
-            <td class="table__details">
-            <input class="form__input form__input--full" type="date" name="date_collected_screening_1" /></td>
+            <td class="table__details form-group">
+                <input class="form__input form__input--full" type="date" name="date_collected_screening_1" required />
+                <div class="help-block with-errors with-errors--table"></div>
+            </td>
             <td class="table__details">
             <div class="form__content">
                 <select id="rest_pattern_1" class="form__input form__input--select form__input--full" name="ressitance_pattern_screening_1">
@@ -34,14 +36,14 @@
             </div>
             </td>
         </tr>
-        <tr class="table__row">
+        <tr class="table__row screening-2 form-step-2">
             <td class="table__details">Screening 2</td>
             <td class="table__details form-group">
             <div class="help-block with-errors"></div>
-            <input class="form__input form__input--full" type="date" name="date_collected_screening_2"/></td>
+            <input class="form__input form__input--full" type="date" name=""/></td>
             <td class="table__details">
             <div class="form__content">
-                <select id="rest_pattern_2" class="form__input form__input--select form__input--full" name="ressitance_pattern_screening_2">
+                <select id="rest_pattern_2" class="form__input form__input--select form__input--full" name="">
                 <option value="For Xpert MTB/RIF">Xpert MTB/RIF</option>
                 <option value="For Xpert MTB/RIF ULTRA">Xpert MTB/RIF ULTRA</option>
                 <option value="Truenat">Truenat</option>
@@ -51,7 +53,7 @@
             </td>
             <td class="table__details">
             <div class="form__content">
-                <select id="method_used_2"class="form__input form__input--select form__input--full" name="method_used_screening_2">
+                <select id="method_used_2"class="form__input form__input--select form__input--full" name="">
                 <option value='MTB Detected, Rifampicin Resistance Detected'>MTB Detected, Rifampicin Resistance Detected</option><option value='MTB Detected, Rifampicin Resistance Not Detected'>MTB Detected, Rifampicin Resistance Not Detected</option><option value='MTB Detected, Rifampicin Resistance Indeterminate'>MTB Detected, Rifampicin Resistance Indeterminate</option><option value='MTB Not Detected'>MTB Not Detected</option><option value='Invalid/No Result/Error'>Invalid/No Result/Error</option>
                 </select>
                 <div class="triangle triangle--down"></div>
@@ -60,6 +62,7 @@
         </tr>
         </tbody>
     </table>
+    <button class="button button--transparent button--add" id="add-screening" type="button">Add more</button>
     </div>
     <div class="form__container form-step-2">
     <table class="table table--unset js-table-unset">
@@ -71,9 +74,13 @@
         </tr>
         </thead>
         <tbody>
-        <tr class="table__row">
+        <tr class="table__row form-step-2">
             <td class="table__details">LPA</td>
-            <td class="table__details"><input class="form__input form__input--full" type="date" name="date_collected_lpa" /></td>
+            <td class="table__details form-group">
+                
+                <input class="form__input form__input--full" required type="date" name="date_collected_lpa" />
+                <div class="help-block with-errors with-errors--table"></div>
+            </td>
             <td class="table__details">
             <div class="form__content">
             <select id="rest_pattern_3" class="form__input form__input--select form__input--full" name="resistance_pattern_lpa">
@@ -85,9 +92,12 @@
             </div>
             </td>
         </tr>
-        <tr class="table__row">
+        <tr class="table__row form-step-2">
             <td class="table__details">DST</td>
-            <td class="table__details"><input class="form__input form__input--full" type="date" name="date_collected_dst" /></td>
+            <td class="table__details form-group">
+                <input class="form__input form__input--full" required type="date" name="date_collected_dst" />
+                <div class="help-block with-errors with-errors--table"></div>
+            </td>
             <td class="table__details">
             <div class="form__content">
             <select id="rest_pattern_4" class="form__input form__input--select form__input--full" name="resistance_pattern_dst">

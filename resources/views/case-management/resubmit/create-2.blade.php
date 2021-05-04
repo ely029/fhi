@@ -46,15 +46,17 @@
             {{-- @endforeach --}}
             
         </tr>
-        <tr class="table__row">
+        <input type="hidden" id="hasScreening2" value="{{ $screenTwo ? true : false }}">
+        <tr class="table__row screening-2 form-step-2">
         {{-- @foreach($screenTwo as $one) --}}
         
             <td class="table__details">Screening 2</td>
-            <td class="table__details">
+            <td class="table__details form-group">
+            <div class="help-block with-errors"></div>
             <input class="form__input form__input--full" type="date" value="{{ $screenTwo ? $screenTwo->date_collected->format('Y-m-d') : ''}}" name="date_collected_screening_2" /></td>
             <td class="table__details">
             <div class="form__content">
-                <select id="rest_pattern_1" class="form__input form__input--select form__input--full" name="ressitance_pattern_screening_2">
+                <select id="rest_pattern_2" class="form__input form__input--select form__input--full" name="ressitance_pattern_screening_2">
                 @foreach(resistance_pattern() as $pattern)
                 <option value="{{ $pattern }}" {{ $screenTwo ? ($screenTwo->resistance_pattern === $pattern ? 'selected' : '') : ''}}>{{ $pattern }}</option>
                 @endforeach
@@ -64,7 +66,7 @@
             </td>
             <td class="table__details">
             <div class="form__content form-group">
-                <select id="method_used_1" class="form__input form__input--select form__input--full" name="method_used_screening_2">
+                <select id="method_used_2" class="form__input form__input--select form__input--full" name="method_used_screening_2">
                 @foreach(method_used() as $method)
                 <option value="{{ $method }}" {{ $screenTwo ? ($screenTwo->method_used === $method ? 'selected': '') : ''}}>{{ $method }}</option>
                 @endforeach
@@ -76,6 +78,11 @@
         </tr>
         </tbody>
     </table>
+    @if($screenTwo)
+        <button class="button button--transparent button--add" id="remove-screening" type="button">Remove</button>
+    @else
+        <button class="button button--transparent button--add" id="add-screening" type="button">Add more</button>
+    @endif
     </div>
     <div class="form__container form-step-2">
     <table class="table table--unset js-table-unset">
@@ -94,7 +101,7 @@
             <td class="table__details">
             <div class="form__content">
             <select id="rest_pattern_3" class="form__input form__input--select form__input--full" name="resistance_pattern_lpa">
-                @foreach(resistance_pattern() as $pattern)
+                @foreach(LPA() as $pattern)
                 <option value="{{ $pattern }}" {{ $lpa ? ($lpa->resistance_pattern === $pattern ? 'selected': '') : ''}}>{{ $pattern }}</option>
                 @endforeach
                 </select>
@@ -110,7 +117,7 @@
             <td class="table__details">
             <div class="form__content">
             <select id="rest_pattern_3" class="form__input form__input--select form__input--full" name="resistance_pattern_dst">
-                @foreach(resistance_pattern() as $pattern)
+                @foreach(DST() as $pattern)
                 <option value="{{ $pattern }}" {{ $dst ? ($dst->resistance_pattern === $pattern ? 'selected': '') : ''}}>{{ $pattern }}</option>
                 @endforeach
                 </select>
