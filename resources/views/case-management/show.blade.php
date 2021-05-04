@@ -192,16 +192,16 @@
                   $monthlyScreening = $tbMacForm->monthlyScreening;
                   @endphp
                   <tr class="table__row">
-                      <td class="table__details">{{$screenone->label}}</td>
-                      <td class="table__details">{{ $screenone->date_collected->format('Y-m-d') }}</td>
-                      <td class="table__details">{{ $screenone->resistance_pattern }}</td>
-                      <td class="table__details">{{$screenone->method_used }}</td>
+                      <td class="table__details">{{ empty($screenone->label) ? '' : $screenone->label}}</td>
+                      <td class="table__details">{{ empty($screenone->date_collected) ? '' : $screenone->date_collected->format('Y-m-d') }}</td>
+                      <td class="table__details">{{ empty($screenone->resistance_pattern) ? '' : $screenone->resistance_pattern }}</td>
+                      <td class="table__details">{{ empty($screenone->method_used) ? '' : $screenone->method_used }}</td>
                     </tr>
                     <tr class="table__row">
-                      <td class="table__details">{{$screenTwo->label}}</td>
-                      <td class="table__details">{{ $screenTwo->date_collected->format('Y-m-d') }}</td>
-                      <td class="table__details">{{ $screenTwo->resistance_pattern }}</td>
-                      <td class="table__details">{{$screenTwo->method_used }}</td>
+                      <td class="table__details">{{ empty($screenTwo->label) ? '' : $screenTwo->label}}</td>
+                      <td class="table__details">{{ empty($screenTwo->date_collected) ? '' : $screenTwo->date_collected->format('Y-m-d') }}</td>
+                      <td class="table__details">{{ empty($screenTwo->resistance_pattern) ? '' : $screenTwo->resistance_pattern }}</td>
+                      <td class="table__details">{{ empty($screenTwo->method_used) ? '' : $screenTwo->method_used }}</td>
                     </tr>
                   </tbody>
                 </table>
