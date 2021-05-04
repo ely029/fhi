@@ -179,7 +179,7 @@ class CaseManagementBacteriologicalResults extends Model
             'tb_lamp' => $item[$eee]['tb_lamp'],
             'culture' => $item[$eee]['culture'],
             'form_id' => $form->id,
-            'count' => $request['count'][$eee],
+            'count' => $eee,
         ]);
     }
 
