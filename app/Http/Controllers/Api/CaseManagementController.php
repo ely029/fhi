@@ -75,6 +75,7 @@ class CaseManagementController extends Controller
             $caseManagementBactResult->monthDSTCreationMobile($screen, $eee, $request, $form);
         }
         $request['cxr_date'] = ! isset($request['cxr_date']) ? Carbon::now()->timestamp : $request['cxr_date'];
+        $request['itr_drugs'] = ! isset($request['itr_drugs']) ? '' : $request['itr_drugs'];
         $form->caseManagementForm()->create($request);
         unset($request['remarks']);
         $form->caseManagementLaboratoryResults()->create($request);
