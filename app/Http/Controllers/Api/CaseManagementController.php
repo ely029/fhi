@@ -32,7 +32,7 @@ class CaseManagementController extends Controller
                 'date_created' => $item->created_at->format('Y-m-d'),
                 'facility_code' => $item->patient->facility_code,
                 'status' => $item->status,
-                'drug_susceptibility' => $item->caseManagementForm->current_drug_susceptibility ?? null,
+                'drug_susceptibility' => $item->caseManagementForm->updated_type_of_case ?? null,
             ];
         });
 
@@ -98,7 +98,7 @@ class CaseManagementController extends Controller
         $status = $tbMacForm->status;
         $created_at = $tbMacForm->created_at->format('M d, Y');
         $facility_code = $tbMacForm->patient->facility_code;
-        $suggested_regimen = Str::startsWith($tbMacForm->caseManagementForm->suggested_regimen, 'ITR') ? $tbMacForm->caseManagementForm->suggested_regimen : null;
+        $suggested_regimen = Str::startsWith($tbMacForm->caseManagementForm->suggested_regimen, 'ITR') ? $tbMacForm->caseManagementForm->others : null;
         $suggested_regimen_notes = $tbMacForm->caseManagementForm->suggested_regimen_notes ?? null;
         $current_regimen = $tbMacForm->caseManagementForm->current_regiment ?? null;
         $current_weight = $tbMacForm->caseManagementForm->current_weight ?? null;
@@ -159,7 +159,7 @@ class CaseManagementController extends Controller
             return $item->label === 'DST';
         })->map(function ($item) {
             return [
-                'label' => $item->label,
+                'label' =>  Str::startsWith($item->label, 'Other (Specify)') ? $item->others : $item->label,
                 'date_collected' => $item->date_collected->format('d F Y'),
                 'resistance_pattern' => $item->resistance_pattern,
             ];
