@@ -22,12 +22,12 @@
             {{-- @foreach($screenone as $one) --}}
             <td class="table__details">{{ $screenone->label }}</td>
             <td class="table__details">
-            <input class="form__input form__input--full" type="date" value="{{ $screenone->date_collected->format('Y-m-d')}}" name="date_collected_screening_1" /></td>
+            <input class="form__input form__input--full" type="date" value="{{ $screenone ? $screenone->date_collected->format('Y-m-d') : ''}}" name="date_collected_screening_1" /></td>
             <td class="table__details">
             <div class="form__content">
                 <select id="rest_pattern_1" class="form__input form__input--select form__input--full" name="ressitance_pattern_screening_1">
                 @foreach(resistance_pattern() as $pattern)
-                <option value="{{ $pattern }}" {{$screenone->resistance_pattern === $pattern ? 'selected' : ''}}>{{ $pattern }}</option>
+                <option value="{{ $pattern }}" {{$screenone ? ($screenone->resistance_pattern === $pattern ? 'selected' : '') : ''}}>{{ $pattern }}</option>
                 @endforeach
                 </select>
                 <div class="triangle triangle--down"></div>
@@ -37,7 +37,7 @@
             <div class="form__content form-group">
                 <select id="method_used_1" class="form__input form__input--select form__input--full" name="method_used_screening_1">
                 @foreach(method_used() as $method)
-                <option value="{{ $method }}" {{ $screenone->method_used === $method ? 'selected': ''}}>{{ $method }}</option>
+                <option value="{{ $method }}" {{ $screenone ? ($screenone->method_used === $method ? 'selected': '') : ''}}>{{ $method }}</option>
                 @endforeach
                 </select>
                 <div class="triangle triangle--down"></div>
