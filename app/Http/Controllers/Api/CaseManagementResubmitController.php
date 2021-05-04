@@ -84,7 +84,7 @@ class CaseManagementResubmitController extends Controller
             return $item->resistance_pattern === '' && $item->method_used === '';
         })->map(function ($item) {
             return [
-                'label' => $item->label,
+                'label' => 'Month '.$item->count,
                 'date_collected' => $item->date_collected->format('d F Y'),
                 'smear_microscopy' => $item->smear_microscopy,
                 'tb_lamp' => $item->tb_lamp,
