@@ -217,13 +217,11 @@
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach($lpa as $a)
                     <tr class="table__row">
-                      <td class="table__details">{{ $a->label}}</td>
-                      <td class="table__details">{{ $a->date_collected->format('Y-m-d')}}</td>
-                      <td class="table__details">{{ $a->resistance_pattern }}</td>
+                      <td class="table__details">{{ empty($lpa->label) ? '' : $lpa->label}}</td>
+                      <td class="table__details">{{ empty($lpa->date_collected) ? '' : $lpa->date_collected->format('Y-m-d')}}</td>
+                      <td class="table__details">{{ empty($lpa->resistance_pattern) ? '' : $lpa->resistance_pattern }}</td>
                     </tr>
-                    @endforeach
                   </tbody>
                 </table>
               </div>
@@ -239,13 +237,11 @@
                     </tr>
                   </thead>
                   <tbody>
-                  @foreach($dst as $a)
                   <tr class="table__row">
-                      <td class="table__details">{{ $a->label}}</td>
-                      <td class="table__details">{{ $a->date_collected->format('Y-m-d')}}</td>
-                      <td class="table__details">{{ $a->resistance_pattern === 'Other (specify)' ? $a->others : $a->resistance_pattern}}</td>
+                      <td class="table__details">{{ $dst->label}}</td>
+                      <td class="table__details">{{ $dst->date_collected->format('Y-m-d')}}</td>
+                      <td class="table__details">{{ $dst->resistance_pattern === 'Other (specify)' ? $dst->others : $dst->resistance_pattern}}</td>
                     </tr>
-                  @endforeach
                     
                   </tbody>
                 </table>
