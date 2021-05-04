@@ -181,6 +181,7 @@ class CaseManagementBacteriologicalResults extends Model
             'form_id' => $form->id,
             'count' => $eee === 0 ? 'B' : $eee,
         ]);
+        CaseManagementBacteriologicalResults::where('form_id', $form->id)->where('count', '')->delete();
     }
 
     public function tbMacForm()
