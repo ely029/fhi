@@ -159,7 +159,7 @@ class CaseManagementController extends Controller
             return $item->label === 'DST';
         })->map(function ($item) {
             return [
-                'label' =>  Str::startsWith($item->label, 'Other (Specify)') ? $item->others : $item->label,
+                'label' => Str::startsWith($item->label, 'Other (Specify)') ? $item->others : $item->label,
                 'date_collected' => $item->date_collected->format('d F Y'),
                 'resistance_pattern' => $item->resistance_pattern,
             ];
