@@ -26,7 +26,7 @@ class EnrollmentRecommendationsController extends Controller
                 'patient_code' => $item->tbMacForms->patient->code,
                 'date_created' => $item->tbMacForms->created_at->format('M d, Y'),
                 'facility_code' => $item->tbMacForms->patient->facility_code,
-                'status' => $item->tbMacForms->status,
+                'status' => $item->status === '0' ? '' : $item->status,
                 'drug_susceptibility' => $item->tbMacForms->enrollmentForm->drug_susceptibility,
             ];
         });

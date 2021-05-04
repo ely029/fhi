@@ -57,22 +57,17 @@ class CaseManagementController extends Controller
         $request['submitted_by'] = auth()->user()->id;
         $form = TBMacForm::create($request);
         $request['form_id'] = $form->id;
-
         //Screening 1
         $caseManagementBactResult->screeningOneCreation($form, $request);
         //Screening 2
         $caseManagementBactResult->screeningTwoCreation($form, $request);
-
         //LPA
         $caseManagementBactResult->lpaCreation($form, $request);
-
         //DST
         $caseManagementBactResult->dstCreation($form, $request);
-
         if (isset($request['attachments'])) {
             $caseManagementAttachment->createAttachment($request, $form);
         }
-
         //Month DST
         $count = count(json_decode($request['month_dst'], true)) - 1;
         for ($eee = 0; $eee <= $count; $eee++) {
@@ -184,8 +179,7 @@ class CaseManagementController extends Controller
             ];
         }
         $data = [
-            'presentation_number' => $presentation_number, 'current_drug_susceptibility' => $current_drug_susceptibility, 'submitted_by' => $submitted_by, 'date_submitted' => $date_submitted, 'created_at' => $created_at,
-            'current_weight' => $current_weight, 'itr_drugs' => $itr_drugs, 'facility_code' => $facility_code, 'updated_type_of_case' => $updated_type_of_case, 'suggested_regimen_notes' => $suggested_regimen_notes, 'current_regiment' => $current_regimen, 'suggested_regimen' => $suggested_regimen, 'status' => $status, 'ct_scan_date' => $ct_scan_date, 'ct_scan_result' => $ct_scan_result, 'ultra_sound_date' => $ultra_sound_date, 'latest_comparative_cxr_reading' => $latest_comparative_cxr_reading, 'ultra_sound_result' => $ultra_sound_result, 'cxr_date' => $cxr_date, 'cxr_result' => $cxr_result, 'remarks' => $remarks, 'hispathological_date' => $histhopathological_date, 'hispathological_result' => $histhopathological_result, 'regimen_notes' => $regimen_notes, 'recommendations' => $recommendation, 'patient_code' => $patient_code, 'screening_one' => $screeningOne, 'screening_two' => $screeningTwo, 'attachments' => $attachments, 'lpa' => $lpa, 'dst' => $dst, 'monthly_screening' => $monthly_screening,
+            'presentation_number' => $presentation_number, 'current_drug_susceptibility' => $current_drug_susceptibility, 'submitted_by' => $submitted_by, 'date_submitted' => $date_submitted, 'created_at' => $created_at, 'current_weight' => $current_weight, 'itr_drugs' => $itr_drugs, 'facility_code' => $facility_code, 'updated_type_of_case' => $updated_type_of_case, 'suggested_regimen_notes' => $suggested_regimen_notes, 'current_regiment' => $current_regimen, 'suggested_regimen' => $suggested_regimen, 'status' => $status, 'ct_scan_date' => $ct_scan_date, 'ct_scan_result' => $ct_scan_result, 'ultra_sound_date' => $ultra_sound_date, 'latest_comparative_cxr_reading' => $latest_comparative_cxr_reading, 'ultra_sound_result' => $ultra_sound_result, 'cxr_date' => $cxr_date, 'cxr_result' => $cxr_result, 'remarks' => $remarks, 'hispathological_date' => $histhopathological_date, 'hispathological_result' => $histhopathological_result, 'regimen_notes' => $regimen_notes, 'recommendations' => $recommendation, 'patient_code' => $patient_code, 'screening_one' => $screeningOne, 'screening_two' => $screeningTwo, 'attachments' => $attachments, 'lpa' => $lpa, 'dst' => $dst, 'monthly_screening' => $monthly_screening,
         ];
         return response()->json($data);
     }
