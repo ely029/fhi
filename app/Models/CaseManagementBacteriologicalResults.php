@@ -115,7 +115,7 @@ class CaseManagementBacteriologicalResults extends Model
             'form_id' => $form->id,
             'date_collected' => ! isset($request['date_collected_screening_2']) ? Carbon::now()->timestamp : $request['date_collected_screening_2'],
             'resistance_pattern' => ! isset($request['ressitance_pattern_screening_2']) ? Carbon::now()->timestamp : $request['ressitance_pattern_screening_2'],
-            'method_used' => ! isset($request['method_used_screening_2']) ? Carbon::now()->timestamp  : $request['method_used_screening_2'],
+            'method_used' => ! isset($request['method_used_screening_2']) ? Carbon::now()->timestamp : $request['method_used_screening_2'],
             'cxr_date' => Carbon::now()->timestamp,
             'ct_scan_date' => Carbon::now()->timestamp,
             'histhopathological_date' => Carbon::now()->timestamp,
