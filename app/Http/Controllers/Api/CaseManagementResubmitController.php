@@ -10,6 +10,7 @@ use App\Models\CaseManagementBacteriologicalResults;
 use App\Models\CaseManagementLaboratoryResults;
 use App\Models\TBMacForm;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CaseManagementResubmitController extends Controller
 {
@@ -66,7 +67,7 @@ class CaseManagementResubmitController extends Controller
             return $item->label === 'LPA';
         })->map(function ($item) {
             return [
-                'label' => $item->label,
+                'label' => Str::startsWith($item->label, 'Other (Specify)') ? $item->others : $item->label,
                 'date_collected' => $item->date_collected->format('d F Y'),
                 'resistance_pattern' => $item->resistance_pattern,
             ];
@@ -75,7 +76,7 @@ class CaseManagementResubmitController extends Controller
             return $item->label === 'DST';
         })->map(function ($item) {
             return [
-                'label' => $item->label,
+                'label' => Str::startsWith($item->label, 'Other (Specify)') ? $item->others : $item->label,
                 'date_collected' => $item->date_collected->format('d F Y'),
                 'resistance_pattern' => $item->resistance_pattern,
             ];
@@ -101,15 +102,7 @@ class CaseManagementResubmitController extends Controller
         }
 
         $data = [
-            'presentation_number' => $presentation_number, 'current_drug_susceptibility' => $current_drug_susceptibility, 'submitted_by' => $submitted_by, 'date_submitted' => $date_submitted, 'created_at' => $created_at,
-            'current_weight' => $current_weight, 'itr_drugs' => $itr_drugs, 'facility_code' => $facility_code, 'updated_type_of_case' => $updated_type_of_case, 'suggested_regimen_notes' => $suggested_regimen_notes, 'current_regiment' => $current_regimen, 'suggested_regimen' => $suggested_regimen, 'status' => $status, 'ct_scan_date' => $ct_scan_date, 'ct_scan_result' => $ct_scan_result, 'ultra_sound_date' => $ultra_sound_date, 'latest_comparative_cxr_reading' => $latest_comparative_cxr_reading, 'cxr_date' => $cxr_date, 'cxr_result' => $cxr_result, 'remarks' => $remarks, 'ultra_sound_result' => $ultra_sound_result, 'hispathological_date' => $histhopathological_date, 'hispathological_result' => $histhopathological_result, 'regimen_notes' => $regimen_notes,
-            'patient_code' => $patient_code,
-            'screening_one' => $screeningOne,
-            'screening_two' => $screeningTwo,
-            'attachments' => $attachments,
-            'lpa' => $lpa,
-            'dst' => $dst,
-            'monthly_screening' => $monthly_screening,
+            'presentation_number' => $presentation_number, 'current_drug_susceptibility' => $current_drug_susceptibility, 'submitted_by' => $submitted_by, 'date_submitted' => $date_submitted, 'created_at' => $created_at, 'current_weight' => $current_weight, 'itr_drugs' => $itr_drugs, 'facility_code' => $facility_code, 'updated_type_of_case' => $updated_type_of_case, 'suggested_regimen_notes' => $suggested_regimen_notes, 'current_regiment' => $current_regimen, 'suggested_regimen' => $suggested_regimen, 'status' => $status, 'ct_scan_date' => $ct_scan_date, 'ct_scan_result' => $ct_scan_result, 'ultra_sound_date' => $ultra_sound_date, 'latest_comparative_cxr_reading' => $latest_comparative_cxr_reading, 'cxr_date' => $cxr_date, 'cxr_result' => $cxr_result, 'remarks' => $remarks, 'ultra_sound_result' => $ultra_sound_result, 'hispathological_date' => $histhopathological_date, 'hispathological_result' => $histhopathological_result, 'regimen_notes' => $regimen_notes, 'patient_code' => $patient_code, 'screening_one' => $screeningOne, 'screening_two' => $screeningTwo, 'attachments' => $attachments, 'lpa' => $lpa, 'dst' => $dst, 'monthly_screening' => $monthly_screening,
         ];
 
         return response()->json($data);
@@ -128,6 +121,10 @@ class CaseManagementResubmitController extends Controller
         $tbMacForm->patient->update($request);
         $tbMacForm->update($request);
         $tbMacForm->caseManagementForm->update($request);
+        //LPA
+        $caseManagementBactResult->lpaUpdate($tbMacForm, $request);
+        //DST
+        $caseManagementBactResult->dstUpdate($tbMacForm, $request);
         //Screening 1
         $caseManagementBactResult->screeningOneUpdate($tbMacForm, $request);
         //Screening 2
@@ -144,6 +141,7 @@ class CaseManagementResubmitController extends Controller
             $caseManagementAttachment->createAttachment($request, $tbMacForm);
         }
         $request['cxr_reading'] = $request['cxr_reading'] ?? null;
+        $request['itr_drugs'] = ! isset($request['itr_drugs']) ? '' : $request['itr_drugs'];
         unset($request['remarks']);
         $tbMacForm->caseManagementLaboratoryResult->update($request);
         return response()->json('Case Management Resubmit Successfully');

@@ -69,12 +69,35 @@ class CaseManagementBacteriologicalResults extends Model
             'date_collected' => ! isset($request['date_collected_lpa']) ? Carbon::now()->timestamp : $request['date_collected_lpa'],
             'resistance_pattern' => ! isset($request['resistance_pattern_lpa']) ? '' : $request['resistance_pattern_lpa'],
             'form_id' => $form->id,
+            'others' => ! isset($request['others_lpa']) ? '' : $request['others_lpa'],
+        ]);
+    }
+
+    public function lpaUpdate($form, $request)
+    {
+        CaseManagementBacteriologicalResults::where('form_id', $form->id)->update([
+            'label' => 'LPA',
+            'date_collected' => ! isset($request['date_collected_lpa']) ? Carbon::now()->timestamp : $request['date_collected_lpa'],
+            'resistance_pattern' => ! isset($request['resistance_pattern_lpa']) ? '' : $request['resistance_pattern_lpa'],
+            'form_id' => $form->id,
+            'others' => ! isset($request['others_lpa']) ? '' : $request['others_lpa'],
         ]);
     }
 
     public function dstCreation($form, $request)
     {
         CaseManagementBacteriologicalResults::create([
+            'label' => 'DST',
+            'date_collected' => ! isset($request['date_collected_dst']) ? Carbon::now()->timestamp : $request['date_collected_dst'],
+            'resistance_pattern' => ! isset($request['resistance_pattern_dst']) ? '' : $request['resistance_pattern_dst'],
+            'form_id' => $form->id,
+            'others' => ! isset($request['others_bacteriological_results']) ? '' : $request['others_bacteriological_results'],
+        ]);
+    }
+
+    public function dstUpdate($form, $request)
+    {
+        CaseManagementBacteriologicalResults::where('form_id', $form->id)->update([
             'label' => 'DST',
             'date_collected' => ! isset($request['date_collected_dst']) ? Carbon::now()->timestamp : $request['date_collected_dst'],
             'resistance_pattern' => ! isset($request['resistance_pattern_dst']) ? '' : $request['resistance_pattern_dst'],
@@ -114,8 +137,8 @@ class CaseManagementBacteriologicalResults extends Model
             'label' => 'Screening 2',
             'form_id' => $form->id,
             'date_collected' => ! isset($request['date_collected_screening_2']) ? Carbon::now()->format('Y-m-d') : $request['date_collected_screening_2'],
-            'resistance_pattern' => $request['ressitance_pattern_screening_2'] ?? null,
-            'method_used' => $request['method_used_screening_2'] ?? null,
+            'resistance_pattern' => ! isset($request['ressitance_pattern_screening_2']) ? '' : $request['ressitance_pattern_screening_2'],
+            'method_used' => ! isset($request['method_used_screening_2']) ? '' : $request['method_used_screening_2'],
             'cxr_date' => Carbon::now()->timestamp,
             'ct_scan_date' => Carbon::now()->timestamp,
             'histhopathological_date' => Carbon::now()->timestamp,
@@ -128,8 +151,8 @@ class CaseManagementBacteriologicalResults extends Model
         CaseManagementBacteriologicalResults::where(['form_id' => $form->id, 'label' => 'Screening 2'])->update([
             'label' => 'Screening 2',
             'date_collected' => ! isset($request['date_collected_screening_2']) ? Carbon::now()->format('Y-m-d') : $request['date_collected_screening_2'],
-            'resistance_pattern' => $request['ressitance_pattern_screening_2'] ?? null,
-            'method_used' => $request['method_used_screening_2'] ?? null,
+            'resistance_pattern' => ! isset($request['ressitance_pattern_screening_2']) ? '' : $request['ressitance_pattern_screening_2'],
+            'method_used' => ! isset($request['method_used_screening_2']) ? '' : $request['method_used_screening_2'],
         ]);
     }
 
@@ -156,6 +179,7 @@ class CaseManagementBacteriologicalResults extends Model
             'tb_lamp' => $item[$eee]['tb_lamp'],
             'culture' => $item[$eee]['culture'],
             'form_id' => $form->id,
+            'count' => $request['count'][$eee],
         ]);
     }
 
