@@ -109,9 +109,9 @@
         </tbody>
     </table>
     </div>
-    {{--<div id="count">
+    <div id="count">
         <input type="hidden" value="B" name="count[]"/>
-    </div> --}}
+    </div> 
     <div class="form__container form-step-2">
     <table class="table table--unset js-table-unset js-table-rows" id="m-screening">
         <thead>
@@ -125,7 +125,7 @@
         </thead>
         <tbody id="screenings">
         <tr class="table__row">
-            <td class="table__details"><span class="base">B</span><span></span></td>
+            <td class="table__details"><span class="base-letter">B</span><span class="counter"></span></td>
             <td class="table__details"><input class="form__input form__input--full" type="date" name="date_collected[]" /></td>
             <td class="table__details">
             <div class="form__content">
@@ -163,7 +163,7 @@
         </tr>
         </tbody>
     </table>
-    <button class="button button--transparent button--add js-add-row" id="case-management-add-button" type="button">Add more</button>
+    <button class="button button--transparent button--add" id="case-management-add-button" type="button">Add more</button>
     </div>
     <div class="form__button form__button--space form__button--pagination"><button class="button button--back" type="button">Back</button><button class="button button--next" type="button">Next</button></div>
 </div>

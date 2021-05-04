@@ -21,6 +21,7 @@ class ResubmitCaseManagementController extends Controller
     public function reSubmit(TBMacForm $tbMacForm)
     {
         $request = request()->all();
+        dd($request);
         unset($request['_token']);
         $request['first_name'] = '';
         $request['last_name'] = '';

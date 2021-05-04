@@ -218,6 +218,9 @@ function suggested_regimen()
         'Regimen 7a SLOR FQ-R',
         'Regimen 7b SLOR FQ-R',
         'Regimen 7c SLOR FQ-R',
+        'ITR',
+        'BPaL',
+        'Other (Specify)',
     ];
 }
 

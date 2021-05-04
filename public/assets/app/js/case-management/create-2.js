@@ -76,4 +76,19 @@ $('#others').hide();
         }
     });
 
+    $("#case-management-add-button").click(function(){
+        var e = $('#m-screening tbody tr').length;
+        if (e <= 20) {
+            $('#m-screening tbody').append($('#m-screening tbody tr').last().clone());
+            $('#m-screening tbody tr').last().attr('id', 'counter-'+e);
+            $('#m-screening tbody tr .base-letter').last().html('');
+            $('#m-screening tbody tr .counter').last().html(e);
+            $('#m-screening tbody tr img').last().attr('id', 'close-image-ms-'+e);
+            $('#count').append('<input type="hidden" id='+ e +' name="count[]" value='+ e +'>');
+        }
+        else {
+            alert('allows only 20 months');
+        }
+    });
+
 });

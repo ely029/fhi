@@ -25,7 +25,7 @@
     <div class="form__container form-step-3">
     <h2 class="section__heading"></h2>
     <div class="form__content">
-        <select class="form__input form__input--select" name="suggested_regimen">
+        <select class="form__input form__input--select" id="suggested_regimen" name="suggested_regimen">
         @foreach(suggested_regimen() as $sr)
         <option value="{{ $sr }}" {{$tbMacForm->caseManagementForm->suggested_regimen === $sr ? 'selected' : ''}}>{{ $sr }}</option>
         @endforeach
@@ -33,6 +33,16 @@
         <div class="triangle triangle--down"></div>
         <label class="form__label" for="">Suggested regiment</label>
     </div>
+    @if ($tbMacForm->caseManagementForm->suggested_regimen == 'Other (Specify)')
+    <div class="form__content" id="others_1">
+    <input class="form__input" name="others_case_management" type="text" placeholder="Others (Please specify)" value="{{ $tbMacForm->caseManagementForm->others }}"/><label class="form__label" for="">Others</label>
+    </div>
+    @endif
+    @if ($tbMacForm->caseManagementForm->suggested_regimen == 'ITR')
+    <div class="form__content" id="itr_drugs_1">
+    <input class="form__input" name="itr_drugs" type="text" value="{{ $tbMacForm->caseManagementForm->others }}" placeholder="Please specify (+ITR is chosen)"/><label class="form__label" for="">ITR drugs</label>
+    </div>
+    @endif
     <div class="form__content form-group">
     <div class="help-block with-errors"></div>
     <input class="form__input" name="itr_drugs" value="{{$tbMacForm->caseManagementForm->itr_drugs}}" required type="text" placeholder="Please specify (+ITR is chosen)"/><label class="form__label" for="">ITR drugs</label>

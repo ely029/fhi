@@ -112,7 +112,7 @@
         <option>Female</option>
         </select>
         <div class="triangle triangle--down"></div>
-        <label class="form__label" for="">Gender</label>
+        <label class="form__label" for="">Sex</label>
     </div>
     </div>
     <div class="grid grid--two form-step-1">

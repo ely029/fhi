@@ -94,7 +94,7 @@
             <td class="table__details">
             <div class="form__content">
             <select id="rest_pattern_3" class="form__input form__input--select form__input--full" name="resistance_pattern_lpa">
-                @foreach(resistance_pattern() as $pattern)
+                @foreach(LPA() as $pattern)
                 <option value="{{ $pattern }}" {{ $lpa ? ($lpa->resistance_pattern === $pattern ? 'selected': '') : ''}}>{{ $pattern }}</option>
                 @endforeach
                 </select>
@@ -109,8 +109,8 @@
             <td class="table__details"><input class="form__input form__input--full" value="{{ $dst ? $dst->date_collected->format('Y-m-d') : '' }}" type="date" name="date_collected_dst" /></td>
             <td class="table__details">
             <div class="form__content">
-            <select id="rest_pattern_3" class="form__input form__input--select form__input--full" name="resistance_pattern_dst">
-                @foreach(resistance_pattern() as $pattern)
+            <select id="rest_pattern_4" class="form__input form__input--select form__input--full" name="resistance_pattern_dst">
+                @foreach(DST() as $pattern)
                 <option value="{{ $pattern }}" {{ $dst ? ($dst->resistance_pattern === $pattern ? 'selected': '') : ''}}>{{ $pattern }}</option>
                 @endforeach
                 </select>
@@ -118,12 +118,24 @@
             </div>
             </td>
         </tr>
+        <tr id="others">
+            <td></td>
+            <td>
+                <span>Others (Please Specify)</span>
+                <br/>
+                <input type="text" name="others_bacteriological_results"></td>
+        </tr>
             {{-- @endforeach --}}
         </tbody>
     </table>
     </div>
+    <div id="count">
+    @foreach($monthlyScreening as $ms)
+        <input type="hidden" value="{{ $ms->count }}" id="{{ $ms->count }}" name="count[]"/>
+    @endforeach
+    </div>
     <div class="form__container form-step-2">
-    <table class="table table--unset js-table-unset js-table-rows">
+    <table class="table table--unset js-table-unset js-table-rows" id="m-screening">
         <thead>
         <tr>
             <th class="table__head">Month</th>
@@ -133,10 +145,10 @@
             <th class="table__head">Culture</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody id="screenings">
         @foreach($monthlyScreening as $ms)
         <tr class="table__row">
-        <td class="table__details">{{ $ms->label }}</td>
+        <td class="table__details"><Sspan class="counter">{{ $ms->count }}</Sspan></td>
             <td class="table__details"><input class="form__input form__input--full" value="{{ $ms->date_collected->format('Y-m-d') }}" type="date" name="date_collected[]" /></td>
             <td class="table__details">
             <div class="form__content">
@@ -172,7 +184,7 @@
         @endforeach
         </tbody>
     </table>
-    <button class="button button--transparent button--add js-add-row" type="button">Add more</button>
+    <button class="button button--transparent button--add" id="case-management-add-button" type="button">Add more</button>
     </div>
     <div class="form__button form__button--space form__button--pagination"><button class="button button--back" type="button">Back</button><button class="button button--next" type="button">Next</button></div>
 </div>
