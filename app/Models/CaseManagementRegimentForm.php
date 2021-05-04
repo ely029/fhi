@@ -70,4 +70,9 @@ class CaseManagementRegimentForm extends Model
         'case_number',
         'others',
     ];
+
+    public function getCurrentDrugSusceptibilityAttribute($value)
+    {
+        return $value == 'Drug-susceptible (for enrollment note)' ? 'Drug-susceptible' : $value;
+    }
 }
