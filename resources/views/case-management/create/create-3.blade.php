@@ -62,7 +62,7 @@
     <div class="grid grid--two">
         <div class="form__content">
         <select class="form__input form__input--select" name="updated_type_of_case">
-            <option value="Drug-susceptibility">Drug-susceptibility</option>
+            <option value="Drug-susceptible">Drug-susceptible</option>
             <option value="Bacteriologically-confirmed RR-TB">Bacteriologically-confirmed RR-TB</option>
             <option value="Bacteriologically-confirmed MDR-TB">Bacteriologically-confirmed MDR-TB</option>
             <option value="Bacteriologically-confirmed Pre-XDR-TB">Bacteriologically-confirmed Pre-XDR-TB</option>
