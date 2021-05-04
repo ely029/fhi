@@ -73,6 +73,6 @@ class CaseManagementRegimentForm extends Model
 
     public function getCurrentDrugSusceptibilityAttribute($value)
     {
-        return $value == 'Drug-susceptible (for enrollment note)' ? 'Drug-susceptible' : $value;
+        return $value === 'Drug-susceptible (for enrollment note)' ? 'Drug-susceptible' : $value;
     }
 }
