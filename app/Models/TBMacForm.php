@@ -212,13 +212,13 @@ class TBMacForm extends Model
 
     public function lpa()
     {
-        return $this->hasMany(CaseManagementBacteriologicalResults::class, 'form_id')
+        return $this->hasOne(CaseManagementBacteriologicalResults::class, 'form_id')
             ->where('label', 'LPA');
     }
 
     public function dst()
     {
-        return $this->hasMany(CaseManagementBacteriologicalResults::class, 'form_id')
+        return $this->hasOne(CaseManagementBacteriologicalResults::class, 'form_id')
             ->where('label', 'DST')
             ->where('smear_microscopy', '');
     }
