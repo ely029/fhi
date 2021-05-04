@@ -85,8 +85,8 @@ class CaseManagementBacteriologicalResults extends Model
         CaseManagementBacteriologicalResults::create([
             'label' => 'Screening 1',
             'form_id' => $form->id,
-            'date_collected' => $request['date_collected_screening_1'],
-            'resistance_pattern' => $request['ressitance_pattern_screening_1'],
+            'date_collected' => ! isset($request['date_collected_screening_1']) ? '' : $request['date_collected_screening_1'],
+            'resistance_pattern' => ! isset($request['ressitance_pattern_screening_1']) ? '' : $request['date_collected_screening_1'],
             'method_used' => ! isset($request['method_used_screening_1']) ? '' : $request['method_used_screening_1'],
             'cxr_date' => Carbon::now()->timestamp,
             'ct_scan_date' => Carbon::now()->timestamp,
@@ -99,8 +99,8 @@ class CaseManagementBacteriologicalResults extends Model
     {
         CaseManagementBacteriologicalResults::where(['form_id' => $form->id, 'label' => 'Screening 1'])->update([
             'label' => 'Screening 1',
-            'date_collected' => $request['date_collected_screening_1'],
-            'resistance_pattern' => $request['ressitance_pattern_screening_1'],
+            'date_collected' => ! isset($request['date_collected_screening_1']) ? '' : $request['date_collected_screening_1'],
+            'resistance_pattern' => ! isset($request['ressitance_pattern_screening_1']) ? '' : $request['ressitance_pattern_screening_1'],
             'method_used' => ! isset($request['method_used_screening_1']) ? '' : $request['method_used_screening_1'],
         ]);
     }

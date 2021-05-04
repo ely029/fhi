@@ -243,6 +243,36 @@ function latest_comparative_cxr_reading()
     ];
 }
 
+function DST()
+{
+    return [
+        'H-Susceptible',
+        'H-Resistance',
+        'H-Not Done',
+        'R-Susceptible',
+        'R-Resistance',
+        'E-Susceptible',
+        'E-Resistant',
+        'E-Not Done',
+        'Z-Susceptible',
+        'Z-Resistant',
+        'Z-Not done',
+        'Mfx-Susceptible',
+        'Mfx-Resistant',
+        'Mfx-Not done',
+        'Lfx-Susceptible',
+        'Lfx-Resistant',
+        'Lfx-Not done',
+        'S-Susceptible',
+        'S-Resistant',
+        'S-Not Done',
+        'Am-Susceptible',
+        'Am-Resistant',
+        'Am-Not Done',
+        'Other (specify)',
+    ];
+}
+
 function roleNameById()
 {
     return [
