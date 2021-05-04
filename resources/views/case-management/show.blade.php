@@ -261,7 +261,7 @@
                   <tbody>
                     @foreach($monthlyScreening as $a)
                     <tr class="table__row">
-                      <td class="table__details">{{$a->label}}</td>
+                      <td class="table__details">{{$a->count}}</td>
                       <td class="table__details">{{$a->date_collected->format('Y-m-d')}}</td>
                       <td class="table__details">{{$a->smear_microscopy}}</td>
                       <td class="table__details">{{$a->tb_lamp}}</td>

@@ -55,6 +55,7 @@ class CaseManagementBacteriologicalResults extends Model
         'tb_lamp',
         'culture',
         'others',
+        'count',
     ];
 
     protected $dates = [
@@ -141,6 +142,7 @@ class CaseManagementBacteriologicalResults extends Model
             'tb_lamp' => $request['tb_lamp'][$eee],
             'culture' => $request['culture'][$eee],
             'form_id' => $form->id,
+            'count' => $request['count'][$eee],
         ]);
     }
 
