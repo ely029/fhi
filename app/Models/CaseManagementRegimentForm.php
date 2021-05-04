@@ -68,5 +68,6 @@ class CaseManagementRegimentForm extends Model
         'suggested_regimen_notes',
         'remarks',
         'case_number',
+        'others',
     ];
 }

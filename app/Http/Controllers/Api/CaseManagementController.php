@@ -22,7 +22,7 @@ class CaseManagementController extends Controller
             ->with('patient', 'caseManagementForm')
             ->filter($tBMacFormFilters)
             ->where($this->getDynamicQuery()['condition'], $this->getDynamicQuery()['value'])
-            ->orderBy('created_at')->paginate(10);
+            ->orderByDesc('created_at')->paginate(10);
 
         $data = $caseManagement->map(function ($item) {
             return [

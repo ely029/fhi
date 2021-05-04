@@ -46,7 +46,7 @@
         <input class="form__input" type="text" required name="ultra_sound_result" placeholder="Ultrasound result" /><label class="form__label" for="">Ultrasound result</label></div>
         </div>
     </div>
-    <div class="form__container form-step-3">
+    <div class="form__container form-step-4">
         <div class="grid">
         <div class="form__content form-group form__content--small form__content--small__right">
         <div class="help-block with-errors"></div>

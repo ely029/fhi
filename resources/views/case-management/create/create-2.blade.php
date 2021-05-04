@@ -77,9 +77,9 @@
             <td class="table__details">
             <div class="form__content">
             <select id="rest_pattern_3" class="form__input form__input--select form__input--full" name="resistance_pattern_lpa">
-                <option value="For Xpert MTB/RIF">Xpert MTB/RIF</option>
-                <option value="For Xpert MTB/RIF ULTRA">Xpert MTB/RIF ULTRA</option>
-                <option value="Truenat">Truenat</option>
+            @foreach(LPA() as $lpa)
+                <option value="{{ $lpa }}">{{ $lpa }}</option>
+                @endforeach
                 </select>
                 <div class="triangle triangle--down"></div>
             </div>
@@ -91,13 +91,20 @@
             <td class="table__details">
             <div class="form__content">
             <select id="rest_pattern_4" class="form__input form__input--select form__input--full" name="resistance_pattern_dst">
-                <option value="For Xpert MTB/RIF">Xpert MTB/RIF</option>
-                <option value="For Xpert MTB/RIF ULTRA">Xpert MTB/RIF ULTRA</option>
-                <option value="Truenat">Truenat</option>
+                @foreach(DST() as $dst)
+                <option value="{{ $dst}}">{{ $dst }}</option>
+                @endforeach
                 </select>
                 <div class="triangle triangle--down"></div>
             </div>
             </td>
+        </tr>
+        <tr id="others">
+            <td></td>
+            <td>
+                <span>Others (Please Specify)</span>
+                <br/>
+                <input type="text" name="others_bacteriological_results"></td>
         </tr>
         </tbody>
     </table>

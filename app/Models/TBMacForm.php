@@ -186,7 +186,7 @@ class TBMacForm extends Model
 
     public function screenOne()
     {
-        return $this->hasMany(CaseManagementBacteriologicalResults::class, 'form_id')
+        return $this->hasOne(CaseManagementBacteriologicalResults::class, 'form_id')
             ->where('label', 'Screening 1')
             ->where('smear_microscopy', '')
             ->where('tb_lamp', '')
@@ -203,7 +203,7 @@ class TBMacForm extends Model
 
     public function screenTwo()
     {
-        return $this->hasMany(CaseManagementBacteriologicalResults::class, 'form_id')
+        return $this->hasOne(CaseManagementBacteriologicalResults::class, 'form_id')
             ->where('label', 'Screening 2')
             ->where('smear_microscopy', '')
             ->where('tb_lamp', '')
@@ -212,13 +212,13 @@ class TBMacForm extends Model
 
     public function lpa()
     {
-        return $this->hasMany(CaseManagementBacteriologicalResults::class, 'form_id')
+        return $this->hasOne(CaseManagementBacteriologicalResults::class, 'form_id')
             ->where('label', 'LPA');
     }
 
     public function dst()
     {
-        return $this->hasMany(CaseManagementBacteriologicalResults::class, 'form_id')
+        return $this->hasOne(CaseManagementBacteriologicalResults::class, 'form_id')
             ->where('label', 'DST')
             ->where('smear_microscopy', '');
     }

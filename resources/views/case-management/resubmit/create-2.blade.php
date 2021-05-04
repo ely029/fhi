@@ -19,15 +19,15 @@
                   $monthlyScreening = $tbMacForm->monthlyScreening;
         @endphp
         <tr class="table__row">
-            @foreach($screenone as $one)
-            <td class="table__details">{{ $one->label }}</td>
+            {{-- @foreach($screenone as $one) --}}
+            <td class="table__details">{{ $screenone->label }}</td>
             <td class="table__details">
-            <input class="form__input form__input--full" type="date" value="{{ $one->date_collected->format('Y-m-d')}}" name="date_collected_screening_1" /></td>
+            <input class="form__input form__input--full" type="date" value="{{ $screenone ? $screenone->date_collected->format('Y-m-d') : ''}}" name="date_collected_screening_1" /></td>
             <td class="table__details">
             <div class="form__content">
                 <select id="rest_pattern_1" class="form__input form__input--select form__input--full" name="ressitance_pattern_screening_1">
                 @foreach(resistance_pattern() as $pattern)
-                <option value="{{ $pattern }}" {{$one->label === $pattern ? 'selected' : ''}}>{{ $pattern }}</option>
+                <option value="{{ $pattern }}" {{$screenone ? ($screenone->resistance_pattern === $pattern ? 'selected' : '') : ''}}>{{ $pattern }}</option>
                 @endforeach
                 </select>
                 <div class="triangle triangle--down"></div>
@@ -37,25 +37,26 @@
             <div class="form__content form-group">
                 <select id="method_used_1" class="form__input form__input--select form__input--full" name="method_used_screening_1">
                 @foreach(method_used() as $method)
-                <option value="{{ $method }}" {{ $one->method_used === $method ? 'selected': ''}}>{{ $method }}</option>
+                <option value="{{ $method }}" {{ $screenone ? ($screenone->method_used === $method ? 'selected': '') : ''}}>{{ $method }}</option>
                 @endforeach
                 </select>
                 <div class="triangle triangle--down"></div>
             </div>
             </td>
-            @endforeach
+            {{-- @endforeach --}}
             
         </tr>
         <tr class="table__row">
-        @foreach($screenTwo as $one)
-            <td class="table__details">{{ $one->label }}</td>
+        {{-- @foreach($screenTwo as $one) --}}
+        
+            <td class="table__details">Screening 2</td>
             <td class="table__details">
-            <input class="form__input form__input--full" type="date" value="{{ $one->date_collected->format('Y-m-d')}}" name="date_collected_screening_2" /></td>
+            <input class="form__input form__input--full" type="date" value="{{ $screenTwo ? $screenTwo->date_collected->format('Y-m-d') : ''}}" name="date_collected_screening_2" /></td>
             <td class="table__details">
             <div class="form__content">
                 <select id="rest_pattern_1" class="form__input form__input--select form__input--full" name="ressitance_pattern_screening_2">
                 @foreach(resistance_pattern() as $pattern)
-                <option value="{{ $pattern }}" {{$one->label === $pattern ? 'selected' : ''}}>{{ $pattern }}</option>
+                <option value="{{ $pattern }}" {{ $screenTwo ? ($screenTwo->resistance_pattern === $pattern ? 'selected' : '') : ''}}>{{ $pattern }}</option>
                 @endforeach
                 </select>
                 <div class="triangle triangle--down"></div>
@@ -65,13 +66,13 @@
             <div class="form__content form-group">
                 <select id="method_used_1" class="form__input form__input--select form__input--full" name="method_used_screening_2">
                 @foreach(method_used() as $method)
-                <option value="{{ $method }}" {{ $one->method_used === $method ? 'selected': ''}}>{{ $method }}</option>
+                <option value="{{ $method }}" {{ $screenTwo ? ($screenTwo->method_used === $method ? 'selected': '') : ''}}>{{ $method }}</option>
                 @endforeach
                 </select>
                 <div class="triangle triangle--down"></div>
             </div>
             </td>
-            @endforeach
+            {{-- @endforeach --}}
         </tr>
         </tbody>
     </table>
@@ -86,38 +87,38 @@
         </tr>
         </thead>
         <tbody>
-            @foreach($lpa as $lpa)
+            {{-- @foreach($lpa as $lpa) --}}
             <tr class="table__row">
-            <td class="table__details">{{ $lpa->label }}</td>
-            <td class="table__details"><input class="form__input form__input--full" value="{{ $lpa->date_collected->format('Y-m-d')}}" type="date" name="date_collected_lpa" /></td>
+            <td class="table__details">LPA</td>
+            <td class="table__details"><input class="form__input form__input--full" value="{{ $lpa ? $lpa->date_collected->format('Y-m-d') : ''}}" type="date" name="date_collected_lpa" /></td>
             <td class="table__details">
             <div class="form__content">
             <select id="rest_pattern_3" class="form__input form__input--select form__input--full" name="resistance_pattern_lpa">
                 @foreach(resistance_pattern() as $pattern)
-                <option value="{{ $pattern }}" {{ $one->resistance_pattern === $pattern ? 'selected': ''}}>{{ $pattern }}</option>
+                <option value="{{ $pattern }}" {{ $lpa ? ($lpa->resistance_pattern === $pattern ? 'selected': '') : ''}}>{{ $pattern }}</option>
                 @endforeach
                 </select>
                 <div class="triangle triangle--down"></div>
             </div>
             </td>
         </tr>
-            @endforeach
-            @foreach($dst as $dst)
+            {{-- @endforeach --}}
+            {{-- @foreach($dst as $dst) --}}
             <tr class="table__row">
-            <td class="table__details">{{ empty($dst->label) ? '' : $dst->label }}</td>
-            <td class="table__details"><input class="form__input form__input--full" value="{{ empty($dst->date_collected) ? '' : $dst->date_collected->format('Y-m-d')}}" type="date" name="date_collected_dst" /></td>
+            <td class="table__details">DST</td>
+            <td class="table__details"><input class="form__input form__input--full" value="{{ $dst ? $dst->date_collected->format('Y-m-d') : '' }}" type="date" name="date_collected_dst" /></td>
             <td class="table__details">
             <div class="form__content">
             <select id="rest_pattern_3" class="form__input form__input--select form__input--full" name="resistance_pattern_dst">
                 @foreach(resistance_pattern() as $pattern)
-                <option value="{{ $pattern }}" {{ $one->resistance_pattern === $pattern ? 'selected': ''}}>{{ $pattern }}</option>
+                <option value="{{ $pattern }}" {{ $dst ? ($dst->resistance_pattern === $pattern ? 'selected': '') : ''}}>{{ $pattern }}</option>
                 @endforeach
                 </select>
                 <div class="triangle triangle--down"></div>
             </div>
             </td>
         </tr>
-            @endforeach
+            {{-- @endforeach --}}
         </tbody>
     </table>
     </div>

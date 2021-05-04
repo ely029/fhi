@@ -86,6 +86,8 @@ class CaseManagementController extends Controller
             $caseManagementBactResult->monthDSTCreation($screen, $eee, $request, $form);
         }
         $request['cxr_date'] = ! isset($request['cxr_date']) ? '' : $request['cxr_date'];
+        $request['itr_drugs'] = ! isset($request['itr_drugs']) ? '' : $request['itr_drugs'];
+        $request['others'] = ! isset($request['others_case_management']) ? '' : $request['others_case_management'];
         $form->caseManagementForm()->create($request);
         unset($request['remarks']);
         $form->caseManagementLaboratoryResults()->create($request);
@@ -98,10 +100,10 @@ class CaseManagementController extends Controller
     private function getHealthCareWorkerIndex($cases)
     {
         $forApproval = $cases->filter(function ($item) {
-            return $item->status === 'For Approval';
+            return $item->status === 'For approval';
         });
         $otherSuggestion = $cases->filter(function ($item) {
-            return $item->status === 'Other Suggestion';
+            return $item->status === 'Other suggestions';
         });
         $needFurtherDetails = $cases->filter(function ($item) {
             return $item->status === 'Need Further Details';

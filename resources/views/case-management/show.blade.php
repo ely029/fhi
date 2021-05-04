@@ -67,7 +67,7 @@
                         <label class="form__label" for="">Month of treatment</label></div>
                     <div class="form__content">{{ empty($tbMacForm->casemanagementForm->current_drug_susceptibility) ? '' : $tbMacForm->casemanagementForm->current_drug_susceptibility}}<span class="form__text">
                         </span>
-                        <label class="form__label" for="">Updated drug susceptibility</label>
+                        <label class="form__label" for="">Current drug susceptibility</label>
                     </div>
                   </div>
                 </div>
@@ -191,22 +191,18 @@
                   $dst = $tbMacForm->dst;
                   $monthlyScreening = $tbMacForm->monthlyScreening;
                   @endphp
-                  @foreach($screenone as $screen)
                   <tr class="table__row">
-                      <td class="table__details">{{$screen->label}}</td>
-                      <td class="table__details">{{ $screen->date_collected->format('Y-m-d') }}</td>
-                      <td class="table__details">{{ $screen->resistance_pattern }}</td>
-                      <td class="table__details">{{$screen->method_used }}</td>
+                      <td class="table__details">{{ empty($screenone->label) ? '' : $screenone->label}}</td>
+                      <td class="table__details">{{ empty($screenone->date_collected) ? '' : $screenone->date_collected->format('Y-m-d') }}</td>
+                      <td class="table__details">{{ empty($screenone->resistance_pattern) ? '' : $screenone->resistance_pattern }}</td>
+                      <td class="table__details">{{ empty($screenone->method_used) ? '' : $screenone->method_used }}</td>
                     </tr>
-                  @endforeach
-                    @foreach($screenTwo as $screen)
                     <tr class="table__row">
-                      <td class="table__details">{{$screen->label}}</td>
-                      <td class="table__details">{{ $screen->date_collected->format('Y-m-d') }}</td>
-                      <td class="table__details">{{ $screen->resistance_pattern }}</td>
-                      <td class="table__details">{{$screen->method_used }}</td>
+                      <td class="table__details">{{ empty($screenTwo->label) ? '' : $screenTwo->label}}</td>
+                      <td class="table__details">{{ empty($screenTwo->date_collected) ? '' : $screenTwo->date_collected->format('Y-m-d') }}</td>
+                      <td class="table__details">{{ empty($screenTwo->resistance_pattern) ? '' : $screenTwo->resistance_pattern }}</td>
+                      <td class="table__details">{{ empty($screenTwo->method_used) ? '' : $screenTwo->method_used }}</td>
                     </tr>
-                    @endforeach
                   </tbody>
                 </table>
               </div>
@@ -221,13 +217,11 @@
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach($lpa as $a)
                     <tr class="table__row">
-                      <td class="table__details">{{ $a->label}}</td>
-                      <td class="table__details">{{ $a->date_collected->format('Y-m-d')}}</td>
-                      <td class="table__details">{{ $a->resistance_pattern }}</td>
+                      <td class="table__details">{{ empty($lpa->label) ? '' : $lpa->label}}</td>
+                      <td class="table__details">{{ empty($lpa->date_collected) ? '' : $lpa->date_collected->format('Y-m-d')}}</td>
+                      <td class="table__details">{{ empty($lpa->resistance_pattern) ? '' : $lpa->resistance_pattern }}</td>
                     </tr>
-                    @endforeach
                   </tbody>
                 </table>
               </div>
@@ -243,13 +237,11 @@
                     </tr>
                   </thead>
                   <tbody>
-                  @foreach($dst as $a)
                   <tr class="table__row">
-                      <td class="table__details">{{ $a->label}}</td>
-                      <td class="table__details">{{ $a->date_collected->format('Y-m-d')}}</td>
-                      <td class="table__details">{{ $a->resistance_pattern }}</td>
+                      <td class="table__details">{{ $dst->label}}</td>
+                      <td class="table__details">{{ $dst->date_collected->format('Y-m-d')}}</td>
+                      <td class="table__details">{{ $dst->resistance_pattern === 'Other (specify)' ? $dst->others : $dst->resistance_pattern}}</td>
                     </tr>
-                  @endforeach
                     
                   </tbody>
                 </table>
@@ -349,7 +341,7 @@
               <div class="form__container">
                 <h2 class="section__heading">Suggested regimen</h2>
                 <div class="grid grid--two">
-                  <div class="form__content"><span class="form__text">{{ empty($tbMacForm->caseManagementForm->suggested_regimen) ? '' : $tbMacForm->caseManagementForm->suggested_regimen}}</span><label class="form__label" for="">Suggested regiment</label></div>
+                  <div class="form__content"><span class="form__text">{{ $tbMacForm->caseManagementForm->suggested_regimen === 'Other (Specify)' ? $tbMacForm->caseManagementForm->others : $tbMacForm->caseManagementForm->suggested_regimen}}</span><label class="form__label" for="">Suggested regiment</label></div>
                   <div class="form__content"><span class="form__text">{{ empty($tbMacForm->caseManagementForm->itr_drugs) ? '' : $tbMacForm->caseManagementForm->itr_drugs }}</span><label class="form__label" for="">ITR Drugs</label></div>
                 </div>
                 <div class="grid grid--two">

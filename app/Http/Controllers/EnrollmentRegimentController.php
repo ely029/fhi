@@ -344,12 +344,17 @@ class EnrollmentRegimentController extends Controller
         });
 
         $withRecommendations = $enrollments->filter(function ($item) {
-            return in_array($item->status, ['For Enrollment','Not for Referral','Not For Enrollment','Need Further Details','Referred to regional chair']);
+            return in_array($item->status, ['For Enrollment','Not for Referral','Not For Enrollment','Need Further Details','Referred to national']);
+        });
+
+        $completed = $enrollments->filter(function ($item) {
+            return $item->status === 'Referred to regional chair';
         });
 
         return view('enrollments.index')
             ->with('pending', $pending)
             ->with('withRecommendations', $withRecommendations)
+            ->with('completed', $completed)
             ->with('allEnrollments', $enrollments);
     }
 
@@ -367,10 +372,6 @@ class EnrollmentRegimentController extends Controller
             return in_array($item->status, ['For Enrollment','Not For Enrollment','Need Further Details']);
         });
 
-        $allEnrollments = $enrollments->filter(function ($item) {
-            return in_array($item->status, ['New Enrollment','Referred to Regional']);
-        });
-
         $referredToRegional = $enrollments->filter(function ($item) {
             return $item->status === 'Referred To Regional';
         });
@@ -380,7 +381,7 @@ class EnrollmentRegimentController extends Controller
             ->with('pendingFromNTBMacChair', $pendingFromNTBMacChair)
             ->with('completed', $completed)
             ->with('referredToRegional', $referredToRegional)
-            ->with('allEnrollments', $allEnrollments);
+            ->with('allEnrollments', $enrollments);
     }
 
     private function getNationalTBMacIndex($enrollments)
@@ -390,11 +391,11 @@ class EnrollmentRegimentController extends Controller
         });
 
         $completed = $enrollments->filter(function ($item) {
-            return in_array($item->status, ['Referred back to regional chair']);
+            return in_array($item->status, ['Referred to national chair']);
         });
 
         $allEnrollments = $enrollments->filter(function ($item) {
-            return in_array($item->status, ['Referred to regional chair']);
+            return in_array($item->status, ['For Enrollment','Not For Enrollment','Need Further Details','Referred to regional chair']);
         });
 
         return view('enrollments.index')
@@ -414,7 +415,7 @@ class EnrollmentRegimentController extends Controller
         });
 
         $allEnrollments = $enrollments->filter(function ($item) {
-            return in_array($item->status, ['Referred to national','For Enrollment','Not For Enrollment','Need Further Details']);
+            return in_array($item->status, ['For Enrollment','Not For Enrollment','Need Further Details','Referred to regional chair']);
         });
 
         return view('enrollments.index')

@@ -31,23 +31,28 @@
             </div>
         </form>
   
-        <div class="modal js-modal">
+        <div class="modal js-modal" id="loadingModal">
           <div class="modal__background js-modal-background"></div>
           <div class="modal__container">
             <div class="modal__box">
               <h2 class="modal__title">Finding match in database</h2>
               <p class="modal__text">Please make sure First name, Last name, Middle name, Birthday, and Gender are correct.</p>
-              <div class="modal__button modal__button--center"><div class="modal__button"><div class="loader"></div></div></div>
+              <div class="modal__button modal__button--center">
+                <div class="loader"></div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="modal js-modal">
+        <div class="modal js-modal" id="noMatchModal">
           <div class="modal__background js-modal-background"></div>
           <div class="modal__container">
             <div class="modal__box">
               <h2 class="modal__title">We did not find a match</h2>
               <p class="modal__text">Please make sure First name, Last name, Middle name, Birthday, and Gender are correct.</p>
-              <div class="modal__button"><button class="button button--transparent js-modal-close" type="button">Cancel</button><input class="button" type="submit" value="Proceed manually" /></div>
+              <div class="modal__button">
+                <a href="{{ url('enrollments') }}" class="button button--transparent js-modal-close" type="button">Cancel</a>
+                <input class="button" type="button" value="Proceed manually" id="proceedManually"/>
+              </div>
             </div>
           </div>
         </div>
@@ -58,7 +63,7 @@
 @section('additional_scripts')
   
   <script src="{{ asset('assets/app/js/bootstrap-validator.js') }}"></script>  
-  <script src="{{ asset('assets/app/js/forms.js') }}"></script>
+  <script src="{{ asset('assets/app/js/enrollments/form.js') }}"></script>
 
   <script src="{{ asset('assets/app/js/dropzone.js') }}"></script>  
   <script src="{{ asset('assets/app/js/dropzoneInit.js') }}"></script>

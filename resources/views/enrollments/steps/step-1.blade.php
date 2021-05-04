@@ -123,14 +123,15 @@
       </div>
       <div class="form__content">
         <select class="form__input form__input--select" name="gender">
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
+          <option value="Male" data-property="M">Male</option>
+          <option value="Female" data-property="F">Female</option>
         </select>
         <div class="triangle triangle--down"></div>
         <label class="form__label" for="">Sex</label>
       </div>
     </div>
   </div>
+  <input type="hidden" id="is_from_itis" value="0">
   <div class="form__button form__button--space form__button--pagination step-1">
-    <a class="button button--next">Next</a>
+    <a class="button button--next step-1-next">Next</a>
   </div>

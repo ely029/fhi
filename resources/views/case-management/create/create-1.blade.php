@@ -118,6 +118,7 @@
     <div class="grid grid--two form-step-1">
     <div class="form__content">
         <select class="form__input form__input--select" id="treatmentMonth" name="month_of_treatment">
+        <option value="0">0</option>
         <option value="1st">1st</option>
         <option value="2nd">2nd</option>
         <option value="3rd">3rd</option>
@@ -153,7 +154,7 @@
         <option value="Other Drug-resistant TB">Other Drug-resistant TB</option>
         </select>
         <div class="triangle triangle--down"></div>
-        <label class="form__label" for="">Updated drug susceptibility</label>
+        <label class="form__label" for="">Current drug susceptibility</label>
     </div>
     </div>
     <div class="form__button form__button--space form__button--pagination"><button class="button button--next" type="button">Next</button></div>
