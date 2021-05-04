@@ -273,6 +273,25 @@ function DST()
     ];
 }
 
+function LPA()
+{
+    return [
+        'MTB Detected, Fluoroquinolone Resistance Detected',
+        'MTB Detected, Fluoroquinolone Resistance Not Detected',
+        'MTB Detected, Fluoroquinolone Resistance Indeterminate',
+        'MTB Detected, Second-line Injectable Resistance Detected',
+        'MTB Detected, Second-line Injectable Resistance Indeterminate',
+        'MTB Detected, High Dose Isoniazid Resistance Detected',
+        'MTB Detected, High Dose Isoniazid Resistance Not Detected',
+        'MTB Detected, High Dose Isoniazid Resistance Indeterminate',
+        'MTB Detected, Low Dose Isoniazid Resistance Detected',
+        'MTB Detected, Low Dose Isoniazid Resistance Not Detected',
+        'MTB Detected, Low Dose Isoniazid Resistance Indeterminate',
+        'MTB Not Detected',
+        'Invalid',
+    ];
+}
+
 function roleNameById()
 {
     return [

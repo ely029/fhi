@@ -25,7 +25,7 @@
     <div class="form__container form-step-3">
     <h2 class="section__heading"></h2>
     <div class="form__content">
-        <select class="form__input form__input--select" name="suggested_regimen">
+        <select id="suggested_regimen" class="form__input form__input--select" name="suggested_regimen">
         <option value="Regimen 3 SSOR">Regimen 3 SSOR</option>
         <option value="Regimen 4 SLOR FQ-S">Regimen 4 SLOR FQ-S</option>
         <option value="Regimen 5 SLOR FQ-R">Regimen 5 SLOR FQ-R</option>
@@ -35,13 +35,18 @@
         <option value="Regimen 7a SLOR FQ-R">Regimen 7a SLOR FQ-R</option>
         <option value="Regimen 7b SLOR FQ-R">Regimen 7b SLOR FQ-R</option>
         <option value="Regimen 7c SLOR FQ-R">Regimen 7c SLOR FQ-R</option>
+        <option value="ITR">ITR</option>
+        <option value="BPaL">BPaL</option>
+        <option value="Other (Specify)">Other (Specify)</option>
         </select>
         <div class="triangle triangle--down"></div>
         <label class="form__label" for="">Suggested regiment</label>
     </div>
-    <div class="form__content form-group">
-    <div class="help-block with-errors"></div>
-    <input class="form__input" name="itr_drugs" required type="text" placeholder="Please specify (+ITR is chosen)"/><label class="form__label" for="">ITR drugs</label>
+    <div class="form__content" id="itr_drugs_1">
+    <input class="form__input" name="itr_drugs" type="text" placeholder="Please specify (+ITR is chosen)"/><label class="form__label" for="">ITR drugs</label>
+    </div>
+    <div class="form__content" id="others_1">
+    <input class="form__input" name="others_case_management" type="text" placeholder="Others (Please specify)"/><label class="form__label" for="">Others</label>
     </div>
     <div class="form__content form-group">
     <div class="help-block with-errors"></div>

@@ -54,6 +54,7 @@ class CaseManagementBacteriologicalResults extends Model
         'smear_microscopy',
         'tb_lamp',
         'culture',
+        'others',
     ];
 
     protected $dates = [
@@ -77,6 +78,7 @@ class CaseManagementBacteriologicalResults extends Model
             'date_collected' => ! isset($request['date_collected_dst']) ? Carbon::now()->timestamp : $request['date_collected_dst'],
             'resistance_pattern' => ! isset($request['resistance_pattern_dst']) ? '' : $request['resistance_pattern_dst'],
             'form_id' => $form->id,
+            'others' => ! isset($request['others_bacteriological_results']) ? '' : $request['others_bacteriological_results'],
         ]);
     }
 
@@ -86,7 +88,7 @@ class CaseManagementBacteriologicalResults extends Model
             'label' => 'Screening 1',
             'form_id' => $form->id,
             'date_collected' => ! isset($request['date_collected_screening_1']) ? '' : $request['date_collected_screening_1'],
-            'resistance_pattern' => ! isset($request['ressitance_pattern_screening_1']) ? '' : $request['date_collected_screening_1'],
+            'resistance_pattern' => ! isset($request['ressitance_pattern_screening_1']) ? '' : $request['ressitance_pattern_screening_1'],
             'method_used' => ! isset($request['method_used_screening_1']) ? '' : $request['method_used_screening_1'],
             'cxr_date' => Carbon::now()->timestamp,
             'ct_scan_date' => Carbon::now()->timestamp,

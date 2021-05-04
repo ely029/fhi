@@ -1,5 +1,5 @@
 jQuery('document').ready(function($){
-   
+$('#others').hide();   
     $('#rest_pattern_1').change(function(){
         if ($('#rest_pattern_1').val() == 'For Xpert MTB/RIF') {
             $('#method_used_1').empty();
@@ -67,4 +67,13 @@ jQuery('document').ready(function($){
             $('#method_used_4').append("<option value='MTB Detected, Rifampicin Resistance Detected'>MTB Detected, Rifampicin Resistance Detected</option><option value='MTB Detected, Rifampicin Resistance Not Detected'>MTB Detected, Rifampicin Resistance Not Detected</option><option value='MTB Detected, Rifampicin Resistance Indeterminate'>MTB Detected, Rifampicin Resistance Indeterminate</option><option value='MTB Not Detected'>MTB Not Detected</option><option value='Invalid/No Result/Error'>Invalid/No Result/Error</option>");
         }
     });
+
+    $('#rest_pattern_4').change(function(){
+        if ($('#rest_pattern_4').val() == 'Other (specify)') {
+            $('#others').show();
+        } else {
+            $('#others').hide();
+        }
+    });
+
 });
