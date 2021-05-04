@@ -67,7 +67,7 @@
                         <label class="form__label" for="">Month of treatment</label></div>
                     <div class="form__content">{{ empty($tbMacForm->casemanagementForm->current_drug_susceptibility) ? '' : $tbMacForm->casemanagementForm->current_drug_susceptibility}}<span class="form__text">
                         </span>
-                        <label class="form__label" for="">Updated drug susceptibility</label>
+                        <label class="form__label" for="">Current drug susceptibility</label>
                     </div>
                   </div>
                 </div>

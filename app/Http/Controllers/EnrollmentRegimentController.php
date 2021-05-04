@@ -372,10 +372,6 @@ class EnrollmentRegimentController extends Controller
             return in_array($item->status, ['For Enrollment','Not For Enrollment','Need Further Details']);
         });
 
-        $allEnrollments = $enrollments->filter(function ($item) {
-            return in_array($item->status, ['New Enrollment','Referred to Regional']);
-        });
-
         $referredToRegional = $enrollments->filter(function ($item) {
             return $item->status === 'Referred To Regional';
         });
@@ -385,7 +381,7 @@ class EnrollmentRegimentController extends Controller
             ->with('pendingFromNTBMacChair', $pendingFromNTBMacChair)
             ->with('completed', $completed)
             ->with('referredToRegional', $referredToRegional)
-            ->with('allEnrollments', $allEnrollments);
+            ->with('allEnrollments', $enrollments);
     }
 
     private function getNationalTBMacIndex($enrollments)
@@ -395,7 +391,7 @@ class EnrollmentRegimentController extends Controller
         });
 
         $completed = $enrollments->filter(function ($item) {
-            return in_array($item->status, ['Referred back to national chair']);
+            return in_array($item->status, ['Referred to national chair']);
         });
 
         $allEnrollments = $enrollments->filter(function ($item) {
