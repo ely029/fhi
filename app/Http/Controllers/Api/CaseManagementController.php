@@ -88,7 +88,7 @@ class CaseManagementController extends Controller
 
         $tbMacForm = $tbMacForm->load(['submittedBy','caseManagementForm','caseManagementBacteriologicalResults','caseManagementLaboratoryResults','caseManagementAttachment','patient','recommendations']);
         $tbBacteriologicalResults = $tbMacForm->caseManagementBacteriologicalResults;
-        $recommendations = $tbMacForm->recommendation;
+        $recommendations = $tbMacForm->recommendations;
         $presentation_number = $tbMacForm->presentation_number;
         $submitted_by = $tbMacForm->submittedBy->name;
         $date_submitted = $tbMacForm->created_at->format('M d, Y');
@@ -126,10 +126,10 @@ class CaseManagementController extends Controller
         })->values();
         $recommendation = $recommendations->map(function ($item) {
             return [
-                'name' => $item->tbMacForm->user->name,
-                'role' => $item->tbMacForm->user->role->name,
-                'date_created' => $item->tbMacForm->created_at->format('d M, Y'),
-                'status' => $item->tbMacForm->status === '0' ? '' : $item->tbMacForm->status,
+                'name' => $item->users->name,
+                'role' => $item->roles->name,
+                'date_created' => $item->created_at->format('d M, Y'),
+                'status' => $item->status === '0' ? '' : $item->status,
                 'recommendation' => $item->recommendation,
             ];
                         })->values();
