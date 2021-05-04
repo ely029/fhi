@@ -66,7 +66,7 @@ class CaseManagementController extends Controller
         //DST
         $caseManagementBactResult->dstCreation($form, $request);
         if (isset($request['attachments'])) {
-            $caseManagementAttachment->createAttachment($request, $form);
+            $caseManagementAttachment->createAttachmentMobile($request, $form);
         }
         //Month DST
         $count = count(json_decode($request['month_dst'], true)) - 1;
@@ -85,9 +85,10 @@ class CaseManagementController extends Controller
 
     public function show(TBMacForm $tbMacForm)
     {
+
         $tbMacForm = $tbMacForm->load(['submittedBy','caseManagementForm','caseManagementBacteriologicalResults','caseManagementLaboratoryResults','caseManagementAttachment','patient','recommendations']);
         $tbBacteriologicalResults = $tbMacForm->caseManagementBacteriologicalResults;
-        $recommendations = $tbMacForm->recommendations;
+        $recommendations = $tbMacForm->recommendation;
         $presentation_number = $tbMacForm->presentation_number;
         $submitted_by = $tbMacForm->submittedBy->name;
         $date_submitted = $tbMacForm->created_at->format('M d, Y');
@@ -125,13 +126,13 @@ class CaseManagementController extends Controller
         })->values();
         $recommendation = $recommendations->map(function ($item) {
             return [
-                'name' => $item->users->name,
-                'role' => $item->users->role->name,
-                'date_created' => $item->created_at->format('d M, Y'),
-                'status' => $item->status === '0' ? '' : $item->status,
+                'name' => $item->tbMacForm->user->name,
+                'role' => $item->tbMacForm->user->role->name,
+                'date_created' => $item->tbMacForm->created_at->format('d M, Y'),
+                'status' => $item->tbMacForm->status === '0' ? '' : $item->tbMacForm->status,
                 'recommendation' => $item->recommendation,
             ];
-        })->values();
+                        })->values();
         $screeningTwo = $tbBacteriologicalResults->filter(function ($item) {
             return $item->label === 'Screening 2' && $item->resistance_pattern !== '' && $item->method_used !== '';
         })->map(function ($item) {
@@ -175,7 +176,7 @@ class CaseManagementController extends Controller
         foreach ($tbMacForm->caseManagementAttachments as $key => $attachment) {
             $fileName = ($key + 1).'.'.$attachment->extension;
             $attachments[] = [
-                'url' => url('api/enrollments/'.$tbMacForm->id.'/'.$fileName.'/attachment'),
+                'url' => url('api/case-management/'.$tbMacForm->id.'/'.$fileName.'/attachment'),
                 'filename' => $attachment->file_name,
             ];
         }

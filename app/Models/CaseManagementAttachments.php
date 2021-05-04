@@ -52,4 +52,16 @@ class CaseManagementAttachments extends Model
             ]);
         }
     }
+
+    public function createAttachmentMobile($request, $form)
+    {
+            $file = $request['attachments'];
+            $fileName = $file->getClientOriginalName();
+            $file->storeAs(CaseManagementAttachments::PATH_PREFIX.'/'.$form->presentation_number, $fileName);
+            $form->caseManagementAttachment()->create([
+                'file_name' => $fileName,
+                'extension' => $file->extension(),
+                'form_id' => $form->id,
+            ]);
+    }
 }
