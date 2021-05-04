@@ -33,8 +33,8 @@ class ResubmitCaseManagementController extends Controller
         //Screening 1
         $caseManagementBactResult->screeningOneUpdate($tbMacForm, $request);
         //Screening 2
-        if ($tbMacForm->screenTwo) {
-            $tbMacForm->screenTwo->delete();
+        if ($tbMacForm->screenTwo()->exists()) {
+            $tbMacForm->screenTwo()->delete();
         }
         if (isset($request['date_collected_screening_2'])) {
             $caseManagementBactResult->screeningTwoCreation($tbMacForm, $request);
