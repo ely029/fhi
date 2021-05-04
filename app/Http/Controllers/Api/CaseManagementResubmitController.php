@@ -117,7 +117,6 @@ class CaseManagementResubmitController extends Controller
         $caseManagementAttachment = new CaseManagementAttachments();
         $caseManagementBactResult = new CaseManagementBacteriologicalResults();
         $request['status'] = 'New Case';
-        CaseManagementAttachments::where('form_id', $tbMacForm->id)->delete();
         $tbMacForm->patient->update($request);
         $tbMacForm->update($request);
         $tbMacForm->caseManagementForm->update($request);
@@ -138,6 +137,7 @@ class CaseManagementResubmitController extends Controller
             $caseManagementBactResult->monthDSTCreationMobile($screen, $eee, $request, $tbMacForm);
         }
         if (isset($request['attachments'])) {
+            CaseManagementAttachments::where('form_id', $tbMacForm->id)->delete();
             $caseManagementAttachment->createAttachment($request, $tbMacForm);
         }
         $request['cxr_reading'] = $request['cxr_reading'] ?? null;
