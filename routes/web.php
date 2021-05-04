@@ -65,6 +65,8 @@ Route::group(['middleware' => 'auth'], static function () {
     Route::get('/case-management/create', [CaseManagementController::class, 'create']);
     Route::post('/case-management/create', [CaseManagementController::class, 'store']);
     Route::post('/case-management/{tbMacForm}/recommendation', [CaseManagementRecommendationController::class,'store']);
+    Route::get('/case-management/{tbMacForm}/{fileName}/attachment', [CaseManagementController::class,'showAttachment']);
+    Route::get('/case-management/{tbMacForm}/{fileName}/download', [CaseManagementController::class,'downloadAttachment']);
 
     Route::get('itis/get/patient', [ITISController::class, 'getPatient']);
 });

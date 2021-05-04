@@ -179,8 +179,8 @@
                     <tr>
                       <th class="table__head"></th>
                       <th class="table__head">Done date</th>
-                      <th class="table__head">Resistance pattern</th>
                       <th class="table__head">Method used</th>
+                      <th class="table__head">Resistance pattern</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -227,7 +227,6 @@
               </div>
               <div class="form__container">
                 <h2 class="section__heading">DST information</h2>
-                <div class="form__content"><span class="form__text">Tondo Foreshore Health Center Lying-In- IDOTS</span><label class="form__label" for="">Name of laboratory</label></div>
                 <table class="table table--unset js-table-unset">
                   <thead>
                     <tr>
@@ -247,7 +246,7 @@
                 </table>
               </div>
               <div class="form__container">
-                <h2 class="section__heading">DST information</h2>
+                <h2 class="section__heading">Month</h2>
                 <table class="table table--unset js-table-unset">
                   <thead>
                     <tr>
@@ -333,8 +332,8 @@
                 </div>
                 <div class="grid grid--two">
                   <div class="form__content">
-                    <span class="form__text">{{ empty($tbMacForm->caseManagementForm->remarks) ? '' : $tbMacForm->caseManagementForm->remarks}}</span>
-                    <label class="form__label" for="">Regimen notes</label>
+                    <span class="form__text">{{ $tbMacForm->caseManagementForm ? $tbMacForm->caseManagementForm->reason_case_management_presentation : ''}}</span>
+                    <label class="form__label" for="">Reason for case management presentation</label>
                   </div>
                 </div>
               </div>
@@ -345,29 +344,35 @@
                   <div class="form__content"><span class="form__text">{{ empty($tbMacForm->caseManagementForm->itr_drugs) ? '' : $tbMacForm->caseManagementForm->itr_drugs }}</span><label class="form__label" for="">ITR Drugs</label></div>
                 </div>
                 <div class="grid grid--two">
-                  <div class="form__content">
-                    <span class="form__text">{{ empty($tbMacForm->caseManagementForm->latest_comparative_cxr_reading) ? '' : $tbMacForm->caseManagementForm->latest_comparative_cxr_reading}}</span>
-                    <label class="form__label" for="">Latest Comparative CXR Reading</label>
-                  </div>
+                 
                   <div class="form__content">
                     <span class="form__text">{{ empty($tbMacForm->caseManagementForm->suggested_regimen_notes) ? '' : $tbMacForm->caseManagementForm->suggested_regimen_notes}}</span>
                     <label class="form__label" for="">Suggested Regimen notes</label>
                   </div>
-                </div>
-                <div class="grid grid--two">
-                  <div class="form__content"><span class="form__text">{{ empty($tbMacForm->caseManagementForm->updated_type_of_case) ? '' : $tbMacForm->caseManagementForm->updated_type_of_case}}</span><label class="form__label" for="">Updated Drug Susceptibility</label></div>
+                  <div class="form__content"><span class="form__text">{{ empty($tbMacForm->caseManagementForm->updated_type_of_case) ? '' : $tbMacForm->caseManagementForm->updated_type_of_case}}</span>
+                    <label class="form__label" for="">Updated Drug Susceptibility</label>
+                  </div>
                 </div>
               </div>
               @foreach ($tbMacForm->caseManagementLaboratoryResults as $results)
               <div class="form__container">
                 <h2 class="section__heading">Laboratory results and information</h2>
                 <div class="grid grid--two">
-                  <div class="form__content"><span class="form__text">{{ $results->cxr_date->format('Y-m-d') }}</span><label class="form__label" for="">CXR date</label></div>
+                  <div class="form__content">
+                    <span class="form__text">{{ $results->cxr_date->format('Y-m-d') }}</span>
+                    <label class="form__label" for="">CXR date</label>
+                  </div>
                   <div class="form__content">
                     <span class="form__text">
                       {{ $results->cxr_result}}
                     </span>
                     <label class="form__label" for="">CXR result</label>
+                  </div>
+                </div>
+                <div class="grid grid--two">
+                  <div class="form__content">
+                    <span class="form__text">{{ empty($tbMacForm->caseManagementForm->latest_comparative_cxr_reading) ? '' : $tbMacForm->caseManagementForm->latest_comparative_cxr_reading}}</span>
+                    <label class="form__label" for="">Latest Comparative CXR Reading</label>
                   </div>
                 </div>
                 <div class="grid grid--two">
