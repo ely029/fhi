@@ -6,8 +6,8 @@
         <tr>
             <th class="table__head"></th>
             <th class="table__head">Date collected</th>
-            <th class="table__head">Resistance pattern</th>
             <th class="table__head">Method used</th>
+            <th class="table__head">Resistance pattern</th>
         </tr>
         </thead>
         <tbody>

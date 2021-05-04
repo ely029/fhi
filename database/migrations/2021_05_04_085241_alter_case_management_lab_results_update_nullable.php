@@ -16,7 +16,7 @@ class AlterCaseManagementLabResultsUpdateNullable extends Migration
         DB::statement('ALTER TABLE case_management_laboratory_results MODIFY COLUMN ct_scan_result varchar(255) NULL');
         DB::statement('ALTER TABLE case_management_laboratory_results MODIFY COLUMN ct_scan_date date NULL');
         DB::statement('ALTER TABLE case_management_laboratory_results MODIFY COLUMN histhopathological_date date NULL');
-        DB::statement('ALTER TABLE case_management_laboratory_results MODIFY COLUMN ultra_sound_date date NULL');
+        DB::statement('ALTER TABLE case_management_laboratory_results MODIFY COLUMN ultra_sound_date varchar(255) NULL');
         DB::statement('ALTER TABLE case_management_laboratory_results MODIFY COLUMN histhopathological_result LONGTEXT NULL');
     }
 

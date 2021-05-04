@@ -8,6 +8,7 @@ use App\Models\CaseManagementAttachments;
 use App\Models\CaseManagementBacteriologicalResults;
 use App\Models\Patient;
 use App\Models\TBMacForm;
+use Illuminate\Support\Str;
 
 class CaseManagementController extends Controller
 {
@@ -97,6 +98,27 @@ class CaseManagementController extends Controller
         return redirect('case-management/show/'.$form->id)->with([
             'alert.message' => 'New Case created.',
         ]);
+    }
+
+    public function showAttachment(TBMacForm $tbMacForm, $fileName)
+    {
+        $path = 'private/case-management/'.$tbMacForm->presentation_number.'/'.$fileName;
+
+        if (\Storage::exists($path)) {
+            if (Str::endsWith($fileName, '.pdf') || Str::endsWith($fileName, '.xls') || Str::endsWith($fileName, '.xlsx') || Str::endsWith($fileName, '.csv') || Str::endsWith($fileName, '.docx')) {
+                return response()->file(public_path('assets/app/img/icon-upload.png'));
+            }
+            return response(\Storage::get($path))->header('Content-Type', 'image/jpeg');
+        }
+        return response()->file(public_path('assets/app/img/placeholder.jpg'));
+    }
+
+    public function downloadAttachment(TBMacForm $tbMacForm, $fileName)
+    {
+        $path = 'private/case-management/'.$tbMacForm->presentation_number.'/'.$fileName;
+        if (\Storage::exists($path)) {
+            return \Storage::download($path, $fileName);
+        }
     }
 
     private function getHealthCareWorkerIndex($cases)

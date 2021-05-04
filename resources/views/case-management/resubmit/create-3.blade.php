@@ -1,13 +1,17 @@
 <div class="form__tab step-3">
     <div class="form__container form-step-3">
     <h2 class="section__heading">Treatment information</h2>
-    <div class="grid grid--two form-group">
-        <div class="form__content">
+    <div class="grid grid--two">
+        <div class="form__contentform-group">
+       
+        <input class="form__input" type="number" name="current_weight" value="{{ $tbMacForm->caseManagementForm->current_weight }}" placeholder="Current weight (kg)" required />
+        <label class="form__label" for="">Current weight (kg)</label>
         <div class="help-block with-errors"></div>
-        <input class="form__input" type="number" name="current_weight" value="{{ $tbMacForm->caseManagementForm->current_weight }}" placeholder="Current weight (kg)" required /><label class="form__label" for="">Current weight (kg)</label></div>
+    </div>
     </div>
     <div class="form__content form-group">
     <input class="form__input" type="text" value="{{ empty($tbMacForm->caseManagementForm->current_regiment) ? '' : $tbMacForm->caseManagementForm->current_regiment }}" required name="current_regimen" placeholder="Current Regiment" />
+        <div class="help-block with-errors"></div>    
         <label class="form__label" for="">Current regimen</label>
     </div>
     <!-- <div class="form__content form-group">
@@ -16,10 +20,12 @@
     </textarea>
     <label class="form__label" for="">Reason for case management presentation</label>
         </div> -->
-        <div class="form-group">
-            <label class="form__label" for="">Reason for case management presentation</label>
+        <div class="form__content form-group">
+            
             <textarea name="reason_case_management_presentation" class="form-control form__input" id="inputEmail" placeholder="" required>{{ $tbMacForm->caseManagementForm->reason_case_management_presentation }}</textarea>
-            <div class="invalid-feedback">This field is required.</div>
+            
+            <div class="help-block with-errors"></div>
+            <label class="form__label" for="">Reason for case management presentation</label>
         </div>
     </div>
     <div class="form__container form-step-3">
@@ -31,22 +37,22 @@
         @endforeach
         </select>
         <div class="triangle triangle--down"></div>
-        <label class="form__label" for="">Suggested regiment</label>
+        <label class="form__label" for="">Suggested regimen</label>
     </div>
-    @if ($tbMacForm->caseManagementForm->suggested_regimen == 'Other (Specify)')
+    {{-- @if ($tbMacForm->caseManagementForm->suggested_regimen == 'Other (Specify)') --}}
     <div class="form__content" id="others_1">
-    <input class="form__input" name="others_case_management" type="text" placeholder="Others (Please specify)" value="{{ $tbMacForm->caseManagementForm->others }}"/><label class="form__label" for="">Others</label>
+        <input class="form__input" name="others_case_management" type="text" placeholder="Others (Please specify)" value="{{ $tbMacForm->caseManagementForm->others }}"/><label class="form__label" for="">Others</label>
     </div>
-    @endif
-    @if ($tbMacForm->caseManagementForm->suggested_regimen == 'ITR')
+    {{-- @endif --}}
+    {{-- @if ($tbMacForm->caseManagementForm->suggested_regimen == 'ITR') --}}
     <div class="form__content" id="itr_drugs_1">
-    <input class="form__input" name="itr_drugs" type="text" value="{{ $tbMacForm->caseManagementForm->others }}" placeholder="Please specify (+ITR is chosen)"/><label class="form__label" for="">ITR drugs</label>
+        <input class="form__input" name="itr_drugs" type="text" value="{{ $tbMacForm->caseManagementForm->itr_drugs }}" placeholder="Please specify (+ITR is chosen)"/><label class="form__label" for="">ITR drugs</label>
     </div>
-    @endif
-    <div class="form__content form-group">
+    {{-- @endif --}}
+    {{-- <div class="form__content form-group">
     <div class="help-block with-errors"></div>
     <input class="form__input" name="itr_drugs" value="{{$tbMacForm->caseManagementForm->itr_drugs}}" required type="text" placeholder="Please specify (+ITR is chosen)"/><label class="form__label" for="">ITR drugs</label>
-    </div>
+    </div> --}}
     <div class="form__content form-group">
     <div class="help-block with-errors"></div>
     <textarea required class="form__input form__input--message" name="suggested_regimen_notes">{{ $tbMacForm->caseManagementForm->suggested_regimen_notes }}</textarea>
