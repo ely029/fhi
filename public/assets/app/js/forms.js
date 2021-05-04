@@ -6,11 +6,14 @@ jQuery( document ).ready(function( $ ) {
     // Code that uses jQuery's $ can follow here.
     $(".button--next").on('click', function(){
 
-        if(currentStep == totalSteps){
-            return;
-        }
+        
         
         if(checkForms()){
+
+            if(currentStep == totalSteps){
+                return;
+            }
+
             $('.step-'+currentStep).hide();
             currentStep++;
             $('.step-'+currentStep).show();

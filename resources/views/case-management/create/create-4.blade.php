@@ -5,7 +5,8 @@
         <div class="grid">
         <div class="form__content form-group form__content--small form__content--small__right">
         <div class="help-block with-errors"></div>
-        <input class="form__input" required name="cxr_date" type="date" placeholder="CXR date" /><label class="form__label" for="">CXR date</label></div>
+        <input class="form__input" required name="cxr_date" type="date" placeholder="CXR date" />
+        <label class="form__label" for="">CXR date</label></div>
         <div class="form__content">
             <select class="form__input form__input--select" name="latest_comparative_cxr_reading">
             <option value="Improved">Improved</option>
@@ -28,11 +29,13 @@
         <div class="grid">
         <div class="help-block with-errors"></div>
         <div class="form__content form-group form__content--small form__content--small__right">
-        <input class="form__input" type="date" required name="ct_scan_date" placeholder="CT scan date" /><label class="form__label" for="">CT scan date</label></div>
+        <input class="form__input" type="date" name="ct_scan_date" placeholder="CT scan date" />
+        <label class="form__label" for="">CT scan date</label></div>
         <span class="error"></span>
         <div class="form__content form-group">
         <div class="help-block with-errors"></div>
-        <input class="form__input" name="ct_scan_result" required type="text" placeholder="CT scan result" /><label class="form__label" for="">CT scan result</label></div>
+        <input class="form__input" name="ct_scan_result" type="text" placeholder="CT scan result" />
+        <label class="form__label" for="">CT scan result</label></div>
         <span class="error"></span>
         </div>
     </div>
@@ -40,21 +43,25 @@
         <div class="grid">
         <div class="form__content form-group form__content--small form__content--small__right">
         <div class="help-block with-errors"></div>
-        <input name="ultra_sound_date" required class="form__input" name="ultra_sound_date" type="date" placeholder="Ultrasound date" /><label class="form__label" for="">Ultrasound date</label></div>
+        <input name="ultra_sound_date"  class="form__input" name="ultra_sound_date" type="date" placeholder="Ultrasound date" />
+        <label class="form__label" for="">Ultrasound date</label></div>
         <div class="form__content form-group">
         <div class="help-block with-errors"></div>
-        <input class="form__input" type="text" required name="ultra_sound_result" placeholder="Ultrasound result" /><label class="form__label" for="">Ultrasound result</label></div>
+        <input class="form__input" type="text"  name="ultra_sound_result" placeholder="Ultrasound result" />
+        <label class="form__label" for="">Ultrasound result</label></div>
         </div>
     </div>
     <div class="form__container form-step-4">
         <div class="grid">
         <div class="form__content form-group form__content--small form__content--small__right">
         <div class="help-block with-errors"></div>
-            <input class="form__input" type="date" required name="histhopathological_date" placeholder="Histopathological date" /><label class="form__label" for="">Histopathological date</label>
+            <input class="form__input" type="date" name="histhopathological_date" placeholder="Histopathological date" />
+            <label class="form__label" for="">Histopathological date</label>
         </div>
         <div class="form__content form-group">
         <div class="help-block with-errors"></div>
-        <input name="histhopathological_result" required class="form__input" type="text" placeholder="Histopathological result" /><label class="form__label" for="">Histopathological result</label></div>
+        <input name="histhopathological_result" class="form__input" type="text" placeholder="Histopathological result" />
+        <label class="form__label" for="">Histopathological result</label></div>
         </div>
     </div>
     </div>

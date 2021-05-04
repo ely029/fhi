@@ -371,7 +371,7 @@
                   </div>
                 </div>
                 <div class="grid grid--two">
-                  <div class="form__content"><span class="form__text">{{ $results->ct_scan_date->format('Y-m-d')}}</span><label class="form__label" for="">CT Scan date</label></div>
+                  <div class="form__content"><span class="form__text">{{ $results->ct_scan_date ? $results->ct_scan_date->format('Y-m-d') : ''}}</span><label class="form__label" for="">CT Scan date</label></div>
                   <div class="form__content">
                     <span class="form__text">
                       {{ $results->ct_scan_result }}
@@ -380,7 +380,7 @@
                   </div>
                 </div>
                 <div class="grid grid--two">
-                  <div class="form__content"><span class="form__text">{{ $results->ultra_sound_date->format('Y-m-d')}}</span><label class="form__label" for="">Ultrasound date</label></div>
+                  <div class="form__content"><span class="form__text">{{ $results->ultra_sound_date ? $results->ultra_sound_date->format('Y-m-d') : ''}}</span><label class="form__label" for="">Ultrasound date</label></div>
                   <div class="form__content">
                     <span class="form__text">
                       {{ $results->ultra_sound_result }}
@@ -389,7 +389,7 @@
                   </div>
                 </div>
                 <div class="grid grid--two">
-                  <div class="form__content"><span class="form__text">{{ $results->histhopathological_date->format('Y-m-d')}}</span><label class="form__label" for="">Histopathological date</label></div>
+                  <div class="form__content"><span class="form__text">{{ $results->histhopathological_date ? $results->histhopathological_date->format('Y-m-d') : ''}}</span><label class="form__label" for="">Histopathological date</label></div>
                   <div class="form__content">
                     <span class="form__text">
                       {{ $results->histhopathological_result }}
