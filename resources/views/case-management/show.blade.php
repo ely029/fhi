@@ -338,13 +338,13 @@
                 </div>
               </div>
               <div class="form__container">
-                <h2 class="section__heading">Suggested regiment</h2>
+                <h2 class="section__heading">Suggested regimen</h2>
                 <div class="grid grid--two">
                   <div class="form__content">
                     <span class="form__text">
                       {{ $tbMacForm->caseManagementForm->suggested_regimen === 'Other (Specify)' ? $tbMacForm->caseManagementForm->others : $tbMacForm->caseManagementForm->suggested_regimen}}
                     </span>
-                    <label class="form__label" for="">Suggested regiment</label>
+                    <label class="form__label" for="">Suggested regimen</label>
                   </div>
                   @if($tbMacForm->caseManagementForm->suggested_regimen == 'ITR')
                   <div class="form__content">
@@ -384,7 +384,7 @@
                 <div class="grid grid--two">
                   <div class="form__content">
                     <span class="form__text">{{ empty($tbMacForm->caseManagementForm->latest_comparative_cxr_reading) ? '' : $tbMacForm->caseManagementForm->latest_comparative_cxr_reading}}</span>
-                    <label class="form__label" for="">Latest Comparative CXR Reading</label>
+                    <label class="form__label" for="">Latest comparative CXR reading</label>
                   </div>
                 </div>
                 <div class="grid grid--two">

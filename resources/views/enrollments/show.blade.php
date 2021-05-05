@@ -196,7 +196,7 @@
               <h2 class="section__heading">Regimen information</h2>
               <div class="grid grid--two">
                 <div class="form__content">
-                    <span class="form__text">{{ $tbMacForm->enrollmentForm->registration_group }}</span>
+                    <span class="form__text">{{ empty($tbMacForm->enrollmentForm->drug_susceptibility) ? '' : $tbMacForm->enrollmentForm->drug_susceptibility }}</span>
                     <label class="form__label" for="">Drug susceptibility</label></div>
                 <div class="form__content"><span class="form__text">{{ $tbMacForm->enrollmentForm->current_weight }}kg</span>
                     <label class="form__label" for="">Current weight</label>
