@@ -41,7 +41,7 @@ class CaseManagementController extends Controller
         ]);
     }
 
-    public function store()
+    public function store(TBMacForm $tbMacForm)
     {
         $request = request()->all();
         $request['first_name'] = '';
