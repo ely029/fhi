@@ -52,6 +52,7 @@ class ResubmitCaseManagementController extends Controller
             $caseManagementAttachment->createAttachment($request, $tbMacForm);
         }
         $request['cxr_reading'] = $request['cxr_reading'] ?? null;
+        $request['itr_drugs'] = $request['itr_drugs'] ?? null;
         unset($request['remarks']);
         $tbMacForm->caseManagementLaboratoryResult->update($request);
         return redirect('case-management/show/'.$tbMacForm->id)->with([
