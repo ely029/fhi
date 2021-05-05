@@ -56,7 +56,7 @@
     <div class="form__content form-group">
     <div class="help-block with-errors"></div>
     <textarea required class="form__input form__input--message" name="suggested_regimen_notes">{{ $tbMacForm->caseManagementForm->suggested_regimen_notes }}</textarea>
-    <label class="form__label" for="">Suggested regiment notes</label>
+    <label class="form__label" for="">Suggested regimen notes</label>
     </div>
     <div class="grid grid--two">
         <div class="form__content">
@@ -66,7 +66,7 @@
             @endforeach
         </select>
         <div class="triangle triangle--down"></div>
-        <label class="form__label" for="">Updated type of case (optional)</label>
+        <label class="form__label" for="">Updated drug susceptilibity</label>
         </div>
     </div>
     <div class="form__button form__button--space form__button--pagination"><button class="button button--back" type="button">Back</button><button class="button button--next" type="button">Next</button></div>

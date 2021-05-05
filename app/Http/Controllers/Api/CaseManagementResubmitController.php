@@ -22,7 +22,7 @@ class CaseManagementResubmitController extends Controller
         $submitted_by = $tbMacForm->submittedBy->name;
         $last_name = $tbMacForm->patient->last_name;
         $case_number = $tbMacForm->caseManagementForm->case_number;
-        $birthday = $tbMacForm->patient->birthday;
+        $birthday = $tbMacForm->patient->birthday->format('M d, Y');
         $province = $tbMacForm->patient->province;
         $gender = $tbMacForm->patient->gender;
         $month_of_treatment = $tbMacForm->caseManagementForm->month_of_treatment;
