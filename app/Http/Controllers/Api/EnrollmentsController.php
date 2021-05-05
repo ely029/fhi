@@ -118,6 +118,7 @@ class EnrollmentsController extends Controller
             return [
                 'name' => $item->users->name,
                 'role' => $item->users->role->name,
+                'role_id' => $item->role_id,
                 'date_created' => $item->created_at->format('d M, Y'),
                 'status' => $item->status === '0' ? '' : $item->status,
                 'recommendation' => $item->recommendation,
