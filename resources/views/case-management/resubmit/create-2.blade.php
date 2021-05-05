@@ -20,7 +20,7 @@
         @endphp
         <tr class="table__row">
             {{-- @foreach($screenone as $one) --}}
-            <td class="table__details">{{ $screenone->label }}</td>
+            <td class="table__details">{{ empty($screenone->label) ? '' : $screenone->label }}</td>
             <td class="table__details">
             <input class="form__input form__input--full" type="date" value="{{ $screenone ? $screenone->date_collected->format('Y-m-d') : ''}}" name="date_collected_screening_1" /></td>
             <td class="table__details">

@@ -10,7 +10,7 @@
     </div>
     </div>
     <div class="form__content form-group">
-    <input class="form__input" type="text" value="{{ empty($tbMacForm->caseManagementForm->current_regiment) ? '' : $tbMacForm->caseManagementForm->current_regiment }}" required name="current_regimen" placeholder="Current Regiment" />
+    <input class="form__input" type="text" value="{{ empty($tbMacForm->caseManagementForm->current_regiment) ? '' : $tbMacForm->caseManagementForm->current_regiment }}" required name="current_regiment" placeholder="Current Regiment" />
         <div class="help-block with-errors"></div>    
         <label class="form__label" for="">Current regimen</label>
     </div>

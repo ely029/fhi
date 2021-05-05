@@ -30,17 +30,19 @@ class ResubmitCaseManagementController extends Controller
         $tbMacForm->patient->update($request);
         $tbMacForm->update($request);
         $tbMacForm->caseManagementForm->update($request);
-        //Screening 1
-        $caseManagementBactResult->screeningOneUpdate($tbMacForm, $request);
         //Screening 2
         if ($tbMacForm->screenTwo()->exists()) {
             $tbMacForm->screenTwo()->delete();
         }
+        //MOnthly Screening Deletion
+        CaseManagementBacteriologicalResults::where('form_id', $tbMacForm->id)->delete();
+        $caseManagementBactResult->lpaCreation($tbMacForm, $request);
+        $caseManagementBactResult->dstCreation($tbMacForm, $request);
+        //Screening 1
+        $caseManagementBactResult->screeningOneCreation($tbMacForm, $request);
         if (isset($request['date_collected_screening_2'])) {
             $caseManagementBactResult->screeningTwoCreation($tbMacForm, $request);
         }
-        //MOnthly Screening Deletion
-        CaseManagementBacteriologicalResults::where('form_id', $tbMacForm->id)->where('smear_microscopy', '<>', '')->delete();
         //MOnthly Screening Creation
         $count = count($request['date_collected']) - 1;
         for ($eee = 0; $eee <= $count; $eee++) {
