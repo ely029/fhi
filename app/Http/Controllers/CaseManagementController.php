@@ -55,7 +55,6 @@ class CaseManagementController extends Controller
         $request['middle_name'] = '';
         $patient = Patient::create($request);
         $caseManagementBactResult = new CaseManagementBacteriologicalResults();
-        $caseManagementAttachment = new CaseManagementAttachments();
         $request['status'] = 'New Case';
         $request['region'] = 'NCR';
         $request['role_id'] = 4;

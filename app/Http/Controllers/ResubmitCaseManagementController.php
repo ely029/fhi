@@ -24,7 +24,6 @@ class ResubmitCaseManagementController extends Controller
         unset($request['_token']);
         $request['first_name'] = '';
         $request['last_name'] = '';
-        $caseManagementAttachment = new CaseManagementAttachments();
         $caseManagementBactResult = new CaseManagementBacteriologicalResults();
         $request['status'] = 'New Case';
         $tbMacForm->patient->update($request);
@@ -51,15 +50,15 @@ class ResubmitCaseManagementController extends Controller
         }
         if (isset($request['attachments'])) {
             CaseManagementAttachments::where('form_id', $tbMacForm->id)->delete();
-                foreach ($request['attachments'] as $key => $file) {
-                    $fileName = $file->getClientOriginalName();
-                    $file->storeAs(CaseManagementAttachments::PATH_PREFIX.'/'.$tbMacForm->presentation_number, $fileName);
-                    $tbMacForm->caseManagementAttachments()->create([
-                        'file_name' => $fileName,
-                        'extension' => $file->extension(),
-                        'form_id' => $tbMacForm->id,
-                    ]);
-                }
+            foreach ($request['attachments'] as $key => $file) {
+                $fileName = $file->getClientOriginalName();
+                $file->storeAs(CaseManagementAttachments::PATH_PREFIX.'/'.$tbMacForm->presentation_number, $fileName);
+                $tbMacForm->caseManagementAttachments()->create([
+                    'file_name' => $fileName,
+                    'extension' => $file->extension(),
+                    'form_id' => $tbMacForm->id,
+                ]);
+            }
         }
         $request['cxr_reading'] = $request['cxr_reading'] ?? null;
         $request['itr_drugs'] === null ? '' : $request['itr_drugs'];
