@@ -437,11 +437,7 @@
               <h2 class="section__heading">Remarks | Recommendations</h2>
               @php
               
-                if(auth()->user()->role_id == 3)
-                {
-                    $recommendations = $tbMacForm->recommendations;
-                }
-                if(auth()->user()->role_id == 4)
+                if(auth()->user()->role_id == 3 || auth()->user()->role_id == 4)
                 {
                     $recommendations = $tbMacForm->regionalRecommendations;
                 }

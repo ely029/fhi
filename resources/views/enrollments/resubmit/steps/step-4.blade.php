@@ -163,6 +163,7 @@
         <ul class="gallery__list" id="gallery-preview">
           <li class="gallery__item dz-preview dz-file-preview" id="gallery-container">
             <img class="image image--gallery" data-dz-thumbnail />
+            <span class="gallery__text gallery__text--filename"></span>
             <img class="image image--close" src="{{ asset('assets/app/img/icon-close.png') }}" data-dz-remove /></li>
         </ul>
         {{-- <div id="file-uploads">
