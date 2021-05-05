@@ -152,6 +152,7 @@ function current_drug_susceptibility()
         'Bacteriologically-confirmed Pre-XDR-TB',
         'Bacteriologically-confirmed XDR-TB',
         'Clinically-confirmed MDR-TB',
+        'Other Drug-resistant TB',
     ];
 }
 
