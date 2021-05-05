@@ -17,12 +17,11 @@ class CaseManagementResubmitController extends Controller
     public function edit(TBMacForm $tbMacForm)
     {
         $tbMacForm = $tbMacForm->load(['submittedBy','caseManagementForm','caseManagementBacteriologicalResults','caseManagementLaboratoryResults','caseManagementAttachment','patient','recommendations']);
-        $tbBacteriologicalResults = $tbMacForm->caseManagementBacteriologicalResults;
-        $recommendations = $tbMacForm->recommendations;
-        $presentation_number = $tbMacForm->presentation_number;
-        $submitted_by = $tbMacForm->submittedBy->name;
-        $last_name = $tbMacForm->patient->last_name;
-        $case_number = $tbMacForm->caseManagementForm->case_number;
+        $tbBacteriologicalResults = $tbMacForm->caseManagementBacteriologicalResults;  
+        $presentation_number = $tbMacForm->presentation_number; 
+        $submitted_by = $tbMacForm->submittedBy->name; $last_name = 
+        $tbMacForm->patient->last_name; 
+        $case_number = $tbMacForm->caseManagementForm->case_number; 
         $birthday = $tbMacForm->patient->birthday;
         $province = $tbMacForm->patient->province;
         $gender = $tbMacForm->patient->gender;
@@ -41,11 +40,11 @@ class CaseManagementResubmitController extends Controller
         $latest_comparative_cxr_reading = $tbMacForm->caseManagementForm->latest_comparative_cxr_reading;
         $current_drug_susceptibility = $tbMacForm->caseManagementForm->current_drug_susceptibility ?? null;
         $updated_type_of_case = $tbMacForm->caseManagementForm->updated_type_of_case ?? null;
-        $ct_scan_date = $tbMacForm->caseManagementLaboratoryResult->ct_scan_date->format('M d, Y') ?? null;
+        $ct_scan_date = ! isset($tbMacForm->caseManagementLaboratoryResult->ct_scan_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->ct_scan_date->format('M d, Y') ?? null;
         $ct_scan_result = $tbMacForm->caseManagementLaboratoryResult->ct_scan_result ?? null;
-        $ultra_sound_date = $tbMacForm->caseManagementLaboratoryResult->ultra_sound_date->format('M d, Y') ?? null;
+        $ultra_sound_date = ! isset($tbMacForm->caseManagementLaboratoryResult->ultra_sound_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->ultra_sound_date->format('M d, Y') ?? null;
         $ultra_sound_result = $tbMacForm->caseManagementLaboratoryResult->ultra_sound_result ?? null;
-        $histhopathological_date = $tbMacForm->caseManagementLaboratoryResult->histhopathological_date->format('M d, Y') ?? null;
+        $histhopathological_date = ! isset($tbMacForm->caseManagementLaboratoryResult->histhopathological_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->histhopathological_date->format('M d, Y') ?? null;
         $histhopathological_result = $tbMacForm->caseManagementLaboratoryResult->histhopathological_result ?? null;
         $cxr_date = $tbMacForm->caseManagementLaboratoryResult->cxr_date->format('M d, Y') ?? null;
         $cxr_result = $tbMacForm->caseManagementLaboratoryResult->cxr_result ?? null;
@@ -58,15 +57,6 @@ class CaseManagementResubmitController extends Controller
                 'date_collected' => $item->date_collected->format('d F Y'),
                 'resistance_pattern' => $item->resistance_pattern,
                 'method_used' => $item->method_used,
-            ];
-        })->values();
-        $recommendation = $recommendations->map(function ($item) {
-            return [
-                'name' => $item->users->name,
-                'role' => $item->roles->name,
-                'date_created' => $item->created_at->format('d M, Y'),
-                'status' => $item->status === '0' ? '' : $item->status,
-                'recommendation' => $item->recommendation,
             ];
         })->values();
         $screeningTwo = $tbBacteriologicalResults->filter(function ($item) {
@@ -117,7 +107,7 @@ class CaseManagementResubmitController extends Controller
             ];
         }
         $data = [
-           'month_of_treatment' => $month_of_treatment, 'gender' => $gender, 'province' => $province, 'birthday' => $birthday, 'case_number' => $case_number, 'last_name' => $last_name, 'presentation_number' => $presentation_number, 'current_drug_susceptibility' => $current_drug_susceptibility, 'submitted_by' => $submitted_by, 'date_submitted' => $date_submitted, 'created_at' => $created_at, 'current_weight' => $current_weight, 'itr_drugs' => $itr_drugs, 'facility_code' => $facility_code, 'updated_type_of_case' => $updated_type_of_case, 'suggested_regimen_notes' => $suggested_regimen_notes, 'current_regiment' => $current_regimen, 'suggested_regimen' => $suggested_regimen, 'status' => $status, 'ct_scan_date' => $ct_scan_date, 'ct_scan_result' => $ct_scan_result, 'ultra_sound_date' => $ultra_sound_date, 'latest_comparative_cxr_reading' => $latest_comparative_cxr_reading, 'ultra_sound_result' => $ultra_sound_result, 'cxr_date' => $cxr_date, 'cxr_result' => $cxr_result, 'remarks' => $remarks, 'hispathological_date' => $histhopathological_date, 'hispathological_result' => $histhopathological_result, 'regimen_notes' => $regimen_notes, 'recommendations' => $recommendation, 'patient_code' => $patient_code, 'screening_one' => $screeningOne, 'screening_two' => $screeningTwo, 'attachments' => $attachments, 'lpa' => $lpa, 'dst' => $dst, 'monthly_screening' => $monthly_screening,
+           'month_of_treatment' => $month_of_treatment, 'gender' => $gender, 'province' => $province, 'birthday' => $birthday, 'case_number' => $case_number, 'last_name' => $last_name, 'presentation_number' => $presentation_number, 'current_drug_susceptibility' => $current_drug_susceptibility, 'submitted_by' => $submitted_by, 'date_submitted' => $date_submitted, 'created_at' => $created_at, 'current_weight' => $current_weight, 'itr_drugs' => $itr_drugs, 'facility_code' => $facility_code, 'updated_type_of_case' => $updated_type_of_case, 'suggested_regimen_notes' => $suggested_regimen_notes, 'current_regiment' => $current_regimen, 'suggested_regimen' => $suggested_regimen, 'status' => $status, 'ct_scan_date' => $ct_scan_date, 'ct_scan_result' => $ct_scan_result, 'ultra_sound_date' => $ultra_sound_date, 'latest_comparative_cxr_reading' => $latest_comparative_cxr_reading, 'ultra_sound_result' => $ultra_sound_result, 'cxr_date' => $cxr_date, 'cxr_result' => $cxr_result, 'remarks' => $remarks, 'hispathological_date' => $histhopathological_date, 'hispathological_result' => $histhopathological_result, 'regimen_notes' => $regimen_notes, 'patient_code' => $patient_code, 'screening_one' => $screeningOne, 'screening_two' => $screeningTwo, 'attachments' => $attachments, 'lpa' => $lpa, 'dst' => $dst, 'monthly_screening' => $monthly_screening,
         ];
         return response()->json($data);
     }
