@@ -17,11 +17,11 @@ class CaseManagementResubmitController extends Controller
     public function edit(TBMacForm $tbMacForm)
     {
         $tbMacForm = $tbMacForm->load(['submittedBy','caseManagementForm','caseManagementBacteriologicalResults','caseManagementLaboratoryResults','caseManagementAttachment','patient','recommendations']);
-        $tbBacteriologicalResults = $tbMacForm->caseManagementBacteriologicalResults;  
-        $presentation_number = $tbMacForm->presentation_number; 
-        $submitted_by = $tbMacForm->submittedBy->name; $last_name = 
-        $tbMacForm->patient->last_name; 
-        $case_number = $tbMacForm->caseManagementForm->case_number; 
+        $tbBacteriologicalResults = $tbMacForm->caseManagementBacteriologicalResults;
+        $presentation_number = $tbMacForm->presentation_number;
+        $submitted_by = $tbMacForm->submittedBy->name;
+        $last_name = $tbMacForm->patient->last_name;
+        $case_number = $tbMacForm->caseManagementForm->case_number;
         $birthday = $tbMacForm->patient->birthday;
         $province = $tbMacForm->patient->province;
         $gender = $tbMacForm->patient->gender;
