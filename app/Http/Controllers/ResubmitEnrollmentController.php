@@ -33,6 +33,7 @@ class ResubmitEnrollmentController extends Controller
         unset($request['_token']);
         $request['status'] = 'New Enrollment';
         $request['cxr_reading'] = $request['cxr_reading'] ?? null;
+        $request['itr_drugs'] = ! isset($request['itr_drugs']) ? null : $request['itr_drugs'];
 
         $tbMacForm->patient->update($request);
 
