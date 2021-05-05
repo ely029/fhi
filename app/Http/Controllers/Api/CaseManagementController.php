@@ -117,19 +117,12 @@ class CaseManagementController extends Controller
             return $item->label === 'Screening 1' && $item->resistance_pattern !== '' && $item->method_used !== '';
         })->map(function ($item) {
             return [
-                'label' => $item->label,
-                'date_collected' => $item->date_collected->format('d F Y'),
-                'resistance_pattern' => $item->resistance_pattern,
-                'method_used' => $item->method_used,
+                'label' => $item->label, 'date_collected' => $item->date_collected->format('d F Y'), 'resistance_pattern' => $item->resistance_pattern, 'method_used' => $item->method_used,
             ];
         })->values();
         $recommendation = $recommendations->map(function ($item) {
             return [
-                'name' => $item->users->name,
-                'role' => $item->roles->name,
-                'date_created' => $item->created_at->format('d M, Y'),
-                'status' => $item->status === '0' ? '' : $item->status,
-                'recommendation' => $item->recommendation,
+                'name' => $item->users->name, 'role' => $item->roles->name, 'date_created' => $item->created_at->format('d M, Y'), 'status' => $item->status === '0' ? '' : $item->status, 'recommendation' => $item->recommendation,
             ];
         })->values();
         $hcw_recom = [
