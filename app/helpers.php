@@ -311,6 +311,7 @@ function enrollmentFormTabs()
         'with_recommendations' => ['For Enrollment','Not for Referral','Not For Enrollment','Need Further Details','Referred to regional chair'],
         'completed' => ['For Enrollment','Not For Enrollment','Need Further Details'],
         'all_enrollments' => ['New Enrollment','Referred to Regional'],
-        'all_enrollments_ntb_chair' => ['Referred to national','For Enrollment','Not For Enrollment','Need Further Details'],
+        'all_enrollments_ntb_chair' => ['For Enrollment','Not For Enrollment','Need Further Details','Referred to regional chair'],
+        'all_enrollments_ntb' => ['For Enrollment','Not For Enrollment','Need Further Details','Referred to regional chair'],
     ];
 }
