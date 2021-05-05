@@ -25,7 +25,7 @@ class EnrollmentsController extends Controller
             return [
                 'id' => $item->id,
                 'patient_code' => $item->patient->code,
-                'date_created' => $item->created_at->format('M d, Y'),
+                'date_created' => $item->created_at->format('m-d-Y'),
                 'facility_code' => $item->patient->facility_code,
                 'status' => $item->status,
                 'drug_susceptibility' => $item->enrollmentForm->drug_susceptibility ?? null,
@@ -89,7 +89,7 @@ class EnrollmentsController extends Controller
             return [
                 'name' => $item->name,
                 'name_of_laboratory' => $item->name_of_laboratory,
-                'date_collected' => $item->date_collected->format('d F Y'),
+                'date_collected' => $item->date_collected->format('m-d-Y'),
                 'result' => $item->result,
             ];
         })->values();
@@ -100,7 +100,7 @@ class EnrollmentsController extends Controller
             return [
                 'name' => $item->name,
                 'name_of_laboratory' => $item->name_of_laboratory,
-                'date_collected' => $item->date_collected->format('d F Y'),
+                'date_collected' => $item->date_collected->format('m-d-Y'),
                 'result' => $item->result,
             ];
         })->values();
@@ -119,14 +119,14 @@ class EnrollmentsController extends Controller
                 'name' => $item->users->name,
                 'role' => $item->users->role->name,
                 'role_id' => $item->role_id,
-                'date_created' => $item->created_at->format('d M, Y'),
+                'date_created' => $item->created_at->format('m-d-Y'),
                 'status' => $item->status === '0' ? '' : $item->status,
                 'recommendation' => $item->recommendation,
             ];
         });
 
         $data = [
-            'date_created' => $tbMacForm->created_at->format('M d, Y'),
+            'date_created' => $tbMacForm->created_at->format('m-d-Y'),
             'patient_code' => $tbMacForm->patient->code,
             'facility_code' => $tbMacForm->patient->facility_code,
             'status' => $tbMacForm->status,
@@ -145,14 +145,14 @@ class EnrollmentsController extends Controller
             'vital_signs' => $tbMacForm->enrollmentForm->vital_signs,
             'diag_and_lab_findings' => $tbMacForm->enrollmentForm->diag_and_lab_findings,
             'signs_and_symptoms' => $tbMacForm->enrollmentForm->signs_and_symptoms,
-            'cxr_date' => $tbMacForm->laboratoryResults->cxr_date ? $tbMacForm->laboratoryResults->cxr_date->format('m/d/y') : '',
+            'cxr_date' => $tbMacForm->laboratoryResults->cxr_date ? $tbMacForm->laboratoryResults->cxr_date->format('m-d-Y') : '',
             'cxr_result' => $tbMacForm->laboratoryResults->cxr_result,
             'cxr_reading' => $tbMacForm->laboratoryResults->cxr_reading,
-            'ct_scan_date' => $tbMacForm->laboratoryResults->ct_scan_date ? $tbMacForm->laboratoryResults->ct_scan_date->format('m/d/y') : '',
+            'ct_scan_date' => $tbMacForm->laboratoryResults->ct_scan_date ? $tbMacForm->laboratoryResults->ct_scan_date->format('m-d-Y') : '',
             'ct_scan_result' => $tbMacForm->laboratoryResults->ct_scan_result,
-            'ultrasound_date' => $tbMacForm->laboratoryResults->ultrasound_date ? $tbMacForm->laboratoryResults->ultrasound_date->format('m/d/y') : '',
+            'ultrasound_date' => $tbMacForm->laboratoryResults->ultrasound_date ? $tbMacForm->laboratoryResults->ultrasound_date->format('m-d-Y') : '',
             'ultrasound_result' => $tbMacForm->laboratoryResults->ultrasound_result,
-            'histopathological_date' => $tbMacForm->laboratoryResults->histopathological_date ? $tbMacForm->laboratoryResults->histopathological_date->format('m/d/y') : '',
+            'histopathological_date' => $tbMacForm->laboratoryResults->histopathological_date ? $tbMacForm->laboratoryResults->histopathological_date->format('m-d-Y') : '',
             'histopathological_result' => $tbMacForm->laboratoryResults->histopathological_result,
             'remarks' => $tbMacForm->laboratoryResults->remarks,
             'attachments' => $attachments,

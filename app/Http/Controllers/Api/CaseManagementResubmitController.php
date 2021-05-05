@@ -22,15 +22,15 @@ class CaseManagementResubmitController extends Controller
         $submitted_by = $tbMacForm->submittedBy->name;
         $last_name = $tbMacForm->patient->last_name;
         $case_number = $tbMacForm->caseManagementForm->case_number;
-        $birthday = $tbMacForm->patient->birthday->format('M d, Y');
+        $birthday = $tbMacForm->patient->birthday->format('m-d-Y');
         $province = $tbMacForm->patient->province;
         $gender = $tbMacForm->patient->gender;
         $month_of_treatment = $tbMacForm->caseManagementForm->month_of_treatment;
-        $date_submitted = $tbMacForm->created_at->format('M d, Y');
+        $date_submitted = $tbMacForm->created_at->format('m-d-Y');
         $status = $tbMacForm->status;
-        $created_at = $tbMacForm->created_at->format('M d, Y');
+        $created_at = $tbMacForm->created_at->format('m-d-Y');
         $facility_code = $tbMacForm->patient->facility_code;
-        $suggested_regimen = Str::startsWith($tbMacForm->caseManagementForm->suggested_regimen, 'ITR') ? $tbMacForm->caseManagementForm->others : $tbMacForm->caseManagementForm->suggested_regimen;
+        $suggested_regimen = Str::startsWith($tbMacForm->caseManagementForm->suggested_regimen, 'ITR') ? $tbMacForm->caseManagementForm->itr_drugs : $tbMacForm->caseManagementForm->suggested_regimen;
         $suggested_regimen_notes = $tbMacForm->caseManagementForm->suggested_regimen_notes ?? null;
         $current_regimen = $tbMacForm->caseManagementForm->current_regiment ?? null;
         $current_weight = $tbMacForm->caseManagementForm->current_weight ?? null;
@@ -40,11 +40,11 @@ class CaseManagementResubmitController extends Controller
         $latest_comparative_cxr_reading = $tbMacForm->caseManagementForm->latest_comparative_cxr_reading;
         $current_drug_susceptibility = $tbMacForm->caseManagementForm->current_drug_susceptibility ?? null;
         $updated_type_of_case = $tbMacForm->caseManagementForm->updated_type_of_case ?? null;
-        $ct_scan_date = ! isset($tbMacForm->caseManagementLaboratoryResult->ct_scan_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->ct_scan_date->format('M d, Y') ?? null;
+        $ct_scan_date = ! isset($tbMacForm->caseManagementLaboratoryResult->ct_scan_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->ct_scan_date->format('m-d-Y') ?? null;
         $ct_scan_result = $tbMacForm->caseManagementLaboratoryResult->ct_scan_result ?? null;
-        $ultra_sound_date = ! isset($tbMacForm->caseManagementLaboratoryResult->ultra_sound_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->ultra_sound_date->format('M d, Y') ?? null;
+        $ultra_sound_date = ! isset($tbMacForm->caseManagementLaboratoryResult->ultra_sound_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->ultra_sound_date->format('m-d-Y') ?? null;
         $ultra_sound_result = $tbMacForm->caseManagementLaboratoryResult->ultra_sound_result ?? null;
-        $histhopathological_date = ! isset($tbMacForm->caseManagementLaboratoryResult->histhopathological_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->histhopathological_date->format('M d, Y') ?? null;
+        $histhopathological_date = ! isset($tbMacForm->caseManagementLaboratoryResult->histhopathological_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->histhopathological_date->format('m-d-Y') ?? null;
         $histhopathological_result = $tbMacForm->caseManagementLaboratoryResult->histhopathological_result ?? null;
         $cxr_date = $tbMacForm->caseManagementLaboratoryResult->cxr_date->format('M d, Y') ?? null;
         $cxr_result = $tbMacForm->caseManagementLaboratoryResult->cxr_result ?? null;
@@ -54,7 +54,7 @@ class CaseManagementResubmitController extends Controller
         })->map(function ($item) {
             return [
                 'label' => $item->label,
-                'date_collected' => $item->date_collected->format('d F Y'),
+                'date_collected' => $item->date_collected->format('m-d-Y'),
                 'resistance_pattern' => $item->resistance_pattern,
                 'method_used' => $item->method_used,
             ];
@@ -64,7 +64,7 @@ class CaseManagementResubmitController extends Controller
         })->map(function ($item) {
             return [
                 'label' => $item->label,
-                'date_collected' => $item->date_collected->format('d F Y'),
+                'date_collected' => $item->date_collected->format('m-d-Y'),
                 'resistance_pattern' => $item->resistance_pattern,
                 'method_used' => $item->method_used,
             ];
@@ -74,7 +74,7 @@ class CaseManagementResubmitController extends Controller
         })->map(function ($item) {
             return [
                 'label' => Str::startsWith($item->label, 'Other (Specify)') ? $item->others : $item->label,
-                'date_collected' => $item->date_collected->format('d F Y'),
+                'date_collected' => $item->date_collected->format('m-d-Y'),
                 'resistance_pattern' => $item->resistance_pattern,
             ];
         })->values();
@@ -83,7 +83,7 @@ class CaseManagementResubmitController extends Controller
         })->map(function ($item) {
             return [
                 'label' => Str::startsWith($item->label, 'Other (Specify)') ? $item->others : $item->label,
-                'date_collected' => $item->date_collected->format('d F Y'),
+                'date_collected' => $item->date_collected->format('m-d-Y'),
                 'resistance_pattern' => $item->resistance_pattern,
             ];
         })->values();
@@ -92,7 +92,7 @@ class CaseManagementResubmitController extends Controller
         })->map(function ($item) {
             return [
                 'label' => 'Month '.$item->count,
-                'date_collected' => $item->date_collected->format('d F Y'),
+                'date_collected' => $item->date_collected->format('m-d-Y'),
                 'smear_microscopy' => $item->smear_microscopy,
                 'tb_lamp' => $item->tb_lamp,
                 'culture' => $item->culture,
@@ -118,7 +118,6 @@ class CaseManagementResubmitController extends Controller
         unset($request['_token']);
         $request['first_name'] = '';
         $request['last_name'] = '';
-        $caseManagementAttachment = new CaseManagementAttachments();
         $caseManagementBactResult = new CaseManagementBacteriologicalResults();
         $request['status'] = 'New Case';
         $tbMacForm->patient->update($request);
@@ -141,7 +140,15 @@ class CaseManagementResubmitController extends Controller
         }
         if (isset($request['attachments'])) {
             CaseManagementAttachments::where('form_id', $tbMacForm->id)->delete();
-            $caseManagementAttachment->createAttachmentMobile($request, $tbMacForm);
+            foreach ($request['attachments'] as $key => $file) {
+                $fileName = $file->getClientOriginalName();
+                $file->storeAs(CaseManagementAttachments::PATH_PREFIX.'/'.$tbMacForm->presentation_number, $fileName);
+                $tbMacForm->caseManagementAttachments()->create([
+                    'file_name' => $fileName,
+                    'extension' => $file->extension(),
+                    'form_id' => $tbMacForm->id,
+                ]);
+            }
         }
         $request['cxr_reading'] = $request['cxr_reading'] ?? null;
         $request['itr_drugs'] = ! isset($request['itr_drugs']) ? '' : $request['itr_drugs'];

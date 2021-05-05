@@ -40,19 +40,6 @@ class CaseManagementAttachments extends Model
         'extension',
     ];
 
-    public function createAttachment($request, $form)
-    {
-        foreach ($request['attachments'] as $key => $file) {
-            $fileName = $file->getClientOriginalName();
-            $file->storeAs(CaseManagementAttachments::PATH_PREFIX.'/'.$form->presentation_number, $fileName);
-            $form->caseManagementAttachment()->create([
-                'file_name' => $fileName,
-                'extension' => $file->extension(),
-                'form_id' => $form->id,
-            ]);
-        }
-    }
-
     public function createAttachmentMobile($request, $form)
     {
         $file = $request['attachments'];

@@ -24,7 +24,7 @@ class EnrollmentRecommendationsController extends Controller
             return [
                 'id' => $item->tbMacForms->id,
                 'patient_code' => $item->tbMacForms->patient->code,
-                'date_created' => $item->tbMacForms->created_at->format('M d, Y'),
+                'date_created' => $item->tbMacForms->created_at->format('m-d-Y'),
                 'facility_code' => $item->tbMacForms->patient->facility_code,
                 'status' => $item->status === '0' ? '' : $item->status,
                 'drug_susceptibility' => $item->tbMacForms->enrollmentForm->drug_susceptibility,
