@@ -72,15 +72,23 @@ class CaseManagementController extends Controller
             $caseManagementBactResult->screeningTwoCreation($form, $request);
         }
 
+        if (isset($request['attachments'])) {
+            foreach ($request['attachments'] as $key => $file) {
+                $fileName = $file->getClientOriginalName();
+                $file->storeAs(CaseManagementAttachments::PATH_PREFIX.'/'.$form->presentation_number, $fileName);
+                $form->caseManagementAttachments()->create([
+                    'file_name' => $fileName,
+                    'extension' => $file->extension(),
+                    'form_id' => $form->id,
+                ]);
+            }
+        }
+
         //LPA
         $caseManagementBactResult->lpaCreation($form, $request);
 
         //DST
         $caseManagementBactResult->dstCreation($form, $request);
-
-        if (isset($request['attachments'])) {
-            $caseManagementAttachment->createAttachment($request, $form);
-        }
 
         //Month DST
         $count = count($request['date_collected']) - 1;
