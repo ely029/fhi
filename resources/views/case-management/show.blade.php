@@ -338,7 +338,7 @@
                 </div>
               </div>
               <div class="form__container">
-                <h2 class="section__heading">Suggested regimen</h2>
+                <h2 class="section__heading">Suggested regiment</h2>
                 <div class="grid grid--two">
                   <div class="form__content">
                     <span class="form__text">
@@ -359,10 +359,10 @@
                  
                   <div class="form__content">
                     <span class="form__text">{{ empty($tbMacForm->caseManagementForm->suggested_regimen_notes) ? '' : $tbMacForm->caseManagementForm->suggested_regimen_notes}}</span>
-                    <label class="form__label" for="">Suggested Regimen notes</label>
+                    <label class="form__label" for="">Suggested regimen notes</label>
                   </div>
                   <div class="form__content"><span class="form__text">{{ empty($tbMacForm->caseManagementForm->updated_type_of_case) ? '' : $tbMacForm->caseManagementForm->updated_type_of_case}}</span>
-                    <label class="form__label" for="">Updated Drug Susceptibility</label>
+                    <label class="form__label" for="">Updated drug Susceptibility</label>
                   </div>
                 </div>
               </div>

@@ -26,35 +26,29 @@
     </div>
     <div class="form__container form-step-4">
         <div class="grid">
-        <div class="help-block with-errors"></div>
         <div class="form__content form-group form__content--small form__content--small__right">
-        <input class="form__input" value="{{ $tbMacForm->caseManagementLaboratoryResult->ct_scan_date->format('Y-m-d')}}" type="date" required name="ct_scan_date" placeholder="CT scan date" /><label class="form__label" for="">CT scan date</label></div>
+        <input class="form__input" value="{{ empty($tbMacForm->caseManagementLaboratoryResult->ct_scan_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->ct_scan_date->format('Y-m-d')}}" type="date" name="ct_scan_date" placeholder="CT scan date" /><label class="form__label" for="">CT scan date</label></div>
         <span class="error"></span>
-        <div class="form__content form-group">
-        <div class="help-block with-errors"></div>
-        <input class="form__input" name="ct_scan_result" required type="text" placeholder="CT scan result" value="{{ $tbMacForm->caseManagementLaboratoryResult->ct_scan_result}}" /><label class="form__label" for="">CT scan result</label></div>
+        <div class="form__content">
+        <input class="form__input" name="ct_scan_result" type="text" placeholder="CT scan result" value="{{ empty($tbMacForm->caseManagementLaboratoryResult->ct_scan_result) ? '' : $tbMacForm->caseManagementLaboratoryResult->ct_scan_result}}" /><label class="form__label" for="">CT scan result</label></div>
         <span class="error"></span>
         </div>
     </div>
     <div class="form__container form-step-4">
         <div class="grid">
-        <div class="form__content form-group form__content--small form__content--small__right">
-        <div class="help-block with-errors"></div>
-        <input name="ultra_sound_date" required class="form__input" name="ultra_sound_date" type="date" placeholder="Ultrasound date" value="{{ $tbMacForm->caseManagementLaboratoryResult->ultra_sound_date->format('Y-m-d')}}"/><label class="form__label" for="">Ultrasound date</label></div>
+        <div class="form__content form__content--small form__content--small__right">
+        <input name="ultra_sound_date" class="form__input" name="ultra_sound_date" type="date" placeholder="Ultrasound date" value="{{ empty($tbMacForm->caseManagementLaboratoryResult->ultra_sound_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->ultra_sound_date->format('Y-m-d')}}"/><label class="form__label" for="">Ultrasound date</label></div>
         <div class="form__content form-group">
-        <div class="help-block with-errors"></div>
-        <input class="form__input" type="text" required name="ultra_sound_result" placeholder="Ultrasound result" value="{{ $tbMacForm->caseManagementLaboratoryResult->ultra_sound_result}}"/><label class="form__label" for="">Ultrasound result</label></div>
+        <input class="form__input" type="text" name="ultra_sound_result" placeholder="Ultrasound result" value="{{ empty($tbMacForm->caseManagementLaboratoryResult->ultra_sound_result) ? '' : $tbMacForm->caseManagementLaboratoryResult->ultra_sound_result}}"/><label class="form__label" for="">Ultrasound result</label></div>
         </div>
     </div>
     <div class="form__container form-step-4">
         <div class="grid">
-        <div class="form__content form-group form__content--small form__content--small__right">
-        <div class="help-block with-errors"></div>
-            <input class="form__input" type="date" required name="histhopathological_date" placeholder="Histopathological date" value="{{ $tbMacForm->caseManagementLaboratoryResult->histhopathological_date->format('Y-m-d')}}"/><label class="form__label" for="">Histopathological date</label>
+        <div class="form__content form__content--small form__content--small__right">
+            <input class="form__input" type="date" name="histhopathological_date" placeholder="Histopathological date" value="{{ empty($tbMacForm->caseManagementLaboratoryResult->histhopathological_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->histhopathological_date->format('Y-m-d')}}"/><label class="form__label" for="">Histopathological date</label>
         </div>
-        <div class="form__content form-group">
-        <div class="help-block with-errors"></div>
-        <input name="histhopathological_result" required class="form__input" type="text" placeholder="Histopathological result" value="{{ $tbMacForm->caseManagementLaboratoryResult->histhopathological_result}}"/><label class="form__label" for="">Histopathological result</label></div>
+        <div class="form__content">
+        <input name="histhopathological_result" class="form__input" type="text" placeholder="Histopathological result" value="{{ empty($tbMacForm->caseManagementLaboratoryResult->histhopathological_result) ? '' : $tbMacForm->caseManagementLaboratoryResult->histhopathological_result}}"/><label class="form__label" for="">Histopathological result</label></div>
         </div>
     </div>
     </div>

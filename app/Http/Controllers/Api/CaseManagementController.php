@@ -104,11 +104,11 @@ class CaseManagementController extends Controller
         $latest_comparative_cxr_reading = $tbMacForm->caseManagementForm->latest_comparative_cxr_reading;
         $current_drug_susceptibility = $tbMacForm->caseManagementForm->current_drug_susceptibility ?? null;
         $updated_type_of_case = $tbMacForm->caseManagementForm->updated_type_of_case ?? null;
-        $ct_scan_date = $tbMacForm->caseManagementLaboratoryResult->ct_scan_date->format('M d, Y') ?? null;
+        $ct_scan_date = ! isset($tbMacForm->caseManagementLaboratoryResult->ct_scan_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->ct_scan_date->format('M d, Y') ?? null;
         $ct_scan_result = $tbMacForm->caseManagementLaboratoryResult->ct_scan_result ?? null;
-        $ultra_sound_date = $tbMacForm->caseManagementLaboratoryResult->ultra_sound_date->format('M d, Y') ?? null;
+        $ultra_sound_date = ! isset($tbMacForm->caseManagementLaboratoryResult->ultra_sound_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->ultra_sound_date->format('M d, Y') ?? null;
         $ultra_sound_result = $tbMacForm->caseManagementLaboratoryResult->ultra_sound_result ?? null;
-        $histhopathological_date = $tbMacForm->caseManagementLaboratoryResult->histhopathological_date->format('M d, Y') ?? null;
+        $histhopathological_date = ! isset($tbMacForm->caseManagementLaboratoryResult->histhopathological_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->histhopathological_date->format('M d, Y') ?? null;
         $histhopathological_result = $tbMacForm->caseManagementLaboratoryResult->histhopathological_result ?? null;
         $cxr_date = $tbMacForm->caseManagementLaboratoryResult->cxr_date->format('M d, Y') ?? null;
         $cxr_result = $tbMacForm->caseManagementLaboratoryResult->cxr_result ?? null;

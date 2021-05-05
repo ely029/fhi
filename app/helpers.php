@@ -119,6 +119,7 @@ function provinces()
 function month_treatment()
 {
     return [
+        '0',
         '1st',
         '2nd',
         '3rd',
@@ -283,6 +284,7 @@ function LPA()
         'MTB Detected, Fluoroquinolone Resistance Not Detected',
         'MTB Detected, Fluoroquinolone Resistance Indeterminate',
         'MTB Detected, Second-line Injectable Resistance Detected',
+        'MTB Detected, Second-line Injectable Resistance Not Detected',
         'MTB Detected, Second-line Injectable Resistance Indeterminate',
         'MTB Detected, High Dose Isoniazid Resistance Detected',
         'MTB Detected, High Dose Isoniazid Resistance Not Detected',
