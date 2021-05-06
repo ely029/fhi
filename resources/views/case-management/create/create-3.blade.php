@@ -20,7 +20,7 @@
     </textarea>
     <label class="form__label" for="">Reason for case management presentation</label>
         </div> -->
-    <div class="form__content form-group">
+    <div class="form__content form-group label-with-error-above">
             
         <textarea name="reason_case_management_presentation" class="form__input form__input--message" id="inputEmail" placeholder="" required></textarea>
         <div class="help-block with-errors label-with-error-above"></div>
@@ -44,7 +44,7 @@
         <option value="BPaL">BPaL</option>
         <option value="Other (Specify)">Other (Specify)</option>
         </select>
-        <div class="triangle triangle--down"></div>
+        <div class="triangle triangle--down label-with-error-above"></div>
         <label class="form__label" for="">Suggested regimen</label>
     </div>
     <div class="form__content" id="itr_drugs_1">
@@ -53,14 +53,14 @@
     <div class="form__content" id="others_1">
     <input class="form__input" name="others_case_management" type="text" placeholder="Others (Please specify)"/><label class="form__label" for="">Others</label>
     </div>
-    <div class="form__content form-group">
+    <div class="form__content form-group label-with-error-above">
     
         <textarea required class="form__input form__input--message" name="suggested_regimen_notes"> </textarea>
         <div class="help-block with-errors"></div>
         <label class="form__label" for="">Suggested regimen notes</label>
     </div>
     <div class="grid grid--two">
-        <div class="form__content">
+        <div class="form__content label-with-error-above">
         <select class="form__input form__input--select" name="updated_type_of_case">
             <option value="Drug-susceptible">Drug-susceptible</option>
             <option value="Bacteriologically-confirmed RR-TB">Bacteriologically-confirmed RR-TB</option>
