@@ -37,6 +37,15 @@ class EnrollmentResubmitController extends Controller
         $vital_signs = ! isset($tbMacForm->enrollmentForm->vital_signs) ? '' : $tbMacForm->enrollmentForm->vital_signs;
         $diag_and_lab_findings = ! isset($tbMacForm->enrollmentForm->diag_and_lab_findings) ? '' : $tbMacForm->enrollmentForm->diag_and_lab_findings;
 
+        $attachments = [];
+        foreach ($tbMacForm->attachments as $key => $attachment) {
+            $fileName = ($key + 1).'.'.$attachment->extension;
+            $attachments[] = [
+                'url' => url('api/enrollments/'.$tbMacForm->id.'/'.$fileName.'/attachment'),
+                'filename' => $attachment->file_name,
+            ];
+        }
+
         $data = [
             'facility_code' => $facility_code,
             'province' => $province,
@@ -55,6 +64,7 @@ class EnrollmentResubmitController extends Controller
             'vital_signs' => $vital_signs,
             'diag_and_lab_findings' => $diag_and_lab_findings,
             'bacteriological_results' => $bacteriological_results,
+            'attachments' => $attachments,
         ];
 
         return response([
