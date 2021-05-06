@@ -15,43 +15,14 @@
   transition: 0.3s;" class="image" src="src/img/logo.png" alt="logo of FHI" /></div>
     <div class="email__content" style="padding: 50px;">
         <p class="email__text" style="color: #000;
-  font-size: 20px;
-  margin-top: 30px;margin-top: 0;">Hi [name]</p>
+  font-size: 20px;margin-top: 0;">Hi [name]</p>
         <p class="email__text" style="color: #000;
-  font-size: 20px;
-  margin-top: 30px;text-align: justify;">e-TB Mac sent you an email for Admin Account Creation. Please click the button below to create your admin account.</p>
-        <a class="button button--accept" href="" style="width: 30%;
-  margin: 40px auto 70px;
-  height: 50px;
-  font-size: 20px; transition: 0.5s;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  position: relative;
-  font-family: 'Roboto', sans-serif;
-  cursor: pointer;
-  outline: none;
-  background-color: #006168;
-  color: #fff !important;
-  font-size: 1.04167vw;
-  height: 2.70833vw;
-  padding: 0 1.5vw;
-  border: none;
-  text-align: center;">Create account</a>
+  font-size: 20px;margin: 30px 0;text-align: justify;">Your request for Secretariat role has been declined. If you think this is an error, please contact the admin immediately.</p>
+        
         <p class="email__text" style="color: #000;
   font-size: 20px;
   margin-top: 30px;display: inline-block;
   text-align: center;
-  margin: 0 auto;
   width: 100%;">
         Need help? Ask our team at<a class="email__link" href="mailto:admin@e-tbmac.com" style="width: 100%;
   text-align: center;
