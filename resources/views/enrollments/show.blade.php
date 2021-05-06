@@ -34,7 +34,7 @@
                 <h2 class="section__heading">Health Care Worker</h2>
                 <div class="grid grid--two">
                   <div class="form__content"><span class="form__text">{{ $tbMacForm->submittedBy->name }}</span><label class="form__label" for="">Primary Health Care Worker </label></div>
-                  <div class="form__content"><span class="form__text">{{ $tbMacForm->created_at->format('m-d-Y') }}</span><label class="form__label" for="">Date submitted</label></div>
+                  <div class="form__content"><span class="form__text">{{ $tbMacForm->created_at->format('Y-m-d') }}</span><label class="form__label" for="">Date submitted</label></div>
                 </div>
               </div>
             </div>
@@ -149,7 +149,7 @@
                     <div class="form__container">
                         <span class="form__text form__text--bold">{{ $result->name }}</span>
                         <span class="form__text">{{ $result->name_of_laboratory }}</span>
-                        <span class="form__text">{{ $result->date_collected->format('m-d-Y') }}</span>
+                        <span class="form__text">{{ $result->date_collected->format('Y-m-d') }}</span>
                     </div>
                     <div class="form__container">
                         <div class="form__content">
@@ -180,7 +180,7 @@
                       <li class="card__item">
                       <div class="form__container">
                           <span class="form__text">{{ $result->name_of_laboratory }}</span>
-                          <span class="form__text">{{ $result->date_collected->format('m-d-Y') }}</span>
+                          <span class="form__text">{{ $result->date_collected->format('Y-m-d') }}</span>
                       </div>
                       <div class="form__container">
                           <div class="form__content">
@@ -253,7 +253,7 @@
               <div class="grid grid--two">
                 <div class="form__content">
                     <span class="form__text">
-                        {{ empty($tbMacForm->laboratoryResults->cxr_date) ? ''  : $tbMacForm->laboratoryResults->cxr_date->format('m-d-Y') }}</span>
+                        {{ empty($tbMacForm->laboratoryResults->cxr_date) ? ''  : $tbMacForm->laboratoryResults->cxr_date->format('Y-m-d') }}</span>
                     <label class="form__label" for="">CXR date</label>
                 </div>
                 <div class="form__content">
@@ -348,7 +348,7 @@
               <div class="form__container">
                 <div class="grid grid--two">
                   <h2 class="section__heading section__heading--healthworker">{{ $tbMacForm->submittedBy->name }}<span class="form__label">Health Care Worker | [Region]</span></h2>
-                  <label class="form__label">{{ $tbMacForm->created_at->format('m-d-Y')}}</label>
+                  <label class="form__label">{{ $tbMacForm->created_at->format('Y-m-d')}}</label>
                 </div>
                 <div class="form__container form__container--remarks form__container--actions">
                   <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
@@ -365,7 +365,7 @@
               <div class="form__container">
                 <div class="grid grid--two">
                   <h2 class="section__heading section__heading--healthworker">{{ $recommendation->users->name}}<span class="form__label">{{ $recommendation->users->role->name }} | [Region]</span></h2>
-                  <label class="form__label">{{ $recommendation->created_at->format('m-d-Y')}}</label>
+                  <label class="form__label">{{ $recommendation->created_at->format('Y-m-d')}}</label>
                 </div>
                 <div class="form__container form__container--remarks form__container--actions">
                   <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
@@ -397,7 +397,7 @@
             <div class="form__container">
               <div class="grid grid--two">
                 <h2 class="section__heading section__heading--healthworker">{{ $tbMacForm->submittedBy->name }}<span class="form__label">Health Care Worker | [Region]</span></h2>
-                <label class="form__label">{{ $tbMacForm->created_at->format('m-d-Y')}}</label>
+                <label class="form__label">{{ $tbMacForm->created_at->format('Y-m-d')}}</label>
               </div>
               <div class="form__container form__container--remarks form__container--actions">
                 <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
@@ -414,7 +414,7 @@
             <div class="form__container">
               <div class="grid grid--two">
                 <h2 class="section__heading section__heading--healthworker">{{ $secretariat->users->name}}<span class="form__label">{{ $secretariat->users->role->name }} | [Region]</span></h2>
-                <label class="form__label">{{ $secretariat->created_at->format('m-d-Y')}}</label>
+                <label class="form__label">{{ $secretariat->created_at->format('Y-m-d')}}</label>
               </div>
               <div class="form__container form__container--remarks form__container--actions">
                 <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
@@ -445,7 +445,7 @@
             <div class="form__container">
               <div class="grid grid--two">
                 <h2 class="section__heading section__heading--healthworker">{{ $tbMacForm->submittedBy->name }}<span class="form__label">Health Care Worker | [Region]</span></h2>
-                <label class="form__label">{{ $tbMacForm->created_at->format('m-d-Y')}}</label>
+                <label class="form__label">{{ $tbMacForm->created_at->format('Y-m-d')}}</label>
               </div>
               <div class="form__container form__container--remarks form__container--actions">
                 <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
@@ -462,7 +462,7 @@
             <div class="form__container">
               <div class="grid grid--two">
                 <h2 class="section__heading section__heading--healthworker">{{ $secretariat->users->name}}<span class="form__label">{{ $secretariat->users->role->name }} | [Region]</span></h2>
-                <label class="form__label">{{ $secretariat->created_at->format('m-d-Y')}}</label>
+                <label class="form__label">{{ $secretariat->created_at->format('Y-m-d')}}</label>
               </div>
               <div class="form__container form__container--remarks form__container--actions">
                 <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
@@ -493,7 +493,7 @@
             <div class="form__container">
               <div class="grid grid--two">
                 <h2 class="section__heading section__heading--healthworker">{{ $tbMacForm->submittedBy->name }}<span class="form__label">Health Care Worker | [Region]</span></h2>
-                <label class="form__label">{{ $tbMacForm->created_at->format('m-d-Y')}}</label>
+                <label class="form__label">{{ $tbMacForm->created_at->format('Y-m-d')}}</label>
               </div>
               <div class="form__container form__container--remarks form__container--actions">
                 <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
@@ -510,7 +510,7 @@
             <div class="form__container">
               <div class="grid grid--two">
                 <h2 class="section__heading section__heading--healthworker">{{ $secretariat->users->name}}<span class="form__label">{{ $secretariat->users->role->name }} | [Region]</span></h2>
-                <label class="form__label">{{ $secretariat->created_at->format('m-d-Y')}}</label>
+                <label class="form__label">{{ $secretariat->created_at->format('Y-m-d')}}</label>
               </div>
               <div class="form__container form__container--remarks form__container--actions">
                 <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
@@ -534,7 +534,7 @@
             <div class="form__container">
               <div class="grid grid--two">
                 <h2 class="section__heading section__heading--healthworker">{{ $tbMacForm->submittedBy->name }}<span class="form__label">Health Care Worker | [Region]</span></h2>
-                <label class="form__label">{{ $tbMacForm->created_at->format('m-d-Y')}}</label>
+                <label class="form__label">{{ $tbMacForm->created_at->format('Y-m-d')}}</label>
               </div>
               <div class="form__container form__container--remarks form__container--actions">
                 <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
@@ -580,7 +580,7 @@
             <div class="form__container">
               <div class="grid grid--two">
                 <h2 class="section__heading section__heading--healthworker">{{ $tbMacForm->submittedBy->name }}<span class="form__label">Health Care Worker | [Region]</span></h2>
-                <label class="form__label">{{ $tbMacForm->created_at->format('m-d-Y')}}</label>
+                <label class="form__label">{{ $tbMacForm->created_at->format('Y-m-d')}}</label>
               </div>
               <div class="form__container form__container--remarks form__container--actions">
                 <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
@@ -597,7 +597,7 @@
             <div class="form__container">
               <div class="grid grid--two">
                 <h2 class="section__heading section__heading--healthworker">{{ $forHealthCareWorkerRecommendation->users->name}}<span class="form__label">{{ $forHealthCareWorkerRecommendation->users->role->name }} | [Region]</span></h2>
-                <label class="form__label">{{ $forHealthCareWorkerRecommendation->created_at->format('m-d-Y')}}</label>
+                <label class="form__label">{{ $forHealthCareWorkerRecommendation->created_at->format('Y-m-d')}}</label>
               </div>
               <div class="form__container form__container--remarks form__container--actions">
                 <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />

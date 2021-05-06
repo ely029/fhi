@@ -134,9 +134,12 @@
         </tr>
         </thead>
         <tbody id="screenings">
-        <tr class="table__row">
+        <tr class="table__row form-step-2">
             <td class="table__details"><span class="base-letter">B</span><span class="counter"></span></td>
-            <td class="table__details"><input class="form__input form__input--full" type="date" name="date_collected[]" /></td>
+            <td class="table__details form-group">
+            <div class="help-block with-errors with-errors--table"></div>
+                <input class="form__input form__input--full" required type="date" name="date_collected[]" />
+            </td>
             <td class="table__details">
             <div class="form__content">
                 <select class="form__input form__input--select form__input--full" name="smear_microscopy[]">

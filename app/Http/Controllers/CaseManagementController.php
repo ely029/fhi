@@ -97,6 +97,7 @@ class CaseManagementController extends Controller
         }
         $request['cxr_date'] = ! isset($request['cxr_date']) ? '' : $request['cxr_date'];
         $request['itr_drugs'] = ! isset($request['itr_drugs']) ? '' : $request['itr_drugs'];
+        $request['suggested_regiment_notes'] = ! isset($request['suggested_regiment_notes']) ? '' : $request['suggested_regiment_notes'];
         $request['others'] = ! isset($request['others_case_management']) ? '' : $request['others_case_management'];
         $form->caseManagementForm()->create($request);
         unset($request['remarks']);

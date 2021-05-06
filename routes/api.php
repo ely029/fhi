@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\CaseManagementRecommendationController;
 use App\Http\Controllers\Api\CaseManagementResubmitController;
 use App\Http\Controllers\Api\CronJobController;
 use App\Http\Controllers\Api\EnrollmentRecommendationsController;
+use App\Http\Controllers\Api\EnrollmentResubmitController;
 use App\Http\Controllers\Api\EnrollmentsController;
 use App\Http\Controllers\Api\ITISController;
 use App\Http\Controllers\Api\Users\FcmRegistrationTokensController;
@@ -57,6 +58,7 @@ Route::group([
     Route::post('/enrollments', [EnrollmentsController::class, 'store']);
     Route::get('/enrollments-with-recommendation', [EnrollmentRecommendationsController::class, 'index']);
     Route::post('/enrollments/{tbMacForm}/recommendation', [EnrollmentRecommendationsController::class, 'store']);
+    Route::get('/enrollments/resubmit/{tbMacForm}', [EnrollmentResubmitController::class, 'editPage']);
     Route::get('/case-management', [CaseManagementController::class, 'index']);
     Route::post('/case-management', [CaseManagementController::class, 'store']);
 
@@ -65,4 +67,5 @@ Route::group([
     Route::post('/case-management/{tbMacForm}/resubmit', [CaseManagementResubmitController::class, 'reSubmit']);
     Route::get('/case-management/resubmit/{tbMacForm}', [CaseManagementResubmitController::class, 'edit']);
     Route::post('/case-management/{tbMacForm}/recommendations', [CaseManagementRecommendationController::class, 'store']);
+    Route::get('/case-management/{tbMacForm}/{fileName}/attachment', [CaseManagementController::class,'showAttachment']);
 });

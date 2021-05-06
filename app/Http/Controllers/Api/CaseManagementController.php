@@ -97,9 +97,9 @@ class CaseManagementController extends Controller
         $recommendations = $tbMacForm->recommendations;
         $presentation_number = $tbMacForm->presentation_number;
         $submitted_by = $tbMacForm->submittedBy->name;
-        $date_submitted = $tbMacForm->created_at->format('m-d-Y');
+        $date_submitted = $tbMacForm->created_at->format('Y-m-d');
         $status = $tbMacForm->status;
-        $created_at = $tbMacForm->created_at->format('m-d-Y');
+        $created_at = $tbMacForm->created_at->format('Y-m-d');
         $facility_code = $tbMacForm->patient->facility_code;
         $suggested_regimen = Str::startsWith($tbMacForm->caseManagementForm->suggested_regimen, 'ITR') ? $tbMacForm->caseManagementForm->itr_drugs : $tbMacForm->caseManagementForm->suggested_regimen;
         $suggested_regimen_notes = $tbMacForm->caseManagementForm->suggested_regimen_notes ?? null;
@@ -111,53 +111,53 @@ class CaseManagementController extends Controller
         $latest_comparative_cxr_reading = $tbMacForm->caseManagementForm->latest_comparative_cxr_reading;
         $current_drug_susceptibility = $tbMacForm->caseManagementForm->current_drug_susceptibility ?? null;
         $updated_type_of_case = $tbMacForm->caseManagementForm->updated_type_of_case ?? null;
-        $ct_scan_date = ! isset($tbMacForm->caseManagementLaboratoryResult->ct_scan_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->ct_scan_date->format('m-d-Y') ?? null;
+        $ct_scan_date = ! isset($tbMacForm->caseManagementLaboratoryResult->ct_scan_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->ct_scan_date->format('Y-m-d') ?? null;
         $ct_scan_result = $tbMacForm->caseManagementLaboratoryResult->ct_scan_result ?? null;
-        $ultra_sound_date = ! isset($tbMacForm->caseManagementLaboratoryResult->ultra_sound_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->ultra_sound_date->format('m-d-Y') ?? null;
+        $ultra_sound_date = ! isset($tbMacForm->caseManagementLaboratoryResult->ultra_sound_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->ultra_sound_date->format('Y-m-d') ?? null;
         $ultra_sound_result = $tbMacForm->caseManagementLaboratoryResult->ultra_sound_result ?? null;
-        $histhopathological_date = ! isset($tbMacForm->caseManagementLaboratoryResult->histhopathological_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->histhopathological_date->format('m-d-Y') ?? null;
+        $histhopathological_date = ! isset($tbMacForm->caseManagementLaboratoryResult->histhopathological_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->histhopathological_date->format('Y-m-d') ?? null;
         $histhopathological_result = $tbMacForm->caseManagementLaboratoryResult->histhopathological_result ?? null;
-        $cxr_date = $tbMacForm->caseManagementLaboratoryResult->cxr_date->format('m-d-Y') ?? null;
+        $cxr_date = ! isset($tbMacForm->caseManagementLaboratoryResult->cxr_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->cxr_date->format('Y-m-d');
         $cxr_result = $tbMacForm->caseManagementLaboratoryResult->cxr_result ?? null;
         $remarks = $tbMacForm->caseManagementForm->remarks ?? null;
         $screeningOne = $tbBacteriologicalResults->filter(function ($item) {
             return $item->label === 'Screening 1' && $item->resistance_pattern !== '' && $item->method_used !== '';
         })->map(function ($item) {
             return [
-                'label' => $item->label, 'date_collected' => $item->date_collected->format('m-d-Y'), 'resistance_pattern' => $item->resistance_pattern, 'method_used' => $item->method_used,
+                'label' => $item->label, 'date_collected' => $item->date_collected->format('Y-m-d'), 'resistance_pattern' => $item->resistance_pattern, 'method_used' => $item->method_used,
             ];
         })->values();
         $recommendation = $recommendations->map(function ($item) {
             return [
-                'name' => $item->users->name, 'role' => $item->roles->name, 'date_created' => $item->created_at->format('m-d-Y'), 'status' => $item->status === '0' ? '' : $item->status, 'recommendation' => $item->recommendation,
+                'name' => $item->users->name, 'role' => $item->roles->name, 'date_created' => $item->created_at->format('Y-m-d'), 'status' => $item->status === '0' ? '' : $item->status, 'recommendation' => $item->recommendation,
             ];
         })->values();
         $hcw_recom = [
-            'name' => $tbMacForm->submittedBy->name, 'status' => $tbMacForm->status, 'role' => 'Health Care Worker', 'date_created' => $tbMacForm->created_at->format('m-d-Y'), 'recommendation' => $tbMacForm->caseManagementForm->remarks,
+            'name' => $tbMacForm->submittedBy->name, 'status' => $tbMacForm->status, 'role' => 'Health Care Worker', 'date_created' => $tbMacForm->created_at->format('Y-m-d'), 'recommendation' => $tbMacForm->caseManagementForm->remarks,
         ];
         $screeningTwo = $tbBacteriologicalResults->filter(function ($item) {
             return $item->label === 'Screening 2' && $item->resistance_pattern !== '' && $item->method_used !== '';
         })->map(function ($item) {
             return [
-                'label' => $item->label, 'date_collected' => $item->date_collected->format('m-d-Y'), 'resistance_pattern' => $item->resistance_pattern, 'method_used' => $item->method_used,
+                'label' => $item->label, 'date_collected' => $item->date_collected->format('Y-m-d'), 'resistance_pattern' => $item->resistance_pattern, 'method_used' => $item->method_used,
             ];
         })->values();
         $lpa = $tbBacteriologicalResults->filter(function ($item) {
             return $item->label === 'LPA';
         })->map(function ($item) {
             return [
-                'label' => Str::startsWith($item->label, 'Other (Specify)') ? $item->others : $item->label,
-                'date_collected' => $item->date_collected->format('m-d-Y'),
-                'resistance_pattern' => $item->resistance_pattern,
+                'label' => $item->label,
+                'date_collected' => $item->date_collected->format('Y-m-d'),
+                'resistance_pattern' => Str::startsWith($item->resistance_pattern, 'Other (Specify)') ? $item->others : $item->resistance_pattern,
             ];
         })->values();
         $dst = $tbBacteriologicalResults->filter(function ($item) {
             return $item->label === 'DST';
         })->map(function ($item) {
             return [
-                'label' => Str::startsWith($item->label, 'Other (Specify)') ? $item->others : $item->label,
-                'date_collected' => $item->date_collected->format('m-d-Y'),
-                'resistance_pattern' => $item->resistance_pattern,
+                'label' => $item->label,
+                'date_collected' => $item->date_collected->format('Y-m-d'),
+                'resistance_pattern' => Str::startsWith($item->resistance_pattern, 'Other (Specify)') ? $item->others : $item->resistance_pattern,
             ];
         })->values();
         $monthly_screening = $tbBacteriologicalResults->filter(function ($item) {
@@ -165,7 +165,7 @@ class CaseManagementController extends Controller
         })->map(function ($item) {
             return [
                 'label' => 'Month '.$item->count,
-                'date_collected' => $item->date_collected->format('m-d-Y'),
+                'date_collected' => $item->date_collected->format('Y-m-d'),
                 'smear_microscopy' => $item->smear_microscopy,
                 'tb_lamp' => $item->tb_lamp,
                 'culture' => $item->culture,
@@ -175,14 +175,28 @@ class CaseManagementController extends Controller
         foreach ($tbMacForm->caseManagementAttachments as $key => $attachment) {
             $fileName = ($key + 1).'.'.$attachment->extension;
             $attachments[] = [
-                'url' => url('case-management/'.$tbMacForm->id.'/'.$fileName.'/attachment'),
+                'url' => url('api/case-management/'.$tbMacForm->id.'/'.$fileName.'/attachment'),
                 'filename' => $attachment->file_name,
+                'id' => $attachment->id,
             ];
         }
         $data = [
             'hcw_recom' => $hcw_recom, 'presentation_number' => $presentation_number, 'current_drug_susceptibility' => $current_drug_susceptibility, 'submitted_by' => $submitted_by, 'date_submitted' => $date_submitted, 'created_at' => $created_at, 'current_weight' => $current_weight, 'itr_drugs' => $itr_drugs, 'facility_code' => $facility_code, 'updated_type_of_case' => $updated_type_of_case, 'suggested_regimen_notes' => $suggested_regimen_notes, 'current_regiment' => $current_regimen, 'suggested_regimen' => $suggested_regimen, 'status' => $status, 'ct_scan_date' => $ct_scan_date, 'ct_scan_result' => $ct_scan_result, 'ultra_sound_date' => $ultra_sound_date, 'latest_comparative_cxr_reading' => $latest_comparative_cxr_reading, 'ultra_sound_result' => $ultra_sound_result, 'cxr_date' => $cxr_date, 'cxr_result' => $cxr_result, 'remarks' => $remarks, 'hispathological_date' => $histhopathological_date, 'hispathological_result' => $histhopathological_result, 'regimen_notes' => $regimen_notes, 'recommendations' => $recommendation, 'patient_code' => $patient_code, 'screening_one' => $screeningOne, 'screening_two' => $screeningTwo, 'attachments' => $attachments, 'lpa' => $lpa, 'dst' => $dst, 'monthly_screening' => $monthly_screening,
         ];
         return response()->json($data);
+    }
+
+    public function showAttachment(TBMacForm $tbMacForm, $fileName)
+    {
+        $path = 'private/case-management/'.$tbMacForm->presentation_number.'/'.$fileName;
+
+        if (\Storage::exists($path)) {
+            if (Str::endsWith($fileName, '.pdf') || Str::endsWith($fileName, '.xls') || Str::endsWith($fileName, '.xlsx') || Str::endsWith($fileName, '.csv') || Str::endsWith($fileName, '.docx')) {
+                return response()->file(public_path('assets/app/img/icon-upload.png'));
+            }
+            return response(\Storage::get($path))->header('Content-Type', 'image/jpeg');
+        }
+        return response()->file(public_path('assets/app/img/placeholder.jpg'));
     }
 
     private function getDynamicQuery()
