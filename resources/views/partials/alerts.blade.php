@@ -11,7 +11,7 @@
                 <div class="modal__box">
                     <p class="modal__text">Recommendation successfully sent.</p>
                         
-                        <div class="modal__button">
+                        <div class="modal__button modal__button--end">
                         <button class="button js-modal-close" type="button">Confirm</button>
                         </div>
                     
