@@ -101,7 +101,7 @@ class CaseManagementController extends Controller
         $status = $tbMacForm->status;
         $created_at = $tbMacForm->created_at->format('m-d-Y');
         $facility_code = $tbMacForm->patient->facility_code;
-        $suggested_regimen = Str::startsWith($tbMacForm->caseManagementForm->suggested_regimen, 'ITR') ? $tbMacForm->caseManagementForm->others : $tbMacForm->caseManagementForm->suggested_regimen;
+        $suggested_regimen = Str::startsWith($tbMacForm->caseManagementForm->suggested_regimen, 'ITR') ? $tbMacForm->caseManagementForm->itr_drugs : $tbMacForm->caseManagementForm->suggested_regimen;
         $suggested_regimen_notes = $tbMacForm->caseManagementForm->suggested_regimen_notes ?? null;
         $current_regimen = $tbMacForm->caseManagementForm->current_regiment ?? null;
         $current_weight = $tbMacForm->caseManagementForm->current_weight ?? null;
