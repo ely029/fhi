@@ -23,7 +23,7 @@
     <div class="form__content form-group">
             
         <textarea name="reason_case_management_presentation" class="form__input form__input--message" id="inputEmail" placeholder="" required></textarea>
-        <div class="help-block with-errors"></div>
+        <div class="help-block with-errors label-with-error-above"></div>
         <label class="form__label" for="">Reason for case management presentation</label>
     </div>
     </div>

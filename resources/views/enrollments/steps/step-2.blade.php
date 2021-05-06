@@ -19,7 +19,7 @@
             <option>Unknown History</option>
           </select>
           <div class="triangle triangle--down"></div>
-          <label class="form__label" for="">Registration group</label>
+          <label class="form__label label-with-error-above" for="">Registration group</label>
         </div>
         <div class="form__content">
           <select class="form__input form__input--select" name="risk_factor">

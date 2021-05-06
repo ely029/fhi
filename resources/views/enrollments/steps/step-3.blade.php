@@ -66,17 +66,17 @@
         <textarea class="form__input form__input--message" name="clinical_status" placeholder="Clinical Status" required></textarea>
         <label class="form__label" for="">Clinical status</label>
       </div>
-      <div class="form__content form-group">
+      <div class="form__content form-group label-with-error-above">
         <div class="help-block with-errors"></div>
         <input class="form__input" type="text" name="signs_and_symptoms" placeholder="Signs and symptoms" required />
         <label class="form__label" for="">Signs and symptoms</label>
       </div>
-      <div class="form__content form-group">
+      <div class="form__content form-group label-with-error-above">
         <div class="help-block with-errors"></div>
         <input class="form__input" type="text" name="vital_signs" placeholder="Vital signs" required />
         <label class="form__label" for="">Vital signs</label>
       </div>
-      <div class="form__content form-group">
+      <div class="form__content form-group label-with-error-above">
         <div class="help-block with-errors"></div>
         <input class="form__input" type="text" name="diag_and_lab_findings" placeholder="Pertinent diagnostic and laboratory findings" required />
         <label class="form__label" for="">Pertinent diagnostic and laboratory findings</label>
