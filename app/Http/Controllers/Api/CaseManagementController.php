@@ -177,6 +177,7 @@ class CaseManagementController extends Controller
             $attachments[] = [
                 'url' => url('api/case-management/'.$tbMacForm->id.'/'.$fileName.'/attachment'),
                 'filename' => $attachment->file_name,
+                'id' => $attachment->id,
             ];
         }
         $data = [
