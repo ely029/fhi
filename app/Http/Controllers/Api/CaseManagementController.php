@@ -117,7 +117,7 @@ class CaseManagementController extends Controller
         $ultra_sound_result = $tbMacForm->caseManagementLaboratoryResult->ultra_sound_result ?? null;
         $histhopathological_date = ! isset($tbMacForm->caseManagementLaboratoryResult->histhopathological_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->histhopathological_date->format('Y-m-d') ?? null;
         $histhopathological_result = $tbMacForm->caseManagementLaboratoryResult->histhopathological_result ?? null;
-        $cxr_date = $tbMacForm->caseManagementLaboratoryResult->cxr_date->format('Y-m-d') ?? null;
+        $cxr_date = ! isset($tbMacForm->caseManagementLaboratoryResult->cxr_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->cxr_date->format('Y-m-d');
         $cxr_result = $tbMacForm->caseManagementLaboratoryResult->cxr_result ?? null;
         $remarks = $tbMacForm->caseManagementForm->remarks ?? null;
         $screeningOne = $tbBacteriologicalResults->filter(function ($item) {
