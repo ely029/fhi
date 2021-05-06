@@ -65,4 +65,5 @@ Route::group([
     Route::post('/case-management/{tbMacForm}/resubmit', [CaseManagementResubmitController::class, 'reSubmit']);
     Route::get('/case-management/resubmit/{tbMacForm}', [CaseManagementResubmitController::class, 'edit']);
     Route::post('/case-management/{tbMacForm}/recommendations', [CaseManagementRecommendationController::class, 'store']);
+    Route::get('/case-management/{tbMacForm}/{fileName}/attachment', [CaseManagementController::class,'showAttachment']);
 });

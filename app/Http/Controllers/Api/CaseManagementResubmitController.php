@@ -102,7 +102,7 @@ class CaseManagementResubmitController extends Controller
         foreach ($tbMacForm->caseManagementAttachments as $key => $attachment) {
             $fileName = ($key + 1).'.'.$attachment->extension;
             $attachments[] = [
-                'url' => url('case-management/'.$tbMacForm->id.'/'.$fileName.'/attachment'),
+                'url' => url('api/case-management/'.$tbMacForm->id.'/'.$fileName.'/attachment'),
                 'filename' => $attachment->file_name,
             ];
         }

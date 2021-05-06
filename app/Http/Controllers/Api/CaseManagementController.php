@@ -175,7 +175,7 @@ class CaseManagementController extends Controller
         foreach ($tbMacForm->caseManagementAttachments as $key => $attachment) {
             $fileName = ($key + 1).'.'.$attachment->extension;
             $attachments[] = [
-                'url' => url('case-management/'.$tbMacForm->id.'/'.$fileName.'/attachment'),
+                'url' => url('api/case-management/'.$tbMacForm->id.'/'.$fileName.'/attachment'),
                 'filename' => $attachment->file_name,
             ];
         }
@@ -183,6 +183,19 @@ class CaseManagementController extends Controller
             'hcw_recom' => $hcw_recom, 'presentation_number' => $presentation_number, 'current_drug_susceptibility' => $current_drug_susceptibility, 'submitted_by' => $submitted_by, 'date_submitted' => $date_submitted, 'created_at' => $created_at, 'current_weight' => $current_weight, 'itr_drugs' => $itr_drugs, 'facility_code' => $facility_code, 'updated_type_of_case' => $updated_type_of_case, 'suggested_regimen_notes' => $suggested_regimen_notes, 'current_regiment' => $current_regimen, 'suggested_regimen' => $suggested_regimen, 'status' => $status, 'ct_scan_date' => $ct_scan_date, 'ct_scan_result' => $ct_scan_result, 'ultra_sound_date' => $ultra_sound_date, 'latest_comparative_cxr_reading' => $latest_comparative_cxr_reading, 'ultra_sound_result' => $ultra_sound_result, 'cxr_date' => $cxr_date, 'cxr_result' => $cxr_result, 'remarks' => $remarks, 'hispathological_date' => $histhopathological_date, 'hispathological_result' => $histhopathological_result, 'regimen_notes' => $regimen_notes, 'recommendations' => $recommendation, 'patient_code' => $patient_code, 'screening_one' => $screeningOne, 'screening_two' => $screeningTwo, 'attachments' => $attachments, 'lpa' => $lpa, 'dst' => $dst, 'monthly_screening' => $monthly_screening,
         ];
         return response()->json($data);
+    }
+
+    public function showAttachment(TBMacForm $tbMacForm, $fileName)
+    {
+        $path = 'private/case-management/'.$tbMacForm->presentation_number.'/'.$fileName;
+
+        if (\Storage::exists($path)) {
+            if (Str::endsWith($fileName, '.pdf') || Str::endsWith($fileName, '.xls') || Str::endsWith($fileName, '.xlsx') || Str::endsWith($fileName, '.csv') || Str::endsWith($fileName, '.docx')) {
+                return response()->file(public_path('assets/app/img/icon-upload.png'));
+            }
+            return response(\Storage::get($path))->header('Content-Type', 'image/jpeg');
+        }
+        return response()->file(public_path('assets/app/img/placeholder.jpg'));
     }
 
     private function getDynamicQuery()
