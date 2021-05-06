@@ -54,7 +54,7 @@
                         Facility {{ $tbMacForm->patient->facility_code }} &nbsp;&nbsp;&nbsp; {{ $tbMacForm->patient->province }}</span>
                     </h2>
                   <div class="form__content">
-                      <span class="form__text">{{ $tbMacForm->status }}</span>
+                      <span class="form__text ">{{ ucfirst(Str::lower($tbMacForm->status)) }}</span>
                       <label class="form__label" for="">Status</label>
                     </div>
                   <br />
@@ -91,8 +91,8 @@
                         <div class="form__content">
                             <select id="action-dropdown" class="form__input form__input--select">
                             <option value="Resolved">Resolved</option>
-                            <option value="Not Resolved">Not Resolved</option>
-                            <option value="Resubmit Case Management">Resubmit Case Management</option>
+                            <option value="Not Resolved">Not resolved</option>
+                            <option value="Resubmit Case Management">Resubmit case management</option>
                             </select>
                             <div class="triangle triangle--down"></div>
                             <label class="form__label" for="">Action</label>
@@ -107,7 +107,7 @@
                         <div class="form__content">
                             <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
                             <option value="Referred to Regional">Refer to R-TB MAC</option>
-                            <option value="Not for Referral">Not for Referral</option>
+                            <option value="Not for Referral">Not for referral</option>
                             </select>
                             <div class="triangle triangle--down"></div>
                             <label class="form__label" for="">Action</label>
@@ -121,7 +121,7 @@
                   <div class="grid grid--action-case-management">
                       <div class="form__content">
                           <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
-                          <option value="Recommend for Approval">Recommend for Approval</option>
+                          <option value="Recommend for Approval">Recommend for approval</option>
                           <option value="Recommend for other suggestions">Recommend for other suggestions</option>
                           <option value="Recommend for need further details">Recommend for need further details </option>
                           </select>
@@ -139,7 +139,7 @@
                             <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
                             <option value="For approval">Approve</option>
                             <option value="Other suggestions">Other suggestions</option>
-                            <option value="Need Further Details">Need Further Details</option>
+                            <option value="Need Further Details">Need further details</option>
                             <option value="Referred to National">Refer to N-TB MAC</option>
                             </select>
                             <div class="triangle triangle--down"></div>
@@ -460,7 +460,7 @@
                   </div>
                   <div class="form__container form__container--remarks form__container--actions">
                     <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
-                    <div class="form__content"><span class="form__text form__text--green">New Case</span><label class="form__label form__label--green">Action</label></div>
+                    <div class="form__content"><span class="form__text form__text--green">New case</span><label class="form__label form__label--green">Action</label></div>
                   </div>
                   <span class="form__text">
                     {{ $tbMacForm->caseManagementForm->remarks }}
@@ -478,7 +478,7 @@
                   <div class="form__container form__container--remarks form__container--actions">
                     <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
                     
-                    <div class="form__content"><span class="form__text form__text--green">{{$recommendation->status }}</span><label class="form__label form__label--green">Action</label></div>
+                    <div class="form__content"><span class="form__text form__text--green">{{ ucfirst(Str::lower($recommendation->status)) }}</span><label class="form__label form__label--green">Action</label></div>
                
                   </div>
                   <span class="form__text">

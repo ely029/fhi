@@ -86,7 +86,7 @@ class EnrollmentRegimentController extends Controller
         }
 
         return redirect('enrollments/'.$tbMacForm->id)->with([
-            'alert.message' => 'New Case for enrollment created.',
+            'alert.message' => 'New case for enrollment created.',
         ]);
     }
     public function sendRecommendation()
@@ -182,6 +182,7 @@ class EnrollmentRegimentController extends Controller
         $tbMacForm->save();
         $request['submitted_by'] = auth()->user()->id;
         $request['role_id'] = auth()->user()->role_id;
+        $request['status'] = 'Referred to national chair';
         Recommendation::create($request);
 
         return redirect('enrollments')->with([

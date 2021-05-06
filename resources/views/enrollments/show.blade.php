@@ -25,7 +25,7 @@
               <div class="form__container">
               <h2 class="section__heading">Patient  {{ $tbMacForm->patient->code }}
                   <span class="form__text">Facility  {{ $tbMacForm->patient->facility_code }}  &nbsp;&nbsp;&nbsp;  {{ $tbMacForm->patient->province }} </span></h2>
-                <div class="form__content"><span class="form__text">{{ $tbMacForm->status }}</span>
+                <div class="form__content"><span class="form__text">{{ ucfirst(Str::lower($tbMacForm->status)) }}</span>
                     <label class="form__label" for="">Status</label>
                 </div>
                 <br />
@@ -44,7 +44,7 @@
               <div class="form__content">
                 <select id="refer" class="form__input form__input--select">
                   <option value="1">Refer to R-TB MAC</option>
-                  <option value="2">Not for Referal</option>
+                  <option value="2">Not for referral</option>
                 </select>
                 <div class="triangle triangle--down"></div>
                 <label class="form__label" for="">Action</label>
@@ -57,8 +57,8 @@
             <div class="grid grid--action">
               <div class="form__content">
                 <select id="refer" class="form__input form__input--select">
-                  <option value="3">Not Recommended for Enrolment</option>
-                  <option value="4">Recommend for Enrolment</option>
+                  <option value="3">Not recommended for enrolment</option>
+                  <option value="4">Recommend for enrolment</option>
                   <option value="5">Need further details</option>
                 </select>
                 <div class="triangle triangle--down"></div>
@@ -72,9 +72,9 @@
             <div class="grid grid--action">
               <div class="form__content">
                 <select id="refer" class="form__input form__input--select">
-                  <option value="6">For Enrollment</option>
-                  <option value="7">Not for Enrollment</option>
-                  <option value="8">Need Further details</option>
+                  <option value="6">For enrollment</option>
+                  <option value="7">Not for enrollment</option>
+                  <option value="8">Need further details</option>
                   <option value="9">Refer to N-TB MAC</option>
                 </select>
                 <div class="triangle triangle--down"></div>
@@ -89,17 +89,17 @@
               <div class="form__content">
                 <label class="form__label" for="">Action</label>
               </div>
-              <button  class="button js-trigger create-recom" type="button">Create Recommendation</button>
+              <button  class="button js-trigger create-recom" type="button">Create recommendation</button>
             </div>
             @endif
             @if (auth()->user()->role_id == 3)
             <div class="grid grid--action">
               <div class="form__content">
                 <select id="refer" class="form__input form__input--select">
-                  <option value="6">For Enrollment</option>
-                  <option value="7">Not for Enrollment</option>
+                  <option value="6">For enrollment</option>
+                  <option value="7">Not for enrollment</option>
                   @if($tbMacForm->status == 'Not For Referral' || $tbMacForm->status == 'Need Further Details')
-                    <option value="Resubmit Enrollment">Resubmit Enrollment</option>
+                    <option value="Resubmit Enrollment">Resubmit enrollment</option>
                   @endif
                 </select>
                 <div class="triangle triangle--down"></div>
@@ -352,7 +352,7 @@
                 </div>
                 <div class="form__container form__container--remarks form__container--actions">
                   <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
-                  <div class="form__content"><span class="form__text form__text--green">New Enrolment</span><label class="form__label form__label--green">Action</label></div>
+                  <div class="form__content"><span class="form__text form__text--green">New enrolment</span><label class="form__label form__label--green">Action</label></div>
                 </div>
                 <span class="form__text">
                   {{ $tbMacForm->laboratoryResults->remarks }}
@@ -370,9 +370,9 @@
                 <div class="form__container form__container--remarks form__container--actions">
                   <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
                   @if (Auth::user()->role_id == 7 || Auth::user()->role_id == 8)
-                  <div class="form__content"><span class="form__text form__text--green"></span><label class="form__label form__label--green">Action</label></div>
+                  <div class="form__content"><span class="form__text form__text--green">{{$recommendation->status == 'Refer to N-TBMac' ? 'Refer to N-TB MAC'  : ucfirst(Str::lower($recommendation->status)) }}</span><label class="form__label form__label--green">Action</label></div>
                   @else
-                  <div class="form__content"><span class="form__text form__text--green">{{$recommendation->status }}</span><label class="form__label form__label--green">Action</label></div>
+                  <div class="form__content"><span class="form__text form__text--green">{{$recommendation->status == 'Refer to N-TBMac' ? 'Refer to N-TB MAC'  : ucfirst(Str::lower($recommendation->status)) }}</span><label class="form__label form__label--green">Action</label></div>
                   @endif
                 </div>
                 <span class="form__text">
@@ -401,7 +401,7 @@
               </div>
               <div class="form__container form__container--remarks form__container--actions">
                 <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
-                <div class="form__content"><span class="form__text form__text--green">New Enrolment</span><label class="form__label form__label--green">Action</label></div>
+                <div class="form__content"><span class="form__text form__text--green">New enrolment</span><label class="form__label form__label--green">Action</label></div>
               </div>
               <span class="form__text">
                 {{ $tbMacForm->laboratoryResults->remarks }}
@@ -419,7 +419,7 @@
               <div class="form__container form__container--remarks form__container--actions">
                 <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
                 
-                <div class="form__content"><span class="form__text form__text--green">{{$secretariat->status }}</span><label class="form__label form__label--green">Action</label></div>
+                <div class="form__content"><span class="form__text form__text--green">{{$secretariat->status == 'Refer to N-TBMac' ? 'Refer to N-TB MAC' : ucfirst(Str::lower($secretariat->status)) }}</span><label class="form__label form__label--green">Action</label></div>
            
               </div>
               <span class="form__text">
@@ -449,7 +449,7 @@
               </div>
               <div class="form__container form__container--remarks form__container--actions">
                 <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
-                <div class="form__content"><span class="form__text form__text--green">New Enrolment</span><label class="form__label form__label--green">Action</label></div>
+                <div class="form__content"><span class="form__text form__text--green">New enrolment</span><label class="form__label form__label--green">Action</label></div>
               </div>
               <span class="form__text">
                 {{ $tbMacForm->laboratoryResults->remarks }}
@@ -467,7 +467,7 @@
               <div class="form__container form__container--remarks form__container--actions">
                 <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
                 
-                <div class="form__content"><span class="form__text form__text--green">{{$secretariat->status }}</span><label class="form__label form__label--green">Action</label></div>
+                <div class="form__content"><span class="form__text form__text--green">{{$secretariat->status == 'Refer to N-TBMac' ? 'Refer to N-TB MAC' : ucfirst(Str::lower($secretariat->status)) }}</span><label class="form__label form__label--green">Action</label></div>
            
               </div>
               <span class="form__text">
@@ -497,7 +497,7 @@
               </div>
               <div class="form__container form__container--remarks form__container--actions">
                 <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
-                <div class="form__content"><span class="form__text form__text--green">New Enrolment</span><label class="form__label form__label--green">Action</label></div>
+                <div class="form__content"><span class="form__text form__text--green">New enrolment</span><label class="form__label form__label--green">Action</label></div>
               </div>
               <span class="form__text">
                 {{ $tbMacForm->laboratoryResults->remarks }}
@@ -515,7 +515,7 @@
               <div class="form__container form__container--remarks form__container--actions">
                 <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
                 
-                <div class="form__content"><span class="form__text form__text--green">{{$secretariat->status }}</span><label class="form__label form__label--green">Action</label></div>
+                <div class="form__content"><span class="form__text form__text--green">{{$secretariat->status == 'Refer to N-TBMac' ? 'Refer to N-TB MAC' : ucfirst(Str::lower($secretariat->status)) }}</span><label class="form__label form__label--green">Action</label></div>
            
               </div>
               <span class="form__text">
@@ -538,7 +538,7 @@
               </div>
               <div class="form__container form__container--remarks form__container--actions">
                 <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
-                <div class="form__content"><span class="form__text form__text--green">New Enrolment</span><label class="form__label form__label--green">Action</label></div>
+                <div class="form__content"><span class="form__text form__text--green">New enrolment</span><label class="form__label form__label--green">Action</label></div>
               </div>
               <span class="form__text">
                 {{ $tbMacForm->laboratoryResults->remarks }}
@@ -556,7 +556,7 @@
               <div class="form__container form__container--remarks form__container--actions">
                 <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
                 
-                <div class="form__content"><span class="form__text form__text--green">{{$forHealthCareWorkerRecommendation->status }}</span><label class="form__label form__label--green">Action</label></div>
+                <div class="form__content"><span class="form__text form__text--green">{{$forHealthCareWorkerRecommendation->status == 'Refer to N-TBMac' ? 'Refer to N-TB MAC' : ucfirst(Str::lower($forHealthCareWorkerRecommendation->status)) }}</span><label class="form__label form__label--green">Action</label></div>
            
               </div>
               <span class="form__text">
@@ -584,7 +584,7 @@
               </div>
               <div class="form__container form__container--remarks form__container--actions">
                 <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
-                <div class="form__content"><span class="form__text form__text--green">New Enrolment</span><label class="form__label form__label--green">Action</label></div>
+                <div class="form__content"><span class="form__text form__text--green">New enrolment</span><label class="form__label form__label--green">Action</label></div>
               </div>
               <span class="form__text">
                 {{ $tbMacForm->laboratoryResults->remarks }}
@@ -602,7 +602,7 @@
               <div class="form__container form__container--remarks form__container--actions">
                 <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
                 
-                <div class="form__content"><span class="form__text form__text--green">{{$forHealthCareWorkerRecommendation->status }}</span><label class="form__label form__label--green">Action</label></div>
+                <div class="form__content"><span class="form__text form__text--green">{{ ucfirst(Str::lower($forHealthCareWorkerRecommendation->status)) }}</span><label class="form__label form__label--green">Action</label></div>
            
               </div>
               <span class="form__text">
