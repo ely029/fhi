@@ -169,16 +169,4 @@
   </div>
 </div>
 
-<div class="modal" id="recommendation-successful" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal__background js-modal-background"></div>
-      <div class="modal__container">
-          <div class="modal__box">
-              <p class="modal__text">Recommendation successfully sent.</p>
-                  
-                  <div class="modal__button">
-                    <button class="button js-modal-close" type="button">Confirm</button>
-                  </div>
-               
-      </div>
-  </div>
-</div>
+

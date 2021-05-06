@@ -155,8 +155,8 @@ class EnrollmentRegimentController extends Controller
             Recommendation::create($request);
         }
 
-        return redirect('enrollments/'.$request['form_id'])->with([
-            'alert.message' => 'Recommendation successfully sent',
+        return redirect('enrollments')->with([
+            'recommendation' => 'Recommendation successfully sent',
         ]);
     }
     private function ntbMacChairRecommendation($request)
@@ -169,8 +169,8 @@ class EnrollmentRegimentController extends Controller
         $request['role_id'] = auth()->user()->role_id;
         Recommendation::create($request);
 
-        return redirect('enrollments/'.$request['form_id'])->with([
-            'alert.message' => 'Recommendation successfully sent',
+        return redirect('enrollments')->with([
+            'recommendation' => 'Recommendation successfully sent',
         ]);
     }
 
@@ -184,8 +184,8 @@ class EnrollmentRegimentController extends Controller
         $request['role_id'] = auth()->user()->role_id;
         Recommendation::create($request);
 
-        return redirect('enrollments/'.$request['form_id'])->with([
-            'alert.message' => 'Recommendation successfully sent',
+        return redirect('enrollments')->with([
+            'recommendation' => 'Recommendation successfully sent',
         ]);
     }
 
@@ -207,8 +207,8 @@ class EnrollmentRegimentController extends Controller
             Recommendation::create($request);
         }
 
-        return redirect('enrollments/'.$request['form_id'])->with([
-            'alert.message' => 'Recommendation successfully sent',
+        return redirect('enrollments')->with([
+            'recommendation' => 'Recommendation successfully sent',
         ]);
     }
 
@@ -234,8 +234,8 @@ class EnrollmentRegimentController extends Controller
             $request['role_id'] = auth()->user()->role_id;
             Recommendation::create($request);
 
-            return redirect('enrollments/'.$request['form_id'])->with([
-                'alert.message' => 'Recommendation successfully sent',
+            return redirect('enrollments')->with([
+                'recommendation' => 'Recommendation successfully sent',
             ]);
         }
     }
@@ -275,8 +275,8 @@ class EnrollmentRegimentController extends Controller
             Recommendation::create($request);
         }
 
-        return redirect('enrollments/'.$request['form_id'])->with([
-            'alert.message' => 'Recommendation successfully sent',
+        return redirect('enrollments')->with([
+            'recommendation' => 'Recommendation successfully sent',
         ]);
     }
 
