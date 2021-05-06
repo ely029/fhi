@@ -146,18 +146,18 @@ class CaseManagementController extends Controller
             return $item->label === 'LPA';
         })->map(function ($item) {
             return [
-                'label' => $item->label === 'Other (specify)' ? $item->others : $item->label,
+                'label' => $item->label,
                 'date_collected' => $item->date_collected->format('Y-m-d'),
-                'resistance_pattern' => $item->resistance_pattern,
+                'resistance_pattern' => Str::startsWith($item->resistance_pattern, 'Other (Specify)') ? $item->others : $item->resistance_pattern,
             ];
         })->values();
         $dst = $tbBacteriologicalResults->filter(function ($item) {
             return $item->label === 'DST';
         })->map(function ($item) {
             return [
-                'label' => $item->label === 'Other (specify)' ? $item->others : $item->label,
+                'label' => $item->label,
                 'date_collected' => $item->date_collected->format('Y-m-d'),
-                'resistance_pattern' => $item->resistance_pattern,
+                'resistance_pattern' => Str::startsWith($item->resistance_pattern, 'Other (Specify)') ? $item->others : $item->resistance_pattern,
             ];
         })->values();
         $monthly_screening = $tbBacteriologicalResults->filter(function ($item) {
