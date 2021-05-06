@@ -46,4 +46,11 @@ jQuery( document ).ready(function( $ ) {
                 $("#resubmit-enrollment-modal").modal('show');
             }
     });
+
+
+    let recommendationModal = $("#recommendation-successful");
+    if(recommendationModal.length > 0){
+        recommendationModal.modal('show');
+    }
+
 });

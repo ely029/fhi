@@ -19,7 +19,7 @@ class CaseManagementRecommendationController extends Controller
 
         $tbMacForm->recommendations()->create($request);
         return redirect('case-management')->with([
-            'alert.message' => 'Recommendation successfully sent',
+            'recommendation' => 'Recommendation successfully sent',
         ]);
     }
 }
