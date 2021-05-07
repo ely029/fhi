@@ -51,4 +51,20 @@ class Role extends Model
     {
         return $this->accesses()->where('route', $route)->exists();
     }
+
+    public function getNameAttribute($value)
+    {
+        switch ($this->id) {
+            case 5:
+                return 'R-TB MAC';
+            case 6:
+                return 'R-TB MAC Chair';
+            case 7:
+                return 'N-TB MAC';
+            case 8:
+                return 'N-TB MAC Chair';
+            default:
+                return $value;
+        }
+    }
 }

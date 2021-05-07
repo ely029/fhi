@@ -2,7 +2,7 @@
                 <div class="modal__background js-modal-background"></div>
                 <div class="modal__container">
                   <div class="modal__box">
-                    <h2 class="modal__title">Refer To R-TB MAC</h2>
+                    <h2 class="modal__title">Refer to R-TB MAC</h2>
                     <p class="modal__text">You are about to confirm 'Refer To R-TB MAC' for this case and patient. If you have additional remarks, enter them below.</p>
                     <form class="form form--full" method="POST" action="{{ route('enrolment.sendRecommendation')}}">
                     @csrf
@@ -19,8 +19,8 @@
                 <div class="modal__background js-modal-background"></div>
                 <div class="modal__container">
                   <div class="modal__box">
-                    <h2 class="modal__title">Not For Referal</h2>
-                    <p class="modal__text">You are about to decline and set this case to 'Not for Referal' If you have additional remarks. enter them below.</p>
+                    <h2 class="modal__title">Not for referral</h2>
+                    <p class="modal__text">You are about to decline and set this case to 'Not for referral' If you have additional remarks. enter them below.</p>
                     <form class="form form--full" method="POST" action="{{ route('enrolment.sendRecommendation')}}">
                     @csrf
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
@@ -36,8 +36,8 @@
                 <div class="modal__background js-modal-background"></div>
                 <div class="modal__container">
                   <div class="modal__box">
-                    <h2 class="modal__title">Not Recommended for Enrolment</h2>
-                    <p class="modal__text">You are about to confirm and set this case to 'Not Recommended for Enrolment' If you have additional remarks. enter them below.</p>
+                    <h2 class="modal__title">Not recommended for enrolment</h2>
+                    <p class="modal__text">You are about to confirm and set this case to 'Not recommended for enrolment' If you have additional remarks. enter them below.</p>
                     <form class="form form--full" method="POST" action="{{ route('enrolment.sendRecommendation')}}">
                     @csrf
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
@@ -53,8 +53,8 @@
                 <div class="modal__background js-modal-background"></div>
                 <div class="modal__container">
                   <div class="modal__box">
-                    <h2 class="modal__title">For Enrolment</h2>
-                    <p class="modal__text">You are about to confirm and set this case to 'For Enrolment' If you have additional remarks. enter them below.</p>
+                    <h2 class="modal__title">For enrolment</h2>
+                    <p class="modal__text">You are about to confirm and set this case to 'For enrolment' If you have additional remarks. enter them below.</p>
                     <form class="form form--full" method="POST" action="{{ route('enrolment.sendRecommendation')}}">
                     @csrf
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
@@ -70,8 +70,8 @@
                 <div class="modal__background js-modal-background"></div>
                 <div class="modal__container">
                   <div class="modal__box">
-                    <h2 class="modal__title">Recommend for Enrollment</h2>
-                    <p class="modal__text">You are about to confirm and set this case to 'Recommend for Enrollment' If you have additional remarks. enter them below.</p>
+                    <h2 class="modal__title">Recommend for enrollment</h2>
+                    <p class="modal__text">You are about to confirm and set this case to 'Recommend for enrollment' If you have additional remarks. enter them below.</p>
                     <form class="form form--full" method="POST" action="{{ route('enrolment.sendRecommendation')}}">
                     @csrf
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
@@ -87,8 +87,8 @@
                 <div class="modal__background js-modal-background"></div>
                 <div class="modal__container">
                   <div class="modal__box">
-                    <h2 class="modal__title">Not for Enrollment</h2>
-                    <p class="modal__text">You are about to confirm and set this case to 'Not for Enrollment' If you have additional remarks. enter them below.</p>
+                    <h2 class="modal__title">Not for enrollment</h2>
+                    <p class="modal__text">You are about to confirm and set this case to 'Not for enrollment' If you have additional remarks. enter them below.</p>
                     <form class="form form--full" method="POST" action="{{ route('enrolment.sendRecommendation')}}">
                     @csrf
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
@@ -104,8 +104,8 @@
                 <div class="modal__background js-modal-background"></div>
                 <div class="modal__container">
                   <div class="modal__box">
-                    <h2 class="modal__title">Need Further Details</h2>
-                    <p class="modal__text">You are about to decline and set this case to 'Need Further Details' If you have additional remarks. enter them below.</p>
+                    <h2 class="modal__title">Need further details</h2>
+                    <p class="modal__text">You are about to decline and set this case to 'Need further details' If you have additional remarks. enter them below.</p>
                     <form class="form form--full" method="POST" action="{{ route('enrolment.sendRecommendation')}}">
                     @csrf
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
@@ -138,7 +138,7 @@
                 <div class="modal__background js-modal-background"></div>
                 <div class="modal__container">
                   <div class="modal__box">
-                    <h2 class="modal__title">Create Recommendation</h2>
+                    <h2 class="modal__title">Create recommendation</h2>
                     <p class="modal__text"></p>
                     <form class="form form--full" method="POST" action="{{ route('enrolment.sendRecommendation')}}">
                     @csrf

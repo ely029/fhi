@@ -104,7 +104,7 @@ class CaseManagementController extends Controller
         $form->caseManagementLaboratoryResults()->create($request);
 
         return redirect('case-management/show/'.$form->id)->with([
-            'alert.message' => 'New Case created.',
+            'alert.message' => 'New case created.',
         ]);
     }
 
