@@ -129,10 +129,10 @@ class CaseManagementController extends Controller
         })->values();
         $recommendation = $recommendations->map(function ($item) {
             return [
-                'name' => $item->users->name, 
-                'role_id' => $item->role_id, 
-                'date_created' => $item->created_at->format('Y-m-d'), 
-                'status' => $item->status === '0' ? '' : $item->status, 
+                'name' => $item->users->name,
+                'role_id' => $item->role_id,
+                'date_created' => $item->created_at->format('Y-m-d'),
+                'status' => $item->status === '0' ? '' : $item->status,
                 'recommendation' => $item->recommendation,
             ];
         })->values();
