@@ -14,11 +14,21 @@ class CaseManagementRecommendationController extends Controller
     public function store(TBMacForm $tbMacForm)
     {
         $request = request()->all();
+        $validator = \Validator::make($request, [
+            'remarks' => 'required',
+            'status' => caseManagementRecommendationStatus()[auth()->user()->role_id],
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'errors' => $validator->errors(),
+            ], 422);
+        }
+
         $tbMacForm->status = $request['status'];
         $tbMacForm->save();
         $request['recommendation'] = $request['remarks'] ?? null;
-        $request['form_id'] = $tbMacForm->id;
         $request['submitted_by'] = auth()->user()->id;
+        $request['role_id'] = auth()->user()->role_id;
         $tbMacForm->recommendations()->create($request);
 
         return response()->json('Recommendation Created Successfully', 200);

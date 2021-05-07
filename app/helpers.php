@@ -316,3 +316,24 @@ function enrollmentFormTabs()
         'all_enrollments_ntb' => ['For Enrollment','Not For Enrollment','Need Further Details','Referred to regional chair'],
     ];
 }
+
+function caseManagementRecommendationStatus()
+{
+    return [
+        4 => 'required|in:Referred to Regional,Not for Referral',
+        5 => 'required|in:Recommend for Approval,Recommend for other suggestions,Recommend for need further details',
+        6 => 'required|in:For approval,Other suggestions,Need Further Details,Referred to National',
+        7 => 'required|in:Referred to National Chair',
+        8 => 'nullable|in:Referred back to regional chair',
+    ];
+}
+
+function caseManagementTabs()
+{
+    return [
+        'with_recommendations' => ['For approval','Other suggestions','Need Further Details','Referred to National'],
+        'completed' => ['For approval','Other suggestions','Need Further Details'],
+        'all_cases_ntb' => ['For approval','Other suggestions','Need Further Details','Referred to Regional Chair'],
+        'all_cases_ntb_chair' => ['For approval','Other suggestions','Need Further Details','Referred to Regional Chair'],
+    ];
+}

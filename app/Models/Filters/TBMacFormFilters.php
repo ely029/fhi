@@ -9,7 +9,7 @@ use App\Models\Filters\Filters as filter;
 class TBMacFormFilters extends filter
 {
     protected $filters = [
-        'status', 'tab',
+        'status', 'tab', 'case_tab',
     ];
 
     protected function status($string)
@@ -22,5 +22,11 @@ class TBMacFormFilters extends filter
     {
         return $this->builder
             ->whereIn('status', enrollmentFormTabs()[$string]);
+    }
+
+    protected function case_tab($string)
+    {
+        return $this->builder
+            ->whereIn('status', caseManagementTabs()[$string]);
     }
 }

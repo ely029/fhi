@@ -129,7 +129,11 @@ class CaseManagementController extends Controller
         })->values();
         $recommendation = $recommendations->map(function ($item) {
             return [
-                'name' => $item->users->name, 'role' => $item->roles->name, 'date_created' => $item->created_at->format('Y-m-d'), 'status' => $item->status === '0' ? '' : $item->status, 'recommendation' => $item->recommendation,
+                'name' => $item->users->name, 
+                'role_id' => $item->role_id, 
+                'date_created' => $item->created_at->format('Y-m-d'), 
+                'status' => $item->status === '0' ? '' : $item->status, 
+                'recommendation' => $item->recommendation,
             ];
         })->values();
         $hcw_recom = [
@@ -210,7 +214,7 @@ class CaseManagementController extends Controller
             $value = 'NCR';
         } elseif (in_array(auth()->user()->role_id, [7,8])) {
             $condition = 'form_type';
-            $value = 'enrollment';
+            $value = 'case_management';
         }
 
         return [
