@@ -129,11 +129,11 @@ class CaseManagementController extends Controller
         })->values();
         $recommendation = $recommendations->map(function ($item) {
             return [
-                'name' => $item->users->name, 'role' => $item->roles->name, 'date_created' => $item->created_at->format('Y-m-d'), 'status' => $item->status === '0' ? '' : $item->status, 'recommendation' => $item->recommendation,
+                'name' => $item->users->name, 'role' => $item->roles->name, 'role_id' => $item->roles->id, 'date_created' => $item->created_at->format('Y-m-d'), 'status' => $item->status === '0' ? '' : $item->status, 'recommendation' => $item->recommendation,
             ];
         })->values();
         $hcw_recom = [
-            'name' => $tbMacForm->submittedBy->name, 'status' => $tbMacForm->status, 'role' => 'Health Care Worker', 'date_created' => $tbMacForm->created_at->format('Y-m-d'), 'recommendation' => $tbMacForm->caseManagementForm->remarks,
+            'name' => $tbMacForm->submittedBy->name, 'status' => $tbMacForm->status, 'role' => 'Health Care Worker', 'role_id' => 3, 'date_created' => $tbMacForm->created_at->format('Y-m-d'), 'recommendation' => $tbMacForm->caseManagementForm->remarks,
         ];
         $screeningTwo = $tbBacteriologicalResults->filter(function ($item) {
             return $item->label === 'Screening 2' && $item->resistance_pattern !== '' && $item->method_used !== '';

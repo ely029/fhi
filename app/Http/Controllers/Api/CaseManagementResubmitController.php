@@ -139,6 +139,7 @@ class CaseManagementResubmitController extends Controller
             $screen = $eee + 1;
             $caseManagementBactResult->monthDSTCreationMobile($screen, $eee, $request, $tbMacForm);
         }
+
         if (isset($request['attachments'])) {
             CaseManagementAttachments::where('form_id', $tbMacForm->id)->delete();
             foreach ($request['attachments'] as $key => $file) {
