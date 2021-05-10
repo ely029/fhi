@@ -83,6 +83,12 @@ use Illuminate\Database\Eloquent\Model;
  */
 class TBMacForm extends Model
 {
+    public const PRESENTATION_NUMBER = [
+        'enrollment' => 'E-',
+        'case_management' => 'C-',
+        'treatment_outcome' => 'T-',
+    ];
+
     use HasFactory;
     protected $table = 'tb_mac_forms';
 
@@ -104,6 +110,11 @@ class TBMacForm extends Model
     public function enrollmentForm()
     {
         return $this->hasOne(EnrollmentRegimentForm::class, 'form_id');
+    }
+
+    public function treatmentOutcomeForm()
+    {
+        return $this->hasOne(TreatmentOutcomeForm::class, 'form_id');
     }
 
     public function bacteriologicalResults()
@@ -233,6 +244,11 @@ class TBMacForm extends Model
         return $query->where('form_type', 'case_management');
     }
 
+    public function scopeTreatmentOutcomeForms($query)
+    {
+        return $query->where('form_type', 'treatment_outcome');
+    }
+
     public function scopeFilter($query, TBMacFormFilters $filters)
     {
         return $filters->apply($query);
@@ -240,12 +256,7 @@ class TBMacForm extends Model
 
     public function getPresentationNumberAttribute($value)
     {
-        $prefix = 'E-';
-        switch ($this->form_type) {
-            case 'case_management':
-                $prefix = 'C-';
-                break;
-        }
+        $prefix = self::PRESENTATION_NUMBER[$this->form_type];
         return $prefix.$value;
     }
 
@@ -255,16 +266,9 @@ class TBMacForm extends Model
 
         static::created(function ($model) {
             $presentationNumber = null;
-            if ($model->form_type === 'enrollment') {
-                $max = TBMacForm::where('form_type', '=', 'enrollment')
-                    ->where('region', $model->region)->count();
-                $presentationNumber = $model->region.'-'.str_pad(strval($max), 4, '0', STR_PAD_LEFT);
-            }
-            if ($model->form_type === 'case_management') {
-                $max = TBMacForm::where('form_type', '=', 'case_management')
-                    ->where('region', $model->region)->count();
-                $presentationNumber = $model->region.'-'.str_pad(strval($max), 4, '0', STR_PAD_LEFT);
-            }
+            $max = TBMacForm::where('form_type', '=', $model->form_type)
+                ->where('region', $model->region)->count();
+            $presentationNumber = $model->region.'-'.str_pad(strval($max), 4, '0', STR_PAD_LEFT);
             $model->presentation_number = $presentationNumber;
             $model->save();
         });

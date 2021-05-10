@@ -11,6 +11,8 @@ use App\Http\Controllers\EnrollmentRegimentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ResubmitCaseManagementController;
 use App\Http\Controllers\ResubmitEnrollmentController;
+use App\Http\Controllers\TreatmentOutcomeAttachmentsController;
+use App\Http\Controllers\TreatmentOutcomesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,6 +52,9 @@ Route::group(['middleware' => 'auth'], static function () {
         Route::post('resubmit/enrollment/{tbMacForm}', [ResubmitEnrollmentController::class, 'resubmit']);
         Route::get('/case-management/resubmit/{tbMacForm}', [ResubmitCaseManagementController::class, 'edit']);
         Route::post('/case-management/resubmit/{tbMacForm}', [ResubmitCaseManagementController::class, 'reSubmit']);
+
+        Route::get('/treatment-outcomes/create', [TreatmentOutcomesController::class, 'create']);
+        Route::post('/treatment-outcomes', [TreatmentOutcomesController::class, 'store']);
     });
 
     Route::get('/enrollments/{tbMacForm}', [EnrollmentRegimentController::class,'show']);
@@ -68,5 +73,11 @@ Route::group(['middleware' => 'auth'], static function () {
     Route::get('/case-management/{tbMacForm}/{fileName}/attachment', [CaseManagementController::class,'showAttachment']);
     Route::get('/case-management/{tbMacForm}/{fileName}/download', [CaseManagementController::class,'downloadAttachment']);
 
+    Route::get('/treatment-outcomes', [TreatmentOutcomesController::class,'index']);
+    Route::get('/treatment-outcomes/{tbMacForm}', [TreatmentOutcomesController::class,'show']);
+
     Route::get('itis/get/patient', [ITISController::class, 'getPatient']);
+    Route::get('itis/patient/treatment', [ITISController::class, 'getPatientTreatment']);
+    Route::get('/treatment-outcomes/{tbMacForm}/{fileName}/attachment', [TreatmentOutcomeAttachmentsController::class,'showAttachment']);
+    Route::get('/treatment-outcomes/{tbMacForm}/{fileName}/download', [TreatmentOutcomeAttachmentsController::class,'downloadAttachment']);
 });
