@@ -188,28 +188,33 @@
                   </thead>
                   <tbody>
                   @php
-                //   $screenone = $tbMacForm->screenOne;
-                //   $screenTwo = $tbMacForm->screenTwo;
-                //   $lpa = $tbMacForm->lpa;
-                //   $dst = $tbMacForm->dst;
-                //   $monthlyScreening = $tbMacForm->monthlyScreening;
+                    $bacteriologicalResults = $tbMacForm->treatmentOutcomeBacteriologicalResults;
+                    $screenings = $bacteriologicalResults->filter(function($item){
+                        return $item->type == 'screenings';
+                    });
+                    $lpa = $bacteriologicalResults->filter(function($item){
+                        return $item->type == 'lpa';
+                    })->first();
+                    $dst = $bacteriologicalResults->filter(function($item){
+                        return $item->type == 'dst';
+                    })->first();
+                    $monthlyScreenings = $bacteriologicalResults->filter(function($item){
+                        return $item->type == 'monthly_screenings';
+                    })->values();
+
                   @endphp
-                  {{-- <tr class="table__row">
-                      <td class="table__details">{{ empty($screenone->label) ? '' : $screenone->label}}</td>
-                      <td class="table__details">{{ empty($screenone->date_collected) ? '' : $screenone->date_collected->format('Y-m-d') }}</td>
-                      <td class="table__details">{{ empty($screenone->resistance_pattern) ? '' : $screenone->resistance_pattern }}</td>
-                      <td class="table__details">{{ empty($screenone->method_used) ? '' : $screenone->method_used }}</td>
-                    </tr>
+                  @foreach($screenings as $key => $screening)
                     <tr class="table__row">
-                      <td class="table__details">{{ empty($screenTwo->label) ? '' : $screenTwo->label}}</td>
-                      <td class="table__details">{{ empty($screenTwo->date_collected) ? '' : $screenTwo->date_collected->format('Y-m-d') }}</td>
-                      <td class="table__details">{{ empty($screenTwo->resistance_pattern) ? '' : $screenTwo->resistance_pattern }}</td>
-                      <td class="table__details">{{ empty($screenTwo->method_used) ? '' : $screenTwo->method_used }}</td>
-                    </tr> --}}
+                      <td class="table__details">Screening {{ $key + 1 }}</td>
+                      <td class="table__details">{{ $screening->date_collected->format('Y-m-d') }}</td>
+                      <td class="table__details">{{ $screening->method_used }}</td>
+                      <td class="table__details">{{ $screening->resistance_pattern }}</td>
+                    </tr>
+                  @endforeach
                   </tbody>
                 </table>
               </div>
-              {{-- <div class="form__container">
+              <div class="form__container">
                 <h2 class="section__heading">LPA information</h2>
                 <table class="table table--unset js-table-unset">
                   <thead>
@@ -221,14 +226,14 @@
                   </thead>
                   <tbody>
                     <tr class="table__row">
-                      <td class="table__details">{{ empty($lpa->label) ? '' : $lpa->label}}</td>
-                      <td class="table__details">{{ empty($lpa->date_collected) ? '' : $lpa->date_collected->format('Y-m-d')}}</td>
-                      <td class="table__details">{{ empty($lpa->resistance_pattern) ? '' : $lpa->resistance_pattern }}</td>
+                      <td class="table__details">LPA</td>
+                      <td class="table__details">{{ $lpa->date_collected->format('Y-m-d')}}</td>
+                      <td class="table__details">{{ $lpa->resistance_pattern }}</td>
                     </tr>
                   </tbody>
                 </table>
-              </div> --}}
-              {{-- <div class="form__container">
+              </div>
+              <div class="form__container">
                 <h2 class="section__heading">DST information</h2>
                 <table class="table table--unset js-table-unset">
                   <thead>
@@ -240,14 +245,14 @@
                   </thead>
                   <tbody>
                   <tr class="table__row">
-                      <td class="table__details">{{ $dst->label}}</td>
+                      <td class="table__details">DST</td>
                       <td class="table__details">{{ $dst->date_collected->format('Y-m-d')}}</td>
-                      <td class="table__details">{{ $dst->resistance_pattern === 'Other (specify)' ? $dst->others : $dst->resistance_pattern}}</td>
+                      <td class="table__details">{{ $dst->resistance_pattern === 'Other (specify)' ? $dst->resistance_pattern_others : $dst->resistance_pattern}}</td>
                     </tr>
                     
                   </tbody>
                 </table>
-              </div> --}}
+              </div>
               <div class="form__container">
                 <h2 class="section__heading">Month</h2>
                 <table class="table table--unset js-table-unset">
@@ -261,15 +266,15 @@
                     </tr>
                   </thead>
                   <tbody>
-                    {{-- @foreach($monthlyScreening as $a)
+                    @foreach($monthlyScreenings->all() as $key => $monthlyScreening)
                     <tr class="table__row">
-                      <td class="table__details">{{$a->count}}</td>
-                      <td class="table__details">{{$a->date_collected->format('Y-m-d')}}</td>
-                      <td class="table__details">{{$a->smear_microscopy}}</td>
-                      <td class="table__details">{{$a->tb_lamp}}</td>
-                      <td class="table__details">{{$a->culture}}</td>
+                      <td class="table__details">{{ $loop->first ? 'B' : $key }}</td>
+                      <td class="table__details">{{$monthlyScreening->date_collected->format('Y-m-d')}}</td>
+                      <td class="table__details">{{$monthlyScreening->smear_microscopy}}</td>
+                      <td class="table__details">{{$monthlyScreening->tb_lamp}}</td>
+                      <td class="table__details">{{$monthlyScreening->culture}}</td>
                     </tr>
-                    @endforeach --}}
+                    @endforeach
                   </tbody>
                 </table>
               </div>

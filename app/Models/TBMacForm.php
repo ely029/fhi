@@ -234,6 +234,11 @@ class TBMacForm extends Model
             ->where('smear_microscopy', '');
     }
 
+    public function treatmentOutcomeBacteriologicalResults()
+    {
+        return $this->hasMany(TreatmentOutcomeBacteriologicalResult::class,'form_id');
+    }
+
     public function scopeEnrollmentForms($query)
     {
         return $query->where('form_type', 'enrollment');

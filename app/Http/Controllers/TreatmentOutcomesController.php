@@ -5,12 +5,8 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TreatmentOutcomes\StoreRequest;
-use App\Models\CaseManagementAttachments;
-use App\Models\CaseManagementBacteriologicalResults;
 use App\Models\Patient;
 use App\Models\TBMacForm;
-use App\Models\TBMacFormAttachment;
-use Illuminate\Support\Str;
 
 class TreatmentOutcomesController extends Controller
 {
@@ -57,6 +53,10 @@ class TreatmentOutcomesController extends Controller
             }
         }
 
+        $this->createScreenings($request, $tbMacForm);
+        $this->createLPADST($request, $tbMacForm);
+        $this->createMonthlyScreenings($request, $tbMacForm);
+
         return redirect('treatment-outcomes/'.$tbMacForm->id)->with([
             'alert.message' => 'New case for treatment outcome created.',
         ]);
@@ -68,5 +68,60 @@ class TreatmentOutcomesController extends Controller
 
         return view('treatment-outcomes.show')
             ->with('tbMacForm', $tbMacForm);
+    }
+
+    private function createScreenings($request, $tbMacForm)
+    {
+        // Screening 1
+        $tbMacForm->treatmentOutcomeBacteriologicalResults()->create([
+            'type' => 'screenings',
+            'date_collected' => $request['screening_1_date_collected'],
+            'method_used' => $request['screening_1_method_used'],
+            'resistance_pattern' => $request['screening_1_resistance_pattern'],
+        ]);
+
+        // Screening 2
+        if (isset($request['screening_2_date_collected'])) {
+            $tbMacForm->treatmentOutcomeBacteriologicalResults()->create([
+                'type' => 'screenings',
+                'date_collected' => $request['screening_2_date_collected'],
+                'method_used' => $request['screening_2_method_used'],
+                'resistance_pattern' => $request['screening_2_resistance_pattern'],
+            ]);
+        }
+     
+    }
+
+    private function createLPADST($request, $tbMacForm)
+    {
+        // LPA
+        $tbMacForm->treatmentOutcomeBacteriologicalResults()->create([
+            'type' => 'lpa',
+            'date_collected' => $request['lpa_date_collected'],
+            'resistance_pattern' => $request['lpa_resistance_pattern'],
+        ]);
+
+        // DST
+        $tbMacForm->treatmentOutcomeBacteriologicalResults()->create([
+            'type' => 'dst',
+            'date_collected' => $request['dst_date_collected'],
+            'resistance_pattern' => $request['dst_resistance_pattern'],
+            'resistance_pattern_others' => $request['dst_resistance_pattern'] == 'Other (specify)' ? $request['dst_resistance_pattern_others'] : null,
+        ]);
+    }
+
+    private function createMonthlyScreenings($request, $tbMacForm)
+    {
+        $count = count($request['date_collected']);
+        for ($x = 0; $x <= $count - 1; $x++) {
+
+            $tbMacForm->treatmentOutcomeBacteriologicalResults()->create([
+                'type' => 'monthly_screenings',
+                'date_collected' => $request['date_collected'][$x],
+                'smear_microscopy' => $request['smear_microscopy'][$x],
+                'tb_lamp' => $request['tb_lamp'][$x],
+                'culture' => $request['culture'][$x],
+            ]);
+        }
     }
 }

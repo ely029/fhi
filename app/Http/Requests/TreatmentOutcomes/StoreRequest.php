@@ -49,6 +49,14 @@ class StoreRequest extends FormRequest
             'remarks' => 'required|max:1000',
             'attachments.*' => 'nullable|file|max:10000',
             'outcome' => 'required',
+            'screening_1_date_collected' => 'required|date_format:Y-m-d',
+            'screening_1_method_used' => 'required',
+            'screening_1_resistance_pattern' => 'required',
+            'lpa_date_collected' => 'required|date_format:Y-m-d',
+            'lpa_resistance_pattern' => 'required',
+            'dst_date_collected' => 'required|date_format:Y-m-d',
+            'dst_resistance_pattern' => 'required',
+            'dst_resistance_pattern_others' => 'required_if:dst_resistance_pattern,Other (specify)'
         ];
     }
 }

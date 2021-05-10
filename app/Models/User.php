@@ -90,7 +90,7 @@ class User extends Authenticatable
     ];
 
     // Improves performance since hasAccess is always called in the middleware
-    protected $with = ['role'];
+    // protected $with = ['role'];
 
     public function role()
     {

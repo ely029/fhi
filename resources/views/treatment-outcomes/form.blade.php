@@ -66,5 +66,6 @@
 
   <script src="{{ asset('assets/app/js/dropzone.js') }}"></script>
   <script src="{{ asset('assets/app/js/dropzoneInit.js') }}"></script>
+  <script src="{{ asset('assets/app/js/treatment-outcome/create-2.js') }}"></script>   
 
 @endsection
