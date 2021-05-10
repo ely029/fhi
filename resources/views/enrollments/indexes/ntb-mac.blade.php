@@ -33,7 +33,7 @@
                 <td class="table__details">{{ empty($enrollment->patient->gender) ? '' : $enrollment->patient->gender}}</td>
 
                 <td class="table__details">{{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility}}</td>
-                <td class="table__details">{{ $enrollment->created_at->format('Y-m-d')}}</td>
+                <td class="table__details">{{ $enrollment->created_at->format('m-d-Y')}}</td>
                 <td class="table__details">{{ $enrollment->status }}</td>
               </tr>
             @endforeach
@@ -66,7 +66,7 @@
                 <td class="table__details">{{ empty($enrollment->patient->gender) ? '' : $enrollment->patient->gender}}</td>
 
                 <td class="table__details">{{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility}}</td>
-                <td class="table__details">{{ $enrollment->created_at->format('Y-m-d')}}</td>
+                <td class="table__details">{{ $enrollment->created_at->format('m-d-Y')}}</td>
                 <td class="table__details">{{ $enrollment->status }}</td>
               </tr>
             @endforeach
@@ -99,7 +99,7 @@
                 <td class="table__details">{{ empty($enrollment->patient->gender) ? '' : $enrollment->patient->gender}}</td>
 
                 <td class="table__details">{{ empty($enrollment->enrollmentForm->drug_susceptibility) ? '' : $enrollment->enrollmentForm->drug_susceptibility}}</td>
-                <td class="table__details">{{ $enrollment->created_at->format('Y-m-d')}}</td>
+                <td class="table__details">{{ $enrollment->created_at->format('m-d-Y')}}</td>
                 <td class="table__details">{{ $enrollment->status }}</td>
               </tr>
             @endforeach
