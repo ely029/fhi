@@ -13,8 +13,8 @@ use App\Http\Controllers\Api\EnrollmentRecommendationsController;
 use App\Http\Controllers\Api\EnrollmentResubmitController;
 use App\Http\Controllers\Api\EnrollmentsController;
 use App\Http\Controllers\Api\ITISController;
-use App\Http\Controllers\Api\Users\FcmRegistrationTokensController;
 use App\Http\Controllers\Api\TreatmentOutcomesController;
+use App\Http\Controllers\Api\Users\FcmRegistrationTokensController;
 use Illuminate\Support\Facades\Route;
 
 /*

@@ -165,6 +165,14 @@ class TreatmentOutcomesController extends Controller
         return response()->json($data);
     }
 
+    protected function rules()
+    {
+        $storeRequest = new StoreRequest();
+        $rules = $storeRequest->rules();
+        $rules['monthly_screenings'] = 'required';
+        return $rules;
+    }
+
     private function createScreenings($request, $tbMacForm)
     {
         // Screening 1
@@ -184,7 +192,6 @@ class TreatmentOutcomesController extends Controller
                 'resistance_pattern' => $request['screening_2_resistance_pattern'],
             ]);
         }
-     
     }
 
     private function createLPADST($request, $tbMacForm)
@@ -201,7 +208,7 @@ class TreatmentOutcomesController extends Controller
             'type' => 'dst',
             'date_collected' => $request['dst_date_collected'],
             'resistance_pattern' => $request['dst_resistance_pattern'],
-            'resistance_pattern_others' => $request['dst_resistance_pattern'] == 'Other (specify)' ? $request['dst_resistance_pattern_others'] : null,
+            'resistance_pattern_others' => $request['dst_resistance_pattern'] === 'Other (specify)' ? $request['dst_resistance_pattern_others'] : null,
         ]);
     }
 
@@ -217,14 +224,6 @@ class TreatmentOutcomesController extends Controller
                 'culture' => $item['culture'],
             ]);
         }
-    }
-
-    protected function rules()
-    {
-        $storeRequest = new StoreRequest();
-        $rules = $storeRequest->rules();
-        $rules['monthly_screenings'] = 'required';
-        return $rules;
     }
 
     private function getDynamicQuery()
