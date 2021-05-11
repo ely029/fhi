@@ -79,7 +79,7 @@
                         <label class="form__label" for="">Primary Health Care Worker </label>
                     </div>
                     <div class="form__content">
-                        <span class="form__text">{{ $tbMacForm->created_at->format('Y-m-d') }}</span>
+                        <span class="form__text">{{ $tbMacForm->created_at->format('m-d-Y') }}</span>
                         <label class="form__label" for="">Date submitted</label>
                     </div>
                   </div>
@@ -193,13 +193,13 @@
                   @endphp
                   <tr class="table__row">
                       <td class="table__details">{{ empty($screenone->label) ? '' : $screenone->label}}</td>
-                      <td class="table__details">{{ empty($screenone->date_collected) ? '' : $screenone->date_collected->format('Y-m-d') }}</td>
+                      <td class="table__details">{{ empty($screenone->date_collected) ? '' : $screenone->date_collected->format('m-d-Y') }}</td>
                       <td class="table__details">{{ empty($screenone->resistance_pattern) ? '' : $screenone->resistance_pattern }}</td>
                       <td class="table__details">{{ empty($screenone->method_used) ? '' : $screenone->method_used }}</td>
                     </tr>
                     <tr class="table__row">
                       <td class="table__details">{{ empty($screenTwo->label) ? '' : $screenTwo->label}}</td>
-                      <td class="table__details">{{ empty($screenTwo->date_collected) ? '' : $screenTwo->date_collected->format('Y-m-d') }}</td>
+                      <td class="table__details">{{ empty($screenTwo->date_collected) ? '' : $screenTwo->date_collected->format('m-d-Y') }}</td>
                       <td class="table__details">{{ empty($screenTwo->resistance_pattern) ? '' : $screenTwo->resistance_pattern }}</td>
                       <td class="table__details">{{ empty($screenTwo->method_used) ? '' : $screenTwo->method_used }}</td>
                     </tr>
@@ -219,7 +219,7 @@
                   <tbody>
                     <tr class="table__row">
                       <td class="table__details">{{ empty($lpa->label) ? '' : $lpa->label}}</td>
-                      <td class="table__details">{{ empty($lpa->date_collected) ? '' : $lpa->date_collected->format('Y-m-d')}}</td>
+                      <td class="table__details">{{ empty($lpa->date_collected) ? '' : $lpa->date_collected->format('m-d-Y')}}</td>
                       <td class="table__details">{{ empty($lpa->resistance_pattern) ? '' : $lpa->resistance_pattern }}</td>
                     </tr>
                   </tbody>
@@ -238,7 +238,7 @@
                   <tbody>
                   <tr class="table__row">
                       <td class="table__details">{{ $dst->label}}</td>
-                      <td class="table__details">{{ $dst->date_collected->format('Y-m-d')}}</td>
+                      <td class="table__details">{{ $dst->date_collected->format('m-d-Y')}}</td>
                       <td class="table__details">{{ $dst->resistance_pattern === 'Other (specify)' ? $dst->others : $dst->resistance_pattern}}</td>
                     </tr>
                     
@@ -261,7 +261,7 @@
                     @foreach($monthlyScreening as $a)
                     <tr class="table__row">
                       <td class="table__details">{{$a->count}}</td>
-                      <td class="table__details">{{$a->date_collected->format('Y-m-d')}}</td>
+                      <td class="table__details">{{$a->date_collected->format('m-d-Y')}}</td>
                       <td class="table__details">{{$a->smear_microscopy}}</td>
                       <td class="table__details">{{$a->tb_lamp}}</td>
                       <td class="table__details">{{$a->culture}}</td>
@@ -371,7 +371,7 @@
                 <h2 class="section__heading">Laboratory results and information</h2>
                 <div class="grid grid--two">
                   <div class="form__content">
-                    <span class="form__text">{{ $results->cxr_date->format('Y-m-d') }}</span>
+                    <span class="form__text">{{ $results->cxr_date->format('m-d-Y') }}</span>
                     <label class="form__label" for="">CXR date</label>
                   </div>
                   <div class="form__content">
@@ -388,7 +388,7 @@
                   </div>
                 </div>
                 <div class="grid grid--two">
-                  <div class="form__content"><span class="form__text">{{ $results->ct_scan_date ? $results->ct_scan_date->format('Y-m-d') : ''}}</span><label class="form__label" for="">CT Scan date</label></div>
+                  <div class="form__content"><span class="form__text">{{ $results->ct_scan_date ? $results->ct_scan_date->format('m-d-Y') : ''}}</span><label class="form__label" for="">CT Scan date</label></div>
                   <div class="form__content">
                     <span class="form__text">
                       {{ $results->ct_scan_result }}
@@ -397,7 +397,7 @@
                   </div>
                 </div>
                 <div class="grid grid--two">
-                  <div class="form__content"><span class="form__text">{{ $results->ultra_sound_date ? $results->ultra_sound_date->format('Y-m-d') : ''}}</span><label class="form__label" for="">Ultrasound date</label></div>
+                  <div class="form__content"><span class="form__text">{{ $results->ultra_sound_date ? $results->ultra_sound_date->format('m-d-Y') : ''}}</span><label class="form__label" for="">Ultrasound date</label></div>
                   <div class="form__content">
                     <span class="form__text">
                       {{ $results->ultra_sound_result }}
@@ -406,7 +406,7 @@
                   </div>
                 </div>
                 <div class="grid grid--two">
-                  <div class="form__content"><span class="form__text">{{ $results->histhopathological_date ? $results->histhopathological_date->format('Y-m-d') : ''}}</span><label class="form__label" for="">Histopathological date</label></div>
+                  <div class="form__content"><span class="form__text">{{ $results->histhopathological_date ? $results->histhopathological_date->format('m-d-Y') : ''}}</span><label class="form__label" for="">Histopathological date</label></div>
                   <div class="form__content">
                     <span class="form__text">
                       {{ $results->histhopathological_result }}
@@ -456,7 +456,7 @@
                 <div class="form__container">
                   <div class="grid grid--two">
                     <h2 class="section__heading section__heading--healthworker">{{ $tbMacForm->submittedBy->name }}<span class="form__label">Health Care Worker | [Region]</span></h2>
-                    <label class="form__label">{{ $tbMacForm->created_at->format('Y-m-d')}}</label>
+                    <label class="form__label">{{ $tbMacForm->created_at->format('m-d-Y')}}</label>
                   </div>
                   <div class="form__container form__container--remarks form__container--actions">
                     <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
@@ -473,7 +473,7 @@
                 <div class="form__container">
                   <div class="grid grid--two">
                     <h2 class="section__heading section__heading--healthworker">{{ $recommendation->users->name}}<span class="form__label">{{ $recommendation->users->role->name }} | [Region]</span></h2>
-                    <label class="form__label">{{ $recommendation->created_at->format('Y-m-d')}}</label>
+                    <label class="form__label">{{ $recommendation->created_at->format('m-d-Y')}}</label>
                   </div>
                   <div class="form__container form__container--remarks form__container--actions">
                     <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
