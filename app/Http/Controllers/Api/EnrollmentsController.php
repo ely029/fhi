@@ -83,6 +83,7 @@ class EnrollmentsController extends Controller
     {
         $tbMacForm = $tbMacForm->load(['submittedBy','enrollmentForm','bacteriologicalResults','laboratoryResults','attachments','patient','recommendations']);
         $tbBacteriologicalResults = $tbMacForm->bacteriologicalResults;
+        $submitted_by = $tbMacForm->submittedBy->name;
         $bacteriologicalResults = $tbBacteriologicalResults->filter(function ($item) {
             return $item->type !== 'dst_from_other_lab';
         })->map(function ($item) {
@@ -126,6 +127,7 @@ class EnrollmentsController extends Controller
         });
 
         $data = [
+            'submitted_by' => $submitted_by,
             'date_created' => $tbMacForm->created_at->format('m-d-Y'),
             'patient_code' => $tbMacForm->patient->code,
             'facility_code' => $tbMacForm->patient->facility_code,
