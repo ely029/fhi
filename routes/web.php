@@ -12,6 +12,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ResubmitCaseManagementController;
 use App\Http\Controllers\ResubmitEnrollmentController;
 use App\Http\Controllers\TreatmentOutcomeAttachmentsController;
+use App\Http\Controllers\TreatmentOutcomeRecommendationController;
 use App\Http\Controllers\TreatmentOutcomesController;
 use Illuminate\Support\Facades\Route;
 
@@ -80,4 +81,5 @@ Route::group(['middleware' => 'auth'], static function () {
     Route::get('itis/patient/treatment', [ITISController::class, 'getPatientTreatment']);
     Route::get('/treatment-outcomes/{tbMacForm}/{fileName}/attachment', [TreatmentOutcomeAttachmentsController::class,'showAttachment']);
     Route::get('/treatment-outcomes/{tbMacForm}/{fileName}/download', [TreatmentOutcomeAttachmentsController::class,'downloadAttachment']);
+    Route::post('/treatment-outcomes/{tbMacForm}/recommendation', [TreatmentOutcomeRecommendationController::class,'store']);
 });
