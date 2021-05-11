@@ -337,3 +337,55 @@ function caseManagementTabs()
         'all_cases_ntb_chair' => ['For approval','Other suggestions','Need Further Details','Referred to Regional Chair'],
     ];
 }
+
+function getDynamicQuery()
+{
+    return [
+        3 => [
+            'condition' => 'submitted_by',
+            'value' => auth()->user()->id,
+        ],
+        4 => [
+            'condition' => 'region',
+            'value' => 'NCR',
+        ],
+        5 => [
+            'condition' => 'region',
+            'value' => 'NCR',
+        ],
+        6 => [
+            'condition' => 'region',
+            'value' => 'NCR',
+        ],
+        7 => [
+            'condition' => 'form_type',
+            'value' => 'treatment_outcome',
+        ],
+        8 => [
+            'condition' => 'form_type',
+            'value' => 'treatment_outcome',
+        ],
+    ];
+}
+
+function treatmentOutcomeIndex3($cases)
+{
+    $forApproval = $cases->filter(function ($item) {
+        return $item->status === 'For approval';
+    });
+    $otherSuggestion = $cases->filter(function ($item) {
+        return $item->status === 'Other suggestions';
+    });
+    $needFurtherDetails = $cases->filter(function ($item) {
+        return $item->status === 'Need Further Details';
+    });
+    $notForReferral = $cases->filter(function ($item) {
+        return $item->status === 'Not for Referral';
+    });
+    return view('case-management.index')
+        ->with('forApproval', $forApproval)
+        ->with('allCases', $cases)
+        ->with('needFurtherDetails', $needFurtherDetails)
+        ->with('otherSuggestion', $otherSuggestion)
+        ->with('notForReferral', $notForReferral);
+}
