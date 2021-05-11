@@ -45,11 +45,11 @@ $('.hide--button').hide();
             $("#modal-text").text("You are about to send this case to National TB MAC. If you have additional remarks, enter them below.");
         }
 
-        if(action == 'Resubmit Case Management') {
+        if(action == 'Resubmit Treatment Outcome') {
             $('textarea[name="recommendation"]').hide();
             $('button').hide();
-            $("#modal-title").text('Resubmit case management');
-            $('#modal-text').text("You are about to resubmit a new case management. Please read and prepare the requested information and documents and the remarks and recommendations section");
+            $("#modal-title").text('Resubmit treatment outcome');
+            $('#modal-text').text("You are about to resubmit a new treatment outcome. Please read and prepare the requested information and documents and the remarks and recommendations section");
             $('label').hide();
             $('.hide--button').show();
         }

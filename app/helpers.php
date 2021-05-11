@@ -208,6 +208,38 @@ function culture()
     ];
 }
 
+function treatmentCulture()
+{
+    return [
+        'Positive',
+        'Negative',
+        'Non-tuberculous Mycobacteria (NTM)',
+        'Contaminated',
+        'Not done'
+    ];
+}
+
+function treatmentCxrReading()
+{
+    return [
+        'Improved',
+        'Stable/Unchanged',
+        'Worsened',
+    ];
+}
+
+function treatmentOutome()
+{
+    return [
+        'Cured',
+        'Treatment Completed',
+        'Failed',
+        'Lost to Follow-up',
+        'Died',
+        'Excluded'
+    ];
+}
+
 function suggested_regimen()
 {
     return [

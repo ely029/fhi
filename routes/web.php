@@ -11,6 +11,7 @@ use App\Http\Controllers\EnrollmentRegimentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ResubmitCaseManagementController;
 use App\Http\Controllers\ResubmitEnrollmentController;
+use App\Http\Controllers\ResubmitTreatmentOutcomeController;
 use App\Http\Controllers\TreatmentOutcomeAttachmentsController;
 use App\Http\Controllers\TreatmentOutcomeRecommendationController;
 use App\Http\Controllers\TreatmentOutcomesController;
@@ -56,6 +57,8 @@ Route::group(['middleware' => 'auth'], static function () {
 
         Route::get('/treatment-outcomes/create', [TreatmentOutcomesController::class, 'create']);
         Route::post('/treatment-outcomes', [TreatmentOutcomesController::class, 'store']);
+        Route::get('/treatment-outcomes/resubmit/{tbMacForm}', [ResubmitTreatmentOutcomeController::class, 'edit']);
+        Route::post('/treatment-outcomes/resubmit/{tbMacForm}', [ResubmitTreatmentOutcomeController::class, 'reSubmit']);
     });
 
     Route::get('/enrollments/{tbMacForm}', [EnrollmentRegimentController::class,'show']);
