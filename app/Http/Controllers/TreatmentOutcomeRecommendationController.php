@@ -19,7 +19,7 @@ class TreatmentOutcomeRecommendationController extends Controller
         $request['role_id'] = auth()->user()->role_id;
 
         $tbMacForm->recommendations()->create($request);
-        return redirect('case-management')->with([
+        return redirect('treatment-outcomes')->with([
             'recommendation' => 'Recommendation successfully sent',
         ]);
     }

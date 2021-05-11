@@ -1,5 +1,8 @@
 <div class="section__container">
     <a class="button button--create" href="{{url('treatment-outcomes/create') }}">Create new case</a>
+
+    @include('partials.alerts')
+
     <div class="section__content">
     <ul class="tabs__list tabs__list--table">
         <a href="{{ url('treatment-outcomes') }}">
@@ -36,7 +39,7 @@
         </thead>
         <tbody>
         @foreach($cases as $case)
-        <tr class="table__row js-view" data-href="{{url('/treatment-outcomes/'.$case->id)}}">
+        <tr class="table__row js-view" data-href="{{url('/treatment-outcomes/'.$case->id.'?from_tab='.request('status'))}}">
             <td class="table__details">{{ $case->presentation_number }}</td>
             <td class="table__details">{{ empty($case->patient->initials) ? '' : $case->patient->initials}}</td>
             <td class="table__details">{{ empty($case->patient->age) ? '' : $case->patient->age}}</td>
