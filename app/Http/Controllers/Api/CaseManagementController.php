@@ -131,6 +131,7 @@ class CaseManagementController extends Controller
             return [
                 'name' => $item->users->name,
                 'role_id' => $item->role_id,
+                'role' => $item->roles->name,
                 'date_created' => $item->created_at->format('Y-m-d'),
                 'status' => $item->status === '0' ? '' : $item->status,
                 'recommendation' => $item->recommendation,
