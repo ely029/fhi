@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Models\BacteriologicalResult;
 use App\Models\TBMacForm;
-use App\Models\TBMacFormAttachment;
 use Illuminate\Support\Facades\Storage;
 
 class ResubmitTreatmentOutcomeController extends Controller

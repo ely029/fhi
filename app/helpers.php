@@ -215,7 +215,7 @@ function treatmentCulture()
         'Negative',
         'Non-tuberculous Mycobacteria (NTM)',
         'Contaminated',
-        'Not done'
+        'Not done',
     ];
 }
 
@@ -236,7 +236,7 @@ function treatmentOutome()
         'Failed',
         'Lost to Follow-up',
         'Died',
-        'Excluded'
+        'Excluded',
     ];
 }
 
