@@ -56,7 +56,7 @@ class StoreRequest extends FormRequest
             'lpa_resistance_pattern' => 'required',
             'dst_date_collected' => 'required|date_format:Y-m-d',
             'dst_resistance_pattern' => 'required',
-            'dst_resistance_pattern_others' => 'required_if:dst_resistance_pattern,Other (specify)'
+            'dst_resistance_pattern_others' => 'required_if:dst_resistance_pattern,Other (specify)',
         ];
     }
 }
