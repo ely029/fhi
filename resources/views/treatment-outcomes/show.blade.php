@@ -24,7 +24,7 @@
               <div class="modal__box">
                 <h2 class="modal__title" id="modal-title"></h2>
                 <p class="modal__text" id="modal-text"></p>
-                <form class="form" id="modal-form" method="POST" action="{{ url('treatment-outcome/'.$tbMacForm->id.'/recommendation') }}">
+                <form class="form" id="modal-form" method="POST" action="{{ url('treatment-outcomes/'.$tbMacForm->id.'/recommendation') }}">
                     @csrf
                    <input type="hidden" name="status"/>
                    <div class="form__content">
@@ -89,7 +89,7 @@
                 </div>
 
                 {{-- Health Care Worker --}}
-                @if(auth()->user()->role_id == 3)
+                @if(auth()->user()->role_id == 3 && $tbMacForm->status != 'Resolved' && in_array(request('from_tab'),['For approval','Other suggestions','Need Further Details','Not for Referral']))
                     <div class="grid grid--action-case-management">
                         <div class="form__content">
                             <select id="action-dropdown" class="form__input form__input--select">
