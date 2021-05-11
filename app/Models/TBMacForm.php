@@ -83,13 +83,12 @@ use Illuminate\Database\Eloquent\Model;
  */
 class TBMacForm extends Model
 {
+    use HasFactory;
     public const PRESENTATION_NUMBER = [
         'enrollment' => 'E-',
         'case_management' => 'C-',
         'treatment_outcome' => 'T-',
     ];
-
-    use HasFactory;
     protected $table = 'tb_mac_forms';
 
     protected $fillable = [
@@ -236,7 +235,7 @@ class TBMacForm extends Model
 
     public function treatmentOutcomeBacteriologicalResults()
     {
-        return $this->hasMany(TreatmentOutcomeBacteriologicalResult::class,'form_id');
+        return $this->hasMany(TreatmentOutcomeBacteriologicalResult::class, 'form_id');
     }
 
     public function scopeEnrollmentForms($query)

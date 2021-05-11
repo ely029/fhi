@@ -16,10 +16,8 @@ class TreatmentOutcomesController extends Controller
         //     ->with(['patient','treatmentOutcomeForm'])
         //     ->where($this->getDynamicQuery()['condition'], $this->getDynamicQuery()['value'])
         //     ->orderByDesc('created_at')->paginate();
-        
         return view('treatment-outcomes.index');
     }
-   
     public function create()
     {
         return view('treatment-outcomes.form');
@@ -89,7 +87,6 @@ class TreatmentOutcomesController extends Controller
                 'resistance_pattern' => $request['screening_2_resistance_pattern'],
             ]);
         }
-     
     }
 
     private function createLPADST($request, $tbMacForm)
@@ -106,21 +103,20 @@ class TreatmentOutcomesController extends Controller
             'type' => 'dst',
             'date_collected' => $request['dst_date_collected'],
             'resistance_pattern' => $request['dst_resistance_pattern'],
-            'resistance_pattern_others' => $request['dst_resistance_pattern'] == 'Other (specify)' ? $request['dst_resistance_pattern_others'] : null,
+            'resistance_pattern_others' => $request['dst_resistance_pattern'] === 'Other (specify)' ? $request['dst_resistance_pattern_others'] : null,
         ]);
     }
 
     private function createMonthlyScreenings($request, $tbMacForm)
     {
         $count = count($request['date_collected']);
-        for ($x = 0; $x <= $count - 1; $x++) {
-
+        for ($xxx = 0; $xxx <= $count - 1; $xxx++) {
             $tbMacForm->treatmentOutcomeBacteriologicalResults()->create([
                 'type' => 'monthly_screenings',
-                'date_collected' => $request['date_collected'][$x],
-                'smear_microscopy' => $request['smear_microscopy'][$x],
-                'tb_lamp' => $request['tb_lamp'][$x],
-                'culture' => $request['culture'][$x],
+                'date_collected' => $request['date_collected'][$xxx],
+                'smear_microscopy' => $request['smear_microscopy'][$xxx],
+                'tb_lamp' => $request['tb_lamp'][$xxx],
+                'culture' => $request['culture'][$xxx],
             ]);
         }
     }
