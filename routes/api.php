@@ -14,6 +14,7 @@ use App\Http\Controllers\Api\EnrollmentResubmitController;
 use App\Http\Controllers\Api\EnrollmentsController;
 use App\Http\Controllers\Api\ITISController;
 use App\Http\Controllers\Api\Users\FcmRegistrationTokensController;
+use App\Http\Controllers\Api\TreatmentOutcomesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -68,4 +69,7 @@ Route::group([
     Route::get('/case-management/resubmit/{tbMacForm}', [CaseManagementResubmitController::class, 'edit']);
     Route::post('/case-management/{tbMacForm}/recommendations', [CaseManagementRecommendationController::class, 'store']);
     Route::get('/case-management/{tbMacForm}/{fileName}/attachment', [CaseManagementController::class,'showAttachment']);
+
+    Route::get('treatment-outcomes', [TreatmentOutcomesController::class, 'index']);
+    Route::post('treatment-outcomes', [TreatmentOutcomesController::class, 'store']);
 });
