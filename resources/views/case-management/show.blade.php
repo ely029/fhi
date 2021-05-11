@@ -371,7 +371,7 @@
                 <h2 class="section__heading">Laboratory results and information</h2>
                 <div class="grid grid--two">
                   <div class="form__content">
-                    <span class="form__text">{{ $results->cxr_date->format('Y-m-d') }}</span>
+                    <span class="form__text">{{ $results->cxr_date->format('m-d-Y') }}</span>
                     <label class="form__label" for="">CXR date</label>
                   </div>
                   <div class="form__content">
