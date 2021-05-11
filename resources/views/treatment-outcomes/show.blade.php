@@ -24,7 +24,7 @@
               <div class="modal__box">
                 <h2 class="modal__title" id="modal-title"></h2>
                 <p class="modal__text" id="modal-text"></p>
-                <form class="form" id="modal-form" method="POST" action="{{ url('case-management/'.$tbMacForm->id.'/recommendation') }}">
+                <form class="form" id="modal-form" method="POST" action="{{ url('treatment-outcome/'.$tbMacForm->id.'/recommendation') }}">
                     @csrf
                    <input type="hidden" name="status"/>
                    <div class="form__content">
@@ -89,13 +89,15 @@
                 </div>
 
                 {{-- Health Care Worker --}}
-                @if(auth()->user()->role_id == 3 && $tbMacForm->status == 'Not for Referral' || $tbMacForm->status == 'Need Further Details')
+                @if(auth()->user()->role_id == 3)
                     <div class="grid grid--action-case-management">
                         <div class="form__content">
                             <select id="action-dropdown" class="form__input form__input--select">
                             <option value="Resolved">Resolved</option>
                             <option value="Not Resolved">Not resolved</option>
-                            <option value="Resubmit Case Management">Resubmit case management</option>
+                            @if($tbMacForm->status == 'Not for Referral' || $tbMacForm->status == 'Need Further Details')
+                              <option value="Resubmit Treatment Outcome">Resubmit treatment outcome</option>
+                            @endif
                             </select>
                             <div class="triangle triangle--down"></div>
                             <label class="form__label" for="">Action</label>
@@ -411,5 +413,5 @@
   
 @endsection
 @section('additional_scripts')
-    <script src="{{ asset('assets/app/js/case-management/show.js') }}"></script>
+    <script src="{{ asset('assets/app/js/treatment-outcome/show.js') }}"></script>
 @endsection

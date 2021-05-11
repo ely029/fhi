@@ -5,18 +5,22 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TreatmentOutcomes\StoreRequest;
+use App\Models\Filters\TBMacFormFilters;
 use App\Models\Patient;
 use App\Models\TBMacForm;
 
 class TreatmentOutcomesController extends Controller
 {
-    public function index()
+    public function index(TBMacFormFilters $filters)
     {
-        // $cases = TBMacForm::TreatmentOutcomeForms()
-        //     ->with(['patient','treatmentOutcomeForm'])
-        //     ->where($this->getDynamicQuery()['condition'], $this->getDynamicQuery()['value'])
-        //     ->orderByDesc('created_at')->paginate();
-        return view('treatment-outcomes.index');
+        $cases = TBMacForm::TreatmentOutcomeForms()
+            ->filter($filters)
+            ->with(['patient','treatmentOutcomeForm'])
+            ->where($this->getDynamicQuery()['condition'], $this->getDynamicQuery()['value'])
+            ->orderByDesc('created_at')->paginate(10);
+        
+        return view('treatment-outcomes.index')
+            ->with('cases', $cases);
     }
     public function create()
     {
@@ -119,5 +123,13 @@ class TreatmentOutcomesController extends Controller
                 'culture' => $request['culture'][$xxx],
             ]);
         }
+    }
+
+    private function getDynamicQuery()
+    {
+        return [
+            'condition' => getDynamicQuery()[auth()->user()->role_id]['condition'],
+            'value' => getDynamicQuery()[auth()->user()->role_id]['value'],
+        ];
     }
 }
