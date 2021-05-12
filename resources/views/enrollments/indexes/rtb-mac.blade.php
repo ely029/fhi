@@ -16,7 +16,7 @@
               <th class="table__head">Facility code</th>
               <th class="table__head">Province</th>
               <th class="table__head">Patient</th>
-              <th class="table__head">Drug susceptibility</th>
+              <th class="table__head">Updated drug susceptibility</th>
               <th class="table__head">Date</th>
               <th class="table__head">Status</th>
             </tr>
@@ -46,7 +46,7 @@
               <th class="table__head">Facility code</th>
               <th class="table__head">Province</th>
               <th class="table__head">Patient</th>
-              <th class="table__head">Drug susceptibility</th>
+              <th class="table__head">Updated drug susceptibility</th>
               <th class="table__head">Date</th>
               <th class="table__head">Status</th>
             </tr>
@@ -76,7 +76,7 @@
               <th class="table__head">Facility code</th>
               <th class="table__head">Province</th>
               <th class="table__head">Patient</th>
-              <th class="table__head">Drug susceptibility</th>
+              <th class="table__head">Updated drug susceptibility</th>
               <th class="table__head">Date</th>
               <th class="table__head">Status</th>
             </tr>
@@ -106,7 +106,7 @@
               <th class="table__head">Facility code</th>
               <th class="table__head">Province</th>
               <th class="table__head">Patient</th>
-              <th class="table__head">Drug susceptibility</th>
+              <th class="table__head">Updated drug susceptibility</th>
               <th class="table__head">Date</th>
               <th class="table__head">Status</th>
             </tr>

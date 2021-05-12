@@ -29,4 +29,10 @@ class TBMacFormFilters extends filter
         return $this->builder
             ->whereIn('status', caseManagementTabs()[$string]);
     }
+
+    protected function treatmentOutcomeTab($string)
+    {
+        return $this->builder
+            ->whereIn('status', treatmentOutcomeTabs()[$string]);
+    }
 }
