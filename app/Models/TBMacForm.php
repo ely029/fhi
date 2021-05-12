@@ -48,6 +48,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read int|null $ntb_mac_recommendations_count
  * @property-read \App\Models\Patient $patient
  * @property-read \App\Models\Recommendation $recommendation
+ * @property-read \App\Models\TreatmentOutcomeForm $treatmentOutcomeForm
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Recommendation[] $recommendations
  * @property-read int|null $recommendations_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Recommendation[] $regionalRecommendations
