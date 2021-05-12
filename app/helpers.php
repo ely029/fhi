@@ -208,6 +208,18 @@ function culture()
     ];
 }
 
+function treatmentSmear()
+{
+    return [
+        '0',
+        '+n',
+        '1+',
+        '2+',
+        '3+',
+        'Not done',
+    ];
+}
+
 function treatmentCulture()
 {
     return [
