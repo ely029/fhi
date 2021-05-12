@@ -16,6 +16,7 @@ jQuery( document ).ready(function( $ ) {
             }
 
             if(currentStep == totalSteps){
+                showConfirmModal();
                 return;
             }
 
@@ -91,5 +92,15 @@ jQuery( document ).ready(function( $ ) {
         $('input:disabled').removeAttr('disabled').attr('required', true);
         $('select:disabled').removeAttr('disabled').attr('required', true);
     }
+
+    function showConfirmModal()
+    {
+        $("#confirmation-modal").modal('show'); 
+    }
+
+    $("#proceedSubmit").on('click', function(){
+        $(this).attr('disabled', true);
+        $("#treatment-outcome-form").submit();
+    });
 
   });

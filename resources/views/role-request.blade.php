@@ -4,7 +4,9 @@
 <form class="login">
   <div class="login__container">
     <div class="login__card">
-      <div class="login__top"></div>
+      <div class="login__top"><div class="login__wrapper">
+                <img class="image" src="{{ asset('assets/app/img/logo.png') }}" alt="Logo of FHI e-TBMAC">
+            </div></div>
         <h2 class="section__title section__title--small">Welcome [name]</h2>
         <p class="login__details">
           Before you can begin, please select your role from the list. <br />

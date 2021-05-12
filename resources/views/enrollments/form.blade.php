@@ -30,7 +30,7 @@
               @include('enrollments.steps.step-4')
             </div>
         </form>
-  
+        @include('partials.confirmation-modal')
         <div class="modal js-modal" id="loadingModal">
           <div class="modal__background js-modal-background"></div>
           <div class="modal__container">
