@@ -4,7 +4,12 @@
 <form class="login" method="POST" action="{{ route('login') }}">
     <div class="login__container">
     <div class="login__card">
-        <div class="login__top"></div>
+        <div class="login__top">
+            <div class="login__wrapper">
+                <img class="image" src="{{ asset('assets/app/img/logo.png') }}" alt="Logo of FHI e-TBMAC">
+            </div>
+        </div>
+
                 @csrf
                 <div class="form__content">
                     @error('email')
