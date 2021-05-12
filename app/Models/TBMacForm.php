@@ -42,6 +42,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read int|null $dst_count
  * @property-read \App\Models\EnrollmentRegimentForm|null $enrollmentForm
  * @property-read \App\Models\LaboratoryResult|null $laboratoryResults
+ * @property-read \App\Models\TreatmentOutcomeForm|null $treatmentOutcomeForm
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CaseManagementBacteriologicalResults[] $lpa
  * @property-read int|null $lpa_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Recommendation[] $ntbMacRecommendations

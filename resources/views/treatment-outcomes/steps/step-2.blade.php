@@ -145,11 +145,9 @@
               <td class="table__details">
               <div class="form__content">
                   <select class="form__input form__input--select form__input--full" name="smear_microscopy[]">
-                  <option value="0">0</option>
-                  <option value="+n">+n</option>
-                  <option value="1+">1+</option>
-                  <option value="2+">2+</option>
-                  <option value="3+">3+</option>
+                  @foreach(treatmentSmear() as $smear)
+                    <option value="{{ $smear }}">{{ $smear}}</option>
+                  @endforeach
                   </select>
                   <div class="triangle triangle--down"></div>
               </div>
@@ -157,9 +155,9 @@
               <td class="table__details">
                 <div class="form__content">
                     <select class="form__input form__input--select form__input--full" name="tb_lamp[]">
-                    <option value="Positive">Positive</option>
-                    <option value="Negative">Negative</option>
-                    <option value="Indeterminate">Indeterminate</option>
+                      @foreach(tb_lamp() as $tl)
+                        <option value="{{ $tl }}">{{ $tl }}</option>
+                      @endforeach
                     </select>
                     <div class="triangle triangle--down"></div>
                 </div>
@@ -167,11 +165,9 @@
               <td class="table__details">
                 <div class="form__content">
                     <select class="form__input form__input--select form__input--full" name="culture[]">
-                    <option value="Positive">Positive</option>
-                    <option value="Negative">Negative</option>
-                    <option value="Non-tuberculous Mycobacteria (NTM)">Non-tuberculous Mycobacteria (NTM)</option>
-                    <option value="Contaminated">Contaminated</option>
-                    <option value="Not done">Not done</option>
+                      @foreach(treatmentCulture() as $tc)
+                        <option value="{{ $tc }}">{{ $tc }}</option>
+                      @endforeach
                     </select>
                     <div class="triangle triangle--down"></div>
                 </div>

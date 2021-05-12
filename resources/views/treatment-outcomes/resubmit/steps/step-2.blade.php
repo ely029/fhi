@@ -170,7 +170,7 @@
               <td class="table__details">
               <div class="form__content">
                   <select class="form__input form__input--select form__input--full" name="smear_microscopy[]">
-                    @foreach(smear_microscopy() as $sm)
+                    @foreach(treatmentSmear() as $sm)
                         <option value="{{ $sm }}"{{ $monthlyScreening->smear_microscopy === $sm ? 'selected' : '' }}>{{ $sm }}</option>
                     @endforeach
                   </select>
