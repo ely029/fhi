@@ -26,10 +26,10 @@
      @include('treatment-outcome.indexes.rtb-mac-chair')
   @endif
   @if (auth()->user()->role_id === 7)
-    {{-- @include('case-management.indexes.ntb-mac') --}}
+     @include('treatment-outcome.indexes.ntb-mac')
   @endif
   @if (auth()->user()->role_id === 8)
-    {{-- @include('case-management.indexes.ntb-mac-chair') --}}
+     @include('case-management.indexes.ntb-mac-chair')
   @endif
   </div>
 
