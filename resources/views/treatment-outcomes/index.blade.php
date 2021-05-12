@@ -17,13 +17,13 @@
     @include('treatment-outcomes.indexes.health-care-worker')
   @endif
   @if (auth()->user()->role_id === 4)
-    {{-- @include('case-management.indexes.regional-secretariat') --}}
+     @include('treatment-outcomes.indexes.regional-secretariat')
   @endif
   @if (auth()->user()->role_id === 5)
-    {{-- @include('case-management.indexes.rtb-mac') --}}
+     @include('treatment-outcomes.indexes.rtb-mac')
   @endif
   @if (auth()->user()->role_id === 6)
-    {{-- @include('case-management.indexes.rtb-mac-chair') --}}
+     @include('treatment-outcome.indexes.rtb-mac-chair')
   @endif
   @if (auth()->user()->role_id === 7)
     {{-- @include('case-management.indexes.ntb-mac') --}}
