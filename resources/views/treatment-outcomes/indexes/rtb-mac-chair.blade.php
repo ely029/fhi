@@ -9,8 +9,8 @@
         <a href="{{ url('treatment-outcomes?status=Referred to Regional Chair') }}">
             <li class="tabs__item {{ request('status') == 'Referred to Regional Chair' ? 'tabs__item--current' : ''}}">Referred Cases</li>
         </a>
-        <a href="{{ url('treatment-outcomes?status=Referred back to Regional Chair) }}">
-            <li class="tabs__item {{ request('status') == 'Referred back to Regional Chair' ? 'tabs__item--current' : ''}}">Pending From N-TB MAC Chair</li>
+        <a href="{{ url('treatment-outcomes?status=Referred back to Regional Chair') }}">
+            <li class="tabs__item {{ request('status') == 'Referred back to Regional Chair' ? 'tabs__item--current' : ''}}">Pending from N-TB MAC Chair</li>
         </a>
         <a href="{{ url('treatment-outcomes?treatmentOutcomeTabs=completed_rtb_mac_chair') }}">
             <li class="tabs__item {{ request('treatmentOutcomeTabs') == 'completed_rtb_mac_chair' ? 'tabs__item--current' : ''}}">Completed</li>
