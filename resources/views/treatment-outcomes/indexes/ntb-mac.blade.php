@@ -6,10 +6,10 @@
     <a href="{{ url('treatment-outcomes?treatmentOutcomeTabs=all_cases_ntb') }}">
             <li class="tabs__item {{ request('treatmentOutcomeTabs') == 'all_cases_ntb' ? 'tabs__item--current' : ''}}">All Cases</li>
         </a>
-        <a href="{{ url('treatment-outcomes?status=Referred to Regional Chair') }}">
+        <a href="{{ url('treatment-outcomes?status=Referred to National') }}">
             <li class="tabs__item {{ request('status') == 'Referred to National' ? 'tabs__item--current' : ''}}">Referred Cases</li>
         </a>
-        <a href="{{ url('treatment-outcomes?status=completed') }}">
+        <a href="{{ url('treatment-outcomes?status=Referred to National Chair') }}">
             <li class="tabs__item {{ request('status') == 'Referred to National Chair' ? 'tabs__item--current' : ''}}">Completed</li>
         </a>
     </ul>

@@ -96,9 +96,9 @@ class CaseManagementController extends Controller
         $tbBacteriologicalResults = $tbMacForm->caseManagementBacteriologicalResults;
         $recommendations = $tbMacForm->recommendations;
         $presentation_number = $tbMacForm->presentation_number;
-        $date_submitted = $tbMacForm->created_at->format('Y-m-d');
+        $date_submitted = $tbMacForm->created_at->format('m-d-Y');
         $status = $tbMacForm->status;
-        $created_at = $tbMacForm->created_at->format('Y-m-d');
+        $created_at = $tbMacForm->created_at->format('m-d-Y');
         $facility_code = $tbMacForm->patient->facility_code;
         $suggested_regimen = Str::startsWith($tbMacForm->caseManagementForm->suggested_regimen, 'ITR') ? $tbMacForm->caseManagementForm->itr_drugs : $tbMacForm->caseManagementForm->suggested_regimen;
         $suggested_regimen_notes = $tbMacForm->caseManagementForm->suggested_regimen_notes ?? null;
@@ -110,13 +110,13 @@ class CaseManagementController extends Controller
         $latest_comparative_cxr_reading = $tbMacForm->caseManagementForm->latest_comparative_cxr_reading;
         $current_drug_susceptibility = $tbMacForm->caseManagementForm->current_drug_susceptibility ?? null;
         $updated_type_of_case = $tbMacForm->caseManagementForm->updated_type_of_case ?? null;
-        $ct_scan_date = ! isset($tbMacForm->caseManagementLaboratoryResult->ct_scan_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->ct_scan_date->format('Y-m-d') ?? null;
+        $ct_scan_date = ! isset($tbMacForm->caseManagementLaboratoryResult->ct_scan_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->ct_scan_date->format('m-d-Y') ?? null;
         $ct_scan_result = $tbMacForm->caseManagementLaboratoryResult->ct_scan_result ?? null;
-        $ultra_sound_date = ! isset($tbMacForm->caseManagementLaboratoryResult->ultra_sound_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->ultra_sound_date->format('Y-m-d') ?? null;
+        $ultra_sound_date = ! isset($tbMacForm->caseManagementLaboratoryResult->ultra_sound_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->ultra_sound_date->format('m-d-Y') ?? null;
         $ultra_sound_result = $tbMacForm->caseManagementLaboratoryResult->ultra_sound_result ?? null;
-        $histhopathological_date = ! isset($tbMacForm->caseManagementLaboratoryResult->histhopathological_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->histhopathological_date->format('Y-m-d') ?? null;
+        $histhopathological_date = ! isset($tbMacForm->caseManagementLaboratoryResult->histhopathological_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->histhopathological_date->format('m-d-Y') ?? null;
         $histhopathological_result = $tbMacForm->caseManagementLaboratoryResult->histhopathological_result ?? null;
-        $cxr_date = ! isset($tbMacForm->caseManagementLaboratoryResult->cxr_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->cxr_date->format('Y-m-d');
+        $cxr_date = ! isset($tbMacForm->caseManagementLaboratoryResult->cxr_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->cxr_date->format('m-d-Y');
         $cxr_result = $tbMacForm->caseManagementLaboratoryResult->cxr_result ?? null;
         $remarks = $tbMacForm->caseManagementForm->remarks ?? null;
         $submitted_by = $tbMacForm->submittedBy->name;
@@ -124,7 +124,7 @@ class CaseManagementController extends Controller
             return $item->label === 'Screening 1' && $item->resistance_pattern !== '' && $item->method_used !== '';
         })->map(function ($item) {
             return [
-                'label' => $item->label, 'date_collected' => $item->date_collected->format('Y-m-d'), 'resistance_pattern' => $item->resistance_pattern, 'method_used' => $item->method_used,
+                'label' => $item->label, 'date_collected' => $item->date_collected->format('m-d-Y'), 'resistance_pattern' => $item->resistance_pattern, 'method_used' => $item->method_used,
             ];
         })->values();
         $recommendation = $recommendations->map(function ($item) {
@@ -141,7 +141,7 @@ class CaseManagementController extends Controller
             return $item->label === 'Screening 2' && $item->resistance_pattern !== '' && $item->method_used !== '';
         })->map(function ($item) {
             return [
-                'label' => $item->label, 'date_collected' => $item->date_collected->format('Y-m-d'), 'resistance_pattern' => $item->resistance_pattern, 'method_used' => $item->method_used,
+                'label' => $item->label, 'date_collected' => $item->date_collected->format('m-d-Y'), 'resistance_pattern' => $item->resistance_pattern, 'method_used' => $item->method_used,
             ];
         })->values();
         $lpa = $tbBacteriologicalResults->filter(function ($item) {
@@ -149,7 +149,7 @@ class CaseManagementController extends Controller
         })->map(function ($item) {
             return [
                 'label' => $item->label,
-                'date_collected' => $item->date_collected->format('Y-m-d'),
+                'date_collected' => $item->date_collected->format('m-d-Y'),
                 'resistance_pattern' => Str::startsWith($item->resistance_pattern, 'Other (Specify)') ? $item->others : $item->resistance_pattern,
             ];
         })->values();
@@ -158,7 +158,7 @@ class CaseManagementController extends Controller
         })->map(function ($item) {
             return [
                 'label' => $item->label,
-                'date_collected' => $item->date_collected->format('Y-m-d'),
+                'date_collected' => $item->date_collected->format('m-d-Y'),
                 'resistance_pattern' => Str::startsWith($item->resistance_pattern, 'Other (Specify)') ? $item->others : $item->resistance_pattern,
             ];
         })->values();
@@ -167,7 +167,7 @@ class CaseManagementController extends Controller
         })->map(function ($item) {
             return [
                 'label' => 'Month '.$item->count,
-                'date_collected' => $item->date_collected->format('Y-m-d'),
+                'date_collected' => $item->date_collected->format('m-d-Y'),
                 'smear_microscopy' => $item->smear_microscopy,
                 'tb_lamp' => $item->tb_lamp,
                 'culture' => $item->culture,

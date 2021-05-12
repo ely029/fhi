@@ -9,7 +9,7 @@ use App\Models\Filters\Filters as filter;
 class TBMacFormFilters extends filter
 {
     protected $filters = [
-        'status', 'tab', 'casetab',
+        'status', 'tab', 'casetab', 'treatmentOutcomeTabs',
     ];
 
     protected function status($string)
@@ -30,7 +30,7 @@ class TBMacFormFilters extends filter
             ->whereIn('status', caseManagementTabs()[$string]);
     }
 
-    protected function treatmentOutcomeTab($string)
+    protected function treatmentOutcomeTabs($string)
     {
         return $this->builder
             ->whereIn('status', treatmentOutcomeTabs()[$string]);

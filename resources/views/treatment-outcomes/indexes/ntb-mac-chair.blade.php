@@ -4,13 +4,13 @@
     <div class="section__content">
     <ul class="tabs__list tabs__list--table">
     <a href="{{ url('treatment-outcomes?treatmentOutcomeTabs=all_cases') }}">
-            <li class="tabs__item {{ request('treatmentOutcomeTabs') == 'all_cases' ? 'tabs__item--current' : ''}}">All Cases</li>
+            <li class="tabs__item {{ request('treatmentOutcomeTabs') == 'all_cases_ntb_char' ? 'tabs__item--current' : ''}}">All Cases</li>
         </a>
-        <a href="{{ url('treatment-outcomes?status=Referred to National Chair') }}">
-            <li class="tabs__item {{ request('status') == 'Referred to National chair' ? 'tabs__item--current' : ''}}">Referred Cases</li>
+        <a href="{{ url('treatment-outcomes?status=Referred to National') }}">
+            <li class="tabs__item {{ request('status') == 'Referred to National Chair' ? 'tabs__item--current' : ''}}">Referred Cases</li>
         </a>
-        <a href="{{ url('treatment-outcomes?status=Referred back to Regional chair') }}">
-            <li class="tabs__item {{ request('status') == 'Referred back to Regional chair' ? 'tabs__item--current' : ''}}">Completed</li>
+        <a href="{{ url('treatment-outcomes?status=Referred back to Regional Chair') }}">
+            <li class="tabs__item {{ request('status') == 'Referred back to Regional Chair' ? 'tabs__item--current' : ''}}">Completed</li>
         </a>
     </ul>
       <div class="tabs__details tabs__details--active">
