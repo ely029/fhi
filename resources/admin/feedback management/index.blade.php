@@ -7,7 +7,7 @@
           <table class="table table--filter js-table-unset">
             <thead>
               <tr>
-                <th class="table__head">Email Address</th>
+                <th class="table__head">Username</th>
                 <th class="table__head">Role</th>
                 <th class="table__head">Date</th>
                 <th class="table__head">Title</th>

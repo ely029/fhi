@@ -1,17 +1,31 @@
-<form class="login">
-      <div class="login__container">
-        <div class="login__card">
-          <div class="login__top">
-            <div class="login__wrapper"><img class="image" src="src/img/logo.png" alt="Logo of e-Plano" /></div>
-          </div>
-          <div class="form__content"><input class="form__input" type="text" placeholder="First Name" /><label class="form__label">First Name</label></div>
-          <div class="form__content"><input class="form__input" type="text" placeholder="Last Name" /><label class="form__label">Last Name</label></div>
-          <div class="form__content"><input class="form__input" type="email" placeholder="Email" /><label class="form__label">Email</label></div>
-          <div class="form__content"><input class="form__input" id="js-password" type="password" placeholder="Password" /><label class="form__label">Password</label><i class="fa fa-eye-slash" id="js-eye-password"></i></div>
-          <div class="form__content">
-            <input class="form__input" id="js-confirm-password" type="password" placeholder="Password" /><label class="form__label">Confirm Password</label><i class="fa fa-eye-slash" id="js-eye-confirm-password"></i>
-          </div>
-          <div class="form__button"><a class="button" href="">Create</a></div>
+<div class="section">
+        <div class="section__top">
+          <h1 class="section__title">Create admin</h1>
+          <div class="breadcrumbs"><a class="breadcrumbs__link" href="role-management.html">Role Management</a><a class="breadcrumbs__link">Create admin</a><a class="breadcrumbs__link"></a></div>
+        </div>
+        <div class="section__container">
+          <form class="form" id="js-form" action="">
+            <div class="grid grid--two">
+              <div class="form__content">
+                <select class="form__input form__input--select">
+                  <option value=""> </option>
+                </select>
+                <div class="triangle triangle--down"></div>
+                <label class="form__label" for="">Role</label>
+              </div>
+              <div class="form__content"><input class="form__input" type="email" placeholder="Email Address" /><label class="form__label" for="">Email Address</label></div>
+            </div>
+            <div class="grid grid--two">
+              <div class="form__content"><input class="form__input" type="text" placeholder="Full Name" /><label class="form__label" for="">Full Name</label></div>
+              <div class="form__content"><input class="form__input" id="js-password" type="password" placeholder="Password" /><label class="form__label">Password</label><i class="fa fa-eye-slash" id="js-eye-password"></i></div>
+            </div>
+            <div class="grid grid--two">
+              <div class="form__content"><input class="form__input" type="text" placeholder="Username" /><label class="form__label" for="">Username</label></div>
+              <div class="form__content">
+                <input class="form__input" id="js-confirm-password" type="password" placeholder="Confirm Password" /><label class="form__label">Confirm Password</label><i class="fa fa-eye-slash" id="js-eye-confirm-password"></i>
+              </div>
+            </div>
+            <div class="form__button form__button--end"><input class="button" type="submit" value="Submit" /></div>
+          </form>
         </div>
       </div>
-    </form>
