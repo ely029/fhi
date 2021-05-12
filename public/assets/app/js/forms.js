@@ -11,6 +11,7 @@ jQuery( document ).ready(function( $ ) {
         if(checkForms()){
 
             if(currentStep == totalSteps){
+                showConfirmModal();
                 return;
             }
 
@@ -44,4 +45,15 @@ jQuery( document ).ready(function( $ ) {
     
         return true;
     }
+
+    function showConfirmModal()
+    {
+        $("#confirmation-modal").modal('show'); 
+    }
+
+    $("#proceedSubmit").on('click', function(){
+        $(this).attr('disabled', true);
+        $("#case-management-form").submit();
+    });
+
   });

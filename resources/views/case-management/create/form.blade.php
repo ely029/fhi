@@ -21,7 +21,7 @@
     @include('partials.alerts')
 
     <div class="section__container">
-        <form class="form" id="enrollment-form" action="{{ url('case-management/create') }}" method="post" enctype="multipart/form-data">
+        <form class="form" id="case-management-form" action="{{ url('case-management/create') }}" method="post" enctype="multipart/form-data">
           @csrf
             <div id="steps" data-steps="4">
               @include('case-management.create.create-1')
@@ -30,7 +30,7 @@
               @include('case-management.create.create-4')
             </div>
         </form>
-  
+        @include('partials.confirmation-modal')
         <div class="modal js-modal">
           <div class="modal__background js-modal-background"></div>
           <div class="modal__container">

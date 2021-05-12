@@ -6,14 +6,17 @@ jQuery( document ).ready(function( $ ) {
     // Code that uses jQuery's $ can follow here.
     $(".button--next").on('click', function(){
 
-        if(currentStep == totalSteps){
-            return;
-        }
+        
         
         if(checkForms()){
 
             if(currentStep == 1){
                 return getPatientData();
+            }
+
+            if(currentStep == totalSteps){
+                showConfirmModal();
+                return;
             }
 
            nextStep();
@@ -81,8 +84,16 @@ jQuery( document ).ready(function( $ ) {
         }).fail(function() {
             console.error('failed');
         });
-
-
     }
+
+    function showConfirmModal()
+    {
+        $("#confirmation-modal").modal('show'); 
+    }
+
+    $("#proceedSubmit").on('click', function(){
+        $(this).attr('disabled', true);
+        $("#enrollment-form").submit();
+    });
 
   });

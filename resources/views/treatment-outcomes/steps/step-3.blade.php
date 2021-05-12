@@ -120,6 +120,6 @@
   </div>
   <div class="form__button form__button--space form__button--pagination step-3">
       <button class="button button--back" type="button">Back</button>
-      <input class="button button--next" type="submit" value="Create new case">
+      <input class="button button--next confirm-button" type="button" value="Create new case">
     </div>
 </div>

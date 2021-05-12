@@ -58,7 +58,7 @@
 @section('additional_scripts')
   
   <script src="{{ asset('assets/app/js/bootstrap-validator.js') }}"></script>  
-  <script src="{{ asset('assets/app/js/forms.js') }}"></script>
+  <script src="{{ asset('assets/app/js/enrollments/form.js') }}"></script>
 
   <script src="{{ asset('assets/app/js/dropzone.js') }}"></script>  
   <script src="{{ asset('assets/app/js/dropzoneInit.js') }}"></script>
