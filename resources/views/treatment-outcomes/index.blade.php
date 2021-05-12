@@ -23,13 +23,13 @@
      @include('treatment-outcomes.indexes.rtb-mac')
   @endif
   @if (auth()->user()->role_id === 6)
-     @include('treatment-outcome.indexes.rtb-mac-chair')
+     @include('treatment-outcomes.indexes.rtb-mac-chair')
   @endif
   @if (auth()->user()->role_id === 7)
-     @include('treatment-outcome.indexes.ntb-mac')
+     @include('treatment-outcomes.indexes.ntb-mac')
   @endif
   @if (auth()->user()->role_id === 8)
-     @include('case-management.indexes.ntb-mac-chair')
+     @include('treatment-outcomes.indexes.ntb-mac-chair')
   @endif
   </div>
 
