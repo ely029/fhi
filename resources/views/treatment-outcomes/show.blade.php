@@ -82,7 +82,7 @@
                         <label class="form__label" for="">Primary Health Care Worker </label>
                     </div>
                     <div class="form__content">
-                        <span class="form__text">{{ $tbMacForm->created_at->format('Y-m-d') }}</span>
+                        <span class="form__text">{{ $tbMacForm->created_at->format('m-d-Y') }}</span>
                         <label class="form__label" for="">Date submitted</label>
                     </div>
                   </div>
@@ -208,7 +208,7 @@
                   @foreach($screenings as $key => $screening)
                     <tr class="table__row">
                       <td class="table__details">Screening {{ $key + 1 }}</td>
-                      <td class="table__details">{{ $screening->date_collected->format('Y-m-d') }}</td>
+                      <td class="table__details">{{ $screening->date_collected->format('m-d-Y') }}</td>
                       <td class="table__details">{{ $screening->method_used }}</td>
                       <td class="table__details">{{ $screening->resistance_pattern }}</td>
                     </tr>
@@ -229,7 +229,7 @@
                   <tbody>
                     <tr class="table__row">
                       <td class="table__details">LPA</td>
-                      <td class="table__details">{{ $lpa->date_collected->format('Y-m-d')}}</td>
+                      <td class="table__details">{{ $lpa->date_collected->format('m-d-Y')}}</td>
                       <td class="table__details">{{ $lpa->resistance_pattern }}</td>
                     </tr>
                   </tbody>
@@ -248,7 +248,7 @@
                   <tbody>
                   <tr class="table__row">
                       <td class="table__details">DST</td>
-                      <td class="table__details">{{ $dst->date_collected->format('Y-m-d')}}</td>
+                      <td class="table__details">{{ $dst->date_collected->format('m-d-Y')}}</td>
                       <td class="table__details">{{ $dst->resistance_pattern === 'Other (specify)' ? $dst->resistance_pattern_others : $dst->resistance_pattern}}</td>
                     </tr>
                     
@@ -271,7 +271,7 @@
                     @foreach($monthlyScreenings->all() as $key => $monthlyScreening)
                     <tr class="table__row">
                       <td class="table__details">{{ $loop->first ? 'B' : $key }}</td>
-                      <td class="table__details">{{$monthlyScreening->date_collected->format('Y-m-d')}}</td>
+                      <td class="table__details">{{$monthlyScreening->date_collected->format('m-d-Y')}}</td>
                       <td class="table__details">{{$monthlyScreening->smear_microscopy}}</td>
                       <td class="table__details">{{$monthlyScreening->tb_lamp}}</td>
                       <td class="table__details">{{$monthlyScreening->culture}}</td>
@@ -289,7 +289,7 @@
                 <h2 class="section__heading">Laboratory results and information</h2>
                 <div class="grid grid--two">
                   <div class="form__content">
-                    <span class="form__text">{{ $tbMacForm->laboratoryResults->cxr_date->format('Y-m-d') }}</span>
+                    <span class="form__text">{{ $tbMacForm->laboratoryResults->cxr_date->format('m-d-Y') }}</span>
                     <label class="form__label" for="">CXR date</label>
                   </div>
                   <div class="form__content">
@@ -306,7 +306,7 @@
                   </div>
                 </div>
                 <div class="grid grid--two">
-                  <div class="form__content"><span class="form__text">{{ $tbMacForm->laboratoryResults->ct_scan_date ? $tbMacForm->laboratoryResults->ct_scan_date->format('Y-m-d') : ''}}</span><label class="form__label" for="">CT Scan date</label></div>
+                  <div class="form__content"><span class="form__text">{{ $tbMacForm->laboratoryResults->ct_scan_date ? $tbMacForm->laboratoryResults->ct_scan_date->format('m-d-Y') : ''}}</span><label class="form__label" for="">CT Scan date</label></div>
                   <div class="form__content">
                     <span class="form__text">
                       {{ $tbMacForm->laboratoryResults->ct_scan_result }}
@@ -315,7 +315,7 @@
                   </div>
                 </div>
                 <div class="grid grid--two">
-                  <div class="form__content"><span class="form__text">{{ $tbMacForm->laboratoryResults->ultrasound_date ? $tbMacForm->laboratoryResults->ultrasound_date->format('Y-m-d') : ''}}</span><label class="form__label" for="">Ultrasound date</label></div>
+                  <div class="form__content"><span class="form__text">{{ $tbMacForm->laboratoryResults->ultrasound_date ? $tbMacForm->laboratoryResults->ultrasound_date->format('m-d-Y') : ''}}</span><label class="form__label" for="">Ultrasound date</label></div>
                   <div class="form__content">
                     <span class="form__text">
                       {{ $tbMacForm->laboratoryResults->ultrasound_result }}
@@ -324,7 +324,7 @@
                   </div>
                 </div>
                 <div class="grid grid--two">
-                  <div class="form__content"><span class="form__text">{{ $tbMacForm->laboratoryResults->histopathological_date ? $tbMacForm->laboratoryResults->histopathological_date->format('Y-m-d') : ''}}</span><label class="form__label" for="">Histopathological date</label></div>
+                  <div class="form__content"><span class="form__text">{{ $tbMacForm->laboratoryResults->histopathological_date ? $tbMacForm->laboratoryResults->histopathological_date->format('m-d-Y') : ''}}</span><label class="form__label" for="">Histopathological date</label></div>
                   <div class="form__content">
                     <span class="form__text">
                       {{ $tbMacForm->laboratoryResults->histopathological_result }}
@@ -373,7 +373,7 @@
                 <div class="form__container">
                   <div class="grid grid--two">
                     <h2 class="section__heading section__heading--healthworker">{{ $tbMacForm->submittedBy->name }}<span class="form__label">Health Care Worker | [Region]</span></h2>
-                    <label class="form__label">{{ $tbMacForm->created_at->format('Y-m-d')}}</label>
+                    <label class="form__label">{{ $tbMacForm->created_at->format('m-d-Y')}}</label>
                   </div>
                   <div class="form__container form__container--remarks form__container--actions">
                     <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
@@ -390,7 +390,7 @@
                 <div class="form__container">
                   <div class="grid grid--two">
                     <h2 class="section__heading section__heading--healthworker">{{ $recommendation->users->name}}<span class="form__label">{{ $recommendation->users->role->name }} | [Region]</span></h2>
-                    <label class="form__label">{{ $recommendation->created_at->format('Y-m-d')}}</label>
+                    <label class="form__label">{{ $recommendation->created_at->format('m-d-Y')}}</label>
                   </div>
                   <div class="form__container form__container--remarks form__container--actions">
                     <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
