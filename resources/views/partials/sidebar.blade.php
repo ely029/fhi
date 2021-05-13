@@ -54,7 +54,7 @@
                 <span class="sidebar__text">Meetings</span>
                 </a>
             </li> --}}
-            @if(auth()->user()->id == 1)
+            @if(auth()->user()->id == 1)x
                 <li class="sidebar__item {{ request()->is('dashboard/users*') ? 'active' : null }}">
                     <a class="sidebar__link" href="{{ url('dashboard/users') }}">
                     <div class="sidebar__wrapper">

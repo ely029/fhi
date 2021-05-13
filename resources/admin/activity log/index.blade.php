@@ -10,15 +10,17 @@
                 <th class="table__head">Date and time</th>
                 <th class="table__head">Category</th>
                 <th class="table__head">Role</th>
-                <th class="table__head">User</th>
+                <th class="table__head">Name</th>
+                <th class="table__head">Username</th>
               </tr>
             </thead>
             <tbody>
-              <tr class="table__row js-view" data-href="view-role.html">
+              <tr class="table__row">
                 <td class="table__details">sample</td>
                 <td class="table__details">sample</td>
                 <td class="table__details">sample</td>
-                <td class="table__details">sample<span class="table__span">sample@gmaol.com</span></td>
+                <td class="table__details">sample</td>
+                <td class="table__details">sample</td>
               </tr>
             </tbody>
           </table>
