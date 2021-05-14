@@ -34,7 +34,7 @@
                 <h2 class="section__heading">Health Care Worker</h2>
                 <div class="grid grid--two">
                   <div class="form__content"><span class="form__text">{{ $tbMacForm->submittedBy->name }}</span><label class="form__label" for="">Primary Health Care Worker </label></div>
-                  <div class="form__content"><span class="form__text">{{ $tbMacForm->created_at->format('Y-m-d') }}</span><label class="form__label" for="">Date submitted</label></div>
+                  <div class="form__content"><span class="form__text">{{ $tbMacForm->created_at->format('m-d-Y') }}</span><label class="form__label" for="">Date submitted</label></div>
                 </div>
               </div>
             </div>
