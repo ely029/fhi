@@ -121,12 +121,17 @@ class EnrollmentRegimentController extends Controller
         $path = 'private/enrollments/'.$tbMacForm->presentation_number.'/'.$fileName;
 
         if (\Storage::exists($path)) {
-            if (Str::endsWith($fileName, '.pdf') || Str::endsWith($fileName, '.xls') || Str::endsWith($fileName, '.xlsx') || Str::endsWith($fileName, '.csv') || Str::endsWith($fileName, '.docx')) {
+            if (Str::endsWith($fileName, '.xls') || Str::endsWith($fileName, '.xlsx') || Str::endsWith($fileName, '.csv')) {
                 return response()->file(public_path('assets/app/img/icon-upload.png'));
+            }
+            if (Str::endsWith($fileName, '.pdf')) {
+                return response()->file(public_path('assets/app/img/pdf.png'));
+            }
+            if (Str::endsWith($fileName, '.docx')) {
+                return response()->file(public_path('assets/app/img/docx.png'));
             }
             return response(\Storage::get($path))->header('Content-Type', 'image/jpeg');
         }
-        return response()->file(public_path('assets/app/img/placeholder.jpg'));
     }
 
     public function downloadAttachment(TBMacForm $tbMacForm, $fileName)
