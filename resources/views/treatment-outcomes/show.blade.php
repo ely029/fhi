@@ -62,7 +62,7 @@
                         <span class="form__text">{{ $tbMacForm->treatmentOutcomeForm->tb_case_number }}</span>
                         <label class="form__label" for="">TB case number</label></div>
                     <div class="form__content">
-                        <span class="form__text">{{ $tbMacForm->treatmentOutcomeForm->date_started_treatment }}</span>
+                        <span class="form__text">{{ $tbMacForm->treatmentOutcomeForm->date_started_treatment->format('m-d-Y') }}</span>
                         <label class="form__label" for="">Date started treatment</label></div>
                     <div class="form__content">{{ $tbMacForm->treatmentOutcomeForm->current_drug_susceptibility }}<span class="form__text">
                         </span>
