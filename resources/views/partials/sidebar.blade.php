@@ -25,7 +25,7 @@
             </a>
           </li>
           <li class="sidebar__item">
-          <a class="sidebar__link" href="{{ url('treatment-outcomes') }}">
+            <a class="sidebar__link" href="{{ url('treatment-outcomes')}}">
               <div class="sidebar__wrapper">
                 <img class="image" src="{{ asset('assets/app/img/icon-treatment.png') }}" alt="Treatment Outcome icon for fhi" />
                 <img class="image image--white" src="{{ asset('assets/app/img/icon-treatment-white.png') }}" alt="Treatment Outcome icon on hover for fhi" />

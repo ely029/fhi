@@ -30,7 +30,7 @@ class CaseManagementResubmitController extends Controller
         $status = $tbMacForm->status;
         $created_at = $tbMacForm->created_at->format('Y-m-d');
         $facility_code = $tbMacForm->patient->facility_code;
-        $suggested_regimen = Str::startsWith($tbMacForm->caseManagementForm->suggested_regimen, 'ITR') ? $tbMacForm->caseManagementForm->itr_drugs : $tbMacForm->caseManagementForm->suggested_regimen;
+        $suggested_regimen = ! isset($tbMacForm->caseManagementForm->suggested_regimen) ? '' : $tbMacForm->caseManagementForm->suggested_regimen;
         $suggested_regimen_others = Str::startsWith($tbMacForm->caseManagementForm->suggested_regimen, 'Other (specify)') ? $tbMacForm->caseManagementForm->others : $tbMacForm->caseManagementForm->suggested_regimen;
         $suggested_regimen_notes = $tbMacForm->caseManagementForm->suggested_regimen_notes ?? null;
         $current_regimen = $tbMacForm->caseManagementForm->current_regiment ?? null;
