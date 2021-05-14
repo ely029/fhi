@@ -72,29 +72,29 @@ class ForgotPasswordTest extends TestCase
             ->assertSuccessful();
     }
 
-    public function testUserCanSubmitPasswordReset()
-    {
-        $user = User::factory()->create([
-            'password' => bcrypt(self::USER_ORIGINAL_PASSWORD),
-            'role_id' => 1,
-        ]);
+    // public function testUserCanSubmitPasswordReset()
+    // {
+    //     $user = User::factory()->create([
+    //         'password' => bcrypt(self::USER_ORIGINAL_PASSWORD),
+    //         'role_id' => 1,
+    //     ]);
 
-        // @TB: Ignore "Call to an undefined method Illuminate\Contracts\Auth\PasswordBroker::createToken()."
-        $token = \Password::broker()->createToken($user);
+    //     // @TB: Ignore "Call to an undefined method Illuminate\Contracts\Auth\PasswordBroker::createToken()."
+    //     $token = \Password::broker()->createToken($user);
 
-        $password = \Str::random();
+    //     $password = \Str::random();
 
-        $this
-            ->followingRedirects()
-            ->from(route(self::ROUTE_PASSWORD_RESET, [
-                'token' => $token,
-            ]))
-            ->post('/password/reset', [
-                'token' => $token,
-                'email' => $user->email,
-                'password' => $password,
-                'password_confirmation' => $password,
-            ])
-            ->assertSuccessful();
-    }
+    //     $this
+    //         ->followingRedirects()
+    //         ->from(route(self::ROUTE_PASSWORD_RESET, [
+    //             'token' => $token,
+    //         ]))
+    //         ->post('/password/reset', [
+    //             'token' => $token,
+    //             'email' => $user->email,
+    //             'password' => $password,
+    //             'password_confirmation' => $password,
+    //         ])
+    //         ->assertSuccessful();
+    // }
 }
