@@ -34,7 +34,7 @@
             @elseif(auth()->user()->role_id == 7)
             <a class="sidebar__link" href="{{ url('treatment-outcomes?treatmentOutcomeTabs=all_cases_ntb') }}">
             @elseif(auth()->user()->role_id == 8)
-            <a class="sidebar__link" href="{{ url('treatment-outcomes?treatmentOutcomeTabs=all_cases_cases_ntb_chair') }}">
+            <a class="sidebar__link" href="{{ url('treatment-outcomes?treatmentOutcomeTabs=all_cases_ntb_chair') }}">
               @else
               <a class="sidebar__link" href="{{ url('treatment-outcomes') }}">
             @endif
