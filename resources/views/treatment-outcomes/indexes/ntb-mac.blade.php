@@ -34,7 +34,7 @@
             <td class="table__details">{{ empty($case->patient->age) ? '' : $case->patient->age}}</td>
             <td class="table__details">{{ empty($case->patient->gender) ? '' : $case->patient->gender}}</td>
             <td class="table__details">{{ $case->treatmentOutcomeForm->current_drug_susceptibility }}</td>
-            <td class="table__details">{{ $case->created_at->format('Y-m-d')}}</td>
+            <td class="table__details">{{ $case->created_at->format('m-d-Y')}}</td>
             <td class="table__details">{{ $case->status }}</td>
             </tr>
         @endforeach

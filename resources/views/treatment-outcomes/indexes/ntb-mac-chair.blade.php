@@ -4,10 +4,10 @@
     <div class="section__content">
     <ul class="tabs__list tabs__list--table">
     <a href="{{ url('treatment-outcomes?treatmentOutcomeTabs=all_cases_ntb_chair') }}">
-            <li class="tabs__item {{ request('treatmentOutcomeTabs') == 'all_cases_ntb_chair' ? 'tabs__item--current' : ''}}">All Cases</li>
+            <li class="tabs__item {{ request('treatmentOutcomeTabs') == 'all_cases_ntb_chair' ? 'tabs__item--current' : ''}}">All cases</li>
         </a>
         <a href="{{ url('treatment-outcomes?status=Referred to National Chair') }}">
-            <li class="tabs__item {{ request('status') == 'Referred to National Chair' ? 'tabs__item--current' : ''}}">Referred Cases</li>
+            <li class="tabs__item {{ request('status') == 'Referred to National Chair' ? 'tabs__item--current' : ''}}">Referred cases</li>
         </a>
         <a href="{{ url('treatment-outcomes?status=Referred back to Regional Chair') }}">
             <li class="tabs__item {{ request('status') == 'Referred back to Regional Chair' ? 'tabs__item--current' : ''}}">Completed</li>
@@ -34,7 +34,7 @@
             <td class="table__details">{{ empty($case->patient->age) ? '' : $case->patient->age}}</td>
             <td class="table__details">{{ empty($case->patient->gender) ? '' : $case->patient->gender}}</td>
             <td class="table__details">{{ $case->treatmentOutcomeForm->current_drug_susceptibility }}</td>
-            <td class="table__details">{{ $case->created_at->format('Y-m-d')}}</td>
+            <td class="table__details">{{ $case->created_at->format('m-d-Y')}}</td>
             <td class="table__details">{{ $case->status }}</td>
             </tr>
         @endforeach
