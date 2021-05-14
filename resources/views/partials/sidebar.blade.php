@@ -27,13 +27,13 @@
           <li class="sidebar__item">
             @if(auth()->user()->role_id == 4)
             <a class="sidebar__link" href="{{ url('treatment-outcomes?status=New Case') }}">
-            @elseif(auth()->user()-?role_id == 5)
+            @elseif(auth()->user()->role_id == 5)
             <a class="sidebar__link" href="{{ url('treatment-outcomes?treatmentOutcomeTabs=all_cases') }}">
-            @elseif(auth()->user()-?role_id == 6)
+            @elseif(auth()->user()->role_id == 6)
             <a class="sidebar__link" href="{{ url('treatment-outcomes?treatmentOutcomeTabs=all_cases') }}">
-            @elseif(auth()->user()-?role_id == 7)
+            @elseif(auth()->user()->role_id == 7)
             <a class="sidebar__link" href="{{ url('treatment-outcomes?treatmentOutcomeTabs=all_cases_ntb') }}">
-            @elseif(auth()->user()-?role_id == 8)
+            @elseif(auth()->user()->role_id == 8)
             <a class="sidebar__link" href="{{ url('treatment-outcomes?treatmentOutcomeTabs=all_cases_cases_ntb_chair') }}">
               @else
               <a class="sidebar__link" href="{{ url('treatment-outcomes') }}">
