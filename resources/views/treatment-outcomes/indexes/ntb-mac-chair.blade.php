@@ -6,7 +6,7 @@
     <a href="{{ url('treatment-outcomes?treatmentOutcomeTabs=all_cases') }}">
             <li class="tabs__item {{ request('treatmentOutcomeTabs') == 'all_cases_ntb_char' ? 'tabs__item--current' : ''}}">All Cases</li>
         </a>
-        <a href="{{ url('treatment-outcomes?status=Referred to National') }}">
+        <a href="{{ url('treatment-outcomes?status=Referred to National Chair') }}">
             <li class="tabs__item {{ request('status') == 'Referred to National Chair' ? 'tabs__item--current' : ''}}">Referred Cases</li>
         </a>
         <a href="{{ url('treatment-outcomes?status=Referred back to Regional Chair') }}">

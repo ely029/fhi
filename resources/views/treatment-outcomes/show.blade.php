@@ -107,7 +107,7 @@
                 @endif
 
                 {{-- Regional Secretariat --}}
-                @if(auth()->user()->role_id == 4 && request('from_tab') == 'pending')
+                @if(auth()->user()->role_id == 4 && request('from_tab') == 'New Case')
                     <div class="grid grid--action-case-management">
                         <div class="form__content">
                             <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
@@ -122,7 +122,7 @@
                 @endif
 
                 {{-- Regional TB Mac --}}
-                @if(auth()->user()->role_id == 5 && request('from_tab') == 'pending')
+                @if(auth()->user()->role_id == 5 && request('from_tab') == 'Referred to Regional')
                   <div class="grid grid--action-case-management">
                       <div class="form__content">
                           <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
@@ -138,7 +138,7 @@
                 @endif
 
                 {{-- Regional TB Mac Chair --}}
-                @if(auth()->user()->role_id == 6 && (request('from_tab') == 'referred' || request('from_tab') == 'pending'))
+                @if(auth()->user()->role_id == 6 && (request('from_tab') == 'Referred to Regional Chair' || request('from_tab') == 'Referred back to Regional Chair'))
                     <div class="grid grid--action-case-management">
                         <div class="form__content">
                             <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
@@ -155,7 +155,7 @@
                 @endif
 
                  {{-- National TB Mac --}}
-                 @if((auth()->user()->role_id == 7 || auth()->user()->role_id == 8) && request('from_tab') == 'referred')
+                 @if((auth()->user()->role_id == 7 || auth()->user()->role_id == 8) && request('from_tab') == 'Referred to National' || request('from_tab') == 'Referred to National Chair')
                  <div class="grid grid--action-case-management">
                     <div class="form__content">
                       <label class="form__label" for="">Action</label>

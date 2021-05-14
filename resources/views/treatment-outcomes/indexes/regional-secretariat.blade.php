@@ -3,7 +3,7 @@
 
     <div class="section__content">
     <ul class="tabs__list tabs__list--table">
-        <a href="{{ url('treatment-outcomes') }}">
+        <a href="{{ url('treatment-outcomes?status=New Case') }}">
             <li class="tabs__item {{ request('status') == 'New Case' ? 'tabs__item--current' : ''}}">Pending</li>
         </a>
         <a href="{{ url('treatment-outcomes?treatmentOutcomeTabs=all_cases') }}">
