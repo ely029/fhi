@@ -25,7 +25,19 @@
             </a>
           </li>
           <li class="sidebar__item">
-            <a class="sidebar__link" href="{{ url('treatment-outcomes')}}">
+            @if(auth()->user()->role_id == 4)
+            <a class="sidebar__link" href="{{ url('treatment-outcomes?status=New Case') }}">
+            @elseif(auth()->user()-?role_id == 5)
+            <a class="sidebar__link" href="{{ url('treatment-outcomes?treatmentOutcomeTabs=all_cases') }}">
+            @elseif(auth()->user()-?role_id == 6)
+            <a class="sidebar__link" href="{{ url('treatment-outcomes?treatmentOutcomeTabs=all_cases') }}">
+            @elseif(auth()->user()-?role_id == 7)
+            <a class="sidebar__link" href="{{ url('treatment-outcomes?treatmentOutcomeTabs=all_cases_ntb') }}">
+            @elseif(auth()->user()-?role_id == 8)
+            <a class="sidebar__link" href="{{ url('treatment-outcomes?treatmentOutcomeTabs=all_cases_cases_ntb_chair') }}">
+              @else
+              <a class="sidebar__link" href="{{ url('treatment-outcomes') }}">
+            @endif
               <div class="sidebar__wrapper">
                 <img class="image" src="{{ asset('assets/app/img/icon-treatment.png') }}" alt="Treatment Outcome icon for fhi" />
                 <img class="image image--white" src="{{ asset('assets/app/img/icon-treatment-white.png') }}" alt="Treatment Outcome icon on hover for fhi" />
