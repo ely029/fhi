@@ -34,6 +34,9 @@ jQuery( document ).ready(function( $ ) {
                 if(ext == 'pdf') {
                     $('.image--gallery').last().attr('src', '../assets/app/img/pdf.png');
                 }
+                if(ext == 'xlsx' || ext == 'xls') {
+                    $('.image--gallery').last().attr('src', '../assets/app/img/excel.png');
+                }
                 $('.gallery__text--filename').last().html(files.name);
             });
             // this.on("removedfile", function(file) {

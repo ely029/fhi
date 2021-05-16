@@ -122,7 +122,7 @@ class EnrollmentRegimentController extends Controller
 
         if (\Storage::exists($path)) {
             if (Str::endsWith($fileName, '.xls') || Str::endsWith($fileName, '.xlsx') || Str::endsWith($fileName, '.csv')) {
-                return response()->file(public_path('assets/app/img/icon-upload.png'));
+                return response()->file(public_path('assets/app/img/excel.png'));
             }
             if (Str::endsWith($fileName, '.pdf')) {
                 return response()->file(public_path('assets/app/img/pdf.png'));
