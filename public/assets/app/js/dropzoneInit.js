@@ -17,16 +17,25 @@ jQuery( document ).ready(function( $ ) {
                 this.removeFile(file);
             });
             this.on("addedfiles", function(files) {
-
-                // console.log('FILES: '+this.files);
-                // $.each(this.files,function(key, value){
-                //     let input = '<input type="file" name="attachments[]" class="attachment-uploads" id="attachments-'+key+'">';
-                //     $("#file-uploads").append(input);
-                //     $("#attachments-"+key).prop('files',);
-                // });
+                //console.log('FILES: '+this.files);
+                $.each(this.files,function(key, value){
+                    // let input = '<input type="file" name="attachments[]" class="attachment-uploads" id="attachments-'+key+'">';
+                    // $("#file-uploads").append(input);
+                    // $("#attachments-"+key).prop('files',);
+                });
                 $("#attachments").prop('files',files);
             });
-
+            
+            this.on("addedfile", function(files){
+                var ext = files.name.split('.').pop();
+                if(ext == 'docx' || ext == 'doc') {
+                    $('.image--gallery').last().attr('src', '../assets/app/img/docx.png');
+                }
+                if(ext == 'pdf') {
+                    $('.image--gallery').last().attr('src', '../assets/app/img/pdf.png');
+                }
+                $('.gallery__text--filename').last().html(files.name);
+            });
             // this.on("removedfile", function(file) {
         
             //     let oldInput =  $("#attachments");

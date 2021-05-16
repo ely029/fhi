@@ -15,7 +15,7 @@
             <li class="tabs__item {{ request('status') == 'Other suggestions' ? 'tabs__item--current' : ''}}">Other suggestions</li>
         </a>
         <a href="{{ url('treatment-outcomes?status=Need Further Details') }}">
-            <li class="tabs__item {{ request('status') == 'Need Further Details' ? 'tabs__item--current' : ''}}">Need further details</li>
+            <li class="tabs__item {{ request('status') == 'Need Further Details' ? 'tabs__item--current' : ''}}">Need further details({{ request('status') == 'Need Further Details' ? $cases->count() : ''}})</li>
         </a>
         <a href="{{ url('treatment-outcomes?status=Not for Referral') }}">
             <li class="tabs__item {{ request('status') == 'Not for Referral' ? 'tabs__item--current' : ''}}">Not for referral</li>
