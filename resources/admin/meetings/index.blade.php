@@ -23,7 +23,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="table__row js-view" data-href="view-case.html">
+                  <tr class="table__row">
                     <td class="table__details">sample</td>
                     <td class="table__details">sample</td>
                     <td class="table__details">sample</td>
