@@ -33,7 +33,7 @@ class EnrollmentResubmitController extends Controller
         $ct_scan_result = $tbMacForm->laboratoryResults->ct_scan_result ?? null;
         $ultra_sound_date = ! isset($tbMacForm->laboratoryResults->ultrasound_date) ? '' : $tbMacForm->laboratoryResults->ultrasound_date->format('m-d-Y') ?? null;
         $ultra_sound_result = $tbMacForm->laboratoryResults->ultrasound_result ?? null;
-        $histhopathological_date = ! isset($tbMacForm->laboratoryResults->histhopathological_date) ? '' : $tbMacForm->laboratoryResults->histhopathological_date->format('m-d-Y') ?? null;
+        $histhopathological_date = $tbMacForm->laboratoryResults->histopathological_date ? $tbMacForm->laboratoryResults->histopathological_date->format('m-d-Y') : null;
         $histhopathological_result = $tbMacForm->laboratoryResults->histopathological_result ?? null;
         $cxr_date = ! isset($tbMacForm->laboratoryResults->cxr_date) ? '' : $tbMacForm->laboratoryResults->cxr_date->format('m-d-Y');
         $cxr_result = $tbMacForm->laboratoryResults->cxr_result ?? null;
@@ -65,10 +65,9 @@ class EnrollmentResubmitController extends Controller
         $diag_and_lab_findings = ! isset($tbMacForm->enrollmentForm->diag_and_lab_findings) ? '' : $tbMacForm->enrollmentForm->diag_and_lab_findings;
 
         $attachments = [];
-        foreach ($tbMacForm->attachments as $key => $attachment) {
-            $fileName = ($key + 1).'.'.$attachment->extension;
+        foreach ($tbMacForm->attachments as $attachment) {
             $attachments[] = [
-                'url' => url('api/enrollments/'.$tbMacForm->id.'/'.$fileName.'/attachment'),
+                'url' => url('api/enrollments/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment'),
                 'filename' => $attachment->file_name,
             ];
         }
@@ -102,6 +101,7 @@ class EnrollmentResubmitController extends Controller
             'hispathological_result' => $histhopathological_result,
             'cxr_date' => $cxr_date,
             'cxr_result' => $cxr_result,
+            'cxr_reading' => $tbMacForm->laboratoryResults->cxr_reading,
             'remarks' => $remarks,
             'birthday' => $birthday,
             'suggested_itr' => $suggested_itr,
