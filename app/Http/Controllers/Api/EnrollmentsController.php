@@ -81,91 +81,86 @@ class EnrollmentsController extends Controller
 
     public function show(TBMacForm $tbMacForm)
     {
-        $tbMacForm = $tbMacForm->load(['submittedBy','enrollmentForm','bacteriologicalResults','laboratoryResults','attachments', 'patient']);
+        $tbMacForm = $tbMacForm->load(['submittedBy','enrollmentForm','bacteriologicalResults','laboratoryResults','attachments','patient','recommendations']);
         $tbBacteriologicalResults = $tbMacForm->bacteriologicalResults;
-        $submitted_by = ! isset($tbMacForm->submittedBy->name) ? '' : $tbMacForm->submittedBy->name;
-        $gender = ! isset($tbMacForm->patient->gender) ? '' : $tbMacForm->patient->gender;
-        $facility_code = ! isset($tbMacForm->patient->facility_code) ? '' : $tbMacForm->patient->facility_code;
-        $province = ! isset($tbMacForm->patient->province) ? '' : $tbMacForm->patient->province;
-        $birthday = ! isset($tbMacForm->patient->birthday) ? '' : $tbMacForm->patient->birthday->format('m-d-Y');
-        $first_name = ! isset($tbMacForm->patient->first_name) ? '' : $tbMacForm->patient->first_name;
-        $middle_name = ! isset($tbMacForm->patient->middle_name) ? '' : $tbMacForm->patient->middle_name;
-        $last_name = ! isset($tbMacForm->patient->last_name) ? '' : $tbMacForm->patient->last_name;
-        $treatment_history = ! isset($tbMacForm->enrollmentForm->treatment_history) ? '' : $tbMacForm->enrollmentForm->treatment_history;
-        $registration_group = ! isset($tbMacForm->enrollmentForm->registration_group) ? '' : $tbMacForm->enrollmentForm->registration_group;
-        $risk_factor = ! isset($tbMacForm->enrollmentForm->risk_factor) ? '' : $tbMacForm->enrollmentForm->risk_factor;
-        $ct_scan_date = ! isset($tbMacForm->laboratoryResults->ct_scan_date) ? '' : $tbMacForm->laboratoryResults->ct_scan_date->format('m-d-Y') ?? null;
-        $ct_scan_result = $tbMacForm->laboratoryResults->ct_scan_result ?? null;
-        $ultra_sound_date = ! isset($tbMacForm->laboratoryResults->ultrasound_date) ? '' : $tbMacForm->laboratoryResults->ultrasound_date->format('m-d-Y') ?? null;
-        $ultra_sound_result = $tbMacForm->laboratoryResults->ultrasound_result ?? null;
-        $histhopathological_date = ! isset($tbMacForm->laboratoryResults->histhopathological_date) ? '' : $tbMacForm->laboratoryResults->histhopathological_date->format('m-d-Y') ?? null;
-        $histhopathological_result = $tbMacForm->laboratoryResults->histopathological_result ?? null;
-        $cxr_date = ! isset($tbMacForm->laboratoryResults->cxr_date) ? '' : $tbMacForm->laboratoryResults->cxr_date->format('m-d-Y');
-        $cxr_result = $tbMacForm->laboratoryResults->cxr_result ?? null;
-        $remarks = $tbMacForm->laboratoryResults->remarks ?? null;
-        $bacteriological_results = $tbBacteriologicalResults->map(function ($item) {
+        $submitted_by = $tbMacForm->submittedBy->name;
+        $bacteriologicalResults = $tbBacteriologicalResults->filter(function ($item) {
+            return $item->type !== 'dst_from_other_lab';
+        })->map(function ($item) {
             return [
-                'date_collected' => $item->date_collected->format('m-d-Y'), 'name_of_laboratory' => $item->name_of_laboratory, 'result' => $item->result, 'name' => $item->type,
+                'name' => $item->name,
+                'name_of_laboratory' => $item->name_of_laboratory,
+                'date_collected' => $item->date_collected->format('m-d-Y'),
+                'result' => $item->result,
             ];
         })->values();
-        $drug_susceptibility = ! isset($tbMacForm->enrollmentForm->drug_susceptibility) ? '' : $tbMacForm->enrollmentForm->drug_susceptibility;
-        $current_weight = ! isset($tbMacForm->enrollmentForm->current_weight) ? '' : $tbMacForm->enrollmentForm->current_weight;
-        $suggested_regimen = ! isset($tbMacForm->enrollmentForm->suggested_regimen) ? '' : $tbMacForm->enrollmentForm->suggested_regimen;
-        $suggedted_others = Str::startsWith($tbMacForm->enrollmentForm->suggested_regimen, 'Other') ? substr($tbMacForm->enrollmentForm->suggested_regimen, strpos($tbMacForm->enrollmentForm->suggested_regimen, '-') + 1) : '';
-        $suggested_itr = Str::startsWith($tbMacForm->enrollmentForm->suggested_regimen, 'ITR') ? $tbMacForm->enrollmentForm->itr_drugs : '';
-        $regimen_notes = ! isset($tbMacForm->enrollmentForm->regimen_notes) ? '' : $tbMacForm->enrollmentForm->regimen_notes;
-        $clinical_status = ! isset($tbMacForm->enrollmentForm->clinical_status) ? '' : $tbMacForm->enrollmentForm->clinical_status;
-        $signs_and_symptoms = ! isset($tbMacForm->enrollmentForm->signs_and_symptoms) ? '' : $tbMacForm->enrollmentForm->signs_and_symptoms;
-        $vital_signs = ! isset($tbMacForm->enrollmentForm->vital_signs) ? '' : $tbMacForm->enrollmentForm->vital_signs;
-        $diag_and_lab_findings = ! isset($tbMacForm->enrollmentForm->diag_and_lab_findings) ? '' : $tbMacForm->enrollmentForm->diag_and_lab_findings;
+
+        $dstFromOtherLab = $tbBacteriologicalResults->filter(function ($item) {
+            return $item->type === 'dst_from_other_lab';
+        })->map(function ($item) {
+            return [
+                'name' => $item->name,
+                'name_of_laboratory' => $item->name_of_laboratory,
+                'date_collected' => $item->date_collected->format('m-d-Y'),
+                'result' => $item->result,
+            ];
+        })->values();
 
         $attachments = [];
-        foreach ($tbMacForm->attachments as $key => $attachment) {
-            $fileName = ($key + 1).'.'.$attachment->extension;
+        foreach ($tbMacForm->attachments as $attachment) {
             $attachments[] = [
-                'url' => url('api/enrollments/'.$tbMacForm->id.'/'.$fileName.'/attachment'),
+                'url' => url('api/enrollments/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment'),
                 'filename' => $attachment->file_name,
             ];
         }
 
+        $recommendations = $tbMacForm->recommendations->map(function ($item) {
+            return [
+                'name' => $item->users->name,
+                'role' => $item->users->role->name,
+                'role_id' => $item->role_id,
+                'date_created' => $item->created_at->format('m-d-Y'),
+                'status' => $item->status === '0' ? '' : $item->status,
+                'recommendation' => $item->recommendation,
+            ];
+        });
+
         $data = [
-            'facility_code' => $facility_code,
-            'province' => $province,
-            'gender' => $gender,
             'submitted_by' => $submitted_by,
-            'first_name' => $first_name,
-            'middle_name' => $middle_name,
-            'last_name' => $last_name,
-            'treatment_history' => $treatment_history,
-            'registration_group' => $registration_group,
-            'risk_factor' => $risk_factor,
-            'drug_susceptibility' => $drug_susceptibility,
-            'current_weight' => $current_weight,
-            'suggested_regimen' => $suggested_regimen,
-            'regiment_notes' => $regimen_notes,
-            'clinical_status' => $clinical_status,
-            'signs_and_symptoms' => $signs_and_symptoms,
-            'vital_signs' => $vital_signs,
-            'diag_and_lab_findings' => $diag_and_lab_findings,
-            'bacteriological_results' => $bacteriological_results,
+            'date_created' => $tbMacForm->created_at->format('m-d-Y'),
+            'patient_code' => $tbMacForm->patient->code,
+            'facility_code' => $tbMacForm->patient->facility_code,
+            'status' => $tbMacForm->status,
+            'date_submitted_to_rtb_mac' => '',
+            'treatment_history' => $tbMacForm->enrollmentForm->treatment_history ? $tbMacForm->enrollmentForm->treatment_history : '',
+            'registration_group' => $tbMacForm->enrollmentForm->registration_group,
+            'risk_factor' => $tbMacForm->enrollmentForm->risk_factor,
+            'bacteriological_results' => $bacteriologicalResults,
+            'dst_from_other_lab' => $dstFromOtherLab,
+            'drug_susceptibility' => $tbMacForm->enrollmentForm->drug_susceptibility,
+            'current_weight' => $tbMacForm->enrollmentForm->current_weight,
+            'suggested_regimen' => $tbMacForm->enrollmentForm->suggested_regimen,
+            'itr_drugs' => Str::startsWith($tbMacForm->enrollmentForm->suggested_regimen, 'ITR') ? $tbMacForm->enrollmentForm->suggested_regimen : null,
+            'regiment_notes' => $tbMacForm->enrollmentForm->regimen_notes,
+            'clinical_status' => $tbMacForm->enrollmentForm->clinical_status,
+            'vital_signs' => $tbMacForm->enrollmentForm->vital_signs,
+            'diag_and_lab_findings' => $tbMacForm->enrollmentForm->diag_and_lab_findings,
+            'signs_and_symptoms' => $tbMacForm->enrollmentForm->signs_and_symptoms,
+            'cxr_date' => $tbMacForm->laboratoryResults->cxr_date ? $tbMacForm->laboratoryResults->cxr_date->format('m-d-Y') : '',
+            'cxr_result' => $tbMacForm->laboratoryResults->cxr_result,
+            'cxr_reading' => $tbMacForm->laboratoryResults->cxr_reading,
+            'ct_scan_date' => $tbMacForm->laboratoryResults->ct_scan_date ? $tbMacForm->laboratoryResults->ct_scan_date->format('m-d-Y') : '',
+            'ct_scan_result' => $tbMacForm->laboratoryResults->ct_scan_result,
+            'ultrasound_date' => $tbMacForm->laboratoryResults->ultrasound_date ? $tbMacForm->laboratoryResults->ultrasound_date->format('m-d-Y') : '',
+            'ultrasound_result' => $tbMacForm->laboratoryResults->ultrasound_result,
+            'histopathological_date' => $tbMacForm->laboratoryResults->histopathological_date ? $tbMacForm->laboratoryResults->histopathological_date->format('m-d-Y') : '',
+            'histopathological_result' => $tbMacForm->laboratoryResults->histopathological_result,
+            'remarks' => $tbMacForm->laboratoryResults->remarks,
             'attachments' => $attachments,
-            'ct_scan_date' => $ct_scan_date,
-            'ct_scan_result' => $ct_scan_result,
-            'ultra_sound_date' => $ultra_sound_date,
-            'ultra_sound_result' => $ultra_sound_result,
-            'hispathological_date' => $histhopathological_date,
-            'hispathological_result' => $histhopathological_result,
-            'cxr_date' => $cxr_date,
-            'cxr_result' => $cxr_result,
-            'remarks' => $remarks,
-            'birthday' => $birthday,
-            'suggested_itr' => $suggested_itr,
-            'suggested_others' => $suggedted_others,
+            'recommendations' => $recommendations,
         ];
 
-        return response([
-            'data' => $data,
-        ]);
+        return response()->json($data);
     }
 
     public function showAttachment(TBMacForm $tbMacForm, $fileName)
