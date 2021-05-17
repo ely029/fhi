@@ -40,7 +40,17 @@ class EnrollmentResubmitController extends Controller
         $remarks = $tbMacForm->laboratoryResults->remarks ?? null;
         $bacteriological_results = $tbBacteriologicalResults->map(function ($item) {
             return [
-                'date_collected' => $item->date_collected->format('m-d-Y'), 'name_of_laboratory' => $item->name_of_laboratory, 'result' => $item->result, 'name' => $item->type,
+                'date_collected' => $item->date_collected->format('m-d-Y'), 'name_of_laboratory' => $item->name_of_laboratory, 'result' => $item->result, 'name' => $item->name,
+            ];
+        })->values();
+        $dstFromOtherLab = $tbBacteriologicalResults->filter(function ($item) {
+            return $item->type === 'dst_from_other_lab';
+        })->map(function ($item) {
+            return [
+                'name' => $item->name,
+                'name_of_laboratory' => $item->name_of_laboratory,
+                'date_collected' => $item->date_collected->format('m-d-Y'),
+                'result' => $item->result,
             ];
         })->values();
         $drug_susceptibility = ! isset($tbMacForm->enrollmentForm->drug_susceptibility) ? '' : $tbMacForm->enrollmentForm->drug_susceptibility;
@@ -96,6 +106,7 @@ class EnrollmentResubmitController extends Controller
             'birthday' => $birthday,
             'suggested_itr' => $suggested_itr,
             'suggested_others' => $suggedted_others,
+            'dst_from_other_lab' => $dstFromOtherLab,
         ];
 
         return response([

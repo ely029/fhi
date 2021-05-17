@@ -18,7 +18,7 @@
 
         @include('partials.alerts')
 
-        <div class="modal js-modal" id="refer-to-regional" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal js-modal" id="treatment_outcome_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal__background js-modal-background"></div>
             <div class="modal__container">
               <div class="modal__box">

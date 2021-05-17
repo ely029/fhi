@@ -6,7 +6,7 @@
     <div class="section__content">
     <ul class="tabs__list tabs__list--table">
         <a href="{{ url('treatment-outcomes') }}">
-            <li class="tabs__item {{ request('status') == '' ? 'tabs__item--current' : ''}}">All Cases</li>
+            <li class="tabs__item {{ request('status') == '' ? 'tabs__item--current' : ''}}">All cases</li>
         </a>
         <a href="{{ url('treatment-outcomes?status=For approval') }}">
             <li class="tabs__item {{ request('status') == 'For approval' ? 'tabs__item--current' : ''}}">For approval</li>
