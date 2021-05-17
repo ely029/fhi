@@ -17,7 +17,7 @@ class TreatmentOutcomesController extends Controller
             ->filter($filters)
             ->with(['patient','treatmentOutcomeForm'])
             ->where($this->getDynamicQuery()['condition'], $this->getDynamicQuery()['value'])
-            ->orderByDesc('created_at')->paginate(10);
+            ->orderByDesc('created_at')->get();
         return view('treatment-outcomes.index')
             ->with('cases', $cases);
     }

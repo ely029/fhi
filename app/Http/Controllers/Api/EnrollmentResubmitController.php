@@ -43,6 +43,16 @@ class EnrollmentResubmitController extends Controller
                 'date_collected' => $item->date_collected->format('m-d-Y'), 'name_of_laboratory' => $item->name_of_laboratory, 'result' => $item->result, 'name' => $item->name,
             ];
         })->values();
+        $dstFromOtherLab = $tbBacteriologicalResults->filter(function ($item) {
+            return $item->type === 'dst_from_other_lab';
+        })->map(function ($item) {
+            return [
+                'name' => $item->name,
+                'name_of_laboratory' => $item->name_of_laboratory,
+                'date_collected' => $item->date_collected->format('m-d-Y'),
+                'result' => $item->result,
+            ];
+        })->values();
         $drug_susceptibility = ! isset($tbMacForm->enrollmentForm->drug_susceptibility) ? '' : $tbMacForm->enrollmentForm->drug_susceptibility;
         $current_weight = ! isset($tbMacForm->enrollmentForm->current_weight) ? '' : $tbMacForm->enrollmentForm->current_weight;
         $suggested_regimen = ! isset($tbMacForm->enrollmentForm->suggested_regimen) ? '' : $tbMacForm->enrollmentForm->suggested_regimen;
@@ -96,6 +106,7 @@ class EnrollmentResubmitController extends Controller
             'birthday' => $birthday,
             'suggested_itr' => $suggested_itr,
             'suggested_others' => $suggedted_others,
+            'dst_from_other_lab' => $dstFromOtherLab,
         ];
 
         return response([
