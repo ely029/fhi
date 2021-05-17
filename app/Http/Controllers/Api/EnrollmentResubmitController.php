@@ -40,7 +40,7 @@ class EnrollmentResubmitController extends Controller
         $remarks = $tbMacForm->laboratoryResults->remarks ?? null;
         $bacteriological_results = $tbBacteriologicalResults->map(function ($item) {
             return [
-                'date_collected' => $item->date_collected->format('m-d-Y'), 'name_of_laboratory' => $item->name_of_laboratory, 'result' => $item->result, 'name' => $item->type,
+                'date_collected' => $item->date_collected->format('m-d-Y'), 'name_of_laboratory' => $item->name_of_laboratory, 'result' => $item->result, 'name' => $item->name,
             ];
         })->values();
         $drug_susceptibility = ! isset($tbMacForm->enrollmentForm->drug_susceptibility) ? '' : $tbMacForm->enrollmentForm->drug_susceptibility;
