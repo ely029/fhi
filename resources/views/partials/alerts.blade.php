@@ -6,13 +6,13 @@
 @endif
 @if(session('recommendation'))
     <div class="modal" id="recommendation-successful" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal__background js-modal-background"></div>
+        <div class="modal__background" data-dismiss="modal"></div>
             <div class="modal__container">
                 <div class="modal__box">
                     <p class="modal__text">Recommendation successfully sent.</p>
                         
                         <div class="modal__button modal__button--end">
-                        <button class="button js-modal-close" type="button">OK</button>
+                            <button class="button" data-dismiss="modal" type="button">OK</button>
                         </div>
                     
             </div>
