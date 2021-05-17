@@ -1,6 +1,7 @@
 jQuery( document ).ready(function( $ ) {
 $('.hide--button').hide();
     $('#recommendation-button').click(function(){
+        $('#treatment_outcome_modal').modal('show');
         let action = $("#action-dropdown").val();
         if(action == 'Referred to Regional'){
             $("#modal-title").text('Refer To R-TB MAC');
