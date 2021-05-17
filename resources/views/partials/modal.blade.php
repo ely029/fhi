@@ -1,5 +1,5 @@
 <div class="modal" id="refer-to-regional" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal__background js-modal-background"></div>
+                <div class="modal__background" data-dismiss="modal"></div>
                 <div class="modal__container">
                   <div class="modal__box">
                     <h2 class="modal__title">Refer to R-TB MAC</h2>
@@ -16,7 +16,7 @@
             </div>
 
 <div class="modal" id="not-for-referal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal__background js-modal-background"></div>
+                <div class="modal__background" data-dismiss="modal"></div>
                 <div class="modal__container">
                   <div class="modal__box">
                     <h2 class="modal__title">Not for referral</h2>
@@ -33,7 +33,7 @@
             </div>
 
             <div class="modal" id="not-for-recommended-for-enrolment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal__background js-modal-background"></div>
+                <div class="modal__background" data-dismiss="modal"></div>
                 <div class="modal__container">
                   <div class="modal__box">
                     <h2 class="modal__title">Not recommended for enrolment</h2>
@@ -50,7 +50,7 @@
             </div>
 
             <div class="modal" id="for-enrolment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal__background js-modal-background"></div>
+                <div class="modal__background" data-dismiss="modal"></div>
                 <div class="modal__container">
                   <div class="modal__box">
                     <h2 class="modal__title">For enrolment</h2>
@@ -67,7 +67,7 @@
             </div>
 
             <div class="modal" id="recommended-for-enrolment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal__background js-modal-background"></div>
+                <div class="modal__background" data-dismiss="modal"></div>
                 <div class="modal__container">
                   <div class="modal__box">
                     <h2 class="modal__title">Recommend for enrollment</h2>
@@ -84,7 +84,7 @@
             </div>
 
             <div class="modal" id="not-for-enrolment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal__background js-modal-background"></div>
+                <div class="modal__background" data-dismiss="modal"></div>
                 <div class="modal__container">
                   <div class="modal__box">
                     <h2 class="modal__title">Not for enrollment</h2>
@@ -101,7 +101,7 @@
             </div>
 
             <div class="modal" id="need-further-details" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal__background js-modal-background"></div>
+                <div class="modal__background" data-dismiss="modal"></div>
                 <div class="modal__container">
                   <div class="modal__box">
                     <h2 class="modal__title">Need further details</h2>
@@ -118,7 +118,7 @@
             </div>
 
             <div class="modal" id="refer-to-ntbmac" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal__background js-modal-background"></div>
+                <div class="modal__background" data-dismiss="modal"></div>
                 <div class="modal__container">
                   <div class="modal__box">
                     <h2 class="modal__title">Refer to N-TB MAC</h2>
@@ -135,7 +135,7 @@
             </div>
 
             <div class="modal" id="create-recom" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal__background js-modal-background"></div>
+                <div class="modal__background" data-dismiss="modal"></div>
                 <div class="modal__container">
                   <div class="modal__box">
                     <h2 class="modal__title">Create recommendation</h2>
@@ -152,7 +152,7 @@
             </div>
 
 <div class="modal" id="resubmit-enrollment-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal__background js-modal-background"></div>
+  <div class="modal__background" data-dismiss="modal"></div>
       <div class="modal__container">
           <div class="modal__box">
             <h2 class="modal__title">Resubmit new enrollment</h2>
