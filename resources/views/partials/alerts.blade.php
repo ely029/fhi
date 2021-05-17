@@ -12,7 +12,7 @@
                     <p class="modal__text">Recommendation successfully sent.</p>
                         
                         <div class="modal__button modal__button--end">
-                        <button class="button js-modal-close" type="button">Confirm</button>
+                        <button class="button js-modal-close" type="button">OK</button>
                         </div>
                     
             </div>
