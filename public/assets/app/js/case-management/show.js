@@ -25,7 +25,8 @@ $('.hide--button').hide();
                 $("#modal-text").text("You are about to recommend this case for need further details. If you have additional remarks, enter them below.");
             }
 
-            $("#modal-form").find('input[name="status"]').val('Referred to Regional Chair');
+            // $("#modal-form").find('input[name="status"]').val('Referred to Regional Chair');
+            $("#modal-form").find('input[name="status"]').val(action);
             return;
         }
         if(action == 'For approval'){

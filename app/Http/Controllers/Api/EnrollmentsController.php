@@ -107,10 +107,9 @@ class EnrollmentsController extends Controller
         })->values();
 
         $attachments = [];
-        foreach ($tbMacForm->attachments as $key => $attachment) {
-            $fileName = ($key + 1).'.'.$attachment->extension;
+        foreach ($tbMacForm->attachments as $attachment) {
             $attachments[] = [
-                'url' => url('api/enrollments/'.$tbMacForm->id.'/'.$fileName.'/attachment'),
+                'url' => url('api/enrollments/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment'),
                 'filename' => $attachment->file_name,
             ];
         }
