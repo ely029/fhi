@@ -22,25 +22,25 @@ class EnrollmentResubmitController extends Controller
         $gender = ! isset($tbMacForm->patient->gender) ? '' : $tbMacForm->patient->gender;
         $facility_code = ! isset($tbMacForm->patient->facility_code) ? '' : $tbMacForm->patient->facility_code;
         $province = ! isset($tbMacForm->patient->province) ? '' : $tbMacForm->patient->province;
-        $birthday = ! isset($tbMacForm->patient->birthday) ? '' : $tbMacForm->patient->birthday->format('m-d-Y');
+        $birthday = ! isset($tbMacForm->patient->birthday) ? '' : $tbMacForm->patient->birthday->format('Y-m-d');
         $first_name = ! isset($tbMacForm->patient->first_name) ? '' : $tbMacForm->patient->first_name;
         $middle_name = ! isset($tbMacForm->patient->middle_name) ? '' : $tbMacForm->patient->middle_name;
         $last_name = ! isset($tbMacForm->patient->last_name) ? '' : $tbMacForm->patient->last_name;
         $treatment_history = ! isset($tbMacForm->enrollmentForm->treatment_history) ? '' : $tbMacForm->enrollmentForm->treatment_history;
         $registration_group = ! isset($tbMacForm->enrollmentForm->registration_group) ? '' : $tbMacForm->enrollmentForm->registration_group;
         $risk_factor = ! isset($tbMacForm->enrollmentForm->risk_factor) ? '' : $tbMacForm->enrollmentForm->risk_factor;
-        $ct_scan_date = ! isset($tbMacForm->laboratoryResults->ct_scan_date) ? '' : $tbMacForm->laboratoryResults->ct_scan_date->format('m-d-Y') ?? null;
+        $ct_scan_date = ! isset($tbMacForm->laboratoryResults->ct_scan_date) ? '' : $tbMacForm->laboratoryResults->ct_scan_date->format('Y-m-d') ?? null;
         $ct_scan_result = $tbMacForm->laboratoryResults->ct_scan_result ?? null;
-        $ultra_sound_date = ! isset($tbMacForm->laboratoryResults->ultrasound_date) ? '' : $tbMacForm->laboratoryResults->ultrasound_date->format('m-d-Y') ?? null;
+        $ultra_sound_date = ! isset($tbMacForm->laboratoryResults->ultrasound_date) ? '' : $tbMacForm->laboratoryResults->ultrasound_date->format('Y-m-d') ?? null;
         $ultra_sound_result = $tbMacForm->laboratoryResults->ultrasound_result ?? null;
-        $histhopathological_date = $tbMacForm->laboratoryResults->histopathological_date ? $tbMacForm->laboratoryResults->histopathological_date->format('m-d-Y') : null;
+        $histhopathological_date = $tbMacForm->laboratoryResults->histopathological_date ? $tbMacForm->laboratoryResults->histopathological_date->format('Y-m-d') : null;
         $histhopathological_result = $tbMacForm->laboratoryResults->histopathological_result ?? null;
-        $cxr_date = ! isset($tbMacForm->laboratoryResults->cxr_date) ? '' : $tbMacForm->laboratoryResults->cxr_date->format('m-d-Y');
+        $cxr_date = ! isset($tbMacForm->laboratoryResults->cxr_date) ? '' : $tbMacForm->laboratoryResults->cxr_date->format('Y-m-d');
         $cxr_result = $tbMacForm->laboratoryResults->cxr_result ?? null;
         $remarks = $tbMacForm->laboratoryResults->remarks ?? null;
         $bacteriological_results = $tbBacteriologicalResults->map(function ($item) {
             return [
-                'date_collected' => $item->date_collected->format('m-d-Y'), 'name_of_laboratory' => $item->name_of_laboratory, 'result' => $item->result, 'name' => $item->name,
+                'date_collected' => $item->date_collected->format('Y-m-d'), 'name_of_laboratory' => $item->name_of_laboratory, 'result' => $item->result, 'name' => $item->name,
             ];
         })->values();
         $dstFromOtherLab = $tbBacteriologicalResults->filter(function ($item) {
@@ -49,7 +49,7 @@ class EnrollmentResubmitController extends Controller
             return [
                 'name' => $item->name,
                 'name_of_laboratory' => $item->name_of_laboratory,
-                'date_collected' => $item->date_collected->format('m-d-Y'),
+                'date_collected' => $item->date_collected->format('Y-m-d'),
                 'result' => $item->result,
             ];
         })->values();
@@ -101,7 +101,8 @@ class EnrollmentResubmitController extends Controller
             'hispathological_result' => $histhopathological_result,
             'cxr_date' => $cxr_date,
             'cxr_result' => $cxr_result,
-            'cxr_reading' => $tbMacForm->laboratoryResults->cxr_reading,
+            'cxr_reading' => $tbMacForm->laboratoryResults->cxr_readings,
+            'cxr_reading_other' => $tbMacForm->laboratoryResults->cxr_reading_other,
             'remarks' => $remarks,
             'birthday' => $birthday,
             'suggested_itr' => $suggested_itr,

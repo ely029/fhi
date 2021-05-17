@@ -6,6 +6,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 /**
  * App\Models\LaboratoryResult
@@ -69,4 +70,21 @@ class LaboratoryResult extends Model
         'histopathological_date',
         'cxr_date',
     ];
+
+    public function getCxrReadingOtherAttribute()
+    {
+        foreach ($this->cxr_reading as $cxrReading) {
+            if (Str::startsWith($cxrReading, 'Other')) {
+                return substr($cxrReading, 6);
+            }
+        }
+    }
+
+    public function getCxrReadingsAttribute()
+    {
+        $readings = collect($this->cxr_reading)->filter(function ($item) {
+            return ! Str::startsWith($item, 'Other');
+        });
+        return count($readings) > 0 ? $readings : null;
+    }
 }
