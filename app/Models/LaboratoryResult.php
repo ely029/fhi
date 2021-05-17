@@ -73,11 +73,10 @@ class LaboratoryResult extends Model
 
     public function getCxrReadingOtherAttribute()
     {
-        foreach ($this->cxr_reading as $cxrReading) {
-            if (Str::startsWith($cxrReading, 'Other')) {
-                return substr($cxrReading, 6);
-            }
-        }
+        $readings = collect($this->cxr_reading)->filter(function ($item) {
+            return Str::startsWith($item, 'Other');
+        })->first();
+        return $readings ? substr($readings, 6) : null;
     }
 
     public function getCxrReadingsAttribute()
