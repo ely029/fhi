@@ -7,15 +7,15 @@ jQuery( document ).ready(function( $ ) {
 
         const dropZone = $("#dropzoneDragArea").dropzone({
         url: "null",
-        maxFileSize: 10,
+        maxFileSize: 10000000,
         uploadMultiple: true,
         thumbnailWidth: 800,
         thumbnailHeight: 800,
         acceptedFiles: "image/*",
         init: function() {
-            this.on("maxfilesexceeded", function(file){
-                this.removeFile(file);
-            });
+            // this.on("maxfilesexceeded", function(file){
+            //     this.removeFile(file);
+            // });
             this.on("addedfiles", function(files) {
                 //console.log('FILES: '+this.files);
                 $.each(this.files,function(key, value){
@@ -34,10 +34,14 @@ jQuery( document ).ready(function( $ ) {
                 if(ext == 'pdf') {
                     $('.image--gallery').last().attr('src', '../assets/app/img/pdf.png');
                 }
-                if(ext == 'xlsx' || ext == 'xls') {
+                if(ext == 'xlsx' || ext == 'xls' || ext == 'csv') {
                     $('.image--gallery').last().attr('src', '../assets/app/img/excel.png');
                 }
                 $('.gallery__text--filename').last().html(files.name);
+                if (files.size >= 10000000) {
+                    alert('You had reached max file size');
+                    this.removeFile(files);
+                }
             });
             // this.on("removedfile", function(file) {
         

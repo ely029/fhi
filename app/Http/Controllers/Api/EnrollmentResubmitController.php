@@ -18,22 +18,36 @@ class EnrollmentResubmitController extends Controller
     {
         $tbMacForm = $tbMacForm->load(['submittedBy','enrollmentForm','bacteriologicalResults','laboratoryResults','attachments', 'patient']);
         $tbBacteriologicalResults = $tbMacForm->bacteriologicalResults;
+        $submitted_by = ! isset($tbMacForm->submittedBy->name) ? '' : $tbMacForm->submittedBy->name;
+        $gender = ! isset($tbMacForm->patient->gender) ? '' : $tbMacForm->patient->gender;
         $facility_code = ! isset($tbMacForm->patient->facility_code) ? '' : $tbMacForm->patient->facility_code;
         $province = ! isset($tbMacForm->patient->province) ? '' : $tbMacForm->patient->province;
+        $birthday = ! isset($tbMacForm->patient->birthday) ? '' : $tbMacForm->patient->birthday->format('m-d-Y');
         $first_name = ! isset($tbMacForm->patient->first_name) ? '' : $tbMacForm->patient->first_name;
         $middle_name = ! isset($tbMacForm->patient->middle_name) ? '' : $tbMacForm->patient->middle_name;
         $last_name = ! isset($tbMacForm->patient->last_name) ? '' : $tbMacForm->patient->last_name;
         $treatment_history = ! isset($tbMacForm->enrollmentForm->treatment_history) ? '' : $tbMacForm->enrollmentForm->treatment_history;
         $registration_group = ! isset($tbMacForm->enrollmentForm->registration_group) ? '' : $tbMacForm->enrollmentForm->registration_group;
         $risk_factor = ! isset($tbMacForm->enrollmentForm->risk_factor) ? '' : $tbMacForm->enrollmentForm->risk_factor;
+        $ct_scan_date = ! isset($tbMacForm->laboratoryResults->ct_scan_date) ? '' : $tbMacForm->laboratoryResults->ct_scan_date->format('m-d-Y') ?? null;
+        $ct_scan_result = $tbMacForm->laboratoryResults->ct_scan_result ?? null;
+        $ultra_sound_date = ! isset($tbMacForm->laboratoryResults->ultrasound_date) ? '' : $tbMacForm->laboratoryResults->ultrasound_date->format('m-d-Y') ?? null;
+        $ultra_sound_result = $tbMacForm->laboratoryResults->ultrasound_result ?? null;
+        $histhopathological_date = ! isset($tbMacForm->laboratoryResults->histhopathological_date) ? '' : $tbMacForm->laboratoryResults->histhopathological_date->format('m-d-Y') ?? null;
+        $histhopathological_result = $tbMacForm->laboratoryResults->histopathological_result ?? null;
+        $cxr_date = ! isset($tbMacForm->laboratoryResults->cxr_date) ? '' : $tbMacForm->laboratoryResults->cxr_date->format('m-d-Y');
+        $cxr_result = $tbMacForm->laboratoryResults->cxr_result ?? null;
+        $remarks = $tbMacForm->laboratoryResults->remarks ?? null;
         $bacteriological_results = $tbBacteriologicalResults->map(function ($item) {
             return [
-                'date_collected' => $item->date_collected->format('Y-m-d'), 'name_of_laboratory' => $item->name_of_laboratory, 'result' => $item->result,
+                'date_collected' => $item->date_collected->format('m-d-Y'), 'name_of_laboratory' => $item->name_of_laboratory, 'result' => $item->result, 'name' => $item->type,
             ];
         })->values();
         $drug_susceptibility = ! isset($tbMacForm->enrollmentForm->drug_susceptibility) ? '' : $tbMacForm->enrollmentForm->drug_susceptibility;
         $current_weight = ! isset($tbMacForm->enrollmentForm->current_weight) ? '' : $tbMacForm->enrollmentForm->current_weight;
-        $suggested_regimen = Str::startsWith($tbMacForm->enrollmentForm->suggested_regimen, 'Other') ? substr($tbMacForm->enrollmentForm->suggested_regimen, strpos($tbMacForm->enrollmentForm->suggested_regimen, '-') + 1) : $tbMacForm->enrollmentForm->suggested_regimen;
+        $suggested_regimen = ! isset($tbMacForm->enrollmentForm->suggested_regimen) ? '' : $tbMacForm->enrollmentForm->suggested_regimen;
+        $suggedted_others = Str::startsWith($tbMacForm->enrollmentForm->suggested_regimen, 'Other') ? substr($tbMacForm->enrollmentForm->suggested_regimen, strpos($tbMacForm->enrollmentForm->suggested_regimen, '-') + 1) : '';
+        $suggested_itr = Str::startsWith($tbMacForm->enrollmentForm->suggested_regimen, 'ITR') ? $tbMacForm->enrollmentForm->itr_drugs : '';
         $regimen_notes = ! isset($tbMacForm->enrollmentForm->regimen_notes) ? '' : $tbMacForm->enrollmentForm->regimen_notes;
         $clinical_status = ! isset($tbMacForm->enrollmentForm->clinical_status) ? '' : $tbMacForm->enrollmentForm->clinical_status;
         $signs_and_symptoms = ! isset($tbMacForm->enrollmentForm->signs_and_symptoms) ? '' : $tbMacForm->enrollmentForm->signs_and_symptoms;
@@ -52,6 +66,8 @@ class EnrollmentResubmitController extends Controller
         $data = [
             'facility_code' => $facility_code,
             'province' => $province,
+            'gender' => $gender,
+            'submitted_by' => $submitted_by,
             'first_name' => $first_name,
             'middle_name' => $middle_name,
             'last_name' => $last_name,
@@ -68,6 +84,18 @@ class EnrollmentResubmitController extends Controller
             'diag_and_lab_findings' => $diag_and_lab_findings,
             'bacteriological_results' => $bacteriological_results,
             'attachments' => $attachments,
+            'ct_scan_date' => $ct_scan_date,
+            'ct_scan_result' => $ct_scan_result,
+            'ultra_sound_date' => $ultra_sound_date,
+            'ultra_sound_result' => $ultra_sound_result,
+            'hispathological_date' => $histhopathological_date,
+            'hispathological_result' => $histhopathological_result,
+            'cxr_date' => $cxr_date,
+            'cxr_result' => $cxr_result,
+            'remarks' => $remarks,
+            'birthday' => $birthday,
+            'suggested_itr' => $suggested_itr,
+            'suggested_others' => $suggedted_others,
         ];
 
         return response([

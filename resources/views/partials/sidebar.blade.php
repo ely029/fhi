@@ -30,7 +30,7 @@
             @elseif(auth()->user()->role_id == 5)
             <a class="sidebar__link" href="{{ url('treatment-outcomes?treatmentOutcomeTabs=all_cases') }}">
             @elseif(auth()->user()->role_id == 6)
-            <a class="sidebar__link" href="{{ url('treatment-outcomes?treatmentOutcomeTabs=all_cases') }}">
+            <a class="sidebar__link" href="{{ url('treatment-outcomes') }}">
             @elseif(auth()->user()->role_id == 7)
             <a class="sidebar__link" href="{{ url('treatment-outcomes?treatmentOutcomeTabs=all_cases_ntb') }}">
             @elseif(auth()->user()->role_id == 8)

@@ -50,7 +50,7 @@
                 <div class="form__container">
                   <h2 class="section__heading">Patient {{ $tbMacForm->patient->code }}
                     <span class="form__text">
-                        Facility {{ $tbMacForm->patient->facility_code }} &nbsp;&nbsp;&nbsp; {{ $tbMacForm->patient->province }}</span>
+                        Health Facility {{ $tbMacForm->patient->facility_code }} &nbsp;&nbsp;&nbsp; {{ $tbMacForm->patient->province }}</span>
                     </h2>
                   <div class="form__content">
                       <span class="form__text ">{{ ucfirst(Str::lower($tbMacForm->status)) }}</span>
@@ -62,9 +62,9 @@
                         <span class="form__text">{{ $tbMacForm->treatmentOutcomeForm->tb_case_number }}</span>
                         <label class="form__label" for="">TB case number</label></div>
                     <div class="form__content">
-                        <span class="form__text">{{ $tbMacForm->treatmentOutcomeForm->date_started_treatment }}</span>
+                        <span class="form__text">{{  date('m-d-Y', strtotime($tbMacForm->treatmentOutcomeForm->date_started_treatment )) }}</span>
                         <label class="form__label" for="">Date started treatment</label></div>
-                    <div class="form__content">{{ $tbMacForm->treatmentOutcomeForm->current_drug_susceptibility }}<span class="form__text">
+                    <div class="form__content"><span class="drug-susceptibility-label">{{ $tbMacForm->treatmentOutcomeForm->current_drug_susceptibility }}</span><span class="form__text">
                         </span>
                         <label class="form__label" for="">Current drug susceptibility</label>
                     </div>
