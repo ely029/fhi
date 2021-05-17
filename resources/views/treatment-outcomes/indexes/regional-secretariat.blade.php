@@ -6,8 +6,8 @@
         <a href="{{ url('treatment-outcomes?status=New Case') }}">
             <li class="tabs__item {{ request('status') == 'New Case' ? 'tabs__item--current' : ''}}">Pending</li>
         </a>
-        <a href="{{ url('treatment-outcomes?treatmentOutcomeTabs=all_cases') }}">
-            <li class="tabs__item {{ request('treatmentOutcomeTabs') == 'all_cases' ? 'tabs__item--current' : ''}}">All cases</li>
+        <a href="{{ url('treatment-outcomes') }}">
+            <li class="tabs__item {{ request('status') == '' ? 'tabs__item--current' : ''}}">All cases</li>
         </a>
     </ul>
       <div class="tabs__details tabs__details--active">

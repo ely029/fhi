@@ -3,8 +3,8 @@
 
     <div class="section__content">
     <ul class="tabs__list tabs__list--table">
-    <a href="{{ url('treatment-outcomes?treatmentOutcomeTabs=all_cases') }}">
-            <li class="tabs__item {{ request('treatmentOutcomeTabs') == 'all_cases' ? 'tabs__item--current' : ''}}">All cases</li>
+    <a href="{{ url('treatment-outcomes') }}">
+    <li class="tabs__item {{ request('status') == '' ? 'tabs__item--current' : ''}}">All Cases</li>
         </a>
         <a href="{{ url('treatment-outcomes?status=Referred to Regional Chair') }}">
             <li class="tabs__item {{ request('status') == 'Referred to Regional Chair' ? 'tabs__item--current' : ''}}">Referred cases</li>
