@@ -94,14 +94,14 @@ class EnrollmentsController extends Controller
         $treatment_history = ! isset($tbMacForm->enrollmentForm->treatment_history) ? '' : $tbMacForm->enrollmentForm->treatment_history;
         $registration_group = ! isset($tbMacForm->enrollmentForm->registration_group) ? '' : $tbMacForm->enrollmentForm->registration_group;
         $risk_factor = ! isset($tbMacForm->enrollmentForm->risk_factor) ? '' : $tbMacForm->enrollmentForm->risk_factor;
-        $ct_scan_date = ! isset($tbMacForm->laboratoryResult->ct_scan_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->ct_scan_date->format('m-d-Y') ?? null;
-        $ct_scan_result = $tbMacForm->laboratoryResult->ct_scan_result ?? null;
-        $ultra_sound_date = ! isset($tbMacForm->laboratoryResult->ultra_sound_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->ultra_sound_date->format('m-d-Y') ?? null;
-        $ultra_sound_result = $tbMacForm->laboratoryResult->ultra_sound_result ?? null;
-        $histhopathological_date = ! isset($tbMacForm->laboratoryResult->histhopathological_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->histhopathological_date->format('m-d-Y') ?? null;
-        $histhopathological_result = $tbMacForm->laboratoryResult->histhopathological_result ?? null;
-        $cxr_date = ! isset($tbMacForm->laboratoryResult->cxr_date) ? '' : $tbMacForm->caseManagementLaboratoryResult->cxr_date->format('m-d-Y');
-        $cxr_result = $tbMacForm->laboratoryResult->cxr_result ?? null;
+        $ct_scan_date = ! isset($tbMacForm->laboratoryResults->ct_scan_date) ? '' : $tbMacForm->laboratoryResults->ct_scan_date->format('m-d-Y') ?? null;
+        $ct_scan_result = $tbMacForm->laboratoryResults->ct_scan_result ?? null;
+        $ultra_sound_date = ! isset($tbMacForm->laboratoryResults->ultrasound_date) ? '' : $tbMacForm->laboratoryResults->ultrasound_date->format('m-d-Y') ?? null;
+        $ultra_sound_result = $tbMacForm->laboratoryResults->ultrasound_result ?? null;
+        $histhopathological_date = ! isset($tbMacForm->laboratoryResults->histhopathological_date) ? '' : $tbMacForm->laboratoryResults->histhopathological_date->format('m-d-Y') ?? null;
+        $histhopathological_result = $tbMacForm->laboratoryResults->histopathological_result ?? null;
+        $cxr_date = ! isset($tbMacForm->laboratoryResults->cxr_date) ? '' : $tbMacForm->laboratoryResults->cxr_date->format('m-d-Y');
+        $cxr_result = $tbMacForm->laboratoryResults->cxr_result ?? null;
         $remarks = $tbMacForm->laboratoryResults->remarks ?? null;
         $bacteriological_results = $tbBacteriologicalResults->map(function ($item) {
             return [
