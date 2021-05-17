@@ -153,7 +153,7 @@ class EnrollmentRecommendationsController extends Controller
         $tbMacForm1 = TBMacForm::find($tbMacForm->id);
         if (! isset($request['status'])) {
             $request['form_id'] = $tbMacForm->id;
-            $request['status'] = 0;
+            $request['status'] = 'Referred back to regional chair';
             $request['submitted_by'] = auth()->user()->id;
             $request['role_id'] = auth()->user()->role_id;
             $request['recommendation'] = $request['remarks'];
