@@ -316,7 +316,7 @@
               <ul class="form__gallery">
                 @foreach($tbMacForm->attachments as $key => $attachment)
                   <li class="form__gallery-item">
-                    <a class="form__gallery-link" href="{{ url('enrollments/'.$tbMacForm->id.'/'.$attachment->file_name.'/download') }}">
+                    <a class="form__gallery-link" href="{{ url('enrollments/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment') }}" target="__blank">
                     <img class="image" src="{{ url('enrollments/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment') }}" alt="Placeholder" />
                       <p class="form__gallery-text">{{ $attachment->file_name }}</p>
                   </a>
