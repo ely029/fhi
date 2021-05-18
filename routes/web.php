@@ -85,5 +85,4 @@ Route::group(['middleware' => 'auth'], static function () {
     Route::get('/treatment-outcomes/{tbMacForm}/{fileName}/attachment', [TreatmentOutcomeAttachmentsController::class,'showAttachment']);
     Route::get('/treatment-outcomes/{tbMacForm}/{fileName}/download', [TreatmentOutcomeAttachmentsController::class,'downloadAttachment']);
     Route::post('/treatment-outcomes/{tbMacForm}/recommendation', [TreatmentOutcomeRecommendationController::class,'store']);
-    Route::get('/treatment/view/{presentationNumber}/{fileName}', [TreatmentOutcomesController::class, 'viewAttachment']);
 });
