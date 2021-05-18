@@ -33,7 +33,7 @@
                 </div>
             <div class="modal__button">
                 <button class="button" type="submit">Submit</button>
-                <a href="{{ url('/treatment-outcomes/resubmit/'.$tbMacForm->id)}}"class="button hide--button">Submit</a>
+                <a href="{{ url('/case-management/resubmit/'.$tbMacForm->id)}}"class="button hide--button">Submit</a>
             </div>
         </form>
       </div>

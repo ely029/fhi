@@ -2,7 +2,7 @@
     <h2 class="section__heading">Patient Information</h2>
     <div class="grid grid--two form-step-1">
       <div class="form__content form-group">
-          <input class="form__input" id="tb-case-number" type="number" min="0" required placeholder="TB Case number" name="tb_case_number" value="{{ empty($tbMacForm->treatmentOutcomeForm->tb_case_number) ? '' $tbMacForm->treatmentOutcomeForm->tb_case_number }}"/>
+          <input class="form__input" id="tb-case-number" type="number" min="0" required placeholder="TB Case number" name="tb_case_number" value="{{ empty($tbMacForm->treatmentOutcomeForm->tb_case_number) ? '' : $tbMacForm->treatmentOutcomeForm->tb_case_number }}"/>
           <div class="help-block with-errors"></div>
           <label class="form__label" for="">Case number</label>
         </div>
