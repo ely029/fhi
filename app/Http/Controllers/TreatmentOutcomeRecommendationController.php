@@ -17,6 +17,11 @@ class TreatmentOutcomeRecommendationController extends Controller
         $request['submitted_by'] = auth()->user()->id;
         $request['role_id'] = auth()->user()->role_id;
 
+        if (auth()->user()->role_id === 5) {
+            unset($request['status']);
+            $request['status'] = $request['recommendation_status'];
+          }
+
         $tbMacForm->recommendations()->create($request);
         return redirect('treatment-outcomes')->with([
             'recommendation' => 'Recommendation successfully sent',

@@ -27,6 +27,7 @@ $('.hide--button').hide();
             }
 
             $("#treatment_outcome_modal").find('input[name="status"]').val('Referred to Regional Chair');
+            $("#modal-form").find('input[name="recommendation_status"]').val(action);
             return;
         }
         if(action == 'For approval'){
