@@ -20,7 +20,7 @@ class TreatmentOutcomeRecommendationController extends Controller
         if (auth()->user()->role_id === 5) {
             unset($request['status']);
             $request['status'] = $request['recommendation_status'];
-          }
+        }
 
         $tbMacForm->recommendations()->create($request);
         return redirect('treatment-outcomes')->with([

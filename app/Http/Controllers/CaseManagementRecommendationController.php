@@ -18,8 +18,8 @@ class CaseManagementRecommendationController extends Controller
         $request['role_id'] = auth()->user()->role_id;
 
         if (auth()->user()->role_id === 5) {
-          unset($request['status']);
-          $request['status'] = $request['recommendation_status'];
+            unset($request['status']);
+            $request['status'] = $request['recommendation_status'];
         }
 
         $tbMacForm->recommendations()->create($request);
