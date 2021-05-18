@@ -16,12 +16,11 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $label
  * @property string $latest_comparative_cxr_reading
  * @property string $cxr_result
- * @property \Illuminate\Support\Carbon $ct_scan_date
- * @property string $ct_scan_result
- * @property \Illuminate\Support\Carbon $ultra_sound_date
- * @property \Illuminate\Support\Carbon $histhopathological_date
- * @property string $histhopathological_result
- * @property string $remarks
+ * @property \Illuminate\Support\Carbon|null $ct_scan_date
+ * @property string|null $ct_scan_result
+ * @property \Illuminate\Support\Carbon|null $ultra_sound_date
+ * @property \Illuminate\Support\Carbon|null $histhopathological_date
+ * @property string|null $histhopathological_result
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null $ultra_sound_result
@@ -39,7 +38,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementLaboratoryResults whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementLaboratoryResults whereLabel($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementLaboratoryResults whereLatestComparativeCxrReading($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementLaboratoryResults whereRemarks($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementLaboratoryResults whereUltraSoundDate($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementLaboratoryResults whereUltraSoundResult($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementLaboratoryResults whereUpdatedAt($value)

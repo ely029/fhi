@@ -24,12 +24,17 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string $current_drug_susceptibility
- * @property string $itr_drugs
- * @property string $suggested_regimen_notes
+ * @property string|null $itr_drugs
+ * @property string|null $suggested_regimen_notes
+ * @property string|null $latest_comparative_cxr_reading
+ * @property string|null $remarks
+ * @property string|null $case_number
+ * @property string|null $others
  * @method static \Database\Factories\CaseManagementRegimentFormFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm query()
+ * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm whereCaseNumber($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm whereCurrentDrugSusceptibility($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm whereCurrentRegiment($value)
@@ -39,8 +44,11 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm whereIfForEmpiricTreatment($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm whereItrDrugs($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm whereLatestComparativeCxrReading($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm whereMonthOfTreatment($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm whereOthers($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm whereReasonCaseManagementPresentation($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm whereRemarks($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm whereSuggestedRegimen($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm whereSuggestedRegimenNotes($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementRegimentForm whereSuggestedWeight($value)

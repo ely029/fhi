@@ -19,6 +19,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Role $roles
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\TBMacForm[] $tbMacForm
+ * @property-read int|null $tb_mac_form_count
  * @property-read \App\Models\TBMacForm $tbMacForms
  * @property-read \App\Models\User $users
  * @method static \Illuminate\Database\Eloquent\Builder|Recommendation newModelQuery()

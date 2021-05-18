@@ -25,6 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $diag_and_lab_findings
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $itr_drugs
  * @method static \Database\Factories\EnrollmentRegimentFormFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|EnrollmentRegimentForm newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|EnrollmentRegimentForm newQuery()
@@ -36,6 +37,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|EnrollmentRegimentForm whereDrugSusceptibility($value)
  * @method static \Illuminate\Database\Eloquent\Builder|EnrollmentRegimentForm whereFormId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|EnrollmentRegimentForm whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EnrollmentRegimentForm whereItrDrugs($value)
  * @method static \Illuminate\Database\Eloquent\Builder|EnrollmentRegimentForm whereRegimenNotes($value)
  * @method static \Illuminate\Database\Eloquent\Builder|EnrollmentRegimentForm whereRegistrationGroup($value)
  * @method static \Illuminate\Database\Eloquent\Builder|EnrollmentRegimentForm whereRiskFactor($value)

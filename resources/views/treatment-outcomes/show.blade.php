@@ -137,7 +137,7 @@
                 @endif
 
                  {{-- National TB Mac --}}
-                 @if((auth()->user()->role_id == 7 || auth()->user()->role_id == 8) && request('from_tab') == 'Referred to National' || request('from_tab') == 'Referred to National Chair')
+                 @if(auth()->user()->role_id == 8) && request('from_tab') == 'Referred to National' || request('from_tab') == 'Referred to National Chair')
                  <div class="grid grid--action-case-management">
                     <div class="form__content">
                       <label class="form__label" for="">Action</label>
