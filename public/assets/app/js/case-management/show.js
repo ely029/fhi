@@ -71,6 +71,7 @@ $('.hide--button').hide();
 
     $(".create-recommendation").click(function(){
         // $("#ntbmac-modal").modal('show');
+        $('#refer-to-regional').modal('show');
         $("#modal-text").text('Create recommendation');
         
         if($(this).data('role') == 7){

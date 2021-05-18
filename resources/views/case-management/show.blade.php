@@ -18,27 +18,7 @@
 
         @include('partials.alerts')
 
-        <div class="modal js-modal" id="refer-to-regional" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal__background js-modal-background"></div>
-            <div class="modal__container">
-              <div class="modal__box">
-                <h2 class="modal__title" id="modal-title"></h2>
-                <p class="modal__text" id="modal-text"></p>
-                <form class="form" id="modal-form" method="POST" action="{{ url('case-management/'.$tbMacForm->id.'/recommendation') }}">
-                    @csrf
-                   <input type="hidden" name="status"/>
-                   <div class="form__content">
-                       <textarea name="recommendation" required class="form__input form__input--message" placeholder="Enter remarks"></textarea><label class="form__label" for="">Remarks</label>
-                        </div>
-                   <div class="modal__button">
-                       <button class="button" type="submit">Submit</button>
-                       <a href="{{ url('/case-management/resubmit/'.$tbMacForm->id)}}"class="button hide--button">Submit</a>
-                    </div>
-                </form>
-              </div>
-            </div>
-        </div>
-
+        
 
         <ul class="tabs__list tabs__list--sub">
           <li class="tabs__item-sub tabs__item-sub--current">Case management</li>
@@ -137,7 +117,7 @@
                     <div class="grid grid--action-case-management">
                         <div class="form__content">
                             <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
-                            <option value="For approval">Approve</option>
+                            <option value="For approval">For Approval</option>
                             <option value="Other suggestions">Other suggestions</option>
                             <option value="Need Further Details">Need further details</option>
                             <option value="Referred to National">Refer to N-TB MAC</option>
@@ -422,7 +402,7 @@
                 <ul class="form__gallery">
                 @foreach($tbMacForm->caseManagementAttachments as $key => $attachment)
                   <li class="form__gallery-item">
-                    <a class="form__gallery-link" href="{{ url('case-management/'.$tbMacForm->id.'/'.$attachment->file_name.'/download') }}">
+                  <a class="form__gallery-link" href="{{ url('case-management/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment') }}" target="__blank">
                     <img class="image" src="{{ url('case-management/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment') }}" alt="Placeholder" />
                       <p class="form__gallery-text">{{ $attachment->file_name }}</p>
                   </a>

@@ -130,9 +130,9 @@ class EnrollmentResubmitController extends Controller
         $tbMacForm->enrollmentForm->update($request);
         $tbMacForm->laboratoryResults->update($request);
 
-        // if ($request['attachments-to-remove']) {
-        //     $this->removeAttachments($tbMacForm, $request);
-        // }
+        if ($request['attachments-to-remove']) {
+            $this->removeAttachments($tbMacForm, $request);
+        }
 
         if (isset($request['attachments'])) {
             foreach ($request['attachments'] as $key => $file) {
@@ -167,14 +167,14 @@ class EnrollmentResubmitController extends Controller
         }
     }
 
-    // private function removeAttachments($tbMacForm, $request)
-    // {
-    //     foreach (json_decode($request['attachments-to-remove']) as $toRemove) {
-    //         $path = 'private/enrollments/'.$tbMacForm->presentation_number.'/'.$toRemove;
-    //         if (Storage::exists($path)) {
-    //             Storage::delete($path);
-    //         }
-    //         $tbMacForm->attachments()->where('file_name', $toRemove)->delete();
-    //     }
-    // }
+    private function removeAttachments($tbMacForm, $request)
+    {
+        foreach (json_decode($request['attachments-to-remove']) as $toRemove) {
+            $path = 'private/enrollments/'.$tbMacForm->presentation_number.'/'.$toRemove;
+            if (Storage::exists($path)) {
+                Storage::delete($path);
+            }
+            $tbMacForm->attachments()->where('file_name', $toRemove)->delete();
+        }
+    }
 }

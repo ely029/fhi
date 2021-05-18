@@ -4,10 +4,10 @@
     <div class="section__content">
     <ul class="tabs__list tabs__list--table">
         <a href="{{ url('treatment-outcomes?status=New Case') }}">
-            <li class="tabs__item {{ request('status') == 'New Case' ? 'tabs__item--current' : ''}}">Pending</li>
+            <li class="tabs__item {{ request('status') == 'New Case' ? 'tabs__item--current' : ''}}">Pending({{ $pending->count() }})</li>
         </a>
         <a href="{{ url('treatment-outcomes') }}">
-            <li class="tabs__item {{ request('status') == '' ? 'tabs__item--current' : ''}}">All cases</li>
+            <li class="tabs__item {{ request('status') == '' ? 'tabs__item--current' : ''}}">All cases({{ $cases->count() }})</li>
         </a>
     </ul>
       <div class="tabs__details tabs__details--active">

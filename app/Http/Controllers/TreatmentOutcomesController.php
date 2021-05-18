@@ -18,8 +18,21 @@ class TreatmentOutcomesController extends Controller
             ->with(['patient','treatmentOutcomeForm'])
             ->where($this->getDynamicQuery()['condition'], $this->getDynamicQuery()['value'])
             ->orderByDesc('created_at')->get();
-        return view('treatment-outcomes.index')
-            ->with('cases', $cases);
+
+        switch (auth()->user()->role_id) {
+            case 3:
+                return $this->getHealthCareWorkerIndex($cases);
+            case 4:
+                return $this->getRegionalSecretariatIndex($cases);
+            case 5:
+                return $this->getRegionalTBMacIndex($cases);
+            case 6:
+                return $this->getRTBMacChairIndex($cases);
+            case 7:
+                return $this->getNationalTBMacIndex($cases);
+            case 8:
+                return $this->getNTBMacChairIndex($cases);
+        }
     }
     public function create()
     {
@@ -124,11 +137,128 @@ class TreatmentOutcomesController extends Controller
         }
     }
 
+    private function getHealthCareWorkerIndex($cases)
+    {
+        $forApproval = $cases->filter(function ($item) {
+            return $item->status === 'For approval';
+        });
+        $otherSuggestion = $cases->filter(function ($item) {
+            return $item->status === 'Other suggestions';
+        });
+        $needFurtherDetails = $cases->filter(function ($item) {
+            return $item->status === 'Need Further Details';
+        });
+        $notForReferral = $cases->filter(function ($item) {
+            return $item->status === 'Not for Referral';
+        });
+        return view('treatment-outcomes.index')
+            ->with('forApproval', $forApproval)
+            ->with('cases', $cases)
+            ->with('needFurtherDetails', $needFurtherDetails)
+            ->with('otherSuggestion', $otherSuggestion)
+            ->with('notForReferral', $notForReferral);
+    }
+
     private function getDynamicQuery()
     {
         return [
             'condition' => getDynamicQuery()[auth()->user()->role_id]['condition'],
             'value' => getDynamicQuery()[auth()->user()->role_id]['value'],
         ];
+    }
+
+    private function getRegionalSecretariatIndex($cases)
+    {
+        $pending = $cases->filter(function ($item) {
+            return $item->status === 'New Case';
+        });
+
+        return view('treatment-outcomes.index')
+            ->with('pending', $pending)
+            ->with('cases', $cases);
+    }
+
+    private function getRegionalTBMacIndex($cases)
+    {
+        $pending = $cases->filter(function ($item) {
+            return $item->status === 'Referred to Regional';
+        });
+
+        $withRecommendations = $cases->filter(function ($item) {
+            return in_array($item->status, ['For approval','Other suggestions','Need Further Details','Referred to National']);
+        });
+
+        $completed = $cases->filter(function ($item) {
+            return $item->status === 'Referred to Regional Chair';
+        });
+
+        return view('treatment-outcomes.index')
+            ->with('pending', $pending)
+            ->with('withRecommendations', $withRecommendations)
+            ->with('completed', $completed)
+            ->with('cases', $cases);
+    }
+
+    private function getRTBMacChairIndex($cases)
+    {
+        $pending = $cases->filter(function ($item) {
+            return $item->status === 'Referred back to regional chair';
+        });
+
+        $referredCases = $cases->filter(function ($item) {
+            return $item->status === 'Referred to Regional Chair';
+        });
+
+        $completed = $cases->filter(function ($item) {
+            return in_array($item->status, ['For approval','Other suggestions','Need Further Details']);
+        });
+
+        return view('treatment-outcomes.index')
+            ->with('pending', $pending)
+            ->with('referredCases', $referredCases)
+            ->with('completed', $completed)
+            ->with('cases', $cases);
+    }
+
+    private function getNationalTBMacIndex($cases)
+    {
+        $referredCases = $cases->filter(function ($item) {
+            return $item->status === 'Referred to National';
+        });
+
+        $allCases = $cases->filter(function ($item) {
+            return in_array($item->status, ['For approval','Other suggestions','Need Further Details','Referred to Regional Chair']);
+        });
+
+        $completed = $cases->filter(function ($item) {
+            return in_array($item->status, ['Referred to National Chair']);
+        });
+
+        return view('treatment-outcomes.index')
+            ->with('referredCases', $referredCases)
+            ->with('completed', $completed)
+            ->with('cases', $cases)
+            ->with('allCases', $allCases);
+    }
+
+    private function getNTBMacChairIndex($cases)
+    {
+        $referredCases = $cases->filter(function ($item) {
+            return $item->status === 'Referred to National Chair';
+        });
+
+        $allCases = $cases->filter(function ($item) {
+            return in_array($item->status, ['For approval','Other suggestions','Need Further Details','Referred to Regional Chair']);
+        });
+
+        $completed = $cases->filter(function ($item) {
+            return in_array($item->status, ['Referred back to regional chair']);
+        });
+
+        return view('treatment-outcomes.index')
+            ->with('referredCases', $referredCases)
+            ->with('completed', $completed)
+            ->with('cases', $cases)
+            ->with('allCases', $allCases);
     }
 }

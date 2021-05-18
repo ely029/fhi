@@ -2,7 +2,7 @@
     <a class="button button--create" href="{{url('case-management/create') }}">Create new case</a>
     <div class="section__content">
     <ul class="tabs__list tabs__list--table">
-        <li class="tabs__item tabs__item--current">All Cases ({{$allCases->count()}})</li>
+        <li class="tabs__item tabs__item--current">All cases ({{$allCases->count()}})</li>
         <li class="tabs__item">For approval ({{$forApproval->count()}})</li>
         <li class="tabs__item">Other suggestions ({{$otherSuggestion->count()}})</li>
         <li class="tabs__item">Need further details ({{$needFurtherDetails->count()}})</li>
