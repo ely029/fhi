@@ -8,6 +8,7 @@ use App\Http\Requests\TreatmentOutcomes\StoreRequest;
 use App\Models\Filters\TBMacFormFilters;
 use App\Models\Patient;
 use App\Models\TBMacForm;
+use PhpOffice\PhpWord\IOFactory;
 
 class TreatmentOutcomesController extends Controller
 {
@@ -260,5 +261,11 @@ class TreatmentOutcomesController extends Controller
             ->with('completed', $completed)
             ->with('cases', $cases)
             ->with('allCases', $allCases);
+    }
+
+    public function viewAttachment($presentationNumber, $fileName)
+    {
+        $path = 'private/treatment-outcomes/'.$presentationNumber.'/'.$fileName;
+        return 0;
     }
 }
