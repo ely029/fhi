@@ -17,7 +17,27 @@
     <div class="section__container">
 
         @include('partials.alerts')
-        @include('partials.modal')
+
+        <div class="modal" id="treatment_outcome_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal__background" data-dismiss="modal"></div>
+    <div class="modal__container">
+      <div class="modal__box">
+        <h2 class="modal__title" id="modal-title"></h2>
+        <p class="modal__text" id="modal-text"></p>
+        <form class="form" id="modal-form" method="POST" action="{{ url('treatment-outcomes/'.$tbMacForm->id.'/recommendation') }}">
+            @csrf
+            <input type="hidden" name="status"/>
+            <div class="form__content">
+                <textarea name="recommendation" required class="form__input form__input--message" placeholder="Enter remarks"></textarea><label class="form__label" for="">Remarks</label>
+                </div>
+            <div class="modal__button">
+                <button class="button" type="submit">Submit</button>
+                <a href="{{ url('/treatment-outcomes/resubmit/'.$tbMacForm->id)}}"class="button hide--button">Submit</a>
+            </div>
+        </form>
+      </div>
+    </div>
+</div>
 
         
 
@@ -137,7 +157,7 @@
                 @endif
 
                  {{-- National TB Mac --}}
-                 @if(auth()->user()->role_id == 8) && request('from_tab') == 'Referred to National' || request('from_tab') == 'Referred to National Chair')
+                 @if((auth()->user()->role_id == 7 || auth()->user()->role_id == 8) && request('from_tab') == 'Referred to National' || request('from_tab') == 'Referred to National Chair')
                  <div class="grid grid--action-case-management">
                     <div class="form__content">
                       <label class="form__label" for="">Action</label>
