@@ -3,17 +3,17 @@
 
     <div class="section__content">
     <ul class="tabs__list tabs__list--table">
-    <a href="{{ url('treatment-outcomes') }}">
-            <li class="tabs__item {{ request('status') == '' ? 'tabs__item--current' : ''}}">All cases</li>
-        </a>
-        <a href="{{ url('treatment-outcomes?status=Referred to Regional') }}">
-            <li class="tabs__item {{ request('status') == 'Referred to Regional' ? 'tabs__item--current' : ''}}">Pending</li>
+    <a href="{{ url('treatment-outcomes?status=Referred to Regional') }}">
+            <li class="tabs__item {{ request('status') == 'Referred to Regional' ? 'tabs__item--current' : ''}}">Pending({{ $pending->count() }})</li>
         </a>
         <a href="{{ url('treatment-outcomes?treatmentOutcomeTabs=with_recommendations') }}">
-            <li class="tabs__item {{ request('treatmentOutcomeTabs') == 'with_recommendations' ? 'tabs__item--current' : ''}}">With recommendations</li>
+            <li class="tabs__item {{ request('treatmentOutcomeTabs') == 'with_recommendations' ? 'tabs__item--current' : ''}}">With recommendations({{ $withRecommendations->count() }})</li>
         </a>
         <a href="{{ url('treatment-outcomes?status=Referred to Regional Chair') }}">
-            <li class="tabs__item {{ request('status') == 'Referred to Regional Chair' ? 'tabs__item--current' : ''}}">Completed</li>
+            <li class="tabs__item {{ request('status') == 'Referred to Regional Chair' ? 'tabs__item--current' : ''}}">Completed({{ $completed->count()}})</li>
+        </a>
+        <a href="{{ url('treatment-outcomes?treatmentOutcomeTabs=all_cases') }}">
+            <li class="tabs__item {{ request('treatmentOutcomeTabs') == 'all_cases' ? 'tabs__item--current' : ''}}">All cases({{ $cases->count() }})</li>
         </a>
     </ul>
       <div class="tabs__details tabs__details--active">

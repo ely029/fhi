@@ -28,13 +28,13 @@
             @if(auth()->user()->role_id == 4)
             <a class="sidebar__link" href="{{ url('treatment-outcomes?status=New Case') }}">
             @elseif(auth()->user()->role_id == 5)
-            <a class="sidebar__link" href="{{ url('treatment-outcomes?treatmentOutcomeTabs=all_cases') }}">
+            <a class="sidebar__link" href="{{ url('treatment-outcomes?status=Referred to Regional') }}">
             @elseif(auth()->user()->role_id == 6)
-            <a class="sidebar__link" href="{{ url('treatment-outcomes') }}">
+            <a class="sidebar__link" href="{{ url('treatment-outcomes?status=Referred to Regional Chair') }}">
             @elseif(auth()->user()->role_id == 7)
-            <a class="sidebar__link" href="{{ url('treatment-outcomes?treatmentOutcomeTabs=all_cases_ntb') }}">
+            <a class="sidebar__link" href="{{ url('treatment-outcomes?status=Referred to National') }}">
             @elseif(auth()->user()->role_id == 8)
-            <a class="sidebar__link" href="{{ url('treatment-outcomes?treatmentOutcomeTabs=all_cases_ntb_chair') }}">
+            <a class="sidebar__link" href="{{ url('treatment-outcomes?status=Referred to National Chair') }}">
               @else
               <a class="sidebar__link" href="{{ url('treatment-outcomes') }}">
             @endif
