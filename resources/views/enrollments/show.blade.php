@@ -357,7 +357,7 @@
                   <div class="form__content"><span class="form__text form__text--green">New Enrollment</span><label class="form__label form__label--green">Action</label></div>
                 </div>
                 <span class="form__text">
-                  {{ $tbMacForm->enrollmentForm->remarks }}
+                  {{ $tbMacForm->laboratoryResults->remarks }}
                 </span>
               </div>
             </div>
