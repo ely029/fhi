@@ -24,9 +24,10 @@
       <div class="modal__box">
         <h2 class="modal__title" id="modal-title"></h2>
         <p class="modal__text" id="modal-text"></p>
-        <form class="form" id="modal-form" method="POST" action="{{ url('treatment-outcomes/'.$tbMacForm->id.'/recommendation') }}">
+        <form class="form" id="modal-form" method="POST" action="{{ url('case-management/'.$tbMacForm->id.'/recommendation') }}">
             @csrf
             <input type="hidden" name="status"/>
+            <input type="hidden" name="recommendation_status"/>
             <div class="form__content">
                 <textarea name="recommendation" required class="form__input form__input--message" placeholder="Enter remarks"></textarea><label class="form__label" for="">Remarks</label>
                 </div>
