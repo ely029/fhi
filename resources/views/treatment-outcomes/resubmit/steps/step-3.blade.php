@@ -127,6 +127,6 @@
   </div>
   <div class="form__button form__button--space form__button--pagination step-3">
       <button class="button button--back" type="button">Back</button>
-      <input class="button button--next" type="submit" value="Resubmit treatment outcome">
+      <input class="button button--next" value="Resubmit treatment outcome">
     </div>
 </div>

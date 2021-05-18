@@ -97,6 +97,6 @@
     <div class="form__content form-group">
     <textarea class="form__input form__input--message" required name="remarks" placeholder="Remarks">{{ $tbMacForm->caseManagementForm->remarks}}</textarea><label class="form__label" for="">Remarks</label></div>
     </div>
-    <div class="form__button form__button--space form__button--pagination"><button class="button button--back" type="button">Back</button><button class="button button--next" type="submit">Submit</button></div>
+    <div class="form__button form__button--space form__button--pagination"><button class="button button--back" type="button">Back</button><button class="button button--next" type="button">Submit</button></div>
 </div>
 </div>
