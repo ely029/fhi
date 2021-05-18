@@ -385,7 +385,7 @@ function caseManagementTabs()
 function treatmentOutcomeTabs()
 {
     return [
-        'all_cases' => ['New Case', 'Referred to Regional', 'Referred to Regional Chair', 'Referred to National', 'Referred to National Chair', 'For approval', 'Not for Approval', 'Referred back to Regional Chair', 'Not for Referral'],
+        'all_cases' => ['New Case', 'Referred to Regional', 'Referred to Regional Chair', 'Referred to National', 'Referred to National Chair', 'For approval', 'Not for Approval', 'Referred back to Regional Chair', 'Not for Referral', 'Other suggestions', 'Need further details'],
         'with_recommendations' => ['For approval','Other suggestions','Need Further Details','Referred to National'],
         'all_cases_ntb' => ['For approval','Other suggestions','Need Further Details','Referred to Regional Chair'],
         'all_cases_ntb_chair' => ['For approval','Other suggestions','Need Further Details','Referred to Regional Chair'],
