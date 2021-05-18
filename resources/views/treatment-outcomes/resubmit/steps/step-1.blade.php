@@ -64,7 +64,7 @@
       <div class="form__content form-group">
         <select class="form__input form__input--select" id="drugSusceptibility" disabled name="current_drug_susceptibility">
             @foreach(current_drug_susceptibility() as $drugs)
-            <option value="{{ $drugs }}" {{ empty($tbMacForm->treatmentOutcomeForm->current_drug_susceptibility) ? '' : $tbMacForm->treatmentOutcomeForm->current_drug_susceptibility == $drugs ? 'selected': ''}}>{{ $drugs }}</option>
+            <option value="{{ $drugs }}">{{ $drugs }}</option>
             @endforeach
         </select>
         <div class="triangle triangle--down"></div>
