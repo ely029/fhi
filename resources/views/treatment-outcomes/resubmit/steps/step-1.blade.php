@@ -57,7 +57,7 @@
     </div>
     <div class="grid grid--two form-step-1">
         <div class="form__content form-group">
-            <input class="form__input" id="date_started_treatment" type="date" disabled placeholder="Date started treatment" name="date_started_treatment" value="{{ $tbMacForm->treatmentOutcomeForm->date_started_treatment }}" />
+            <input class="form__input" id="date_started_treatment" type="date" disabled placeholder="Date started treatment" name="date_started_treatment" value="{{ empty($tbMacForm->treatmentOutcomeForm->date_started_treatment) ? '' : $tbMacForm->treatmentOutcomeForm->date_started_treatment }}" />
             <div class="help-block with-errors"></div>
             <label class="form__label" for="">Date started treatment</label>
         </div>
