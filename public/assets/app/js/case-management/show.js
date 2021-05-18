@@ -1,7 +1,7 @@
 jQuery( document ).ready(function( $ ) {
 $('.hide--button').hide();
     $('#recommendation-button').click(function(){
-        $('#refer-to-regional').modal('show');
+        $('#case_management_modal').modal('show');
         let action = $("#action-dropdown").val();
         if(action == 'Referred to Regional'){
             $("#modal-title").text('Refer To R-TB MAC');
@@ -66,12 +66,11 @@ $('.hide--button').hide();
             $("#modal-text").html("You are about to recommend this case for resolved. If you have additional remarks, enter them below.");
         }
 
-        $("#modal-form").find('input[name="status"]').val(action);
+        $("#case_management_modal").find('input[name="status"]').val(action);
     });
 
     $(".create-recommendation").click(function(){
         // $("#ntbmac-modal").modal('show');
-        $('#refer-to-regional').modal('show');
         $("#modal-text").text('Create recommendation');
         
         if($(this).data('role') == 7){
