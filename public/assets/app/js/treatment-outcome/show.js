@@ -70,8 +70,9 @@ $('.hide--button').hide();
 
     $(".create-recommendation").click(function(){
         // $("#ntbmac-modal").modal('show');
-        $('#refer-to-regional').modal('show');
-        $("#modal-text").text('Create recommendation');
+        $('#treatment_outcome_modal').modal('show');
+        $('.modal__text').hide();
+        $('.modal__title').text('Create Recommendation');
         
         if($(this).data('role') == 7){
             $("#modal-form").find('input[name="status"]').val('Referred to National Chair');

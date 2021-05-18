@@ -17,6 +17,7 @@
     <div class="section__container">
 
         @include('partials.alerts')
+        @include('partials.modal')
 
         
 
@@ -123,7 +124,7 @@
                     <div class="grid grid--action-case-management">
                         <div class="form__content">
                             <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
-                            <option value="For approval">Approve</option>
+                            <option value="For approval">For Approval</option>
                             <option value="Other suggestions">Other suggestions</option>
                             <option value="Need Further Details">Need further details</option>
                             <option value="Referred to National">Refer to N-TB MAC</option>

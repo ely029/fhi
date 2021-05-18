@@ -159,8 +159,8 @@ function current_drug_susceptibility()
 function resistance_pattern()
 {
     return [
-        'For Xpert MTB/RIF',
-        'For Xpert MTB/RIF ULTRA',
+        'Xpert MTB/RIF',
+        'Xpert MTB/RIF ULTRA',
         'Truenat',
     ];
 }
