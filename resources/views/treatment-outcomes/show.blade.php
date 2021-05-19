@@ -61,7 +61,7 @@
                         <label class="form__label" for="">Date started treatment</label></div>
                   </div>
 
-                  <div class="grid grid--two">
+                  <div class="grid grid--two grid--start">
                     <div class="form__content"><span class="form__text drug-susceptibility-label">{{ $tbMacForm->treatmentOutcomeForm->current_drug_susceptibility }}
                         </span>
                         <label class="form__label" for="">Current drug susceptibility</label>
