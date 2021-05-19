@@ -54,7 +54,7 @@
                       <label class="form__label" for="">Status</label>
                     </div>
                   <br />
-                  <div class="grid grid--three grid--start">
+                  <div class="grid grid--patient grid--start">
                     <div class="form__content">
                         <span class="form__text">{{ empty($tbMacForm->caseManagementForm->case_number) ? '' : $tbMacForm->caseManagementForm->case_number}}</span>
                         <label class="form__label" for="">TB case number</label></div>
