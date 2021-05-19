@@ -8,6 +8,9 @@ use App\Http\Requests\TreatmentOutcomes\StoreRequest;
 use App\Models\Filters\TBMacFormFilters;
 use App\Models\Patient;
 use App\Models\TBMacForm;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Response;
+use Storage;
 
 class TreatmentOutcomesController extends Controller
 {
@@ -270,5 +273,12 @@ class TreatmentOutcomesController extends Controller
             ->with('cases', $cases)
             ->with('allCases1', $allCases1)
             ->with('allCases', $allCases);
+    }
+
+    public function viewAttachment($presentationNumber, $fileName)
+    {
+        $path = 'storage/app/private/treatment-outcomes/'.$presentationNumber.'/'.$fileName;
+
+        return asset($path);
     }
 }
