@@ -49,7 +49,7 @@
         <div class="tabs__details-sub tabs__details-sub--active">
           <form class="form" action="">
             <div class="grid grid--two grid--start">
-              <div class="form--half">
+              <div class="form--full">
                 <div class="form__container">
                   <h2 class="section__heading">Patient {{ $tbMacForm->patient->code }}
                     <span class="form__text">
@@ -67,7 +67,7 @@
                     <div class="form__content">
                         <span class="form__text">{{  date('m-d-Y', strtotime($tbMacForm->treatmentOutcomeForm->date_started_treatment )) }}</span>
                         <label class="form__label" for="">Date started treatment</label></div>
-                    <div class="form__content"><span class="drug-susceptibility-label">{{ $tbMacForm->treatmentOutcomeForm->current_drug_susceptibility }}</span><span class="form__text">
+                    <div class="form__content"><span class="form__text drug-susceptibility-label">{{ $tbMacForm->treatmentOutcomeForm->current_drug_susceptibility }}
                         </span>
                         <label class="form__label" for="">Current drug susceptibility</label>
                     </div>
@@ -93,7 +93,7 @@
 
                 {{-- Health Care Worker --}}
                 @if(auth()->user()->role_id == 3 && $tbMacForm->status != 'Resolved' && in_array(request('from_tab'),['For approval','Other suggestions','Need Further Details','Not for Referral']))
-                    <div class="grid grid--action-case-management">
+                    <div class="grid grid--action">
                         <div class="form__content">
                             <select id="action-dropdown" class="form__input form__input--select">
                             <option value="Resolved">Resolved</option>
@@ -111,7 +111,7 @@
 
                 {{-- Regional Secretariat --}}
                 @if(auth()->user()->role_id == 4 && request('from_tab') == 'New Case')
-                    <div class="grid grid--action-case-management">
+                    <div class="grid grid--action">
                         <div class="form__content">
                             <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
                             <option value="Referred to Regional">Refer to R-TB MAC</option>
@@ -126,7 +126,7 @@
 
                 {{-- Regional TB Mac --}}
                 @if(auth()->user()->role_id == 5 && request('from_tab') == 'Referred to Regional')
-                  <div class="grid grid--action-case-management">
+                  <div class="grid grid--action">
                       <div class="form__content">
                           <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
                           <option value="Recommend for Approval">Recommend for approval</option>
@@ -142,7 +142,7 @@
 
                 {{-- Regional TB Mac Chair --}}
                 @if(auth()->user()->role_id == 6 && (request('from_tab') == 'Referred to Regional Chair' || request('from_tab') == 'Referred back to Regional Chair'))
-                    <div class="grid grid--action-case-management">
+                    <div class="grid grid--action">
                         <div class="form__content">
                             <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
                             <option value="For approval">For Approval</option>
@@ -159,7 +159,7 @@
 
                 {{-- National TB Mac Chair --}}
                  @if(auth()->user()->role_id == 7  && request('from_tab') == 'Referred to N-TB MAC')
-                 <div class="grid grid--action-case-management">
+                 <div class="grid grid--action">
                     <div class="form__content">
                       <label class="form__label" for="">Action</label>
                     </div>
@@ -169,7 +169,7 @@
 
                  {{-- National TB Mac Chair --}}
                  @if(auth()->user()->role_id == 8 && request('from_tab') == 'Referred to National Chair')
-                 <div class="grid grid--action-case-management">
+                 <div class="grid grid--action">
                     <div class="form__content">
                       <label class="form__label" for="">Action</label>
                     </div>

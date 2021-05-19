@@ -50,9 +50,9 @@
         <div class="tabs__details-sub tabs__details-sub--active">
           <form class="form" action="">
             <div class="grid grid--two grid--start">
-              <div class="form--half">
+              <div class="form--full">
                 <div class="form__container">
-                  <h2 class="section__heading">Patient {{ $tbMacForm->patient->code }}
+                  <h2 class="section__heading section__heading--full">Patient {{ $tbMacForm->patient->code }}
                     <span class="form__text">
                         Facility {{ $tbMacForm->patient->facility_code }} &nbsp;&nbsp;&nbsp; {{ $tbMacForm->patient->province }}</span>
                     </h2>
@@ -68,7 +68,7 @@
                     <div class="form__content">
                         <span class="form__text">{{ $tbMacForm->caseManagementForm ? $tbMacForm->caseManagementForm->month_of_treatment : ''}}</span>
                         <label class="form__label" for="">Month of treatment</label></div>
-                    <div class="form__content">{{ empty($tbMacForm->casemanagementForm->current_drug_susceptibility) ? '' : $tbMacForm->casemanagementForm->current_drug_susceptibility}}<span class="form__text">
+                    <div class="form__content"><span class="form__text">{{ empty($tbMacForm->casemanagementForm->current_drug_susceptibility) ? '' : $tbMacForm->casemanagementForm->current_drug_susceptibility}}
                         </span>
                         <label class="form__label" for="">Current drug susceptibility</label>
                     </div>
@@ -90,7 +90,7 @@
 
                 {{-- Hea;th Care Worker --}}
                 @if(auth()->user()->role_id == 3 && $tbMacForm->status == 'Not for Referral' || $tbMacForm->status == 'Need Further Details')
-                    <div class="grid grid--action-case-management">
+                    <div class="grid grid--action">
                         <div class="form__content">
                             <select id="action-dropdown" class="form__input form__input--select">
                             <option value="Resolved">Resolved</option>
@@ -106,7 +106,7 @@
 
                 {{-- Regional Secretariat --}}
                 @if(auth()->user()->role_id == 4 && request('from_tab') == 'pending')
-                    <div class="grid grid--action-case-management">
+                    <div class="grid grid--action">
                         <div class="form__content">
                             <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
                             <option value="Referred to Regional">Refer to R-TB MAC</option>
@@ -121,7 +121,7 @@
 
                 {{-- Regional TB Mac --}}
                 @if(auth()->user()->role_id == 5 && request('from_tab') == 'pending')
-                  <div class="grid grid--action-case-management">
+                  <div class="grid grid--action">
                       <div class="form__content">
                           <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
                           <option value="Recommend for Approval">Recommend for approval</option>
@@ -137,7 +137,7 @@
 
                 {{-- Regional TB Mac Chair --}}
                 @if(auth()->user()->role_id == 6 && (request('from_tab') == 'referred' || request('from_tab') == 'pending'))
-                    <div class="grid grid--action-case-management">
+                    <div class="grid grid--action">
                         <div class="form__content">
                             <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
                             <option value="For approval">For Approval</option>
@@ -154,7 +154,7 @@
 
                  {{-- National TB Mac --}}
                  @if((auth()->user()->role_id == 7 || auth()->user()->role_id == 8) && request('from_tab') == 'referred')
-                 <div class="grid grid--action-case-management">
+                 <div class="grid grid--action">
                     <div class="form__content">
                       <label class="form__label" for="">Action</label>
                     </div>
@@ -458,7 +458,7 @@
                 <img class="image image--user" src="{{ asset('assets\app\img\icon-user.png')}}" alt="user icon" />
                 <div class="form__container">
                   <div class="grid grid--two">
-                    <h2 class="section__heading section__heading--healthworker">{{ $tbMacForm->submittedBy->name }}<span class="form__label">Health Care Worker | [Region]</span></h2>
+                    <h2 class="section__heading section__heading--healthworker">{{ $tbMacForm->submittedBy->name }}<span class="form__label form__label--date">Health Care Worker | [Region]</span></h2>
                     <label class="form__label">{{ $tbMacForm->created_at->format('m-d-Y')}}</label>
                   </div>
                   <div class="form__container form__container--remarks form__container--actions">

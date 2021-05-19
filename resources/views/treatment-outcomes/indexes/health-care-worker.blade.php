@@ -71,7 +71,7 @@
         </thead>
         <tbody>
         @foreach($forApproval as $case)
-        <tr class="table__row js-view" data-href="{{url('/case-management/show/'.$case->id)}}">
+        <tr class="table__row js-view" data-href="{{url('/treatment-outcomes/'.$case->id)}}">
             <td class="table__details">{{ $case->presentation_number }}</td>
             <td class="table__details">{{ empty($case->patient->initials) ? '' : $case->patient->initials}}</td>
             <td class="table__details">{{ empty($case->patient->age) ? '' : $case->patient->age}}</td>
@@ -99,7 +99,7 @@
         </thead>
         <tbody>
         @foreach($otherSuggestion as $case)
-        <tr class="table__row js-view" data-href="{{url('/case-management/show/'.$case->id)}}">
+        <tr class="table__row js-view" data-href="{{url('/treatment-outcomes/'.$case->id)}}">
             <td class="table__details">{{ $case->presentation_number }}</td>
             <td class="table__details">{{ empty($case->patient->initials) ? '' : $case->patient->initials}}</td>
             <td class="table__details">{{ empty($case->patient->age) ? '' : $case->patient->age}}</td>
@@ -127,7 +127,7 @@
         </thead>
         <tbody>
         @foreach($needFurtherDetails as $case)
-        <tr class="table__row js-view" data-href="{{url('/case-management/show/'.$case->id)}}">
+        <tr class="table__row js-view" data-href="{{url('/treatment-outcomes/'.$case->id.'?from_tab=Need Further Details')}}">
             <td class="table__details">{{ $case->presentation_number }}</td>
             <td class="table__details">{{ empty($case->patient->initials) ? '' : $case->patient->initials}}</td>
             <td class="table__details">{{ empty($case->patient->age) ? '' : $case->patient->age}}</td>
@@ -155,7 +155,7 @@
         </thead>
         <tbody>
         @foreach($notForReferral as $case)
-        <tr class="table__row js-view" data-href="{{url('/case-management/show/'.$case->id)}}">
+        <tr class="table__row js-view" data-href="{{url('/treatment-outcomes/'.$case->id.'?from_tab=Not for Referral')}}">
             <td class="table__details">{{ $case->presentation_number }}</td>
             <td class="table__details">{{ empty($case->patient->initials) ? '' : $case->patient->initials}}</td>
             <td class="table__details">{{ empty($case->patient->age) ? '' : $case->patient->age}}</td>

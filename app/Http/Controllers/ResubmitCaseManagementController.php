@@ -23,11 +23,10 @@ class ResubmitCaseManagementController extends Controller
         $request = request()->all();
         unset($request['_token']);
         $request['first_name'] = '';
-        $request['last_name'] = '';
         $caseManagementBactResult = new CaseManagementBacteriologicalResults();
         $request['status'] = 'New Case';
         $tbMacForm->patient->update($request);
-        $tbMacForm->update($request);
+        // $tbMacForm->update($request);
         $tbMacForm->caseManagementForm->update($request);
         //Screening 2
         if ($tbMacForm->screenTwo()->exists()) {
