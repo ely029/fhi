@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TreatmentOutcomes\StoreRequest;
-use App\Models\Filters\TBMacFormFilters;
 use App\Models\Patient;
 use App\Models\TBMacForm;
 
@@ -242,7 +241,6 @@ class TreatmentOutcomesController extends Controller
         return view('treatment-outcomes.index')
             ->with('referredCases', $referredCases)
             ->with('completed', $completed)
-            ->with('cases', $cases)
             ->with('allCases', $allCases);
     }
 
@@ -263,7 +261,6 @@ class TreatmentOutcomesController extends Controller
         return view('treatment-outcomes.index')
             ->with('referredCases', $referredCases)
             ->with('completed', $completed)
-            ->with('cases', $cases)
             ->with('allCases', $allCases);
     }
 }
