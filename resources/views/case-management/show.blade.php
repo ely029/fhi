@@ -40,14 +40,7 @@
     </div>
 </div>
 
-
         
-
-        <ul class="tabs__list tabs__list--sub">
-          <li class="tabs__item-sub tabs__item-sub--current">Case management</li>
-          {{-- <li class="tabs__item-sub">Enrollment</li> --}}
-        </ul>
-        <div class="tabs__details-sub tabs__details-sub--active">
           <form class="form" action="">
             <div class="grid grid--two grid--start">
               <div class="form--full">
@@ -61,7 +54,7 @@
                       <label class="form__label" for="">Status</label>
                     </div>
                   <br />
-                  <div class="grid grid--three">
+                  <div class="grid grid--patient grid--start">
                     <div class="form__content">
                         <span class="form__text">{{ empty($tbMacForm->caseManagementForm->case_number) ? '' : $tbMacForm->caseManagementForm->case_number}}</span>
                         <label class="form__label" for="">TB case number</label></div>
@@ -458,8 +451,8 @@
                 <img class="image image--user" src="{{ asset('assets\app\img\icon-user.png')}}" alt="user icon" />
                 <div class="form__container">
                   <div class="grid grid--two">
-                    <h2 class="section__heading section__heading--healthworker">{{ $tbMacForm->submittedBy->name }}<span class="form__label form__label--date">Health Care Worker | [Region]</span></h2>
-                    <label class="form__label">{{ $tbMacForm->created_at->format('m-d-Y')}}</label>
+                    <h2 class="section__heading section__heading--healthworker">{{ $tbMacForm->submittedBy->name }}<span class="form__label">Health Care Worker | [Region]</span></h2>
+                    <label class="form__label form__label--date">{{ $tbMacForm->created_at->format('m-d-Y')}}</label>
                   </div>
                   <div class="form__container form__container--remarks form__container--actions">
                     <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
@@ -476,7 +469,7 @@
                 <div class="form__container">
                   <div class="grid grid--two">
                     <h2 class="section__heading section__heading--healthworker">{{ $recommendation->users->name}}<span class="form__label">{{ $recommendation->users->role->name }} | [Region]</span></h2>
-                    <label class="form__label">{{ $recommendation->created_at->format('m-d-Y')}}</label>
+                    <label class="form__label form__label--date">{{ $recommendation->created_at->format('m-d-Y')}}</label>
                   </div>
                   <div class="form__container form__container--remarks form__container--actions">
                     <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
@@ -492,7 +485,6 @@
               @endforeach
             </form>
           </div>
-        </div>
       </div>
 
      
