@@ -172,7 +172,7 @@ class EnrollmentRecommendationsController extends Controller
     private function statusValidation()
     {
         if (auth()->user()->role_id === 4) {
-            return 'required|in:Refer to RTBMAC,Not For Referral';
+            return 'required|in:Referred to N-TB MAC,Not For Referral';
         }
         if (auth()->user()->role_id === 5) {
             return 'required|in:Recommend for enrollment,Not recommended for enrollment,Need Further Details';
