@@ -26,43 +26,6 @@
           <label class="form__label" for="">CXR result</label>
         </div>
       </div>
-      <div class="form__container">
-        <div class="grid">
-          <div class="form__content form__content--small form__content--small__right">
-            <input class="form__input" type="date" placeholder="CT scan date" name="ct_scan_date"/>
-            <label class="form__label" for="">CT scan date</label>
-          </div>
-          <div class="form__content">
-            <input class="form__input" type="text" placeholder="CT scan result" name="ct_scan_result"/>
-            <label class="form__label" for="">CT scan result</label>
-          </div>
-        </div>
-      </div>
-      <div class="form__container">
-        <div class="grid">
-          <div class="form__content form__content--small form__content--small__right">
-            <input class="form__input" type="date" placeholder="Ultrasound date" name="ultrasound_date" />
-            <label class="form__label" for="">Ultrasound date</label>
-          </div>
-          <div class="form__content">
-            <input class="form__input" type="text" placeholder="Ultrasound result" name="ultrasound_result"  />
-            <label class="form__label" for="">Ultrasound result</label>
-          </div>
-        </div>
-      </div>
-      <div class="form__container">
-        <div class="grid">
-          <div class="form__content form__content--small form__content--small__right">
-            <input class="form__input" type="date" placeholder="Histopathological date" name="histopathological_date" />
-            <label class="form__label" for="">Histopathological date
-
-            </label>
-          </div>
-          <div class="form__content"><input class="form__input" type="text" placeholder="Histopathological result" name="histopathological_result" />
-            <label class="form__label" for="">Histopathological result</label>
-          </div>
-        </div>
-      </div>
     </div>
     <div class="form__container">
       <h2 class="section__heading">Related Media (CXR, CTSCAN etc.)</h2>

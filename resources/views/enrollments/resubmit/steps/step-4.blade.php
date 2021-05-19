@@ -164,7 +164,19 @@
           <li class="gallery__item dz-preview dz-file-preview" id="gallery-container">
             <img class="image image--gallery" data-dz-thumbnail />
             <span class="gallery__text gallery__text--filename"></span>
-            <img class="image image--close" src="{{ asset('assets/app/img/icon-close.png') }}" data-dz-remove /></li>
+            <img class="image image--close" src="{{ asset('assets/app/img/icon-close.png') }}" data-dz-remove />
+          </li>
+          <ul class="gallery__list">
+            <li class="gallery__item">
+              @foreach($tbMacForm->attachments as $key => $attachment)
+                <img class="image image--gallery exist-attach-{{ $key }}" src="{{ url('enrollments/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment') }}"/>
+                <span class="gallery__text gallery__text--filename"></span>
+                <button type="button" class="remove-attachment exist-attach-{{ $key }}" 
+                data-filename="{{ $attachment->file_name }}" data-key="{{ $key }}"><img class="image image--close" src="{{ asset('assets/app/img/icon-close.png') }}"></button>
+              @endforeach
+            </li>
+            <input type="hidden"  name="attachments-to-remove" id="attachments-to-remove">
+          </ul>
         </ul>
         {{-- <div id="file-uploads">
         </div>
@@ -174,16 +186,7 @@
         <input type="file" multiple name="attachments[]" class="attachment-upload" id="attachments">
       </div>
     </div>
-    <ul class="gallery__list">
-      <li class="gallery__item">
-        @foreach($tbMacForm->attachments as $key => $attachment)
-          <img class="image exist-attach-{{ $key }}" src="{{ url('enrollments/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment') }}"/>
-          <button type="button" class="btn btn-danger remove-attachment exist-attach-{{ $key }}" 
-          data-filename="{{ $attachment->file_name }}" data-key="{{ $key }}">Remove</button>
-        @endforeach
-      </li>
-      <input type="hidden"  name="attachments-to-remove" id="attachments-to-remove">
-    </ul>
+    
     <div class="form__container form-step-4">
       <h2 class="section__heading">Remarks</h2>
       <div class="form__content form-group">
