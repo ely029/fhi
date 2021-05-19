@@ -67,7 +67,7 @@
                     <div class="form__content">
                         <span class="form__text">{{  date('m-d-Y', strtotime($tbMacForm->treatmentOutcomeForm->date_started_treatment )) }}</span>
                         <label class="form__label" for="">Date started treatment</label></div>
-                    <div class="form__content"><span class="drug-susceptibility-label">{{ $tbMacForm->treatmentOutcomeForm->current_drug_susceptibility }}</span><span class="form__text">
+                    <div class="form__content"><span class="form__text drug-susceptibility-label">{{ $tbMacForm->treatmentOutcomeForm->current_drug_susceptibility }}
                         </span>
                         <label class="form__label" for="">Current drug susceptibility</label>
                     </div>
