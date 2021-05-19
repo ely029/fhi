@@ -173,7 +173,7 @@
                 <table class="table table--unset js-table-unset">
                   <thead>
                     <tr>
-                      <th class="table__head"></th>
+                      <th class="table__head no-sort"></th>
                       <th class="table__head">Done date</th>
                       <th class="table__head">Method used</th>
                       <th class="table__head">Resistance pattern</th>
@@ -207,7 +207,7 @@
                 <table class="table table--unset js-table-unset">
                   <thead>
                     <tr>
-                      <th class="table__head"></th>
+                      <th class="table__head no-sort"></th>
                       <th class="table__head">Done date</th>
                       <th class="table__head">Resistance pattern</th>
                     </tr>
@@ -226,7 +226,7 @@
                 <table class="table table--unset js-table-unset">
                   <thead>
                     <tr>
-                      <th class="table__head"></th>
+                      <th class="table__head no-sort"></th>
                       <th class="table__head">Done date</th>
                       <th class="table__head">Resistance pattern</th>
                     </tr>
