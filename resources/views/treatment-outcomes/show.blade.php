@@ -120,26 +120,9 @@
                   </div>
               @endif
 
-                {{-- Regional TB Mac Chair --}}
-                @if(auth()->user()->role_id == 6 && (request('from_tab') == 'Referred to Regional Chair' || request('from_tab') == 'Referred back to Regional Chair'))
-                    <div class="grid grid--action">
-                        <div class="form__content">
-                            <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
-                            <option value="For approval">For Approval</option>
-                            <option value="Other suggestions">Other suggestions</option>
-                            <option value="Need Further Details">Need further details</option>
-                            <option value="Referred to Regional">Refer to R-TB MAC</option>
-                            </select>
-                            <div class="triangle triangle--down"></div>
-                            <label class="form__label" for="">Action</label>
-                        </div>
-                    <button id="recommendation-button" class="button button--masterlist js-trigger" type="button">Confirm</button>
-                    </div>
-                @endif
-
-                {{-- National TB Mac Chair --}}
-                 @if(auth()->user()->role_id == 7  && request('from_tab') == 'Referred to N-TB MAC')
-                 <div class="grid grid--action">
+              {{-- Regional TB Mac --}}
+              @if(auth()->user()->role_id == 5 && request('from_tab') == 'Referred to Regional')
+                <div class="grid grid--action">
                     <div class="form__content">
                         <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
                         <option value="Recommend for Approval">Recommend for approval</option>

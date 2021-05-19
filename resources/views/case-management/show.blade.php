@@ -112,7 +112,6 @@
                       </div>
                   <button id="recommendation-button" class="button button--masterlist js-trigger" type="button">Confirm</button>
                   </div>
-<<<<<<< HEAD
                 @endif
 
                 {{-- Regional TB Mac Chair --}}
@@ -131,9 +130,6 @@
                     <button id="recommendation-button" class="button button--masterlist js-trigger" type="button">Confirm</button>
                     </div>
                 @endif
-=======
-              @endif
->>>>>>> e27c22f9cadda7e5ea9d51a95734d32cdf5e2c48
 
               {{-- Regional TB Mac --}}
               @if(auth()->user()->role_id == 5 && request('from_tab') == 'pending')
@@ -149,23 +145,6 @@
                     </div>
                 <button id="recommendation-button" class="button button--masterlist js-trigger" type="button">Confirm</button>
                 </div>
-              @endif
-
-              {{-- Regional TB Mac Chair --}}
-              @if(auth()->user()->role_id == 6 && (request('from_tab') == 'referred' || request('from_tab') == 'pending'))
-                  <div class="grid grid--action">
-                      <div class="form__content">
-                          <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
-                          <option value="For approval">For Approval</option>
-                          <option value="Other suggestions">Other suggestions</option>
-                          <option value="Need Further Details">Need further details</option>
-                          <option value="Referred to N-TB MAC">Referred to N-TB MAC</option>
-                          </select>
-                          <div class="triangle triangle--down"></div>
-                          <label class="form__label" for="">Action</label>
-                      </div>
-                  <button id="recommendation-button" class="button button--masterlist js-trigger" type="button">Confirm</button>
-                  </div>
               @endif
 
                 {{-- National TB Mac --}}
@@ -495,7 +474,13 @@
                   <div class="form__container form__container--remarks form__container--actions">
                     <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
                     
-                    <div class="form__content"><span class="form__text form__text--green">{{ ucfirst(Str::lower($recommendation->status)) }}</span><label class="form__label form__label--green">Action</label></div>
+                    <div class="form__content"><span class="form__text form__text--green">
+                    @if ($recommendation->status == 'Referred to N-TB MAC')
+                    Referred to N-TB MAC
+                    @else
+                    {{ ucfirst(Str::lower($recommendation->status)) }}
+                    @endif
+                    </span><label class="form__label form__label--green">Action</label></div>
                
                   </div>
                   <span class="form__text">

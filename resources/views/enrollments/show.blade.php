@@ -372,8 +372,13 @@
                 <div class="form__container form__container--remarks form__container--actions">
                   <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
                   
-                  <div class="form__content"><span class="form__text form__text--green">{{ ucfirst(Str::lower($recommendation->status)) }}</span><label class="form__label form__label--green">Action</label></div>
-             
+                  <div class="form__content"><span class="form__text form__text--green">
+                  @if ($recommendation->status == 'Referred to N-TB MAC')
+                  Referred to N-TB MAC
+                  @else
+                  {{ ucfirst(Str::lower($recommendation->status)) }}
+                  @endif
+                  </span><label class="form__label form__label--green">Action</label></div>
                 </div>
                 <span class="form__text">
                   {{$recommendation->recommendation }}
