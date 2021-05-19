@@ -71,7 +71,7 @@ $('.hide--button').hide();
     });
 
     $(".create-recommendation").click(function(){
-        // $("#ntbmac-modal").modal('show');
+        $('#case_management_modal').modal('show');
         $("#modal-text").text('Create recommendation');
         
         if($(this).data('role') == 7){
