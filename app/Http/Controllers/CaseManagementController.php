@@ -194,7 +194,7 @@ class CaseManagementController extends Controller
         });
 
         $withRecommendations = $cases->filter(function ($item) {
-            return in_array($item->status, ['For approval','Other suggestions','Need Further Details','Referred to National']);
+            return in_array($item->status, ['For approval','Other suggestions','Need Further Details','Referred to N-TB MAC']);
         });
 
         $completed = $cases->filter(function ($item) {
@@ -232,7 +232,7 @@ class CaseManagementController extends Controller
     private function getNationalTBMacIndex($cases)
     {
         $referredCases = $cases->filter(function ($item) {
-            return $item->status === 'Referred to National';
+            return $item->status === 'Referred to N-TB MAC';
         });
 
         $allCases = $cases->filter(function ($item) {

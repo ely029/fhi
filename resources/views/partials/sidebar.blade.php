@@ -32,7 +32,7 @@
             @elseif(auth()->user()->role_id == 6)
             <a class="sidebar__link" href="{{ url('treatment-outcomes?status=Referred to Regional Chair') }}">
             @elseif(auth()->user()->role_id == 7)
-            <a class="sidebar__link" href="{{ url('treatment-outcomes?status=Referred to National') }}">
+            <a class="sidebar__link" href="{{ url('treatment-outcomes?status=Referred to N-TB MAC') }}">
             @elseif(auth()->user()->role_id == 8)
             <a class="sidebar__link" href="{{ url('treatment-outcomes?status=Referred to National Chair') }}">
               @else
