@@ -39,14 +39,6 @@
       </div>
     </div>
 </div>
-
-        
-
-
-        <ul class="tabs__list tabs__list--sub">
-          <li class="tabs__item-sub tabs__item-sub--current">Treatment outcome</li>
-        </ul>
-        <div class="tabs__details-sub tabs__details-sub--active">
           <form class="form" action="">
             <div class="grid grid--two grid--start">
               <div class="form--full">
@@ -392,7 +384,6 @@
               @endforeach
             </form>
           </div>
-        </div>
       </div>
 
      
