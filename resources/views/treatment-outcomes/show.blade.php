@@ -157,8 +157,18 @@
                     </div>
                 @endif
 
-                 {{-- National TB Mac --}}
-                 @if((auth()->user()->role_id == 7 || auth()->user()->role_id == 8) && request('from_tab') == 'Referred to National' || request('from_tab') == 'Referred to National Chair')
+                {{-- National TB Mac Chair --}}
+                 @if(auth()->user()->role_id == 7  && request('from_tab') == 'Referred to National')
+                 <div class="grid grid--action-case-management">
+                    <div class="form__content">
+                      <label class="form__label" for="">Action</label>
+                    </div>
+                    <button class="button js-trigger create-recommendation" data-role="{{ auth()->user()->role_id }}" type="button">Create Recommendation</button>
+                  </div>
+                @endif
+
+                 {{-- National TB Mac Chair --}}
+                 @if(auth()->user()->role_id == 8 && request('from_tab') == 'Referred to National Chair')
                  <div class="grid grid--action-case-management">
                     <div class="form__content">
                       <label class="form__label" for="">Action</label>
