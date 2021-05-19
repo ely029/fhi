@@ -3,7 +3,7 @@
 
     <div class="section__content">
     <ul class="tabs__list tabs__list--table">
-    {{--<a href="{{ url('treatment-outcomes?status=Referred to National') }}">
+    {{--<a href="{{ url('treatment-outcomes?status=Referred to N-TB MAC') }}">
             <li class="tabs__item {{ request('status') == 'Referred to National' ? 'tabs__item--current' : ''}}">Referred cases({{ $referredCases->count() }})</li>
         </a>
         <a href="{{ url('treatment-outcomes?status=Referred to National Chair') }}">
