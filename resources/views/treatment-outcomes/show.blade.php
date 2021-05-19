@@ -43,7 +43,7 @@
             <div class="grid grid--two grid--start">
               <div class="form--half">
                 <div class="form__container">
-                  <h2 class="section__heading">Patient {{ $tbMacForm->patient->code }}
+                  <h2 class="section__heading section__heading--full">Patient {{ $tbMacForm->patient->code }}
                     <span class="form__text">
                         Health Facility {{ $tbMacForm->patient->facility_code }} &nbsp;&nbsp;&nbsp; {{ $tbMacForm->patient->province }}</span>
                     </h2>
@@ -61,7 +61,7 @@
                         <label class="form__label" for="">Date started treatment</label></div>
                   </div>
 
-                  <div class="grid grid--two">
+                  <div class="grid grid--two grid--start">
                     <div class="form__content"><span class="form__text drug-susceptibility-label">{{ $tbMacForm->treatmentOutcomeForm->current_drug_susceptibility }}
                         </span>
                         <label class="form__label" for="">Current drug susceptibility</label>
