@@ -71,7 +71,7 @@
                         </span>
                         <label class="form__label" for="">Current drug susceptibility</label>
                     </div>
-                    <div class="form__content">{{ $tbMacForm->treatmentOutcomeForm->outcome }}<span class="form__text">
+                    <div class="form__content"><span class="form__text">{{ $tbMacForm->treatmentOutcomeForm->outcome }}
                     </span>
                     <label class="form__label" for="">Outcome</label>
                 </div>
