@@ -43,7 +43,7 @@
             <div class="grid grid--two grid--start">
               <div class="form--half">
                 <div class="form__container">
-                  <h2 class="section__heading">Patient {{ $tbMacForm->patient->code }}
+                  <h2 class="section__heading section__heading--full">Patient {{ $tbMacForm->patient->code }}
                     <span class="form__text">
                         Health Facility {{ $tbMacForm->patient->facility_code }} &nbsp;&nbsp;&nbsp; {{ $tbMacForm->patient->province }}</span>
                     </h2>
