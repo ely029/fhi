@@ -31,7 +31,7 @@
             <div class="form__content">
                 <textarea name="recommendation" required class="form__input form__input--message" placeholder="Enter remarks"></textarea><label class="form__label" for="">Remarks</label>
                 </div>
-            <div class="modal__button">
+            <div class="modal__button modal__button--end">
                 <button class="button" type="submit">Submit</button>
                 <a href="{{ url('/case-management/resubmit/'.$tbMacForm->id)}}"class="button hide--button">Submit</a>
             </div>
