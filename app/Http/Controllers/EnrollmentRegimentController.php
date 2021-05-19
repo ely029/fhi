@@ -393,7 +393,7 @@ class EnrollmentRegimentController extends Controller
     private function getNationalTBMacIndex($enrollments)
     {
         $referred = $enrollments->filter(function ($item) {
-            return $item->status === 'Referred to national';
+            return $item->status === 'Referred to N-TB MAC';
         });
 
         $completed = $enrollments->filter(function ($item) {
