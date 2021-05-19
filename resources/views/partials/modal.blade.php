@@ -121,7 +121,7 @@
                 <div class="modal__background" data-dismiss="modal"></div>
                 <div class="modal__container">
                   <div class="modal__box">
-                    <h2 class="modal__title">Referred to N-TB MAC</h2>
+                    <h2 class="modal__title">Refer to N-TB MAC</h2>
                     <p class="modal__text">You are about to confirm and set this case to 'Refer to N-TB MAC' If you have additional remarks. enter them below.</p>
                     <form class="form form--full" method="POST" action="{{ route('enrolment.sendRecommendation')}}">
                     @csrf

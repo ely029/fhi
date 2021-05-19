@@ -43,7 +43,7 @@
             <div class="grid grid--action">
               <div class="form__content">
                 <select id="refer" class="form__input form__input--select">
-                  <option value="1">Referred to N-TB MAC</option>
+                  <option value="1">Refer to R-TB MAC</option>
                   <option value="2">Not for referral</option>
                 </select>
                 <div class="triangle triangle--down"></div>
@@ -75,7 +75,7 @@
                   <option value="6">For enrollment</option>
                   <option value="7">Not for enrollment</option>
                   <option value="8">Need further details</option>
-                  <option value="9">Referred to N-TB MAC</option>
+                  <option value="9">Refer to N-TB MAC</option>
                 </select>
                 <div class="triangle triangle--down"></div>
                 <label class="form__label" for="">Action</label>

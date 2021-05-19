@@ -44,7 +44,7 @@ $('.hide--button').hide();
             $("#modal-text").text("You are about to send this case back to a healthcare worker tagged as 'Need Further Details.' If you have additional remarks, enter them below.");
         }
         if(action == 'Referred to N-TB MAC'){
-            $("#modal-title").text('Referred to N-TB MAC');
+            $("#modal-title").text('Refer to N-TB MAC');
             $("#modal-text").text("You are about to send this case to National TB MAC. If you have additional remarks, enter them below.");
         }
 
