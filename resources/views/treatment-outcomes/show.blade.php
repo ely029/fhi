@@ -148,7 +148,7 @@
                             <option value="For approval">For Approval</option>
                             <option value="Other suggestions">Other suggestions</option>
                             <option value="Need Further Details">Need further details</option>
-                            <option value="Referred to National">Refer to N-TB MAC</option>
+                            <option value="Referred to N-TB MAC">Referred to N-TB MAC</option>
                             </select>
                             <div class="triangle triangle--down"></div>
                             <label class="form__label" for="">Action</label>
@@ -158,7 +158,7 @@
                 @endif
 
                 {{-- National TB Mac Chair --}}
-                 @if(auth()->user()->role_id == 7  && request('from_tab') == 'Referred to National')
+                 @if(auth()->user()->role_id == 7  && request('from_tab') == 'Referred to N-TB MAC')
                  <div class="grid grid--action">
                     <div class="form__content">
                       <label class="form__label" for="">Action</label>

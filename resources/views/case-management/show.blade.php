@@ -143,7 +143,7 @@
                             <option value="For approval">For Approval</option>
                             <option value="Other suggestions">Other suggestions</option>
                             <option value="Need Further Details">Need further details</option>
-                            <option value="Referred to National">Refer to N-TB MAC</option>
+                            <option value="Referred to N-TB MAC">Referred to N-TB MAC</option>
                             </select>
                             <div class="triangle triangle--down"></div>
                             <label class="form__label" for="">Action</label>

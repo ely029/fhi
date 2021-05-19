@@ -118,7 +118,6 @@ class CaseManagementResubmitController extends Controller
         $request = request()->all();
         unset($request['_token']);
         $request['first_name'] = '';
-        $request['last_name'] = '';
         $caseManagementBactResult = new CaseManagementBacteriologicalResults();
         $request['status'] = 'New Case';
         $tbMacForm->patient->update($request);
