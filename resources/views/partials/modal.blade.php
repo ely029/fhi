@@ -121,12 +121,12 @@
                 <div class="modal__background" data-dismiss="modal"></div>
                 <div class="modal__container">
                   <div class="modal__box">
-                    <h2 class="modal__title">Refer to N-TB MAC</h2>
+                    <h2 class="modal__title">Referred to N-TB MAC</h2>
                     <p class="modal__text">You are about to confirm and set this case to 'Refer to N-TB MAC' If you have additional remarks. enter them below.</p>
                     <form class="form form--full" method="POST" action="{{ route('enrolment.sendRecommendation')}}">
                     @csrf
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
-                       <input type="hidden" name="status" value="Refer to N-TBMac"/>
+                       <input type="hidden" name="status" value="Referred to N-TB MAC"/>
                       <div class="form__content"><textarea name="recommendation" class="form__input form__input--message" placeholder="Enter remarks" required></textarea><label class="form__label" for="">Remarks</label></div>
                       <div class="modal__button"><input class="button" type="submit" value="Submit" /></div>
                     </form>

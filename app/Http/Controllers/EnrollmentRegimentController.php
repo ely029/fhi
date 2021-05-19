@@ -272,9 +272,9 @@ class EnrollmentRegimentController extends Controller
             $request['role_id'] = auth()->user()->role_id;
             Recommendation::create($request);
         }
-        if ($request['status'] === 'Refer to N-TBMac') {
+        if ($request['status'] === 'Referred to N-TB MAC') {
             $tbMacForm = TBMacForm::find($request['form_id']);
-            $tbMacForm->status = 'Referred to national';
+            $tbMacForm->status = 'Referred to N-TB MAC';
             $tbMacForm->save();
             $request['submitted_by'] = auth()->user()->id;
             $request['role_id'] = auth()->user()->role_id;
