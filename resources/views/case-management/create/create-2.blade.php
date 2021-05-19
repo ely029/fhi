@@ -20,8 +20,8 @@
             <td class="table__details">
             <div class="form__content">
                 <select id="rest_pattern_1" class="form__input form__input--select form__input--full" name="ressitance_pattern_screening_1">
-                <option value="For Xpert MTB/RIF">Xpert MTB/RIF</option>
-                <option value="For Xpert MTB/RIF ULTRA">Xpert MTB/RIF ULTRA</option>
+                <option value="Xpert MTB/RIF">Xpert MTB/RIF</option>
+                <option value="Xpert MTB/RIF ULTRA">Xpert MTB/RIF ULTRA</option>
                 <option value="Truenat">Truenat</option>
                 </select>
                 <div class="triangle triangle--down"></div>
@@ -44,8 +44,8 @@
             <td class="table__details">
             <div class="form__content">
                 <select id="rest_pattern_2" class="form__input form__input--select form__input--full" name="">
-                <option value="For Xpert MTB/RIF">Xpert MTB/RIF</option>
-                <option value="For Xpert MTB/RIF ULTRA">Xpert MTB/RIF ULTRA</option>
+                <option value="Xpert MTB/RIF">Xpert MTB/RIF</option>
+                <option value="Xpert MTB/RIF ULTRA">Xpert MTB/RIF ULTRA</option>
                 <option value="Truenat">Truenat</option>
                 </select>
                 <div class="triangle triangle--down"></div>

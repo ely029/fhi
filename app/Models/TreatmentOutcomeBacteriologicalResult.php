@@ -8,34 +8,35 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\Models\CaseManagementBacteriologicalResults
+ * App\Models\TreatmentOutcomeBacteriologicalResult
  *
  * @property int $id
  * @property int $form_id
- * @property string $label
+ * @property string $type
  * @property \Illuminate\Support\Carbon $date_collected
- * @property string $resistance_pattern
- * @property string $method_used
- * @property string $smear_microscopy
- * @property string $tb_lamp
- * @property string $culture
+ * @property string|null $method_used
+ * @property string|null $resistance_pattern
+ * @property string|null $smear_microscopy
+ * @property string|null $tb_lamp
+ * @property string|null $culture
+ * @property string|null $resistance_pattern_others
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\TBMacForm|null $tbMacForm
- * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementBacteriologicalResults newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementBacteriologicalResults newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementBacteriologicalResults query()
- * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementBacteriologicalResults whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementBacteriologicalResults whereCulture($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementBacteriologicalResults whereDateCollected($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementBacteriologicalResults whereFormId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementBacteriologicalResults whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementBacteriologicalResults whereLabel($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementBacteriologicalResults whereMethodUsed($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementBacteriologicalResults whereResistancePattern($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementBacteriologicalResults whereSmearMicroscopy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementBacteriologicalResults whereTbLamp($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementBacteriologicalResults whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TreatmentOutcomeBacteriologicalResult newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TreatmentOutcomeBacteriologicalResult newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TreatmentOutcomeBacteriologicalResult query()
+ * @method static \Illuminate\Database\Eloquent\Builder|TreatmentOutcomeBacteriologicalResult whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TreatmentOutcomeBacteriologicalResult whereCulture($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TreatmentOutcomeBacteriologicalResult whereDateCollected($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TreatmentOutcomeBacteriologicalResult whereFormId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TreatmentOutcomeBacteriologicalResult whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TreatmentOutcomeBacteriologicalResult whereMethodUsed($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TreatmentOutcomeBacteriologicalResult whereResistancePattern($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TreatmentOutcomeBacteriologicalResult whereResistancePatternOthers($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TreatmentOutcomeBacteriologicalResult whereSmearMicroscopy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TreatmentOutcomeBacteriologicalResult whereTbLamp($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TreatmentOutcomeBacteriologicalResult whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TreatmentOutcomeBacteriologicalResult whereUpdatedAt($value)
  * @mixin \Eloquent
  */
 class TreatmentOutcomeBacteriologicalResult extends Model

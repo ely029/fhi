@@ -64,8 +64,10 @@ class EnrollmentsController extends Controller
 
         if (isset($request['attachments'])) {
             foreach ($request['attachments'] as $key => $file) {
-                $file->storeAs(TBMacFormAttachment::PATH_PREFIX.'/'.$tbMacForm->presentation_number, ($key + 1).'.'.$file->extension());
+                $fileName = $file->getClientOriginalName();
+                $file->storeAs(TBMacFormAttachment::PATH_PREFIX.'/'.$tbMacForm->presentation_number, $fileName);
                 $tbMacForm->attachments()->create([
+                    'file_name' => $fileName,
                     'extension' => $file->extension(),
                 ]);
             }

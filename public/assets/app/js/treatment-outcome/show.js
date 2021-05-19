@@ -26,7 +26,8 @@ $('.hide--button').hide();
                 $("#modal-text").text("You are about to recommend this case for need further details. If you have additional remarks, enter them below.");
             }
 
-            $("#modal-form").find('input[name="status"]').val('Referred to Regional Chair');
+            $("#treatment_outcome_modal").find('input[name="status"]').val('Referred to Regional Chair');
+            $("#modal-form").find('input[name="recommendation_status"]').val(action);
             return;
         }
         if(action == 'For approval'){
@@ -70,8 +71,9 @@ $('.hide--button').hide();
 
     $(".create-recommendation").click(function(){
         // $("#ntbmac-modal").modal('show');
-        $('#refer-to-regional').modal('show');
-        $("#modal-text").text('Create recommendation');
+        $('#treatment_outcome_modal').modal('show');
+        $('.modal__text').hide();
+        $('.modal__title').text('Create Recommendation');
         
         if($(this).data('role') == 7){
             $("#modal-form").find('input[name="status"]').val('Referred to National Chair');

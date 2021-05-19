@@ -22,10 +22,13 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $culture
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $count
+ * @property string|null $others
  * @property-read \App\Models\TBMacForm|null $tbMacForm
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementBacteriologicalResults newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementBacteriologicalResults newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementBacteriologicalResults query()
+ * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementBacteriologicalResults whereCount($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementBacteriologicalResults whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementBacteriologicalResults whereCulture($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementBacteriologicalResults whereDateCollected($value)
@@ -33,6 +36,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementBacteriologicalResults whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementBacteriologicalResults whereLabel($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementBacteriologicalResults whereMethodUsed($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementBacteriologicalResults whereOthers($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementBacteriologicalResults whereResistancePattern($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementBacteriologicalResults whereSmearMicroscopy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CaseManagementBacteriologicalResults whereTbLamp($value)
