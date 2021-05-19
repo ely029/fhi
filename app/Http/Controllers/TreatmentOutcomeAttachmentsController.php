@@ -12,14 +12,18 @@ class TreatmentOutcomeAttachmentsController extends Controller
     public function showAttachment(TBMacForm $tbMacForm, $fileName)
     {
         $path = 'private/treatment-outcomes/'.$tbMacForm->presentation_number.'/'.$fileName;
-        $notImage = ['.pdf','.xls','.xlsx','.csv','.docx'];
         if (\Storage::exists($path)) {
-            if (Str::endsWith($fileName, $notImage)) {
-                return response()->file(public_path('assets/app/img/icon-upload.png'));
+            if (Str::endsWith($fileName, '.xls') || Str::endsWith($fileName, '.xlsx') || Str::endsWith($fileName, '.csv')) {
+                return response()->file(public_path('assets/app/img/excel.png'));
+            }
+            if (Str::endsWith($fileName, '.pdf')) {
+                return response()->file(public_path('assets/app/img/pdf.png'));
+            }
+            if (Str::endsWith($fileName, '.docx')) {
+                return response()->file(public_path('assets/app/img/docx.png'));
             }
             return response(\Storage::get($path))->header('Content-Type', 'image/jpeg');
         }
-        return response()->file(public_path('assets/app/img/placeholder.jpg'));
     }
 
     public function downloadAttachment(TBMacForm $tbMacForm, $fileName)
