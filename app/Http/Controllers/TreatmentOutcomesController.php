@@ -172,7 +172,7 @@ class TreatmentOutcomesController extends Controller
         ];
     }
 
-    private function getRegionalSecretariatIndex($cases)
+    private function getRegionalSecretariatIndex($cases, $allCases)
     {
         $pending = $cases->filter(function ($item) {
             return $item->status === 'New Case';
@@ -180,6 +180,7 @@ class TreatmentOutcomesController extends Controller
 
         return view('treatment-outcomes.index')
             ->with('pending', $pending)
+            ->with('allCases', $allCases)
             ->with('cases', $cases);
     }
 
