@@ -90,7 +90,7 @@
 
                 {{-- Hea;th Care Worker --}}
                 @if(auth()->user()->role_id == 3 && $tbMacForm->status == 'Not for Referral' || $tbMacForm->status == 'Need Further Details')
-                    <div class="grid grid--action-case-management">
+                    <div class="grid grid--action">
                         <div class="form__content">
                             <select id="action-dropdown" class="form__input form__input--select">
                             <option value="Resolved">Resolved</option>
@@ -106,7 +106,7 @@
 
                 {{-- Regional Secretariat --}}
                 @if(auth()->user()->role_id == 4 && request('from_tab') == 'pending')
-                    <div class="grid grid--action-case-management">
+                    <div class="grid grid--action">
                         <div class="form__content">
                             <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
                             <option value="Referred to Regional">Refer to R-TB MAC</option>
@@ -121,7 +121,7 @@
 
                 {{-- Regional TB Mac --}}
                 @if(auth()->user()->role_id == 5 && request('from_tab') == 'pending')
-                  <div class="grid grid--action-case-management">
+                  <div class="grid grid--action">
                       <div class="form__content">
                           <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
                           <option value="Recommend for Approval">Recommend for approval</option>
@@ -137,7 +137,7 @@
 
                 {{-- Regional TB Mac Chair --}}
                 @if(auth()->user()->role_id == 6 && (request('from_tab') == 'referred' || request('from_tab') == 'pending'))
-                    <div class="grid grid--action-case-management">
+                    <div class="grid grid--action">
                         <div class="form__content">
                             <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
                             <option value="For approval">For Approval</option>
@@ -154,7 +154,7 @@
 
                  {{-- National TB Mac --}}
                  @if((auth()->user()->role_id == 7 || auth()->user()->role_id == 8) && request('from_tab') == 'referred')
-                 <div class="grid grid--action-case-management">
+                 <div class="grid grid--action">
                     <div class="form__content">
                       <label class="form__label" for="">Action</label>
                     </div>
