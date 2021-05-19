@@ -11,7 +11,7 @@ use App\Models\TBMacForm;
 
 class TreatmentOutcomesController extends Controller
 {
-    public function index(TBMacFormFilters $filters)
+    public function index()
     {
         // $cases = TBMacForm::TreatmentOutcomeForms()
         //     ->filter($filters)
