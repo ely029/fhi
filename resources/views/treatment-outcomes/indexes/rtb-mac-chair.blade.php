@@ -31,7 +31,7 @@
           </thead>
           <tbody>
           @foreach($cases as $case)
-        <tr class="table__row js-view" data-href="{{url('/treatment-outcomes/'.$case->id.'?from_tab='.$cases->status)}}">
+        <tr class="table__row js-view" data-href="{{url('/treatment-outcomes/'.$case->id.'?from_tab='.$case->status)}}">
             <td class="table__details">{{ $case->presentation_number }}</td>
             <td class="table__details">{{ empty($case->patient->initials) ? '' : $case->patient->initials}}</td>
             <td class="table__details">{{ empty($case->patient->age) ? '' : $case->patient->age}}</td>

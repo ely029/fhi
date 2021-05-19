@@ -13,11 +13,11 @@ class TreatmentOutcomesController extends Controller
 {
     public function index(TBMacFormFilters $filters)
     {
-        $cases = TBMacForm::TreatmentOutcomeForms()
-            ->filter($filters)
-            ->with(['patient','treatmentOutcomeForm'])
-            ->where($this->getDynamicQuery()['condition'], $this->getDynamicQuery()['value'])
-            ->orderByDesc('created_at')->get();
+        // $cases = TBMacForm::TreatmentOutcomeForms()
+        //     ->filter($filters)
+        //     ->with(['patient','treatmentOutcomeForm'])
+        //     ->where($this->getDynamicQuery()['condition'], $this->getDynamicQuery()['value'])
+        //     ->orderByDesc('created_at')->get();
         $allCases = TBMacForm::TreatmentOutcomeForms()
             ->with(['patient','treatmentOutcomeForm'])
             ->where($this->getDynamicQuery()['condition'], $this->getDynamicQuery()['value'])
@@ -25,17 +25,17 @@ class TreatmentOutcomesController extends Controller
 
         switch (auth()->user()->role_id) {
             case 3:
-                return $this->getHealthCareWorkerIndex($cases, $allCases);
+                return $this->getHealthCareWorkerIndex($allCases);
             case 4:
-                return $this->getRegionalSecretariatIndex($cases, $allCases);
+                return $this->getRegionalSecretariatIndex($allCases);
             case 5:
-                return $this->getRegionalTBMacIndex($cases, $allCases);
+                return $this->getRegionalTBMacIndex($allCases);
             case 6:
-                return $this->getRTBMacChairIndex($cases, $allCases);
+                return $this->getRTBMacChairIndex($allCases);
             case 7:
-                return $this->getNationalTBMacIndex($cases, $allCases);
+                return $this->getNationalTBMacIndex($allCases);
             case 8:
-                return $this->getNTBMacChairIndex($cases, $allCases);
+                return $this->getNTBMacChairIndex($allCases);
         }
     }
     public function create()
@@ -141,7 +141,7 @@ class TreatmentOutcomesController extends Controller
         }
     }
 
-    private function getHealthCareWorkerIndex($cases, $allCases)
+    private function getHealthCareWorkerIndex($cases)
     {
         $forApproval = $cases->filter(function ($item) {
             return $item->status === 'For approval';
@@ -157,8 +157,7 @@ class TreatmentOutcomesController extends Controller
         });
         return view('treatment-outcomes.index')
             ->with('forApproval', $forApproval)
-            ->with('cases', $cases)
-            ->with('allCases', $allCases)
+            ->with('allCases', $cases)
             ->with('needFurtherDetails', $needFurtherDetails)
             ->with('otherSuggestion', $otherSuggestion)
             ->with('notForReferral', $notForReferral);
@@ -172,7 +171,7 @@ class TreatmentOutcomesController extends Controller
         ];
     }
 
-    private function getRegionalSecretariatIndex($cases, $allCases)
+    private function getRegionalSecretariatIndex($cases)
     {
         $pending = $cases->filter(function ($item) {
             return $item->status === 'New Case';
@@ -180,11 +179,11 @@ class TreatmentOutcomesController extends Controller
 
         return view('treatment-outcomes.index')
             ->with('pending', $pending)
-            ->with('allCases', $allCases)
+            ->with('allCases', $cases)
             ->with('cases', $cases);
     }
 
-    private function getRegionalTBMacIndex($cases, $allCases)
+    private function getRegionalTBMacIndex($cases)
     {
         $pending = $cases->filter(function ($item) {
             return $item->status === 'Referred to Regional';
@@ -200,13 +199,12 @@ class TreatmentOutcomesController extends Controller
 
         return view('treatment-outcomes.index')
             ->with('pending', $pending)
-            ->with('allCases', $allCases)
             ->with('withRecommendations', $withRecommendations)
             ->with('completed', $completed)
             ->with('cases', $cases);
     }
 
-    private function getRTBMacChairIndex($cases, $allCases)
+    private function getRTBMacChairIndex($cases)
     {
         $pending = $cases->filter(function ($item) {
             return $item->status === 'Referred back to regional chair';
@@ -222,13 +220,12 @@ class TreatmentOutcomesController extends Controller
 
         return view('treatment-outcomes.index')
             ->with('pending', $pending)
-            ->with('allCases', $allCases)
             ->with('referredCases', $referredCases)
             ->with('completed', $completed)
             ->with('cases', $cases);
     }
 
-    private function getNationalTBMacIndex($cases, $allCases1)
+    private function getNationalTBMacIndex($cases)
     {
         $referredCases = $cases->filter(function ($item) {
             return $item->status === 'Referred to National';
@@ -246,11 +243,10 @@ class TreatmentOutcomesController extends Controller
             ->with('referredCases', $referredCases)
             ->with('completed', $completed)
             ->with('cases', $cases)
-            ->with('allCases1', $allCases1)
             ->with('allCases', $allCases);
     }
 
-    private function getNTBMacChairIndex($cases, $allCases1)
+    private function getNTBMacChairIndex($cases)
     {
         $referredCases = $cases->filter(function ($item) {
             return $item->status === 'Referred to National Chair';
@@ -268,7 +264,6 @@ class TreatmentOutcomesController extends Controller
             ->with('referredCases', $referredCases)
             ->with('completed', $completed)
             ->with('cases', $cases)
-            ->with('allCases1', $allCases1)
             ->with('allCases', $allCases);
     }
 }

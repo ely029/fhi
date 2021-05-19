@@ -5,7 +5,7 @@
 
     <div class="section__content">
     <ul class="tabs__list tabs__list--table">
-        <a href="{{ url('treatment-outcomes') }}">
+        {{-- <a href="{{ url('treatment-outcomes') }}">
             <li class="tabs__item {{ request('status') == '' ? 'tabs__item--current' : ''}}">All cases({{$cases->count()}})</li>
         </a>
         <a href="{{ url('treatment-outcomes?status=For approval') }}">
@@ -19,9 +19,12 @@
         </a>
         <a href="{{ url('treatment-outcomes?status=Not for Referral') }}">
             <li class="tabs__item {{ request('status') == 'Not for Referral' ? 'tabs__item--current' : ''}}">Not for referral({{$notForReferral->count()}})</li>
-        </a>
-      
-       
+        </a>--}} 
+        <li class="tabs__item tabs__item--current">All cases ({{$allCases->count()}})</li>
+        <li class="tabs__item">For approval ({{$forApproval->count()}})</li>
+        <li class="tabs__item">Other suggestions ({{$otherSuggestion->count()}})</li>
+        <li class="tabs__item">Need further details ({{$needFurtherDetails->count()}})</li>
+        <li class="tabs__item">Not for referral ({{$notForReferral->count()}})</li>
     </ul>
 
     <div class="tabs__details tabs__details--active">
@@ -38,7 +41,7 @@
             </tr>
         </thead>
         <tbody>
-        @foreach($cases as $case)
+        @foreach($allCases as $case)
         <tr class="table__row js-view" data-href="{{url('/treatment-outcomes/'.$case->id.'?from_tab='.$case->status)}}">
             <td class="table__details">{{ $case->presentation_number }}</td>
             <td class="table__details">{{ empty($case->patient->initials) ? '' : $case->patient->initials}}</td>
@@ -53,7 +56,7 @@
         </tbody>
         </table>
     </div>
-    {{-- <div class="tabs__details">
+    <div class="tabs__details">
         <table class="table table--filter js-table">
         <thead>
             <tr>
@@ -89,7 +92,7 @@
                 <th class="table__head">Patient initials</th>
                 <th class="table__head">Age</th>
                 <th class="table__head">Sex</th>
-                <th class="table__head">Updated drug susceptibility</th>
+                <th class="table__head">Current drug susceptibility</th>
                 <th class="table__head">Date submitted by Health Care Worker</th>
                 <th class="table__head">Status</th>
             </tr>
@@ -117,7 +120,7 @@
                 <th class="table__head">Patient initials</th>
                 <th class="table__head">Age</th>
                 <th class="table__head">Sex</th>
-                <th class="table__head">Updated drug susceptibility</th>
+                <th class="table__head">Current drug susceptibility</th>
                 <th class="table__head">Date submitted by Health Care Worker</th>
                 <th class="table__head">Status</th>
             </tr>
@@ -145,7 +148,7 @@
                 <th class="table__head">Patient initials</th>
                 <th class="table__head">Age</th>
                 <th class="table__head">Sex</th>
-                <th class="table__head">Updated drug susceptibility</th>
+                <th class="table__head">Current drug susceptibility</th>
                 <th class="table__head">Date submitted by Health Care Worker</th>
                 <th class="table__head">Status</th>
             </tr>
@@ -160,10 +163,10 @@
             <td class="table__details">{{ $case->caseManagementForm->updated_type_of_case ?? '' }}</td>
             <td class="table__details">{{ $case->created_at->format('Y-m-d')}}</td>
             <td class="table__details">{{ $case->status }}</td>
-        </tr>
+            </tr>
         @endforeach
         </tbody>
         </table>
-    </div> --}}
+    </div>
     </div>
 </div>
