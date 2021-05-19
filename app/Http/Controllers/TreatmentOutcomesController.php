@@ -246,7 +246,7 @@ class TreatmentOutcomesController extends Controller
             ->with('referredCases', $referredCases)
             ->with('completed', $completed)
             ->with('cases', $cases)
-            ->with('allCases1', $allCases)
+            ->with('allCases1', $allCases1)
             ->with('allCases', $allCases);
     }
 
