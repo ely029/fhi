@@ -166,7 +166,7 @@
             <span class="gallery__text gallery__text--filename"></span>
             <img class="image image--close" src="{{ asset('assets/app/img/icon-close.png') }}" data-dz-remove />
           </li>
-          <ul class="gallery__list">
+          <ul class="gallery__list gallery__list--resubmit">
             <li class="gallery__item">
               @foreach($tbMacForm->attachments as $key => $attachment)
                 <img class="image image--gallery exist-attach-{{ $key }}" src="{{ url('enrollments/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment') }}"/>
