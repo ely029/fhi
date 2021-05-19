@@ -27,7 +27,8 @@ $('.hide--button').hide();
             }
 
             // $("#modal-form").find('input[name="status"]').val('Referred to Regional Chair');
-            $("#modal-form").find('input[name="status"]').val(action);
+            $("#modal-form").find('input[name="status"]').val('Referred to Regional Chair');
+            $("#modal-form").find('input[name="recommendation_status"]').val(action);
             return;
         }
         if(action == 'For approval'){
@@ -70,7 +71,7 @@ $('.hide--button').hide();
     });
 
     $(".create-recommendation").click(function(){
-        // $("#ntbmac-modal").modal('show');
+        $('#case_management_modal').modal('show');
         $("#modal-text").text('Create recommendation');
         
         if($(this).data('role') == 7){
