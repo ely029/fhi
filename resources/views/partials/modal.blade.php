@@ -9,7 +9,7 @@
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
                        <input type="hidden" name="status" value="Refer to Regional"/>
                        <div class="form__content"><textarea name="recommendation" class="form__input form__input--message" placeholder="Enter remarks" required></textarea><label class="form__label" for="">Remarks</label></div>
-                       <div class="modal__button"><input class="button" type="submit" value="Submit" /></div>
+                       <div class="modal__button modal__button--end"><input class="button" type="submit" value="Submit" /></div>
                     </form>
                   </div>
                 </div>
@@ -26,7 +26,7 @@
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
                        <input type="hidden" name="status" value="Not For Referral"/>
                       <div class="form__content"><textarea name="recommendation" class="form__input form__input--message" placeholder="Enter remarks" required></textarea><label class="form__label" for="">Remarks</label></div>
-                      <div class="modal__button"><input class="button" type="submit" value="Submit" /></div>
+                      <div class="modal__button modal__button--end"><input class="button" type="submit" value="Submit" /></div>
                     </form>
                   </div>
                 </div>
@@ -43,7 +43,7 @@
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
                        <input type="hidden" name="status" value="Not For Enrollment"/>
                       <div class="form__content"><textarea name="recommendation" class="form__input form__input--message" placeholder="Enter remarks" required></textarea><label class="form__label" for="">Remarks</label></div>
-                      <div class="modal__button"><input class="button" type="submit" value="Submit" /></div>
+                      <div class="modal__button modal__button--end"><input class="button" type="submit" value="Submit" /></div>
                     </form>
                   </div>
                 </div>
@@ -60,7 +60,7 @@
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
                        <input type="hidden" name="status" value="For Enrollment"/>
                       <div class="form__content"><textarea name="recommendation" class="form__input form__input--message" placeholder="Enter remarks" required></textarea><label class="form__label" for="">Remarks</label></div>
-                      <div class="modal__button"><input class="button" type="submit" value="Submit" /></div>
+                      <div class="modal__button modal__button--end"><input class="button" type="submit" value="Submit" /></div>
                     </form>
                   </div>
                 </div>
@@ -77,7 +77,7 @@
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
                        <input type="hidden" name="status" value="For Enrollment"/>
                       <div class="form__content"><textarea name="recommendation" class="form__input form__input--message" placeholder="Enter remarks" required></textarea><label class="form__label" for="">Remarks</label></div>
-                      <div class="modal__button"><input class="button" type="submit" value="Submit" /></div>
+                      <div class="modal__button modal__button--end"><input class="button" type="submit" value="Submit" /></div>
                     </form>
                   </div>
                 </div>
@@ -94,7 +94,7 @@
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
                        <input type="hidden" name="status" value="Not For Enrollment"/>
                       <div class="form__content"><textarea name="recommendation" class="form__input form__input--message" placeholder="Enter remarks" required></textarea><label class="form__label" for="">Remarks</label></div>
-                      <div class="modal__button"><input class="button" type="submit" value="Submit" /></div>
+                      <div class="modal__button modal__button--end"><input class="button" type="submit" value="Submit" /></div>
                     </form>
                   </div>
                 </div>
@@ -111,7 +111,7 @@
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
                        <input type="hidden" name="status" value="Need Further Details"/>
                       <div class="form__content"><textarea name="recommendation" class="form__input form__input--message" placeholder="Enter remarks" required></textarea><label class="form__label" for="">Remarks</label></div>
-                      <div class="modal__button"><input class="button" type="submit" value="Submit" /></div>
+                      <div class="modal__button modal__button--end"><input class="button" type="submit" value="Submit" /></div>
                     </form>
                   </div>
                 </div>
@@ -128,7 +128,7 @@
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
                        <input type="hidden" name="status" value="Referred to N-TB MAC"/>
                       <div class="form__content"><textarea name="recommendation" class="form__input form__input--message" placeholder="Enter remarks" required></textarea><label class="form__label" for="">Remarks</label></div>
-                      <div class="modal__button"><input class="button" type="submit" value="Submit" /></div>
+                      <div class="modal__button modal__button--end"><input class="button" type="submit" value="Submit" /></div>
                     </form>
                   </div>
                 </div>
@@ -145,7 +145,7 @@
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
                        <input type="hidden" name="status" value="0"/>
                       <div class="form__content"><textarea name="recommendation" class="form__input form__input--message" placeholder="Enter remarks" required></textarea><label class="form__label" for="">Remarks</label></div>
-                      <div class="modal__button"><input class="button" type="submit" value="Submit" /></div>
+                      <div class="modal__button modal__button--end"><input class="button" type="submit" value="Submit" /></div>
                     </form>
                   </div>
                 </div>
@@ -161,7 +161,7 @@
                       You are about to resubmit a new enrollment. Please read and prepare the requested information and documents
                       the remarks and recommendations section.
                   </div> 
-                  <div class="modal__button">
+                  <div class="modal__button modal__button--end">
                     <a href="{{ url('resubmit/enrollment/'.$tbMacForm->id) }}" class="button">Resubmit</a>
                   </div>
                

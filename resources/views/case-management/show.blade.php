@@ -31,7 +31,7 @@
             <div class="form__content">
                 <textarea name="recommendation" required class="form__input form__input--message" placeholder="Enter remarks"></textarea><label class="form__label" for="">Remarks</label>
                 </div>
-            <div class="modal__button">
+            <div class="modal__button modal__button--end">
                 <button class="button" type="submit">Submit</button>
                 <a href="{{ url('/case-management/resubmit/'.$tbMacForm->id)}}"class="button hide--button">Submit</a>
             </div>
@@ -61,11 +61,12 @@
                     <div class="form__content">
                         <span class="form__text">{{ $tbMacForm->caseManagementForm ? $tbMacForm->caseManagementForm->month_of_treatment : ''}}</span>
                         <label class="form__label" for="">Month of treatment</label></div>
-                    <div class="form__content"><span class="form__text">{{ empty($tbMacForm->casemanagementForm->current_drug_susceptibility) ? '' : $tbMacForm->casemanagementForm->current_drug_susceptibility}}
+                  </div>
+                  <br/>
+                  <div class="form__content"><span class="form__text">{{ empty($tbMacForm->casemanagementForm->current_drug_susceptibility) ? '' : $tbMacForm->casemanagementForm->current_drug_susceptibility}}
                         </span>
                         <label class="form__label" for="">Current drug susceptibility</label>
                     </div>
-                  </div>
                 </div>
                 <div class="form__container">
                   <h2 class="section__heading">Health Care Worker</h2>
@@ -80,52 +81,38 @@
                     </div>
                   </div>
                 </div>
+              </div>
 
-                {{-- Hea;th Care Worker --}}
-                @if(auth()->user()->role_id == 3 && $tbMacForm->status == 'Not for Referral' || $tbMacForm->status == 'Need Further Details')
-                    <div class="grid grid--action">
-                        <div class="form__content">
-                            <select id="action-dropdown" class="form__input form__input--select">
-                            <option value="Resolved">Resolved</option>
-                            <option value="Not Resolved">Not resolved</option>
-                            <option value="Resubmit Case Management">Resubmit case management</option>
-                            </select>
-                            <div class="triangle triangle--down"></div>
-                            <label class="form__label" for="">Action</label>
-                        </div>
-                    <button id="recommendation-button" class="button button--masterlist js-trigger" type="button">Confirm</button>
-                    </div>
-                @endif
-
-                {{-- Regional Secretariat --}}
-                @if(auth()->user()->role_id == 4 && request('from_tab') == 'pending')
-                    <div class="grid grid--action">
-                        <div class="form__content">
-                            <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
-                            <option value="Referred to Regional">Refer to R-TB MAC</option>
-                            <option value="Not for Referral">Not for referral</option>
-                            </select>
-                            <div class="triangle triangle--down"></div>
-                            <label class="form__label" for="">Action</label>
-                        </div>
-                    <button id="recommendation-button" class="button button--masterlist js-trigger" type="button">Confirm</button>
-                    </div>
-                @endif
-
-                {{-- Regional TB Mac --}}
-                @if(auth()->user()->role_id == 5 && request('from_tab') == 'pending')
+              {{-- Health Care Worker --}}
+              @if(auth()->user()->role_id == 3 && $tbMacForm->status == 'Not for Referral' || $tbMacForm->status == 'Need Further Details')
                   <div class="grid grid--action">
                       <div class="form__content">
-                          <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
-                          <option value="Recommend for Approval">Recommend for approval</option>
-                          <option value="Recommend for other suggestions">Recommend for other suggestions</option>
-                          <option value="Recommend for need further details">Recommend for need further details </option>
+                          <select id="action-dropdown" class="form__input form__input--select">
+                          <option value="Resolved">Resolved</option>
+                          <option value="Not Resolved">Not resolved</option>
+                          <option value="Resubmit Case Management">Resubmit case management</option>
                           </select>
                           <div class="triangle triangle--down"></div>
                           <label class="form__label" for="">Action</label>
                       </div>
                   <button id="recommendation-button" class="button button--masterlist js-trigger" type="button">Confirm</button>
                   </div>
+              @endif
+
+              {{-- Regional Secretariat --}}
+              @if(auth()->user()->role_id == 4 && request('from_tab') == 'pending')
+                  <div class="grid grid--action">
+                      <div class="form__content">
+                          <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
+                          <option value="Referred to Regional">Refer to R-TB MAC</option>
+                          <option value="Not for Referral">Not for referral</option>
+                          </select>
+                          <div class="triangle triangle--down"></div>
+                          <label class="form__label" for="">Action</label>
+                      </div>
+                  <button id="recommendation-button" class="button button--masterlist js-trigger" type="button">Confirm</button>
+                  </div>
+<<<<<<< HEAD
                 @endif
 
                 {{-- Regional TB Mac Chair --}}
@@ -144,20 +131,52 @@
                     <button id="recommendation-button" class="button button--masterlist js-trigger" type="button">Confirm</button>
                     </div>
                 @endif
+=======
+              @endif
+>>>>>>> e27c22f9cadda7e5ea9d51a95734d32cdf5e2c48
 
-                 {{-- National TB Mac --}}
-                 @if((auth()->user()->role_id == 7 || auth()->user()->role_id == 8) && request('from_tab') == 'referred')
-                 <div class="grid grid--action">
+              {{-- Regional TB Mac --}}
+              @if(auth()->user()->role_id == 5 && request('from_tab') == 'pending')
+                <div class="grid grid--action">
                     <div class="form__content">
-                      <label class="form__label" for="">Action</label>
+                        <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
+                        <option value="Recommend for Approval">Recommend for approval</option>
+                        <option value="Recommend for other suggestions">Recommend for other suggestions</option>
+                        <option value="Recommend for need further details">Recommend for need further details </option>
+                        </select>
+                        <div class="triangle triangle--down"></div>
+                        <label class="form__label" for="">Action</label>
                     </div>
-                    <button class="button js-trigger create-recommendation" data-role="{{ auth()->user()->role_id }}" type="button">Create Recommendation</button>
-                  </div>
-                @endif
-                
+                <button id="recommendation-button" class="button button--masterlist js-trigger" type="button">Confirm</button>
+                </div>
+              @endif
 
-              </div>
-  
+              {{-- Regional TB Mac Chair --}}
+              @if(auth()->user()->role_id == 6 && (request('from_tab') == 'referred' || request('from_tab') == 'pending'))
+                  <div class="grid grid--action">
+                      <div class="form__content">
+                          <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
+                          <option value="For approval">For Approval</option>
+                          <option value="Other suggestions">Other suggestions</option>
+                          <option value="Need Further Details">Need further details</option>
+                          <option value="Referred to N-TB MAC">Referred to N-TB MAC</option>
+                          </select>
+                          <div class="triangle triangle--down"></div>
+                          <label class="form__label" for="">Action</label>
+                      </div>
+                  <button id="recommendation-button" class="button button--masterlist js-trigger" type="button">Confirm</button>
+                  </div>
+              @endif
+
+                {{-- National TB Mac --}}
+                @if((auth()->user()->role_id == 7 || auth()->user()->role_id == 8) && request('from_tab') == 'referred')
+                <div class="grid grid--action">
+                  <div class="form__content">
+                    <label class="form__label" for="">Action</label>
+                  </div>
+                  <button class="button js-trigger create-recommendation" data-role="{{ auth()->user()->role_id }}" type="button">Create Recommendation</button>
+                </div>
+              @endif
             </div>
           </form>
           <hr class="line" />
@@ -173,7 +192,7 @@
                 <table class="table table--unset js-table-unset">
                   <thead>
                     <tr>
-                      <th class="table__head"></th>
+                      <th class="table__head no-sort"></th>
                       <th class="table__head">Done date</th>
                       <th class="table__head">Method used</th>
                       <th class="table__head">Resistance pattern</th>
@@ -207,7 +226,7 @@
                 <table class="table table--unset js-table-unset">
                   <thead>
                     <tr>
-                      <th class="table__head"></th>
+                      <th class="table__head no-sort"></th>
                       <th class="table__head">Done date</th>
                       <th class="table__head">Resistance pattern</th>
                     </tr>
@@ -226,7 +245,7 @@
                 <table class="table table--unset js-table-unset">
                   <thead>
                     <tr>
-                      <th class="table__head"></th>
+                      <th class="table__head no-sort"></th>
                       <th class="table__head">Done date</th>
                       <th class="table__head">Resistance pattern</th>
                     </tr>
@@ -419,8 +438,10 @@
                 @foreach($tbMacForm->caseManagementAttachments as $key => $attachment)
                   <li class="form__gallery-item">
                   <a class="form__gallery-link" href="{{ url('case-management/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment') }}" target="__blank">
-                    <img class="image" src="{{ url('case-management/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment') }}" alt="Placeholder" />
-                      <p class="form__gallery-text">{{ $attachment->file_name }}</p>
+                    <div class="form__gallery-image">
+                      <img class="image" src="{{ url('case-management/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment') }}" alt="Placeholder" />
+                    </div>
+                    <p class="form__gallery-text">{{ $attachment->file_name }}</p>
                   </a>
                   </li>
                 @endforeach

@@ -23,7 +23,7 @@
           <div class="grid grid--two grid--start">
             <div class="form--half">
               <div class="form__container">
-              <h2 class="section__heading">Patient  {{ $tbMacForm->patient->code }}
+              <h2 class="section__heading section__heading--full">Patient  {{ $tbMacForm->patient->code }}
                   <span class="form__text">Facility  {{ $tbMacForm->patient->facility_code }}  &nbsp;&nbsp;&nbsp;  {{ $tbMacForm->patient->province }} </span></h2>
                 <div class="form__content"><span class="form__text">{{ ucfirst(Str::lower($tbMacForm->status)) }}</span>
                     <label class="form__label" for="">Status</label>
@@ -317,8 +317,8 @@
                 @foreach($tbMacForm->attachments as $key => $attachment)
                   <li class="form__gallery-item">
                     <a class="form__gallery-link" href="{{ url('enrollments/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment') }}" target="__blank">
-                    <img class="image" src="{{ url('enrollments/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment') }}" alt="Placeholder" />
-                      <p class="form__gallery-text">{{ $attachment->file_name }}</p>
+                    <div class="form__gallery-image"><img class="image" src="{{ url('enrollments/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment') }}" alt="Placeholder" /></div>
+                    <p class="form__gallery-text">{{ $attachment->file_name }}</p>
                   </a>
                   </li>
                 @endforeach
@@ -350,7 +350,7 @@
               <div class="form__container">
                 <div class="grid grid--two">
                   <h2 class="section__heading section__heading--healthworker">{{ $tbMacForm->submittedBy->name }}<span class="form__label">Health Care Worker | [Region]</span></h2>
-                  <label class="form__label">{{ $tbMacForm->created_at->format('m-d-Y')}}</label>
+                  <label class="form__label form__label--date">{{ $tbMacForm->created_at->format('m-d-Y')}}</label>
                 </div>
                 <div class="form__container form__container--remarks form__container--actions">
                   <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
@@ -367,7 +367,7 @@
               <div class="form__container">
                 <div class="grid grid--two">
                   <h2 class="section__heading section__heading--healthworker">{{ $recommendation->users->name}}<span class="form__label">{{ $recommendation->users->role->name }} | [Region]</span></h2>
-                  <label class="form__label">{{ $recommendation->created_at->format('m-d-Y')}}</label>
+                  <label class="form__label form__label--date">{{ $recommendation->created_at->format('m-d-Y')}}</label>
                 </div>
                 <div class="form__container form__container--remarks form__container--actions">
                   <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />

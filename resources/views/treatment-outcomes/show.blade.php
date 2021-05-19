@@ -31,7 +31,7 @@
             <div class="form__content">
                 <textarea name="recommendation" required class="form__input form__input--message" placeholder="Enter remarks"></textarea><label class="form__label" for="">Remarks</label>
                 </div>
-            <div class="modal__button">
+            <div class="modal__button modal__button--end">
                 <button class="button" type="submit">Submit</button>
                 <a href="{{ url('/treatment-outcomes/resubmit/'.$tbMacForm->id)}}"class="button hide--button">Submit</a>
             </div>
@@ -41,7 +41,7 @@
 </div>
           <form class="form" action="">
             <div class="grid grid--two grid--start">
-              <div class="form--full">
+              <div class="form--half">
                 <div class="form__container">
                   <h2 class="section__heading">Patient {{ $tbMacForm->patient->code }}
                     <span class="form__text">
@@ -52,21 +52,24 @@
                       <label class="form__label" for="">Status</label>
                     </div>
                   <br />
-                  <div class="grid grid--patient grid--start">
+                  <div class="grid grid--two">
                     <div class="form__content">
                         <span class="form__text">{{ $tbMacForm->treatmentOutcomeForm->tb_case_number }}</span>
                         <label class="form__label" for="">TB case number</label></div>
                     <div class="form__content">
                         <span class="form__text">{{  date('m-d-Y', strtotime($tbMacForm->treatmentOutcomeForm->date_started_treatment )) }}</span>
                         <label class="form__label" for="">Date started treatment</label></div>
+                  </div>
+
+                  <div class="grid grid--two">
                     <div class="form__content"><span class="form__text drug-susceptibility-label">{{ $tbMacForm->treatmentOutcomeForm->current_drug_susceptibility }}
                         </span>
                         <label class="form__label" for="">Current drug susceptibility</label>
                     </div>
-                    <div class="form__content"><span class="form__text">{{ $tbMacForm->treatmentOutcomeForm->outcome }}
-                    </span>
-                    <label class="form__label" for="">Outcome</label>
-                </div>
+                    <div class="form__content">
+                      <span class="form__text">{{ $tbMacForm->treatmentOutcomeForm->outcome }}</span>
+                      <label class="form__label" for="">Outcome</label>
+                    </div>
                   </div>
                 </div>
                 <div class="form__container">
@@ -82,55 +85,40 @@
                     </div>
                   </div>
                 </div>
+              </div>
 
-                {{-- Health Care Worker --}}
-                @if(auth()->user()->role_id == 3 && $tbMacForm->status != 'Resolved' && in_array(request('from_tab'),['For approval','Other suggestions','Need Further Details','Not for Referral']))
-                    <div class="grid grid--action">
-                        <div class="form__content">
-                            <select id="action-dropdown" class="form__input form__input--select">
-                            <option value="Resolved">Resolved</option>
-                            <option value="Not Resolved">Not resolved</option>
-                            @if($tbMacForm->status == 'Not for Referral' || $tbMacForm->status == 'Need Further Details')
-                              <option value="Resubmit Treatment Outcome">Resubmit treatment outcome</option>
-                            @endif
-                            </select>
-                            <div class="triangle triangle--down"></div>
-                            <label class="form__label" for="">Action</label>
-                        </div>
-                    <button id="recommendation-button" class="button button--masterlist js-trigger" type="button">Confirm</button>
-                    </div>
-                @endif
-
-                {{-- Regional Secretariat --}}
-                @if(auth()->user()->role_id == 4 && request('from_tab') == 'New Case')
-                    <div class="grid grid--action">
-                        <div class="form__content">
-                            <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
-                            <option value="Referred to Regional">Refer to R-TB MAC</option>
-                            <option value="Not for Referral">Not for referral</option>
-                            </select>
-                            <div class="triangle triangle--down"></div>
-                            <label class="form__label" for="">Action</label>
-                        </div>
-                    <button id="recommendation-button" class="button button--masterlist js-trigger" type="button">Confirm</button>
-                    </div>
-                @endif
-
-                {{-- Regional TB Mac --}}
-                @if(auth()->user()->role_id == 5 && request('from_tab') == 'Referred to Regional')
+              {{-- Health Care Worker --}}
+              @if(auth()->user()->role_id == 3 && $tbMacForm->status != 'Resolved' && in_array(request('from_tab'),['For approval','Other suggestions','Need Further Details','Not for Referral']))
                   <div class="grid grid--action">
                       <div class="form__content">
-                          <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
-                          <option value="Recommend for Approval">Recommend for approval</option>
-                          <option value="Recommend for other suggestions">Recommend for other suggestions</option>
-                          <option value="Recommend for need further details">Recommend for need further details </option>
+                          <select id="action-dropdown" class="form__input form__input--select">
+                          <option value="Resolved">Resolved</option>
+                          <option value="Not Resolved">Not resolved</option>
+                          @if($tbMacForm->status == 'Not for Referral' || $tbMacForm->status == 'Need Further Details')
+                            <option value="Resubmit Treatment Outcome">Resubmit treatment outcome</option>
+                          @endif
                           </select>
                           <div class="triangle triangle--down"></div>
                           <label class="form__label" for="">Action</label>
                       </div>
                   <button id="recommendation-button" class="button button--masterlist js-trigger" type="button">Confirm</button>
                   </div>
-                @endif
+              @endif
+
+              {{-- Regional Secretariat --}}
+              @if(auth()->user()->role_id == 4 && request('from_tab') == 'New Case')
+                  <div class="grid grid--action">
+                      <div class="form__content">
+                          <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
+                          <option value="Referred to Regional">Refer to R-TB MAC</option>
+                          <option value="Not for Referral">Not for referral</option>
+                          </select>
+                          <div class="triangle triangle--down"></div>
+                          <label class="form__label" for="">Action</label>
+                      </div>
+                  <button id="recommendation-button" class="button button--masterlist js-trigger" type="button">Confirm</button>
+                  </div>
+              @endif
 
                 {{-- Regional TB Mac Chair --}}
                 @if(auth()->user()->role_id == 6 && (request('from_tab') == 'Referred to Regional Chair' || request('from_tab') == 'Referred back to Regional Chair'))
@@ -153,25 +141,54 @@
                  @if(auth()->user()->role_id == 7  && request('from_tab') == 'Referred to N-TB MAC')
                  <div class="grid grid--action">
                     <div class="form__content">
-                      <label class="form__label" for="">Action</label>
+                        <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
+                        <option value="Recommend for Approval">Recommend for approval</option>
+                        <option value="Recommend for other suggestions">Recommend for other suggestions</option>
+                        <option value="Recommend for need further details">Recommend for need further details </option>
+                        </select>
+                        <div class="triangle triangle--down"></div>
+                        <label class="form__label" for="">Action</label>
                     </div>
-                    <button class="button js-trigger create-recommendation" data-role="{{ auth()->user()->role_id }}" type="button">Create Recommendation</button>
-                  </div>
-                @endif
+                <button id="recommendation-button" class="button button--masterlist js-trigger" type="button">Confirm</button>
+                </div>
+              @endif
 
-                 {{-- National TB Mac Chair --}}
-                 @if(auth()->user()->role_id == 8 && request('from_tab') == 'Referred to National Chair')
-                 <div class="grid grid--action">
-                    <div class="form__content">
-                      <label class="form__label" for="">Action</label>
-                    </div>
-                    <button class="button js-trigger create-recommendation" data-role="{{ auth()->user()->role_id }}" type="button">Create Recommendation</button>
+              {{-- Regional TB Mac Chair --}}
+              @if(auth()->user()->role_id == 6 && (request('from_tab') == 'Referred to Regional Chair' || request('from_tab') == 'Referred back to Regional Chair'))
+                  <div class="grid grid--action">
+                      <div class="form__content">
+                          <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
+                          <option value="For approval">For Approval</option>
+                          <option value="Other suggestions">Other suggestions</option>
+                          <option value="Need Further Details">Need further details</option>
+                          <option value="Referred to N-TB MAC">Referred to N-TB MAC</option>
+                          </select>
+                          <div class="triangle triangle--down"></div>
+                          <label class="form__label" for="">Action</label>
+                      </div>
+                  <button id="recommendation-button" class="button button--masterlist js-trigger" type="button">Confirm</button>
                   </div>
-                @endif
-                
+              @endif
 
-              </div>
-  
+              {{-- National TB Mac Chair --}}
+                @if(auth()->user()->role_id == 7  && request('from_tab') == 'Referred to N-TB MAC')
+                <div class="grid grid--action">
+                  <div class="form__content">
+                    <label class="form__label" for="">Action</label>
+                  </div>
+                  <button class="button js-trigger create-recommendation" data-role="{{ auth()->user()->role_id }}" type="button">Create Recommendation</button>
+                </div>
+              @endif
+
+                {{-- National TB Mac Chair --}}
+                @if(auth()->user()->role_id == 8 && request('from_tab') == 'Referred to National Chair')
+                <div class="grid grid--action">
+                  <div class="form__content">
+                    <label class="form__label" for="">Action</label>
+                  </div>
+                  <button class="button js-trigger create-recommendation" data-role="{{ auth()->user()->role_id }}" type="button">Create Recommendation</button>
+                </div>
+              @endif
             </div>
           </form>
           <hr class="line" />
@@ -187,7 +204,7 @@
                 <table class="table table--unset js-table-unset">
                   <thead>
                     <tr>
-                      <th class="table__head"></th>
+                      <th class="table__head no-sort"></th>
                       <th class="table__head">Done date</th>
                       <th class="table__head">Method used</th>
                       <th class="table__head">Resistance pattern</th>
@@ -226,7 +243,7 @@
                 <table class="table table--unset js-table-unset">
                   <thead>
                     <tr>
-                      <th class="table__head"></th>
+                      <th class="table__head no-sort"></th>
                       <th class="table__head">Done date</th>
                       <th class="table__head">Resistance pattern</th>
                     </tr>
@@ -245,7 +262,7 @@
                 <table class="table table--unset js-table-unset">
                   <thead>
                     <tr>
-                      <th class="table__head"></th>
+                      <th class="table__head no-sort"></th>
                       <th class="table__head">Done date</th>
                       <th class="table__head">Resistance pattern</th>
                     </tr>
@@ -317,9 +334,11 @@
                 <ul class="form__gallery">
                 @foreach($tbMacForm->attachments as $key => $attachment)
                   <li class="form__gallery-item">
-                  <a class="form__gallery-link" href="{{ url('treatment-outcomes/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment') }}" target="__blank">
-                    <img class="image" src="{{ url('treatment-outcomes/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment') }}" alt="Placeholder" />
-                      <p class="form__gallery-text">{{ $attachment->file_name }}</p>
+                    <a class="form__gallery-link" href="{{ url('treatment-outcomes/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment') }}" target="__blank">
+                    <div class="form__gallery-image">
+                      <img class="image" src="{{ url('treatment-outcomes/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment') }}" alt="Placeholder" />
+                      </div>
+                    <p class="form__gallery-text">{{ $attachment->file_name }}</p>
                   </a>
                   </li>
                 @endforeach
