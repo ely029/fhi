@@ -52,7 +52,7 @@
             <div class="grid grid--two grid--start">
               <div class="form--full">
                 <div class="form__container">
-                  <h2 class="section__heading">Patient {{ $tbMacForm->patient->code }}
+                  <h2 class="section__heading section__heading--full">Patient {{ $tbMacForm->patient->code }}
                     <span class="form__text">
                         Facility {{ $tbMacForm->patient->facility_code }} &nbsp;&nbsp;&nbsp; {{ $tbMacForm->patient->province }}</span>
                     </h2>
@@ -458,7 +458,7 @@
                 <img class="image image--user" src="{{ asset('assets\app\img\icon-user.png')}}" alt="user icon" />
                 <div class="form__container">
                   <div class="grid grid--two">
-                    <h2 class="section__heading section__heading--healthworker">{{ $tbMacForm->submittedBy->name }}<span class="form__label">Health Care Worker | [Region]</span></h2>
+                    <h2 class="section__heading section__heading--healthworker">{{ $tbMacForm->submittedBy->name }}<span class="form__label form__label--date">Health Care Worker | [Region]</span></h2>
                     <label class="form__label">{{ $tbMacForm->created_at->format('m-d-Y')}}</label>
                   </div>
                   <div class="form__container form__container--remarks form__container--actions">
