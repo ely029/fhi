@@ -50,7 +50,7 @@ class StoreRequest extends FormRequest
             'attachments.*' => 'nullable|file|max:10000',
             'outcome' => 'required|in:Cured,Treatment Completed,Failed,Lost to Follow-up,Died,Excluded',
             'screening_1_date_collected' => 'required|date_format:Y-m-d',
-            'screening_1_method_used' => 'required|in:Xpert MTB/RIF,Xpert MTB/RIF ULTRA,Truenat',
+            'screening_1_method_used' => 'required|in:Xpert MTB/RIF,Xpert MTB/RIF ULTRA,Truenat TB',
             'screening_1_resistance_pattern' => 'required',
             'lpa_date_collected' => 'required|date_format:Y-m-d',
             'lpa_resistance_pattern' => 'required',
