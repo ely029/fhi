@@ -1,23 +1,26 @@
 <div class="form__tab step-3">
     <div class="form__container form-step-3">
-    <h2 class="section__heading">Treatment information</h2>
-    <div class="grid grid--two">
-        <div class="form__content form-group">
-            <input class="form__input" type="text" required name="current_regiment" placeholder="Current Regiment" />
-            <div class="help-block with-errors"></div>
-            <label class="form__label" for="">Current regimen</label>
-        </div>
+        <h2 class="section__heading">Treatment information</h2>
+        <div class="grid grid--two">
+            <div class="form__content form-group">
+                <input class="form__input" type="text" required name="current_regiment" placeholder="Current Regiment" />
+                <div class="help-block with-errors"></div>
+                <label class="form__label" for="">Current regimen</label>
+            </div>
 
-        <div class="form__content form-group">
-            <input class="form__input" type="number" name="current_weight" placeholder="Current weight (kg)" required />
-            <div class="help-block with-errors"></div>
-            <label class="form__label" for="">Current weight (kg)</label>
+            <div class="form__content form-group">
+                <input class="form__input" type="number" name="current_weight" placeholder="Current weight (kg)" required />
+                <div class="help-block with-errors"></div>
+                <label class="form__label" for="">Current weight (kg)</label>
+            </div>
         </div>
     </div>
-    <div class="form__content form-group label-with-error-above">
-        <textarea name="reason_case_management_presentation" class="form__input form__input--message" id="inputEmail" placeholder="" required></textarea>
-        <div class="help-block with-errors label-with-error-above"></div>
-        <label class="form__label" for="">Reason for case management presentation</label>
+    <div class="form-step-3 form__container">
+        <div class="form__content form-group">
+            <textarea name="reason_case_management_presentation" class="form__input form__input--message" id="inputEmail" placeholder="" required></textarea>
+            <div class="help-block with-errors"></div>
+            <label class="form__label" for="">Reason for case management presentation</label>
+        </div>
     </div>
     <div class="form__content">
         <select id="suggested_regimen" class="form__input form__input--select" name="suggested_regimen">
@@ -44,10 +47,12 @@
     <div class="form__content" id="others_1">
         <input class="form__input" name="others_case_management" type="text" placeholder="Others (Please specify)"/><label class="form__label" for="">Others</label>
     </div>
-    <div class="form__content form-group label-with-error-above">
-        <textarea required class="form__input form__input--message" name="suggested_regimen_notes"> </textarea>
-        <div class="help-block with-errors"></div>
-        <label class="form__label" for="">Suggested regimen notes</label>
+    <div class="form-step-3 form__container">
+        <div class="form__content form-group">
+            <textarea required class="form__input form__input--message" name="suggested_regimen_notes"></textarea>
+            <div class="help-block with-errors"></div>
+            <label class="form__label" for="">Suggested regimen notes</label>
+        </div>
     </div>
     <div class="grid grid--two">
         <div class="form__content label-with-error-above">
