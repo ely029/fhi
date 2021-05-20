@@ -175,7 +175,7 @@
     <div class="modal__box">
       <h2 class="modal__title" id="modal-title"></h2>
       <p class="modal__text" id="modal-text"></p>
-      <form class="form" id="modal-form" method="POST" action="{{ url('case-management/'.$tbMacForm->id.'/recommendation') }}">
+      <form class="form form--full" id="modal-form" method="POST" action="{{ url('case-management/'.$tbMacForm->id.'/recommendation') }}">
           @csrf
           <input type="hidden" name="status"/>
           <div class="form__content">
