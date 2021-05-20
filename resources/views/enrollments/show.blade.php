@@ -25,7 +25,13 @@
               <div class="form__container">
               <h2 class="section__heading section__heading--full">Patient  {{ $tbMacForm->patient->code }}
                   <span class="form__text">Facility  {{ $tbMacForm->patient->facility_code }}  &nbsp;&nbsp;&nbsp;  {{ $tbMacForm->patient->province }} </span></h2>
-                <div class="form__content"><span class="form__text">{{ ucfirst(Str::lower($tbMacForm->status)) }}</span>
+                <div class="form__content"><span class="form__text">
+                @if ($tbMacForm->status == 'Referred to N-TB MAC')
+                  Referred to N-TB MAC
+                  @else
+                  {{ ucfirst(Str::lower($tbMacForm->status)) }}
+                  @endif
+                </span>
                     <label class="form__label" for="">Status</label>
                 </div>
                 <br />

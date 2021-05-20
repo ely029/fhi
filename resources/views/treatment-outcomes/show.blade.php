@@ -48,7 +48,13 @@
                         Health Facility {{ $tbMacForm->patient->facility_code }} &nbsp;&nbsp;&nbsp; {{ $tbMacForm->patient->province }}</span>
                     </h2>
                   <div class="form__content">
-                      <span class="form__text ">{{ ucfirst(Str::lower($tbMacForm->status)) }}</span>
+                      <span class="form__text ">
+                      @if ($tbMacForm->status == 'Referred to N-TB MAC')
+                  Referred to N-TB MAC
+                  @else
+                  {{ ucfirst(Str::lower($tbMacForm->status)) }}
+                  @endif
+                      </span>
                       <label class="form__label" for="">Status</label>
                     </div>
                   <br />
