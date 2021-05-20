@@ -54,7 +54,7 @@ jQuery( document ).ready(function( $ ) {
                 }
                 lpa.push(value);
             }
-            if(value.name == 'Smear Microscop'){
+            if(value.name == 'Smear Microscopy'){
                 if(!clicked[value.name]){
                     clicked[value.name] = true;
                     $("#js-toggle-enroll5").trigger('click');
