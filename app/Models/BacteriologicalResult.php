@@ -42,7 +42,7 @@ class BacteriologicalResult extends Model
         'xpert_mtb_rif_ultra' => 'Xpert MTB/RIF ULTRA',
         'truenat_tb' => 'Truenat TB',
         'lpa' => 'Line Probe Assay (LPA)',
-        'smear_mic' => 'Smear Microscop',
+        'smear_mic' => 'Smear Microscopy',
         'tb_lamp' => 'TB Loop-Mediated Isothermal Amplification (TB-LAMP)',
         'tb_culture' => 'TB Culture',
         'dst' => 'Drug Susceptibility Test (DST)',
