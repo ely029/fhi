@@ -4,7 +4,7 @@
       <div class="form__content form-group">
           <input class="form__input" id="tb-case-number" type="number" min="0" required placeholder="TB Case number" name="tb_case_number" value="{{ empty($tbMacForm->treatmentOutcomeForm->tb_case_number) ? '' : $tbMacForm->treatmentOutcomeForm->tb_case_number }}"/>
           <div class="help-block with-errors"></div>
-          <label class="form__label" for="">Case number</label>
+          <label class="form__label" for="">TB case number</label>
         </div>
       <div class="form__content form-group">
           <input class="form__input" id="last-name" type="text" placeholder="Last name" name="last_name" required value="{{ $tbMacForm->patient->last_name }}" />
