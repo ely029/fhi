@@ -161,7 +161,7 @@ function resistance_pattern()
     return [
         'Xpert MTB/RIF',
         'Xpert MTB/RIF ULTRA',
-        'Truenat',
+        'Truenat TB',
     ];
 }
 
