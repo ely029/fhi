@@ -24,7 +24,7 @@
       <div class="modal__box">
         <h2 class="modal__title" id="modal-title"></h2>
         <p class="modal__text" id="modal-text"></p>
-        <form class="form" id="modal-form" method="POST" action="{{ url('treatment-outcomes/'.$tbMacForm->id.'/recommendation') }}">
+        <form class="form form--full" id="modal-form" method="POST" action="{{ url('treatment-outcomes/'.$tbMacForm->id.'/recommendation') }}">
             @csrf
             <input type="hidden" name="status"/>
             <input type="hidden" name="recommendation_status"/>
