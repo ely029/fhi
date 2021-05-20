@@ -170,7 +170,7 @@
             <li class="gallery__item">
               @foreach($tbMacForm->attachments as $key => $attachment)
                 <img class="image image--gallery exist-attach-{{ $key }}" src="{{ url('enrollments/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment') }}"/>
-                <span class="gallery__text gallery__text--filename"></span>
+                <span class="gallery__text gallery__text--filename">{{ $attachment->file_name }}</span>
                 <button type="button" class="remove-attachment exist-attach-{{ $key }}" 
                 data-filename="{{ $attachment->file_name }}" data-key="{{ $key }}"><img class="image image--close" src="{{ asset('assets/app/img/icon-close.png') }}"></button>
               @endforeach
