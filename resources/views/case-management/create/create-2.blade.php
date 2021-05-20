@@ -46,7 +46,7 @@
                 <select id="rest_pattern_2" class="form__input form__input--select form__input--full" name="">
                 <option value="Xpert MTB/RIF">Xpert MTB/RIF</option>
                 <option value="Xpert MTB/RIF ULTRA">Xpert MTB/RIF ULTRA</option>
-                <option value="Truenat TB">Truenat</option>
+                <option value="Truenat TB">Truenat TB</option>
                 </select>
                 <div class="triangle triangle--down"></div>
             </div>

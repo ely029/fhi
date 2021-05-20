@@ -268,7 +268,7 @@
           </div>
         </li>
         <li class="form__group-item">
-          <label class="form__sublabel" id="enroll5">Smear Microscop 
+          <label class="form__sublabel" id="enroll5">Smear Microscopy 
             <input class="form__trigger bacteriological-check" data-type="smear_mic" id="js-toggle-enroll5" type="checkbox" />
             <span class="form__checkmark"> </span></label>
           <div class="form__trigger-content" id="js-toggle-content-enroll5">
