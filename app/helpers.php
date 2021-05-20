@@ -273,7 +273,7 @@ function suggested_regimen()
 function updated_type_of_case()
 {
     return [
-        'Drug-susceptibility',
+        'Drug-susceptible',
         'Bacteriologically-confirmed RR-TB',
         'Bacteriologically-confirmed MDR-TB',
         'Bacteriologically-confirmed Pre-XDR-TB',
