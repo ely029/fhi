@@ -31,8 +31,8 @@
             </div>
         </form>
         @include('partials.confirmation-modal')
-        <div class="modal js-modal">
-          <div class="modal__background js-modal-background"></div>
+        <div class="modal">
+          <div class="modal__background" data-dismiss="modal"></div>
           <div class="modal__container">
             <div class="modal__box">
               <h2 class="modal__title">Finding match in database</h2>
@@ -41,13 +41,13 @@
             </div>
           </div>
         </div>
-        <div class="modal js-modal">
-          <div class="modal__background js-modal-background"></div>
+        <div class="modal">
+          <div class="modal__background" data-dismiss="modal"></div>
           <div class="modal__container">
             <div class="modal__box">
               <h2 class="modal__title">We did not find a match</h2>
               <p class="modal__text">Please make sure First name, Last name, Middle name, Birthday, and Gender are correct.</p>
-              <div class="modal__button"><button class="button button--transparent js-modal-close" type="button">Cancel</button><input class="button" type="submit" value="Proceed manually" /></div>
+              <div class="modal__button"><button class="button button--transparent-close" data-dismiss="modal" type="button">Cancel</button><input class="button" type="submit" value="Proceed manually" /></div>
             </div>
           </div>
         </div>

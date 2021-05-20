@@ -31,8 +31,8 @@
             </div>
         </form>
         @include('partials.confirmation-modal')
-        <div class="modal js-modal" id="loadingModal">
-          <div class="modal__background js-modal-background"></div>
+        <div class="modal" id="loadingModal">
+          <div class="modal__background" data-dismiss="modal"></div>
           <div class="modal__container">
             <div class="modal__box">
               <h2 class="modal__title">Finding match in database</h2>
@@ -43,14 +43,14 @@
             </div>
           </div>
         </div>
-        <div class="modal js-modal" id="noMatchModal">
-          <div class="modal__background js-modal-background"></div>
+        <div class="modal" id="noMatchModal">
+          <div class="modal__background" data-dismiss="modal"></div>
           <div class="modal__container">
             <div class="modal__box">
               <h2 class="modal__title">We did not find a match</h2>
               <p class="modal__text">Please make sure First name, Last name, Middle name, Birthday, and Gender are correct.</p>
               <div class="modal__button">
-                <a href="{{ url('enrollments') }}" class="button button--transparent js-modal-close" type="button">Cancel</a>
+                <a href="{{ url('enrollments') }}" class="button button--transparent" data-dismiss="modal">Cancel</a>
                 <input class="button" type="button" value="Proceed manually" id="proceedManually"/>
               </div>
             </div>
