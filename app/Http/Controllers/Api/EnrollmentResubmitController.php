@@ -69,6 +69,7 @@ class EnrollmentResubmitController extends Controller
             $attachments[] = [
                 'url' => url('api/enrollments/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment'),
                 'filename' => $attachment->file_name,
+                'id' => $attachment->id,
             ];
         }
 
