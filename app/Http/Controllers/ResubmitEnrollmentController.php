@@ -42,7 +42,7 @@ class ResubmitEnrollmentController extends Controller
         $tbMacForm->enrollmentForm->update($request);
         $tbMacForm->laboratoryResults->update($request);
 
-        if ($request['attachments-to-remove']) {
+        if (isset($request['attachments-to-remove'])) {
             $this->removeAttachments($tbMacForm, $request);
         }
 

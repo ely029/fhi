@@ -10,6 +10,7 @@ use App\Models\CaseManagementBacteriologicalResults;
 use App\Models\CaseManagementLaboratoryResults;
 use App\Models\TBMacForm;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class CaseManagementResubmitController extends Controller
@@ -139,8 +140,11 @@ class CaseManagementResubmitController extends Controller
             $caseManagementBactResult->monthDSTCreationMobile($screen, $eee, $request, $tbMacForm);
         }
 
+        if (isset($request['attachments-to-remove'])) {
+            $this->removeAttachments($tbMacForm, $request);
+        }
+
         if (isset($request['attachments'])) {
-            CaseManagementAttachments::where('form_id', $tbMacForm->id)->delete();
             foreach ($request['attachments'] as $key => $file) {
                 $fileName = $file->getClientOriginalName();
                 $file->storeAs(CaseManagementAttachments::PATH_PREFIX.'/'.$tbMacForm->presentation_number, $fileName);
@@ -156,5 +160,16 @@ class CaseManagementResubmitController extends Controller
         unset($request['remarks']);
         $tbMacForm->caseManagementLaboratoryResult->update($request);
         return response()->json('Case Management Resubmit Successfully');
+    }
+
+    private function removeAttachments($tbMacForm, $request)
+    {
+        foreach (json_decode($request['attachments-to-remove']) as $toRemove) {
+            $path = 'private/enrollments/'.$tbMacForm->presentation_number.'/'.$toRemove;
+            if (Storage::exists($path)) {
+                Storage::delete($path);
+            }
+            $tbMacForm->attachments()->where('id', $toRemove)->delete();
+        }
     }
 }
