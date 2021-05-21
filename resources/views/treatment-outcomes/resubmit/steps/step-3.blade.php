@@ -26,7 +26,7 @@
           <label class="form__label" for="">CXR result</label>
         </div>
       </div>
-    </div>
+    </div> 
     <div class="form__container">
       <h2 class="section__heading">Related Media (CXR, CTSCAN etc.)</h2>
       <div class="form__warning">
@@ -53,20 +53,22 @@
             <img class="image image--gallery" data-dz-thumbnail />
             <img class="image image--close" src="{{ asset('assets/app/img/icon-close.png') }}" data-dz-remove />
           </li>
+          <ul class="gallery__list gallery__list--resubmit">
+            <li class="gallery__item">
+            @foreach($tbMacForm->attachments as $key => $attachment)
+            <img class="image exist-attach-{{ $key }}" src="{{ url('treatment-outcomes/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment') }}"/>
+                <span class="gallery__text gallery__text--filename">{{ $attachment->file_name }}</span>
+                <button type="button" class="remove-attachment exist-attach-{{ $key }}" 
+                data-filename="{{ $attachment->file_name }}" data-key="{{ $key }}"><img class="image image--close" src="{{ asset('assets/app/img/icon-close.png') }}"></button>
+              @endforeach
+            </li>
+            <input type="hidden"  name="attachments-to-remove" id="attachments-to-remove">
+          </ul>
         </ul>
       </div>
     </div>
     <input type="file" multiple name="attachments[]" class="attachment-upload" id="attachments">
-    <ul class="gallery__list">
-        <li class="gallery__item">
-          @foreach($tbMacForm->attachments as $key => $attachment)
-            <img class="image exist-attach-{{ $key }}" src="{{ url('treatment-outcomes/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment') }}"/>
-            <button type="button" class="btn btn-danger remove-attachment exist-attach-{{ $key }}" 
-            data-filename="{{ $attachment->file_name }}" data-key="{{ $key }}">Remove</button>
-          @endforeach
-        </li>
-        <input type="hidden"  name="attachments-to-remove" id="attachments-to-remove">
-      </ul>
+    
     <div class="form__container">
       <div class="grid form-step-3">
         <div class="form__content">
