@@ -16,6 +16,8 @@ use App\Http\Controllers\Api\ITISController;
 use App\Http\Controllers\Api\TreatmentOutcomesController;
 use App\Http\Controllers\Api\Users\FcmRegistrationTokensController;
 use App\Http\Controllers\TreatmentOutcomeAttachmentsController;
+use App\Http\Controllers\Api\TreatmentOutcomeRecommendationController;
+use App\Http\Controllers\Api\TreatmentOutcomeResubmitController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -76,4 +78,7 @@ Route::group([
     Route::post('treatment-outcomes', [TreatmentOutcomesController::class, 'store']);
     Route::get('/treatment-outcomes/{tbMacForm}', [TreatmentOutcomesController::class, 'show']);
     Route::get('/treatment-outcomes/{tbMacForm}/{fileName}/attachment', [TreatmentOutcomeAttachmentsController::class,'showAttachment']);
+    Route::post('/treatment-outcome/{tbMacForm}/recommendations', [TreatmentOutcomeRecommendationController::class, 'store']);
+    Route::get('/treatment-outcome/resubmit/{tbMacForm}', [TreatmentOutcomeResubmitController::class, 'edit']);
+    Route::post('/treatment-outcome/resubmit/{tbMacForm}', [TreatmentOutcomeResubmitController::class, 'reSubmit']);
 });

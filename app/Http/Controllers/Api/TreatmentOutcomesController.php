@@ -6,12 +6,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TreatmentOutcomes\StoreRequest;
-use App\Models\BacteriologicalResult;
 use App\Models\Filters\TBMacFormFilters;
 use App\Models\Patient;
 use App\Models\TBMacForm;
-use App\Models\TBMacFormAttachment;
-use Illuminate\Support\Str;
 
 class TreatmentOutcomesController extends Controller
 {
@@ -165,8 +162,12 @@ class TreatmentOutcomesController extends Controller
             'lpa' => $lpa,
             'dst' => $dst,
             'monthly_screenings' => $monthlyScreenings,
+            'cxr_date' => $tbMacForm->laboratoryResults->cxr_date->format('Y-m-d'),
+            'cxr_reading' => $tbMacForm->laboratoryResults->cxr_reading,
+            'cxr_result' => $tbMacForm->laboratoryResults->cxr_result,
             'remarks' => $tbMacForm->laboratoryResults->remarks,
             'attachments' => $attachments,
+            'outcome' => $tbMacForm->treatmentOutcomeForm->outcome,
             'recommendations' => $recommendations,
         ];
 

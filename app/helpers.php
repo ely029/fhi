@@ -395,6 +395,18 @@ function treatmentOutcomeTabs()
     ];
 }
 
+function treatmentOutcomeStatus()
+{
+    return [
+        3 => 'required|in:Resolved,Not Resolved',
+        4 => 'required|in:Referred to Regional,Not for Referral',
+        5 => 'required|in:Recommend for Approval,Recommend for other suggestions,Recommend for need further details',
+        6 => 'required|in:For approval,Other suggestions,Need Further Details,Referred to N-TB MAC',
+        7 => 'required|in:Referred to National Chair',
+        8 => 'nullable|in:Referred back to regional chair',
+    ];
+}
+
 function getDynamicQuery()
 {
     return [
