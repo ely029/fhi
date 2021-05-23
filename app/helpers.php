@@ -390,7 +390,7 @@ function treatmentOutcomeTabs()
         'with_recommendations' => ['For approval','Other suggestions','Need Further Details','Referred to N-TB MAC'],
         'all_cases_ntb' => ['For approval','Other suggestions','Need Further Details','Referred to Regional Chair'],
         'all_cases_ntb_chair' => ['For approval','Other suggestions','Need Further Details','Referred to Regional Chair'],
-        'completed' => ['For approval', 'Other suggestions', 'Need further Details', 'Referred to National Chair'],
+        'completed' => ['For approval','Other suggestions','Need Further Details'],
         'completed_rtb_mac_chair' => ['For approval', 'Other suggestions', 'Need further Details', 'Recommend to National Chair'],
     ];
 }

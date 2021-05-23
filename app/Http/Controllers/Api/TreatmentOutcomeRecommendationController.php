@@ -22,7 +22,7 @@ class TreatmentOutcomeRecommendationController extends Controller
             ], 422);
         }
 
-        $tbMacForm->status = $request['status'];
+        $tbMacForm->status = in_array($request['status'], ['Recommend for Approval','Recommend for other suggestions','Recommend for need further details']) ? 'Referred to Regional Chair' : $request['status'];
         $tbMacForm->save();
         $request['recommendation'] = $request['remarks'];
         $request['submitted_by'] = auth()->user()->id;
