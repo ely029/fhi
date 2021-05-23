@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property int $form_id
  * @property string $tb_case_number
- * @property string|null $date_started_treatment
+ * @property date|null $date_started_treatment
  * @property string $current_drug_susceptibility
  * @property string $outcome
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -41,5 +41,9 @@ class TreatmentOutcomeForm extends Model
         'date_started_treatment',
         'current_drug_susceptibility',
         'outcome',
+    ];
+
+    protected $dates = [
+        'date_started_treatment',
     ];
 }

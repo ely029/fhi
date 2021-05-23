@@ -15,6 +15,7 @@ use App\Http\Controllers\Api\EnrollmentsController;
 use App\Http\Controllers\Api\ITISController;
 use App\Http\Controllers\Api\TreatmentOutcomesController;
 use App\Http\Controllers\Api\Users\FcmRegistrationTokensController;
+use App\Http\Controllers\TreatmentOutcomeAttachmentsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -73,4 +74,6 @@ Route::group([
 
     Route::get('treatment-outcomes', [TreatmentOutcomesController::class, 'index']);
     Route::post('treatment-outcomes', [TreatmentOutcomesController::class, 'store']);
+    Route::get('/treatment-outcomes/{tbMacForm}', [TreatmentOutcomesController::class, 'show']);
+    Route::get('/treatment-outcomes/{tbMacForm}/{fileName}/attachment', [TreatmentOutcomeAttachmentsController::class,'showAttachment']);
 });
