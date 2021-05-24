@@ -9,14 +9,16 @@
               <tr>
                 <th class="table__head">Username</th>
                 <th class="table__head">Role</th>
+                <th class="table__head">Channel</th>
                 <th class="table__head">Date</th>
-                <th class="table__head">Title</th>
+                <th class="table__head">Issue</th>
               </tr>
             </thead>
             <tbody>
               <tr class="table__row js-view" data-href="view-feedback.html">
                 <td class="table__details">sample</td>
                 <td class="table__details">sample</td>
+                <td class="table__details"></td>
                 <td class="table__details"></td>
                 <td class="table__details"></td>
               </tr>

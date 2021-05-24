@@ -5,24 +5,32 @@
         </div>
         <div class="section__container">
           <form class="form" id="js-form" action="">
-            <div class="grid grid--two">
-              <div class="form__content">
-                <select class="form__input form__input--select">
-                  <option value=""> </option>
-                </select>
-                <div class="triangle triangle--down"></div>
-                <label class="form__label" for="">Role</label>
+            <div class="form__container">
+              <h2 class="section__heading">Admin Basic Details</h2>
+              <div class="grid grid--three">
+                <div class="form__content">
+                  <input class="form__input" type="text" placeholder="Admin" />
+                  <div class="triangle triangle--down"></div>
+                  <label class="form__label" for="">Role</label>
+                </div>
+                <div class="form__content"><input class="form__input" type="email" placeholder="Email Address" /><label class="form__label" for="">Email Address</label></div>
+                <div class="form__content"><input class="form__input" type="text" placeholder="Username" /><label class="form__label" for="">Username</label></div>
               </div>
-              <div class="form__content"><input class="form__input" type="email" placeholder="Email Address" /><label class="form__label" for="">Email Address</label></div>
+              <div class="grid grid--three">
+                <div class="form__content"><input class="form__input" type="text" placeholder="First Name" /><label class="form__label" for="">First Name</label></div>
+                <div class="form__content"><input class="form__input" type="text" placeholder="Middle Name" /><label class="form__label" for="">Middle Name</label></div>
+                <div class="form__content"><input class="form__input" type="text" placeholder="Last Name" /><label class="form__label" for="">Last Name</label></div>
+              </div>
             </div>
-            <div class="grid grid--two">
-              <div class="form__content"><input class="form__input" type="text" placeholder="Full Name" /><label class="form__label" for="">Full Name</label></div>
-              <div class="form__content"><input class="form__input" id="js-password" type="password" placeholder="Password" /><label class="form__label">Password</label><i class="fa fa-eye-slash" id="js-eye-password"></i></div>
-            </div>
-            <div class="grid grid--two">
-              <div class="form__content"><input class="form__input" type="text" placeholder="Username" /><label class="form__label" for="">Username</label></div>
-              <div class="form__content">
-                <input class="form__input" id="js-confirm-password" type="password" placeholder="Confirm Password" /><label class="form__label">Confirm Password</label><i class="fa fa-eye-slash" id="js-eye-confirm-password"></i>
+            <div class="form__container">
+              <h2 class="section__heading">Admin Password</h2>
+              <div class="grid grid--two">
+                <div class="form__content">
+                  <input class="form__input" id="js-password" type="password" placeholder="Password" /><label class="form__label">Password</label><i class="fa fa-eye-slash" id="js-eye-password"></i>
+                </div>
+                <div class="form__content">
+                  <input class="form__input" id="js-confirm-password" type="password" placeholder="Confirm Password" /><label class="form__label">Confirm Password</label><i class="fa fa-eye-slash" id="js-eye-confirm-password"></i>
+                </div>
               </div>
             </div>
             <div class="form__button form__button--end"><input class="button" type="submit" value="Submit" /></div>
