@@ -36,9 +36,10 @@ class ResetPasswordController extends Controller
     {
         $user = User::where('email', $request->email)->first();
         return view('auth.passwords.reset')->with(
-            ['token' => $token, 
-            'email' => $request->email,
-            'user' => $user,
+            [
+                'token' => $token,
+                'email' => $request->email,
+                'user' => $user,
             ]
         );
     }

@@ -155,5 +155,4 @@ class User extends Authenticatable
     {
         $this->notify(new MailResetPasswordNotification($token));
     }
-
 }
