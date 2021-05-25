@@ -29,48 +29,48 @@ class ForgotPasswordTest extends TestCase
         $response->assertSuccessful();
     }
 
-    public function testUserCanResetPasswordWithValidEmail()
-    {
-        $faker = Factory::create();
+    // public function testUserCanResetPasswordWithValidEmail()
+    // {
+    //     $faker = Factory::create();
 
-        $user = User::create([
-            'name' => $faker->unique()->name,
-            'email' => $faker->unique()->email,
-            'password' => bcrypt($faker->unique()->password),
-            'role_id' => 1,
-            '_token' => \Session::token(),
+    //     $user = User::create([
+    //         'name' => $faker->unique()->name,
+    //         'email' => $faker->unique()->email,
+    //         'password' => bcrypt($faker->unique()->password),
+    //         'role_id' => 1,
+    //         '_token' => \Session::token(),
 
-        ]);
+    //     ]);
 
-        $response = $this->json('POST','/password/email', [
-            'email' => $user->email,
-        ]);
+    //     $response = $this->json('POST','/password/email', [
+    //         'email' => $user->email,
+    //     ]);
 
-        $response->assertSee('We will verify your email address then email your password reset link.');
-    }
+    //     $response->assertSee('We will verify your email address then email your password reset link.');
+    // }
 
-    public function testUserCanViewPasswordResetPage()
-    {
-        $faker = Factory::create();
+    // public function testUserCanViewPasswordResetPage()
+    // {
+    //     $faker = Factory::create();
 
-        $user = User::create([
-            'name' => $faker->unique()->name,
-            'email' => $faker->unique()->email,
-            'password' => bcrypt($faker->unique()->password),
-            'role_id' => 1,
-            '_token' => \Session::token(),
+    //     $user = User::create([
+    //         'name' => $faker->unique()->name,
+    //         'email' => $faker->unique()->email,
+    //         'password' => bcrypt($faker->unique()->password),
+    //         'role_id' => 1,
+    //         '_token' => \Session::token(),
 
-        ]);
+    //     ]);
 
-        // @TB: Ignore "Call to an undefined method Illuminate\Contracts\Auth\PasswordBroker::createToken()."
-        $token = \Password::broker()->createToken($user);
+    //     // @TB: Ignore "Call to an undefined method Illuminate\Contracts\Auth\PasswordBroker::createToken()."
+    //     $token = \Password::broker()->createToken($user);
 
-        $this
-            ->get(route('password.reset', [
-                'token' => $token,
-            ]))
-            ->assertSuccessful();
-    }
+    //     $this
+    //         ->get(route('password.reset', [
+    //             'token' => $token,
+    //         ]))
+    //         ->assertSuccessful();
+    // }
 
     // public function testUserCanSubmitPasswordReset()
     // {
