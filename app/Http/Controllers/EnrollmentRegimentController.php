@@ -251,6 +251,7 @@ class EnrollmentRegimentController extends Controller
         if ($request['status'] === 'For Enrollment') {
             $tbMacForm = TBMacForm::find($request['form_id']);
             $tbMacForm->status = $request['status'];
+            $tbMacForm->role_id = auth()->user()->role_id;
             $tbMacForm->save();
             $request['submitted_by'] = auth()->user()->id;
             $request['role_id'] = auth()->user()->role_id;
@@ -259,6 +260,7 @@ class EnrollmentRegimentController extends Controller
         if ($request['status'] === 'Not For Enrollment') {
             $tbMacForm = TBMacForm::find($request['form_id']);
             $tbMacForm->status = $request['status'];
+            $tbMacForm->role_id = auth()->user()->role_id;
             $tbMacForm->save();
             $request['submitted_by'] = auth()->user()->id;
             $request['role_id'] = auth()->user()->role_id;
@@ -267,6 +269,7 @@ class EnrollmentRegimentController extends Controller
         if ($request['status'] === 'Need Further Details') {
             $tbMacForm = TBMacForm::find($request['form_id']);
             $tbMacForm->status = $request['status'];
+            $tbMacForm->role_id = auth()->user()->role_id;
             $tbMacForm->save();
             $request['submitted_by'] = auth()->user()->id;
             $request['role_id'] = auth()->user()->role_id;
@@ -275,6 +278,7 @@ class EnrollmentRegimentController extends Controller
         if ($request['status'] === 'Referred to N-TB MAC') {
             $tbMacForm = TBMacForm::find($request['form_id']);
             $tbMacForm->status = 'Referred to N-TB MAC';
+            $tbMacForm->role_id = auth()->user()->role_id;
             $tbMacForm->save();
             $request['submitted_by'] = auth()->user()->id;
             $request['role_id'] = auth()->user()->role_id;

@@ -189,3 +189,17 @@
     </div>
   </div>
 </div>
+
+<div class="modal" id="reportIssue" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal__background" data-dismiss="modal"></div>
+    <div class="modal__container">
+        <div class="modal__box">
+            <h2 class="modal__title">Report issue</h2>
+            <p class="modal__text">Please elaborate on the issue encountered.</p>
+            <form class="form form--full">
+                <div class="form__content"> <textarea class="form__input form__input--message" placeholder="Enter issue"></textarea><label class="form__label" for="">Report issue</label></div>
+            </form>
+            <div class="modal__button modal__button--end"><input class="button" type="submit" value="Submit" /></div>
+        </div>
+    </div>
+</div>
