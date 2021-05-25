@@ -4,6 +4,7 @@
   </div>
     <div class="sidebar__container">
       <div class="sidebar__menu">
+        @if(auth()->user()->role_id !== 1 && auth()->user()->role_id !== 2)
         <h3 class="sidebar__title">Reports</h3>
         <ul class="sidebar__list">
           <li class="sidebar__item">
@@ -55,7 +56,8 @@
             </a>
           </li>
         </ul>
-        @if(auth()->user()->id == 1 || auth()->user()->id == 2)
+        @endif
+        @if(auth()->user()->role_id == 1 || auth()->user()->role_id == 2)
             <h3 class="sidebar__title">Administrative</h3>
             <ul class="sidebar__list">
             {{-- <li class="sidebar__item">
@@ -66,7 +68,7 @@
                 <span class="sidebar__text">Meetings</span>
                 </a>
             </li> --}}
-            @if(auth()->user()->id == 1)x
+            @if(auth()->user()->role_id == 1)
                 <li class="sidebar__item {{ request()->is('dashboard/users*') ? 'active' : null }}">
                     <a class="sidebar__link" href="{{ url('dashboard/users') }}">
                     <div class="sidebar__wrapper">

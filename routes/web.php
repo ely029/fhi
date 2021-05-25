@@ -3,6 +3,8 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Api\ITISController;
+use App\Http\Controllers\Auth\AdminLoginController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\CaseManagementController;
 use App\Http\Controllers\CaseManagementRecommendationController;
 use App\Http\Controllers\Dashboard\DashboardController;
@@ -29,6 +31,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
+
+Route::get('admin/login', [AdminLoginController::class, 'showLoginForm']);
+Route::post('admin/login', [AdminLoginController::class, 'login']);
+Route::post('admin/logout', [AdminLoginController::class, 'logout']);
+Route::get('success/password/reset', [ForgotPasswordController::class, 'success']);
 
 Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard', 'middleware' => 'auth'], static function () {
     Route::get('/', [DashboardController::class, 'index']);
