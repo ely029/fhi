@@ -36,6 +36,8 @@ class MasterListController extends Controller
             ->join('patients', 'patients.id', 'tb_mac_forms.patient_id')
             ->select('tb_mac_forms.status as header_status', 'tb_mac_forms.presentation_number', 'recommendation.status as recom_status', 'patients.first_name', 'patients.middle_name', 'patients.last_name', 'patients.birthday', 'tb_mac_forms.updated_at', 'patients.gender')
             ->where('tb_mac_forms.form_type', 'enrollment')
+            ->whereIn('tb_mac_forms.status', ['Enrolled', 'Not Enrolled'])
+            ->whereIn('recommendation.status', ['For enrollment', 'Not for Enrollment', 'Need Further Details', 'Referred to N-TB MAC'])
             ->Where('recommendation.role_id', 6)
             ->where('tb_mac_forms.role_id', 3)
             ->whereBetween('tb_mac_forms.created_at', [$firstDay, $lastDay])

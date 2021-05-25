@@ -109,8 +109,8 @@
             <div class="grid grid--action">
               <div class="form__content">
                 <select id="refer" class="form__input form__input--select">
-                  <option value="6">For enrollment</option>
-                  <option value="7">Not for enrollment</option>
+                  <option value="10">Enrolled</option>
+                  <option value="11">Not Enrolled</option>
                   @if($tbMacForm->status == 'Not For Referral' || $tbMacForm->status == 'Need Further Details')
                     <option value="Resubmit Enrollment">Resubmit enrollment</option>
                   @endif
