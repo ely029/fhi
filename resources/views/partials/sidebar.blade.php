@@ -78,7 +78,7 @@
                         <img class="image" src="{{ asset('assets/app/img/icon-role-management.png') }}" alt="role Management icon for fhi" />
                         <img class="image image--white" src="{{ asset('assets/app/img/icon-role-management-white.png') }}" alt="role management icon on hover for fhi" />
                     </div>
-                    <span class="sidebar__text">Role Management</span>
+                    <span class="sidebar__text">Admin Role Management</span>
                     </a>
                 </li>
                 <li class="sidebar__item {{ request()->is('') ? 'active' : null }}">

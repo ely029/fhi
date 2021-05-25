@@ -1,84 +1,120 @@
 @extends('layouts.app')
 
-@section('title', ($method === 'POST' ? 'Create an admin' : 'Update admin details'))
-@section('description', ($method === 'POST' ? 'Create an admin' : 'Update admin details'))
+@section('title', $method === 'POST' ? 'Create an admin' : 'Update admin details')
+@section('description', $method === 'POST' ? 'Create an admin' : 'Update admin details')
 
 @section('content')
     <div class="section">
+
         <div class="section__top">
-          <h1 class="section__title">{{ $method === 'POST' ? 'Add Admin' : 'Edit Admin' }}</h1>
-          <div class="breadcrumbs">
-              <a class="breadcrumbs__link" href="{{ url('dashboard/users') }}">Admins</a>
-              <a class="breadcrumbs__link">{{ $method === 'POST' ? 'Add Admin' : 'Edit Admin' }}</a><a class="breadcrumbs__link"></a>
+            <div class="section__top-text">
+                <h1 class="section__title">Create admin</h1>
+                <div class="breadcrumbs"><a class="breadcrumbs__link" href="{{ url('dashboard/users') }}">Admin Role
+                        Management</a><a class="breadcrumbs__link">Create admin</a><a class="breadcrumbs__link"></a></div>
+            </div>
+            <div class="section__top-menu">
+                <input class="section__top-trigger" type="checkbox" />
+                <div class="section__top-icon"><span> </span><span> </span><span> </span></div>
+                <span class="section__top-popup"><img class="image image--warning" src="src/img/icon-warning.png"
+                        alt="warning icon" /><span>Report issue</span></span>
             </div>
         </div>
 
         @include('partials.alerts')
-
+        
         <div class="section__container">
+            <form class="form" id="js-form" method="POST"
+                action="{{ url('/dashboard/users', isset($user) ? $user->id : null) }}">
+                @csrf
+                {{ method_field($method) }}
+                <div class="form__container">
+                    <h2 class="section__heading">Admin Basic Details</h2>
+                    <div class="grid grid--two">
+                        <div class="form__content">
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                            <input class="form__input" type="email" placeholder="Email Address"
+                                value="{{ old('email', isset($user) ? $user->email : '') }}" name="email" required />
+                            <label class="form__label" for="">Email Address</label>
+                        </div>
+                        <div class="form__content">
+                            @error('username')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                            <input class="form__input" type="text" placeholder="Username"
+                                value="{{ old('username', isset($user) ? $user->username : '') }}" name="username"
+                                required />
 
-          <form class="form" role="form" method="POST"
-            action="{{ url('/dashboard/users', isset($user) ? $user->id : null) }}" enctype="multipart/form-data">
-            @csrf
-            {{ method_field($method) }}
-            <div class="form__tab">
-              <div class="form__container">
-                <h2 class="section__heading">Details</h2>
-                <div class="grid">
-                  <div class="form__content">                    
-                      <input id="name" type="text" class="form__input form-control @error('name') is-invalid @enderror" name="name" 
-                      value="{{ old('name', isset($user) ? $user->name : '') }}" required autocomplete="name" autofocus placeholder="Name">
-                      <label class="form__label" for="name">Name</label>
-                      @error('name')
-                          <span class="invalid-feedback" role="alert">
-                              <strong>{{ $message }}</strong>
-                          </span>
-                      @enderror
-                  </div>
-                </div>
-                <div class="grid">
-                    <div class="form__content">                    
-                        <input id="email" type="email" class="form__input form-control @error('email') is-invalid @enderror" name="email" 
-                        value="{{ old('email', isset($user) ? $user->email : '') }}" required placeholder="Email">
-                        <label class="form__label" for="email">Email</label>
-                        @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                            <label class="form__label" for="">Username</label>
+                        </div>
+                    </div>
+                    <div class="grid grid--three">
+                        <div class="form__content">
+                            @error('first_name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                            <input class="form__input" type="text" placeholder="First Name" name="first_name"
+                                value="{{ old('first_name', isset($user) ? $user->first_name : '') }}" required />
+
+                            <label class="form__label" for="">First Name</label>
+                        </div>
+                        <div class="form__content">
+                            @error('middle_name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                            <input class="form__input" type="text" placeholder="Middle Name" name="middle_name"
+                                value="{{ old('middle_name', isset($user) ? $user->middle_name : '') }}" />
+
+                            <label class="form__label" for="">Middle Name</label>
+                        </div>
+                        <div class="form__content">
+                            @error('last_name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                            <input class="form__input" type="text" placeholder="Last Name" name="last_name"
+                                value="{{ old('last_name', isset($user) ? $user->last_name : '') }}" required />
+
+                            <label class="form__label" for="">Last Name</label>
+                        </div>
                     </div>
                 </div>
-                <div class="grid">
-                    <div class="form__content">                    
-                        <input id="password" type="password" class="form__input form-control @error('password') is-invalid @enderror" name="password">
-                        <label class="form__label" for="password">Password</label>
-                        @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </div>
-                <div class="grid">
-                    <div class="form__content">                    
-                        <input id="password_confirmation" type="password" class="form__input form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation">
-                        <label class="form__label" for="password_confirmation">Confirm Password</label>
-                        @error('password_confirmation')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                <div class="form__container">
+                    <h2 class="section__heading">Admin Password</h2>
+                    <div class="grid grid--two">
+                        <div class="form__content">
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                            <input class="form__input @error('password') is-invalid @enderror" id="js-password"
+                                type="password" placeholder="Password" name="password" {{ $method == 'POST' ? 'required' : '' }} />
+
+                            <label class="form__label">Password</label><i class="fa fa-eye-slash" id="js-eye-password"></i>
+                        </div>
+                        <div class="form__content">
+                            <input class="form__input" id="js-confirm-password" type="password" name="password_confirmation"
+                            {{ $method == 'POST' ? 'required' : '' }} placeholder="Confirm Password" /><label class="form__label">Confirm
+                                Password</label><i class="fa fa-eye-slash" id="js-eye-confirm-password"></i>
+                        </div>
                     </div>
                 </div>
                 <input type="hidden" name="role_id" value="2">
-              </div>
-
-            </div>
-            <div class="form__button form__button--space form__button--pagination">
-              <a class="button button--back" href="{{ url('dashboard/users') }}">Back</a>
-              <button class="button button--next" type="submit">Save</button>
-            </div>
-          </form>    
+                <div class="form__button form__button--end">
+                    <input class="button" type="submit" value="Submit" />
+                </div>
+            </form>
         </div>
-      </div>
+    </div>
 @endsection

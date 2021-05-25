@@ -65,7 +65,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
+        'middle_name',
+        'username',
         'email',
         'password',
         'role_id',
@@ -154,6 +157,11 @@ class User extends Authenticatable
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new MailResetPasswordNotification($token));
+    }
+
+    public function getNameAttribute()
+    {
+        return $this->first_name .' '. $this->last_name; 
     }
 
 }

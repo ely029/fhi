@@ -26,7 +26,10 @@ class UsersController extends Controller
     public function store(StoreRequest $request)
     {
         $user = User::create([
-            'name' => $request->name,
+            'first_name' => $request->first_name,
+            'middle_name' => $request->middle_name,
+            'last_name' => $request->last_name,
+            'username' => $request->username,
             'email' => $request->email,
             'role_id' => $request->role_id,
             'password' => bcrypt($request->password),
@@ -46,12 +49,7 @@ class UsersController extends Controller
         // Notification::send(User::all(), new UserCreated($user));
 
         return redirect("dashboard/users/{$user->id}/edit")->with([
-            'alert.context' => $context = 'success',
-            'alert.title' => trans("boilerplate.alert.{$context}.title"),
-            'alert.message' => trans("boilerplate.alert.{$context}.message", [
-                'action' => trans('boilerplate.actions.created'),
-                'object' => trans('boilerplate.objects.user'),
-            ]),
+            'alert.message' => 'New admin successfully created',
         ]);
     }
 
@@ -65,7 +63,10 @@ class UsersController extends Controller
 
     public function update(UpdateRequest $request, User $user)
     {
-        $user->name = $request->name;
+        $user->first_name = $request->first_name;
+        $user->middle_name = $request->middle_name;
+        $user->last_name = $request->last_name;
+        $user->username = $request->username;
         $user->email = $request->email;
         $user->role_id = $request->role_id;
         // $user->photo_alt = $request->photo_alt;
@@ -83,12 +84,7 @@ class UsersController extends Controller
         $user->save();
 
         return redirect("dashboard/users/{$user->id}/edit")->with([
-            'alert.context' => $context = 'success',
-            'alert.title' => trans("boilerplate.alert.{$context}.title"),
-            'alert.message' => trans("boilerplate.alert.{$context}.message", [
-                'action' => trans('boilerplate.actions.edited'),
-                'object' => trans('boilerplate.objects.user'),
-            ]),
+            'alert.message' => 'Admin successfully updated',
         ]);
     }
 

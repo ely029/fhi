@@ -27,6 +27,9 @@ class CreateFirstUser extends Migration
         DB::table('users')->insert([
             [
                 'name' => 'ThinkBIT Support',
+                'first_name' => 'ThinkBIT',
+                'last_name' => 'Support',
+                'username' => 'thinkbitsupport',
                 'email' => $email,
                 'password' => bcrypt($password),
                 'role_id' => Role::first()->id,
@@ -38,6 +41,9 @@ class CreateFirstUser extends Migration
         DB::table('users')->insert([
             [
                 'name' => 'Super Admin',
+                'first_name' => 'Super',
+                'last_name' => 'admin',
+                'username' => 'superadmin',
                 'email' => 'superadmin@etbmac.gov.ph',
                 'password' => bcrypt($password),
                 'role_id' => Role::first()->id,
