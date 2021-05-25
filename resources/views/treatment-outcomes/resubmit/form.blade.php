@@ -11,13 +11,21 @@
 
 <div class="section">
     <div class="section__top">
-      <h1 class="section__title">Resubmit treatment outcome</h1>
-      <div class="breadcrumbs">
-        <a class="breadcrumbs__link" href="{{ url('treatment-outcomes/'.$tbMacForm->id) }}">View {{ $tbMacForm->presentation_number }}</a>
-        <a class="breadcrumbs__link">Resubmit treatment outcome</a>
-        <a class="breadcrumbs__link"></a>
+      <div class="section__top-text">
+        <h1 class="section__title">Resubmit treatment outcome</h1>
+        <div class="breadcrumbs">
+          <a class="breadcrumbs__link" href="{{ url('treatment-outcomes/'.$tbMacForm->id) }}">View {{ $tbMacForm->presentation_number }}</a>
+          <a class="breadcrumbs__link">Resubmit treatment outcome</a>
+          <a class="breadcrumbs__link"></a>
+        </div>
+      </div>
+      <div class="section__top-menu">
+        <input class="section__top-trigger" type="checkbox" />
+        <div class="section__top-icon"><span> </span><span> </span><span> </span></div>
+        <span class="section__top-popup"><img class="image image--warning" src="src/img/icon-warning.png" alt="warning icon" /><span>Report issue</span></span>
       </div>
     </div>
+
 
     @include('partials.alerts')
 
