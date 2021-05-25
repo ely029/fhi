@@ -45,8 +45,10 @@
               <span class="sidebar__text">Treatment Outcome</span>
             </a>
           </li>
+          @if (auth()->user()->role_id == 3)
+          @else
           <li class="sidebar__item">
-            <a class="sidebar__link" href="masterlist.html">
+            <a class="sidebar__link" href="{{ url('masterlist')}}">
               <div class="sidebar__wrapper">
                 <img class="image" src="{{ asset('assets/app/img/icon-masterlist.png') }}" alt="Masterlist icon for fhi" />
                 <img class="image image--white" src="{{ asset('assets/app/img/icon-masterlist-white.png') }}" alt="Masterlist icon on hover for fhi" />
@@ -54,6 +56,7 @@
               <span class="sidebar__text">Masterlist</span>
             </a>
           </li>
+          @endif
         </ul>
         @if(auth()->user()->id == 1 || auth()->user()->id == 2)
             <h3 class="sidebar__title">Administrative</h3>

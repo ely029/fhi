@@ -248,4 +248,32 @@ return [
         ],
     ],
 
+    // @TB: https://laravel.com/docs/configuration#hiding-environment-variables-from-debug
+    // @TB: This may or may not work as expected when using php artisan optimize
+    'debug_blacklist' => [
+        '_COOKIE' => array_diff(array_keys($_COOKIE), [
+
+        ]),
+        '_SERVER' => array_diff(array_keys($_SERVER), [
+            'REQUEST_URI', 
+            'QUERY_STRING', 
+            'REQUEST_METHOD', 
+            'REQUEST_SCHEME', 
+            'HTTP_REFERER', 
+            'HTTP_USER_AGENT', 
+            'HTTP_ACCEPT'
+        ]),
+        '_ENV' => array_diff(array_keys($_ENV), [
+            'APP_NAME',
+            'APP_ENV',
+            'APP_DEBUG',
+            'APP_URL',
+            'LOG_CHANNEL',
+            'LOG_LEVEL',
+            'BROADCAST_DRIVER',
+            'CACHE_DRIVER',
+            'SESSION_DRIVER',
+            'MAIL_MAILER',
+        ]),
+    ],
 ];

@@ -9,6 +9,7 @@ use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\EnrollmentRegimentController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MasterListController;
 use App\Http\Controllers\ResubmitCaseManagementController;
 use App\Http\Controllers\ResubmitEnrollmentController;
 use App\Http\Controllers\ResubmitTreatmentOutcomeController;
@@ -86,4 +87,6 @@ Route::group(['middleware' => 'auth'], static function () {
     Route::get('/treatment-outcomes/{tbMacForm}/{fileName}/download', [TreatmentOutcomeAttachmentsController::class,'downloadAttachment']);
     Route::post('/treatment-outcomes/{tbMacForm}/recommendation', [TreatmentOutcomeRecommendationController::class,'store']);
     Route::get('/treatment/view/{presentationNumber}/{fileName}', [TreatmentOutcomesController::class, 'viewAttachment']);
+    Route::get('/masterlist', [MasterListController::class, 'index']);
+    Route::post('/masterlist/filter', [MasterListController::class, 'filter']);
 });
