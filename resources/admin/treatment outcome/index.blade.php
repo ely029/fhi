@@ -1,8 +1,15 @@
 <div class="section">
 <div class="section__top">
+    <div class="section__top-text">
     <h1 class="section__title">Treatment outcome</h1>
     <div class="breadcrumbs"><a class="breadcrumbs__link">Treatment outcome</a><a class="breadcrumbs__link"></a><a class="breadcrumbs__link"></a></div>
-</div>
+    </div>
+    <div class="section__top-menu">
+      <input class="section__top-trigger" type="checkbox" />
+      <div class="section__top-icon"><span> </span><span> </span><span> </span></div>
+      <span class="section__top-popup"><img class="image image--warning" src="src/img/icon-warning.png" alt="warning icon" /><span>Report issue</span></span>
+    </div>
+  </div>
 <div class="section__container">
     <a class="button button--create" href="create-treatment.html">Create new case</a>
     <div class="alert"><span class="alert__text">New case management created</span><button class="button button--transparent js-hide-alert">CLOSE</button></div>
