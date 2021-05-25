@@ -18,7 +18,7 @@
     <div class="section__top-menu">
       <input class="section__top-trigger" type="checkbox" />
       <div class="section__top-icon"><span> </span><span> </span><span> </span></div>
-      <span class="section__top-popup"><img class="image image--warning" src="src/img/icon-warning.png" alt="warning icon" /><span>Report issue</span></span>
+      <span class="section__top-popup"><img class="image image--warning" src="{{ asset('assets/app/img/icon-warning.png') }}" alt="warning icon" /><span>Report issue</span></span>
     </div>
 
     <div class="section__container">
