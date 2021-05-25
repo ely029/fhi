@@ -17,12 +17,12 @@ class TreatmentOutcomeResubmitController extends Controller
         //     return response()->json('Forbidden', 403);
         // }
         $tbMacForm = $tbMacForm->load(['treatmentOutcomeForm','treatmentOutcomeBacteriologicalResults','laboratoryResults','attachments','patient']);
-        
+
         $bacteriologicalResults = $tbMacForm->treatmentOutcomeBacteriologicalResults;
 
-        $screenings = $bacteriologicalResults->filter(function($item){
-            return $item->type == 'screenings';
-        })->map(function($item, $key){
+        $screenings = $bacteriologicalResults->filter(function ($item) {
+            return $item->type === 'screenings';
+        })->map(function ($item, $key) {
             return [
                 'label' => 'Screening '.$key + 1,
                 'date_collected' => $item->date_collected->format('m-d-Y'),
@@ -31,8 +31,8 @@ class TreatmentOutcomeResubmitController extends Controller
             ];
         })->all();
 
-        $lpa = $bacteriologicalResults->filter(function($item){
-            return $item->type == 'lpa';
+        $lpa = $bacteriologicalResults->filter(function ($item) {
+            return $item->type === 'lpa';
         })->first();
 
         $lpa = [
@@ -40,21 +40,21 @@ class TreatmentOutcomeResubmitController extends Controller
             'resistance_pattern' => $lpa->resistance_pattern,
         ];
 
-        $dst = $bacteriologicalResults->filter(function($item){
-            return $item->type == 'dst';
+        $dst = $bacteriologicalResults->filter(function ($item) {
+            return $item->type === 'dst';
         })->first();
 
         $dst = [
             'date_collected' => $dst->date_collected->format('m-d-Y'),
             'resistance_pattern' => $dst->resistance_pattern,
-            'resistance_pattern_others' =>  $dst->resistance_pattern_others,
+            'resistance_pattern_others' => $dst->resistance_pattern_others,
         ];
 
-        $monthlyScreenings = $bacteriologicalResults->filter(function($item){
-            return $item->type == 'monthly_screenings';
-        })->values()->map(function($item, $key){
+        $monthlyScreenings = $bacteriologicalResults->filter(function ($item) {
+            return $item->type === 'monthly_screenings';
+        })->values()->map(function ($item, $key) {
             return [
-                'label' => $key == 0 ? 'B' : $key,
+                'label' => $key === 0 ? 'B' : $key,
                 'date_collected' => $item->date_collected->format('m-d-Y'),
                 'smear_microscopy' => $item->smear_microscopy,
                 'tb_lamp' => $item->tb_lamp,
@@ -69,8 +69,7 @@ class TreatmentOutcomeResubmitController extends Controller
                 'filename' => $attachment->file_name,
             ];
         }
-        
-        
+
         $data = [];
         $data['tb_case_number'] = $tbMacForm->treatmentOutcomeForm->tb_case_number;
         $data['last_name'] = $tbMacForm->patient->last_name;
@@ -92,15 +91,11 @@ class TreatmentOutcomeResubmitController extends Controller
         $data['attachments'] = $attachments;
         $data['outcome'] = $tbMacForm->treatmentOutcomeForm->outcome;
         $data['remarks'] = $tbMacForm->laboratoryResults->remarks;
-        
-
-
         return response()->json($data);
     }
 
     public function reSubmit(TBMacForm $tbMacForm)
     {
-
         $validator = \Validator::make(request()->all(), $this->rules());
 
         if ($validator->fails()) {
@@ -110,7 +105,7 @@ class TreatmentOutcomeResubmitController extends Controller
         }
 
         $request = request()->all();
-        
+
         unset($request['_token']);
         $request['status'] = 'New Case';
         $tbMacForm->patient->update($request);
@@ -138,7 +133,7 @@ class TreatmentOutcomeResubmitController extends Controller
         $this->createScreenings($request, $tbMacForm);
         $this->createLPADST($request, $tbMacForm);
         $this->createMonthlyScreenings($request, $tbMacForm);
-       
+
         return response()->json('Treatment outcome resubmitted Successfully');
     }
 

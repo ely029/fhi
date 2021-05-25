@@ -27,6 +27,7 @@ class TreatmentOutcomesController extends Controller
                 'facility_code' => $item->patient->facility_code,
                 'status' => $item->status,
                 'drug_susceptibility' => $item->treatmentOutcomeForm->current_drug_susceptibility,
+                'outcome' => $item->treatmentOutcomeForm->outcome,
             ];
         });
 
@@ -62,7 +63,7 @@ class TreatmentOutcomesController extends Controller
         $tbMacForm->laboratoryResults()->create($request);
 
         if (isset($request['attachments'])) {
-            foreach ($request['attachments'] as $key => $file) {
+            foreach ($request['attachments'] as $file) {
                 $fileName = $file->getClientOriginalName();
                 $file->storeAs('private/treatment-outcomes/'.$tbMacForm->presentation_number, $fileName);
                 $tbMacForm->attachments()->create([
@@ -103,9 +104,9 @@ class TreatmentOutcomesController extends Controller
 
         $bacteriologicalResults = $tbMacForm->treatmentOutcomeBacteriologicalResults;
 
-        $screenings = $bacteriologicalResults->filter(function($item){
-            return $item->type == 'screenings';
-        })->map(function($item, $key){
+        $screenings = $bacteriologicalResults->filter(function ($item) {
+            return $item->type === 'screenings';
+        })->map(function ($item, $key) {
             return [
                 'label' => 'Screening '.$key + 1,
                 'date_collected' => $item->date_collected->format('m-d-Y'),
@@ -114,8 +115,8 @@ class TreatmentOutcomesController extends Controller
             ];
         })->all();
 
-        $lpa = $bacteriologicalResults->filter(function($item){
-            return $item->type == 'lpa';
+        $lpa = $bacteriologicalResults->filter(function ($item) {
+            return $item->type === 'lpa';
         })->first();
 
         $lpa = [
@@ -123,21 +124,21 @@ class TreatmentOutcomesController extends Controller
             'resistance_pattern' => $lpa->resistance_pattern,
         ];
 
-        $dst = $bacteriologicalResults->filter(function($item){
-            return $item->type == 'dst';
+        $dst = $bacteriologicalResults->filter(function ($item) {
+            return $item->type === 'dst';
         })->first();
 
         $dst = [
             'date_collected' => $dst->date_collected->format('m-d-Y'),
             'resistance_pattern' => $dst->resistance_pattern,
-            'resistance_pattern_others' =>  $dst->resistance_pattern_others,
+            'resistance_pattern_others' => $dst->resistance_pattern_others,
         ];
 
-        $monthlyScreenings = $bacteriologicalResults->filter(function($item){
-            return $item->type == 'monthly_screenings';
-        })->values()->map(function($item, $key){
+        $monthlyScreenings = $bacteriologicalResults->filter(function ($item) {
+            return $item->type === 'monthly_screenings';
+        })->values()->map(function ($item, $key) {
             return [
-                'label' => $key == 0 ? 'B' : $key,
+                'label' => $key === 0 ? 'B' : $key,
                 'date_collected' => $item->date_collected->format('m-d-Y'),
                 'smear_microscopy' => $item->smear_microscopy,
                 'tb_lamp' => $item->tb_lamp,
