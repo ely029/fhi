@@ -10,11 +10,15 @@
 @section('content')
 
 <div class="section">
-    <div class="section__top">
-      <h1 class="section__title">Create new Case</h1>
-      <div class="breadcrumbs"><a class="breadcrumbs__link" href="{{ url('case-management') }}">Case Management</a>
-        <a class="breadcrumbs__link">Create new Case</a>
-        <a class="breadcrumbs__link"></a>
+<div class="section__top">
+      <div class="section__top-text">
+      <h1 class="section__title">Create new case</h1>
+        <div class="breadcrumbs"><a class="breadcrumbs__link" href="{{ url('case-management') }}">Case Management</a><a class="breadcrumbs__link">Create new case</a><a class="breadcrumbs__link"></a></div>
+      </div>
+      <div class="section__top-menu">
+        <input class="section__top-trigger" type="checkbox" />
+        <div class="section__top-icon"><span> </span><span> </span><span> </span></div>
+        <span class="section__top-popup"><img class="image image--warning" src="src/img/icon-warning.png" alt="warning icon" /><span>Report issue</span></span>
       </div>
     </div>
 
