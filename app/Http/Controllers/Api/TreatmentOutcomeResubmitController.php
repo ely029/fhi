@@ -24,7 +24,7 @@ class TreatmentOutcomeResubmitController extends Controller
             return $item->type === 'screenings';
         })->map(function ($item, $key) {
             return [
-                'label' => 'Screening '.$key + 1,
+                'label' => 'Screening '.($key + 1),
                 'date_collected' => $item->date_collected->format('m-d-Y'),
                 'method_used' => $item->method_used,
                 'resistance_pattern' => $item->resistance_pattern,

@@ -108,7 +108,7 @@ class TreatmentOutcomesController extends Controller
             return $item->type === 'screenings';
         })->map(function ($item, $key) {
             return [
-                'label' => 'Screening '.$key + 1,
+                'label' => 'Screening '.($key + 1),
                 'date_collected' => $item->date_collected->format('m-d-Y'),
                 'method_used' => $item->method_used,
                 'resistance_pattern' => $item->resistance_pattern,
@@ -168,7 +168,6 @@ class TreatmentOutcomesController extends Controller
             'cxr_result' => $tbMacForm->laboratoryResults->cxr_result,
             'remarks' => $tbMacForm->laboratoryResults->remarks,
             'attachments' => $attachments,
-            'outcome' => $tbMacForm->treatmentOutcomeForm->outcome,
             'recommendations' => $recommendations,
         ];
 
