@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="login">
-    <div class="login__container">
+    <div class="login__container login__container--big">
       <div class="login__card">
         <div class="login__top">
           <div class="login__wrapper"><img class="image" src="{{ asset('assets/app/img/icon-email.png') }}" alt="Logo of FHI e-TBMAC" /></div>
