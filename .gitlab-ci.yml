@@ -77,7 +77,7 @@ PHP Insights:
   script:
     # 80 is green; quality, architecture, and style are easily perfectable.
     # Use all available memory. If memory is still an issue, CI/CD runners should be upgraded.
-    - php -d memory_limit=-1 artisan insights --env=testing --no-interaction --min-quality 100 --min-complexity 58 --min-architecture 100 --min-style 100
+    - php -d memory_limit=-1 artisan insights --env=testing --no-interaction --min-quality 100 --min-complexity 57 --min-architecture 100 --min-style 100
 
 PHPUnit:
   extends: .internal test
