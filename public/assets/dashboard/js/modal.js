@@ -41,6 +41,13 @@ jQuery( document ).ready(function( $ ) {
             if ($('#refer').val() == '9') {
                 $('#refer-to-ntbmac').modal('show');
             }
+
+            if ($('#refer').val() == '10') {
+                $('#enrolled').modal('show');
+            }
+            if ($('#refer').val() == '11') {
+                $('#not-enrolled').modal('show');
+            }
             // for resubmit enrollment option
             if($('#refer').val() == 'Resubmit Enrollment') {
                 $("#resubmit-enrollment-modal").modal('show');

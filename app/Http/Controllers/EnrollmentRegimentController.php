@@ -144,7 +144,7 @@ class EnrollmentRegimentController extends Controller
     private function healthWorkerRecommendation($request)
     {
         $tbMacForm = TBMacForm::find($request['form_id']);
-        if ($request['status'] === 'Not For Enrollment') {
+        if ($request['status'] === 'Enrolled') {
             $tbMacForm->status = $request['status'];
             $tbMacForm->role_id = auth()->user()->role_id;
             $tbMacForm->save();

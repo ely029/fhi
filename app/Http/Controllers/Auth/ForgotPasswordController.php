@@ -23,7 +23,6 @@ class ForgotPasswordController extends Controller
     */
 
     use SendsPasswordResetEmails;
-    
     public function sendResetLinkEmail(Request $request)
     {
         $this->validateEmail($request);
@@ -35,7 +34,7 @@ class ForgotPasswordController extends Controller
             $this->credentials($request)
         );
 
-        return $response == Password::RESET_LINK_SENT
+        return $response === Password::RESET_LINK_SENT
                     ? redirect('success/password/reset')
                     : $this->sendResetLinkFailedResponse($request, $response);
     }
