@@ -4,8 +4,8 @@
     <div class="section__content">
       <ul class="tabs__list tabs__list--table">
         <li class="tabs__item tabs__item--current">Pending ({{ $pending->count() }})</li>
-        <li class="tabs__item">With recommendations ({{ $withRecommendations->count() }})</li>
         <li class="tabs__item">Completed ({{ $completed->count() }})</li>
+        <li class="tabs__item">With consensus ({{ $withRecommendations->count() }})</li>
         <li class="tabs__item">All cases ({{ $allCases->count() }})</li>
       </ul>
       <div class="tabs__details tabs__details--active">
@@ -50,7 +50,7 @@
               </tr>
           </thead>
           <tbody>
-            @foreach($withRecommendations as $case)
+            @foreach($completed as $case)
             <tr class="table__row js-view" data-href="{{ url('case-management/show/'.$case->id) }}">
               <td class="table__details">{{ $case->presentation_number }}</td>
               <td class="table__details">{{ empty($case->patient->initials) ? '' : $case->patient->initials}}</td>
@@ -78,7 +78,7 @@
               </tr>
           </thead>
           <tbody>
-            @foreach($completed as $case)
+            @foreach($withRecommendations as $case)
             <tr class="table__row js-view" data-href="{{ url('case-management/show/'.$case->id) }}">
               <td class="table__details">{{ $case->presentation_number }}</td>
               <td class="table__details">{{ empty($case->patient->initials) ? '' : $case->patient->initials}}</td>
