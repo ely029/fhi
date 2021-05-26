@@ -102,8 +102,10 @@ class CaseManagementResubmitController extends Controller
         })->values();
         $attachments = [];
         foreach ($tbMacForm->caseManagementAttachments as $attachment) {
+            $url = url('api/case-management/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment');
             $attachments[] = [
-                'url' => url('api/case-management/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment'),
+                'thumbnail' => Str::endsWith($attachment->file_name, '.pdf') ? asset('assets/app/img/pdf.png') : $url,
+                'url' => $url,
                 'filename' => $attachment->file_name,
                 'id' => $attachment->id,
             ];

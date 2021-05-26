@@ -66,8 +66,10 @@ class EnrollmentResubmitController extends Controller
 
         $attachments = [];
         foreach ($tbMacForm->attachments as $attachment) {
+            $url = url('api/enrollments/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment');
             $attachments[] = [
-                'url' => url('api/enrollments/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment'),
+                'thumbnail' => Str::endsWith($attachment->file_name, '.pdf') ? asset('assets/app/img/pdf.png') : $url,
+                'url' => $url,
                 'filename' => $attachment->file_name,
                 'id' => $attachment->id,
             ];

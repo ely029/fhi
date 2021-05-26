@@ -431,8 +431,12 @@
                   <li class="form__gallery-item">
                   <a class="form__gallery-link" href="{{ url('case-management/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment') }}" target="__blank">
                     <div class="form__gallery-image">
-                      <img class="image" src="{{ url('case-management/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment') }}" alt="Placeholder" />
-                    </div>
+                      @if(\Str::endsWith($attachment->file_name, '.pdf'))
+                        <img class="image" src="{{ asset('assets/app/img/pdf.png') }}" alt="Placeholder" />
+                      @else
+                        <img class="image" src="{{ url('case-management/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment') }}" alt="Placeholder" />
+                      @endif
+                      </div>
                     <p class="form__gallery-text">{{ $attachment->file_name }}</p>
                   </a>
                   </li>

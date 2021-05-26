@@ -10,10 +10,13 @@ use App\Models\Filters\TBMacFormFilters;
 use App\Models\Patient;
 use App\Models\TBMacForm;
 use App\Models\TBMacFormAttachment;
+use App\Traits\MediaAttachment;
 use Illuminate\Support\Str;
 
 class EnrollmentsController extends Controller
 {
+    use MediaAttachment;
+
     public function index(TBMacFormFilters $filters)
     {
         $enrollments = TBMacForm::EnrollmentForms()
@@ -110,8 +113,10 @@ class EnrollmentsController extends Controller
 
         $attachments = [];
         foreach ($tbMacForm->attachments as $attachment) {
+            $url = url('api/enrollments/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment');
             $attachments[] = [
-                'url' => url('api/enrollments/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment'),
+                'thumbnail' => Str::endsWith($attachment->file_name, '.pdf') ? asset('assets/app/img/pdf.png') : $url,
+                'url' => $url,
                 'filename' => $attachment->file_name,
             ];
         }
@@ -163,24 +168,6 @@ class EnrollmentsController extends Controller
         ];
 
         return response()->json($data);
-    }
-
-    public function showAttachment(TBMacForm $tbMacForm, $fileName)
-    {
-        $path = 'private/enrollments/'.$tbMacForm->presentation_number.'/'.$fileName;
-
-        if (\Storage::exists($path)) {
-            if (Str::endsWith($fileName, '.xls') || Str::endsWith($fileName, '.xlsx') || Str::endsWith($fileName, '.csv')) {
-                return response()->file(public_path('assets/app/img/excel.png'));
-            }
-            if (Str::endsWith($fileName, '.pdf')) {
-                return response()->file(public_path('assets/app/img/pdf.png'));
-            }
-            if (Str::endsWith($fileName, '.docx')) {
-                return response()->file(public_path('assets/app/img/docx.png'));
-            }
-            return response(\Storage::get($path))->header('Content-Type', 'image/jpeg');
-        }
     }
 
     protected function rules()
