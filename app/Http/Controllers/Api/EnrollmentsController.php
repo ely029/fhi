@@ -216,7 +216,7 @@ class EnrollmentsController extends Controller
             'histopathological_date' => 'nullable|date_format:Y-m-d',
             'histopathological_result' => 'nullable',
             'remarks' => 'required',
-            'attachments.*' => 'nullable|file|max:10000',
+            'attachments.*' => 'nullable|file|mimes:jpeg,png,svg,pdf|max:10000',
         ];
     }
 

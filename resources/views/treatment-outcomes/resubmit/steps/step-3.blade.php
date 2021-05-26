@@ -31,7 +31,7 @@
       <h2 class="section__heading">Related Media (CXR, CTSCAN etc.)</h2>
       <div class="form__warning">
         <img class="image image--warning" src="{{ asset('assets/app/img/icon-warning.png') }}" alt="warning icon" />
-        <p>Please make sure patient name is NOT included in your photo uploads</p>
+        <p>Please make sure patient name is NOT included in your photo uploads. JPG, PNG and PDF files only allowed</p>
       </div>
       <div class="grid grid--two">
         <div class="dz-default dz-message dropzoneDragArea" id="dropzoneDragArea">
@@ -43,7 +43,7 @@
               <input class="gallery__trigger" type="file" /><span class="gallery__text">Drag and drop or click to upload</span>
               <span class="gallery__text gallery__text--gray">
                 Recommendation: <br />
-                .jpg .png files less than 10mb
+                .jpg .png .pdf files less than 10mb
               </span>
             </div>
           </div>
