@@ -11,12 +11,15 @@ use App\Models\Filters\TBMacFormFilters;
 use App\Models\Patient;
 use App\Models\Recommendation;
 use App\Models\TBMacForm;
+use App\Traits\MediaAttachment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 
 class CaseManagementController extends Controller
 {
+    use MediaAttachment;
+
     public function index(TBMacFormFilters $tBMacFormFilters)
     {
         $caseManagement = TBMacForm::caseManagementForms()
@@ -185,8 +188,10 @@ class CaseManagementController extends Controller
         })->values();
         $attachments = [];
         foreach ($tbMacForm->caseManagementAttachments as $attachment) {
+            $url = url('api/case-management/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment');
             $attachments[] = [
-                'url' => url('api/case-management/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment'),
+                'thumbnail' => Str::endsWith($attachment->file_name, '.pdf') ? asset('assets/app/img/pdf.png') : $url,
+                'url' => $url,
                 'filename' => $attachment->file_name,
                 'id' => $attachment->id,
             ];
@@ -195,25 +200,6 @@ class CaseManagementController extends Controller
             'suggested_regimen_others' => $suggested_regimen_others, 'month_of_treatment' => $month_of_treatment, 'presentation_number' => $presentation_number, 'current_drug_susceptibility' => $current_drug_susceptibility, 'submitted_by' => $submitted_by, 'date_submitted' => $date_submitted, 'created_at' => $created_at, 'current_weight' => $current_weight, 'itr_drugs' => $itr_drugs, 'facility_code' => $facility_code, 'updated_type_of_case' => $updated_type_of_case, 'suggested_regimen_notes' => $suggested_regimen_notes, 'current_regiment' => $current_regimen, 'suggested_regimen' => $suggested_regimen, 'status' => $status, 'ct_scan_date' => $ct_scan_date, 'ct_scan_result' => $ct_scan_result, 'ultra_sound_date' => $ultra_sound_date, 'latest_comparative_cxr_reading' => $latest_comparative_cxr_reading, 'ultra_sound_result' => $ultra_sound_result, 'cxr_date' => $cxr_date, 'cxr_result' => $cxr_result, 'remarks' => $remarks, 'hispathological_date' => $histhopathological_date, 'hispathological_result' => $histhopathological_result, 'regimen_notes' => $regimen_notes, 'recommendations' => $recommendation, 'patient_code' => $patient_code, 'screening_one' => $screeningOne, 'screening_two' => $screeningTwo, 'attachments' => $attachments, 'lpa' => $lpa, 'dst' => $dst, 'monthly_screening' => $monthly_screening,
         ];
         return response()->json($data);
-    }
-
-    public function showAttachment(TBMacForm $tbMacForm, $fileName)
-    {
-        $path = 'private/case-management/'.$tbMacForm->presentation_number.'/'.$fileName;
-
-        if (\Storage::exists($path)) {
-            if (Str::endsWith($fileName, '.xls') || Str::endsWith($fileName, '.xlsx') || Str::endsWith($fileName, '.csv')) {
-                return response()->file(public_path('assets/app/img/excel.png'));
-            }
-            if (Str::endsWith($fileName, '.pdf')) {
-                return response()->file(public_path('assets/app/img/pdf.png'));
-            }
-            if (Str::endsWith($fileName, '.docx')) {
-                return response()->file(public_path('assets/app/img/docx.png'));
-            }
-            return response(\Storage::get($path))->header('Content-Type', 'image/jpeg');
-        }
-        return response()->file(public_path('assets/app/img/placeholder.jpg'));
     }
 
     protected function rules()

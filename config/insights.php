@@ -4,6 +4,7 @@ use NunoMaduro\PhpInsights\Domain\Insights\Composer\ComposerMustContainName;
 use NunoMaduro\PhpInsights\Domain\Insights\CyclomaticComplexityIsHigh;
 use NunoMaduro\PhpInsights\Domain\Insights\ForbiddenDefineFunctions;
 use NunoMaduro\PhpInsights\Domain\Insights\ForbiddenNormalClasses;
+use NunoMaduro\PhpInsights\Domain\Insights\ForbiddenTraits;
 use ObjectCalisthenics\Sniffs\Files\ClassTraitAndInterfaceLengthSniff;
 use ObjectCalisthenics\Sniffs\Files\FunctionLengthSniff;
 use ObjectCalisthenics\Sniffs\Metrics\MethodPerClassLimitSniff;
@@ -41,6 +42,8 @@ return [
         DisallowArrayTypeHintSyntaxSniff::class,
         DisallowMixedTypeHintSniff::class,
         DocCommentSpacingSniff::class,
+
+        ForbiddenTraits::class, // Allows usage of trait
     ],
 
     // @TB: Most controllers will be lengthy, but this should be max enough.

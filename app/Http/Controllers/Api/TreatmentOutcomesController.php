@@ -9,6 +9,7 @@ use App\Http\Requests\TreatmentOutcomes\StoreRequest;
 use App\Models\Filters\TBMacFormFilters;
 use App\Models\Patient;
 use App\Models\TBMacForm;
+use Illuminate\Support\Str;
 
 class TreatmentOutcomesController extends Controller
 {
@@ -85,8 +86,10 @@ class TreatmentOutcomesController extends Controller
         $tbMacForm = $tbMacForm->load(['submittedBy','treatmentOutcomeForm','treatmentOutcomeBacteriologicalResults','laboratoryResults','attachments','patient','recommendations']);
         $attachments = [];
         foreach ($tbMacForm->attachments as $attachment) {
+            $url = url('api/treatment-outcomes/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment');
             $attachments[] = [
-                'url' => url('api/treatment-outcomes/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment'),
+                'thumbnail' => Str::endsWith($attachment->file_name, '.pdf') ? asset('assets/app/img/pdf.png') : $url,
+                'url' => $url,
                 'filename' => $attachment->file_name,
             ];
         }
