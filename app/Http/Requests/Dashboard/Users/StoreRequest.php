@@ -28,8 +28,11 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'first_name' => 'required|max:255',
+            'middle_name' => 'nullable|max:255',
+            'last_name' => 'required|max:255',
             'email' => 'required|email|unique:users',
+            'username' => 'required|unique:users',
             'password' => 'required|min:8|confirmed',
             'role_id' => 'required|in:' . Role::query()->pluck('id')->implode(','),
             'photo' => 'file|mimes:gif,jpeg,jpg,jpe,png',

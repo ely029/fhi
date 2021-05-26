@@ -11,7 +11,7 @@ jQuery( document ).ready(function( $ ) {
         uploadMultiple: true,
         thumbnailWidth: 800,
         thumbnailHeight: 800,
-        acceptedFiles: "image/*",
+        acceptedFiles: "image/*,application/pdf",
         init: function() {
             // this.on("maxfilesexceeded", function(file){
             //     this.removeFile(file);
