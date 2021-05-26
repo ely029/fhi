@@ -15,11 +15,11 @@
           <h2 class="section__heading section__heading--unset">Personal information</h2>
           <div class="grid grid--two">
             <div class="form__content">
-                <span class="form__text">{{ $user->first_name }}</span>
+                <span class="form__text">{{ $user ? $user->first_name : '' }}</span>
                 <label class="form__label">First Name</label>
             </div>
             <div class="form__content">
-                <span class="form__text">{{ $user->last_name }}</span>
+                <span class="form__text">{{ $user ? $user->last_name : '' }}</span>
                 <label class="form__label">Last Name</label>
             </div>
           </div>
@@ -29,7 +29,7 @@
                 <label class="form__label">Role</label>
             </div>
             <div class="form__content">
-                <span class="form__text">{{ $user->email }}</span>
+                <span class="form__text">{{ $user ? $user->email : '' }}</span>
                 <label class="form__label">Email Address</label>
             </div>
           </div>

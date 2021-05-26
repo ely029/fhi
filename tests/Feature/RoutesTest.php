@@ -15,25 +15,25 @@ class RoutesTest extends TestCase
      *
      * @return void
      */
-    // public function testRoutesHaveNoServerErrors()
-    // {
-    //     $routes = collect(app('router')->getRoutes())->map(function ($route) {
-    //         return ['methods' => $route->methods(), 'uri' => $route->uri()];
-    //     })->filter()->all();
-    //     $errors = [];
+    public function testRoutesHaveNoServerErrors()
+    {
+        $routes = collect(app('router')->getRoutes())->map(function ($route) {
+            return ['methods' => $route->methods(), 'uri' => $route->uri()];
+        })->filter()->all();
+        $errors = [];
 
-    //     foreach ($routes as $route) {
-    //         foreach ($route['methods'] as $method) {
-    //             $response = $this->call($method, $route['uri']);
+        foreach ($routes as $route) {
+            foreach ($route['methods'] as $method) {
+                $response = $this->call($method, $route['uri']);
 
-    //             $statusCode = $response->getStatusCode();
+                $statusCode = $response->getStatusCode();
 
-    //             if (500 <= $statusCode && $statusCode <= 599) {
-    //                 array_push($errors, $statusCode.' '.$method.' '.$route['uri']);
-    //             }
-    //         }
-    //     }
+                if (500 <= $statusCode && $statusCode <= 599) {
+                    array_push($errors, $statusCode.' '.$method.' '.$route['uri']);
+                }
+            }
+        }
 
-    //     PHPUnit::assertEmpty($errors, join("\n", $errors));
-    // }
+        PHPUnit::assertEmpty($errors, join("\n", $errors));
+    }
 }

@@ -26,7 +26,9 @@ class SuperAdminTest extends TestCase
         $faker = Factory::create();
 
         $approverAdmin = [
-            'name' => $faker->name,
+            'first_name' => $faker->firstName,
+            'last_name' => $faker->lastName,
+            'username' => $faker->unique()->userName,
             'email' => $faker->unique()->safeEmail,
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password,
             'password_confirmation' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
@@ -38,7 +40,8 @@ class SuperAdminTest extends TestCase
         $response->assertStatus(302);
 
         $this->assertDatabaseHas('users', [
-            'name' => $approverAdmin['name'],
+            'first_name' => $approverAdmin['first_name'],
+            'last_name' => $approverAdmin['last_name'],
             'role_id' => 2,
         ]);
 
@@ -56,9 +59,12 @@ class SuperAdminTest extends TestCase
             'role_id' => 2,
         ]);
 
-        $updatedName = $faker->name;
+        $updatedFirstName = $faker->firstName;
+        $updatedLastName = $faker->lastName;
         $response = $this->actingAs($superAdmin)->patchJson('dashboard/users/'.$approverAdmin->id,[
-            'name' => $updatedName,
+            'first_name' => $updatedFirstName,
+            'last_name' => $updatedLastName,
+            'username' => $faker->userName,
             'email' => $approverAdmin->email,
             'photo_alt' => 'User Photo',
             'role_id' => 2
@@ -68,7 +74,8 @@ class SuperAdminTest extends TestCase
 
         $this->assertDatabaseHas('users', [
             'id' => $approverAdmin->id,
-            'name' => $updatedName,
+            'first_name' => $updatedFirstName,
+            'last_name' => $updatedLastName,
             'role_id' => 2,
         ]);
 
