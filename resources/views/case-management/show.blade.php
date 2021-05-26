@@ -335,7 +335,11 @@
                   <div class="form__content"><span class="form__text">{{ empty($tbMacForm->caseManagementForm->current_weight) ? '' : $tbMacForm->caseManagementForm->current_weight }}kg</span><label class="form__label" for="">Current weight</label></div>
                 </div>
                 <div class="grid grid--two">
-                  <div class="form__content"><span class="form__text">{{ empty($tbMacForm->caseManagementForm->current_regiment) ? '' : $tbMacForm->caseManagementForm->current_regiment}}</span><label class="form__label" for="">Current regimen </label></div>
+                @if($tbMacForm->caseManagementForm->current_regiment === 'ITR')
+                <div class="form__content"><span class="form__text">{{ $tbMacForm->caseManagementForm->current_regiment }} - {{ $tbMacForm->caseManagementForm->itr_drugs_current_regimen }}</span><label class="form__label" for="">Current regimen </label></div>
+                @elseif ($tbMacForm->caseManagementForm->current_regiment === 'Other (Specify)')
+                <div class="form__content"><span class="form__text">{{ $tbMacForm->caseManagementForm->current_regiment }} - {{ $tbMacForm->caseManagementForm->others_current_regimen }}</span><label class="form__label" for="">Current regimen </label></div>
+                @endif
                 </div>
                 <div class="grid grid--two">
                   <div class="form__content">
