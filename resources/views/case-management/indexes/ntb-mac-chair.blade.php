@@ -3,7 +3,7 @@
 
     <div class="section__content">
       <ul class="tabs__list tabs__list--table">
-        <li class="tabs__item tabs__item--current">Referred cases ({{ $referredCases->count() }})</li>
+        <li class="tabs__item tabs__item--current">Pending ({{ $referredCases->count() }})</li>
         <li class="tabs__item">Completed ({{ $completed->count() }})</li>
         <li class="tabs__item">All cases ({{ $allCases->count() }})</li>
       </ul>

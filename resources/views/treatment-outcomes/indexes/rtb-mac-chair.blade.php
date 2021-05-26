@@ -4,7 +4,7 @@
     <div class="section__content">
     <ul class="tabs__list tabs__list--table">
     {{--<a href="{{ url('treatment-outcomes?status=Referred to Regional Chair') }}">
-            <li class="tabs__item {{ request('status') == 'Referred to Regional Chair' ? 'tabs__item--current' : ''}}">Referred cases({{ $referredCases->count() }})</li>
+            <li class="tabs__item {{ request('status') == 'Referred to Regional Chair' ? 'tabs__item--current' : ''}}">Pending({{ $referredCases->count() }})</li>
         </a>
         <a href="{{ url('treatment-outcomes?status=Referred back to Regional Chair') }}">
             <li class="tabs__item {{ request('status') == 'Referred back to Regional Chair' ? 'tabs__item--current' : ''}}">Pending from N-TB MAC Chair({{$pending->count()}})</li>
@@ -15,9 +15,9 @@
     <a href="{{ url('treatment-outcomes?treatmentOutcomeTabs=all_cases') }}">
     <li class="tabs__item {{ request('treatmentOutcomeTabs') == 'all_cases' ? 'tabs__item--current' : ''}}">All Cases({{ $cases->count() }})</li>
         </a>--}}
-        <li class="tabs__item tabs__item--current">Referred cases ({{ $referredCases->count() }})</li>
-        <li class="tabs__item">Pending from N-TB MAC Chair ({{ $pending->count() }})</li>
+        <li class="tabs__item tabs__item--current">Pending ({{ $referredCases->count() }})</li>
         <li class="tabs__item">Completed ({{ $completed->count() }})</li>
+        <li class="tabs__item">Pending from N-TB MAC Chair ({{ $pending->count() }})</li>
         <li class="tabs__item">All cases ({{ $cases->count() }})</li>
     </ul>
       <div class="tabs__details tabs__details--active">
@@ -62,7 +62,7 @@
             </tr>
           </thead>
           <tbody>
-          @foreach($pending as $case)
+          @foreach($completed as $case)
         <tr class="table__row js-view" data-href="{{url('/treatment-outcomes/'.$case->id.'?from_tab='.$case->status)}}">
             <td class="table__details">{{ $case->presentation_number }}</td>
             <td class="table__details">{{ empty($case->patient->initials) ? '' : $case->patient->initials}}</td>
@@ -90,7 +90,7 @@
             </tr>
           </thead>
           <tbody>
-          @foreach($completed as $case)
+          @foreach($pending as $case)
         <tr class="table__row js-view" data-href="{{url('/treatment-outcomes/'.$case->id.'?from_tab='.$case->status)}}">
             <td class="table__details">{{ $case->presentation_number }}</td>
             <td class="table__details">{{ empty($case->patient->initials) ? '' : $case->patient->initials}}</td>

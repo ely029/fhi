@@ -3,9 +3,9 @@
 
     <div class="section__content">
       <ul class="tabs__list tabs__list--table">
-        <li class="tabs__item tabs__item--current">Referred cases ({{ $referredCases->count() }})</li>
-        <li class="tabs__item">Pending from N-TB MAC Chair ({{ $pending->count() }})</li>
+        <li class="tabs__item tabs__item--current">Pending ({{ $referredCases->count() }})</li>
         <li class="tabs__item">Completed ({{ $completed->count() }})</li>
+        <li class="tabs__item">Pending from N-TB MAC Chair ({{ $pending->count() }})</li>
         <li class="tabs__item">All cases ({{ $allCases->count() }})</li>
       </ul>
       <div class="tabs__details tabs__details--active">
@@ -50,8 +50,8 @@
               </tr>
           </thead>
           <tbody>
-            @foreach($pending as $case)
-            <tr class="table__row js-view" data-href="{{ url('case-management/show/'.$case->id.'?from_tab=pending') }}">
+            @foreach($completed as $case)
+            <tr class="table__row js-view" data-href="{{ url('case-management/show/'.$case->id) }}">
               <td class="table__details">{{ $case->presentation_number }}</td>
                 <td class="table__details">{{ empty($case->patient->initials) ? '' : $case->patient->initials}}</td>
                 <td class="table__details">{{ empty($case->patient->age) ? '' : $case->patient->age}}</td>
@@ -78,8 +78,8 @@
               </tr>
           </thead>
           <tbody>
-            @foreach($completed as $case)
-            <tr class="table__row js-view" data-href="{{ url('case-management/show/'.$case->id) }}">
+            @foreach($pending as $case)
+            <tr class="table__row js-view" data-href="{{ url('case-management/show/'.$case->id.'?from_tab=pending') }}">
               <td class="table__details">{{ $case->presentation_number }}</td>
                 <td class="table__details">{{ empty($case->patient->initials) ? '' : $case->patient->initials}}</td>
                 <td class="table__details">{{ empty($case->patient->age) ? '' : $case->patient->age}}</td>

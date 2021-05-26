@@ -3,9 +3,9 @@
 
       <div class="section__content">
         <ul class="tabs__list tabs__list--table">
-          <li class="tabs__item tabs__item--current">Referred enrollments ({{ $referred->count() }})</li>
-          <li class="tabs__item">Pending from N-TB MAC Chair ({{ $pendingFromNTBMacChair->count() }})</li>
+          <li class="tabs__item tabs__item--current">Pending ({{ $referred->count() }})</li>
           <li class="tabs__item">Completed ({{ $completed->count() }})</li>
+          <li class="tabs__item">Pending from N-TB MAC Chair ({{ $pendingFromNTBMacChair->count() }})</li>
           <li class="tabs__item">All enrollments ({{ $allEnrollments->count() }})</li>
         </ul>
         <div class="tabs__details tabs__details--active">
@@ -57,8 +57,8 @@
               </tr>
             </thead>
             <tbody>
-              @foreach($pendingFromNTBMacChair as $enrollment)
-                <tr class="table__row js-view" data-href="{{ url('enrollments/'.$enrollment->id.'?from_tab=pending') }}">
+              @foreach($completed as $enrollment)
+                <tr class="table__row js-view" data-href="{{ url('enrollments/'.$enrollment->id) }}">
                   <td class="table__details">{{ $enrollment->presentation_number }}</td>
                   <td class="table__details">{{ empty($enrollment->patient->facility_code) ? '' : $enrollment->patient->facility_code}}</td>
                   <td class="table__details">{{ empty($enrollment->patient->province) ? '' : $enrollment->patient->province}}</td>
@@ -90,8 +90,8 @@
               </tr>
             </thead>
             <tbody>
-              @foreach($completed as $enrollment)
-                <tr class="table__row js-view" data-href="{{ url('enrollments/'.$enrollment->id) }}">
+              @foreach($pendingFromNTBMacChair as $enrollment)
+                <tr class="table__row js-view" data-href="{{ url('enrollments/'.$enrollment->id.'?from_tab=pending') }}">
                   <td class="table__details">{{ $enrollment->presentation_number }}</td>
                   <td class="table__details">{{ empty($enrollment->patient->facility_code) ? '' : $enrollment->patient->facility_code}}</td>
                   <td class="table__details">{{ empty($enrollment->patient->province) ? '' : $enrollment->patient->province}}</td>
