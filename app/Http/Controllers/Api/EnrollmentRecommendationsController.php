@@ -88,8 +88,8 @@ class EnrollmentRecommendationsController extends Controller
 
     private function secretariatRecommendation($tbMacForm, $request)
     {
-        if ($request['status'] === 'Not For Referral') {
-            $tbMacForm->status = 'Not For Referral';
+        if ($request['status'] === 'Not For Referral' || $request['status'] === 'Need Further Details') {
+            $tbMacForm->status = $request['status'];
         } else {
             $tbMacForm->status = 'Referred to Regional';
             $request['status'] = 'Refer to Regional';
@@ -172,7 +172,7 @@ class EnrollmentRecommendationsController extends Controller
     private function statusValidation()
     {
         if (auth()->user()->role_id === 4) {
-            return 'required|in:Refer to RTBMAC,Not For Referral';
+            return 'required|in:Refer to RTBMAC,Not For Referral,Need Further Details';
         }
         if (auth()->user()->role_id === 5) {
             return 'required|in:Recommend for enrollment,Not recommended for enrollment,Need Further Details';

@@ -124,6 +124,7 @@
                       <div class="form__content">
                           <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
                           <option value="Referred to Regional">Refer to R-TB MAC</option>
+                          <option value="Need Further Details">Need further details</option>
                           <option value="Not for Referral">Not for referral</option>
                           </select>
                           <div class="triangle triangle--down"></div>
