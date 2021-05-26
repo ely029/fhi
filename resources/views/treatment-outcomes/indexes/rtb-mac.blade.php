@@ -6,18 +6,18 @@
     {{--<a href="{{ url('treatment-outcomes?status=Referred to Regional') }}">
             <li class="tabs__item {{ request('status') == 'Referred to Regional' ? 'tabs__item--current' : ''}}">Pending({{ $pending->count() }})</li>
         </a>
-        <a href="{{ url('treatment-outcomes?treatmentOutcomeTabs=with_recommendations') }}">
-            <li class="tabs__item {{ request('treatmentOutcomeTabs') == 'with_recommendations' ? 'tabs__item--current' : ''}}">With recommendations({{ $withRecommendations->count() }})</li>
-        </a>
         <a href="{{ url('treatment-outcomes?status=Referred to Regional Chair') }}">
             <li class="tabs__item {{ request('status') == 'Referred to Regional Chair' ? 'tabs__item--current' : ''}}">Completed({{ $completed->count()}})</li>
+        </a>
+        <a href="{{ url('treatment-outcomes?treatmentOutcomeTabs=with_recommendations') }}">
+            <li class="tabs__item {{ request('treatmentOutcomeTabs') == 'with_recommendations' ? 'tabs__item--current' : ''}}">With consensus({{ $withRecommendations->count() }})</li>
         </a>
         <a href="{{ url('treatment-outcomes?treatmentOutcomeTabs=all_cases') }}">
             <li class="tabs__item {{ request('treatmentOutcomeTabs') == 'all_cases' ? 'tabs__item--current' : ''}}">All cases({{ $cases->count() }})</li>
         </a>--}}
         <li class="tabs__item tabs__item--current">Pending ({{ $pending->count() }})</li>
-        <li class="tabs__item">With recommendations ({{ $withRecommendations->count() }})</li>
         <li class="tabs__item">Completed ({{ $completed->count() }})</li>
+        <li class="tabs__item">With consensus ({{ $withRecommendations->count() }})</li>
         <li class="tabs__item">All cases ({{ $cases->count() }})</li>
     </ul>
       <div class="tabs__details tabs__details--active">
@@ -62,7 +62,7 @@
             </tr>
           </thead>
           <tbody>
-          @foreach($withRecommendations as $case)
+          @foreach($completed as $case)
         <tr class="table__row js-view" data-href="{{url('/treatment-outcomes/'.$case->id.'?from_tab='.$case->status)}}">
             <td class="table__details">{{ $case->presentation_number }}</td>
             <td class="table__details">{{ empty($case->patient->initials) ? '' : $case->patient->initials}}</td>
@@ -90,7 +90,7 @@
             </tr>
           </thead>
           <tbody>
-          @foreach($completed as $case)
+          @foreach($withRecommendations as $case)
         <tr class="table__row js-view" data-href="{{url('/treatment-outcomes/'.$case->id.'?from_tab='.$case->status)}}">
             <td class="table__details">{{ $case->presentation_number }}</td>
             <td class="table__details">{{ empty($case->patient->initials) ? '' : $case->patient->initials}}</td>
