@@ -80,6 +80,7 @@
               <td class="table__details"><span class="table__link js-trigger">Edit remarks</span></td>
               @else
               @endif
+              <input type="hidden" value="{{ $details->remarks}}" name="remarks">
             </tr>
             @endforeach
             @foreach($caseManagement as $details)
@@ -99,6 +100,7 @@
               <td class="table__details"><span class="table__link js-trigger">Edit remarks</span></td>
               @else
               @endif
+              <input type="hidden" value="{{ $details->remarks}}" name="remarks">
             </tr>
             @endforeach
             @foreach($treatmentOutcome as $details)
@@ -118,10 +120,24 @@
               <td class="table__details"><span class="table__link js-trigger">Edit remarks</span></td>
               @else
               @endif
+              <input type="hidden" value="{{ $details->remarks}}" name="remarks">
             </tr>
             @endforeach
           </tbody>
         </table>
+      </div>
+      <div class="modal js-modal">
+        <div class="modal__background js-modal-background"></div>
+        <div class="modal__container">
+          <div class="modal__box">
+            <h2 class="modal__title">Edit remarks</h2>
+            <p class="modal__text">Edit remarks for the masterlist.</p>
+            <form class="form">
+              <div class="form__content"><textarea class="form__input form__input--message" placeholder="Enter remarks"></textarea><label class="form__label" for="">Remarks</label></div>
+            </form>
+            <div class="modal__button"><input class="button" type="submit" value="Save" /></div>
+          </div>
+        </div>
       </div>
       <div class="modal js-modal">
         <div class="modal__background js-modal-background"></div>

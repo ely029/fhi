@@ -9,10 +9,20 @@
         <div class="help-block with-errors"></div>
     </div>
     </div>
-    <div class="form__content form-group">
-    <input class="form__input" type="text" value="{{ empty($tbMacForm->caseManagementForm->current_regiment) ? '' : $tbMacForm->caseManagementForm->current_regiment }}" required name="current_regiment" placeholder="Current Regiment" />
-        <div class="help-block with-errors"></div>    
-        <label class="form__label" for="">Current regimen</label>
+    <div class="form__content">
+        <select class="form__input form__input--select" id="current_regiment" name="current_regiment">
+        @foreach(current_regimen() as $sr)
+    <option value="{{ $sr }}" {{ $tbMacForm->caseManagementForm->current_regiment === $sr ? 'selected' : ''}}>{{ $sr }}</option>
+    @endforeach
+        </select>
+        <div class="triangle triangle--down"></div>
+        <label class="form__label" for="">Current Regimen</label>
+    </div>
+    <div class="form__content" id="others_current_regiment">
+        <input class="form__input" name="others_current_regimen" type="text" placeholder="Others (Please specify)" value="{{ $tbMacForm->caseManagementForm->others_current_regimen }}"/><label class="form__label" for="">Others</label>
+    </div>
+    <div class="form__content" id="itr_drugs_current_regiment">
+        <input class="form__input" name="itr_drugs_current_regimen" type="text" value="{{ $tbMacForm->caseManagementForm->itr_drugs_current_regimen }}" placeholder="Please specify (+ITR is chosen)"/><label class="form__label" for="">ITR drugs</label>
     </div>
     <!-- <div class="form__content form-group">
     <div class="help-block with-errors"></div>
@@ -21,7 +31,16 @@
     <label class="form__label" for="">Reason for case management presentation</label>
         </div> -->
         <div class="form__content form-group">
-            
+    @if ($tbMacForm->caseManagementForm->current_regiment == 'Other (Specify)')
+    <div class="form__content" id="others_current_regiment">
+        <input class="form__input" name="others_current_regimen" type="text" placeholder="Others (Please specify)" value="{{ $tbMacForm->caseManagementForm->others_current_regimen }}"/><label class="form__label" for="">Others</label>
+    </div>
+    @endif
+    @if ($tbMacForm->caseManagementForm->suggested_regimen == 'ITR')
+    <div class="form__content" id="itr_drugs_current_regiment">
+        <input class="form__input" name="itr_drugs_current_regimen" type="text" value="{{ $tbMacForm->caseManagementForm->itr_drugs_current_regimen }}" placeholder="Please specify (+ITR is chosen)"/><label class="form__label" for="">ITR drugs</label>
+    </div>
+    @endif
             <textarea name="reason_case_management_presentation" class="form-control form__input" id="inputEmail" placeholder="" required>{{ $tbMacForm->caseManagementForm->reason_case_management_presentation }}</textarea>
             
             <div class="help-block with-errors"></div>

@@ -3,7 +3,11 @@
         <h2 class="section__heading">Treatment information</h2>
         <div class="grid grid--two">
             <div class="form__content form-group">
-                <input class="form__input" type="text" required name="current_regiment" placeholder="Current Regiment" />
+                <select class="form__input" name="current_regiment" id="current_regiment">
+                @foreach(current_regimen() as $data)
+                <option value="{{ $data }}">{{ $data }}</option>
+                @endforeach
+                </select>
                 <div class="help-block with-errors"></div>
                 <label class="form__label" for="">Current regimen</label>
             </div>
@@ -16,6 +20,16 @@
         </div>
     </div>
     <div class="form-step-3 form__container">
+    <div id="others_current_regiment" class="form__content form-group">
+                <input class="form__input" type="number" name="others_current_regimen" placeholder="Current weight (kg)" required />
+                <div class="help-block with-errors"></div>
+                <label class="form__label" for="">Others</label>
+    </div>
+
+    <div class="form__content" id="itr_drugs_current_regiment">
+        <input class="form__input" name="itr_drugs_current_regimen" type="text" placeholder="Please specify (+ITR is chosen)"/>
+        <label class="form__label" for="">ITR drugs</label>
+    </div>
         <div class="form__content form-group">
             <textarea name="reason_case_management_presentation" class="form__input form__input--message" id="inputEmail" placeholder="" required></textarea>
             <div class="help-block with-errors"></div>

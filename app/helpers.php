@@ -437,6 +437,24 @@ function getDynamicQuery()
     ];
 }
 
+function current_regimen()
+{
+    return [
+        'Regimen 3 SSOR',
+        'Regimen 4 SLOR FQ-S',
+        'Regimen 5 SLOR FQ-R',
+        'Regimen 6a SLOR FQ-S',
+        'Regimen 6b SLOR FQ-S',
+        'Regimen 6c SLOR FQ-S',
+        'Regimen 7a SLOR FQ-R',
+        'Regimen 7b SLOR FQ-R',
+        'Regimen 7c SLOR FQ-R',
+        'ITR',
+        'BPaL',
+        'Other (Specify)',
+    ];
+}
+
 function treatmentOutcomeIndex3($cases)
 {
     $forApproval = $cases->filter(function ($item) {
