@@ -9,7 +9,6 @@ use App\Models\CaseManagementBacteriologicalResults;
 use App\Models\Patient;
 use App\Models\TBMacForm;
 use App\Traits\MediaAttachment;
-use Illuminate\Support\Str;
 
 class CaseManagementController extends Controller
 {

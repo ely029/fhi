@@ -18,10 +18,7 @@ class EnrollmentResubmitController extends Controller
     {
         $tbMacForm = $tbMacForm->load(['submittedBy','enrollmentForm','bacteriologicalResults','laboratoryResults','attachments', 'patient']);
         $tbBacteriologicalResults = $tbMacForm->bacteriologicalResults;
-        $submitted_by = ! isset($tbMacForm->submittedBy->name) ? '' : $tbMacForm->submittedBy->name;
-        $gender = ! isset($tbMacForm->patient->gender) ? '' : $tbMacForm->patient->gender;
         $facility_code = ! isset($tbMacForm->patient->facility_code) ? '' : $tbMacForm->patient->facility_code;
-        $province = ! isset($tbMacForm->patient->province) ? '' : $tbMacForm->patient->province;
         $birthday = ! isset($tbMacForm->patient->birthday) ? '' : $tbMacForm->patient->birthday->format('Y-m-d');
         $first_name = ! isset($tbMacForm->patient->first_name) ? '' : $tbMacForm->patient->first_name;
         $middle_name = ! isset($tbMacForm->patient->middle_name) ? '' : $tbMacForm->patient->middle_name;
@@ -77,9 +74,9 @@ class EnrollmentResubmitController extends Controller
 
         $data = [
             'facility_code' => $facility_code,
-            'province' => $province,
-            'gender' => $gender,
-            'submitted_by' => $submitted_by,
+            'province' => $tbMacForm->patient->province,
+            'gender' => $tbMacForm->patient->gender,
+            'submitted_by' => $tbMacForm->submittedBy->name,
             'first_name' => $first_name,
             'middle_name' => $middle_name,
             'last_name' => $last_name,
