@@ -118,6 +118,14 @@ class EnrollmentResubmitController extends Controller
 
     public function resubmit(TBMacForm $tbMacForm)
     {
+        $validator = \Validator::make(request()->all(), $this->rules());
+
+        if ($validator->fails()) {
+            return response()->json([
+                'errors' => $validator->errors(),
+            ], 422);
+        }
+
         $request = request()->all();
         unset($request['_token']);
         $request['status'] = 'New Enrollment';
@@ -154,6 +162,43 @@ class EnrollmentResubmitController extends Controller
             }
         }
         return response()->json('Enrollment Resubmitted Successfully', 200);
+    }
+
+    protected function rules()
+    {
+        return [
+            'facility_code' => 'required',
+            'province' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'middle_name' => 'required',
+            'birthday' => 'required|date_format:Y-m-d',
+            'gender' => 'required|in:Male,Female',
+            'treatment_history' => 'required',
+            'registration_group' => 'required',
+            'risk_factor' => 'required',
+            'drug_susceptibility' => 'required',
+            'current_weight' => 'required|numeric',
+            'suggested_regimen' => 'required',
+            'itr_drugs' => 'nullable|required_if:suggested_regimen,ITR',
+            'suggested_regimen_others' => 'nullable|required_if:suggested_regimen,Other (specify)',
+            'regimen_notes' => 'required',
+            'clinical_status' => 'required',
+            'signs_and_symptoms' => 'required',
+            'vital_signs' => 'required',
+            'diag_and_lab_findings' => 'required',
+            'cxr_date' => 'nullable|date_format:Y-m-d',
+            'cxr_result' => 'nullable',
+            'cxr_reading.*' => 'nullable',
+            'ct_scan_date' => 'nullable|date_format:Y-m-d',
+            'ct_scan_result' => 'nullable',
+            'ultrasound_date' => 'nullable|date_format:Y-m-d',
+            'ultrasound_result' => 'nullable',
+            'histopathological_date' => 'nullable|date_format:Y-m-d',
+            'histopathological_result' => 'nullable',
+            'remarks' => 'required',
+            'attachments.*' => 'nullable|file|mimes:jpeg,png,svg,pdf|max:10000',
+        ];
     }
 
     private function createBacteriologicalStatus($request, $tbMacForm, $status)

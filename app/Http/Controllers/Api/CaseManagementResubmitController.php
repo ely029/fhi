@@ -116,6 +116,14 @@ class CaseManagementResubmitController extends Controller
 
     public function reSubmit(TBMacForm $tbMacForm)
     {
+        $validator = \Validator::make(request()->all(), $this->rules());
+
+        if ($validator->fails()) {
+            return response()->json([
+                'errors' => $validator->errors(),
+            ], 422);
+        }
+
         $request = request()->all();
         unset($request['_token']);
         $request['first_name'] = '';
@@ -160,6 +168,13 @@ class CaseManagementResubmitController extends Controller
         unset($request['remarks']);
         $tbMacForm->caseManagementLaboratoryResult->update($request);
         return response()->json('Case Management Resubmit Successfully');
+    }
+
+    protected function rules()
+    {
+        return [
+            'attachments.*' => 'nullable|file|mimes:jpeg,png,svg,pdf|max:10000',
+        ];
     }
 
     private function removeAttachments($tbMacForm, $request)

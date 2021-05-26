@@ -43,6 +43,14 @@ class CaseManagementController extends Controller
 
     public function store()
     {
+        $validator = \Validator::make(request()->all(), $this->rules());
+
+        if ($validator->fails()) {
+            return response()->json([
+                'errors' => $validator->errors(),
+            ], 422);
+        }
+
         $request = request()->all();
         $request['first_name'] = '';
         $request['middle_name'] = '';
@@ -206,6 +214,13 @@ class CaseManagementController extends Controller
             return response(\Storage::get($path))->header('Content-Type', 'image/jpeg');
         }
         return response()->file(public_path('assets/app/img/placeholder.jpg'));
+    }
+
+    protected function rules()
+    {
+        return [
+            'attachments.*' => 'nullable|file|mimes:jpeg,png,svg,pdf|max:10000',
+        ];
     }
 
     private function getDynamicQuery()
