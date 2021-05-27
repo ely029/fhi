@@ -103,7 +103,9 @@
                           <select id="action-dropdown" class="form__input form__input--select">
                           <option value="Resolved">Resolved</option>
                           <option value="Not Resolved">Not resolved</option>
+                          @if ($tbMacForm->status == 'Not for Referral' || $tbMacForm->status == 'Need Further Details')
                           <option value="Resubmit Case Management">Resubmit case management</option>
+                          @endif
                           </select>
                           <div class="triangle triangle--down"></div>
                           <label class="form__label" for="">Action</label>
