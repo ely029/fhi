@@ -12,7 +12,7 @@
                 <label class="form__label" for="">Current regimen</label>
             </div>
 
-            <div class="form__content form-group">
+            <div class="form__content form__content--small form-group">
                 <input class="form__input" type="number" name="current_weight" placeholder="Current weight (kg)" required />
                 <div class="help-block with-errors"></div>
                 <label class="form__label" for="">Current weight (kg)</label>
