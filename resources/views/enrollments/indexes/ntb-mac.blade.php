@@ -3,7 +3,7 @@
 
     <div class="section__content">
       <ul class="tabs__list tabs__list--table">
-        <li class="tabs__item tabs__item--current">Referred enrollments ({{ $referred->count() }})</li>
+        <li class="tabs__item tabs__item--current">Pending ({{ $referred->count() }})</li>
         <li class="tabs__item">Completed ({{ $completed->count() }})</li>
         <li class="tabs__item">All enrollments ({{ $allEnrollments->count() }})</li>
       </ul>

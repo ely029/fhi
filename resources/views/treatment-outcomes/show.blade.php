@@ -101,7 +101,7 @@
               </div>
 
               {{-- Health Care Worker --}}
-              @if(auth()->user()->role_id == 3 && $tbMacForm->status != 'Resolved' && in_array(request('from_tab'),['For approval','Other suggestions','Need Further Details','Not for Referral']))
+              @if(auth()->user()->role_id == 3 && $tbMacForm->status != 'Resolved' && in_array($tbMacForm->status,['Approved','Other suggestions','Need Further Details','Not for Referral']))
                   <div class="grid grid--action">
                       <div class="form__content">
                           <select id="action-dropdown" class="form__input form__input--select">
@@ -155,7 +155,7 @@
                   <div class="grid grid--action">
                       <div class="form__content">
                           <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
-                          <option value="For approval">For Approval</option>
+                          <option value="Approved">Approved</option>
                           <option value="Other suggestions">Other suggestions</option>
                           <option value="Need Further Details">Need further details</option>
                           <option value="Referred to N-TB MAC">Refer to N-TB MAC</option>
