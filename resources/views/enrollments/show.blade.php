@@ -71,9 +71,9 @@
             <div class="grid grid--action">
               <div class="form__content">
                 <select id="refer" class="form__input form__input--select">
-                  <option value="3">Not recommended for enrolment</option>
-                  <option value="4">Recommend for enrolment</option>
-                  <option value="5">Need further details</option>
+                  <option value="3">Recommend not for enrollment</option>
+                  <option value="4">Recommend for enrollment</option>
+                  <option value="5">Recommend for need further details</option>
                 </select>
                 <div class="triangle triangle--down"></div>
                 <label class="form__label" for="">Action</label>

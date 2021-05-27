@@ -219,55 +219,55 @@ class EnrollmentRegimentController extends Controller
         $tbMacForm = TBMacForm::find($request['form_id']);
         $tbMacForm->status = 'Referred to regional chair';
         $tbMacForm->save();
-        if ($request['status'] === 'Not for Referral' || $request['status'] === 'Need Further Details' || $request['status'] === 'Not For Enrollment' || $request['status'] === 'For Enrollment') {
-            $request['submitted_by'] = auth()->user()->id;
-            $request['role_id'] = auth()->user()->role_id;
-            Recommendation::create($request);
+        // if ($request['status'] === 'Not for Referral' || $request['status'] === 'Need Further Details' || $request['status'] === 'Not For Enrollment' || $request['status'] === 'For Enrollment') {
+        $request['submitted_by'] = auth()->user()->id;
+        $request['role_id'] = auth()->user()->role_id;
+        Recommendation::create($request);
 
-            return redirect('enrollments')->with([
-                'recommendation' => 'Recommendation successfully sent',
-            ]);
-        }
+        return redirect('enrollments')->with([
+            'recommendation' => 'Recommendation successfully sent',
+        ]);
+        // }
     }
 
     private function regionalChairRecommendation($request)
     {
-        if ($request['status'] === 'For Enrollment') {
-            $tbMacForm = TBMacForm::find($request['form_id']);
-            $tbMacForm->status = $request['status'];
-            $tbMacForm->role_id = auth()->user()->role_id;
-            $tbMacForm->save();
-            $request['submitted_by'] = auth()->user()->id;
-            $request['role_id'] = auth()->user()->role_id;
-            Recommendation::create($request);
-        }
-        if ($request['status'] === 'Not For Enrollment') {
-            $tbMacForm = TBMacForm::find($request['form_id']);
-            $tbMacForm->status = $request['status'];
-            $tbMacForm->role_id = auth()->user()->role_id;
-            $tbMacForm->save();
-            $request['submitted_by'] = auth()->user()->id;
-            $request['role_id'] = auth()->user()->role_id;
-            Recommendation::create($request);
-        }
-        if ($request['status'] === 'Need Further Details') {
-            $tbMacForm = TBMacForm::find($request['form_id']);
-            $tbMacForm->status = $request['status'];
-            $tbMacForm->role_id = auth()->user()->role_id;
-            $tbMacForm->save();
-            $request['submitted_by'] = auth()->user()->id;
-            $request['role_id'] = auth()->user()->role_id;
-            Recommendation::create($request);
-        }
-        if ($request['status'] === 'Referred to N-TB MAC') {
-            $tbMacForm = TBMacForm::find($request['form_id']);
-            $tbMacForm->status = 'Referred to N-TB MAC';
-            $tbMacForm->role_id = auth()->user()->role_id;
-            $tbMacForm->save();
-            $request['submitted_by'] = auth()->user()->id;
-            $request['role_id'] = auth()->user()->role_id;
-            Recommendation::create($request);
-        }
+        // if ($request['status'] === 'For Enrollment') {
+        //     $tbMacForm = TBMacForm::find($request['form_id']);
+        //     $tbMacForm->status = $request['status'];
+        //     $tbMacForm->role_id = auth()->user()->role_id;
+        //     $tbMacForm->save();
+        //     $request['submitted_by'] = auth()->user()->id;
+        //     $request['role_id'] = auth()->user()->role_id;
+        //     Recommendation::create($request);
+        // }
+        // if ($request['status'] === 'Not For Enrollment') {
+        //     $tbMacForm = TBMacForm::find($request['form_id']);
+        //     $tbMacForm->status = $request['status'];
+        //     $tbMacForm->role_id = auth()->user()->role_id;
+        //     $tbMacForm->save();
+        //     $request['submitted_by'] = auth()->user()->id;
+        //     $request['role_id'] = auth()->user()->role_id;
+        //     Recommendation::create($request);
+        // }
+        // if ($request['status'] === 'Need Further Details') {
+        //     $tbMacForm = TBMacForm::find($request['form_id']);
+        //     $tbMacForm->status = $request['status'];
+        //     $tbMacForm->role_id = auth()->user()->role_id;
+        //     $tbMacForm->save();
+        //     $request['submitted_by'] = auth()->user()->id;
+        //     $request['role_id'] = auth()->user()->role_id;
+        //     Recommendation::create($request);
+        // }
+        // if ($request['status'] === 'Referred to N-TB MAC') {
+        $tbMacForm = TBMacForm::find($request['form_id']);
+        $tbMacForm->status = $request['status'];
+        $tbMacForm->role_id = auth()->user()->role_id;
+        $tbMacForm->save();
+        $request['submitted_by'] = auth()->user()->id;
+        $request['role_id'] = auth()->user()->role_id;
+        Recommendation::create($request);
+        // }
 
         return redirect('enrollments')->with([
             'recommendation' => 'Recommendation successfully sent',
@@ -381,7 +381,7 @@ class EnrollmentRegimentController extends Controller
     private function getNationalTBMacIndex($enrollments)
     {
         $referred = $enrollments->filter(function ($item) {
-            return $item->status === 'Referred to N-TB MAC';
+            return $item->status === 'Referred to national';
         });
 
         $completed = $enrollments->filter(function ($item) {
