@@ -83,7 +83,7 @@
                 </div>
                 <div class="form__container">
                   <h2 class="section__heading">Health Care Worker</h2>
-                  <div class="grid grid--two">
+                  <div class="grid grid--two grid--start">
                     <div class="form__content">
                         <span class="form__text">{{ $tbMacForm->submittedBy->name }}</span>
                         <label class="form__label" for="">Primary Health Care Worker </label>
