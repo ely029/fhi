@@ -121,7 +121,7 @@ class CaseManagementController extends Controller
     private function getHealthCareWorkerIndex($cases)
     {
         $forApproval = $cases->filter(function ($item) {
-            return $item->status === 'For approval';
+            return $item->status === 'Approved';
         });
         $otherSuggestion = $cases->filter(function ($item) {
             return $item->status === 'Other suggestions';

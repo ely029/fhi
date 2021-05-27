@@ -224,7 +224,7 @@
   </div>
 </div>
 
-<div class="modal" id="reportIssue" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal" id="refer-to-regional" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal__background" data-dismiss="modal"></div>
     <div class="modal__container">
         <div class="modal__box">

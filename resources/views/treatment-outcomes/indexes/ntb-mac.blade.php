@@ -4,7 +4,7 @@
     <div class="section__content">
     <ul class="tabs__list tabs__list--table">
     {{--<a href="{{ url('treatment-outcomes?status=Referred to N-TB MAC') }}">
-            <li class="tabs__item {{ request('status') == 'Referred to N-TB MAC' ? 'tabs__item--current' : ''}}">Referred cases({{ $referredCases->count() }})</li>
+            <li class="tabs__item {{ request('status') == 'Referred to N-TB MAC' ? 'tabs__item--current' : ''}}">Pending({{ $referredCases->count() }})</li>
         </a>
         <a href="{{ url('treatment-outcomes?status=Referred to National Chair') }}">
             <li class="tabs__item {{ request('status') == 'Referred to National Chair' ? 'tabs__item--current' : ''}}">Completed({{ $completed->count() }})</li>
@@ -12,7 +12,7 @@
     <a href="{{ url('treatment-outcomes?treatmentOutcomeTabs=all_cases_ntb') }}">
             <li class="tabs__item {{ request('treatmentOutcomeTabs') == 'all_cases_ntb' ? 'tabs__item--current' : ''}}">All cases({{ $allCases->count() }})</li>
         </a>--}}
-        <li class="tabs__item tabs__item--current">Referred cases ({{ $referredCases->count() }})</li>
+        <li class="tabs__item tabs__item--current">Pending ({{ $referredCases->count() }})</li>
         <li class="tabs__item">Completed ({{ $completed->count() }})</li>
         <li class="tabs__item">All cases ({{ $allCases->count() }})</li>
     </ul>
