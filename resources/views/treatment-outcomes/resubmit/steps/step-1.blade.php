@@ -14,18 +14,6 @@
     </div>
     <div class="grid grid--two form-step-1">
       <div class="form__content form-group">
-          <input class="form__input" id="firstName" type="text" placeholder="First name" disabled name="first_name" value="{{ $tbMacForm->patient->first_name }}"/>
-          <div class="help-block with-errors"></div>
-          <label class="form__label" for="">First name</label>
-        </div>
-      <div class="form__content form-group">
-          <input class="form__input" id="middleName" type="text" placeholder="Middle name" disabled name="middle_name" value="{{ $tbMacForm->patient->middle_name }}"/>
-          <div class="help-block with-errors"></div>
-          <label class="form__label" for="">Middle name</label>
-        </div>
-    </div>
-    <div class="grid grid--two form-step-1">
-      <div class="form__content form-group">
           <input class="form__input" id="facilityCode" disabled type="number" min="0" placeholder="Facility code" name="facility_code" value="{{ $tbMacForm->patient->facility_code }}" />
           <div class="help-block with-errors"></div>
           <label class="form__label" for="">Health facility</label>

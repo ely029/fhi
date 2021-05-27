@@ -24,7 +24,8 @@ class ResubmitTreatmentOutcomeController extends Controller
         $request = request()->all();
         unset($request['_token']);
         $request['status'] = 'New Case';
-
+        $request['first_name'] = '';
+        $request['middle_name'] = '';
         $tbMacForm->patient->update($request);
 
         $tbMacForm->update($request);
