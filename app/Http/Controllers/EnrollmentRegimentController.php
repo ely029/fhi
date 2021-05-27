@@ -182,8 +182,8 @@ class EnrollmentRegimentController extends Controller
     private function secretariatRecommendation($request)
     {
         $tbMacForm = TBMacForm::find($request['form_id']);
-        if ($request['status'] === 'Not For Referral') {
-            $tbMacForm->status = 'Not For Referral';
+        if ($request['status'] === 'Not For Referral' || $request['status'] === 'Need Further Details') {
+            $tbMacForm->status = $request['status'];
             $tbMacForm->save();
             $request['submitted_by'] = auth()->user()->id;
             $request['role_id'] = auth()->user()->role_id;

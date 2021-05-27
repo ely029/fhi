@@ -57,6 +57,7 @@
               <div class="form__content">
                 <select id="refer" class="form__input form__input--select">
                   <option value="1">Refer to R-TB MAC</option>
+                  <option value="5">Need further details</option>
                   <option value="2">Not for referral</option>
                 </select>
                 <div class="triangle triangle--down"></div>
