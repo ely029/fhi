@@ -12,7 +12,7 @@
     <a href="{{ url('treatment-outcomes?treatmentOutcomeTabs=all_cases_ntb') }}">
             <li class="tabs__item {{ request('treatmentOutcomeTabs') == 'all_cases_ntb' ? 'tabs__item--current' : ''}}">All cases({{ $allCases->count() }})</li>
         </a>--}}
-        <li class="tabs__item tabs__item--current">Referred cases ({{ $referredCases->count() }})</li>
+        <li class="tabs__item tabs__item--current">Pending ({{ $referredCases->count() }})</li>
         <li class="tabs__item">Completed ({{ $completed->count() }})</li>
         <li class="tabs__item">All cases ({{ $allCases->count() }})</li>
     </ul>
