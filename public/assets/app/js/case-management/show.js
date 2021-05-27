@@ -31,7 +31,7 @@ $('.hide--button').hide();
             $("#modal-form").find('input[name="recommendation_status"]').val(action);
             return;
         }
-        if(action == 'For approval'){
+        if(action == 'Approved'){
             $("#modal-title").text(action);
             $("#modal-text").text("You are about to send this case back to a healthcare worker tagged as Approved.' If you have additional remarks, enter them below.");
         }
