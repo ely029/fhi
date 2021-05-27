@@ -54,7 +54,7 @@
                 <div class="form__container">
                   <h2 class="section__heading section__heading--full">Patient {{ $tbMacForm->patient->code }}
                     <span class="form__text">
-                        Facility {{ $tbMacForm->patient->facility_code }} &nbsp;&nbsp;&nbsp; {{ $tbMacForm->patient->province }}</span>
+                        Health facility {{ $tbMacForm->patient->facility_code }} &nbsp;&nbsp;&nbsp; {{ $tbMacForm->patient->province }}</span>
                     </h2>
                   <div class="form__content">
                       <span class="form__text ">
@@ -376,7 +376,7 @@
                     <label class="form__label" for="">Suggested regimen notes</label>
                   </div>
                   <div class="form__content"><span class="form__text">{{ empty($tbMacForm->caseManagementForm->updated_type_of_case) ? '' : $tbMacForm->caseManagementForm->updated_type_of_case}}</span>
-                    <label class="form__label" for="">Updated drug Susceptibility</label>
+                    <label class="form__label" for="">Updated drug susceptibility</label>
                   </div>
                 </div>
               </div>
@@ -402,12 +402,12 @@
                   </div>
                 </div>
                 <div class="grid grid--two">
-                  <div class="form__content"><span class="form__text">{{ $results->ct_scan_date ? $results->ct_scan_date->format('m-d-Y') : ''}}</span><label class="form__label" for="">CT Scan date</label></div>
+                  <div class="form__content"><span class="form__text">{{ $results->ct_scan_date ? $results->ct_scan_date->format('m-d-Y') : ''}}</span><label class="form__label" for="">CT scan date</label></div>
                   <div class="form__content">
                     <span class="form__text">
                       {{ $results->ct_scan_result }}
                     </span>
-                    <label class="form__label" for="">CT Scan result</label>
+                    <label class="form__label" for="">CT scan result</label>
                   </div>
                 </div>
                 <div class="grid grid--two">

@@ -365,6 +365,15 @@ jQuery( document ).ready(function( $ ) {
         $("select[name='dst-result[]']")
             .map(function(key) {
                 if(dst[key]){
+                    if(dst[key].result.startsWith('OTHERS')){
+                        $(this).val('Other (please specify)');
+
+                        $(this).trigger('change');
+
+                        $(this).parent().find('.dst-other').val(dst[key].result);
+                        return;
+                      
+                    }
                     return $(this).val(dst[key].result);
                 }
                 

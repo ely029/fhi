@@ -31,7 +31,7 @@
     <label class="form__label" for="">Reason for case management presentation</label>
         </div> -->
         <div class="form__content form-group">
-    @if ($tbMacForm->caseManagementForm->current_regiment == 'Other (Specify)')
+    {{-- @if ($tbMacForm->caseManagementForm->current_regiment == 'Other (Specify)')
     <div class="form__content" id="others_current_regiment">
         <input class="form__input" name="others_current_regimen" type="text" placeholder="Others (Please specify)" value="{{ $tbMacForm->caseManagementForm->others_current_regimen }}"/><label class="form__label" for="">Others</label>
     </div>
@@ -40,7 +40,7 @@
     <div class="form__content" id="itr_drugs_current_regiment">
         <input class="form__input" name="itr_drugs_current_regimen" type="text" value="{{ $tbMacForm->caseManagementForm->itr_drugs_current_regimen }}" placeholder="Please specify (+ITR is chosen)"/><label class="form__label" for="">ITR drugs</label>
     </div>
-    @endif
+    @endif --}}
             <textarea name="reason_case_management_presentation" class="form-control form__input" id="inputEmail" placeholder="" required>{{ $tbMacForm->caseManagementForm->reason_case_management_presentation }}</textarea>
             
             <div class="help-block with-errors"></div>

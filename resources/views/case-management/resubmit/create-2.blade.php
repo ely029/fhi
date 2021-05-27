@@ -130,7 +130,7 @@
             <td>
                 <span>Others (Please Specify)</span>
                 <br/>
-                <input type="text" name="others_bacteriological_results"></td>
+                <input type="text" name="others_bacteriological_results" value="{{ $dst ? ($dst->resistance_pattern == 'Other (specify)' ? $dst->others : '') : '' }}"></td>
         </tr>
             {{-- @endforeach --}}
         </tbody>

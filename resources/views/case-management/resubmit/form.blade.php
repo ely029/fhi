@@ -68,7 +68,8 @@
   <script src="{{ asset('assets/app/js/dropzoneInit.js') }}"></script>
   <script src="{{ asset('assets/app/js/case-management/create-2.js') }}"></script>   
   <script src="{{ asset('assets/app/js/case-management/create-3.js') }}"></script>   
-  <script src="{{ asset('assets/app/js/case-management/resubmit.js') }}"></script> 
   <script src="{{ asset('assets/app/js/case-management/current_regimen.js') }}"></script>
+  <script src="{{ asset('assets/app/js/case-management/resubmit.js') }}"></script> 
+
 
 @endsection
