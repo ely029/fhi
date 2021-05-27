@@ -1,3 +1,5 @@
 jQuery('document').ready(function($){
-    alert('f');
+    $('.remarks').on('click',function(e){
+        
+    });
 });
