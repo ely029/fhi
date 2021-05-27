@@ -27,7 +27,7 @@ class ResubmitCaseManagementController extends Controller
         $request['status'] = 'New Case';
         $tbMacForm->patient->update($request);
         $tbMacForm->update($request);
-        $request['others'] = $request['suggested_regimen'] == 'Other (Specify)' ? $request['others_case_management'] : null;
+        $request['others'] = $request['suggested_regimen'] === 'Other (Specify)' ? $request['others_case_management'] : null;
         $tbMacForm->caseManagementForm->update($request);
         //Screening 2
         if ($tbMacForm->screenTwo()->exists()) {
