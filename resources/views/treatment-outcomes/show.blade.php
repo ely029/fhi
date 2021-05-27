@@ -101,7 +101,7 @@
               </div>
 
               {{-- Health Care Worker --}}
-              @if(auth()->user()->role_id == 3 && $tbMacForm->status != 'Resolved' && in_array(request('from_tab'),['For approval','Other suggestions','Need Further Details','Not for Referral']))
+              @if(auth()->user()->role_id == 3 && $tbMacForm->status != 'Resolved' && in_array($tbMacForm->status,['For approval','Other suggestions','Need Further Details','Not for Referral']))
                   <div class="grid grid--action">
                       <div class="form__content">
                           <select id="action-dropdown" class="form__input form__input--select">

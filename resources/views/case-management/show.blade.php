@@ -97,7 +97,7 @@
               </div>
 
               {{-- Health Care Worker --}}
-              @if(auth()->user()->role_id == 3 && $tbMacForm->status == 'Not for Referral' || $tbMacForm->status == 'Need Further Details')
+              @if(auth()->user()->role_id == 3 && $tbMacForm->status == 'Not for Referral' || $tbMacForm->status == 'Need Further Details' || $tbMacForm->status == 'For approval' || $tbMacForm->status == 'Other suggestions')
                   <div class="grid grid--action">
                       <div class="form__content">
                           <select id="action-dropdown" class="form__input form__input--select">
