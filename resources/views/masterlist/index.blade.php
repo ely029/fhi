@@ -60,7 +60,7 @@
       <h2 class="section__heading">Showing results for {{ $firstDayofPreviousMonth }} - {{ $lastDayofPreviousMonth }}</h2>
       @endif
         
-        <table class="table table--filter js-table-unset">
+        <table id="masterlist" class="table table--filter js-table-unset">
           <thead>
             <tr>
               <th class="table__head">Presentation no.</th>
@@ -82,7 +82,7 @@
               $age = Carbon\Carbon::parse($details->birthday)->age;
               $gender = Str::upper(Str::substr($details->gender, 0, 1));
               @endphp
-            <tr class="table__row-{{ $details->id }}">
+            <tr class="table_row_enrollment table__row-{{ $details->id }}">
             <td class="table__details">E-{{ empty($details->presentation_number) ? '' : $details->presentation_number }}</td>
               <td class="table__details">{{ $initials }}    {{ $age }}   {{ $gender }}</td>
               <td class="table__details">Enrollment</td>
@@ -93,21 +93,10 @@
               <td class="table__details"><span class="table__link remarks">Edit remarks</span></td>
               @else
               @endif
-              <input type="hidden" value="{{ $details->id}}" class="form_id">
+              <input type="hidden" value="{{ $details->id}}" id="form_id">
+              <input type="hidden" value="{{ $details->remarks}}" id="sec_remarks">
+              <input type="hidden" value="enrollment" id="form_type">
             </tr>
-            <div class="modal" id="remarks" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal__background js-modal-background"></div>
-        <div class="modal__container">
-          <div class="modal__box">
-            <h2 class="modal__title">Edit remarks</h2>
-            <p class="modal__text">Edit remarks for the masterlist.</p>
-            <form class="form">
-              <div class="form__content"><textarea class="form__input form__input--message" placeholder="Enter remarks"></textarea><label class="form__label" for="">Remarks</label></div>
-            </form>
-            <div class="modal__button"><input class="button" type="submit" value="Save" /></div>
-          </div>
-        </div>
-      </div>
             @endforeach
             @foreach($caseManagement as $details)
               @php
@@ -115,10 +104,10 @@
               $age = Carbon\Carbon::parse($details->birthday)->age;
               $gender = Str::upper(Str::substr($details->gender, 0, 1));
               @endphp
-            <tr class="table__row-{{ $details->id }}">
-              <td class="table__details">C-{{ empty($details->presentation_number) ? '' : $details->presentation_number }}</td>
+            <tr class="table_row_enrollment table__row-{{ $details->id }}">
+            <td class="table__details">C-{{ empty($details->presentation_number) ? '' : $details->presentation_number }}</td>
               <td class="table__details">{{ $initials }}    {{ $age }}   {{ $gender }}</td>
-              <td class="table__details">Case management</td>
+              <td class="table__details">Enrollment</td>
               <td class="table__details">{{ empty($details->recom_status) ? '' : $details->recom_status }}</td>
               <td class="table__details">{{ $details->header_status }}</td>
               <td class="table__details">{{date('m-d-Y', strtotime( $details->updated_at )) }}</td>
@@ -126,8 +115,9 @@
               <td class="table__details"><span class="table__link remarks">Edit remarks</span></td>
               @else
               @endif
-              <input type="hidden" value="{{ $details->id }}" class="form_id">
-              <input type="hidden" value="{{ $details->remarks}}" name="remarks">
+              <input type="hidden" value="{{ $details->id}}" id="form_id">
+              <input type="hidden" value="{{ $details->remarks}}" id="sec_remarks">
+              <input type="hidden" value="case_management" id="form_type">
             </tr>
             @endforeach
             @foreach($treatmentOutcome as $details)
@@ -136,10 +126,10 @@
               $age = Carbon\Carbon::parse($details->birthday)->age;
               $gender = Str::upper(Str::substr($details->gender, 0, 1));
               @endphp
-            <tr class="table__row-{{ $details->id }}">
-              <td class="table__details">T-{{ empty($details->presentation_number) ? '' : $details->presentation_number }}</td>
+            <tr class="table_row_enrollment table__row-{{ $details->id }}">
+            <td class="table__details">T-{{ empty($details->presentation_number) ? '' : $details->presentation_number }}</td>
               <td class="table__details">{{ $initials }}    {{ $age }}   {{ $gender }}</td>
-              <td class="table__details">Treatment outcome</td>
+              <td class="table__details">Enrollment</td>
               <td class="table__details">{{ empty($details->recom_status) ? '' : $details->recom_status }}</td>
               <td class="table__details">{{ $details->header_status }}</td>
               <td class="table__details">{{date('m-d-Y', strtotime( $details->updated_at )) }}</td>
@@ -147,8 +137,9 @@
               <td class="table__details"><span class="table__link remarks">Edit remarks</span></td>
               @else
               @endif
-              <input type="hidden" value="{{ $details->remarks}}" name="remarks">
-              <input type="hidden" value="{{ $details->id }}" class="form_id">
+              <input type="hidden" value="{{ $details->id}}" id="form_id">
+              <input type="hidden" value="{{ $details->remarks}}" id="sec_remarks">
+              <input type="hidden" value="treatment_outcome" id="form_type">
             </tr>
             @endforeach
           </tbody>
@@ -156,6 +147,22 @@
       </div>
     </form>
   </div>
+  <div class="modal" id="sec_remarks_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal__background js-modal-background"></div>
+        <div class="modal__container">
+          <div class="modal__box">
+            <h2 class="modal__title">Edit remarks</h2>
+            <p class="modal__text">Edit remarks for the masterlist.</p>
+            <form class="form" method="POST" action="{{ url('masterlist/update-remarks') }}">
+            @csrf
+              <div class="form__content"><textarea class="form__input form__input--message" name="remarks" placeholder="Enter remarks"></textarea><label class="form__label" for="">Remarks</label></div>
+              <div class="modal__button"><input class="button" type="submit" value="Save" /></div>
+              <input type="hidden" id="form_id" name="form_id"/>
+              <input type="hidden" id="form_type" name="form_type">
+            </form>
+          </div>
+        </div>
+      </div>
 </div>
 @endsection
 @section('additional_scripts')

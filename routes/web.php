@@ -97,5 +97,6 @@ Route::group(['middleware' => 'auth'], static function () {
     Route::get('/treatment/view/{presentationNumber}/{fileName}', [TreatmentOutcomesController::class, 'viewAttachment']);
     Route::get('/masterlist', [MasterListController::class, 'index']);
     Route::post('/masterlist/filter', [MasterListController::class, 'filter']);
+    Route::post('/masterlist/update-remarks', [MasterListController::class, 'updateRemarks']);
     Route::post('/report-and-feedbacks', [ReportAndFeedbackController::class, 'store']);
 });
