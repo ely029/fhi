@@ -18,4 +18,14 @@ class ReportAndFeedbacks extends Model
         'issue',
         'channel',
     ];
+
+    public function submittedBy()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function roles()
+    {
+        return $this->belongsTo(Role::class, 'role_id');
+    }
 }

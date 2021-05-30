@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\ReportAndFeedbacks;
 use Illuminate\Support\Facades\Auth;
 
 class AdminLoginController extends Controller
@@ -30,6 +31,20 @@ class AdminLoginController extends Controller
             ->withErrors([
                 'email' => 'Invalid credentials',
             ]);
+    }
+
+    public function feedbackDashboard()
+    {
+        $feedbacks = ReportAndFeedbacks::with(['submittedBy', 'roles'])->get();
+        return view('feedbacks.index')
+            ->with('feedback', $feedbacks);
+    }
+
+    public function viewFeedbacks(ReportAndFeedbacks $reportAndFeedbacks)
+    {
+        $feedbacks = $reportAndFeedbacks->load(['submittedBy', 'roles']);
+        return view('feedbacks.view')
+            ->with('feedback', $feedbacks);
     }
 
     public function logout()
