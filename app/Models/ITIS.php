@@ -14,10 +14,13 @@ class ITIS
 
     protected $httpClient;
 
+    protected $loginURL;
+
     public function __construct()
     {
         $this->url = config('services.itis.url');
         $this->systemKey = config('services.itis.key');
+        $this->loginURL = config('services.itis.login_url');
         $this->httpClient = new Client();
     }
 
@@ -31,6 +34,27 @@ class ITIS
             return json_decode($result->getBody()->getContents());
         } catch (\Exception $exception) {
             \Log::warning('ITIS GET PATIENT ERROR: '.$exception->getMessage());
+            return null;
+        }
+    }
+
+    public function login($data)
+    {
+        $form = [
+            'username' => $data['username'],
+            'password' => $data['password'],
+            'system_key' => config('services.itis.login_key'),
+        ];
+        try {
+            $result = $this->httpClient->post($this->loginURL, [
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                ],
+                'json' => $form,
+            ]);
+            return json_decode($result->getBody()->getContents());
+        } catch (\Exception $exception) {
+            \Log::warning('ITIS LOGIN ERROR: '.$exception->getMessage());
             return null;
         }
     }

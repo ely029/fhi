@@ -32,6 +32,8 @@ return [
 
     'itis' => [
         'url' => env('ITIS_URL'),
-        'key' => env('ITIS_SYSTEM_KEY')
+        'key' => env('ITIS_SYSTEM_KEY'),
+        'login_url' => env('ITIS_LOGIN_URL'),
+        'login_key' => env('ITIS_LOGIN_KEY'),
     ],
 ];

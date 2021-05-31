@@ -90,6 +90,16 @@
                     <span class="sidebar__text">Feedback</span>
                     </a>
                 </li>
+            @else
+              <li class="sidebar__item {{ request()->is('dashboard/role-requests*') ? 'active' : null }}">
+                <a class="sidebar__link" href="{{ url('dashboard/role-requests') }}">
+                <div class="sidebar__wrapper">
+                    <img class="image" src="{{ asset('assets/app/img/icon-role-management.png') }}" alt="role Management icon for fhi" />
+                    <img class="image image--white" src="{{ asset('assets/app/img/icon-role-management-white.png') }}" alt="role management icon on hover for fhi" />
+                </div>
+                <span class="sidebar__text">Role Management</span>
+                </a>
+              </li>
             @endif
             {{-- <li class="sidebar__item">
                 <a class="sidebar__link" href="activity-log.html">

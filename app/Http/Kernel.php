@@ -74,5 +74,6 @@ class Kernel extends HttpKernel
         'route.access' => \App\Http\Middleware\HasRouteAccess::class,
         'super_admin' => \App\Http\Middleware\SuperAdmin::class,
         'health_care_worker' => \App\Http\Middleware\HealthCareWorker::class,
+        'role_request_approved' => \App\Http\Middleware\RoleRequestApproved::class,
     ];
 }
