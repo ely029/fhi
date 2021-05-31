@@ -122,7 +122,7 @@ Route::group(['middleware' => ['auth','role_request_approved']], static function
     Route::post('/masterlist/update-remarks', [MasterListController::class, 'updateRemarks']);
     Route::post('/report-and-feedbacks', [ReportAndFeedbackController::class, 'store']);
 
-    Route::get('account',[AccountController::class, 'index']);
+    Route::get('account', [AccountController::class, 'index']);
 });
 
 Route::get('itis/login', [LoginController::class, 'itisLogin']);

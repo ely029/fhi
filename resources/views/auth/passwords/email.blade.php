@@ -14,7 +14,7 @@
             @csrf
           <h2 class="section__title section__title--small">Password reset</h2>
           <p class="login__details">Enter your email that you used to register and we will send you a link to reset it.</p>
-            <div class="form__content">
+            <div class="form__content form-group @error('email') has-error @enderror">
               <input class="form__input @error('email') is-invalid @enderror" type="email" name="email" placeholder="Email" value="{{ old('email') }}" required autocomplete="email" autofocus />
               @error('email')
                 <span class="invalid-feedback" role="alert">
