@@ -190,7 +190,7 @@ class TreatmentOutcomesController extends Controller
         });
 
         $withRecommendations = $cases->filter(function ($item) {
-            return in_array($item->status, ['For approval','Other suggestions','Need Further Details','Referred to N-TB MAC']);
+            return in_array($item->status, ['Approved','Other suggestions','Need Further Details','Referred to N-TB MAC']);
         });
 
         $completed = $cases->filter(function ($item) {
@@ -215,7 +215,7 @@ class TreatmentOutcomesController extends Controller
         });
 
         $completed = $cases->filter(function ($item) {
-            return in_array($item->status, ['For approval','Other suggestions','Need Further Details']);
+            return in_array($item->status, ['Approved','Other suggestions','Need Further Details']);
         });
 
         return view('treatment-outcomes.index')
@@ -232,7 +232,7 @@ class TreatmentOutcomesController extends Controller
         });
 
         $allCases = $cases->filter(function ($item) {
-            return in_array($item->status, ['For approval','Other suggestions','Need Further Details','Referred to Regional Chair']);
+            return in_array($item->status, ['Approved','Other suggestions','Need Further Details','Referred to Regional Chair']);
         });
 
         $completed = $cases->filter(function ($item) {
@@ -252,7 +252,7 @@ class TreatmentOutcomesController extends Controller
         });
 
         $allCases = $cases->filter(function ($item) {
-            return in_array($item->status, ['For approval','Other suggestions','Need Further Details','Referred to Regional Chair']);
+            return in_array($item->status, ['Approved','Other suggestions','Need Further Details','Referred to Regional Chair']);
         });
 
         $completed = $cases->filter(function ($item) {

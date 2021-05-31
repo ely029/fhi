@@ -82,7 +82,7 @@
                     </a>
                 </li>
                 <li class="sidebar__item {{ request()->is('') ? 'active' : null }}">
-                    <a class="sidebar__link" href="{{ url('') }}">
+                    <a class="sidebar__link" href="{{ url('admin/feedbacks') }}">
                     <div class="sidebar__wrapper">
                         <img class="image" src="{{ asset('assets/app/img/icon-feedback.png') }}" alt="feedback Management icon for fhi" />
                         <img class="image image--white" src="{{ asset('assets/app/img/icon-feedback-white.png') }}" alt="feedback management icon on hover for fhi" />

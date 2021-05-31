@@ -50,6 +50,20 @@
             </div>
           </div>
         </div>
+        <div class="modal" id="remarks" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal__background" data-dismiss="modal"></div>
+    <div class="modal__container">
+        <div class="modal__box">
+            <h2 class="modal__title">Report issue</h2>
+            <p class="modal__text">Please elaborate on the issue encountered.</p>
+            <form class="form form--full" method="POST" action="{{ url('/report-and-feedbacks')}}">
+            @csrf
+                <div class="form__content"> <textarea name="issue" class="form__input form__input--message" placeholder="Enter issue" required></textarea><label class="form__label" for="">Report issue</label></div>
+                <div class="modal__button modal__button--end"><input class="button" type="submit" value="Submit" /></div>
+            </form>
+        </div>
+    </div>
+</div>
         <div class="modal" id="noMatchModal">
           <div class="modal__background" data-dismiss="modal"></div>
           <div class="modal__container">
@@ -77,5 +91,6 @@
   <script src="{{ asset('assets/app/js/enrollments/step-2.js') }}"></script>  
   <script src="{{ asset('assets/app/js/enrollments/step-3.js') }}"></script>  
   <script src="{{ asset('assets/app/js/enrollments/step-4.js') }}"></script>  
+  <script src="{{ asset('assets/app/js/feedbacks.js') }}"></script>
 
 @endsection
