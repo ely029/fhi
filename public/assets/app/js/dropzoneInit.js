@@ -28,15 +28,18 @@ jQuery( document ).ready(function( $ ) {
             
             this.on("addedfile", function(files){
                 var ext = files.name.split('.').pop();
-                if(ext == 'docx' || ext == 'doc') {
+                let invalidFileTypes = ['docx', 'doc', 'xlsx', 'xls', 'csv'];
+                if(invalidFileTypes.includes(ext)) {
+                    alert("Image and PDF files only allowed");
+                    return this.removeFile(files);
                     $('.image--gallery').last().attr('src', '../assets/app/img/docx.png');
                 }
                 if(ext == 'pdf') {
                     $('.image--gallery').last().attr('src', '../assets/app/img/pdf.png');
                 }
-                if(ext == 'xlsx' || ext == 'xls' || ext == 'csv') {
-                    $('.image--gallery').last().attr('src', '../assets/app/img/excel.png');
-                }
+                // if(ext == 'xlsx' || ext == 'xls' || ext == 'csv') {
+                //     $('.image--gallery').last().attr('src', '../assets/app/img/excel.png');
+                // }
                 $('.gallery__text--filename').last().html(files.name);
                 if (files.size >= 10000000) {
                     alert('You had reached max file size');

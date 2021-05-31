@@ -43,7 +43,7 @@ $('.hide--button').hide();
             $("#modal-title").text('Need further details');
             $("#modal-text").text("You are about to send this case back to a healthcare worker tagged as 'Need Further Details.' If you have additional remarks, enter them below.");
         }
-        if(action == 'Referred to N-TB MAC'){
+        if(action == 'Referred to national'){
             $("#modal-title").text('Refer to N-TB MAC');
             $("#modal-text").text("You are about to send this case to National TB MAC. If you have additional remarks, enter them below.");
         }

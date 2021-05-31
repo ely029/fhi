@@ -24,7 +24,7 @@
                     <form class="form form--full" method="POST" action="{{ route('enrolment.sendRecommendation')}}">
                     @csrf
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
-                       <input type="hidden" name="status" value="Not for Referral"/>
+                       <input type="hidden" name="status" value="Not For Referral"/>
                       <div class="form__content"><textarea name="recommendation" class="form__input form__input--message" placeholder="Enter remarks" required></textarea><label class="form__label" for="">Remarks</label></div>
                       <div class="modal__button modal__button--end"><input class="button" type="submit" value="Submit" /></div>
                     </form>
@@ -150,6 +150,23 @@
                   </div>
                 </div>
             </div>
+
+            <div class="modal" id="rs-need-further-details" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal__background" data-dismiss="modal"></div>
+              <div class="modal__container">
+                <div class="modal__box">
+                  <h2 class="modal__title">Need further details</h2>
+                  <p class="modal__text">You are about to decline and set this case to 'Need further details' If you have additional remarks. enter them below.</p>
+                  <form class="form form--full" method="POST" action="{{ route('enrolment.sendRecommendation')}}">
+                  @csrf
+                     <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
+                     <input type="hidden" name="status" value="Need Further Details"/>
+                    <div class="form__content"><textarea name="recommendation" class="form__input form__input--message" placeholder="Enter remarks" required></textarea><label class="form__label" for="">Remarks</label></div>
+                    <div class="modal__button modal__button--end"><input class="button" type="submit" value="Submit" /></div>
+                  </form>
+                </div>
+              </div>
+          </div>
 
             <div class="modal" id="refer-to-ntbmac" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal__background" data-dismiss="modal"></div>

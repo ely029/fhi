@@ -14,9 +14,9 @@ class TreatmentOutcomeResubmitController extends Controller
 {
     public function edit(TBMacForm $tbMacForm)
     {
-        // if (! in_array($tbMacForm->status, ['Not for Referral','Need Further Details'])) {
-        //     return response()->json('Forbidden', 403);
-        // }
+        if (! in_array($tbMacForm->status, ['Not for Referral','Need Further Details'])) {
+            return response()->json('Forbidden', 403);
+        }
         $tbMacForm = $tbMacForm->load(['treatmentOutcomeForm','treatmentOutcomeBacteriologicalResults','laboratoryResults','attachments','patient']);
 
         $bacteriologicalResults = $tbMacForm->treatmentOutcomeBacteriologicalResults;
@@ -26,7 +26,7 @@ class TreatmentOutcomeResubmitController extends Controller
         })->map(function ($item, $key) {
             return [
                 'label' => 'Screening '.($key + 1),
-                'date_collected' => $item->date_collected->format('m-d-Y'),
+                'date_collected' => $item->date_collected->format('Y-m-d'),
                 'method_used' => $item->method_used,
                 'resistance_pattern' => $item->resistance_pattern,
             ];
@@ -37,7 +37,7 @@ class TreatmentOutcomeResubmitController extends Controller
         })->first();
 
         $lpa = [
-            'date_collected' => $lpa->date_collected->format('m-d-Y'),
+            'date_collected' => $lpa->date_collected->format('Y-m-d'),
             'resistance_pattern' => $lpa->resistance_pattern,
         ];
 
@@ -46,7 +46,7 @@ class TreatmentOutcomeResubmitController extends Controller
         })->first();
 
         $dst = [
-            'date_collected' => $dst->date_collected->format('m-d-Y'),
+            'date_collected' => $dst->date_collected->format('Y-m-d'),
             'resistance_pattern' => $dst->resistance_pattern,
             'resistance_pattern_others' => $dst->resistance_pattern_others,
         ];
@@ -56,7 +56,7 @@ class TreatmentOutcomeResubmitController extends Controller
         })->values()->map(function ($item, $key) {
             return [
                 'label' => $key === 0 ? 'B' : $key,
-                'date_collected' => $item->date_collected->format('m-d-Y'),
+                'date_collected' => $item->date_collected->format('Y-m-d'),
                 'smear_microscopy' => $item->smear_microscopy,
                 'tb_lamp' => $item->tb_lamp,
                 'culture' => $item->culture,
