@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Api\ITISController;
 use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
@@ -120,6 +121,8 @@ Route::group(['middleware' => ['auth','role_request_approved']], static function
     Route::get('role/request/pending', [RoleRequestController::class, 'pending'])->withoutMiddleware([RoleRequestApproved::class]);
     Route::post('/masterlist/update-remarks', [MasterListController::class, 'updateRemarks']);
     Route::post('/report-and-feedbacks', [ReportAndFeedbackController::class, 'store']);
+
+    Route::get('account',[AccountController::class, 'index']);
 });
 
 Route::get('itis/login', [LoginController::class, 'itisLogin']);
