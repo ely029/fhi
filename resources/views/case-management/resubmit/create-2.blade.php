@@ -142,7 +142,7 @@
     @endforeach
     </div>
     <div class="form__container form-step-2">
-    <table class="table table--unset js-table-unset js-table-rows" id="m-screening">
+   {{-- <table class="table table--unset js-table-unset js-table-rows" id="m-screening">
         <thead>
         <tr>
             <th class="table__head">Month</th>
@@ -190,7 +190,66 @@
         </tr>
         @endforeach
         </tbody>
-    </table>
+    </table> --}}
+    <table class="table table--unset js-table-unset js-table-rows" id="m-screening">
+          <thead>
+          <tr>
+              <th class="table__head">Month</th>
+              <th class="table__head">Date collected</th>
+              <th class="table__head">Smear microscopy</th>
+              <th class="table__head">TB-LAMP</th>
+              <th class="table__head">Culture</th>
+          </tr>
+          </thead>
+          <tbody id="screenings">
+          @foreach($monthlyScreening as $key =>  $monthlyScreening)
+          <tr class="table__row form-step-2">
+              <td class="table__details">
+                  <span class="base-letter">{{ $loop->first ? 'B' : $key }}</span>
+                  <span class="counter"></span></td>
+              <td class="table__details form-group">
+              <div class="help-block with-errors with-errors--table"></div>
+                  <input class="form__input form__input--full" required type="date" name="date_collected[]" value="{{ $monthlyScreening->date_collected->format('Y-m-d') }}" />
+              </td>
+              <td class="table__details">
+              <div class="form__content">
+                  <select class="form__input form__input--select form__input--full" name="smear_microscopy[]">
+                    @foreach(treatmentSmear() as $sm)
+                        <option value="{{ $sm }}"{{ $monthlyScreening->smear_microscopy === $sm ? 'selected' : '' }}>{{ $sm }}</option>
+                    @endforeach
+                  </select>
+                  <div class="triangle triangle--down"></div>
+              </div>
+              </td>
+              <td class="table__details">
+                <div class="form__content">
+                    <select class="form__input form__input--select form__input--full" name="tb_lamp[]">
+                        @foreach(tb_lamp() as $tl)
+                            <option value="{{ $tl }}"{{$monthlyScreening->tb_lamp === $tl ? 'selected' : ''}}>{{ $tl }}</option>
+                        @endforeach
+                    </select>
+                    <div class="triangle triangle--down"></div>
+                </div>
+              </td>
+              <td class="table__details">
+                <div class="form__content">
+                    <select class="form__input form__input--select form__input--full" name="culture[]">
+                        @foreach(treatmentCulture() as $culture)
+                            <option value="{{ $culture }}"{{$monthlyScreening->culture === $culture ? 'selected' : ''}}>{{ $culture }}</option>
+                        @endforeach
+                    </select>
+                    <div class="triangle triangle--down"></div>
+                </div>
+              </td>
+              {{-- <td class="screenings-remove">
+                <button class="button button--transparent remove-monthly-screening" type="button">Remove</button>
+              </td> --}}
+              
+              
+          </tr>
+          @endforeach
+          </tbody>
+      </table>
     <button class="button button--transparent button--add" id="case-management-add-button" type="button">Add more</button>
     </div>
     <div class="form__button form__button--space form__button--pagination"><button class="button button--back" type="button">Back</button><button class="button button--next" type="button">Next</button></div>

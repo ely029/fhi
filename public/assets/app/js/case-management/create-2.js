@@ -171,7 +171,6 @@ let removeTd = '<td><button class="button button--transparent remove-monthly-scr
         if (countRemove >= 1) {
             $('#m-screening tbody tr .remove-monthly-screening:eq(0)').remove();
         }
-        alert(countRemove);
         if(count == 1){
             return;
         }
