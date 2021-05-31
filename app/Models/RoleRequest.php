@@ -7,6 +7,14 @@ namespace App\Models;
 use App\Models\Filters\RoleRequestFilters;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\RoleRequest
+ *
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User $user
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Role $role
+ * @mixin \Eloquent
+ */
+
 class RoleRequest extends Model
 {
     protected $fillable = [

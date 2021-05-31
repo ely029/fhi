@@ -17,6 +17,7 @@ use SlevomatCodingStandard\Sniffs\Namespaces\UnusedUsesSniff;
 use SlevomatCodingStandard\Sniffs\TypeHints\ParameterTypeHintSniff;
 use SlevomatCodingStandard\Sniffs\TypeHints\PropertyTypeHintSniff;
 use SlevomatCodingStandard\Sniffs\TypeHints\ReturnTypeHintSniff;
+use ObjectCalisthenics\Sniffs\Classes\ForbiddenPublicPropertySniff;
 
 return [
 
@@ -65,6 +66,10 @@ return [
         // @TB: Prevents false positives caused by mpociot/laravel-apidoc-generator
         UnusedUsesSniff::class => [
             'exclude' => ['app/Http/Controllers/Api'],
+        ],
+
+        ForbiddenPublicPropertySniff::class => [
+            'exclude' => ['app/Events/RoleRequestUpdated'],
         ]
     ],
 
