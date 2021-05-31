@@ -5,9 +5,11 @@ declare(strict_types=1);
 use App\Http\Controllers\Api\ITISController;
 use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CaseManagementController;
 use App\Http\Controllers\CaseManagementRecommendationController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\RoleRequestsController;
 use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\EnrollmentRegimentController;
 use App\Http\Controllers\HomeController;
@@ -15,9 +17,11 @@ use App\Http\Controllers\MasterListController;
 use App\Http\Controllers\ResubmitCaseManagementController;
 use App\Http\Controllers\ResubmitEnrollmentController;
 use App\Http\Controllers\ResubmitTreatmentOutcomeController;
+use App\Http\Controllers\RoleRequestController;
 use App\Http\Controllers\TreatmentOutcomeAttachmentsController;
 use App\Http\Controllers\TreatmentOutcomeRecommendationController;
 use App\Http\Controllers\TreatmentOutcomesController;
+use App\Http\Middleware\RoleRequestApproved;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,10 +54,21 @@ Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard', 'middleware' 
         Route::patch('/users/{user}', [UsersController::class, 'update']);
         Route::delete('/users/{user}', [UsersController::class, 'destroy']);
     });
+
+    //Role Management CRUD
+    // Route::group(['middleware' => ''], static function () {
+        Route::get('/role-requests', [RoleRequestsController::class, 'index']);
+        Route::get('/role-requests/{roleRequest}', [RoleRequestsController::class, 'show']);
+        Route::patch('/role-requests/{roleRequest}', [RoleRequestsController::class, 'update']);
+    // });
 });
 
+if (! app()->environment('production')) {
+    Route::get('login/test', [LoginController::class, 'showLoginFormTest']);
+}
+
 Route::get('/', [HomeController::class, 'index']);
-Route::group(['middleware' => 'auth'], static function () {
+Route::group(['middleware' => ['auth','role_request_approved']], static function () {
     Route::get('/enrollments', [EnrollmentRegimentController::class, 'index']);
 
     Route::group(['middleware' => 'health_care_worker'], static function () {
@@ -96,4 +111,10 @@ Route::group(['middleware' => 'auth'], static function () {
     Route::get('/treatment/view/{presentationNumber}/{fileName}', [TreatmentOutcomesController::class, 'viewAttachment']);
     Route::get('/masterlist', [MasterListController::class, 'index']);
     Route::post('/masterlist/filter', [MasterListController::class, 'filter']);
+
+    Route::get('role/request', [RoleRequestController::class, 'index'])->withoutMiddleware([RoleRequestApproved::class]);
+    Route::post('role/request', [RoleRequestController::class, 'store'])->withoutMiddleware([RoleRequestApproved::class]);
+    Route::get('role/request/pending', [RoleRequestController::class, 'pending'])->withoutMiddleware([RoleRequestApproved::class]);
 });
+
+Route::get('itis/login', [LoginController::class, 'itisLogin']);

@@ -34,6 +34,7 @@ use Storage;
  * @property-read int|null $notifications_count
  * @property-read \App\Models\Role|null $role
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Social[] $socials
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\RoleRequest $roleRequests
  * @property-read int|null $socials_count
  * @method static \Database\Factories\UserFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
@@ -69,9 +70,15 @@ class User extends Authenticatable
         'last_name',
         'middle_name',
         'username',
+        'name',
         'email',
         'password',
         'role_id',
+        'itis_id',
+        'itis_access_area',
+        'region_code',
+        'region',
+        'has_chosen_role',
     ];
 
     /**
@@ -109,6 +116,18 @@ class User extends Authenticatable
     public function hasAccess($route)
     {
         return $this->role->hasAccess($route);
+    }
+
+    public function roleRequests()
+    {
+        return $this->hasMany(RoleRequest::class);
+    }
+
+    public function pendingRoleRequest()
+    {
+        return $this->hasOne(RoleRequest::class)
+            ->where('status', 'pending')
+            ->orderBy('created_at','desc');
     }
 
     public function getPhotoNameAttribute()
@@ -162,5 +181,10 @@ class User extends Authenticatable
     public function getNameAttribute()
     {
         return $this->first_name.' '.$this->last_name;
+    }
+
+    public function getITISNameAttribute()
+    {
+        return $this->attributes['name'];
     }
 }
