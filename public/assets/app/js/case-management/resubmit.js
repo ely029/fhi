@@ -26,4 +26,19 @@ jQuery('document').ready(function($){
             let buttonAdd = '<button class="button button--transparent button--add" id="add-screening" type="button">Add more</button>';
             $(this).replaceWith(buttonAdd);
         });
+
+        let othersDST = $("input[name='others_bacteriological_results']").val();
+        if(othersDST){
+            $("#others").show();
+        }
+        let currentRegimenITRDrugs = $("input[name='itr_drugs_current_regimen']").val();
+        if(currentRegimenITRDrugs){
+            $('#itr_drugs_current_regiment').show().find('input').attr('required', true);
+        }
+
+        let suggestedRegimenOthers = $("input[name='others_case_management']").val();
+        if(suggestedRegimenOthers && $("#suggested_regimen").val() == 'Other (Specify)'){
+            $('#others_1').show().find('input').attr('required', true);
+        }
+
     });

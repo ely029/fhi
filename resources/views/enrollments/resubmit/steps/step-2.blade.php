@@ -15,7 +15,8 @@
             <option>Relapse</option>
             <option>Treatment After Lost to Follow-up (TALF)</option>
             <option>Treatment After Failure (TAF)</option>
-            <option>Previous Treatment Outcome Unknown (PTOU)</option>
+            <option>Previous Treatment Outcome</option>
+            <option>Unknown (PTOU)</option>
             <option>Unknown History</option>
           </select>
           <div class="triangle triangle--down"></div>

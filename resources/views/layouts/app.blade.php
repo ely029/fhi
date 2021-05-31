@@ -22,6 +22,7 @@
     <script src="{{ asset('assets/app/js/jquery-ui.js') }}"></script>
     <script src="{{ asset('assets/dashboard/js/logout.js') }}"></script>
     <script src="{{ asset('assets/dashboard/js/modal.js') }}"></script>
+    <script src="{{ asset('assets/dashboard/js/datepicker-init.js') }}"></script>
     @yield('additional_scripts')
 
     

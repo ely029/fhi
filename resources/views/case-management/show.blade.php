@@ -54,7 +54,7 @@
                 <div class="form__container">
                   <h2 class="section__heading section__heading--full">Patient {{ $tbMacForm->patient->code }}
                     <span class="form__text">
-                        Facility {{ $tbMacForm->patient->facility_code }} &nbsp;&nbsp;&nbsp; {{ $tbMacForm->patient->province }}</span>
+                        Health facility {{ $tbMacForm->patient->facility_code }} &nbsp;&nbsp;&nbsp; {{ $tbMacForm->patient->province }}</span>
                     </h2>
                   <div class="form__content">
                       <span class="form__text ">
@@ -138,7 +138,7 @@
                             <option value="Approved">Approved</option>
                             <option value="Other suggestions">Other suggestions</option>
                             <option value="Need Further Details">Need further details</option>
-                            <option value="Referred to N-TB MAC">Refer to N-TB MAC</option>
+                            <option value="Referred to national">Refer to N-TB MAC</option>
                             </select>
                             <div class="triangle triangle--down"></div>
                             <label class="form__label" for="">Action</label>
@@ -152,9 +152,9 @@
                 <div class="grid grid--action">
                     <div class="form__content">
                         <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
-                        <option value="Recommend for Approval">Recommend for approval</option>
-                        <option value="Recommend for other suggestions">Recommend for other suggestions</option>
-                        <option value="Recommend for need further details">Recommend for need further details </option>
+                        <option value="Recommended for Approval">Recommend for approval</option>
+                        <option value="Recommended for other suggestions">Recommend for other suggestions</option>
+                        <option value="Recommended for need further details">Recommend for need further details </option>
                         </select>
                         <div class="triangle triangle--down"></div>
                         <label class="form__label" for="">Action</label>
@@ -376,7 +376,7 @@
                     <label class="form__label" for="">Suggested regimen notes</label>
                   </div>
                   <div class="form__content"><span class="form__text">{{ empty($tbMacForm->caseManagementForm->updated_type_of_case) ? '' : $tbMacForm->caseManagementForm->updated_type_of_case}}</span>
-                    <label class="form__label" for="">Updated drug Susceptibility</label>
+                    <label class="form__label" for="">Updated drug susceptibility</label>
                   </div>
                 </div>
               </div>
@@ -402,12 +402,12 @@
                   </div>
                 </div>
                 <div class="grid grid--two">
-                  <div class="form__content"><span class="form__text">{{ $results->ct_scan_date ? $results->ct_scan_date->format('m-d-Y') : ''}}</span><label class="form__label" for="">CT Scan date</label></div>
+                  <div class="form__content"><span class="form__text">{{ $results->ct_scan_date ? $results->ct_scan_date->format('m-d-Y') : ''}}</span><label class="form__label" for="">CT scan date</label></div>
                   <div class="form__content">
                     <span class="form__text">
                       {{ $results->ct_scan_result }}
                     </span>
-                    <label class="form__label" for="">CT Scan result</label>
+                    <label class="form__label" for="">CT scan result</label>
                   </div>
                 </div>
                 <div class="grid grid--two">
@@ -517,9 +517,25 @@
           </div>
       </div>
 
+      <div class="modal" id="remarks" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal__background" data-dismiss="modal"></div>
+    <div class="modal__container">
+        <div class="modal__box">
+            <h2 class="modal__title">Report issue</h2>
+            <p class="modal__text">Please elaborate on the issue encountered.</p>
+            <form class="form form--full" method="POST" action="{{ url('/report-and-feedbacks')}}">
+            @csrf
+                <div class="form__content"> <textarea name="issue" class="form__input form__input--message" placeholder="Enter issue" required></textarea><label class="form__label" for="">Report issue</label></div>
+                <div class="modal__button modal__button--end"><input class="button" type="submit" value="Submit" /></div>
+            </form>
+        </div>
+    </div>
+</div>
+
      
   
 @endsection
 @section('additional_scripts')
     <script src="{{ asset('assets/app/js/case-management/show.js') }}"></script>
+    <script src="{{ asset('assets/app/js/feedbacks.js') }}"></script>
 @endsection

@@ -92,7 +92,7 @@ class EnrollmentRecommendationsController extends Controller
             $tbMacForm->status = $request['status'];
         } else {
             $tbMacForm->status = 'Referred to Regional';
-            $request['status'] = 'Refer to Regional';
+            $request['status'] = 'Referred to Regional';
         }
 
         $tbMacForm->save();
@@ -107,11 +107,11 @@ class EnrollmentRecommendationsController extends Controller
     {
         $tbMacForm->status = 'Referred to regional chair';
         $tbMacForm->save();
-        if ($request['status'] === 'Not recommended for enrollment') {
-            $request['status'] = 'Not For Enrollment';
-        } elseif ($request['status'] === 'Recommend for enrollment') {
-            $request['status'] = 'For Enrollment';
-        }
+        // if ($request['status'] === 'Not recommended for enrollment') {
+        //     $request['status'] = 'Not For Enrollment';
+        // } elseif ($request['status'] === 'Recommend for enrollment') {
+        //     $request['status'] = 'For Enrollment';
+        // }
 
         $request['form_id'] = $tbMacForm->id;
         $request['submitted_by'] = auth()->user()->id;
@@ -175,10 +175,10 @@ class EnrollmentRecommendationsController extends Controller
             return 'required|in:Refer to RTBMAC,Not For Referral,Need Further Details';
         }
         if (auth()->user()->role_id === 5) {
-            return 'required|in:Recommend for enrollment,Not recommended for enrollment,Need Further Details';
+            return 'required|in:Recommended for enrollment,Recommended not for enrollment,Recommended for need further details';
         }
         if (auth()->user()->role_id === 6) {
-            return 'required|in:For Enrollment,Not for Enrollment,Need Further Details,Referred to N-TB MAC';
+            return 'required|in:For Enrollment,Not for Enrollment,Need Further Details,Referred to national';
         }
         if (auth()->user()->role_id === 3) {
             return 'required|in:For Enrollment,Not For Enrollment';

@@ -71,9 +71,9 @@
             <div class="grid grid--action">
               <div class="form__content">
                 <select id="refer" class="form__input form__input--select">
-                  <option value="3">Not recommended for enrolment</option>
-                  <option value="4">Recommend for enrolment</option>
-                  <option value="5">Need further details</option>
+                  <option value="3">Recommend not for enrollment</option>
+                  <option value="4">Recommend for enrollment</option>
+                  <option value="5">Recommend for need further details</option>
                 </select>
                 <div class="triangle triangle--down"></div>
                 <label class="form__label" for="">Action</label>
@@ -410,6 +410,24 @@
         </div>
       </div>
 
+      <div class="modal" id="remarks" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal__background" data-dismiss="modal"></div>
+    <div class="modal__container">
+        <div class="modal__box">
+            <h2 class="modal__title">Report issue</h2>
+            <p class="modal__text">Please elaborate on the issue encountered.</p>
+            <form class="form form--full" method="POST" action="{{ url('/report-and-feedbacks')}}">
+            @csrf
+                <div class="form__content"> <textarea name="issue" class="form__input form__input--message" placeholder="Enter issue" required></textarea><label class="form__label" for="">Report issue</label></div>
+                <div class="modal__button modal__button--end"><input class="button" type="submit" value="Submit" /></div>
+            </form>
+        </div>
+    </div>
+</div>
+
      
   
+@endsection
+@section('additional_scripts')
+    <script src="{{ asset('assets/app/js/feedbacks.js') }}"></script>
 @endsection

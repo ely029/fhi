@@ -12,6 +12,7 @@ use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\EnrollmentRegimentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MasterListController;
+use App\Http\Controllers\ReportAndFeedbackController;
 use App\Http\Controllers\ResubmitCaseManagementController;
 use App\Http\Controllers\ResubmitEnrollmentController;
 use App\Http\Controllers\ResubmitTreatmentOutcomeController;
@@ -37,6 +38,8 @@ Route::get('admin/login', [AdminLoginController::class, 'showLoginForm']);
 Route::post('admin/login', [AdminLoginController::class, 'login']);
 Route::post('admin/logout', [AdminLoginController::class, 'logout']);
 Route::get('success/password/reset', [ForgotPasswordController::class, 'success']);
+Route::get('admin/feedbacks', [AdminLoginController::class, 'feedbackDashboard']);
+Route::get('admin/feedbacks/view/{reportAndFeedbacks}', [AdminLoginController::class, 'viewFeedbacks']);
 
 Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard', 'middleware' => 'auth'], static function () {
     Route::get('/', [DashboardController::class, 'index']);
@@ -96,4 +99,6 @@ Route::group(['middleware' => 'auth'], static function () {
     Route::get('/treatment/view/{presentationNumber}/{fileName}', [TreatmentOutcomesController::class, 'viewAttachment']);
     Route::get('/masterlist', [MasterListController::class, 'index']);
     Route::post('/masterlist/filter', [MasterListController::class, 'filter']);
+    Route::post('/masterlist/update-remarks', [MasterListController::class, 'updateRemarks']);
+    Route::post('/report-and-feedbacks', [ReportAndFeedbackController::class, 'store']);
 });

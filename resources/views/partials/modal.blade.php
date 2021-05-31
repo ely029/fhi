@@ -7,7 +7,7 @@
                     <form class="form form--full" method="POST" action="{{ route('enrolment.sendRecommendation')}}">
                     @csrf
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
-                       <input type="hidden" name="status" value="Refer to Regional"/>
+                       <input type="hidden" name="status" value="Referred to Regional"/>
                        <div class="form__content"><textarea name="recommendation" class="form__input form__input--message" placeholder="Enter remarks" required></textarea><label class="form__label" for="">Remarks</label></div>
                        <div class="modal__button modal__button--end"><input class="button" type="submit" value="Submit" /></div>
                     </form>
@@ -41,7 +41,7 @@
                     <form class="form form--full" method="POST" action="{{ route('enrolment.sendRecommendation')}}">
                     @csrf
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
-                       <input type="hidden" name="status" value="Not For Enrollment"/>
+                       <input type="hidden" name="status" value="Recommended not for enrollment"/>
                       <div class="form__content"><textarea name="recommendation" class="form__input form__input--message" placeholder="Enter remarks" required></textarea><label class="form__label" for="">Remarks</label></div>
                       <div class="modal__button modal__button--end"><input class="button" type="submit" value="Submit" /></div>
                     </form>
@@ -109,7 +109,7 @@
                     <form class="form form--full" method="POST" action="{{ route('enrolment.sendRecommendation')}}">
                     @csrf
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
-                       <input type="hidden" name="status" value="For Enrollment"/>
+                       <input type="hidden" name="status" value="Recommended for enrollment"/>
                       <div class="form__content"><textarea name="recommendation" class="form__input form__input--message" placeholder="Enter remarks" required></textarea><label class="form__label" for="">Remarks</label></div>
                       <div class="modal__button modal__button--end"><input class="button" type="submit" value="Submit" /></div>
                     </form>
@@ -143,7 +143,7 @@
                     <form class="form form--full" method="POST" action="{{ route('enrolment.sendRecommendation')}}">
                     @csrf
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
-                       <input type="hidden" name="status" value="Need Further Details"/>
+                       <input type="hidden" name="status" value="Recommended for need further details"/>
                       <div class="form__content"><textarea name="recommendation" class="form__input form__input--message" placeholder="Enter remarks" required></textarea><label class="form__label" for="">Remarks</label></div>
                       <div class="modal__button modal__button--end"><input class="button" type="submit" value="Submit" /></div>
                     </form>
@@ -160,7 +160,7 @@
                     <form class="form form--full" method="POST" action="{{ route('enrolment.sendRecommendation')}}">
                     @csrf
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
-                       <input type="hidden" name="status" value="Referred to N-TB MAC"/>
+                       <input type="hidden" name="status" value="Referred to national"/>
                       <div class="form__content"><textarea name="recommendation" class="form__input form__input--message" placeholder="Enter remarks" required></textarea><label class="form__label" for="">Remarks</label></div>
                       <div class="modal__button modal__button--end"><input class="button" type="submit" value="Submit" /></div>
                     </form>

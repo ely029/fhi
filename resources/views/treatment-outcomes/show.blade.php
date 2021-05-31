@@ -139,9 +139,9 @@
                 <div class="grid grid--action">
                     <div class="form__content">
                         <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
-                        <option value="Recommend for Approval">Recommend for approval</option>
-                        <option value="Recommend for other suggestions">Recommend for other suggestions</option>
-                        <option value="Recommend for need further details">Recommend for need further details </option>
+                        <option value="Recommended for Approval">Recommend for approval</option>
+                        <option value="Recommended for other suggestions">Recommend for other suggestions</option>
+                        <option value="Recommended for need further details">Recommend for need further details </option>
                         </select>
                         <div class="triangle triangle--down"></div>
                         <label class="form__label" for="">Action</label>
@@ -158,7 +158,7 @@
                           <option value="Approved">Approved</option>
                           <option value="Other suggestions">Other suggestions</option>
                           <option value="Need Further Details">Need further details</option>
-                          <option value="Referred to N-TB MAC">Refer to N-TB MAC</option>
+                          <option value="Referred to national">Refer to N-TB MAC</option>
                           </select>
                           <div class="triangle triangle--down"></div>
                           <label class="form__label" for="">Action</label>
