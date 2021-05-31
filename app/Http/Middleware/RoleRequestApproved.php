@@ -21,7 +21,7 @@ class RoleRequestApproved
         if (! auth()->user()->has_chosen_role) {
             return redirect('role/request');
         }
-        if (auth()->user()->pendingRoleRequest) {
+        if (! is_null(auth()->user()->pendingRoleRequest)) {
             return redirect('role/request/pending');
         }
         return $next($request);

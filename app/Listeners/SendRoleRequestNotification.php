@@ -28,6 +28,10 @@ class SendRoleRequestNotification
             $user->update([
                 'role_id' => $roleRequest->role_id,
             ]);
+        } else {
+            $user->update([
+                'has_chosen_role' => false,
+            ]);
         }
         $user->notify(new MailRoleRequestNotification($roleRequest));
     }

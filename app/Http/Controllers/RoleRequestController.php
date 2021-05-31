@@ -39,6 +39,10 @@ class RoleRequestController extends Controller
             'role_id' => $request->role_id,
         ]);
 
+        auth()->user()->update([
+            'has_chosen_role' => true,
+        ]);
+
         return redirect('role/request/pending');
     }
 

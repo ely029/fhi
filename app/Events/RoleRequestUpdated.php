@@ -19,7 +19,7 @@ class RoleRequestUpdated
      * @return void
      */
 
-    protected $roleRequest;
+    private $roleRequest;
 
     public function __construct(RoleRequest $roleRequest)
     {
