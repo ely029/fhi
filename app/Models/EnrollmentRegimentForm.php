@@ -63,5 +63,6 @@ class EnrollmentRegimentForm extends Model
         'regimen_notes','clinical_status','signs_and_symptoms','vital_signs',
         'diag_and_lab_findings',
         'itr_drugs',
+        'sec_remarks',
     ];
 }

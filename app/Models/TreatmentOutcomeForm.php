@@ -41,6 +41,7 @@ class TreatmentOutcomeForm extends Model
         'date_started_treatment',
         'current_drug_susceptibility',
         'outcome',
+        'sec_remarks',
     ];
 
     protected $dates = [

@@ -79,6 +79,7 @@ class CaseManagementRegimentForm extends Model
         'others',
         'others_current_regimen',
         'itr_drugs_current_regimen',
+        'sec_remarks',
     ];
 
     public function getCurrentDrugSusceptibilityAttribute($value)
