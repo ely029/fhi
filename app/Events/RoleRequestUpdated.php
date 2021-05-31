@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Events;
 
 use App\Models\RoleRequest;
@@ -17,7 +19,7 @@ class RoleRequestUpdated
      * @return void
      */
 
-    public $roleRequest;
+    protected $roleRequest;
 
     public function __construct(RoleRequest $roleRequest)
     {

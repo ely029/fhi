@@ -35,6 +35,7 @@ use Storage;
  * @property-read \App\Models\Role|null $role
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Social[] $socials
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\RoleRequest $roleRequests
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\RoleRequest $pendingRoleRequest
  * @property-read int|null $socials_count
  * @method static \Database\Factories\UserFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
@@ -127,7 +128,7 @@ class User extends Authenticatable
     {
         return $this->hasOne(RoleRequest::class)
             ->where('status', 'pending')
-            ->orderBy('created_at','desc');
+            ->orderBy('created_at', 'desc');
     }
 
     public function getPhotoNameAttribute()

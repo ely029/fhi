@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\Geolocation;
+// use App\Models\Geolocation;
 use App\Models\ITIS;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;

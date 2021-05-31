@@ -60,9 +60,9 @@ Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard', 'middleware' 
 
     //Role Management CRUD
     // Route::group(['middleware' => ''], static function () {
-        Route::get('/role-requests', [RoleRequestsController::class, 'index']);
-        Route::get('/role-requests/{roleRequest}', [RoleRequestsController::class, 'show']);
-        Route::patch('/role-requests/{roleRequest}', [RoleRequestsController::class, 'update']);
+    Route::get('/role-requests', [RoleRequestsController::class, 'index']);
+    Route::get('/role-requests/{roleRequest}', [RoleRequestsController::class, 'show']);
+    Route::patch('/role-requests/{roleRequest}', [RoleRequestsController::class, 'update']);
     // });
 });
 

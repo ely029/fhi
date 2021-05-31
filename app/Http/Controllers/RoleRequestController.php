@@ -27,11 +27,11 @@ class RoleRequestController extends Controller
 
         // get already approved roles
         $approvedRoles = RoleRequest::where('user_id', auth()->user()->id)
-                        ->where('status','approved')
-                        ->pluck('role_id')->toArray();
-        
+            ->where('status', 'approved')
+            ->pluck('role_id')->toArray();
+
         // if selected role is one of already approved roles, let them pass
-        if($approvedRoles && in_array($request->role_id, $approvedRoles)){
+        if ($approvedRoles && in_array($request->role_id, $approvedRoles)) {
             return redirect('enrollments');
         }
 

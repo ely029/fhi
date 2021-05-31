@@ -20,20 +20,19 @@ class RoleRequestsController extends Controller
 
         $roles = [4,5,6,7,8];
         $allCount = [];
-        
 
         $allRoleRequests = DB::table('role_requests')
-        ->select('role_id', DB::raw('count(*) as total'))
-        ->groupBy('role_id')
-        ->get()->keyBy('role_id');
-    
+            ->select('role_id', DB::raw('count(*) as total'))
+            ->groupBy('role_id')
+            ->get()->keyBy('role_id');
+
         $total = 0;
         foreach ($roles as $role) {
             $count = isset($allRoleRequests[$role]) ? $allRoleRequests[$role]->total : 0;
             $allCount[$role] = $count;
             $total += $count;
         }
- 
+
         $allCount['total'] = $total;
         return view('dashboard.role-requests.index', [
             'roleRequests' => $roleRequests,
@@ -63,7 +62,5 @@ class RoleRequestsController extends Controller
         return redirect('dashboard/role-requests')->with([
             'alert.message' => 'Role Request '.$roleRequest->status.' successfully.',
         ]);
-
     }
-
 }
