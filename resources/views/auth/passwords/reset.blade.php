@@ -5,7 +5,7 @@
     <div class="login__container login__container--big">
       <div class="login__card">
         <div class="login__top">
-          <div class="login__wrapper"><img class="image" src="{{ asset('assets/app/img/icon-email.png') }}" alt="Logo of FHI e-TBMAC" /></div>
+          <div class="login__wrapper "><img class="image" src="{{ asset('assets/app/img/logo.png') }}" alt="Logo of FHI e-TBMAC" /></div>
         </div>
         <form class="form form--full" method="POST" action="{{ route('password.update') }}">
             @csrf
