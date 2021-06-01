@@ -13,7 +13,7 @@
           <thead>
             <tr>
               <th class="table__head">Presentation no.</th>
-              <th class="table__head">Facility code</th>
+              <th class="table__head">Health facility</th>
               <th class="table__head">Province</th>
               <th class="table__head">Patient</th>
               <th class="table__head">Drug susceptibility</th>

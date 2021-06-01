@@ -31,7 +31,7 @@
             <div class="form--half">
               <div class="form__container">
               <h2 class="section__heading section__heading--full">Patient  {{ $tbMacForm->patient->code }}
-                  <span class="form__text">Facility  {{ $tbMacForm->patient->facility_code }}  &nbsp;&nbsp;&nbsp;  {{ $tbMacForm->patient->province }} </span></h2>
+                  <span class="form__text">Health facility  {{ $tbMacForm->patient->facility_code }}  &nbsp;&nbsp;&nbsp;  {{ $tbMacForm->patient->province }} </span></h2>
                 <div class="form__content"><span class="form__text">
                 @if ($tbMacForm->status == 'Referred to N-TB MAC')
                   Referred to N-TB MAC

@@ -11,7 +11,7 @@
           <thead>
             <tr>
               <th class="table__head">Presentation no.</th>
-              <th class="table__head">Facility code</th>
+              <th class="table__head">Health facility</th>
               <th class="table__head">Patient initials</th>
               <th class="table__head">Age</th>
               <th class="table__head">Sex</th>
