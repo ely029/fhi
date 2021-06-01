@@ -21,7 +21,7 @@
     </div>
     <div class="form-step-3 form__container">
     <div id="others_current_regiment" class="form__content form-group">
-                <input class="form__input" type="number" name="others_current_regimen" placeholder="Current weight (kg)" />
+                <input class="form__input" type="text" name="others_current_regimen" placeholder="Current weight (kg)" />
                 <div class="help-block with-errors"></div>
                 <label class="form__label" for="">Others</label>
     </div>

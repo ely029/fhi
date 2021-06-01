@@ -114,7 +114,7 @@ Route::group(['middleware' => ['auth','role_request_approved']], static function
     Route::post('/treatment-outcomes/{tbMacForm}/recommendation', [TreatmentOutcomeRecommendationController::class,'store']);
     Route::get('/treatment/view/{presentationNumber}/{fileName}', [TreatmentOutcomesController::class, 'viewAttachment']);
     Route::get('/masterlist', [MasterListController::class, 'index']);
-    Route::post('/masterlist/filter', [MasterListController::class, 'filter']);
+    Route::match(['GET', 'POST'], '/masterlist/filter', [MasterListController::class, 'filter']);
 
     Route::get('role/request', [RoleRequestController::class, 'index'])->withoutMiddleware([RoleRequestApproved::class]);
     Route::post('role/request', [RoleRequestController::class, 'store'])->withoutMiddleware([RoleRequestApproved::class]);
