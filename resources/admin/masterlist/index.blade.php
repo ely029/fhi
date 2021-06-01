@@ -25,7 +25,7 @@
       </div>
       <div class="form__container">
         <h2 class="section__heading">Showing results for June 1, 2021 - June 30, 2021</h2>
-        <table class="table table--filter js-table-unset">
+        <table class="table table--filter js-table">
           <thead>
             <tr>
               <th class="table__head">Presentation no.</th>
