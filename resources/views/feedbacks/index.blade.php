@@ -18,7 +18,7 @@
           </div>
         </div>
         <div class="section__container">
-          <table class="table table--filter js-table">
+          <table class="table table--filter js-table-feedback">
             <thead>
               <tr>
                 <th class="table__head">Username</th>
