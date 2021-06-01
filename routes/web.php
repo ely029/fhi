@@ -53,6 +53,7 @@ Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard', 'middleware' 
     Route::group(['middleware' => 'super_admin'], static function () {
         Route::get('/users', [UsersController::class, 'index']);
         Route::get('/users/create', [UsersController::class, 'create']);
+        Route::get('/users/{user}', [UsersController::class, 'show']);
         Route::post('/users', [UsersController::class, 'store']);
         Route::get('/users/{user}/edit', [UsersController::class, 'edit']);
         Route::patch('/users/{user}', [UsersController::class, 'update']);
