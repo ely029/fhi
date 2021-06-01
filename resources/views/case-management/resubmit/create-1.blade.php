@@ -14,7 +14,7 @@
     <div class="grid grid--two form-step-1">
     <div class="form__content form-group">
     <div class="help-block with-errors"></div>    
-    <input class="form__input" id="facilityCode" type="number" value="{{ $tbMacForm->patient->facility_code }}" min="0" placeholder="Facility code" name="facility_code" required/><label class="form__label" for="">Facility code</label></div>
+    <input class="form__input" id="facilityCode" type="number" value="{{ $tbMacForm->patient->facility_code }}" min="0" placeholder="Facility code" name="facility_code" required/><label class="form__label" for="">Health facility code</label></div>
     <div class="form__content form-group">
         <select class="form__input form__input--select " id="province" name="province">
         @foreach(provinces() as $province)

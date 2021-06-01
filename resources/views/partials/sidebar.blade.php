@@ -82,7 +82,7 @@
                     </a>
                 </li>
                 <li class="sidebar__item {{ request()->is('') ? 'active' : null }}">
-                    <a class="sidebar__link" href="{{ url('') }}">
+                    <a class="sidebar__link" href="{{ url('admin/feedbacks') }}">
                     <div class="sidebar__wrapper">
                         <img class="image" src="{{ asset('assets/app/img/icon-feedback.png') }}" alt="feedback Management icon for fhi" />
                         <img class="image image--white" src="{{ asset('assets/app/img/icon-feedback-white.png') }}" alt="feedback management icon on hover for fhi" />
@@ -112,6 +112,18 @@
             </ul>
         @endif
       </div>
+      <a class="dropdown-item logout-button" href="#">
+        {{ __('Logout') }}
+    </a>
+    @if(auth()->user()->role_id == 1 || auth()->user()->role_id == 2)
+      <form id="logout-form" action="{{ url('admin/logout') }}" method="POST" style="display: none;">
+          @csrf
+      </form>
+      @else
+      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
+    @endif
       <a class="sidebar__footer" href="{{ url('account') }}">
         <div class="sidebar__footer-content">
           <h2 class="sidebar__footer-heading">{{ auth()->user()->name }}</h2>

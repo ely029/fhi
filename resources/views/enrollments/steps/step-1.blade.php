@@ -4,7 +4,7 @@
       <div class="form__content form-group">
         <div class="help-block with-errors"></div>
         <input class="form__input" type="number" min="0" placeholder="Facility code" name="facility_code" required/>
-        <label class="form__label" for="">Facility code</label>
+        <label class="form__label" for="">Health facility code</label>
         
       </div>
       <div class="form__content">

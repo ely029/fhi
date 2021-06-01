@@ -147,12 +147,12 @@
     </form>
   </div>
   <div class="modal" id="sec_remarks_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal__background js-modal-background"></div>
+        <div class="modal__background" data-dismiss="modal"></div>
         <div class="modal__container">
           <div class="modal__box">
             <h2 class="modal__title">Edit remarks</h2>
             <p class="modal__text">Edit remarks for the masterlist.</p>
-            <form class="form" method="POST" action="{{ url('masterlist/update-remarks') }}">
+            <form class="form form--full" method="POST" action="{{ url('masterlist/update-remarks') }}">
             @csrf
               <div class="form__content"><textarea class="form__input form__input--message" name="remarks" placeholder="Enter remarks"></textarea><label class="form__label" for="">Remarks</label></div>
               <div class="modal__button"><input class="button" type="submit" value="Save" /></div>

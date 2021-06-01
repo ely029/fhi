@@ -3,7 +3,7 @@
     <div class="grid grid--two form-step-1">
       <div class="form__content form-group">
         <input class="form__input" type="number" min="0" placeholder="Facility code" name="facility_code" required value="{{ $tbMacForm->patient->facility_code }}"/>
-        <label class="form__label" for="">Facility code</label>
+        <label class="form__label" for="">Health facility code</label>
         <div class="help-block with-errors"></div>
       </div>
       <div class="form__content">

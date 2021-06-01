@@ -5,8 +5,15 @@ jQuery( document ).ready(function( $ ) {
         changeMonth: true,
         changeYear: true,
         maxDate:0,
+        yearRange: '-100:+0',
+        dateFormat: 'mm/dd/yy',
         buttonImageOnly: true
     });
+
+    // $('.datepicker').keydown(function(e) {
+    //     e.preventDefault();
+    //     return false;
+    //  });
     // $("input[type='date']").on("change", function() {
     //     this.setAttribute(
     //         "data-date",
