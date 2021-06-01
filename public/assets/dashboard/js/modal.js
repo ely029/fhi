@@ -23,7 +23,7 @@ jQuery( document ).ready(function( $ ) {
             }
 
             if ($('#refer').val() == '5') {
-                $('#need-further-details').modal('show');
+                $('#rs-need-further-details').modal('show');
             }
 
             if ($('#refer').val() == '6') {

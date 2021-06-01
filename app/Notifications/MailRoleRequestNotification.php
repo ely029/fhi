@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Notifications;
 
 use App\Models\RoleRequest;
@@ -17,7 +19,7 @@ class MailRoleRequestNotification extends Notification
      * @return void
      */
 
-    public $roleRequest;
+    protected $roleRequest;
     public function __construct(RoleRequest $roleRequest)
     {
         $this->roleRequest = $roleRequest;
@@ -26,10 +28,9 @@ class MailRoleRequestNotification extends Notification
     /**
      * Get the notification's delivery channels.
      *
-     * @param  mixed  $notifiable
      * @return array
      */
-    public function via($notifiable)
+    public function via()
     {
         return ['mail'];
     }
@@ -37,28 +38,26 @@ class MailRoleRequestNotification extends Notification
     /**
      * Get the mail representation of the notification.
      *
-     * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    public function toMail($notifiable)
+    public function toMail()
     {
-        return (new MailMessage)
-                    ->subject('Role Request Status')
-                    ->view(
-                        'emails.role-requests.'.$this->roleRequest->status,['roleRequest' => $this->roleRequest]
-                    );
+        return (new MailMessage())
+            ->subject('Role Request Status')
+            ->view(
+                'emails.role-requests.'.$this->roleRequest->status, ['roleRequest' => $this->roleRequest]
+            );
     }
 
     /**
      * Get the array representation of the notification.
      *
-     * @param  mixed  $notifiable
      * @return array
      */
-    public function toArray($notifiable)
+    public function toArray()
     {
         return [
-            //
+
         ];
     }
 }

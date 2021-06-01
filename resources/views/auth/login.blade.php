@@ -21,7 +21,7 @@
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-                    <input class="form__input @error('password') is-invalid @enderror" id="js-password" type="text" name="password"  
+                    <input class="form__input @error('password') is-invalid @enderror" id="js-password" type="password" name="password"  
                     placeholder="Password" autocomplete="current-password" required/>
                     <label class="form__label">Password</label><i class="fa fa-eye-slash" id="js-eye-password"></i>
                     

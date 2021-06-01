@@ -1,11 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Listeners;
 
 use App\Events\RoleRequestUpdated;
 use App\Notifications\MailRoleRequestNotification;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 
 class SendRoleRequestNotification
 {
@@ -14,11 +14,6 @@ class SendRoleRequestNotification
      *
      * @return void
      */
-    public function __construct()
-    {
-        //
-    }
-
     /**
      * Handle the event.
      *
@@ -33,8 +28,11 @@ class SendRoleRequestNotification
             $user->update([
                 'role_id' => $roleRequest->role_id,
             ]);
+        } else {
+            $user->update([
+                'has_chosen_role' => false,
+            ]);
         }
         $user->notify(new MailRoleRequestNotification($roleRequest));
-
     }
 }

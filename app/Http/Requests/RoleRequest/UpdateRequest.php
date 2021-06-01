@@ -28,7 +28,7 @@ class UpdateRequest extends FormRequest
     {
         return [
             'status' => 'required|in:approved,declined',
-            'remarks' => 'required_if:status,declined'
+            'remarks' => 'required_if:status,declined',
         ];
     }
 }

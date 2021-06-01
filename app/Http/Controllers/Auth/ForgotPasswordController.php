@@ -43,4 +43,9 @@ class ForgotPasswordController extends Controller
     {
         return view('auth.passwords.success');
     }
+
+    protected function validateEmail(Request $request)
+    {
+        $request->validate(['email' => 'required|email|exists:users'], ['exists' => 'We cannot find a user with the given email.']);
+    }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Middleware;
 
 use Closure;
@@ -19,7 +21,7 @@ class RoleRequestApproved
         if (! auth()->user()->has_chosen_role) {
             return redirect('role/request');
         }
-        if (auth()->user()->pendingRoleRequest) {
+        if (auth()->user()->pendingRoleRequest()->exists()) {
             return redirect('role/request/pending');
         }
         return $next($request);

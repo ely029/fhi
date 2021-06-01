@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Api\ITISController;
 use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
@@ -60,9 +61,9 @@ Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard', 'middleware' 
 
     //Role Management CRUD
     // Route::group(['middleware' => ''], static function () {
-        Route::get('/role-requests', [RoleRequestsController::class, 'index']);
-        Route::get('/role-requests/{roleRequest}', [RoleRequestsController::class, 'show']);
-        Route::patch('/role-requests/{roleRequest}', [RoleRequestsController::class, 'update']);
+    Route::get('/role-requests', [RoleRequestsController::class, 'index']);
+    Route::get('/role-requests/{roleRequest}', [RoleRequestsController::class, 'show']);
+    Route::patch('/role-requests/{roleRequest}', [RoleRequestsController::class, 'update']);
     // });
 });
 
@@ -113,13 +114,15 @@ Route::group(['middleware' => ['auth','role_request_approved']], static function
     Route::post('/treatment-outcomes/{tbMacForm}/recommendation', [TreatmentOutcomeRecommendationController::class,'store']);
     Route::get('/treatment/view/{presentationNumber}/{fileName}', [TreatmentOutcomesController::class, 'viewAttachment']);
     Route::get('/masterlist', [MasterListController::class, 'index']);
-    Route::post('/masterlist/filter', [MasterListController::class, 'filter']);
+    Route::match(['GET', 'POST'], '/masterlist/filter', [MasterListController::class, 'filter']);
 
     Route::get('role/request', [RoleRequestController::class, 'index'])->withoutMiddleware([RoleRequestApproved::class]);
     Route::post('role/request', [RoleRequestController::class, 'store'])->withoutMiddleware([RoleRequestApproved::class]);
     Route::get('role/request/pending', [RoleRequestController::class, 'pending'])->withoutMiddleware([RoleRequestApproved::class]);
     Route::post('/masterlist/update-remarks', [MasterListController::class, 'updateRemarks']);
     Route::post('/report-and-feedbacks', [ReportAndFeedbackController::class, 'store']);
+
+    Route::get('account', [AccountController::class, 'index']);
 });
 
 Route::get('itis/login', [LoginController::class, 'itisLogin']);
