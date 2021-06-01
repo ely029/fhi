@@ -186,7 +186,7 @@ class EnrollmentRecommendationsController extends Controller
         if (auth()->user()->role_id === 7) {
             return 'nullable';
         }
-        if(auth()->user()->role_id === 8) {
+        if (auth()->user()->role_id === 8) {
             return 'required|in:Resolved,Not resolved';
         }
     }
