@@ -8,4 +8,11 @@ jQuery('document').ready(function($){
          $('#sec_remarks_modal input#form_id').val(form_id);
          $('#sec_remarks_modal').modal('show');
     });
+
+    $('body').click(function (event) 
+{
+   if(!$(event.target).closest('#sec_remarks_modal').length && !$(event.target).is('#sec_remarks_modal')) {
+     $(".modalDialog").hide();
+   }     
+});
 });
