@@ -52,6 +52,13 @@ jQuery( document ).ready(function( $ ) {
             if($('#refer').val() == 'Resubmit Enrollment') {
                 $("#resubmit-enrollment-modal").modal('show');
             }
+
+            if($('#refer').val() == 'Resolved' || $('#refer').val() == 'Not resolved')
+            {
+                $("#ntb-chair-text").text($("#refer").val());
+                $("#ntbmac-chair-modal").find("input[name='status']").val($("#refer").val());
+                $("#ntbmac-chair-modal").modal('show');
+            }
     });
 
 

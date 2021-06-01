@@ -369,7 +369,7 @@ function caseManagementRecommendationStatus()
         5 => 'required|in:Recommended for Approval,Recommended for other suggestions,Recommended for need further details',
         6 => 'required|in:For approval,Other suggestions,Need Further Details,Referred to national',
         7 => 'required|in:Referred to National Chair',
-        8 => 'nullable|in:Referred back to regional chair',
+        8 => 'nullable|in:Resolved,Not resolved',
     ];
 }
 
@@ -403,7 +403,7 @@ function treatmentOutcomeStatus()
         5 => 'required|in:Recommended for Approval,Recommended for other suggestions,Recommended for need further details',
         6 => 'required|in:For approval,Other suggestions,Need Further Details,Referred to national',
         7 => 'required|in:Referred to National Chair',
-        8 => 'nullable|in:Referred back to regional chair',
+        8 => 'nullable|in:Resolved,Not resolved',
     ];
 }
 

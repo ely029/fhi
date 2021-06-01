@@ -97,13 +97,27 @@
               <button id="refer-button" class="button button--masterlist js-trigger" type="button">Confirm</button>
             </div>
             @endif
-            {{-- National TB Mac && Chair --}}
-            @if ((auth()->user()->role_id == 7 || auth()->user()->role_id == 8) && request('from_tab') == 'referred')
+            {{-- National TB Mac --}}
+            @if (auth()->user()->role_id == 7 && request('from_tab') == 'referred')
             <div class="grid grid--action">
               <div class="form__content">
                 <label class="form__label" for="">Action</label>
               </div>
               <button  class="button js-trigger create-recom" type="button">Create recommendation</button>
+            </div>
+            @endif
+            {{-- National TB Mac Chair --}}
+            @if (auth()->user()->role_id == 8 && request('from_tab') == 'referred')
+            <div class="grid grid--action">
+              <div class="form__content">
+                <select id="refer" class="form__input form__input--select">
+                  <option value="Resolved">Resolved</option>
+                  <option value="Not resolved">Not resolved</option>
+                </select>
+                <div class="triangle triangle--down"></div>
+                <label class="form__label" for="">Action</label>
+              </div>
+              <button id="refer-button" class="button button--masterlist js-trigger" type="button">Confirm</button>
             </div>
             @endif
             @if (auth()->user()->role_id == 3)

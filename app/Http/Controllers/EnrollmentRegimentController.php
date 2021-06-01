@@ -153,7 +153,6 @@ class EnrollmentRegimentController extends Controller
         $tbMacForm = TBMacForm::find($request['form_id']);
         $tbMacForm->status = 'Referred back to regional chair';
         $tbMacForm->save();
-        $request['status'] = 'Referred back to regional chair';
         $request['submitted_by'] = auth()->user()->id;
         $request['role_id'] = auth()->user()->role_id;
         Recommendation::create($request);

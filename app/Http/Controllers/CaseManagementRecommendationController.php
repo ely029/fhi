@@ -11,7 +11,12 @@ class CaseManagementRecommendationController extends Controller
     public function store(TBMacForm $tbMacForm)
     {
         $request = request()->all();
-        $tbMacForm->status = in_array($request['status'], ['Recommended for Approval','Recommended for other suggestions','Recommended for need further details']) ? 'Referred to Regional Chair' : $request['status'];
+        if (auth()->user()->role_id === 8) {
+            $tbMacForm->status = 'Referred back to regional chair';
+        } else {
+            $tbMacForm->status = in_array($request['status'], ['Recommended for Approval','Recommended for other suggestions','Recommended for need further details']) ? 'Referred to Regional Chair' : $request['status'];
+        }
+
         $tbMacForm->role_id = auth()->user()->role_id;
         $tbMacForm->save();
 
