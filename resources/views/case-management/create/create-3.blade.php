@@ -1,7 +1,7 @@
 <div class="form__tab step-3">
     <div class="form__container form-step-3">
         <h2 class="section__heading">Treatment information</h2>
-        <div class="grid grid--two">
+        <div class="grid">
             <div class="form__content form-group">
                 <select class="form__input" name="current_regiment" id="current_regiment">
                 @foreach(current_regimen() as $data)

@@ -1,8 +1,8 @@
 <div class="form__tab step-3">
     <div class="form__container form-step-3">
     <h2 class="section__heading">Treatment information</h2>
-    <div class="grid grid--two">
-        <div class="form__contentform-group">
+    <div class="grid">
+        <div class="form__content form-group">
        
         <input class="form__input" type="number" name="current_weight" value="{{ $tbMacForm->caseManagementForm->current_weight }}" placeholder="Current weight (kg)" required />
         <label class="form__label" for="">Current weight (kg)</label>
