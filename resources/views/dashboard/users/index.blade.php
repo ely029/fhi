@@ -35,7 +35,7 @@
                     </thead>
                     <tbody>
                         @foreach ($users as $user)
-                            <tr class="table__row js-view" data-href="view-feedback.html">
+                            <tr class="table__row js-view" data-href="{{ url('dashboard/users/'.$user->id) }}">
                                 <td class="table__details">{{ $user->username }}</td>
                                 <td class="table__details">{{ $user->name }}</td>
                                 <td class="table__details">{{ $user->email }}</td>

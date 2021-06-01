@@ -202,6 +202,23 @@
                 </div>
             </div>
 
+            <div class="modal" id="ntbmac-chair-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal__background" data-dismiss="modal"></div>
+              <div class="modal__container">
+                <div class="modal__box">
+                  <h2 class="modal__title">Create recommendation</h2>
+                  <p class="modal__text">You are about to confirm and set this case to `<span id="ntb-chair-text"></span>` If you have additional remarks. enter them below.</p>
+                  <form class="form form--full" method="POST" action="{{ route('enrolment.sendRecommendation')}}">
+                  @csrf
+                     <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
+                     <input type="hidden" name="status" value=""/>
+                    <div class="form__content"><textarea name="recommendation" class="form__input form__input--message" placeholder="Enter remarks" required></textarea><label class="form__label" for="">Remarks</label></div>
+                    <div class="modal__button modal__button--end"><input class="button" type="submit" value="Submit" /></div>
+                  </form>
+                </div>
+              </div>
+          </div>
+
 <div class="modal" id="resubmit-enrollment-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal__background" data-dismiss="modal"></div>
       <div class="modal__container">

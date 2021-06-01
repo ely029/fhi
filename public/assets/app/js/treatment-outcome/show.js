@@ -56,7 +56,7 @@ $('.hide--button').hide();
             $('.hide--button').show();
         }
 
-        if(action == 'Not Resolved'){
+        if(action == 'Not Resolved' || action == 'Not resolved'){
             $("#modal-title").text('Not resolved');
             $("#modal-text").text("You are about to recommend this case for not resolved. If you have additional remarks, enter them below.");
         }

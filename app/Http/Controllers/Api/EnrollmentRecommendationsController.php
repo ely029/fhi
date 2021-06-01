@@ -151,15 +151,15 @@ class EnrollmentRecommendationsController extends Controller
     private function ntbMacChairRecommendation($tbMacForm, $request)
     {
         $tbMacForm1 = TBMacForm::find($tbMacForm->id);
-        if (! isset($request['status'])) {
-            $request['form_id'] = $tbMacForm->id;
-            $request['status'] = 'Referred back to regional chair';
-            $request['submitted_by'] = auth()->user()->id;
-            $request['role_id'] = auth()->user()->role_id;
-            $request['recommendation'] = $request['remarks'];
-            Recommendation::create($request);
-        }
-        $tbMacForm1->status = $request['status'];
+        // if (! isset($request['status'])) {
+        //     $request['form_id'] = $tbMacForm->id;
+        //     $request['status'] = 'Referred back to regional chair';
+        //     $request['submitted_by'] = auth()->user()->id;
+        //     $request['role_id'] = auth()->user()->role_id;
+        //     $request['recommendation'] = $request['remarks'];
+        //     Recommendation::create($request);
+        // }
+        $tbMacForm1->status = 'Referred back to regional chair';
         $tbMacForm1->role_id = auth()->user()->role_id;
         $tbMacForm1->save();
         $request['form_id'] = $tbMacForm->id;
@@ -183,8 +183,11 @@ class EnrollmentRecommendationsController extends Controller
         if (auth()->user()->role_id === 3) {
             return 'required|in:For Enrollment,Not For Enrollment';
         }
-        if (auth()->user()->role_id === 7 || auth()->user()->role_id === 8) {
+        if (auth()->user()->role_id === 7) {
             return 'nullable';
+        }
+        if (auth()->user()->role_id === 8) {
+            return 'required|in:Resolved,Not resolved';
         }
     }
 }
