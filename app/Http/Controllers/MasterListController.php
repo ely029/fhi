@@ -82,7 +82,7 @@ class MasterListController extends Controller
             ->where('tb_mac_forms.form_type', 'treatment_outcome')
             ->whereIn('tb_mac_forms.status', ['Resolved', 'Not Resolved'])
             ->whereIn('recommendation.status', ['Approved', 'Other suggestions', 'Need Further Details', 'Referred to N-TB MAC'])
-            ->whereBetween('tb_mac_forms.created_at', [$request['date_from'] ?? null , $request['date_to'] ?? null])
+            ->whereBetween('tb_mac_forms.created_at', [$request['date_from'] ?? null, $request['date_to'] ?? null])
             ->orderByDesc('tb_mac_forms.id')
             ->get();
         $enrollment = DB::table('tb_mac_forms')
