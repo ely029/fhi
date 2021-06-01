@@ -24,14 +24,16 @@
       $lastDayofPreviousMonth = Carbon\Carbon::now()->endOfMonth()->format('m-d-Y');
       $defaultFirstDayofPreviousMonth = Carbon\Carbon::now()->startOfMonth()->format('Y-m-d');
       $defaultLastDayofPreviousMonth = Carbon\Carbon::now()->endOfMonth()->format('Y-m-d');
+      $requestDateFrom = request('date_from');
+      $requestDateTo = request('date_to');
       @endphp
       <div class="form__container">
         <h2 class="section__heading">TB Medical Advisory Committee Masterlist</h2>
         <div class="form--quarter">
           <div class="grid grid--three grid--end">
           @if (request('date_from') !== null && request('date_to') !== null )
-          <div class="form__content"><input class="form__input" value="{{ request('date_from') }}" type="date" name="date_from" /><label class="form__label" for="">Start date</label></div>
-            <div class="form__content"><input class="form__input" value="{{ request('date_to') }}"type="date" name="date_to" /><label class="form__label" for="">End date</label></div>
+          <div class="form__content"><input class="form__input form__input--date" value="{{ $requestDateFrom }}" type="text" name="date_from" /><label class="form__label" for="">Start date</label></div>
+            <div class="form__content"><input class="form__input form__input--date" value="{{  $requestDateTo }}"type="text" name="date_to" /><label class="form__label" for="">End date</label></div>
             @else
             <div class="form__content"><input class="form__input" value="{{ $defaultFirstDayofPreviousMonth }}" type="date" name="date_from" /><label class="form__label" for="">Start date</label></div>
             <div class="form__content"><input class="form__input" value="{{ $defaultLastDayofPreviousMonth }}"type="date" name="date_to" /><label class="form__label" for="">End date</label></div>

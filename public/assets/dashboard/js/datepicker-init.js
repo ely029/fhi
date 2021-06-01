@@ -5,9 +5,7 @@ jQuery( document ).ready(function( $ ) {
         changeMonth: true,
         changeYear: true,
         maxDate:0,
-        yearRange: '-100:+0',
-        dateFormat: 'mm/dd/yy',
-        buttonImageOnly: true
+        yearRange: '-100:+0'
     });
 
     // $('.datepicker').keydown(function(e) {
