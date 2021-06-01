@@ -56,10 +56,7 @@
               <th class="table__head">Recommendation</th>
               <th class="table__head">Status</th>
               <th class="table__head">Date resolved</th>
-              @if (auth()->user()->role_id == 4)
               <th class="table__head">Remarks</th>
-              @else
-              @endif
             </tr>
           </thead>
           <tbody>
@@ -83,6 +80,7 @@
                  <td class="table__details"><span class="table__link remarks">{{ $details->remarks }}</span></td>
                  @endif
               @else
+              <td class="table__details">{{ $details->remarks }}</td>
               @endif
               <input type="hidden" value="{{ $details->id}}" id="form_id">
               <input type="hidden" value="{{ $details->remarks}}" id="sec_remarks">
@@ -109,6 +107,7 @@
                  <td class="table__details"><span class="table__link remarks">{{ $details->remarks }}</span></td>
                  @endif
               @else
+              <td class="table__details">{{ $details->remarks }}</td>
               @endif
               <input type="hidden" value="{{ $details->id}}" id="form_id">
               <input type="hidden" value="{{ $details->remarks}}" id="sec_remarks">
@@ -135,6 +134,7 @@
                  <td class="table__details"><span class="table__link remarks">{{ $details->remarks }}</span></td>
                  @endif
               @else
+              <td class="table__details">{{ $details->remarks }}</td>
               @endif
               <input type="hidden" value="{{ $details->id}}" id="form_id">
               <input type="hidden" value="{{ $details->remarks}}" id="sec_remarks">

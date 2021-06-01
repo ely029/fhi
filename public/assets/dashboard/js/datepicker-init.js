@@ -1,7 +1,7 @@
 // $.noConflict();
 jQuery( document ).ready(function( $ ) {
-    $("input[type='date']").addClass('datepicker').attr('type', 'text');
-    $(".datepicker").datepicker({
+    $("input[type='date']").addClass('form__input--date').attr('type', 'text');
+    $(".form__input--date").datepicker({
         changeMonth: true,
         changeYear: true,
         maxDate:0,

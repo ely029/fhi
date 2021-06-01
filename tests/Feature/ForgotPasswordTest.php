@@ -25,7 +25,7 @@ class ForgotPasswordTest extends TestCase
      */
     public function testUserCanViewForgotPasswordPage()
     {
-        $response = $this->get('/password/reset');
+        $response = $this->get('success/password/reset');
         $response->assertSuccessful();
     }
 
