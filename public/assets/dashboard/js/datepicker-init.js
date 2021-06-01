@@ -1,12 +1,14 @@
 // $.noConflict();
 jQuery( document ).ready(function( $ ) {
-    // $("input[type='date']").addClass('datepicker').attr('type', 'text');
-    // $(".datepicker").datepicker({
-    //     changeMonth: true,
-    //     changeYear: true,
-    //     maxDate:0,
-    //     buttonImageOnly: true
-    // });
+    $("input[type='date']").addClass('datepicker').attr('type', 'text');
+    $(".datepicker").datepicker({
+        changeMonth: true,
+        changeYear: true,
+        maxDate:0,
+        yearRange: '-100:+0',
+        dateFormat: 'mm/dd/yy',
+        buttonImageOnly: true
+    });
 
     // $('.datepicker').keydown(function(e) {
     //     e.preventDefault();
