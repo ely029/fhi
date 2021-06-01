@@ -147,7 +147,7 @@
     </form>
   </div>
   <div class="modal" id="sec_remarks_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal__background js-modal-background"></div>
+        <div class="modal__background" data-dismiss="modal"></div>
         <div class="modal__container">
           <div class="modal__box">
             <h2 class="modal__title">Edit remarks</h2>
