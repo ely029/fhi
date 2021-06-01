@@ -22,8 +22,8 @@
       @php
       $firstDayofPreviousMonth = Carbon\Carbon::now()->startOfMonth()->format('m-d-Y');
       $lastDayofPreviousMonth = Carbon\Carbon::now()->endOfMonth()->format('m-d-Y');
-      $defaultFirstDayofPreviousMonth = Carbon\Carbon::now()->startOfMonth()->format('Y-m-d');
-      $defaultLastDayofPreviousMonth = Carbon\Carbon::now()->endOfMonth()->format('Y-m-d');
+      $defaultFirstDayofPreviousMonth = Carbon\Carbon::now()->startOfMonth()->format('m/d/Y');
+      $defaultLastDayofPreviousMonth = Carbon\Carbon::now()->endOfMonth()->format('m/d/Y');
       $requestDateFrom = request('date_from');
       $requestDateTo = request('date_to');
       @endphp
@@ -35,8 +35,8 @@
           <div class="form__content"><input class="form__input form__input--date" value="{{ $requestDateFrom }}" type="text" name="date_from" /><label class="form__label" for="">Start date</label></div>
             <div class="form__content"><input class="form__input form__input--date" value="{{  $requestDateTo }}"type="text" name="date_to" /><label class="form__label" for="">End date</label></div>
             @else
-            <div class="form__content"><input class="form__input" value="{{ $defaultFirstDayofPreviousMonth }}" type="date" name="date_from" /><label class="form__label" for="">Start date</label></div>
-            <div class="form__content"><input class="form__input" value="{{ $defaultLastDayofPreviousMonth }}"type="date" name="date_to" /><label class="form__label" for="">End date</label></div>
+            <div class="form__content"><input class="form__input form__input--date" value="{{ $defaultFirstDayofPreviousMonth }}" type="text" name="date_from" /><label class="form__label" for="">Start date</label></div>
+            <div class="form__content"><input class="form__input form__input--date" value="{{ $defaultLastDayofPreviousMonth }}"type="text" name="date_to" /><label class="form__label" for="">End date</label></div>
           @endif
             <button class="button button--masterlist" type="submit">Apply</button>
           </div>
