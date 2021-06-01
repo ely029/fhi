@@ -68,7 +68,11 @@
               $age = Carbon\Carbon::parse($details->birthday)->age;
               $gender = Str::upper(Str::substr($details->gender, 0, 1));
               @endphp
+            @if(auth()->user()->role_id == 4)
+            <tr class="table_row_enrollment sec table__row-{{ $details->id }}">
+            @else
             <tr class="table_row_enrollment table__row-{{ $details->id }}">
+            @endif
             <td class="table__details">E-{{ empty($details->presentation_number) ? '' : $details->presentation_number }}</td>
               <td class="table__details">{{ $initials }}    {{ $age }}   {{ $gender }}</td>
               <td class="table__details">Enrollment</td>
@@ -95,7 +99,11 @@
               $age = Carbon\Carbon::parse($details->birthday)->age;
               $gender = Str::upper(Str::substr($details->gender, 0, 1));
               @endphp
+              @if(auth()->user()->role_id == 4)
+            <tr class="table_row_enrollment sec table__row-{{ $details->id }}">
+            @else
             <tr class="table_row_enrollment table__row-{{ $details->id }}">
+            @endif
             <td class="table__details">C-{{ empty($details->presentation_number) ? '' : $details->presentation_number }}</td>
               <td class="table__details">{{ $initials }}    {{ $age }}   {{ $gender }}</td>
               <td class="table__details">Enrollment</td>
@@ -122,7 +130,11 @@
               $age = Carbon\Carbon::parse($details->birthday)->age;
               $gender = Str::upper(Str::substr($details->gender, 0, 1));
               @endphp
+              @if(auth()->user()->role_id == 4)
+            <tr class="table_row_enrollment sec table__row-{{ $details->id }}">
+            @else
             <tr class="table_row_enrollment table__row-{{ $details->id }}">
+            @endif
             <td class="table__details">T-{{ empty($details->presentation_number) ? '' : $details->presentation_number }}</td>
               <td class="table__details">{{ $initials }}    {{ $age }}   {{ $gender }}</td>
               <td class="table__details">Enrollment</td>

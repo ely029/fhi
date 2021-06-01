@@ -1,5 +1,5 @@
 jQuery('document').ready(function($){
-    $('#masterlist').on('click', 'tbody tr', function(e){
+    $('#masterlist').on('click', 'tbody tr.sec', function(e){
         //var e = $(this).index('td.remarks');
         var e = $(this).index();
          var form_id = $('#masterlist tr input#form_id:eq('+ e +')').val();
