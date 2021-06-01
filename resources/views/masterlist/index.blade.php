@@ -22,8 +22,8 @@
       @php
       $firstDayofPreviousMonth = Carbon\Carbon::now()->startOfMonth()->format('m-d-Y');
       $lastDayofPreviousMonth = Carbon\Carbon::now()->endOfMonth()->format('m-d-Y');
-      $defaultFirstDayofPreviousMonth = Carbon\Carbon::now()->startOfMonth()->format('m/d/Y');
-      $defaultLastDayofPreviousMonth = Carbon\Carbon::now()->endOfMonth()->format('m/d/Y');
+      $defaultFirstDayofPreviousMonth = Carbon\Carbon::now()->startOfMonth()->format('Y-m-d');
+      $defaultLastDayofPreviousMonth = Carbon\Carbon::now()->endOfMonth()->format('Y-m-d');
       @endphp
       <div class="form__container">
         <h2 class="section__heading">TB Medical Advisory Committee Masterlist</h2>
