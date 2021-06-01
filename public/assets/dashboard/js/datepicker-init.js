@@ -7,6 +7,11 @@ jQuery( document ).ready(function( $ ) {
         maxDate:0,
         buttonImageOnly: true
     });
+
+    $('.datepicker').keydown(function(e) {
+        e.preventDefault();
+        return false;
+     });
     // $("input[type='date']").on("change", function() {
     //     this.setAttribute(
     //         "data-date",
