@@ -10,17 +10,18 @@
                 {{ session('status') }}
             </div>
         @endif
-        <form class="form" method="POST" action="{{ route('password.email') }}">
+        <form class="form form--full" method="POST" action="{{ route('password.email') }}">
             @csrf
           <h2 class="section__title section__title--small">Password reset</h2>
           <p class="login__details">Enter your email that you used to register and we will send you a link to reset it.</p>
             <div class="form__content">
-              <input class="form__input @error('email') is-invalid @enderror" type="email" name="email" placeholder="Email" value="{{ old('email') }}" required autocomplete="email" autofocus />
-              @error('email')
+                @error('email')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
               @enderror
+              <input class="form__input @error('email') is-invalid @enderror" type="email" name="email" placeholder="Email" value="{{ old('email') }}" required autocomplete="email" autofocus />
+              
               <label class="form__label">Email</label>
             </div>
             <div class="form__button form__button--space">
