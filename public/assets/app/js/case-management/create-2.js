@@ -158,6 +158,7 @@ let removeTd = '<td><button class="button button--transparent remove-monthly-scr
             $('#m-screening tbody tr .base-letter').last().html('');
             $('#m-screening tbody tr .counter').last().html(e);
             $('#m-screening tbody tr img').last().attr('id', 'close-image-ms-'+e);
+            $('#count').append('<input type="hidden" id='+ e +' name="count[]" value='+ e +'>');
         }
         else {
             alert('allows only 20 months');

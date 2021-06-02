@@ -56,6 +56,7 @@ jQuery( document ).ready(function( $ ) {
             if($('#refer').val() == 'Resolved' || $('#refer').val() == 'Not resolved')
             {
                 $("#ntb-chair-text").text($("#refer").val());
+                $("#ntbmac-chair-modal").find('.modal__title').html($("#refer").val());
                 $("#ntbmac-chair-modal").find("input[name='status']").val($("#refer").val());
                 $("#ntbmac-chair-modal").modal('show');
             }

@@ -206,7 +206,7 @@
               <div class="modal__background" data-dismiss="modal"></div>
               <div class="modal__container">
                 <div class="modal__box">
-                  <h2 class="modal__title">Create recommendation</h2>
+                  <h2 class="modal__title"></h2>
                   <p class="modal__text">You are about to confirm and set this case to `<span id="ntb-chair-text"></span>` If you have additional remarks. enter them below.</p>
                   <form class="form form--full" method="POST" action="{{ route('enrolment.sendRecommendation')}}">
                   @csrf
