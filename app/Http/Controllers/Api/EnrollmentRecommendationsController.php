@@ -67,7 +67,7 @@ class EnrollmentRecommendationsController extends Controller
 
     private function healthWorkerRecommendation($tbMacForm, $request)
     {
-        if ($request['status'] === 'Not For Enrollment') {
+        if ($request['status'] === 'Not Enrolled') {
             $tbMacForm->status = $request['status'];
             $tbMacForm->save();
             $request['form_id'] = $tbMacForm->id;
@@ -181,7 +181,7 @@ class EnrollmentRecommendationsController extends Controller
             return 'required|in:For Enrollment,Not for Enrollment,Need Further Details,Referred to national';
         }
         if (auth()->user()->role_id === 3) {
-            return 'required|in:For Enrollment,Not For Enrollment';
+            return 'required|in:Enrolled,Not Enrolled';
         }
         if (auth()->user()->role_id === 7) {
             return 'nullable';
