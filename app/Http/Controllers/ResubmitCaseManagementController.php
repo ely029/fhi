@@ -50,18 +50,7 @@ class ResubmitCaseManagementController extends Controller
         }
         if (isset($request['attachments'])) {
             CaseManagementAttachments::where('form_id', $tbMacForm->id)->delete();
-            foreach ($request['attachments'] as $key => $file) {
-                if (! in_array($file->extension(), ['jpg','jpeg','pdf','JPG','JPEG','png','PNG'])) {
-                    continue;
-                }
-                $fileName = $file->getClientOriginalName();
-                $file->storeAs(CaseManagementAttachments::PATH_PREFIX.'/'.$tbMacForm->presentation_number, $fileName);
-                $tbMacForm->caseManagementAttachments()->create([
-                    'file_name' => $fileName,
-                    'extension' => $file->extension(),
-                    'form_id' => $tbMacForm->id,
-                ]);
-            }
+            $this->uploadAttachment($request, $tbMacForm);
         }
         $request['cxr_reading'] = $request['cxr_reading'] ?? null;
         unset($request['remarks']);
@@ -69,5 +58,21 @@ class ResubmitCaseManagementController extends Controller
         return redirect('case-management/show/'.$tbMacForm->id)->with([
             'alert.message' => 'Case Management resubmitted successfully.',
         ]);
+    }
+
+    private function uploadAttachment($request, $tbMacForm)
+    {
+        foreach ($request['attachments'] as $key => $file) {
+            if (! in_array($file->extension(), ['jpg','jpeg','pdf','JPG','JPEG','png','PNG'])) {
+                continue;
+            }
+            $fileName = $file->getClientOriginalName();
+            $file->storeAs(CaseManagementAttachments::PATH_PREFIX.'/'.$tbMacForm->presentation_number, $fileName);
+            $tbMacForm->caseManagementAttachments()->create([
+                'file_name' => $fileName,
+                'extension' => $file->extension(),
+                'form_id' => $tbMacForm->id,
+            ]);
+        }
     }
 }

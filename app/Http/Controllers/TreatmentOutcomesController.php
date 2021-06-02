@@ -61,17 +61,7 @@ class TreatmentOutcomesController extends Controller
         $tbMacForm->laboratoryResults()->create($request);
 
         if (isset($request['attachments'])) {
-            foreach ($request['attachments'] as $key => $file) {
-                if (! in_array($file->extension(), ['jpg','jpeg','pdf','JPG','JPEG','png','PNG'])) {
-                    continue;
-                }
-                $fileName = $file->getClientOriginalName();
-                $file->storeAs('private/treatment-outcomes/'.$tbMacForm->presentation_number, $fileName);
-                $tbMacForm->attachments()->create([
-                    'file_name' => $fileName,
-                    'extension' => $file->extension(),
-                ]);
-            }
+            $this->uploadAttachment($request, $tbMacForm);
         }
 
         $this->createScreenings($request, $tbMacForm);
@@ -266,5 +256,20 @@ class TreatmentOutcomesController extends Controller
             ->with('referredCases', $referredCases)
             ->with('completed', $completed)
             ->with('allCases', $allCases);
+    }
+
+    private function uploadAttachment($request, $tbMacForm)
+    {
+        foreach ($request['attachments'] as $key => $file) {
+            if (! in_array($file->extension(), ['jpg','jpeg','pdf','JPG','JPEG','png','PNG'])) {
+                continue;
+            }
+            $fileName = $file->getClientOriginalName();
+            $file->storeAs('private/treatment-outcomes/'.$tbMacForm->presentation_number, $fileName);
+            $tbMacForm->attachments()->create([
+                'file_name' => $fileName,
+                'extension' => $file->extension(),
+            ]);
+        }
     }
 }

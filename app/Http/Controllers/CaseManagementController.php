@@ -74,18 +74,7 @@ class CaseManagementController extends Controller
         }
 
         if (isset($request['attachments'])) {
-            foreach ($request['attachments'] as $key => $file) {
-                if (! in_array($file->extension(), ['jpg','jpeg','pdf','JPG','JPEG','png','PNG'])) {
-                    continue;
-                }
-                $fileName = $file->getClientOriginalName();
-                $file->storeAs(CaseManagementAttachments::PATH_PREFIX.'/'.$form->presentation_number, $fileName);
-                $form->caseManagementAttachments()->create([
-                    'file_name' => $fileName,
-                    'extension' => $file->extension(),
-                    'form_id' => $form->id,
-                ]);
-            }
+            $this->uploadAttachment($request, $form);
         }
 
         //LPA
@@ -120,6 +109,22 @@ class CaseManagementController extends Controller
     //         return \Storage::download($path, $fileName);
     //     }
     // }
+
+    private function uploadAttachment($request, $form)
+    {
+        foreach ($request['attachments'] as $key => $file) {
+            if (! in_array($file->extension(), ['jpg','jpeg','pdf','JPG','JPEG','png','PNG'])) {
+                continue;
+            }
+            $fileName = $file->getClientOriginalName();
+            $file->storeAs(CaseManagementAttachments::PATH_PREFIX.'/'.$form->presentation_number, $fileName);
+            $form->caseManagementAttachments()->create([
+                'file_name' => $fileName,
+                'extension' => $file->extension(),
+                'form_id' => $form->id,
+            ]);
+        }
+    }
 
     private function getHealthCareWorkerIndex($cases)
     {
