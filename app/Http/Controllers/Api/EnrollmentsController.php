@@ -147,7 +147,7 @@ class EnrollmentsController extends Controller
             'drug_susceptibility' => $tbMacForm->enrollmentForm->drug_susceptibility,
             'current_weight' => $tbMacForm->enrollmentForm->current_weight,
             'suggested_regimen' => $tbMacForm->enrollmentForm->suggested_regimen,
-            'itr_drugs' => Str::startsWith($tbMacForm->enrollmentForm->suggested_regimen, 'ITR') ? $tbMacForm->enrollmentForm->suggested_regimen : null,
+            'itr_drugs' => Str::startsWith($tbMacForm->enrollmentForm->suggested_regimen, 'ITR') ? $tbMacForm->enrollmentForm->itr_drugs : null,
             'regiment_notes' => $tbMacForm->enrollmentForm->regimen_notes,
             'clinical_status' => $tbMacForm->enrollmentForm->clinical_status,
             'vital_signs' => $tbMacForm->enrollmentForm->vital_signs,
