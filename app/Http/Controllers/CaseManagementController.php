@@ -74,7 +74,7 @@ class CaseManagementController extends Controller
         }
 
         if (isset($request['attachments'])) {
-            $this->createAttachment($request, $form);
+            $this->uploadAttachment($request, $form);
         }
 
         //LPA
@@ -102,7 +102,15 @@ class CaseManagementController extends Controller
         ]);
     }
 
-    private function createAttachment($request, $form)
+    // public function downloadAttachment(TBMacForm $tbMacForm, $fileName)
+    // {
+    //     $path = 'private/case-management/'.$tbMacForm->presentation_number.'/'.$fileName;
+    //     if (\Storage::exists($path)) {
+    //         return \Storage::download($path, $fileName);
+    //     }
+    // }
+
+    private function uploadAttachment($request, $form)
     {
         foreach ($request['attachments'] as $key => $file) {
             if (! in_array($file->extension(), ['jpg','jpeg','pdf','JPG','JPEG','png','PNG'])) {
@@ -117,14 +125,6 @@ class CaseManagementController extends Controller
             ]);
         }
     }
-
-    // public function downloadAttachment(TBMacForm $tbMacForm, $fileName)
-    // {
-    //     $path = 'private/case-management/'.$tbMacForm->presentation_number.'/'.$fileName;
-    //     if (\Storage::exists($path)) {
-    //         return \Storage::download($path, $fileName);
-    //     }
-    // }
 
     private function getHealthCareWorkerIndex($cases)
     {

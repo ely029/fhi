@@ -38,7 +38,7 @@ class ResubmitTreatmentOutcomeController extends Controller
         }
 
         if (isset($request['attachments'])) {
-            $this->createAttachment($request, $tbMacForm);
+            $this->uploadAttachment($request, $tbMacForm);
         }
         $tbMacForm->treatmentOutcomeBacteriologicalResults()->delete();
         $this->createScreenings($request, $tbMacForm);
@@ -48,21 +48,6 @@ class ResubmitTreatmentOutcomeController extends Controller
         return redirect('treatment-outcomes/'.$tbMacForm->id)->with([
             'alert.message' => 'Treatment outcome resubmitted successfully.',
         ]);
-    }
-
-    private function createAttachment($request, $tbMacForm)
-    {
-        foreach ($request['attachments'] as $key => $file) {
-            if (! in_array($file->extension(), ['jpg','jpeg','pdf','JPG','JPEG','png','PNG'])) {
-                continue;
-            }
-            $fileName = $file->getClientOriginalName();
-            $file->storeAs('private/treatment-outcomes/'.$tbMacForm->presentation_number, $fileName);
-            $tbMacForm->attachments()->create([
-                'file_name' => $fileName,
-                'extension' => $file->extension(),
-            ]);
-        }
     }
 
     private function createScreenings($request, $tbMacForm)
@@ -126,6 +111,21 @@ class ResubmitTreatmentOutcomeController extends Controller
                 Storage::delete($path);
             }
             $tbMacForm->attachments()->where('file_name', $toRemove)->delete();
+        }
+    }
+
+    private function uploadAttachment($request, $tbMacForm)
+    {
+        foreach ($request['attachments'] as $key => $file) {
+            if (! in_array($file->extension(), ['jpg','jpeg','pdf','JPG','JPEG','png','PNG'])) {
+                continue;
+            }
+            $fileName = $file->getClientOriginalName();
+            $file->storeAs('private/treatment-outcomes/'.$tbMacForm->presentation_number, $fileName);
+            $tbMacForm->attachments()->create([
+                'file_name' => $fileName,
+                'extension' => $file->extension(),
+            ]);
         }
     }
 }

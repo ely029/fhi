@@ -49,7 +49,8 @@ class ResubmitCaseManagementController extends Controller
             $caseManagementBactResult->monthDSTCreation($screen, $eee, $request, $tbMacForm);
         }
         if (isset($request['attachments'])) {
-            $this->createAttachments($request, $tbMacForm);
+            CaseManagementAttachments::where('form_id', $tbMacForm->id)->delete();
+            $this->uploadAttachment($request, $tbMacForm);
         }
         $request['cxr_reading'] = $request['cxr_reading'] ?? null;
         unset($request['remarks']);
@@ -59,9 +60,8 @@ class ResubmitCaseManagementController extends Controller
         ]);
     }
 
-    private function createAttachments($request, $tbMacForm)
+    private function uploadAttachment($request, $tbMacForm)
     {
-        CaseManagementAttachments::where('form_id', $tbMacForm->id)->delete();
         foreach ($request['attachments'] as $key => $file) {
             if (! in_array($file->extension(), ['jpg','jpeg','pdf','JPG','JPEG','png','PNG'])) {
                 continue;

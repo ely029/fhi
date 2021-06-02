@@ -71,7 +71,7 @@ class EnrollmentRegimentController extends Controller
         $tbMacForm->laboratoryResults()->create($request);
 
         if (isset($request['attachments'])) {
-            $this->createAttachment($request, $tbMacForm);
+            $this->uploadAttachment($request, $tbMacForm);
         }
 
         foreach (BacteriologicalResult::LABEL as $status => $label) {
@@ -119,7 +119,7 @@ class EnrollmentRegimentController extends Controller
     //     }
     // }
 
-    private function createAttachment($request, $tbMacForm)
+    private function uploadAttachment($request, $tbMacForm)
     {
         foreach ($request['attachments'] as $key => $file) {
             if (! in_array($file->extension(), ['jpg','jpeg','pdf','JPG','JPEG','png','PNG'])) {
