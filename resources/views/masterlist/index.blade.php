@@ -49,7 +49,7 @@
       <h2 class="section__heading">Showing results for {{ $firstDayofPreviousMonth }} - {{ $lastDayofPreviousMonth }}</h2>
       @endif
         
-        <table id="masterlist" class="table table--filter js-table">
+        <table id="masterlist" class="table table--filter js-table-feedback">
           <thead>
             <tr>
               <th class="table__head">Presentation no.</th>

@@ -102,7 +102,7 @@ class EnrollmentResubmitController extends Controller
             'cxr_date' => $cxr_date,
             'cxr_result' => $cxr_result,
             'cxr_reading' => $tbMacForm->laboratoryResults->cxr_readings,
-            'cxr_reading_other' => $tbMacForm->laboratoryResults->cxr_reading_other,
+            'cxr_reading_other' => ! isset($tbMacForm->laboratoryResults->cxr_reading_other) ? null : $tbMacForm->laboratoryResults->cxr_reading_other,
             'remarks' => $remarks,
             'birthday' => $birthday,
             'suggested_itr' => $suggested_itr,

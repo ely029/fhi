@@ -1,7 +1,7 @@
 jQuery('document').ready(function($){
-    $('#masterlist').on('click', 'tbody tr.sec', function(e){
+    $('#masterlist span').on('click', function(e){
         //var e = $(this).index('td.remarks');
-        var e = $(this).index();
+        var e = $(this).closest('tr').index();
          var form_id = $('#masterlist tr input#form_id:eq('+ e +')').val();
          var remarks = $('#masterlist tr input#sec_remarks:eq('+ e +')').val();
          $('#sec_remarks_modal textarea').val(remarks);
