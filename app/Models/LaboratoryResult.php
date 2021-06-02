@@ -74,14 +74,6 @@ class LaboratoryResult extends Model
         'cxr_date',
     ];
 
-    public function getCxrReadingOtherAttribute()
-    {
-        $readings = collect($this->cxr_reading)->filter(function ($item) {
-            return Str::startsWith($item, 'Other');
-        })->first();
-        return $readings ? substr($readings, 6) : null;
-    }
-
     public function getCxrReadingsAttribute()
     {
         $readings = collect($this->cxr_reading)->filter(function ($item) {
