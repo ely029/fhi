@@ -72,6 +72,9 @@ class EnrollmentRegimentController extends Controller
 
         if (isset($request['attachments'])) {
             foreach ($request['attachments'] as $key => $file) {
+                if (! in_array($file->extension(), ['jpg','jpeg','pdf','JPG','JPEG','png','PNG'])) {
+                    continue;
+                }
                 $fileName = $file->getClientOriginalName();
                 $file->storeAs(TBMacFormAttachment::PATH_PREFIX.'/'.$tbMacForm->presentation_number, $fileName);
                 $tbMacForm->attachments()->create([

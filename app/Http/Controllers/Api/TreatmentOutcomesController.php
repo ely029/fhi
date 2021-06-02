@@ -184,6 +184,7 @@ class TreatmentOutcomesController extends Controller
         $storeRequest = new StoreRequest();
         $rules = $storeRequest->rules();
         $rules['monthly_screenings'] = 'required';
+        $rules['attachments.*'] = 'nullable|file|mimes:jpeg,png,svg,pdf|max:10000';
         return $rules;
     }
 

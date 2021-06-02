@@ -51,6 +51,9 @@ class ResubmitCaseManagementController extends Controller
         if (isset($request['attachments'])) {
             CaseManagementAttachments::where('form_id', $tbMacForm->id)->delete();
             foreach ($request['attachments'] as $key => $file) {
+                if (! in_array($file->extension(), ['jpg','jpeg','pdf','JPG','JPEG','png','PNG'])) {
+                    continue;
+                }
                 $fileName = $file->getClientOriginalName();
                 $file->storeAs(CaseManagementAttachments::PATH_PREFIX.'/'.$tbMacForm->presentation_number, $fileName);
                 $tbMacForm->caseManagementAttachments()->create([
