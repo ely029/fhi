@@ -158,7 +158,7 @@ class EnrollmentResubmitController extends Controller
 
         foreach (BacteriologicalResult::LABEL as $status => $label) {
             if (isset($request[$status])) {
-                $this->createBacteriologicalStatus($request, $tbMacForm, $status);
+                $this->createBacteriologicalStatus($request, $status, $tbMacForm);
             }
         }
         return response()->json('Enrollment Resubmitted Successfully', 200);
@@ -201,14 +201,15 @@ class EnrollmentResubmitController extends Controller
         ];
     }
 
-    private function createBacteriologicalStatus($request, $tbMacForm, $status)
+    private function createBacteriologicalStatus($request, $status, $tbMacForm)
     {
-        foreach ($request[$status] as $key => $type) {
+        foreach (json_decode($request[$status]) as $item) {
+            $item = (array) $item;
             $tbMacForm->bacteriologicalResults()->create([
-                'type' => $status === 'others' ? 'Others-'.$request['others-specify'][$key] : $type,
-                'date_collected' => $request[$type.'-date_collected'][$key],
-                'name_of_laboratory' => $request[$type.'-name_of_laboratory'][$key],
-                'result' => $type === 'lpa' ? json_encode($request[$type.'-'.$key.'-result']) : $request[$type.'-result'][$key],
+                'type' => $status === 'others' ? 'Others-'.$item['specify'] : $status,
+                'date_collected' => $item['date_collected'],
+                'name_of_laboratory' => $item['name_of_laboratory'],
+                'result' => $status === 'lpa' ? json_encode($item['result']) : $item['result'],
             ]);
         }
     }
