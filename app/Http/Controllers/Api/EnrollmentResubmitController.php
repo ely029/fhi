@@ -101,7 +101,7 @@ class EnrollmentResubmitController extends Controller
             'hispathological_result' => $histhopathological_result,
             'cxr_date' => $cxr_date,
             'cxr_result' => $cxr_result,
-            'cxr_reading' => $tbMacForm->laboratoryResults->cxr_readings,
+            'cxr_reading' => ! isset($tbMacForm->laboratoryResults->cxr_readings) ? [] : $tbMacForm->laboratoryResults->cxr_readings,
             'cxr_reading_other' => ! isset($tbMacForm->laboratoryResults->cxr_reading_other) ? null : $tbMacForm->laboratoryResults->cxr_reading_other,
             'remarks' => $remarks,
             'birthday' => $birthday,
