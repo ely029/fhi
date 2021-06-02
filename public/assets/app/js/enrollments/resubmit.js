@@ -365,14 +365,17 @@ jQuery( document ).ready(function( $ ) {
         $("select[name='dst-result[]']")
             .map(function(key) {
                 if(dst[key]){
-                    if(dst[key].result.startsWith('OTHERS')){
+                    let options = [];
+                    $("option", this).each(function(key, value){
+                        options.push(value.value);
+                    });
+                    if(!options.includes(dst[key].result)){
                         $(this).val('Other (please specify)');
 
                         $(this).trigger('change');
 
                         $(this).parent().find('.dst-other').val(dst[key].result);
                         return;
-                      
                     }
                     return $(this).val(dst[key].result);
                 }

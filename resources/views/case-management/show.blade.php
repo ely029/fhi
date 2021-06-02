@@ -348,7 +348,7 @@
               <div class="form__container">
                 <h2 class="section__heading">Regimen information</h2>
                 <div class="grid grid--two">
-                  <div class="form__content"><span class="form__text">{{ $tbMacForm->patient->facility_code }}</span><label class="form__label" for="">Facility code</label></div>
+                  <div class="form__content"><span class="form__text">{{ $tbMacForm->patient->facility_code }}</span><label class="form__label" for="">Health facility</label></div>
                   <div class="form__content"><span class="form__text">{{ empty($tbMacForm->caseManagementForm->current_weight) ? '' : $tbMacForm->caseManagementForm->current_weight }}kg</span><label class="form__label" for="">Current weight</label></div>
                 </div>
                 <div class="grid grid--two">
