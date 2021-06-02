@@ -50,8 +50,7 @@
     </div>
   </div>
 </div>
-
-</div>
+@endsection
 @section('additional_scripts')
 <script src="{{ asset('assets/app/js/feedbacks.js') }}"></script>
 @endsection

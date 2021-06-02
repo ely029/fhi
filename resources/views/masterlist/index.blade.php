@@ -106,7 +106,7 @@
             @endif
             <td class="table__details">C-{{ empty($details->presentation_number) ? '' : $details->presentation_number }}</td>
               <td class="table__details">{{ $initials }}    {{ $age }}   {{ $gender }}</td>
-              <td class="table__details">Enrollment</td>
+              <td class="table__details">Case Management</td>
               <td class="table__details">{{ empty($details->recom_status) ? '' : $details->recom_status }}</td>
               <td class="table__details">{{ $details->header_status }}</td>
               <td class="table__details">{{date('m-d-Y', strtotime( $details->updated_at )) }}</td>
@@ -137,7 +137,7 @@
             @endif
             <td class="table__details">T-{{ empty($details->presentation_number) ? '' : $details->presentation_number }}</td>
               <td class="table__details">{{ $initials }}    {{ $age }}   {{ $gender }}</td>
-              <td class="table__details">Enrollment</td>
+              <td class="table__details">Treatment Outcome</td>
               <td class="table__details">{{ empty($details->recom_status) ? '' : $details->recom_status }}</td>
               <td class="table__details">{{ $details->header_status }}</td>
               <td class="table__details">{{date('m-d-Y', strtotime( $details->updated_at )) }}</td>
