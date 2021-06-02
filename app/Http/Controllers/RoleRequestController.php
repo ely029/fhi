@@ -32,6 +32,9 @@ class RoleRequestController extends Controller
 
         // if selected role is one of already approved roles, let them pass
         if ($approvedRoles && in_array($request->role_id, $approvedRoles)) {
+            auth()->user()->update([
+                'has_chosen_role' => true,
+            ]);
             return redirect('enrollments');
         }
 
