@@ -103,4 +103,22 @@ jQuery( document ).ready(function( $ ) {
         $("#treatment-outcome-form").submit();
     });
 
+    $("#treatment-outcome-form").submit(function(){
+        $(".hasDatepicker")
+            .map(function(key) {
+                if($(this).val()){
+                    var d = new Date($(this).val());
+                   
+                    newFormat = [
+                        d.getFullYear(),
+                        ('0' + (d.getMonth() + 1)).slice(-2),
+                        ('0' + d.getDate()).slice(-2)
+                      ].join('-');
+                      $(this).val(newFormat);
+                }
+        });
+
+        $('.button--next').prop('disabled', true);
+    });
+
   });

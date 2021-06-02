@@ -47,7 +47,7 @@ class StoreRequest extends FormRequest
             'histopathological_date' => 'nullable|date_format:Y-m-d',
             'histopathological_result' => 'nullable|max:255',
             'remarks' => 'required|max:1000',
-            'attachments.*' => 'nullable|file|mimes:jpeg,png,svg,pdf|max:10000',
+            'attachments.*' => 'nullable|file|max:10000',
             'outcome' => 'required|in:Cured,Treatment Completed,Failed,Lost to Follow-up,Died,Excluded',
             'screening_1_date_collected' => 'required|date_format:Y-m-d',
             'screening_1_method_used' => 'required|in:Xpert MTB/RIF,Xpert MTB/RIF ULTRA,Truenat TB',

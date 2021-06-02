@@ -60,6 +60,7 @@ class LaboratoryResult extends Model
         'histopathological_result',
         'cxr_date','cxr_reading','cxr_result',
         'remarks',
+        'cxr_reading_other',
     ];
 
     protected $casts = [
@@ -72,14 +73,6 @@ class LaboratoryResult extends Model
         'histopathological_date',
         'cxr_date',
     ];
-
-    public function getCxrReadingOtherAttribute()
-    {
-        $readings = collect($this->cxr_reading)->filter(function ($item) {
-            return Str::startsWith($item, 'Other');
-        })->first();
-        return $readings ? substr($readings, 6) : null;
-    }
 
     public function getCxrReadingsAttribute()
     {
