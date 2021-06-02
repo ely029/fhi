@@ -53,7 +53,8 @@ class EnrollmentResubmitController extends Controller
         $drug_susceptibility = ! isset($tbMacForm->enrollmentForm->drug_susceptibility) ? '' : $tbMacForm->enrollmentForm->drug_susceptibility;
         $current_weight = ! isset($tbMacForm->enrollmentForm->current_weight) ? '' : $tbMacForm->enrollmentForm->current_weight;
         $suggested_regimen = ! isset($tbMacForm->enrollmentForm->suggested_regimen) ? '' : $tbMacForm->enrollmentForm->suggested_regimen;
-        $suggedted_others = Str::startsWith($tbMacForm->enrollmentForm->suggested_regimen, 'Other') ? substr($tbMacForm->enrollmentForm->suggested_regimen, strpos($tbMacForm->enrollmentForm->suggested_regimen, '-') + 1) : '';
+        //$suggedted_others = Str::startsWith($tbMacForm->enrollmentForm->suggested_regimen, 'Other') ? substr($tbMacForm->enrollmentForm->suggested_regimen, strpos($tbMacForm->enrollmentForm->suggested_regimen, '-') + 1) : '';
+        $suggedted_others = Str::startsWith($tbMacForm->enrollmentForm->suggested_regimen, 'Other') ? $tbMacForm->enrollmentForm->suggested_regimen_others : '';
         $suggested_itr = Str::startsWith($tbMacForm->enrollmentForm->suggested_regimen, 'ITR') ? $tbMacForm->enrollmentForm->itr_drugs : '';
         $regimen_notes = ! isset($tbMacForm->enrollmentForm->regimen_notes) ? '' : $tbMacForm->enrollmentForm->regimen_notes;
         $clinical_status = ! isset($tbMacForm->enrollmentForm->clinical_status) ? '' : $tbMacForm->enrollmentForm->clinical_status;
@@ -106,7 +107,7 @@ class EnrollmentResubmitController extends Controller
             'remarks' => $remarks,
             'birthday' => $birthday,
             'suggested_itr' => $suggested_itr,
-            'suggested_others' => $suggedted_others,
+            'suggested_regimen_others' => $suggedted_others,
             'dst_from_other_lab' => $dstFromOtherLab,
         ];
 

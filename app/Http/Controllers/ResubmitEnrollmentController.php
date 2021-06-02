@@ -47,17 +47,7 @@ class ResubmitEnrollmentController extends Controller
         }
 
         if (isset($request['attachments'])) {
-            foreach ($request['attachments'] as $key => $file) {
-                if (! in_array($file->extension(), ['jpg','jpeg','pdf','JPG','JPEG','png','PNG'])) {
-                    continue;
-                }
-                $fileName = $file->getClientOriginalName();
-                $file->storeAs(TBMacFormAttachment::PATH_PREFIX.'/'.$tbMacForm->presentation_number, $fileName);
-                $tbMacForm->attachments()->create([
-                    'file_name' => $fileName,
-                    'extension' => $file->extension(),
-                ]);
-            }
+            $this->createAttachment($request, $tbMacForm);
         }
 
         $tbMacForm->bacteriologicalResults()->delete();
@@ -70,6 +60,21 @@ class ResubmitEnrollmentController extends Controller
         return redirect('enrollments/'.$tbMacForm->id)->with([
             'alert.message' => 'Enrollment resubmitted successfully.',
         ]);
+    }
+
+    private function createAttachment($request, $tbMacForm)
+    {
+        foreach ($request['attachments'] as $key => $file) {
+            if (! in_array($file->extension(), ['jpg','jpeg','pdf','JPG','JPEG','png','PNG'])) {
+                continue;
+            }
+            $fileName = $file->getClientOriginalName();
+            $file->storeAs(TBMacFormAttachment::PATH_PREFIX.'/'.$tbMacForm->presentation_number, $fileName);
+            $tbMacForm->attachments()->create([
+                'file_name' => $fileName,
+                'extension' => $file->extension(),
+            ]);
+        }
     }
 
     private function createBacteriologicalStatus($request, $tbMacForm, $status)

@@ -71,17 +71,7 @@ class EnrollmentRegimentController extends Controller
         $tbMacForm->laboratoryResults()->create($request);
 
         if (isset($request['attachments'])) {
-            foreach ($request['attachments'] as $key => $file) {
-                if (! in_array($file->extension(), ['jpg','jpeg','pdf','JPG','JPEG','png','PNG'])) {
-                    continue;
-                }
-                $fileName = $file->getClientOriginalName();
-                $file->storeAs(TBMacFormAttachment::PATH_PREFIX.'/'.$tbMacForm->presentation_number, $fileName);
-                $tbMacForm->attachments()->create([
-                    'file_name' => $fileName,
-                    'extension' => $file->extension(),
-                ]);
-            }
+            $this->createAttachment($request, $tbMacForm);
         }
 
         foreach (BacteriologicalResult::LABEL as $status => $label) {
@@ -128,6 +118,21 @@ class EnrollmentRegimentController extends Controller
     //         return \Storage::download($path, $fileName);
     //     }
     // }
+
+    private function createAttachment($request, $tbMacForm)
+    {
+        foreach ($request['attachments'] as $key => $file) {
+            if (! in_array($file->extension(), ['jpg','jpeg','pdf','JPG','JPEG','png','PNG'])) {
+                continue;
+            }
+            $fileName = $file->getClientOriginalName();
+            $file->storeAs(TBMacFormAttachment::PATH_PREFIX.'/'.$tbMacForm->presentation_number, $fileName);
+            $tbMacForm->attachments()->create([
+                'file_name' => $fileName,
+                'extension' => $file->extension(),
+            ]);
+        }
+    }
     private function healthWorkerRecommendation($request)
     {
         $tbMacForm = TBMacForm::find($request['form_id']);

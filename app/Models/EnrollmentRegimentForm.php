@@ -64,5 +64,6 @@ class EnrollmentRegimentForm extends Model
         'diag_and_lab_findings',
         'itr_drugs',
         'sec_remarks',
+        'suggested_regimen_others',
     ];
 }
