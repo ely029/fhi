@@ -99,12 +99,7 @@ class UsersController extends Controller
         $user->delete();
 
         return redirect('dashboard/users')->with([
-            'alert.context' => $context = 'warning',
-            'alert.title' => trans("boilerplate.alert.{$context}.title"),
-            'alert.message' => trans("boilerplate.alert.{$context}.message", [
-                'action' => trans('boilerplate.actions.deleted'),
-                'object' => trans('boilerplate.objects.user'),
-            ]),
+            'alert.message' => 'Admin successfully deleted',
         ]);
     }
 }
