@@ -127,7 +127,7 @@ class EnrollmentsController extends Controller
                 'role' => $item->users->role->name,
                 'role_id' => $item->role_id,
                 'date_created' => $item->created_at->format('m-d-Y'),
-                'status' => $item->status === '0' ? '' : $item->status,
+                'status' => $item->status === '0' ? 'Referred to National Chair' : $item->status,
                 'recommendation' => $item->recommendation,
             ];
         });
