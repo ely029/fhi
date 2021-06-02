@@ -60,6 +60,7 @@ class LaboratoryResult extends Model
         'histopathological_result',
         'cxr_date','cxr_reading','cxr_result',
         'remarks',
+        'cxr_reading_other',
     ];
 
     protected $casts = [
