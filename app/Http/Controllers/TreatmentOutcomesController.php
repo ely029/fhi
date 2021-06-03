@@ -221,7 +221,7 @@ class TreatmentOutcomesController extends Controller
     private function getNationalTBMacIndex($cases)
     {
         $referredCases = $cases->filter(function ($item) {
-            return $item->status === 'Referred to N-TB MAC';
+            return $item->status === 'Referred to national';
         });
 
         $allCases = $cases->filter(function ($item) {
