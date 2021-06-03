@@ -73,7 +73,7 @@
                 <select id="refer" class="form__input form__input--select">
                   <option value="3">Recommend not for enrollment</option>
                   <option value="4">Recommend for enrollment</option>
-                  <option value="5">Recommend for need further details</option>
+                  <option value="recommend_further_details">Recommend for need further details</option>
                 </select>
                 <div class="triangle triangle--down"></div>
                 <label class="form__label" for="">Action</label>

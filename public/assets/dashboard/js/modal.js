@@ -23,7 +23,7 @@ jQuery( document ).ready(function( $ ) {
             }
 
             if ($('#refer').val() == '5') {
-                $('#recommend-need-further-details').modal('show');
+                $('#need-further-details').modal('show');
             }
 
             if ($('#refer').val() == '6') {
@@ -51,6 +51,10 @@ jQuery( document ).ready(function( $ ) {
             // for resubmit enrollment option
             if($('#refer').val() == 'Resubmit Enrollment') {
                 $("#resubmit-enrollment-modal").modal('show');
+            }
+
+            if ($('#refer').val() == 'recommend_further_details') {
+                $('#recommend-need-further-details').modal('show');
             }
 
             if($('#refer').val() == 'Resolved' || $('#refer').val() == 'Not resolved')

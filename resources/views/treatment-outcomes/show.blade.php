@@ -168,7 +168,7 @@
               @endif
 
               {{-- National TB Mac Chair --}}
-                @if(auth()->user()->role_id == 7  && request('from_tab') == 'Referred to N-TB MAC')
+                @if(auth()->user()->role_id == 7  && request('from_tab') == 'Referred to national')
                 <div class="grid grid--action">
                   <div class="form__content">
                     <label class="form__label" for="">Action</label>
