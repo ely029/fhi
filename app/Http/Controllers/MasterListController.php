@@ -62,6 +62,8 @@ class MasterListController extends Controller
     public function filter()
     {
         $request = request()->all();
+        $firstDay = Carbon::now()->firstOfMonth()->format('Y-m-d');
+        $lastDay = Carbon::now()->lastOfMonth()->format('Y-m-d');
         $caseManagement = DB::table('tb_mac_forms')
             ->join('recommendation', 'tb_mac_forms.id', 'recommendation.form_id')
             ->join('patients', 'patients.id', 'tb_mac_forms.patient_id')
@@ -70,7 +72,7 @@ class MasterListController extends Controller
             ->where('tb_mac_forms.form_type', 'case_management')
             ->whereIn('tb_mac_forms.status', ['Resolved', 'Not Resolved'])
             ->whereIn('recommendation.status', ['Approved', 'Other suggestions', 'Need Further Details', 'Referred to N-TB MAC'])
-            ->whereBetween('tb_mac_forms.created_at', [date('Y-m-d', strtotime($request['date_from'])) ?? null, date('Y-m-d', strtotime($request['date_to'])) ?? null])
+            ->whereBetween('tb_mac_forms.created_at', [date('Y-m-d', ! isset($request['date_from']) ? strtotime($firstDay) : strtotime($request['date_from'])), date('Y-m-d', ! isset($request['date_to']) ? strtotime($lastDay) : strtotime($request['date_to']))])
             ->orderByDesc('tb_mac_forms.id')
             ->get();
         $treatmentOutcome = DB::table('tb_mac_forms')
@@ -82,7 +84,7 @@ class MasterListController extends Controller
             ->where('tb_mac_forms.form_type', 'treatment_outcome')
             ->whereIn('tb_mac_forms.status', ['Resolved', 'Not Resolved'])
             ->whereIn('recommendation.status', ['Approved', 'Other suggestions', 'Need Further Details', 'Referred to N-TB MAC'])
-            ->whereBetween('tb_mac_forms.created_at', [date('Y-m-d', strtotime($request['date_from'])) ?? null, date('Y-m-d', strtotime($request['date_to'])) ?? null])
+            ->whereBetween('tb_mac_forms.created_at', [date('Y-m-d', ! isset($request['date_from']) ? strtotime($firstDay) : strtotime($request['date_from'])), date('Y-m-d', ! isset($request['date_to']) ? strtotime($lastDay) : strtotime($request['date_to']))])
             ->orderByDesc('tb_mac_forms.id')
             ->get();
         $enrollment = DB::table('tb_mac_forms')
@@ -96,7 +98,7 @@ class MasterListController extends Controller
             ->whereIn('recommendation.status', ['For enrollment', 'Not for Enrollment', 'Need Further Details', 'Referred to N-TB MAC'])
             ->Where('recommendation.role_id', 6)
             ->where('tb_mac_forms.role_id', 3)
-            ->whereBetween('tb_mac_forms.created_at', [date('Y-m-d', strtotime($request['date_from'])) ?? null, date('Y-m-d', strtotime($request['date_to'])) ?? null])
+            ->whereBetween('tb_mac_forms.created_at', [date('Y-m-d', ! isset($request['date_from']) ? strtotime($firstDay) : strtotime($request['date_from'])), date('Y-m-d', ! isset($request['date_to']) ? strtotime($lastDay) : strtotime($request['date_to']))])
             ->orderBy('tb_mac_forms.id', 'asc')
             ->get();
         return view('masterlist.index')

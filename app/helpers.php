@@ -367,7 +367,7 @@ function caseManagementRecommendationStatus()
         3 => 'required|in:Resolved,Not Resolved, Resubmit Case Management',
         4 => 'required|in:Referred to Regional,Not for Referral,Need Further Details',
         5 => 'required|in:Recommended for Approval,Recommended for other suggestions,Recommended for need further details',
-        6 => 'required|in:For approval,Other suggestions,Need Further Details,Referred to national',
+        6 => 'required|in:Approved,Other suggestions,Need Further Details,Referred to national',
         7 => 'required|in:Referred to National Chair',
         8 => 'nullable|in:Resolved,Not resolved',
     ];
@@ -401,7 +401,7 @@ function treatmentOutcomeStatus()
         3 => 'required|in:Resolved,Not Resolved',
         4 => 'required|in:Referred to Regional,Not for Referral,Need Further Details',
         5 => 'required|in:Recommended for Approval,Recommended for other suggestions,Recommended for need further details',
-        6 => 'required|in:For approval,Other suggestions,Need Further Details,Referred to national',
+        6 => 'required|in:Approved,Other suggestions,Need Further Details,Referred to national',
         7 => 'required|in:Referred to National Chair',
         8 => 'nullable|in:Resolved,Not resolved',
     ];
