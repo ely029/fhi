@@ -353,7 +353,7 @@ function roleNameById()
 function enrollmentFormTabs()
 {
     return [
-        'with_recommendations' => ['For Enrollment','Not for Referral','Not For Enrollment','Need Further Details','Referred to national'],
+        'with_recommendations' => ['For Enrollment','Not For Enrollment','Need Further Details','Referred to national'],
         'completed' => ['For Enrollment','Not For Enrollment','Need Further Details'],
         'all_enrollments' => ['New Enrollment','Referred to Regional'],
         'all_enrollments_ntb_chair' => ['For Enrollment','Not For Enrollment','Need Further Details','Referred to regional chair'],

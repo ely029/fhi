@@ -345,7 +345,7 @@ class EnrollmentRegimentController extends Controller
         });
 
         $withRecommendations = $enrollments->filter(function ($item) {
-            return in_array($item->status, ['For Enrollment','Not for Referral','Not For Enrollment','Need Further Details','Referred to national']);
+            return in_array($item->status, ['For Enrollment','Not For Enrollment','Need Further Details','Referred to national']);
         });
 
         $completed = $enrollments->filter(function ($item) {
