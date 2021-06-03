@@ -40,7 +40,7 @@
             <td class="table__details">Screening 2</td>
             <td class="table__details form-group">
             <div class="help-block with-errors"></div>
-            <input class="form__input form__input--full" type="date" name=""/></td>
+            <input class="form__input form__input--full" id="screening_2_date" type="date" name=""/></td>
             <td class="table__details">
             <div class="form__content">
                 <select id="rest_pattern_2" class="form__input form__input--select form__input--full" name="">

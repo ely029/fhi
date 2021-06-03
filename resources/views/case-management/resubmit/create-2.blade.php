@@ -53,7 +53,7 @@
             <td class="table__details">Screening 2</td>
             <td class="table__details form-group">
             <div class="help-block with-errors"></div>
-            <input class="form__input form__input--full" type="date" value="{{ $screenTwo ? $screenTwo->date_collected->format('Y-m-d') : ''}}" name="date_collected_screening_2" /></td>
+            <input class="form__input form__input--full" type="date" id="screening_2_date" value="{{ $screenTwo ? $screenTwo->date_collected->format('Y-m-d') : ''}}" name="date_collected_screening_2" /></td>
             <td class="table__details">
             <div class="form__content">
                 <select id="rest_pattern_2" class="form__input form__input--select form__input--full" name="ressitance_pattern_screening_2">

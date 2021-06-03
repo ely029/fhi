@@ -92,7 +92,7 @@ let removeTd = '<td><button class="button button--transparent remove-monthly-scr
 
     $(document).on('click', '#remove-screening', function(){
         $(".screening-2").hide();
-        $(".screening-2").find('input[type="date"]').removeAttr('name').removeAttr('required');
+        $(".screening-2").find('#screening_2_date').removeAttr('name').removeAttr('required');
         $("#rest_pattern_2").removeAttr('name').removeAttr('required');
         $("#method_used_2").removeAttr('name').removeAttr('required');
         let buttonAdd = '<button class="button button--transparent button--add" id="add-screening" type="button">Add more</button>';
