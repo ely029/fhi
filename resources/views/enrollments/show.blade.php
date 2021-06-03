@@ -120,7 +120,7 @@
               <button id="refer-button" class="button button--masterlist js-trigger" type="button">Confirm</button>
             </div>
             @endif
-            @if (auth()->user()->role_id == 3 && ($tbMacForm->status == 'Not For Referral' || $tbMacForm->status == 'Need Further Details' || $tbMacForm->status == 'Other suggestions'))
+            @if (auth()->user()->role_id == 3 && in_array($tbMacForm->status, ['Not For Referral','Need Further Details','Other suggestions','For Enrollment','Not For Enrollment']))
             <div class="grid grid--action">
               <div class="form__content">
                 <select id="refer" class="form__input form__input--select">
