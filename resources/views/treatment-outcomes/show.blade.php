@@ -151,7 +151,7 @@
               @endif
 
               {{-- Regional TB Mac Chair --}}
-              @if(auth()->user()->role_id == 6 && (request('from_tab') == 'Referred to Regional Chair' || request('from_tab') == 'Referred back to Regional Chair'))
+              @if(auth()->user()->role_id == 6 && (in_array(request('from_tab'), ['Referred to Regional Chair','Referred back to Regional Chair','Referred back to regional chair'])))
                   <div class="grid grid--action">
                       <div class="form__content">
                           <select id="action-dropdown" class="form__input form__input--select" style="width:62%;">
