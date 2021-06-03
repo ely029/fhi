@@ -58,7 +58,7 @@
               <h2 class="modal__title">We did not find a match</h2>
               <p class="modal__text">Please make sure TB Case Number and Last name are correct.</p>
               <div class="modal__button">
-                <a href="{{ url('treatment-outcomes') }}" class="button button--transparent-close" data-dismiss="modal">Cancel</a>
+                <a href="{{ url('treatment-outcomes') }}" class="button button--transparent" data-dismiss="modal">Cancel</a>
                 <input class="button" type="button" value="Proceed manually" id="proceedManually"/>
               </div>
             </div>
