@@ -134,12 +134,12 @@
                 </div>
             </div>
 
-            <div class="modal" id="need-further-details" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal" id="recommend-need-further-details" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal__background" data-dismiss="modal"></div>
                 <div class="modal__container">
                   <div class="modal__box">
-                    <h2 class="modal__title">Need further details</h2>
-                    <p class="modal__text">You are about to decline and set this case to 'Need further details' If you have additional remarks. enter them below.</p>
+                    <h2 class="modal__title">Recommend for need further details</h2>
+                    <p class="modal__text">You are about to decline and set this case to 'Recommend for need further details' If you have additional remarks. enter them below.</p>
                     <form class="form form--full" method="POST" action="{{ route('enrolment.sendRecommendation')}}">
                     @csrf
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
@@ -151,7 +151,7 @@
                 </div>
             </div>
 
-            <div class="modal" id="rs-need-further-details" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal" id="need-further-details" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal__background" data-dismiss="modal"></div>
               <div class="modal__container">
                 <div class="modal__box">
