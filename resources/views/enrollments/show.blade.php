@@ -415,7 +415,7 @@
                   </span><label class="form__label form__label--green">Action</label></div>
                 </div>
                 <span class="form__text">
-                  {{$recommendation->recommendation == 0 ? 'Referred to National Chair' :  $recommendation->recommendation }}
+                  {{$recommendation->recommendation }}
                 </span>
               </div>
             </div>
