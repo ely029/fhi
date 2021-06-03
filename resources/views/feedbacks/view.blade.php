@@ -8,7 +8,7 @@
         <div class="section__top">
           <div class="section__top-text">
           <h1 class="section__title">Feedback</h1>
-          <div class="breadcrumbs"><a class="breadcrumbs__link" href="feedback.html">Feedback</a><a class="breadcrumbs__link">Feedback message</a><a class="breadcrumbs__link"></a></div>
+          <div class="breadcrumbs"><a class="breadcrumbs__link" href="{{ url('admin/feedbacks') }}">Feedback</a><a class="breadcrumbs__link">Feedback message</a><a class="breadcrumbs__link"></a></div>
           </div>
           
         </div>
