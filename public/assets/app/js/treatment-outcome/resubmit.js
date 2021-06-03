@@ -5,7 +5,7 @@ jQuery('document').ready(function($){
         $(".screening-2").show();
     }else{
         $(".screening-2").hide();
-        $(".screening-2").find('input[type="date"]').removeAttr('name').removeAttr('required');
+        $(".screening-2").find('#screening_2_date').removeAttr('name').removeAttr('required');
         $("#rest_pattern_2").removeAttr('name').removeAttr('required');
         $("#method_used_2").removeAttr('name').removeAttr('required');
     }
