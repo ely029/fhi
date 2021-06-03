@@ -54,8 +54,9 @@
             <img class="image image--close" src="{{ asset('assets/app/img/icon-close.png') }}" data-dz-remove />
           </li>
           <ul class="gallery__list gallery__list--resubmit">
-            <li class="gallery__item">
             @foreach($tbMacForm->attachments as $key => $attachment)
+            <li class="gallery__item">
+            
               @if(\Str::endsWith($attachment->file_name, '.pdf'))
                   <img class="image image--gallery exist-attach-{{ $key }}" src="{{ asset('assets/app/img/pdf.png') }}"/>
               @else
@@ -64,8 +65,9 @@
                 <span class="gallery__text gallery__text--filename">{{ $attachment->file_name }}</span>
                 <button type="button" class="remove-attachment exist-attach-{{ $key }}" 
                 data-filename="{{ $attachment->file_name }}" data-key="{{ $key }}"><img class="image image--close" src="{{ asset('assets/app/img/icon-close.png') }}"></button>
-              @endforeach
+              
             </li>
+            @endforeach
             <input type="hidden"  name="attachments-to-remove" id="attachments-to-remove">
           </ul>
         </ul>
