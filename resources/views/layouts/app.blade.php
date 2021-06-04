@@ -3,9 +3,9 @@
 @push('styles')
 
     <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/app/css/dataTables.css') }}" />
     <link href="{{ asset('assets/app/css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/app/css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/app/css/dataTables.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/app/css/fontawesome/fontawesome.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/app/css/fontawesome/brands.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/app/css/fontawesome/solid.css') }}" />
