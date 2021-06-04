@@ -54,18 +54,18 @@
                     </div>
                     <div class="form__button form__button--pagination">
                         <a class="button button--back button--transparent" href="password-change.html">Change
-                            password</a><button class="button button--next js-trigger" type="button">Logout</button>
+                            password</a><button class="button button--next" type="button">Logout</button>
                     </div>
                     
                 </form>
-                <div class="modal js-modal">
-                    <div class="modal__background js-modal-background"></div>
+                <div class="modal">
+                    <div class="modal__background" data-dismiss="modal"></div>
                     <div class="modal__container">
                         <div class="modal__box">
                             <h2 class="modal__title">Logout</h2>
                             <p class="modal__text">Are you sure you want to logout?</p>
                             <div class="modal__button">
-                                <button class="button button--transparent js-modal-close" type="button"
+                                <button class="button button--transparent" type="button"
                                     data-dismiss="modal">Cancel</button>
                                 @if (auth()->user()->role_id == 1 || auth()->user()->role_id == 2)
                                     <form action="{{ url('admin/logout') }}" method="POST">

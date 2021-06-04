@@ -43,120 +43,122 @@
         </div>
       </div>
       <div class="form__container">
-      @if (request('date_from') !== null && request('date_to') !== null )
-      <h2 class="section__heading">Showing results for {{date('m-d-Y', strtotime( request('date_from'))) }} - {{date('m-d-Y', strtotime( request('date_to'))) }}</h2>
-      @else
-      <h2 class="section__heading">Showing results for {{ $firstDayofPreviousMonth }} - {{ $lastDayofPreviousMonth }}</h2>
-      @endif
+        <div class="section__content">
+          @if (request('date_from') !== null && request('date_to') !== null )
+          <h2 class="section__heading section__heading--absolute">Showing results for {{date('m-d-Y', strtotime( request('date_from'))) }} - {{date('m-d-Y', strtotime( request('date_to'))) }}</h2>
+          @else
+          <h2 class="section__heading section__heading--absolute">Showing results for {{ $firstDayofPreviousMonth }} - {{ $lastDayofPreviousMonth }}</h2>
+          @endif
         
-        <table id="masterlist" class="table table--filter js-table-feedback">
-          <thead>
-            <tr>
-              <th class="table__head">Presentation no.</th>
-              <th class="table__head">Patient</th>
-              <th class="table__head">Reason for referral</th>
-              <th class="table__head">Recommendation</th>
-              <th class="table__head">Status</th>
-              <th class="table__head">Date resolved</th>
-              <th class="table__head">Remarks</th>
-            </tr>
-          </thead>
-          <tbody>
-            @foreach($enrollment as $details)
-              @php
-              $initials = Str::upper(Str::substr($details->first_name, 0, 1).Str::substr($details->middle_name, 0, 1).Str::substr($details->last_name, 0, 1));
-              $age = Carbon\Carbon::parse($details->birthday)->age;
-              $gender = Str::upper(Str::substr($details->gender, 0, 1));
-              @endphp
-            @if(auth()->user()->role_id == 4)
-            <tr class="table_row_enrollment sec table__row-{{ $details->id }}">
-            @else
-            <tr class="table_row_enrollment table__row-{{ $details->id }}">
-            @endif
-            <td class="table__details">E-{{ empty($details->presentation_number) ? '' : $details->presentation_number }}</td>
-              <td class="table__details">{{ $initials }}    {{ $age }}   {{ $gender }}</td>
-              <td class="table__details">Enrollment</td>
-              <td class="table__details">{{ empty($details->recom_status) ? '' : $details->recom_status }}</td>
-              <td class="table__details">{{ $details->header_status }}</td>
-              <td class="table__details">{{date('m-d-Y', strtotime( $details->updated_at )) }}</td>
-              @if (auth()->user()->role_id == 4)
-                 @if($details->remarks === NULL)
-                 <td class="table__details"><span class="table__link remarks">Edit remarks</span></td>
-                 @else
-                 <td class="table__details"><span class="table__link remarks">{{ $details->remarks }}</span></td>
-                 @endif
-              @else
-              <td class="table__details">{{ $details->remarks }}</td>
-              @endif
-              <input type="hidden" value="{{ $details->id}}" id="form_id">
-              <input type="hidden" value="{{ $details->remarks}}" id="sec_remarks">
-              <input type="hidden" value="enrollment" id="form_type">
-            </tr>
-            @endforeach
-            @foreach($caseManagement as $details)
-              @php
-              $initials = Str::upper(Str::substr($details->first_name, 0, 1).Str::substr($details->middle_name, 0, 1).Str::substr($details->last_name, 0, 1));
-              $age = Carbon\Carbon::parse($details->birthday)->age;
-              $gender = Str::upper(Str::substr($details->gender, 0, 1));
-              @endphp
+          <table id="masterlist" class="table table--filter js-table-feedback">
+            <thead>
+              <tr>
+                <th class="table__head">Presentation no.</th>
+                <th class="table__head">Patient</th>
+                <th class="table__head">Reason for referral</th>
+                <th class="table__head">Recommendation</th>
+                <th class="table__head">Status</th>
+                <th class="table__head">Date resolved</th>
+                <th class="table__head">Remarks</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach($enrollment as $details)
+                @php
+                $initials = Str::upper(Str::substr($details->first_name, 0, 1).Str::substr($details->middle_name, 0, 1).Str::substr($details->last_name, 0, 1));
+                $age = Carbon\Carbon::parse($details->birthday)->age;
+                $gender = Str::upper(Str::substr($details->gender, 0, 1));
+                @endphp
               @if(auth()->user()->role_id == 4)
-            <tr class="table_row_enrollment sec table__row-{{ $details->id }}">
-            @else
-            <tr class="table_row_enrollment table__row-{{ $details->id }}">
-            @endif
-            <td class="table__details">C-{{ empty($details->presentation_number) ? '' : $details->presentation_number }}</td>
-              <td class="table__details">{{ $initials }}    {{ $age }}   {{ $gender }}</td>
-              <td class="table__details">Case Management</td>
-              <td class="table__details">{{ empty($details->recom_status) ? '' : $details->recom_status }}</td>
-              <td class="table__details">{{ $details->header_status }}</td>
-              <td class="table__details">{{date('m-d-Y', strtotime( $details->updated_at )) }}</td>
-              @if (auth()->user()->role_id == 4)
-                 @if ($details->remarks === NULL)
-                 <td class="table__details"><span class="table__link remarks">Edit remarks</span></td>
-                 @else
-                 <td class="table__details"><span class="table__link remarks">{{ $details->remarks }}</span></td>
-                 @endif
+              <tr class="table_row_enrollment sec table__row-{{ $details->id }}">
               @else
-              <td class="table__details">{{ $details->remarks }}</td>
+              <tr class="table_row_enrollment table__row-{{ $details->id }}">
               @endif
-              <input type="hidden" value="{{ $details->id}}" id="form_id">
-              <input type="hidden" value="{{ $details->remarks}}" id="sec_remarks">
-              <input type="hidden" value="case_management" id="form_type">
-            </tr>
-            @endforeach
-            @foreach($treatmentOutcome as $details)
-              @php
-              $initials = Str::upper(Str::substr($details->first_name, 0, 1).Str::substr($details->middle_name, 0, 1).Str::substr($details->last_name, 0, 1));
-              $age = Carbon\Carbon::parse($details->birthday)->age;
-              $gender = Str::upper(Str::substr($details->gender, 0, 1));
-              @endphp
-              @if(auth()->user()->role_id == 4)
-            <tr class="table_row_enrollment sec table__row-{{ $details->id }}">
-            @else
-            <tr class="table_row_enrollment table__row-{{ $details->id }}">
-            @endif
-            <td class="table__details">T-{{ empty($details->presentation_number) ? '' : $details->presentation_number }}</td>
-              <td class="table__details">{{ $initials }}    {{ $age }}   {{ $gender }}</td>
-              <td class="table__details">Treatment Outcome</td>
-              <td class="table__details">{{ empty($details->recom_status) ? '' : $details->recom_status }}</td>
-              <td class="table__details">{{ $details->header_status }}</td>
-              <td class="table__details">{{date('m-d-Y', strtotime( $details->updated_at )) }}</td>
-              @if (auth()->user()->role_id == 4)
-                 @if ($details->remarks === NULL)
-                 <td class="table__details"><span class="table__link remarks">Edit remarks</span></td>
-                 @else
-                 <td class="table__details"><span class="table__link remarks">{{ $details->remarks }}</span></td>
-                 @endif
+              <td class="table__details">E-{{ empty($details->presentation_number) ? '' : $details->presentation_number }}</td>
+                <td class="table__details">{{ $initials }}    {{ $age }}   {{ $gender }}</td>
+                <td class="table__details">Enrollment</td>
+                <td class="table__details">{{ empty($details->recom_status) ? '' : $details->recom_status }}</td>
+                <td class="table__details">{{ $details->header_status }}</td>
+                <td class="table__details">{{date('m-d-Y', strtotime( $details->updated_at )) }}</td>
+                @if (auth()->user()->role_id == 4)
+                  @if($details->remarks === NULL)
+                  <td class="table__details"><span class="table__link remarks">Edit remarks</span></td>
+                  @else
+                  <td class="table__details"><span class="table__link remarks">{{ $details->remarks }}</span></td>
+                  @endif
+                @else
+                <td class="table__details">{{ $details->remarks }}</td>
+                @endif
+                <input type="hidden" value="{{ $details->id}}" id="form_id">
+                <input type="hidden" value="{{ $details->remarks}}" id="sec_remarks">
+                <input type="hidden" value="enrollment" id="form_type">
+              </tr>
+              @endforeach
+              @foreach($caseManagement as $details)
+                @php
+                $initials = Str::upper(Str::substr($details->first_name, 0, 1).Str::substr($details->middle_name, 0, 1).Str::substr($details->last_name, 0, 1));
+                $age = Carbon\Carbon::parse($details->birthday)->age;
+                $gender = Str::upper(Str::substr($details->gender, 0, 1));
+                @endphp
+                @if(auth()->user()->role_id == 4)
+              <tr class="table_row_enrollment sec table__row-{{ $details->id }}">
               @else
-              <td class="table__details">{{ $details->remarks }}</td>
+              <tr class="table_row_enrollment table__row-{{ $details->id }}">
               @endif
-              <input type="hidden" value="{{ $details->id}}" id="form_id">
-              <input type="hidden" value="{{ $details->remarks}}" id="sec_remarks">
-              <input type="hidden" value="treatment_outcome" id="form_type">
-            </tr>
-            @endforeach
-          </tbody>
-        </table>
+              <td class="table__details">C-{{ empty($details->presentation_number) ? '' : $details->presentation_number }}</td>
+                <td class="table__details">{{ $initials }}    {{ $age }}   {{ $gender }}</td>
+                <td class="table__details">Case Management</td>
+                <td class="table__details">{{ empty($details->recom_status) ? '' : $details->recom_status }}</td>
+                <td class="table__details">{{ $details->header_status }}</td>
+                <td class="table__details">{{date('m-d-Y', strtotime( $details->updated_at )) }}</td>
+                @if (auth()->user()->role_id == 4)
+                  @if ($details->remarks === NULL)
+                  <td class="table__details"><span class="table__link remarks">Edit remarks</span></td>
+                  @else
+                  <td class="table__details"><span class="table__link remarks">{{ $details->remarks }}</span></td>
+                  @endif
+                @else
+                <td class="table__details">{{ $details->remarks }}</td>
+                @endif
+                <input type="hidden" value="{{ $details->id}}" id="form_id">
+                <input type="hidden" value="{{ $details->remarks}}" id="sec_remarks">
+                <input type="hidden" value="case_management" id="form_type">
+              </tr>
+              @endforeach
+              @foreach($treatmentOutcome as $details)
+                @php
+                $initials = Str::upper(Str::substr($details->first_name, 0, 1).Str::substr($details->middle_name, 0, 1).Str::substr($details->last_name, 0, 1));
+                $age = Carbon\Carbon::parse($details->birthday)->age;
+                $gender = Str::upper(Str::substr($details->gender, 0, 1));
+                @endphp
+                @if(auth()->user()->role_id == 4)
+              <tr class="table_row_enrollment sec table__row-{{ $details->id }}">
+              @else
+              <tr class="table_row_enrollment table__row-{{ $details->id }}">
+              @endif
+              <td class="table__details">T-{{ empty($details->presentation_number) ? '' : $details->presentation_number }}</td>
+                <td class="table__details">{{ $initials }}    {{ $age }}   {{ $gender }}</td>
+                <td class="table__details">Treatment Outcome</td>
+                <td class="table__details">{{ empty($details->recom_status) ? '' : $details->recom_status }}</td>
+                <td class="table__details">{{ $details->header_status }}</td>
+                <td class="table__details">{{date('m-d-Y', strtotime( $details->updated_at )) }}</td>
+                @if (auth()->user()->role_id == 4)
+                  @if ($details->remarks === NULL)
+                  <td class="table__details"><span class="table__link remarks">Edit remarks</span></td>
+                  @else
+                  <td class="table__details"><span class="table__link remarks">{{ $details->remarks }}</span></td>
+                  @endif
+                @else
+                <td class="table__details">{{ $details->remarks }}</td>
+                @endif
+                <input type="hidden" value="{{ $details->id}}" id="form_id">
+                <input type="hidden" value="{{ $details->remarks}}" id="sec_remarks">
+                <input type="hidden" value="treatment_outcome" id="form_type">
+              </tr>
+              @endforeach
+            </tbody>
+          </table>
+        </div>
       </div>
     </form>
   </div>
