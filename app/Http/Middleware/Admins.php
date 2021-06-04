@@ -22,7 +22,7 @@ class Admins
      */
     public function handle($request, Closure $next)
     {
-        if (in_array(auth()->user()->role_id,[1,2])) {
+        if (in_array(auth()->user()->role_id, [1,2])) {
             return $next($request);
         }
 
