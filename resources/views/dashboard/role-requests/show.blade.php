@@ -22,46 +22,48 @@
         </div>
         <div class="section__container">
             <h2 class="section__heading">{{ $roleRequest->role->name }}</h2>
-            <div class="grid grid--two">
-                <div class="form__content">
-                    <span class="form__text">{{ $roleRequest->user->itis_name }}</span>
-                    <label class="form__label" for="">Name</label>
+            <div class="form form--half">
+                <div class="grid grid--two">
+                    <div class="form__content">
+                        <span class="form__text">{{ $roleRequest->user->itis_name }}</span>
+                        <label class="form__label" for="">Name</label>
+                    </div>
+                    <div class="form__content">
+                        <span class="form__text">{{ $roleRequest->user->username }}</span>
+                        <label class="form__label" for="">Username</label>
+                    </div>
                 </div>
-                <div class="form__content">
-                    <span class="form__text">{{ $roleRequest->user->username }}</span>
-                    <label class="form__label" for="">Username</label>
+                <div class="grid grid--two">
+                    <div class="form__content"><span class="form__text">{{ $roleRequest->user->email }}</span><label
+                            class="form__label" for="">Email address</label></div>
+                    <div class="form__content"><span
+                            class="form__text">{{ $roleRequest->created_at->format('Y-m-d') }}</span><label
+                            class="form__label" for="">Joining date</label></div>
                 </div>
-            </div>
-            <div class="grid grid--two">
-                <div class="form__content"><span class="form__text">{{ $roleRequest->user->email }}</span><label
-                        class="form__label" for="">Email address</label></div>
-                <div class="form__content"><span
-                        class="form__text">{{ $roleRequest->created_at->format('Y-m-d') }}</span><label
-                        class="form__label" for="">Joining date</label></div>
-            </div>
-            <div class="grid grid--two">
-                <div class="form__content"><span class="form__text">{{ ucfirst($roleRequest->status) }}</span><label
-                        class="form__label" for="">Status</label></div>
-            </div>
-            @if ($roleRequest->status == 'pending')
-                <div class="form__button form__button--pagination">
-                    <form action="{{ url('dashboard/role-requests/' . $roleRequest->id) }}" method="POST">
-                        @csrf
-                        {{ method_field('PATCH') }}
-                        <button type="submit" class="button button--accept button--back" name="status"
-                            value="approved">Approve</button>
-                    </form>
-                    <button class="button button--decline button--next" type="button">Decline</button>
+                <div class="grid grid--two">
+                    <div class="form__content"><span class="form__text">{{ ucfirst($roleRequest->status) }}</span><label
+                            class="form__label" for="">Status</label></div>
                 </div>
-                <div class="modal js-modal">
-                    <div class="modal__background js-modal-background"></div>
+                @if ($roleRequest->status == 'pending')
+                    <div class="form__button form__button--pagination">
+                        <form action="{{ url('dashboard/role-requests/' . $roleRequest->id) }}" method="POST">
+                            @csrf
+                            {{ method_field('PATCH') }}
+                            <button type="submit" class="button button--accept button--back" name="status"
+                                value="approved">Approve</button>
+                        </form>
+                        <button class="button button--decline button--next" type="button">Decline</button>
+                    </div>
+                </div>
+                <div class="modal">
+                    <div class="modal__background" data-dismiss="modal"></div>
                     <div class="modal__container">
                         <div class="modal__box">
                             <h2 class="modal__title">Your message</h2>
                             <p class="modal__text">By declining this {{ $roleRequest->role->name }}, you're require to
                                 leave a
                                 remarks.</p>
-                            <form class="form" action="{{ url('dashboard/role-requests/' . $roleRequest->id) }}"
+                            <form class="form form--full" action="{{ url('dashboard/role-requests/' . $roleRequest->id) }}"
                                 method="POST">
                                 @csrf
                                 {{ method_field('PATCH') }}
