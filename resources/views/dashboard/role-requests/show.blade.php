@@ -39,6 +39,10 @@
                         class="form__text">{{ $roleRequest->created_at->format('Y-m-d') }}</span><label
                         class="form__label" for="">Joining date</label></div>
             </div>
+            <div class="grid grid--two">
+                <div class="form__content"><span class="form__text">{{ ucfirst($roleRequest->status) }}</span><label
+                        class="form__label" for="">Status</label></div>
+            </div>
             @if ($roleRequest->status == 'pending')
                 <div class="form__button form__button--pagination">
                     <form action="{{ url('dashboard/role-requests/' . $roleRequest->id) }}" method="POST">

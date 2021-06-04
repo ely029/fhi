@@ -59,14 +59,14 @@ Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard', 'middleware' 
     });
 
     //Role Management CRUD
-    // Route::group(['middleware' => ''], static function () {
-    Route::get('/role-requests', [RoleRequestsController::class, 'index']);
-    Route::get('/role-requests/{roleRequest}', [RoleRequestsController::class, 'show']);
-    Route::patch('/role-requests/{roleRequest}', [RoleRequestsController::class, 'update']);
-    // });
+    Route::group(['middleware' => 'admins'], static function () {
+        Route::get('/role-requests', [RoleRequestsController::class, 'index']);
+        Route::get('/role-requests/{roleRequest}', [RoleRequestsController::class, 'show']);
+        Route::patch('/role-requests/{roleRequest}', [RoleRequestsController::class, 'update']);
+    });
 });
 
-Route::group(['middleware' => 'auth'], static function () {
+Route::group(['middleware' => ['auth','admins']], static function () {
     Route::get('admin/feedbacks', [AdminLoginController::class, 'feedbackDashboard']);
     Route::get('admin/feedbacks/view/{reportAndFeedbacks}', [AdminLoginController::class, 'viewFeedbacks']);
 });
