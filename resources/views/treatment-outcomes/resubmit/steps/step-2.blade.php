@@ -59,10 +59,10 @@
             <td class="table__details">Screening 2</td>
             <td class="table__details form-group">
             <div class="help-block with-errors"></div>
-            <input class="form__input form__input--full" id="screening_2_date" type="date" name="" value="{{ isset($screenings[1]) ? $screenings[1]->date_collected->format('Y-m-d') : '' }}"/></td>
+            <input class="form__input form__input--full" id="screening_2_date" type="date" name="screening_2_date_collected" value="{{ isset($screenings[1]) ? $screenings[1]->date_collected->format('Y-m-d') : '' }}"/></td>
             <td class="table__details">
             <div class="form__content">
-                <select id="rest_pattern_2" class="form__input form__input--select form__input--full" name="">
+                <select id="rest_pattern_2" class="form__input form__input--select form__input--full" name="screening_2_method_used">
                     @foreach(resistance_pattern() as $pattern)
                         <option value="{{ $pattern }}" {{ isset($screenings[1]) ? ($screenings[1]->method_used === $pattern ? 'selected' : '') : ''}}>{{ $pattern }}</option>
                     @endforeach
@@ -72,7 +72,7 @@
             </td>
             <td class="table__details">
             <div class="form__content">
-                <select id="method_used_2"class="form__input form__input--select form__input--full" name="">
+                <select id="method_used_2"class="form__input form__input--select form__input--full" name="screening_2_resistance_pattern">
                     @foreach(method_used() as $method)
                         <option value="{{ $method }}" {{ isset($screenings[1]) ? ($screenings[1]->resistance_pattern === $method ? 'selected': '') : '' }}>{{ $method }}</option>
                     @endforeach

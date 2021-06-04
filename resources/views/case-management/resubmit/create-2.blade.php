@@ -56,7 +56,7 @@
             <input class="form__input form__input--full" type="date" id="screening_2_date" value="{{ $screenTwo ? $screenTwo->date_collected->format('Y-m-d') : ''}}" name="date_collected_screening_2" /></td>
             <td class="table__details">
             <div class="form__content">
-                <select id="rest_pattern_2" class="form__input form__input--select form__input--full" name="ressitance_pattern_screening_2">
+                <select id="rest_pattern_2" class="form__input form__input--select form__input--full" name="screening_2_method_used">
                 @foreach(resistance_pattern() as $pattern)
                 <option value="{{ $pattern }}" {{ $screenTwo ? ($screenTwo->resistance_pattern === $pattern ? 'selected' : '') : ''}}>{{ $pattern }}</option>
                 @endforeach
@@ -66,7 +66,7 @@
             </td>
             <td class="table__details">
             <div class="form__content form-group">
-                <select id="method_used_2" class="form__input form__input--select form__input--full" name="method_used_screening_2">
+                <select id="method_used_2" class="form__input form__input--select form__input--full" name="screening_2_resistance_pattern">
                 @foreach(method_used() as $method)
                 <option value="{{ $method }}" {{ $screenTwo ? ($screenTwo->method_used === $method ? 'selected': '') : ''}}>{{ $method }}</option>
                 @endforeach
