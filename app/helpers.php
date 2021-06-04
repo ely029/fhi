@@ -376,7 +376,7 @@ function caseManagementRecommendationStatus()
 function caseManagementTabs()
 {
     return [
-        'with_recommendations' => ['Approved','Other suggestions','Need Further Details','Referred to N-TB MAC'],
+        'with_recommendations' => ['Approved','Other suggestions','Need Further Details','Referred to national'],
         'completed' => ['Approved','Other suggestions','Need Further Details'],
         'all_cases_ntb' => ['Approved','Other suggestions','Need Further Details','Referred to Regional Chair'],
         'all_cases_ntb_chair' => ['Approved','Other suggestions','Need Further Details','Referred to Regional Chair'],
@@ -387,7 +387,7 @@ function treatmentOutcomeTabs()
 {
     return [
         'all_cases' => ['New Case', 'Referred to Regional', 'Referred to Regional Chair', 'Referred to N-TB MAC', 'Referred to National Chair', 'Approved', 'Not for Approval', 'Referred back to Regional Chair', 'Not for Referral', 'Other suggestions', 'Need further details'],
-        'with_recommendations' => ['Approved','Other suggestions','Need Further Details','Referred to N-TB MAC'],
+        'with_recommendations' => ['Approved','Other suggestions','Need Further Details','Referred to national'],
         'all_cases_ntb' => ['Approved','Other suggestions','Need Further Details','Referred to Regional Chair'],
         'all_cases_ntb_chair' => ['Approved','Other suggestions','Need Further Details','Referred to Regional Chair'],
         'completed' => ['Approved','Other suggestions','Need Further Details'],
