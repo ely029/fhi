@@ -112,18 +112,6 @@
             </ul>
         @endif
       </div>
-      <a class="dropdown-item logout-button" href="#">
-        {{ __('Logout') }}
-    </a>
-    @if(auth()->user()->role_id == 1 || auth()->user()->role_id == 2)
-      <form id="logout-form" action="{{ url('admin/logout') }}" method="POST" style="display: none;">
-          @csrf
-      </form>
-      @else
-      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-        @csrf
-    </form>
-    @endif
       <a class="sidebar__footer" href="{{ url('account') }}">
         <div class="sidebar__footer-content">
           <h2 class="sidebar__footer-heading">{{ auth()->user()->name }}</h2>

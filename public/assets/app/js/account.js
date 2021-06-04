@@ -1,5 +1,5 @@
 jQuery( document ).ready(function( $ ) {
-    $('.js-trigger').click(function(){
-        $(".js-modal").modal('show');
+    $('.button--next').click(function(){
+        $(".modal").modal('show');
     });
 });

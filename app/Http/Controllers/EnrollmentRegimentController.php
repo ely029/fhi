@@ -188,7 +188,6 @@ class EnrollmentRegimentController extends Controller
 
     private function secretariatRecommendation($request)
     {
-        dd($request['status']);
         $tbMacForm = TBMacForm::find($request['form_id']);
         if (in_array($request['status'], ['Not For Referral','Need Further Details'])) {
             $tbMacForm->status = $request['status'];
