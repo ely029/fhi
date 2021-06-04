@@ -43,8 +43,7 @@ Route::get('admin/login', [AdminLoginController::class, 'showLoginForm']);
 Route::post('admin/login', [AdminLoginController::class, 'login']);
 Route::post('admin/logout', [AdminLoginController::class, 'logout']);
 Route::get('success/password/reset', [ForgotPasswordController::class, 'success']);
-Route::get('admin/feedbacks', [AdminLoginController::class, 'feedbackDashboard']);
-Route::get('admin/feedbacks/view/{reportAndFeedbacks}', [AdminLoginController::class, 'viewFeedbacks']);
+
 
 Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard', 'middleware' => 'auth'], static function () {
     Route::get('/', [DashboardController::class, 'index']);
@@ -66,6 +65,11 @@ Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard', 'middleware' 
     Route::get('/role-requests/{roleRequest}', [RoleRequestsController::class, 'show']);
     Route::patch('/role-requests/{roleRequest}', [RoleRequestsController::class, 'update']);
     // });
+});
+
+Route::group(['middleware' => 'auth'], static function() {
+    Route::get('admin/feedbacks', [AdminLoginController::class, 'feedbackDashboard']);
+    Route::get('admin/feedbacks/view/{reportAndFeedbacks}', [AdminLoginController::class, 'viewFeedbacks']);
 });
 
 if (! app()->environment('production')) {

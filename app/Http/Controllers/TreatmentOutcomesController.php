@@ -183,7 +183,7 @@ class TreatmentOutcomesController extends Controller
         });
 
         $withRecommendations = $cases->filter(function ($item) {
-            return in_array($item->status, ['Approved','Other suggestions','Need Further Details','Referred to N-TB MAC']);
+            return in_array($item->status, ['Approved','Other suggestions','Need Further Details','Referred to national']);
         });
 
         $completed = $cases->filter(function ($item) {
