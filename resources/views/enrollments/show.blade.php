@@ -407,11 +407,7 @@
                   <img class="image image--flag" src="{{ asset('assets\app\img\icon-flag.png')}}" alt="action icon" />
                   
                   <div class="form__content"><span class="form__text form__text--green">
-                  @if ($recommendation->status == 'Referred to N-TB MAC')
-                  Referred to N-TB MAC
-                  @else
-                  {{ $recommendation->status == 0 ? 'Referred to national chair(A)' : ucfirst(Str::lower($recommendation->status)) }}B
-                  @endif
+                  {{ ucfirst(Str::lower($recommendation->status)) }}
                   </span><label class="form__label form__label--green">Action</label></div>
                 </div>
                 <span class="form__text">
