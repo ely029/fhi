@@ -70,7 +70,11 @@ class CaseManagementController extends Controller
         //Screening 1
         $caseManagementBactResult->screeningOneCreation($form, $request);
         //Screening 2
-        $caseManagementBactResult->screeningTwoCreation($form, $request);
+        if (isset($request['date_collected_screening_2'])) {
+            $request['screening_2_method_used'] = $request['ressitance_pattern_screening_2'];
+            $request['screening_2_resistance_pattern'] = $request['method_used_screening_2'];
+            $caseManagementBactResult->screeningTwoCreation($form, $request);
+        }
         //LPA
         $caseManagementBactResult->lpaCreation($form, $request);
         //DST
