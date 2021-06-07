@@ -23,24 +23,19 @@
             @include('partials.alerts')
             <div class="section__content">
                 <ul class="tabs__list tabs__list--table">
-                    <a href="{{ url('dashboard/role-requests') }}">
-                        <li class="tabs__item {{ ! request('role') ? 'tabs__item--current' : '' }}">All roles ({{ $allCount['total'] }})</li>
-                    </a>
-                    <a href="{{ url('dashboard/role-requests?role=4') }}">
-                        <li class="tabs__item {{ request('role') == '4' ? 'tabs__item--current' : '' }}">Regional Secretariat ({{ $allCount[4] }})</li>
-                    </a>
-                    <a href="{{ url('dashboard/role-requests?role=5') }}">
-                        <li class="tabs__item {{ request('role') == '5' ? 'tabs__item--current' : '' }}">R-TB MAC ({{ $allCount[5] }})</li>
-                    </a>
-                    <a href="{{ url('dashboard/role-requests?role=6') }}">
-                        <li class="tabs__item {{ request('role') == '6' ? 'tabs__item--current' : '' }}">R-TB MAC Chair ({{ $allCount[6] }})</li>
-                    </a>
-                    <a href="{{ url('dashboard/role-requests?role=7') }}">
-                        <li class="tabs__item {{ request('role') == '7' ? 'tabs__item--current' : '' }}">N-TB MAC ({{ $allCount[7] }})</li>
-                    </a>
-                    <a href="{{ url('dashboard/role-requests?role=8') }}">
-                        <li class="tabs__item {{ request('role') == '8' ? 'tabs__item--current' : '' }}">N-TB MAC Chair ({{ $allCount[8] }})</li>
-                    </a>
+                    <li class="tabs__item {{ ! request('role') ? 'tabs__item--current' : '' }}"><a href="{{ url('dashboard/role-requests') }}">
+                        All roles ({{ $allCount['total'] }})</a></li>
+                    <li class="tabs__item {{ request('role') == '4' ? 'tabs__item--current' : '' }}"><a href="{{ url('dashboard/role-requests?role=4') }}">
+                        Regional Secretariat ({{ $allCount[4] }})</a></li>
+                    <li class="tabs__item {{ request('role') == '5' ? 'tabs__item--current' : '' }}"><a href="{{ url('dashboard/role-requests?role=5') }}">
+                        R-TB MAC ({{ $allCount[5] }})</a></li>
+                    <li class="tabs__item {{ request('role') == '6' ? 'tabs__item--current' : '' }}"><a href="{{ url('dashboard/role-requests?role=6') }}">
+                        R-TB MAC Chair ({{ $allCount[6] }})</a></li>
+                    <li class="tabs__item {{ request('role') == '7' ? 'tabs__item--current' : '' }}"><a href="{{ url('dashboard/role-requests?role=7') }}">
+                        N-TB MAC ({{ $allCount[7] }})</a></li>
+                    <li class="tabs__item {{ request('role') == '8' ? 'tabs__item--current' : '' }}"><a href="{{ url('dashboard/role-requests?role=8') }}">
+                        N-TB MAC Chair ({{ $allCount[8] }})</a></li>
+                    
                 </ul>
                 <div class="tabs__details tabs__details--active">
                     <table class="table table--filter js-table-feedback">
