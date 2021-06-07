@@ -43,7 +43,7 @@
                     </a>
                 </ul>
                 <div class="tabs__details tabs__details--active">
-                    <table class="table table--filter js-table">
+                    <table class="table table--filter js-table-feedback">
                         <thead>
                             <tr>
                                 <th class="table__head">User ID</th>
