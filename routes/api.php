@@ -13,6 +13,8 @@ use App\Http\Controllers\Api\EnrollmentRecommendationsController;
 use App\Http\Controllers\Api\EnrollmentResubmitController;
 use App\Http\Controllers\Api\EnrollmentsController;
 use App\Http\Controllers\Api\ITISController;
+use App\Http\Controllers\Api\MasterListController;
+use App\Http\Controllers\Api\ReportAndFeedBacksController;
 use App\Http\Controllers\Api\TreatmentOutcomeRecommendationController;
 use App\Http\Controllers\Api\TreatmentOutcomeResubmitController;
 use App\Http\Controllers\Api\TreatmentOutcomesController;
@@ -81,4 +83,8 @@ Route::group([
     Route::post('/treatment-outcome/{tbMacForm}/recommendations', [TreatmentOutcomeRecommendationController::class, 'store']);
     Route::get('/treatment-outcome/resubmit/{tbMacForm}', [TreatmentOutcomeResubmitController::class, 'edit']);
     Route::post('/treatment-outcome/resubmit/{tbMacForm}', [TreatmentOutcomeResubmitController::class, 'reSubmit']);
+    Route::get('/masterlist', [MasterListController::class, 'index']);
+    Route::post('/masterlist/filter', [MasterListController::class, 'filter']);
+    Route::post('masterlist/{id}/update-remarks', [MasterListController::class, 'updateRemarks']);
+    Route::post('/feedbacks', [ReportAndFeedBacksController::class, 'store']);
 });
