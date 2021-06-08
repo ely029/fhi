@@ -83,8 +83,8 @@ Route::group([
     Route::post('/treatment-outcome/{tbMacForm}/recommendations', [TreatmentOutcomeRecommendationController::class, 'store']);
     Route::get('/treatment-outcome/resubmit/{tbMacForm}', [TreatmentOutcomeResubmitController::class, 'edit']);
     Route::post('/treatment-outcome/resubmit/{tbMacForm}', [TreatmentOutcomeResubmitController::class, 'reSubmit']);
-    Route::get('/masterlist', [MasterListController::class, 'index']);
-    Route::post('/masterlist/filter', [MasterListController::class, 'filter']);
+    Route::get('/masterlist', [MasterlistController::class, 'index']);
+    Route::post('/masterlist/filter', [MasterlistController::class, 'filter']);
     Route::post('masterlist/{id}/update-remarks', [MasterlistController::class, 'updateRemarks']);
     Route::post('/feedbacks', [ReportAndFeedBacksController::class, 'store']);
 });
