@@ -36,7 +36,7 @@ class RoleRequestController extends Controller
         $approvedRolesID = $approvedRoles->pluck('role_id')->toArray();
 
         // if selected role is one of already approved roles, let them pass
-        if ($approvedRoles && in_array($request->role_id, $approvedRolesID)) {
+        if (in_array($request->role_id, $approvedRolesID)) {
 
             // if 6 months last login but already approved, expires all role
             if (Carbon::now('Asia/Manila')->diffInMonths(auth()->user()->last_login) >= 6) {
