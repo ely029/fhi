@@ -2,13 +2,13 @@
     <a class="button button--create" href="{{url('case-management/create') }}">Create new case</a>
     <div class="section__content">
     <ul class="tabs__list tabs__list--table">
-        <li class="tabs__item tabs__item--current">All cases ({{$allCases->count()}})</li>
-        <li class="tabs__item">For approval ({{$forApproval->count()}})</li>
-        <li class="tabs__item">Other suggestions ({{$otherSuggestion->count()}})</li>
-        <li class="tabs__item">Need further details ({{$needFurtherDetails->count()}})</li>
-        <li class="tabs__item">Not for referral ({{$notForReferral->count()}})</li>
+        <li class="tabs__item js-tabs js-tabs-current">All cases ({{$allCases->count()}})</li>
+        <li class="tabs__item js-tabs">For approval ({{$forApproval->count()}})</li>
+        <li class="tabs__item js-tabs">Other suggestions ({{$otherSuggestion->count()}})</li>
+        <li class="tabs__item js-tabs">Need further details ({{$needFurtherDetails->count()}})</li>
+        <li class="tabs__item js-tabs">Not for referral ({{$notForReferral->count()}})</li>
     </ul>
-    <div class="tabs__details tabs__details--active">
+    <div class="tabs__details js-tabs-details js-tabs-details-active">
         <table class="table table--filter js-table">
         <thead>
             <tr>
@@ -37,7 +37,7 @@
         </tbody>
         </table>
     </div>
-    <div class="tabs__details">
+    <div class="tabs__details js-tabs-details">
         <table class="table table--filter js-table">
         <thead>
             <tr>
@@ -65,7 +65,7 @@
         </tbody>
         </table>
     </div>
-    <div class="tabs__details">
+    <div class="tabs__details js-tabs-details">
         <table class="table table--filter js-table">
         <thead>
             <tr>
@@ -93,7 +93,7 @@
         </tbody>
         </table>
     </div>
-    <div class="tabs__details">
+    <div class="tabs__details js-tabs-details">
         <table class="table table--filter js-table">
         <thead>
             <tr>
@@ -121,7 +121,7 @@
         </tbody>
         </table>
     </div>
-    <div class="tabs__details">
+    <div class="tabs__details js-tabs-details">
         <table class="table table--filter js-table">
         <thead>
             <tr>

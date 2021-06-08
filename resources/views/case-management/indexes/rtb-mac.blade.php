@@ -3,10 +3,10 @@
 
     <div class="section__content">
       <ul class="tabs__list tabs__list--table">
-        <li class="tabs__item tabs__item--current">Pending ({{ $pending->count() }})</li>
-        <li class="tabs__item">Completed ({{ $completed->count() }})</li>
-        <li class="tabs__item">With consensus ({{ $withRecommendations->count() }})</li>
-        <li class="tabs__item">All cases ({{ $allCases->count() }})</li>
+        <li class="tabs__item js-tabs tabs__item--current">Pending ({{ $pending->count() }})</li>
+        <li class="tabs__item js-tabs">Completed ({{ $completed->count() }})</li>
+        <li class="tabs__item js-tabs">With consensus ({{ $withRecommendations->count() }})</li>
+        <li class="tabs__item js-tabs">All cases ({{ $allCases->count() }})</li>
       </ul>
       <div class="tabs__details tabs__details--active">
         <table class="table table--filter js-table">
