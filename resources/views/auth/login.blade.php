@@ -26,7 +26,12 @@
                     <label class="form__label">Password</label><i class="fa fa-eye-slash" id="js-eye-password"></i>
                     
                 </div>
-                <div class="form__button form__button--space"><a class="button button--transparent" href="change-password.html">Forgot password </a>
+                <div class="form__button form__button--space">
+                  @if(app()->environment('production'))
+                    <a class="button button--transparent" href="https://itis.doh.gov.ph/v2/index.php/User/forgot_password">Forgot password </a>
+                  @else
+                    <a class="button button--transparent" href="https://itistest.doh.gov.ph/v2/index.php/User/forgot_password">Forgot password </a>
+                  @endif
                     <button type="submit" class="button" id="login-button">Login</button>
                     
                     <input type="hidden" id="system_key" value="{{ config('services.itis.login_key') }}">
