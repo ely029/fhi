@@ -35,7 +35,7 @@ class Role extends Model
 {
     use HasFactory;
     // Improves performance since hasAccess is always called in the middleware
-    protected $with = ['accesses'];
+    // protected $with = ['accesses'];
 
     public function user()
     {

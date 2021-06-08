@@ -39,13 +39,13 @@
         <div class="grid grid--two">
           <div class="form__content"><span class="form__text">{{ auth()->user()->region }}</span><label
                   class="form__label">Region</label></div>
-          <div class="form__content"><span class="form__text"></span><label class="form__label">Province
+          <div class="form__content"><span class="form__text">{{ auth()->user()->province }}</span><label class="form__label">Province
               </label></div>
         </div>
         <div class="grid grid--two">
-          <div class="form__content"><span class="form__text"></span><label
+          <div class="form__content"><span class="form__text">{{ auth()->user()->municipality }}</span><label
                   class="form__label">Municipality</label></div>
-          <div class="form__content"><span class="form__text"></span><label
+          <div class="form__content"><span class="form__text">{{ auth()->user()->facility_name }}</span><label
                   class="form__label">Facility</label></div>
         </div>
       </div>

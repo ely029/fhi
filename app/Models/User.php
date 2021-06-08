@@ -80,7 +80,7 @@ class User extends Authenticatable
         'region_code',
         'region',
         'has_chosen_role',
-        'last_login',
+        'last_login','province','municipality','facility_code','facility_name',
     ];
 
     /**
