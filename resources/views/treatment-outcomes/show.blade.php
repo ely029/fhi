@@ -402,7 +402,7 @@
                     @if ($recommendation->status == 'Referred to N-TB MAC')
                     Referred to N-TB MAC
                     @else
-                    {{ ucfirst(Str::lower($recommendation->status)) }}
+                    {{ $recommendation->status = 0 ? 'Referred to national chair' : ucfirst(Str::lower($recommendation->status)) }}
                     @endif
                     </span><label class="form__label form__label--green">Action</label></div>
                

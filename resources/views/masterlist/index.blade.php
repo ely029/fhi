@@ -31,12 +31,12 @@
         <h2 class="section__heading">TB Medical Advisory Committee Masterlist</h2>
         <div class="form--quarter">
           <div class="grid grid--three grid--end">
-          @if (request('date_from') !== null && request('date_to') !== null )
-          <div class="form__content"><input class="form__input form__input--date" value="{{ $requestDateFrom }}" type="text" name="date_from" /><label class="form__label" for="">Start date</label></div>
-            <div class="form__content"><input class="form__input form__input--date" value="{{  $requestDateTo }}"type="text" name="date_to" /><label class="form__label" for="">End date</label></div>
+          @if ($requestDateFrom !== null && $requestDateTo !== null )
+          <div class="form__content"><input class="form__input form__input--date" value="{{ date('Y-m-d', strtotime($requestDateFrom)) }}" type="text" name="date_from" /><label class="form__label" for="">Start date</label></div>
+            <div class="form__content"><input class="form__input form__input--date" value="{{  date('Y-m-d', strtotime($requestDateTo)) }}"type="text" name="date_to" /><label class="form__label" for="">End date</label></div>
             @else
-            <div class="form__content"><input class="form__input form__input--date" value="{{ $defaultFirstDayofPreviousMonth }}" type="text" name="date_from" /><label class="form__label" for="">Start date</label></div>
-            <div class="form__content"><input class="form__input form__input--date" value="{{ $defaultLastDayofPreviousMonth }}"type="text" name="date_to" /><label class="form__label" for="">End date</label></div>
+            <div class="form__content"><input class="form__input form__input--date" value="{{  $defaultFirstDayofPreviousMonth  }}" type="text" name="date_from" /><label class="form__label" for="">Start date</label></div>
+            <div class="form__content"><input class="form__input form__input--date" value="{{  $defaultLastDayofPreviousMonth }}"type="text" name="date_to" /><label class="form__label" for="">End date</label></div>
           @endif
             <button class="button button--masterlist" type="submit">Apply</button>
           </div>
@@ -77,9 +77,9 @@
               <td class="table__details">E-{{ empty($details->presentation_number) ? '' : $details->presentation_number }}</td>
                 <td class="table__details">{{ $initials }}    {{ $age }}   {{ $gender }}</td>
                 <td class="table__details">Enrollment</td>
-                <td class="table__details">{{ empty($details->recom_status) ? '' : $details->recom_status }}</td>
-                <td class="table__details">{{ $details->header_status }}</td>
-                <td class="table__details">{{date('m-d-Y', strtotime( $details->updated_at )) }}</td>
+                <td class="table__details">{{ in_array($details->recom_status,['For enrollment', 'Not for Enrollment', 'Need Further Details', 'Referred to national']) ? $details->recom_status : '' }}</td>
+                <td class="table__details">{{ $details->header_status == 'Enrolled' || $details->header_status == 'Not Enrolled' ? $details->header_status : '' }}</td>
+                <td class="table__details">{{ $details->header_status == 'Enrolled' || $details->header_status == 'Not Enrolled'  ? date('m-d-Y', strtotime( $details->updated_at )) : ''  }}</td>
                 @if (auth()->user()->role_id == 4)
                   @if($details->remarks === NULL)
                   <td class="table__details"><span class="table__link remarks">Edit remarks</span></td>
@@ -100,7 +100,7 @@
                 $age = Carbon\Carbon::parse($details->birthday)->age;
                 $gender = Str::upper(Str::substr($details->gender, 0, 1));
                 @endphp
-                @if(auth()->user()->role_id == 4)
+                @if(auth()->user()->role_id == 4) 
               <tr class="table_row_enrollment sec table__row-{{ $details->id }}">
               @else
               <tr class="table_row_enrollment table__row-{{ $details->id }}">
@@ -108,9 +108,9 @@
               <td class="table__details">C-{{ empty($details->presentation_number) ? '' : $details->presentation_number }}</td>
                 <td class="table__details">{{ $initials }}    {{ $age }}   {{ $gender }}</td>
                 <td class="table__details">Case Management</td>
-                <td class="table__details">{{ empty($details->recom_status) ? '' : $details->recom_status }}</td>
-                <td class="table__details">{{ $details->header_status }}</td>
-                <td class="table__details">{{date('m-d-Y', strtotime( $details->updated_at )) }}</td>
+                <td class="table__details">{{ in_array($details->recom_status,['Approved', 'Other suggestions', 'Need Further Details', 'Referred to national']) ? $details->recom_status : '' }}</td>
+                <td class="table__details">{{ $details->header_status == 'Resolved' || $details->header_status == 'Not Resolved' ? $details->header_status : '' }}</td>
+                <td class="table__details">{{ $details->header_status == 'Resolved' || $details->header_status == 'Not Resolved'  ? date('m-d-Y', strtotime( $details->updated_at )) : ''  }}</td>
                 @if (auth()->user()->role_id == 4)
                   @if ($details->remarks === NULL)
                   <td class="table__details"><span class="table__link remarks">Edit remarks</span></td>
@@ -139,9 +139,9 @@
               <td class="table__details">T-{{ empty($details->presentation_number) ? '' : $details->presentation_number }}</td>
                 <td class="table__details">{{ $initials }}    {{ $age }}   {{ $gender }}</td>
                 <td class="table__details">Treatment Outcome</td>
-                <td class="table__details">{{ empty($details->recom_status) ? '' : $details->recom_status }}</td>
-                <td class="table__details">{{ $details->header_status }}</td>
-                <td class="table__details">{{date('m-d-Y', strtotime( $details->updated_at )) }}</td>
+                <td class="table__details">{{ in_array($details->recom_status,['Approved', 'Other suggestions', 'Need Further Details', 'Referred to national']) ? $details->recom_status : '' }}</td>
+                <td class="table__details">{{ $details->header_status == 'Resolved' || $details->header_status == 'Not Resolved' ? $details->header_status : '' }}</td>
+                <td class="table__details">{{ $details->header_status == 'Resolved' || $details->header_status == 'Not Resolved'  ? date('m-d-Y', strtotime( $details->updated_at )) : ''  }}</td>
                 @if (auth()->user()->role_id == 4)
                   @if ($details->remarks === NULL)
                   <td class="table__details"><span class="table__link remarks">Edit remarks</span></td>
@@ -197,4 +197,5 @@
 @section('additional_scripts')
 <script src="{{ asset('assets/app/js/master-list/remarks.js') }}"></script>  
 <script src="{{ asset('assets/app/js/feedbacks.js') }}"></script>
+<script src="{{ asset('assets/dashboard/js/datepicker-init.js') }}"></script>
 @endsection
