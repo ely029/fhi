@@ -9,10 +9,10 @@
         <a href="{{ url('treatment-outcomes') }}">
             <li class="tabs__item {{ request('status') == '' ? 'tabs__item--current' : ''}}">All cases({{ $cases->count() }})</li>
         </a>--}}
-        <li class="tabs__item tabs__item--current">Pending ({{$pending->count()}})</li>
-        <li class="tabs__item">All cases ({{$cases->count()}})</li>
+        <li class="tabs__item js-tabs js-tabs-current">Pending ({{$pending->count()}})</li>
+        <li class="tabs__item js-tabs">All cases ({{$cases->count()}})</li>
     </ul>
-      <div class="tabs__details tabs__details--active">
+      <div class="tabs__details js-tabs-details js-tabs-details-active">
         <table class="table table--filter js-table">
           <thead>
             <tr>
@@ -40,7 +40,7 @@
           </tbody>
         </table>
       </div>
-      <div class="tabs__details">
+      <div class="tabs__details js-tabs-details">
         <table class="table table--filter js-table">
           <thead>
             <tr>

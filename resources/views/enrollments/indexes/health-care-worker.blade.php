@@ -5,13 +5,13 @@
 
     <div class="section__content">
       <ul class="tabs__list tabs__list--table">
-        <li class="tabs__item tabs__item--current">All enrollments</li>
-        <li class="tabs__item">For enrollment ({{ $forEnrollments->count() }})</li>
-        <li class="tabs__item">Not for enrollment ({{ $notForEnrollments->count() }})</li>
-        <li class="tabs__item">Need further details ({{ $needFurtherDetails->count() }})</li>
-        <li class="tabs__item">Not for referral ({{ $notForReferrals->count() }})</li>
+        <li class="tabs__item js-tabs js-tabs-current">All enrollments</li>
+        <li class="tabs__item js-tabs">For enrollment ({{ $forEnrollments->count() }})</li>
+        <li class="tabs__item js-tabs">Not for enrollment ({{ $notForEnrollments->count() }})</li>
+        <li class="tabs__item js-tabs">Need further details ({{ $needFurtherDetails->count() }})</li>
+        <li class="tabs__item js-tabs">Not for referral ({{ $notForReferrals->count() }})</li>
       </ul>
-      <div class="tabs__details tabs__details--active">
+      <div class="tabs__details js-tabs-details js-tabs-details-active">
         <table class="table table--filter js-table">
           <thead>
             <tr>
@@ -39,7 +39,7 @@
           </tbody>
         </table>
       </div>
-      <div class="tabs__details">
+      <div class="tabs__details js-tabs-details">
         <table class="table table--filter js-table">
           <thead>
             <tr>
@@ -67,7 +67,7 @@
           </tbody>
         </table>
       </div>
-      <div class="tabs__details">
+      <div class="tabs__details js-tabs-details">
         <table class="table table--filter js-table">
           <thead>
             <tr>
@@ -95,7 +95,7 @@
           </tbody>
         </table>
       </div>
-      <div class="tabs__details">
+      <div class="tabs__details js-tabs-details">
         <table class="table table--filter js-table">
           <thead>
             <tr>
@@ -123,7 +123,7 @@
           </tbody>
         </table>
       </div>
-      <div class="tabs__details">
+      <div class="tabs__details js-tabs-details">
         <table class="table table--filter js-table">
           <thead>
             <tr>

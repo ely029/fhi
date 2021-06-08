@@ -3,12 +3,12 @@
 
     <div class="section__content">
       <ul class="tabs__list tabs__list--table">
-        <li class="tabs__item tabs__item--current">Pending ({{ $pending->count() }})</li>
-        <li class="tabs__item">Completed ({{ $completed->count() }})</li>
-        <li class="tabs__item">With consensus ({{$withRecommendations->count()}})</li>
-        <li class="tabs__item">All enrollments ({{ $allEnrollments->count() }})</li>
+        <li class="tabs__item js-tabs js-tabs-current">Pending ({{ $pending->count() }})</li>
+        <li class="tabs__item js-tabs">Completed ({{ $completed->count() }})</li>
+        <li class="tabs__item js-tabs">With consensus ({{$withRecommendations->count()}})</li>
+        <li class="tabs__item js-tabs">All enrollments ({{ $allEnrollments->count() }})</li>
       </ul>
-      <div class="tabs__details tabs__details--active">
+      <div class="tabs__details js-tabs-details js-tabs-details-active">
         <table class="table table--filter js-table">
           <thead>
             <tr>
@@ -38,7 +38,7 @@
           </tbody>
         </table>
       </div>
-      <div class="tabs__details">
+      <div class="tabs__details js-tabs-details">
         <table class="table table--filter js-table">
         <thead>
             <tr>
@@ -68,7 +68,7 @@
           </tbody>
         </table>
       </div>
-      <div class="tabs__details">
+      <div class="tabs__details js-tabs-details">
         <table class="table table--filter js-table">
         <thead>
             <tr>
@@ -98,7 +98,7 @@
           </tbody>
         </table>
       </div>
-      <div class="tabs__details">
+      <div class="tabs__details js-tabs-details">
         <table class="table table--filter js-table">
         <thead>
             <tr>

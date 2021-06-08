@@ -15,12 +15,12 @@
     <a href="{{ url('treatment-outcomes?treatmentOutcomeTabs=all_cases') }}">
     <li class="tabs__item {{ request('treatmentOutcomeTabs') == 'all_cases' ? 'tabs__item--current' : ''}}">All Cases({{ $cases->count() }})</li>
         </a>--}}
-        <li class="tabs__item tabs__item--current">Pending ({{ $referredCases->count() }})</li>
-        <li class="tabs__item">Completed ({{ $completed->count() }})</li>
-        <li class="tabs__item">Pending from N-TB MAC Chair ({{ $pending->count() }})</li>
-        <li class="tabs__item">All cases ({{ $cases->count() }})</li>
+        <li class="tabs__item js-tabs js-tabs-current">Pending ({{ $referredCases->count() }})</li>
+        <li class="tabs__item js-tabs">Completed ({{ $completed->count() }})</li>
+        <li class="tabs__item js-tabs">Pending from N-TB MAC Chair ({{ $pending->count() }})</li>
+        <li class="tabs__item js-tabs">All cases ({{ $cases->count() }})</li>
     </ul>
-      <div class="tabs__details tabs__details--active">
+      <div class="tabs__details js-tabs-details js-tabs-details-active">
         <table class="table table--filter js-table">
           <thead>
             <tr>
@@ -48,7 +48,7 @@
           </tbody>
         </table>
       </div>
-      <div class="tabs__details">
+      <div class="tabs__details js-tabs-details">
         <table class="table table--filter js-table">
           <thead>
             <tr>
@@ -76,7 +76,7 @@
           </tbody>
         </table>
       </div>
-      <div class="tabs__details">
+      <div class="tabs__details js-tabs-details">
         <table class="table table--filter js-table">
           <thead>
             <tr>
@@ -104,7 +104,7 @@
           </tbody>
         </table>
       </div>
-      <div class="tabs__details">
+      <div class="tabs__details js-tabs-details">
         <table class="table table--filter js-table">
           <thead>
             <tr>
