@@ -32,7 +32,7 @@ class CaseManagementResubmitController extends Controller
         $created_at = $tbMacForm->created_at->format('Y-m-d');
         $facility_code = $tbMacForm->patient->facility_code;
         $suggested_regimen = ! isset($tbMacForm->caseManagementForm->suggested_regimen) ? '' : $tbMacForm->caseManagementForm->suggested_regimen;
-        $suggested_regimen_others = Str::startsWith($tbMacForm->caseManagementForm->suggested_regimen, 'Other (specify)') ? $tbMacForm->caseManagementForm->others : $tbMacForm->caseManagementForm->suggested_regimen;
+        $suggested_regimen_others = $tbMacForm->caseManagementForm->others;
         $suggested_regimen_notes = $tbMacForm->caseManagementForm->suggested_regimen_notes ?? null;
         $current_regimen = $tbMacForm->caseManagementForm->current_regiment ?? null;
         $current_weight = $tbMacForm->caseManagementForm->current_weight ?? null;
@@ -111,7 +111,7 @@ class CaseManagementResubmitController extends Controller
             ];
         }
         $data = [
-            'suggested_regimen_others' => $suggested_regimen_others, 'month_of_treatment' => $month_of_treatment, 'gender' => $gender, 'province' => $province, 'birthday' => $birthday, 'case_number' => $case_number, 'last_name' => $last_name, 'presentation_number' => $presentation_number, 'current_drug_susceptibility' => $current_drug_susceptibility, 'submitted_by' => $submitted_by, 'date_submitted' => $date_submitted, 'created_at' => $created_at, 'current_weight' => $current_weight, 'itr_drugs' => $itr_drugs, 'facility_code' => $facility_code, 'updated_type_of_case' => $updated_type_of_case, 'suggested_regimen_notes' => $suggested_regimen_notes, 'current_regiment' => $current_regimen, 'suggested_regimen' => $suggested_regimen, 'status' => $status, 'ct_scan_date' => $ct_scan_date, 'ct_scan_result' => $ct_scan_result, 'ultra_sound_date' => $ultra_sound_date, 'latest_comparative_cxr_reading' => $latest_comparative_cxr_reading, 'ultra_sound_result' => $ultra_sound_result, 'cxr_date' => $cxr_date, 'cxr_result' => $cxr_result, 'remarks' => $remarks, 'hispathological_date' => $histhopathological_date, 'hispathological_result' => $histhopathological_result, 'regimen_notes' => $regimen_notes, 'patient_code' => $patient_code, 'screening_one' => $screeningOne, 'screening_two' => $screeningTwo, 'attachments' => $attachments, 'lpa' => $lpa, 'dst' => $dst, 'monthly_screening' => $monthly_screening,
+            'suggested_regimen_others' => $suggested_regimen_others, 'month_of_treatment' => $month_of_treatment, 'gender' => $gender, 'province' => $province, 'birthday' => $birthday, 'case_number' => $case_number, 'last_name' => $last_name, 'presentation_number' => $presentation_number, 'current_drug_susceptibility' => $current_drug_susceptibility, 'submitted_by' => $submitted_by, 'date_submitted' => $date_submitted, 'created_at' => $created_at, 'current_weight' => $current_weight, 'suggested_regimen_itr' => $itr_drugs, 'facility_code' => $facility_code, 'updated_type_of_case' => $updated_type_of_case, 'suggested_regimen_notes' => $suggested_regimen_notes, 'current_regiment' => $current_regimen, 'suggested_regimen' => $suggested_regimen, 'status' => $status, 'ct_scan_date' => $ct_scan_date, 'ct_scan_result' => $ct_scan_result, 'ultra_sound_date' => $ultra_sound_date, 'latest_comparative_cxr_reading' => $latest_comparative_cxr_reading, 'ultra_sound_result' => $ultra_sound_result, 'cxr_date' => $cxr_date, 'cxr_result' => $cxr_result, 'remarks' => $remarks, 'hispathological_date' => $histhopathological_date, 'hispathological_result' => $histhopathological_result, 'regimen_notes' => $regimen_notes, 'patient_code' => $patient_code, 'screening_one' => $screeningOne, 'screening_two' => $screeningTwo, 'attachments' => $attachments, 'lpa' => $lpa, 'dst' => $dst, 'monthly_screening' => $monthly_screening,
         ];
         return response()->json($data);
     }
@@ -133,6 +133,8 @@ class CaseManagementResubmitController extends Controller
         $request['status'] = 'New Case';
         $tbMacForm->patient->update($request);
         $tbMacForm->update($request);
+        $request['itr_drugs'] = ! isset($request['suggested_regimen_itr']) ? '' : $request['suggested_regimen_itr'];
+        $request['others'] = ! isset($request['suggested_regimen_others']) ? '' : $request['suggested_regimen_others'];
         $tbMacForm->caseManagementForm->update($request);
         CaseManagementBacteriologicalResults::where('form_id', $tbMacForm->id)->delete();
         //Screening 1
@@ -170,7 +172,6 @@ class CaseManagementResubmitController extends Controller
             }
         }
         $request['cxr_reading'] = $request['cxr_reading'] ?? null;
-        $request['itr_drugs'] = ! isset($request['itr_drugs']) ? '' : $request['itr_drugs'];
         unset($request['remarks']);
         $tbMacForm->caseManagementLaboratoryResult->update($request);
         return response()->json('Case Management Resubmit Successfully');
