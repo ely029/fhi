@@ -18,89 +18,89 @@ class FcmRegsitrationTokensControllerDestroyTest extends TestCase
 {
     use RefreshDatabase;
 
-    // public function testRemoveTokenRetainsNotificationKey()
-    // {
-    //     $faker = Factory::create();
+    public function testRemoveTokenRetainsNotificationKey()
+    {
+        $faker = Factory::create();
 
-    //     [$user, $token, $requestHeaders, $requestData] = $this->arrangeSuccessfulTest();
+        [$user, $token, $requestHeaders, $requestData] = $this->arrangeSuccessfulTest();
 
-    //     $user->fcm_notification_key = $faker->uuid;
-    //     $user->save();
+        $user->fcm_notification_key = $faker->uuid;
+        $user->save();
 
-    //     // Remaining token will retain notification key
-    //     FcmRegistrationToken::factory()->create([
-    //         'user_id' => $user->id,
-    //     ]);
+        // Remaining token will retain notification key
+        FcmRegistrationToken::factory()->create([
+            'user_id' => $user->id,
+        ]);
 
-    //     $this->mock(FcmClient::class, function ($mock) use ($user, $requestData) {
-    //         $mock
-    //             ->shouldReceive('removeDevice')
-    //             ->once()
-    //             ->with(
-    //                 Mockery::on(function ($argument) use ($user) {
-    //                     return $argument->id === $user->id;
-    //                 }),
-    //                 $requestData['registration_id']
-    //             )
-    //             ->andReturn($user->fcm_notification_key);
-    //     });
+        $this->mock(FcmClient::class, function ($mock) use ($user, $requestData) {
+            $mock
+                ->shouldReceive('removeDevice')
+                ->once()
+                ->with(
+                    Mockery::on(function ($argument) use ($user) {
+                        return $argument->id === $user->id;
+                    }),
+                    $requestData['registration_id']
+                )
+                ->andReturn($user->fcm_notification_key);
+        });
 
-    //     $response = $this
-    //         ->deleteJson(
-    //             "/api/users/{$user->id}/fcm_registration_tokens",
-    //             $requestData,
-    //             $requestHeaders,
-    //         );
+        $response = $this
+            ->deleteJson(
+                "/api/users/{$user->id}/fcm_registration_tokens",
+                $requestData,
+                $requestHeaders,
+            );
 
-    //     $response->assertNoContent();
+        $response->assertNoContent();
 
-    //     $user->refresh();
+        $user->refresh();
 
-    //     $this->assertNotNull($user->fcm_notification_key);
-    //     $this->assertDatabaseMissing('fcm_registration_tokens', [
-    //         'id' => $token->id,
-    //     ]);
-    // }
+        $this->assertNotNull($user->fcm_notification_key);
+        $this->assertDatabaseMissing('fcm_registration_tokens', [
+            'id' => $token->id,
+        ]);
+    }
 
     // Ref: https://firebase.google.com/docs/cloud-messaging/http-server-ref#device-group-management
-    // public function testRemoveAllTokensRemovesNotificationKey()
-    // {
-    //     $faker = Factory::create();
+    public function testRemoveAllTokensRemovesNotificationKey()
+    {
+        $faker = Factory::create();
 
-    //     [$user, $token, $requestHeaders, $requestData] = $this->arrangeSuccessfulTest();
+        [$user, $token, $requestHeaders, $requestData] = $this->arrangeSuccessfulTest();
 
-    //     $user->fcm_notification_key = $faker->uuid;
-    //     $user->save();
+        $user->fcm_notification_key = $faker->uuid;
+        $user->save();
 
-    //     $this->mock(FcmClient::class, function ($mock) use ($user, $requestData) {
-    //         $mock
-    //             ->shouldReceive('removeDevice')
-    //             ->once()
-    //             ->with(
-    //                 Mockery::on(function ($argument) use ($user) {
-    //                     return $argument->id === $user->id;
-    //                 }),
-    //                 $requestData['registration_id']
-    //             )
-    //             ->andReturn($user->fcm_notification_key);
-    //     });
+        $this->mock(FcmClient::class, function ($mock) use ($user, $requestData) {
+            $mock
+                ->shouldReceive('removeDevice')
+                ->once()
+                ->with(
+                    Mockery::on(function ($argument) use ($user) {
+                        return $argument->id === $user->id;
+                    }),
+                    $requestData['registration_id']
+                )
+                ->andReturn($user->fcm_notification_key);
+        });
 
-    //     $response = $this
-    //         ->deleteJson(
-    //             "/api/users/{$user->id}/fcm_registration_tokens",
-    //             $requestData,
-    //             $requestHeaders,
-    //         );
+        $response = $this
+            ->deleteJson(
+                "/api/users/{$user->id}/fcm_registration_tokens",
+                $requestData,
+                $requestHeaders,
+            );
 
-    //     $response->assertNoContent();
+        $response->assertNoContent();
 
-    //     $user->refresh();
+        $user->refresh();
 
-    //     $this->assertNull($user->fcm_notification_key);
-    //     $this->assertDatabaseMissing('fcm_registration_tokens', [
-    //         'id' => $token->id,
-    //     ]);
-    // }
+        $this->assertNull($user->fcm_notification_key);
+        $this->assertDatabaseMissing('fcm_registration_tokens', [
+            'id' => $token->id,
+        ]);
+    }
 
     public function testTokenMustBeAuthorized()
     {
@@ -119,89 +119,89 @@ class FcmRegsitrationTokensControllerDestroyTest extends TestCase
         ]);
     }
 
-    // public function testTokenIsForbiddenForOtherUser()
-    // {
-    //     $role = Role::factory()->create();
+    public function testTokenIsForbiddenForOtherUser()
+    {
+        $role = Role::factory()->create();
 
-    //     [$user, $token, $requestHeaders, $requestData] = $this->arrangeSuccessfulTest();
-    //     $user2 = User::factory()->create([
-    //         'password' => Hash::make(Str::random()),
-    //         'role_id' => $role->id,
-    //     ]);
+        [$user, $token, $requestHeaders, $requestData] = $this->arrangeSuccessfulTest();
+        $user2 = User::factory()->create([
+            'password' => Hash::make(Str::random()),
+            'role_id' => $role->id,
+        ]);
 
-    //     $response = $this
-    //         ->deleteJson(
-    //             "/api/users/{$user2->id}/fcm_registration_tokens",
-    //             $requestData,
-    //             $requestHeaders
-    //         );
+        $response = $this
+            ->deleteJson(
+                "/api/users/{$user2->id}/fcm_registration_tokens",
+                $requestData,
+                $requestHeaders
+            );
 
-    //     $response->assertForbidden();
+        $response->assertForbidden();
 
-    //     $this->assertDatabaseHas('fcm_registration_tokens', [
-    //         'id' => $token->id,
-    //     ]);
-    // }
+        $this->assertDatabaseHas('fcm_registration_tokens', [
+            'id' => $token->id,
+        ]);
+    }
 
-    // public function testTokenIsUnprocessableEntityWithoutRequiredFields()
-    // {
-    //     [$user, $token, $requestHeaders, $requestData] = $this->arrangeSuccessfulTest();
-    //     $requestData['registration_id'] = null;
+    public function testTokenIsUnprocessableEntityWithoutRequiredFields()
+    {
+        [$user, $token, $requestHeaders, $requestData] = $this->arrangeSuccessfulTest();
+        $requestData['registration_id'] = null;
 
-    //     $response = $this
-    //         ->deleteJson(
-    //             "/api/users/{$user->id}/fcm_registration_tokens",
-    //             $requestData,
-    //             $requestHeaders,
-    //         );
+        $response = $this
+            ->deleteJson(
+                "/api/users/{$user->id}/fcm_registration_tokens",
+                $requestData,
+                $requestHeaders,
+            );
 
-    //     $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
-    //     $response->assertJsonValidationErrors(['registration_id']);
+        $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
+        $response->assertJsonValidationErrors(['registration_id']);
 
-    //     $this->assertDatabaseHas('fcm_registration_tokens', [
-    //         'id' => $token->id,
-    //     ]);
-    // }
+        $this->assertDatabaseHas('fcm_registration_tokens', [
+            'id' => $token->id,
+        ]);
+    }
 
-    // public function testTokenIsUnprocessableEntityWithoutStringFields()
-    // {
-    //     [$user, $token, $requestHeaders, $requestData] = $this->arrangeSuccessfulTest();
-    //     $requestData['registration_id'] = 1;
+    public function testTokenIsUnprocessableEntityWithoutStringFields()
+    {
+        [$user, $token, $requestHeaders, $requestData] = $this->arrangeSuccessfulTest();
+        $requestData['registration_id'] = 1;
 
-    //     $response = $this
-    //         ->deleteJson(
-    //             "/api/users/{$user->id}/fcm_registration_tokens",
-    //             $requestData,
-    //             $requestHeaders,
-    //         );
+        $response = $this
+            ->deleteJson(
+                "/api/users/{$user->id}/fcm_registration_tokens",
+                $requestData,
+                $requestHeaders,
+            );
 
-    //     $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
-    //     $response->assertJsonValidationErrors(['registration_id']);
+        $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
+        $response->assertJsonValidationErrors(['registration_id']);
 
-    //     $this->assertDatabaseHas('fcm_registration_tokens', [
-    //         'id' => $token->id,
-    //     ]);
-    // }
+        $this->assertDatabaseHas('fcm_registration_tokens', [
+            'id' => $token->id,
+        ]);
+    }
 
-    // public function testTokenIsUnprocessableEntityWithoutExistingFields()
-    // {
-    //     [$user, $token, $requestHeaders, $requestData] = $this->arrangeSuccessfulTest();
-    //     $requestData['registration_id'] = 'does not exist';
+    public function testTokenIsUnprocessableEntityWithoutExistingFields()
+    {
+        [$user, $token, $requestHeaders, $requestData] = $this->arrangeSuccessfulTest();
+        $requestData['registration_id'] = 'does not exist';
 
-    //     $response = $this
-    //         ->deleteJson(
-    //             "/api/users/{$user->id}/fcm_registration_tokens",
-    //             $requestData,
-    //             $requestHeaders,
-    //         );
+        $response = $this
+            ->deleteJson(
+                "/api/users/{$user->id}/fcm_registration_tokens",
+                $requestData,
+                $requestHeaders,
+            );
 
-    //     $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
-    //     $response->assertJsonValidationErrors(['registration_id']);
+        $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
+        $response->assertJsonValidationErrors(['registration_id']);
 
-    //     $this->assertDatabaseHas('fcm_registration_tokens', [
-    //         'id' => $token->id,
-    //     ]);
-    // }
+        $this->assertDatabaseHas('fcm_registration_tokens', [
+            'id' => $token->id,
+        ]);
+    }
 
     private function arrangeSuccessfulTest()
     {
