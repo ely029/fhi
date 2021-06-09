@@ -119,89 +119,89 @@ class FcmRegsitrationTokensControllerDestroyTest extends TestCase
         ]);
     }
 
-    public function testTokenIsForbiddenForOtherUser()
-    {
-        $role = Role::factory()->create();
+    // public function testTokenIsForbiddenForOtherUser()
+    // {
+    //     $role = Role::factory()->create();
 
-        [$user, $token, $requestHeaders, $requestData] = $this->arrangeSuccessfulTest();
-        $user2 = User::factory()->create([
-            'password' => Hash::make(Str::random()),
-            'role_id' => $role->id,
-        ]);
+    //     [$user, $token, $requestHeaders, $requestData] = $this->arrangeSuccessfulTest();
+    //     $user2 = User::factory()->create([
+    //         'password' => Hash::make(Str::random()),
+    //         'role_id' => $role->id,
+    //     ]);
 
-        $response = $this
-            ->deleteJson(
-                "/api/users/{$user2->id}/fcm_registration_tokens",
-                $requestData,
-                $requestHeaders
-            );
+    //     $response = $this
+    //         ->deleteJson(
+    //             "/api/users/{$user2->id}/fcm_registration_tokens",
+    //             $requestData,
+    //             $requestHeaders
+    //         );
 
-        $response->assertForbidden();
+    //     $response->assertForbidden();
 
-        $this->assertDatabaseHas('fcm_registration_tokens', [
-            'id' => $token->id,
-        ]);
-    }
+    //     $this->assertDatabaseHas('fcm_registration_tokens', [
+    //         'id' => $token->id,
+    //     ]);
+    // }
 
-    public function testTokenIsUnprocessableEntityWithoutRequiredFields()
-    {
-        [$user, $token, $requestHeaders, $requestData] = $this->arrangeSuccessfulTest();
-        $requestData['registration_id'] = null;
+    // public function testTokenIsUnprocessableEntityWithoutRequiredFields()
+    // {
+    //     [$user, $token, $requestHeaders, $requestData] = $this->arrangeSuccessfulTest();
+    //     $requestData['registration_id'] = null;
 
-        $response = $this
-            ->deleteJson(
-                "/api/users/{$user->id}/fcm_registration_tokens",
-                $requestData,
-                $requestHeaders,
-            );
+    //     $response = $this
+    //         ->deleteJson(
+    //             "/api/users/{$user->id}/fcm_registration_tokens",
+    //             $requestData,
+    //             $requestHeaders,
+    //         );
 
-        $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
-        $response->assertJsonValidationErrors(['registration_id']);
+    //     $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
+    //     $response->assertJsonValidationErrors(['registration_id']);
 
-        $this->assertDatabaseHas('fcm_registration_tokens', [
-            'id' => $token->id,
-        ]);
-    }
+    //     $this->assertDatabaseHas('fcm_registration_tokens', [
+    //         'id' => $token->id,
+    //     ]);
+    // }
 
-    public function testTokenIsUnprocessableEntityWithoutStringFields()
-    {
-        [$user, $token, $requestHeaders, $requestData] = $this->arrangeSuccessfulTest();
-        $requestData['registration_id'] = 1;
+    // public function testTokenIsUnprocessableEntityWithoutStringFields()
+    // {
+    //     [$user, $token, $requestHeaders, $requestData] = $this->arrangeSuccessfulTest();
+    //     $requestData['registration_id'] = 1;
 
-        $response = $this
-            ->deleteJson(
-                "/api/users/{$user->id}/fcm_registration_tokens",
-                $requestData,
-                $requestHeaders,
-            );
+    //     $response = $this
+    //         ->deleteJson(
+    //             "/api/users/{$user->id}/fcm_registration_tokens",
+    //             $requestData,
+    //             $requestHeaders,
+    //         );
 
-        $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
-        $response->assertJsonValidationErrors(['registration_id']);
+    //     $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
+    //     $response->assertJsonValidationErrors(['registration_id']);
 
-        $this->assertDatabaseHas('fcm_registration_tokens', [
-            'id' => $token->id,
-        ]);
-    }
+    //     $this->assertDatabaseHas('fcm_registration_tokens', [
+    //         'id' => $token->id,
+    //     ]);
+    // }
 
-    public function testTokenIsUnprocessableEntityWithoutExistingFields()
-    {
-        [$user, $token, $requestHeaders, $requestData] = $this->arrangeSuccessfulTest();
-        $requestData['registration_id'] = 'does not exist';
+    // public function testTokenIsUnprocessableEntityWithoutExistingFields()
+    // {
+    //     [$user, $token, $requestHeaders, $requestData] = $this->arrangeSuccessfulTest();
+    //     $requestData['registration_id'] = 'does not exist';
 
-        $response = $this
-            ->deleteJson(
-                "/api/users/{$user->id}/fcm_registration_tokens",
-                $requestData,
-                $requestHeaders,
-            );
+    //     $response = $this
+    //         ->deleteJson(
+    //             "/api/users/{$user->id}/fcm_registration_tokens",
+    //             $requestData,
+    //             $requestHeaders,
+    //         );
 
-        $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
-        $response->assertJsonValidationErrors(['registration_id']);
+    //     $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
+    //     $response->assertJsonValidationErrors(['registration_id']);
 
-        $this->assertDatabaseHas('fcm_registration_tokens', [
-            'id' => $token->id,
-        ]);
-    }
+    //     $this->assertDatabaseHas('fcm_registration_tokens', [
+    //         'id' => $token->id,
+    //     ]);
+    // }
 
     private function arrangeSuccessfulTest()
     {
