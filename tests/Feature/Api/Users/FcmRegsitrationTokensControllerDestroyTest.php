@@ -63,44 +63,44 @@ class FcmRegsitrationTokensControllerDestroyTest extends TestCase
     // }
 
     // Ref: https://firebase.google.com/docs/cloud-messaging/http-server-ref#device-group-management
-    public function testRemoveAllTokensRemovesNotificationKey()
-    {
-        $faker = Factory::create();
+    // public function testRemoveAllTokensRemovesNotificationKey()
+    // {
+    //     $faker = Factory::create();
 
-        [$user, $token, $requestHeaders, $requestData] = $this->arrangeSuccessfulTest();
+    //     [$user, $token, $requestHeaders, $requestData] = $this->arrangeSuccessfulTest();
 
-        $user->fcm_notification_key = $faker->uuid;
-        $user->save();
+    //     $user->fcm_notification_key = $faker->uuid;
+    //     $user->save();
 
-        $this->mock(FcmClient::class, function ($mock) use ($user, $requestData) {
-            $mock
-                ->shouldReceive('removeDevice')
-                ->once()
-                ->with(
-                    Mockery::on(function ($argument) use ($user) {
-                        return $argument->id === $user->id;
-                    }),
-                    $requestData['registration_id']
-                )
-                ->andReturn($user->fcm_notification_key);
-        });
+    //     $this->mock(FcmClient::class, function ($mock) use ($user, $requestData) {
+    //         $mock
+    //             ->shouldReceive('removeDevice')
+    //             ->once()
+    //             ->with(
+    //                 Mockery::on(function ($argument) use ($user) {
+    //                     return $argument->id === $user->id;
+    //                 }),
+    //                 $requestData['registration_id']
+    //             )
+    //             ->andReturn($user->fcm_notification_key);
+    //     });
 
-        $response = $this
-            ->deleteJson(
-                "/api/users/{$user->id}/fcm_registration_tokens",
-                $requestData,
-                $requestHeaders,
-            );
+    //     $response = $this
+    //         ->deleteJson(
+    //             "/api/users/{$user->id}/fcm_registration_tokens",
+    //             $requestData,
+    //             $requestHeaders,
+    //         );
 
-        $response->assertNoContent();
+    //     $response->assertNoContent();
 
-        $user->refresh();
+    //     $user->refresh();
 
-        $this->assertNull($user->fcm_notification_key);
-        $this->assertDatabaseMissing('fcm_registration_tokens', [
-            'id' => $token->id,
-        ]);
-    }
+    //     $this->assertNull($user->fcm_notification_key);
+    //     $this->assertDatabaseMissing('fcm_registration_tokens', [
+    //         'id' => $token->id,
+    //     ]);
+    // }
 
     public function testTokenMustBeAuthorized()
     {
