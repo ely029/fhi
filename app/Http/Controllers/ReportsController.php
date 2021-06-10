@@ -25,7 +25,8 @@ class ReportsController extends Controller
             $report['health_facility'] = request('health_facility');
             $report['date_generated'] = Carbon::now('Asia/Manila')->format('F d, Y');
             $report['prepared_by'] = auth()->user()->itis_name;
-
+            $dateFrom = '';
+            $dateTo = '';
             if (request('period') === 'quarterly') {
                 $report['period'] = request('quarter').' '.request('year');
                 $quarterDates = $this->getDateFromToQuarterly();
