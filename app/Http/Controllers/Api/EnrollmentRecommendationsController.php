@@ -178,7 +178,7 @@ class EnrollmentRecommendationsController extends Controller
             return 'required|in:Recommended for enrollment,Recommended not for enrollment,Recommended for need further details';
         }
         if (auth()->user()->role_id === 6) {
-            return 'required|in:For Enrollment,Not for Enrollment,Need Further Details,Referred to national';
+            return 'required|in:For Enrollment,Not For Enrollment,Need Further Details,Referred to national';
         }
         if (auth()->user()->role_id === 3) {
             return 'required|in:Enrolled,Not Enrolled';
