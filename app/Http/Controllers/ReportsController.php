@@ -20,16 +20,25 @@ class ReportsController extends Controller
         $region = Geolocation::select('id')->where('name1', auth()->user()->region)->first();
         $provinces = Geolocation::where('PARENT_ID', $region->id)->pluck('name1','id');
         $report = null;
-        if (request('period')) {
-            $quarter = request('quarter');
-            $report['period'] = $quarter.' '.request('year');
+        if ($period = request('period')) {
+
             $report['province'] = request('province');
             $report['health_facility'] = request('health_facility');
             $report['date_generated'] = Carbon::now('Asia/Manila')->format('F d, Y');
             $report['prepared_by'] = auth()->user()->itis_name;
-            $quarterFrom = $this->getQuarterDateFrom()[$quarter];
-            $dateFrom = Carbon::parse($quarterFrom);
-            $dateTo = Carbon::parse($quarterFrom)->endOfQuarter();
+            
+            if($period === 'quarterly'){
+                $report['period'] = request('quarter').' '.request('year');
+                $quarterDates = $this->getDateFromToQuarterly();
+                $dateFrom = $quarterDates['date_from'];
+                $dateTo = $quarterDates['date_to'];
+            } elseif($period === 'monthly') {
+                $report['period'] = request('month').' '.request('year');
+                $monthlyDates = $this->getDateFromToMonthly();
+                $dateFrom = $monthlyDates['date_from'];
+                $dateTo = $monthlyDates['date_to'];
+            }
+    
 
             $totalCases = TBMacForm::with('patient')->whereHas('patient', function($query){
                 $query->where('province', request('province'));
@@ -123,6 +132,29 @@ class ReportsController extends Controller
         return view('reports.form')
             ->with('provinces', $provinces)
             ->with('report', $report);
+    }
+
+    public function getDateFromToQuarterly()
+    {
+        $quarter = request('quarter');
+        $quarterFrom = $this->getQuarterDateFrom()[$quarter];
+        $dateFrom = Carbon::parse($quarterFrom);
+        $dateTo = Carbon::parse($quarterFrom)->endOfQuarter();
+        return [
+            'date_from' => $dateFrom,
+            'date_to' => $dateTo,
+        ];
+    }
+
+    public function getDateFromToMonthly()
+    {
+        $month = request('year').' '.request('month');
+        $dateFrom = Carbon::parse($month)->startOfMonth();
+        $dateTo = Carbon::parse($month)->endOfMonth();
+        return [
+            'date_from' => $dateFrom,
+            'date_to' => $dateTo,
+        ];
     }
 
     public function getQuarterDateFrom()

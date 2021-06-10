@@ -476,3 +476,10 @@ function treatmentOutcomeIndex3($cases)
         ->with('otherSuggestion', $otherSuggestion)
         ->with('notForReferral', $notForReferral);
 }
+
+function months()
+{
+    return [
+        'January','February','March','April','June','July','August','September','October','November','December',
+    ];
+}

@@ -51,14 +51,14 @@
                                 <ul class="form__group form__group--reports">
                                     <li class="form__group-item">
                                         <label class="form__sublabel" for="period">Quarterly
-                                            <input class="form__trigger" type="radio" name="period" checked value="quarterly"/>
+                                            <input class="form__trigger" type="radio" name="period" {{ request()->has('period') ? (request('period') == 'quarterly' ? 'checked' : '') : 'checked' }} value="quarterly"/>
                                             <span class="form__radio"></span>
                                         </label>
                                     </li>
                                     <li class="form__group-item">
                                         <label class="form__sublabel" for="period">Monthly
                                             <input class="form__trigger"
-                                                type="radio" name="period" value="monthly" /><span class="form__radio"></span></label>
+                                                type="radio" name="period" {{ request('period') == 'monthly' ? 'checked' : '' }} value="monthly" /><span class="form__radio"></span></label>
                                     </li>
                                     <li class="form__group-item">
                                         <label class="form__sublabel" for="period">Annual
@@ -72,26 +72,18 @@
                                         <div class="triangle triangle--down"></div>
                                         <label class="form__label" for="">Year</label>
                                     </div>
+                                    <input type="hidden" id="selected_period" value="{{ request('period') }}"> 
                                     <div class="form__content" id="year_month_div">
                                         <select class="form__input form__input--select" id="quarterly_dropdown" name="quarter">
-                                            <option>1st Quarter</option>
-                                            <option>2nd Quarter</option>
-                                            <option>3rd Quarter</option>
-                                            <option>4th Quarter</option>
+                                            <option {{ request('quarter') == '1st Quarter' ? 'selected' : '' }}>1st Quarter</option>
+                                            <option {{ request('quarter') == '2nd Quarter' ? 'selected' : '' }}>2nd Quarter</option>
+                                            <option {{ request('quarter') == '3rd Quarter' ? 'selected' : '' }}>3rd Quarter</option>
+                                            <option {{ request('quarter') == '4th Quarter' ? 'selected' : '' }}>4th Quarter</option>
                                         </select>
                                         <select class="form__input form__input--select period" id="monthly_dropdown">
-                                            <option>January</option>
-                                            <option>February</option>
-                                            <option>March</option>
-                                            <option>April</option>
-                                            <option>May</option>
-                                            <option>June</option>
-                                            <option>July</option>
-                                            <option>August</option>
-                                            <option>September</option>
-                                            <option>October</option>
-                                            <option>November</option>
-                                            <option>December</option>
+                                            @foreach(months() as $month)
+                                                <option {{ request('month') == $month ? 'selected' : '' }}>{{ $month }}</option>
+                                            @endforeach
                                         </select>
                                         <div class="triangle triangle--down"></div>
                                         <label class="form__label" for="" id="year_month_label">Quarter</label>
