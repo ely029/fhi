@@ -112,6 +112,7 @@ class LoginController extends Controller
     public function getGlocations($code)
     {
         $geoLocation = Geolocation::where('id', $code)->first();
+
         if (is_null($geoLocation)) {
             return [
                 'region' => null,
@@ -120,16 +121,14 @@ class LoginController extends Controller
             ];
         }
 
-        if ($geoLocation->glocation_level_id === 5) {
-            // this is health facility, query the province
-            $province = Geolocation::where('id', $geoLocation->PARENT_ID)->first();
-            // get region of province
-            $region = Geolocation::where('id', $province->PARENT_ID)->first();
-            return [
-                'region' => $region->name1,
-                'province' => $province->name1,
-                'municipality' => $geoLocation->name1,
-            ];
-        }
+        // query the province
+        $province = Geolocation::where('id', $geoLocation->PARENT_ID)->first();
+        // get region of province
+        $region = Geolocation::where('id', $province->PARENT_ID)->first();
+        return [
+            'region' => $region->name1,
+            'province' => $province->name1,
+            'municipality' => $geoLocation->name1,
+        ];
     }
 }
