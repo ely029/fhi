@@ -185,11 +185,9 @@
             <input type="hidden"  name="attachments-to-remove" id="attachments-to-remove">
           </ul>
         </ul>
-        
-        <input type="file" multiple name="attachments[]" class="attachment-upload" id="attachments">
       </div>
     </div>
-    
+    <input type="file" multiple name="attachments[]" class="attachment-upload" id="attachments">
     <div class="form__container form-step-4">
       <h2 class="section__heading">Remarks</h2>
       <div class="form__content form-group">
