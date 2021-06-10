@@ -84,35 +84,35 @@
               </span>
             </div>
           </div>
-        </div>
+        </div> 
         
         <ul class="gallery__list" id="gallery-preview">
-            <li class="gallery__item dz-preview dz-file-preview" id="gallery-container">
-              <img class="image image--gallery" data-dz-thumbnail />
-              <span class="gallery__text gallery__text--filename"></span>
-              <img class="image image--close" src="{{ asset('assets/app/img/icon-close.png') }}" data-dz-remove />
-            </li>
-            <ul class="gallery__list gallery__list--resubmit">
-              @foreach($tbMacForm->attachments as $key => $attachment)
-              <li class="gallery__item">
+          <li class="gallery__item dz-preview dz-file-preview" id="gallery-container">
+            <img class="image image--gallery" data-dz-thumbnail />
+            <span class="gallery__text gallery__text--filename"></span>
+            <img class="image image--close" src="{{ asset('assets/app/img/icon-close.png') }}" data-dz-remove />
+          </li>
+          <ul class="gallery__list gallery__list--resubmit">
+            @foreach($tbMacForm->attachments as $key => $attachment)
+            <li class="gallery__item">
+            
+              @if(\Str::endsWith($attachment->file_name, '.pdf'))
+                <img class="image image--gallery exist-attach-{{ $key }}" src="{{ asset('assets/app/img/pdf.png') }}"/>
+              @else
+                <img class="image image--gallery exist-attach-{{ $key }}" src="{{ url('caseManagement/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment') }}"/>
+              @endif
+              <span class="gallery__text gallery__text--filename">{{ $attachment->file_name }}</span>
+              <button type="button" class="remove-attachment exist-attach-{{ $key }}" 
+              data-filename="{{ $attachment->file_name }}" data-key="{{ $key }}"><img class="image image--close" src="{{ asset('assets/app/img/icon-close.png') }}"></button>
               
-                @if(\Str::endsWith($attachment->file_name, '.pdf'))
-                  <img class="image image--gallery exist-attach-{{ $key }}" src="{{ asset('assets/app/img/pdf.png') }}"/>
-                @else
-                  <img class="image image--gallery exist-attach-{{ $key }}" src="{{ url('caseManagement/'.$tbMacForm->id.'/'.$attachment->file_name.'/attachment') }}"/>
-                @endif
-                <span class="gallery__text gallery__text--filename">{{ $attachment->file_name }}</span>
-                <button type="button" class="remove-attachment exist-attach-{{ $key }}" 
-                data-filename="{{ $attachment->file_name }}" data-key="{{ $key }}"><img class="image image--close" src="{{ asset('assets/app/img/icon-close.png') }}"></button>
-                
-              </li> 
-              @endforeach
-              <input type="hidden"  name="attachments-to-remove" id="attachments-to-remove">
+            </li> 
+            @endforeach
+            <input type="hidden"  name="attachments-to-remove" id="attachments-to-remove">
           </ul>
         </ul>
-        <input type="file" multiple name="attachments[]" class="attachment-upload" id="attachments">
+      </div>
     </div>
-    </div>
+    <input type="file" multiple name="attachments[]" class="attachment-upload" id="attachments">
     <div class="form__container form-step-4">
     <div class="help-block with-errors"></div>
     <h2 class="section__heading">Remarks</h2>

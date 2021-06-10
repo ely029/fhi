@@ -181,7 +181,7 @@
                   <img class="image image--close" src="{{ asset('assets/app/img/icon-close.png') }}">
                 </button>
             </li>
-            @endforeach
+            @endforeach 
             <input type="hidden"  name="attachments-to-remove" id="attachments-to-remove">
           </ul>
         </ul>
