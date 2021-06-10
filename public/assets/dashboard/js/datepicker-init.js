@@ -10,10 +10,10 @@ jQuery( document ).ready(function( $ ) {
         buttonImageOnly: true
     });
 
-    // $('.datepicker').keydown(function(e) {
-    //     e.preventDefault();
-    //     return false;
-    //  });
+    $('.form__input--date').keydown(function(e) {
+        e.preventDefault();
+        return false;
+     });
     // $("input[type='date']").on("change", function() {
     //     this.setAttribute(
     //         "data-date",

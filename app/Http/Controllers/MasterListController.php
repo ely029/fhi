@@ -48,6 +48,10 @@ class MasterListController extends Controller
             ->where('tb_mac_forms.form_type', 'enrollment')
             ->whereIn('tb_mac_forms.status', ['Enrolled', 'Not Enrolled', 'New Enrollment'])
             //->whereIn('recommendation.status', ['For enrollment', 'Not for Enrollment', 'Need Further Details', 'Referred to national'])
+            ->orWhere('recommendation.status', 'For Enrollment')
+            ->orWhere('recommendation.status', 'Not for Enrollment')
+            ->orWhere('recommendation.status', 'Need Further Details')
+            ->orWhere('recommendation.status', 'Referred to national')
             ->whereBetween('tb_mac_forms.created_at', [$firstDay, $lastDay])
             ->orderBy('tb_mac_forms.id', 'asc')
             ->get();
