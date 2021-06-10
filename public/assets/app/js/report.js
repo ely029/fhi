@@ -196,3 +196,10 @@ window.addEventListener('load', function() {
       }
     });
   });
+
+  let startYear = 1900;
+  let endYear = new Date().getFullYear();
+  for (var i = endYear; i > startYear; i--)
+  {
+    $('.js-year').append($('<option />').val(i).html(i));
+  }
