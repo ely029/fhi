@@ -20,6 +20,8 @@ class ReportsController extends Controller
         $region = Geolocation::select('id')->where('name1', auth()->user()->region)->first();
         $provinces = Geolocation::where('PARENT_ID', $region->id)->pluck('name1', 'id');
         $report = null;
+        $dateFrom = '';
+        $dateTo = '';
         if (request('period')) {
             $report['province'] = request('province');
             $report['health_facility'] = request('health_facility');
