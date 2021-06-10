@@ -77,7 +77,7 @@
               <td class="table__details">E-{{ empty($details->presentation_number) ? '' : $details->presentation_number }}</td>
                 <td class="table__details">{{ $initials }}    {{ $age }}   {{ $gender }}</td>
                 <td class="table__details">Enrollment</td>
-                <td class="table__details">{{ in_array($details->recom_status,['For enrollment', 'Not for Enrollment', 'Need Further Details', 'Referred to national']) ? $details->recom_status : '' }}</td>
+                <td class="table__details">{{ in_array($details->recom_status,['For Enrollment', 'Not For Enrollment', 'Need Further Details', 'Referred to national']) ? $details->recom_status : '' }}</td>
                 <td class="table__details">{{ $details->header_status == 'Enrolled' || $details->header_status == 'Not Enrolled' ? $details->header_status : '' }}</td>
                 <td class="table__details">{{ $details->header_status == 'Enrolled' || $details->header_status == 'Not Enrolled'  ? date('m-d-Y', strtotime( $details->updated_at )) : ''  }}</td>
                 @if (auth()->user()->role_id == 4)

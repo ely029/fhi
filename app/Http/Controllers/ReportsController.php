@@ -12,13 +12,13 @@ class ReportsController extends Controller
 {
     public function index()
     {
-        return view('reports.index'); 
+        return view('reports.index');
     }
 
     public function generate()
     {
         $region = Geolocation::select('id')->where('name1', auth()->user()->region)->first();
-        $provinces = Geolocation::where('PARENT_ID', $region->id)->pluck('name1','id');
+        $provinces = Geolocation::where('PARENT_ID', $region->id)->pluck('name1', 'id');
         $report = null;
         if ($period = request('period')) {
 
@@ -40,14 +40,12 @@ class ReportsController extends Controller
             }
     
 
-            $totalCases = TBMacForm::with('patient')->whereHas('patient', function($query){
+            $totalCases = TBMacForm::with('patient')->whereHas('patient', function ($query) {
                 $query->where('province', request('province'));
-            })->whereDate('updated_at','>=', $dateFrom)
-                ->whereDate('updated_at','<=', $dateTo)
+            })->whereDate('updated_at', '>=', $dateFrom)
+                ->whereDate('updated_at', '<=', $dateTo)
                 ->where('region', auth()->user()->region)
                 ->get();
-
-        
 
             $report['age_gender'] = [
                 'enrollment' => [
@@ -95,38 +93,17 @@ class ReportsController extends Controller
             $report['not_resolved_cases_treatment_outcome'] = 0;
 
             $totalCases = $totalCases->groupBy('form_type');
-            foreach($totalCases as $formType => $cases)
-            {
-                foreach($cases as $case)
-                {
-
-                    if ($case->patient->age <= 14) {
-                        $report['age_gender'][$formType]['14_below'][$case->patient->gender] += 1;
-                    } else {
-                        $report['age_gender'][$formType]['15_above'][$case->patient->gender] += 1;
-                    }
-
-                    $report['age_gender'][$formType]['total_'.$case->patient->gender] += 1;
-
-                    if (in_array($case->status,$this->getResolvedStatus()[$formType])) {
-                        $report['resolved_cases_'.$formType] += 1;
-                    } else if(in_array($case->status,$this->getNotResolvedStatus()[$formType])) {
-                        $report['not_resolved_cases_'.$formType] += 1;
-                    }
-                   
-                }
+            foreach ($totalCases as $formType => $cases) {
+                $this->getAgeFourteen($cases, $report, $formType);
             }
             $report['enrollment_total_case'] = isset($totalCases['enrollment']) ? count($totalCases['enrollment']) : 0;
             $report['case_total_case'] = isset($totalCases['case_management']) ? count($totalCases['case_management']) : 0;
             $report['treatment_total_case'] = isset($totalCases['treatment_outcome']) ? count($totalCases['treatment_outcome']) : 0;
-        
-            
             $this->getTotalMaleFemale($report);
             $this->getTotalAgeRange($report);
-            
             $report['total_cases'] = $totalCases->count();
-            $report['total_resolved'] = $report['resolved_cases_enrollment'] + $report['resolved_cases_enrollment'] +  $report['resolved_cases_treatment_outcome'];
-            $report['total_not_resolved'] = $report['not_resolved_cases_enrollment'] + $report['not_resolved_cases_enrollment'] +  $report['not_resolved_cases_treatment_outcome'];
+            $report['total_resolved'] = $report['resolved_cases_enrollment'] + $report['resolved_cases_enrollment'] + $report['resolved_cases_treatment_outcome'];
+            $report['total_not_resolved'] = $report['not_resolved_cases_enrollment'] + $report['not_resolved_cases_enrollment'] + $report['not_resolved_cases_treatment_outcome'];
         }
 
         return view('reports.form')
@@ -209,5 +186,22 @@ class ReportsController extends Controller
 
         $report['14_below'] = $totalBelowM + $totalBelowF;
         $report['15_above'] = $totalAboveM + $totalAboveF;
+    }
+
+    private function getAgeFourteen($cases, $report, $formType)
+    {
+        foreach ($cases as $case) {
+            if ($case->patient->age <= 14) {
+                $report['age_gender'][$formType]['14_below'][$case->patient->gender] += 1;
+            } else {
+                $report['age_gender'][$formType]['15_above'][$case->patient->gender] += 1;
+            }
+            $report['age_gender'][$formType]['total_'.$case->patient->gender] += 1;
+            if (in_array($case->status, $this->getResolvedStatus()[$formType])) {
+                $report['resolved_cases_'.$formType] += 1;
+            } elseif (in_array($case->status, $this->getNotResolvedStatus()[$formType])) {
+                $report['not_resolved_cases_'.$formType] += 1;
+            }
+        }
     }
 }
