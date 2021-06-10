@@ -63,7 +63,7 @@
                                     <li class="form__group-item">
                                         <label class="form__sublabel" for="period">Annual
                                             <input class="form__trigger"
-                                                type="radio" name="period" value="annual" /><span class="form__radio"></span></label>
+                                                type="radio" name="period" {{ request('period') == 'annual' ? 'checked' : '' }} value="annual" /><span class="form__radio"></span></label>
                                     </li>
                                 </ul>
                                 <div class="grid grid--two grid--full grid--start">
@@ -72,6 +72,7 @@
                                         <div class="triangle triangle--down"></div>
                                         <label class="form__label" for="">Year</label>
                                     </div>
+                                    <input type="hidden" id="selected_year" value="{{ request('year') }}">
                                     <input type="hidden" id="selected_period" value="{{ request('period') }}"> 
                                     <div class="form__content" id="year_month_div">
                                         <select class="form__input form__input--select" id="quarterly_dropdown" name="quarter">
