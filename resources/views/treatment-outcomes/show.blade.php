@@ -195,11 +195,11 @@
           </form>
           <hr class="line" />
           <ul class="tabs__list">
-            <li class="tabs__item tabs__item--current">Bacteriological results</li>
-            <li class="tabs__item">Case information</li>
-            <li class="tabs__item">Remarks &amp; Recommendations</li>
+            <li class="tabs__item js-tabs js-tabs-current">Bacteriological results</li>
+            <li class="tabs__item js-tabs">Case information</li>
+            <li class="tabs__item js-tabs">Remarks &amp; Recommendations</li>
           </ul>
-          <div class="tabs__details tabs__details--active">
+          <div class="tabs__details js-tabs-details js-tabs-details-active">
             <form class="form" action="">
               <div class="form__container">
                 <h2 class="section__heading">Screenings</h2>
@@ -306,7 +306,7 @@
               </div>
             </form>
           </div>
-          <div class="tabs__details">
+          <div class="tabs__details js-tabs-details">
             <form class="form" action="">
 
               <div class="form__container">
@@ -352,7 +352,7 @@
               </div>
             </form>
           </div>
-          <div class="tabs__details">
+          <div class="tabs__details js-tabs-details">
             <form class="form form--half" action="">
               <h2 class="section__heading">Remarks | Recommendations</h2>
               @php
