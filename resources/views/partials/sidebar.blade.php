@@ -57,6 +57,15 @@
               <span class="sidebar__text">Masterlist</span>
             </a>
           </li>
+          <li class="sidebar__item">
+            <a class="sidebar__link" href="{{ url('reports')}}">
+              <div class="sidebar__wrapper">
+                <img class="image" src="{{ asset('assets/app/img/icon-reports.png') }}" alt="Reports icon for fhi" />
+                <img class="image image--white" src="{{ asset('assets/app/img/icon-reports-white.png') }}" alt="Reports icon on hover for fhi" />
+              </div>
+              <span class="sidebar__text">Reports</span>
+            </a>
+          </li>
           @endif
         </ul>
         @endif
