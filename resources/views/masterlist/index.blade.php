@@ -69,6 +69,7 @@
                 $age = Carbon\Carbon::parse($details->birthday)->age;
                 $gender = Str::upper(Str::substr($details->gender, 0, 1));
                 @endphp
+                {{-- This will display when the status is 'New Enrollment'--}}
                 @if ($details->header_status == 'New Enrollment'))
                 @if(auth()->user()->role_id == 4)
                 <tr class="table_row_enrollment sec table__row-{{ $details->id }}">
@@ -79,8 +80,8 @@
                 <td class="table__details">{{ $initials }}    {{ $age }}   {{ $gender }}</td>
                 <td class="table__details">Enrollment</td>
                 <td class="table__details">{{   $details->recom_status  }}</td>
-                <td class="table__details">{{  $details->header_status }}</td>
-                <td class="table__details">{{ date('m-d-Y', strtotime( $details->updated_at )) }}</td>
+                <td class="table__details"></td>
+                <td class="table__details"></td>
                 @if (auth()->user()->role_id == 4)
                   @if($details->remarks === NULL)
                   <td class="table__details"><span class="table__link remarks">Edit remarks</span></td>
@@ -139,8 +140,8 @@
                 <td class="table__details">{{ $initials }}    {{ $age }}   {{ $gender }}</td>
                 <td class="table__details">Case management</td>
                 <td class="table__details">{{   $details->recom_status  }}</td>
-                <td class="table__details">{{  $details->header_status }}</td>
-                <td class="table__details">{{ date('m-d-Y', strtotime( $details->updated_at )) }}</td>
+                <td class="table__details"></td>
+                <td class="table__details"></td>
                 @if (auth()->user()->role_id == 4)
                   @if($details->remarks === NULL)
                   <td class="table__details"><span class="table__link remarks">Edit remarks</span></td>
@@ -199,8 +200,8 @@
                 <td class="table__details">{{ $initials }}    {{ $age }}   {{ $gender }}</td>
                 <td class="table__details">Treatment outcome</td>
                 <td class="table__details">{{   $details->recom_status  }}</td>
-                <td class="table__details">{{  $details->header_status }}</td>
-                <td class="table__details">{{ date('m-d-Y', strtotime( $details->updated_at )) }}</td>
+                <td class="table__details"></td>
+                <td class="table__details"></td>
                 @if (auth()->user()->role_id == 4)
                   @if($details->remarks === NULL)
                   <td class="table__details"><span class="table__link remarks">Edit remarks</span></td>
