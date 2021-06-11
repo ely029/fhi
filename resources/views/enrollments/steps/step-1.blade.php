@@ -133,5 +133,5 @@
   </div>
   <input type="hidden" id="is_from_itis" value="0">
   <div class="form__button form__button--space form__button--pagination step-1">
-    <a class="button button--next step-1-next">Next</a>
+    <button class="button button--next step-1-next" type="button">Next</button>
   </div>
