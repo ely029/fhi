@@ -135,9 +135,9 @@
               @else
               <tr class="table_row_enrollment table__row-{{ $details->id }}">
               @endif
-              <td class="table__details">E-{{ empty($details->presentation_number) ? '' : $details->presentation_number }}</td>
+              <td class="table__details">C-{{ empty($details->presentation_number) ? '' : $details->presentation_number }}</td>
                 <td class="table__details">{{ $initials }}    {{ $age }}   {{ $gender }}</td>
-                <td class="table__details">Enrollment</td>
+                <td class="table__details">Case management</td>
                 <td class="table__details">{{   $details->recom_status  }}</td>
                 <td class="table__details">{{  $details->header_status }}</td>
                 <td class="table__details">{{ date('m-d-Y', strtotime( $details->updated_at )) }}</td>
@@ -161,9 +161,9 @@
               @else
               <tr class="table_row_enrollment table__row-{{ $details->id }}">
               @endif
-              <td class="table__details">E-{{ empty($details->presentation_number) ? '' : $details->presentation_number }}</td>
+              <td class="table__details">C-{{ empty($details->presentation_number) ? '' : $details->presentation_number }}</td>
                 <td class="table__details">{{ $initials }}    {{ $age }}   {{ $gender }}</td>
-                <td class="table__details">Enrollment</td>
+                <td class="table__details">Case management</td>
                 <td class="table__details">{{   $details->recom_status  }}</td>
                 <td class="table__details">{{  $details->header_status }}</td>
                 <td class="table__details">{{ date('m-d-Y', strtotime( $details->updated_at )) }}</td>
@@ -195,9 +195,9 @@
               @else
               <tr class="table_row_enrollment table__row-{{ $details->id }}">
               @endif
-              <td class="table__details">E-{{ empty($details->presentation_number) ? '' : $details->presentation_number }}</td>
+              <td class="table__details">T-{{ empty($details->presentation_number) ? '' : $details->presentation_number }}</td>
                 <td class="table__details">{{ $initials }}    {{ $age }}   {{ $gender }}</td>
-                <td class="table__details">Enrollment</td>
+                <td class="table__details">Treatment outcome</td>
                 <td class="table__details">{{   $details->recom_status  }}</td>
                 <td class="table__details">{{  $details->header_status }}</td>
                 <td class="table__details">{{ date('m-d-Y', strtotime( $details->updated_at )) }}</td>
@@ -221,9 +221,9 @@
               @else
               <tr class="table_row_enrollment table__row-{{ $details->id }}">
               @endif
-              <td class="table__details">E-{{ empty($details->presentation_number) ? '' : $details->presentation_number }}</td>
+              <td class="table__details">T-{{ empty($details->presentation_number) ? '' : $details->presentation_number }}</td>
                 <td class="table__details">{{ $initials }}    {{ $age }}   {{ $gender }}</td>
-                <td class="table__details">Enrollment</td>
+                <td class="table__details">Treatment outcome</td>
                 <td class="table__details">{{   $details->recom_status  }}</td>
                 <td class="table__details">{{  $details->header_status }}</td>
                 <td class="table__details">{{ date('m-d-Y', strtotime( $details->updated_at )) }}</td>
