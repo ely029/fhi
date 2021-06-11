@@ -69,17 +69,18 @@
                 $age = Carbon\Carbon::parse($details->birthday)->age;
                 $gender = Str::upper(Str::substr($details->gender, 0, 1));
                 @endphp
-              @if(auth()->user()->role_id == 4)
-              <tr class="table_row_enrollment sec table__row-{{ $details->id }}">
+                @if ($details->header_status == 'New Enrollment'))
+                @if(auth()->user()->role_id == 4)
+                <tr class="table_row_enrollment sec table__row-{{ $details->id }}">
               @else
               <tr class="table_row_enrollment table__row-{{ $details->id }}">
               @endif
               <td class="table__details">E-{{ empty($details->presentation_number) ? '' : $details->presentation_number }}</td>
                 <td class="table__details">{{ $initials }}    {{ $age }}   {{ $gender }}</td>
                 <td class="table__details">Enrollment</td>
-                <td class="table__details">{{ in_array($details->recom_status,['For Enrollment', 'Not For Enrollment', 'Need Further Details', 'Referred to national']) ? $details->recom_status : '' }}</td>
-                <td class="table__details">{{ $details->header_status == 'Enrolled' || $details->header_status == 'Not Enrolled' ? $details->header_status : '' }}</td>
-                <td class="table__details">{{ $details->header_status == 'Enrolled' || $details->header_status == 'Not Enrolled'  ? date('m-d-Y', strtotime( $details->updated_at )) : ''  }}</td>
+                <td class="table__details">{{   $details->recom_status  }}</td>
+                <td class="table__details">{{  $details->header_status }}</td>
+                <td class="table__details">{{ date('m-d-Y', strtotime( $details->updated_at )) }}</td>
                 @if (auth()->user()->role_id == 4)
                   @if($details->remarks === NULL)
                   <td class="table__details"><span class="table__link remarks">Edit remarks</span></td>
@@ -93,6 +94,33 @@
                 <input type="hidden" value="{{ $details->remarks}}" id="sec_remarks">
                 <input type="hidden" value="enrollment" id="form_type">
               </tr>
+                @endif
+                @if (in_array($details->recom_status,['For Enrollment', 'Not For Enrollment', 'Need Further Details', 'Referred to national']))
+                @if(auth()->user()->role_id == 4)
+              <tr class="table_row_enrollment sec table__row-{{ $details->id }}">
+              @else
+              <tr class="table_row_enrollment table__row-{{ $details->id }}">
+              @endif
+              <td class="table__details">E-{{ empty($details->presentation_number) ? '' : $details->presentation_number }}</td>
+                <td class="table__details">{{ $initials }}    {{ $age }}   {{ $gender }}</td>
+                <td class="table__details">Enrollment</td>
+                <td class="table__details">{{   $details->recom_status  }}</td>
+                <td class="table__details">{{  $details->header_status }}</td>
+                <td class="table__details">{{ date('m-d-Y', strtotime( $details->updated_at )) }}</td>
+                @if (auth()->user()->role_id == 4)
+                  @if($details->remarks === NULL)
+                  <td class="table__details"><span class="table__link remarks">Edit remarks</span></td>
+                  @else
+                  <td class="table__details"><span class="table__link remarks">{{ $details->remarks }}</span></td>
+                  @endif
+                @else
+                <td class="table__details">{{ $details->remarks }}</td>
+                @endif
+                <input type="hidden" value="{{ $details->id}}" id="form_id">
+                <input type="hidden" value="{{ $details->remarks}}" id="sec_remarks">
+                <input type="hidden" value="enrollment" id="form_type">
+              </tr>
+                @endif
               @endforeach
               @foreach($caseManagement as $details)
                 @php
@@ -100,19 +128,21 @@
                 $age = Carbon\Carbon::parse($details->birthday)->age;
                 $gender = Str::upper(Str::substr($details->gender, 0, 1));
                 @endphp
-                @if(auth()->user()->role_id == 4) 
-              <tr class="table_row_enrollment sec table__row-{{ $details->id }}">
+                {{-- This will display when the status is 'New Case'--}}
+                @if ($details->header_status == 'New Case'))
+                @if(auth()->user()->role_id == 4)
+                <tr class="table_row_enrollment sec table__row-{{ $details->id }}">
               @else
               <tr class="table_row_enrollment table__row-{{ $details->id }}">
               @endif
               <td class="table__details">C-{{ empty($details->presentation_number) ? '' : $details->presentation_number }}</td>
                 <td class="table__details">{{ $initials }}    {{ $age }}   {{ $gender }}</td>
-                <td class="table__details">Case Management</td>
-                <td class="table__details">{{ in_array($details->recom_status,['Approved', 'Other suggestions', 'Need Further Details', 'Referred to national']) ? $details->recom_status : '' }}</td>
-                <td class="table__details">{{ $details->header_status == 'Resolved' || $details->header_status == 'Not Resolved' ? $details->header_status : '' }}</td>
-                <td class="table__details">{{ $details->header_status == 'Resolved' || $details->header_status == 'Not Resolved'  ? date('m-d-Y', strtotime( $details->updated_at )) : ''  }}</td>
+                <td class="table__details">Case management</td>
+                <td class="table__details">{{   $details->recom_status  }}</td>
+                <td class="table__details">{{  $details->header_status }}</td>
+                <td class="table__details">{{ date('m-d-Y', strtotime( $details->updated_at )) }}</td>
                 @if (auth()->user()->role_id == 4)
-                  @if ($details->remarks === NULL)
+                  @if($details->remarks === NULL)
                   <td class="table__details"><span class="table__link remarks">Edit remarks</span></td>
                   @else
                   <td class="table__details"><span class="table__link remarks">{{ $details->remarks }}</span></td>
@@ -122,8 +152,35 @@
                 @endif
                 <input type="hidden" value="{{ $details->id}}" id="form_id">
                 <input type="hidden" value="{{ $details->remarks}}" id="sec_remarks">
-                <input type="hidden" value="case_management" id="form_type">
+                <input type="hidden" value="enrollment" id="form_type">
               </tr>
+                @endif
+                @if (in_array($details->recom_status,['Approved', 'Other suggestions', 'Need Further Details', 'Referred to national'])))
+                @if(auth()->user()->role_id == 4)
+              <tr class="table_row_enrollment sec table__row-{{ $details->id }}">
+              @else
+              <tr class="table_row_enrollment table__row-{{ $details->id }}">
+              @endif
+              <td class="table__details">C-{{ empty($details->presentation_number) ? '' : $details->presentation_number }}</td>
+                <td class="table__details">{{ $initials }}    {{ $age }}   {{ $gender }}</td>
+                <td class="table__details">Case management</td>
+                <td class="table__details">{{   $details->recom_status  }}</td>
+                <td class="table__details">{{  $details->header_status }}</td>
+                <td class="table__details">{{ date('m-d-Y', strtotime( $details->updated_at )) }}</td>
+                @if (auth()->user()->role_id == 4)
+                  @if($details->remarks === NULL)
+                  <td class="table__details"><span class="table__link remarks">Edit remarks</span></td>
+                  @else
+                  <td class="table__details"><span class="table__link remarks">{{ $details->remarks }}</span></td>
+                  @endif
+                @else
+                <td class="table__details">{{ $details->remarks }}</td>
+                @endif
+                <input type="hidden" value="{{ $details->id}}" id="form_id">
+                <input type="hidden" value="{{ $details->remarks}}" id="sec_remarks">
+                <input type="hidden" value="enrollment" id="form_type">
+              </tr>
+                @endif 
               @endforeach
               @foreach($treatmentOutcome as $details)
                 @php
@@ -131,19 +188,21 @@
                 $age = Carbon\Carbon::parse($details->birthday)->age;
                 $gender = Str::upper(Str::substr($details->gender, 0, 1));
                 @endphp
+                {{-- This will display when the status is 'New Case'--}}
+                @if ($details->header_status == 'New Case'))
                 @if(auth()->user()->role_id == 4)
-              <tr class="table_row_enrollment sec table__row-{{ $details->id }}">
+                <tr class="table_row_enrollment sec table__row-{{ $details->id }}">
               @else
               <tr class="table_row_enrollment table__row-{{ $details->id }}">
               @endif
               <td class="table__details">T-{{ empty($details->presentation_number) ? '' : $details->presentation_number }}</td>
                 <td class="table__details">{{ $initials }}    {{ $age }}   {{ $gender }}</td>
-                <td class="table__details">Treatment Outcome</td>
-                <td class="table__details">{{ in_array($details->recom_status,['Approved', 'Other suggestions', 'Need Further Details', 'Referred to national']) ? $details->recom_status : '' }}</td>
-                <td class="table__details">{{ $details->header_status == 'Resolved' || $details->header_status == 'Not Resolved' ? $details->header_status : '' }}</td>
-                <td class="table__details">{{ $details->header_status == 'Resolved' || $details->header_status == 'Not Resolved'  ? date('m-d-Y', strtotime( $details->updated_at )) : ''  }}</td>
+                <td class="table__details">Treatment outcome</td>
+                <td class="table__details">{{   $details->recom_status  }}</td>
+                <td class="table__details">{{  $details->header_status }}</td>
+                <td class="table__details">{{ date('m-d-Y', strtotime( $details->updated_at )) }}</td>
                 @if (auth()->user()->role_id == 4)
-                  @if ($details->remarks === NULL)
+                  @if($details->remarks === NULL)
                   <td class="table__details"><span class="table__link remarks">Edit remarks</span></td>
                   @else
                   <td class="table__details"><span class="table__link remarks">{{ $details->remarks }}</span></td>
@@ -153,8 +212,35 @@
                 @endif
                 <input type="hidden" value="{{ $details->id}}" id="form_id">
                 <input type="hidden" value="{{ $details->remarks}}" id="sec_remarks">
-                <input type="hidden" value="treatment_outcome" id="form_type">
+                <input type="hidden" value="enrollment" id="form_type">
               </tr>
+                @endif
+                @if (in_array($details->recom_status,['Approved', 'Other suggestions', 'Need Further Details', 'Referred to national'])))
+                @if(auth()->user()->role_id == 4)
+              <tr class="table_row_enrollment sec table__row-{{ $details->id }}">
+              @else
+              <tr class="table_row_enrollment table__row-{{ $details->id }}">
+              @endif
+              <td class="table__details">T-{{ empty($details->presentation_number) ? '' : $details->presentation_number }}</td>
+                <td class="table__details">{{ $initials }}    {{ $age }}   {{ $gender }}</td>
+                <td class="table__details">Treatment outcome</td>
+                <td class="table__details">{{   $details->recom_status  }}</td>
+                <td class="table__details">{{  $details->header_status }}</td>
+                <td class="table__details">{{ date('m-d-Y', strtotime( $details->updated_at )) }}</td>
+                @if (auth()->user()->role_id == 4)
+                  @if($details->remarks === NULL)
+                  <td class="table__details"><span class="table__link remarks">Edit remarks</span></td>
+                  @else
+                  <td class="table__details"><span class="table__link remarks">{{ $details->remarks }}</span></td>
+                  @endif
+                @else
+                <td class="table__details">{{ $details->remarks }}</td>
+                @endif
+                <input type="hidden" value="{{ $details->id}}" id="form_id">
+                <input type="hidden" value="{{ $details->remarks}}" id="sec_remarks">
+                <input type="hidden" value="enrollment" id="form_type">
+              </tr>
+                @endif 
               @endforeach
             </tbody>
           </table>
