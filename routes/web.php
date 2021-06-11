@@ -17,6 +17,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MasterListController;
 use App\Http\Controllers\ReportAndFeedbackController;
 use App\Http\Controllers\ReportsController;
+use App\Http\Controllers\ReportsSubmitController;
 use App\Http\Controllers\ResubmitCaseManagementController;
 use App\Http\Controllers\ResubmitEnrollmentController;
 use App\Http\Controllers\ResubmitTreatmentOutcomeController;
@@ -131,6 +132,7 @@ Route::group(['middleware' => ['auth','role_request_approved']], static function
 
     Route::get('reports', [ReportsController::class, 'index']);
     Route::get('reports/generate', [ReportsController::class, 'generate']);
+    Route::post('reports/submit', [ReportsSubmitController::class, 'store']);
 });
 
 Route::get('itis/login', [LoginController::class, 'itisLogin']);

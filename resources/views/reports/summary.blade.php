@@ -4,7 +4,7 @@
             <span class="form__text">{{ $report['period'] }}</span>
             <h2 class="section__heading">Summary</h2>
         </div>
-        <a class="button" href="">Export </a>
+        <input class="button" id="submit_report" type="button" value="Submit" />
     </div>
     <div class="grid">
         <div class="form__content">
@@ -231,7 +231,7 @@
       <tbody>
           @php
             $r = $report['ntb_presentation']['resolved'];
-            $nr = $report['ntb_presentation']['resolved'];
+            $nr = $report['ntb_presentation']['not_resolved'];
           @endphp
         <tr>
           <td class="table__details">Enrollment</td>

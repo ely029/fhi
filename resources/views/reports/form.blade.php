@@ -121,6 +121,33 @@
 
                 </ul>
             </form>
+            @if(!is_null($report))
+                <div class="modal" id="submit_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal__background" data-dismiss="modal"></div>
+                    <div class="modal__container">
+                    <div class="modal__box">
+                        <h2 class="modal__title" id="modal-title">Submit report</h2>
+                        <p class="modal__text" id="modal-text"></p>
+                        <form class="form form--full" id="modal-form" method="POST" action="{{ url('reports/submit') }}">
+                            @csrf
+                            <div class="form__content">
+                                @foreach(\Request::query() as $key => $value)
+                                    <input type="hidden" name="{{ $key }}" value="{{ $value }}">
+                                @endforeach
+                                @if(in_array(auth()->user()->role_id,[4,5,6]))
+                                    <input type="hidden" name="region" value="{{ auth()->user()->region }}">
+                                @endif
+                                <input type="hidden" name="report_data" value="{{ json_encode($report) }}">
+                                <textarea name="remarks" class="form__input form__input--message" placeholder="Enter remarks"></textarea><label class="form__label" for="">Remarks</label>
+                                </div>
+                            <div class="modal__button modal__button--end">
+                                <button class="button" type="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
 @endsection
