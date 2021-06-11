@@ -221,6 +221,15 @@ class ReportsController extends Controller
         $report['15_above'] = $totalAboveM + $totalAboveF;
     }
 
+    public function show(Report $report)
+    {
+        $reportData = (array) $report->report_data;
+
+        return view('reports.show')
+            ->with('report', $report)
+            ->with('reportData', $reportData);
+    }
+
     private function getAgeFourteen($cases, &$report, $formType)
     {
         foreach ($cases as $case) {

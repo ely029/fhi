@@ -22,7 +22,7 @@ class Report extends Model
     ];
 
     protected $casts = [
-        'report_data' => 'array',
+        'report_data' => 'json',
     ];
 
     public function preparedBy()

@@ -39,7 +39,9 @@ class RoleRequestController extends Controller
         if (in_array($request->role_id, $approvedRolesID)) {
 
             // if 6 months last login but already approved, expires all role
-            if (Carbon::now('Asia/Manila')->diffInMonths(auth()->user()->last_login) >= 6) {
+            // if (Carbon::now('Asia/Manila')->diffInMonths(auth()->user()->last_login) >= 6) {
+            //test 10 minutes
+            if (Carbon::now('Asia/Manila')->diffInMinutes(auth()->user()->last_login) >= 10) {
                 $this->expiresRole($approvedRoles);
             } else {
                 auth()->user()->update([
