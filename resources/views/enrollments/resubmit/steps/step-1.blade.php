@@ -50,5 +50,5 @@
     </div>
   </div>
   <div class="form__button form__button--space form__button--pagination step-1">
-    <a class="button button--next">Next</a>
+    <button class="button button--next" type="button">Next</button>
   </div>
