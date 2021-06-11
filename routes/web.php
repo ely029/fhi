@@ -132,6 +132,7 @@ Route::group(['middleware' => ['auth','role_request_approved']], static function
 
     Route::get('reports', [ReportsController::class, 'index']);
     Route::get('reports/generate', [ReportsController::class, 'generate']);
+    Route::get('reports/{report}', [ReportsController::class, 'show']);
     Route::post('reports/submit', [ReportsSubmitController::class, 'store']);
 });
 
