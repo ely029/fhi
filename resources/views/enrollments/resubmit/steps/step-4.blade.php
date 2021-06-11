@@ -199,6 +199,6 @@
     </div>
   </div>
   <div class="form__button form__button--space form__button--pagination step-4">
-    <a class="button button--back">Back</a>
+    <button class="button button--back" type="button">Back</button>
     <button class="button button--next" type="button">Resubmit enrollment</button>
   </div>
