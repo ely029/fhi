@@ -27,6 +27,10 @@ jQuery( document ).ready(function( $ ) {
         onPeriodValue($(this).val());
     });
 
+    $("#submit_report").on('click', function(){
+        $("#submit_modal").modal('show');
+    });
+
     function onPeriodValue(period){
         if(period == 'monthly'){
             $("#monthly_dropdown").show();

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Models\Geolocation;
+use App\Models\Report;
 use App\Models\TBMacForm;
 use Carbon\Carbon;
 
@@ -12,7 +13,8 @@ class ReportsController extends Controller
 {
     public function index()
     {
-        return view('reports.index');
+        return view('reports.index')
+            ->with('reports', Report::with('preparedBy')->orderBy('created_at', 'desc')->paginate());
     }
 
     public function generate()
@@ -52,44 +54,7 @@ class ReportsController extends Controller
                 ->where('region', auth()->user()->region)
                 ->get();
 
-            $report['age_gender'] = [
-                'enrollment' => [
-                    '14_below' => [
-                        'Male' => 0,
-                        'Female' => 0,
-                    ],
-                    '15_above' => [
-                        'Male' => 0,
-                        'Female' => 0,
-                    ],
-                    'total_Male' => 0,
-                    'total_Female' => 0,
-                ],
-                'case_management' => [
-                    '14_below' => [
-                        'Male' => 0,
-                        'Female' => 0,
-                    ],
-                    '15_above' => [
-                        'Male' => 0,
-                        'Female' => 0,
-                    ],
-                    'total_Male' => 0,
-                    'total_Female' => 0,
-                ],
-                'treatment_outcome' => [
-                    '14_below' => [
-                        'Male' => 0,
-                        'Female' => 0,
-                    ],
-                    '15_above' => [
-                        'Male' => 0,
-                        'Female' => 0,
-                    ],
-                    'total_Male' => 0,
-                    'total_Female' => 0,
-                ],
-            ];
+            $this->getAgeGenderKeys($report);
             // rtb presentation
             $report['resolved_cases_enrollment'] = 0;
             $report['resolved_cases_case_management'] = 0;
@@ -110,7 +75,7 @@ class ReportsController extends Controller
             $report['total_cases'] = $totalCases->count();
             $report['total_resolved'] = $report['resolved_cases_enrollment'] + $report['resolved_cases_enrollment'] + $report['resolved_cases_treatment_outcome'];
             $report['total_not_resolved'] = $report['not_resolved_cases_enrollment'] + $report['not_resolved_cases_enrollment'] + $report['not_resolved_cases_treatment_outcome'];
-        
+
             // ntb presentation
             $totalCasesForNTBMAC = TBMacForm::with(['patient','recommendations:status,form_id'])->whereHas('patient', function ($query) {
                 $query->where('province', request('province'));
@@ -121,13 +86,53 @@ class ReportsController extends Controller
                 ->where('region', auth()->user()->region)
                 ->get();
 
-            $this->setReportForNTBMAC($report, $totalCasesForNTBMAC);
-            
-            }
-
+            $this->getReportForNTBMAC($report, $totalCasesForNTBMAC);
+        }
         return view('reports.form')
             ->with('provinces', $provinces)
             ->with('report', $report);
+    }
+
+    public function getAgeGenderKeys(&$report)
+    {
+        $report['age_gender'] = [
+            'enrollment' => [
+                '14_below' => [
+                    'Male' => 0,
+                    'Female' => 0,
+                ],
+                '15_above' => [
+                    'Male' => 0,
+                    'Female' => 0,
+                ],
+                'total_Male' => 0,
+                'total_Female' => 0,
+            ],
+            'case_management' => [
+                '14_below' => [
+                    'Male' => 0,
+                    'Female' => 0,
+                ],
+                '15_above' => [
+                    'Male' => 0,
+                    'Female' => 0,
+                ],
+                'total_Male' => 0,
+                'total_Female' => 0,
+            ],
+            'treatment_outcome' => [
+                '14_below' => [
+                    'Male' => 0,
+                    'Female' => 0,
+                ],
+                '15_above' => [
+                    'Male' => 0,
+                    'Female' => 0,
+                ],
+                'total_Male' => 0,
+                'total_Female' => 0,
+            ],
+        ];
     }
 
     public function getDateFromToQuarterly()
@@ -235,7 +240,7 @@ class ReportsController extends Controller
         }
     }
 
-    private function setReportForNTBMAC(&$report, $totalCasesForNTBMAC)
+    private function getReportForNTBMAC(&$report, $totalCasesForNTBMAC)
     {
         $report['ntb_presentation'] = [
             'resolved' => [
@@ -255,10 +260,9 @@ class ReportsController extends Controller
         ];
 
         foreach ($totalCasesForNTBMAC as $case) {
-
             $recommendations = $case->recommendations->pluck('status')->toArray();
             if (in_array('Resolved', $recommendations)) {
-                // cases N-TB MAC Chair do an action and gives recommendation (Resolved) 
+                // cases N-TB MAC Chair do an action and gives recommendation (Resolved)
                 $report['ntb_presentation']['resolved'][$case->form_type] += 1;
             } else {
                 // cases N-TB MAC Chair give a recommendation and action (Not resolved) and unanswered from the N-TB MAC Chair
@@ -269,7 +273,5 @@ class ReportsController extends Controller
 
         $report['ntb_presentation']['total_resolved'] = array_sum($report['ntb_presentation']['resolved']);
         $report['ntb_presentation']['total_not_resolved'] = array_sum($report['ntb_presentation']['not_resolved']);
-
-
     }
 }

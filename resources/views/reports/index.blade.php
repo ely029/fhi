@@ -32,17 +32,27 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- @foreach ($users as $user)
-                            <tr class="table__row js-view" data-href="{{ url('dashboard/users/'.$user->id) }}">
-                                <td class="table__details">{{ $user->username }}</td>
-                                <td class="table__details">{{ $user->name }}</td>
-                                <td class="table__details">{{ $user->email }}</td>
-                                <td class="table__details">{{ $user->created_at->format('Y-m-d') }}</td>
+                        @foreach ($reports as $report)
+                            <tr class="table__row js-view" data-href="{{ url('reports/'.$report->id) }}">
+                                <td class="table__details">{{ $report->report_number }}</td>
+                                <td class="table__details">{{ ucfirst($report->period) }}</td>
+                                @if($report->period == 'annual')
+                                    <td class="table__details">{{ $report->year }}</td>
+                                @elseif($report->period == 'quarterly')
+                                    <td class="table__details">{{ $report->quarter }}</td>
+                                @else
+                                    <td class="table__details">{{ $report->month }}</td>
+                                @endif
+                                <td class="table__details">{{ $report->region }}</td>
+                                <td class="table__details">{{ $report->province }}</td>
+                                <td class="table__details">{{ $report->health_facility }}</td>
+                                <td class="table__details">{{ $report->preparedBy->itis_name }}</td>
+                                <td class="table__details">{{ $report->created_at->format('Y-m-d') }}</td>
                             </tr>
-                        @endforeach --}}
+                        @endforeach
                     </tbody>
                 </table>
-                {{-- {{ $users->links() }} --}}
+                {{ $reports->links() }}
             </div>
         </div>
     </div>
