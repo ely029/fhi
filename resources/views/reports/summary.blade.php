@@ -173,3 +173,113 @@
         </tbody>
     </table>
 </li>
+{{-- N-TB MAC --}}
+<li class="card__item">
+    <div class="grid grid--start">
+      <div class="form__content">
+        <span class="form__text">1st Quarter 2021 </span>
+        <h2 class="section__heading">Summary</h2>
+      </div>
+    </div>
+    <div class="grid grid--three grid--start">
+      <div class="grid grid--column">
+        <table class="table table--reports table--full">
+          <thead>
+            <tr>
+              <th class="table__head">Total cases presented to N-TB MAC</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="table__details">{{ $report['ntb_presentation']['total_case'] }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="table table--reports table--full">
+          <thead>
+            <tr>
+              <th class="table__head">No. of cases resolved by N-TB MAC</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="table__details">{{ $report['ntb_presentation']['total_resolved'] }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <input type="hidden" id="ntb_enrollment_total_case" value="{{ $report['ntb_presentation']['total_enrollment'] }}">
+      <input type="hidden" id="ntb_case_total_case" value="{{ $report['ntb_presentation']['total_case_management'] }}">
+      <input type="hidden" id="ntb_treatment_total_case" value="{{ $report['ntb_presentation']['total_treatment_outcome'] }}">
+      <input type="hidden" id="ntb_total_resolved" value="{{ $report['ntb_presentation']['total_resolved'] }}">
+      <input type="hidden" id="ntb_total_not_resolved" value="{{ $report['ntb_presentation']['total_not_resolved'] }}">
+      <div class="grid grid--column"><canvas class="chart" id="chartPresentedNTB"> </canvas></div>
+      <div class="grid grid--column"><canvas class="chart" id="chartStatusNTB"></canvas></div>
+    </div>
+  </li>
+  <li class="card__item">
+    <h2 class="section__heading section__heading--full">Breakdown of all cases presented to N-TB MAC by resolution {{ $report['period'] }}</h2>
+    <table class="table table--reports">
+      <thead>
+        <tr>
+          <th class="table__head">Reason for Presentation to</th>
+          <th class="table__head">Resolved</th>
+          <th class="table__head">Not Resolved</th>
+          <th class="table__head">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+          @php
+            $r = $report['ntb_presentation']['resolved'];
+            $nr = $report['ntb_presentation']['resolved'];
+          @endphp
+        <tr>
+          <td class="table__details">Enrollment</td>
+          <td class="table__details">{{ $r['enrollment'] }}</td>
+          <td class="table__details">{{ $nr['enrollment'] }}</td>
+          <td class="table__details">{{ $r['enrollment'] + $nr['enrollment'] }}</td>
+        </tr>
+        <tr>
+          <td class="table__details">Case Management</td>
+          <td class="table__details">{{ $r['case_management'] }}</td>
+          <td class="table__details">{{ $nr['case_management'] }}</td>
+          <td class="table__details">{{ $r['case_management'] + $nr['case_management'] }}</td>
+        </tr>
+        <tr>
+          <td class="table__details">Treatment Outcome</td>
+          <td class="table__details">{{ $r['treatment_outcome'] }}</td>
+          <td class="table__details">{{ $nr['treatment_outcome'] }}</td>
+          <td class="table__details">{{ $r['treatment_outcome'] + $nr['treatment_outcome'] }}</td>
+        </tr>
+        <tr>
+          <td class="table__details">Total</td>
+          <td class="table__details table__details--green">{{ $report['ntb_presentation']['total_resolved'] }}</td>
+          <td class="table__details table__details--green">{{ $report['ntb_presentation']['total_not_resolved'] }}</td>
+          <td class="table__details table__details--green">{{ $report['ntb_presentation']['total_case'] }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li class="card__item">
+    <h2 class="section__heading">Other info</h2>
+    <table class="table table--reports table--half">
+      <tbody>
+        <tr>
+          <th class="table__head">R-TB MAC Average Turnaround Time</th>
+          <td class="table__details">666</td>
+        </tr>
+        <tr>
+          <th class="table__head">N-TB MAC Average Turnaround Time</th>
+          <td class="table__details">666</td>
+        </tr>
+        <tr>
+          <th class="table__head">Average no. of Presentations per week</th>
+          <td class="table__details">666</td>
+        </tr>
+        <tr>
+          <th class="table__head">Average no. of Presentations per month</th>
+          <td class="table__details">666</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>

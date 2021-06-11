@@ -197,9 +197,80 @@ window.addEventListener('load', function() {
     });
   });
 
-  let startYear = 1900;
-  let endYear = new Date().getFullYear();
-  for (var i = endYear; i > startYear; i--)
-  {
-    $('.js-year').append($('<option />').val(i).html(i));
-  }
+// for NTBMAC presentation
+
+window.addEventListener('load', function() {
+
+  let enrollmentTotalCase = document.getElementById('ntb_enrollment_total_case').value;
+  let caseTotalCase = document.getElementById('ntb_case_total_case').value;
+  let treatmentTotalCase = document.getElementById('ntb_treatment_total_case').value;
+  new Chart('chartPresentedNTB', {
+    type: 'pie',
+    data: {
+      labels: ['Enrollment', 'Case Management', 'Treatment Outcome'],
+      datasets: [{
+        data: [enrollmentTotalCase, caseTotalCase, treatmentTotalCase],
+        backgroundColor: [
+          'rgb(21, 98, 150)',
+          'rgb(86, 151, 196)',
+          'rgb(149, 198, 232)'
+        ],
+        hoverOffset: 4
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Reason for Presentation',
+      },
+      legend: {
+        position: 'left',
+        align: 'start',
+        labels: {
+          usePointStyle: true,
+          point: 'circle'
+        },
+      }
+    },
+    plugins: {
+      title: {
+        align: 'start',
+        display: true
+      }
+    }
+  });
+});
+
+
+window.addEventListener('load', function() {
+  let totalResolved = document.getElementById('ntb_total_resolved').value;
+  let totalNotResolved = document.getElementById('ntb_total_not_resolved').value;
+  new Chart('chartStatusNTB', {
+    type: 'pie',
+    data: {
+      labels: ['Resolved', 'Not Resolved'],
+      datasets: [{
+        data: [totalResolved, totalNotResolved],
+        backgroundColor: [
+          'rgb(209, 155, 63)',
+          'rgb(237, 199, 105)'
+        ],
+        hoverOffset: 4
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Status',
+      },
+      legend: {
+        position: 'left',
+        align: 'start',
+        labels: {
+          usePointStyle: true,
+          point: 'circle'
+        },
+      }
+    }
+  });
+});
