@@ -18,7 +18,7 @@ class ReportsController extends Controller
     public function generate()
     {
         $region = Geolocation::select('id')->where('name1', auth()->user()->region)->first();
-        $provinces = Geolocation::where('PARENT_ID', $region->id)->pluck('name1', 'id');
+        $provinces = Geolocation::where('PARENT_ID', $region === null ? 'NCR' : $region->id)->pluck('name1', 'id');
         $report = null;
         $dateFrom = '';
         $dateTo = '';
@@ -47,11 +47,7 @@ class ReportsController extends Controller
             }
             $totalCases = TBMacForm::with('patient')->whereHas('patient', function ($query) {
                 $query->where('province', request('province'));
-            })->whereDate('updated_at', '>=', $dateFrom)
-                ->whereDate('updated_at', '<=', $dateTo)
-                ->where('region', auth()->user()->region)
-                ->get();
-
+            })->whereDate('updated_at', '>=', $dateFrom)->whereDate('updated_at', '<=', $dateTo)->where('region', auth()->user()->region)->get();
             $report['age_gender'] = [
                 'enrollment' => [
                     '14_below' => [
@@ -97,7 +93,6 @@ class ReportsController extends Controller
             $report['not_resolved_cases_enrollment'] = 0;
             $report['not_resolved_cases_case_management'] = 0;
             $report['not_resolved_cases_treatment_outcome'] = 0;
-
             $totalCases = $totalCases->groupBy('form_type');
             foreach ($totalCases as $formType => $cases) {
                 $this->getAgeFourteen($cases, $report, $formType);
@@ -110,21 +105,14 @@ class ReportsController extends Controller
             $report['total_cases'] = $totalCases->count();
             $report['total_resolved'] = $report['resolved_cases_enrollment'] + $report['resolved_cases_enrollment'] + $report['resolved_cases_treatment_outcome'];
             $report['total_not_resolved'] = $report['not_resolved_cases_enrollment'] + $report['not_resolved_cases_enrollment'] + $report['not_resolved_cases_treatment_outcome'];
-        
             // ntb presentation
             $totalCasesForNTBMAC = TBMacForm::with(['patient','recommendations:status,form_id'])->whereHas('patient', function ($query) {
                 $query->where('province', request('province'));
             })->whereHas('recommendations', function ($query) {
                 $query->where('status', 'Referred to national');
-            })->whereDate('updated_at', '>=', $dateFrom)
-                ->whereDate('updated_at', '<=', $dateTo)
-                ->where('region', auth()->user()->region)
-                ->get();
-
-            $this->setReportForNTBMAC($report, $totalCasesForNTBMAC);
-            
-            }
-
+            })->whereDate('updated_at', '>=', $dateFrom)->whereDate('updated_at', '<=', $dateTo)->where('region', auth()->user()->region)->get();
+            $this->generateReportForNTBMAC($report, $totalCasesForNTBMAC);
+        }
         return view('reports.form')
             ->with('provinces', $provinces)
             ->with('report', $report);
@@ -235,7 +223,7 @@ class ReportsController extends Controller
         }
     }
 
-    private function setReportForNTBMAC(&$report, $totalCasesForNTBMAC)
+    private function generateReportForNTBMAC(&$report, $totalCasesForNTBMAC)
     {
         $report['ntb_presentation'] = [
             'resolved' => [
@@ -253,12 +241,10 @@ class ReportsController extends Controller
             'total_treatment_outcome' => 0,
             'total_case' => $totalCasesForNTBMAC->count(),
         ];
-
         foreach ($totalCasesForNTBMAC as $case) {
-
             $recommendations = $case->recommendations->pluck('status')->toArray();
             if (in_array('Resolved', $recommendations)) {
-                // cases N-TB MAC Chair do an action and gives recommendation (Resolved) 
+                // cases N-TB MAC Chair do an action and gives recommendation (Resolved)
                 $report['ntb_presentation']['resolved'][$case->form_type] += 1;
             } else {
                 // cases N-TB MAC Chair give a recommendation and action (Not resolved) and unanswered from the N-TB MAC Chair
@@ -266,10 +252,7 @@ class ReportsController extends Controller
             }
             $report['ntb_presentation']['total_'.$case->form_type] += 1;
         }
-
         $report['ntb_presentation']['total_resolved'] = array_sum($report['ntb_presentation']['resolved']);
         $report['ntb_presentation']['total_not_resolved'] = array_sum($report['ntb_presentation']['not_resolved']);
-
-
     }
 }
