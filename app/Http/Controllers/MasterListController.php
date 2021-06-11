@@ -94,8 +94,6 @@ class MasterListController extends Controller
             ->where('tb_mac_forms.form_type', 'enrollment')
             ->whereIn('tb_mac_forms.status', ['Enrolled', 'Not Enrolled'])
             //->whereIn('recommendation.status', ['For enrollment', 'Not for Enrollment', 'Need Further Details', 'Referred to national'])
-            ->Where('recommendation.role_id', 6)
-            ->where('tb_mac_forms.role_id', 3)
             ->whereBetween('tb_mac_forms.created_at', [date('Y-m-d', ! isset($request['date_from']) ? strtotime($firstDay) : strtotime($request['date_from'])), date('Y-m-d', ! isset($request['date_to']) ? strtotime($lastDay) : strtotime($request['date_to']))])
             ->orderBy('tb_mac_forms.id', 'asc')
             ->get();
