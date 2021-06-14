@@ -17,6 +17,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MasterListController;
 use App\Http\Controllers\ReportAndFeedbackController;
 use App\Http\Controllers\ReportsController;
+use App\Http\Controllers\ReportsNTBMACController;
 use App\Http\Controllers\ReportsSubmitController;
 use App\Http\Controllers\ResubmitCaseManagementController;
 use App\Http\Controllers\ResubmitEnrollmentController;
@@ -134,6 +135,14 @@ Route::group(['middleware' => ['auth','role_request_approved']], static function
     Route::get('reports/generate', [ReportsController::class, 'generate']);
     Route::get('reports/{report}', [ReportsController::class, 'show']);
     Route::post('reports/submit', [ReportsSubmitController::class, 'store']);
+
+    //NTBMAC and NTBMAC Chair reports
+    Route::get('/ntbmac/reports', [ReportsNTBMACController::class, 'index']);
+    Route::get('/ntbmac/reports/generate', [ReportsNTBMACController::class, 'generate']);
+    Route::get('/ntbmac/reports/{report}', [ReportsNTBMACController::class, 'show']);
+    Route::post('/ntbmac/reports/submit', [ReportsNTBMACController::class, 'store']);
+    //get the province from selected region
+    Route::get('/province', [ReportsNTBMACController::class, 'province']);
 });
 
 Route::get('itis/login', [LoginController::class, 'itisLogin']);

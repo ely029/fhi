@@ -58,7 +58,11 @@
             </a>
           </li>
           <li class="sidebar__item">
-            <a class="sidebar__link" href="{{ url('reports')}}">
+          @if(auth()->user()->role_id == 7 || auth()->user()->role_id == 8)
+          <a class="sidebar__link" href="{{ url('/ntbmac/reports')}}">
+          @else
+          <a class="sidebar__link" href="{{ url('reports')}}">
+          @endif
               <div class="sidebar__wrapper">
                 <img class="image" src="{{ asset('assets/app/img/icon-reports.png') }}" alt="Reports icon for fhi" />
                 <img class="image image--white" src="{{ asset('assets/app/img/icon-reports-white.png') }}" alt="Reports icon on hover for fhi" />
