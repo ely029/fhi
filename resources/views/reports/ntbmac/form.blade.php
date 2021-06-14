@@ -92,18 +92,11 @@
                                 </div>
                             </div>
                             <div class="grid grid--half grid--column">
-                            <div class="form__content">
-                                    <select class="form__input form__input--select" name="region" id="region">
-                                        @foreach($regions as $region)
-                                            <option value="{{ $region->id }}">{{ $region->name1 }}</option>
-                                        @endforeach
-                                    </select>
-                                    <div class="triangle triangle--down"></div>
-                                    <label class="form__label" for="">Region</label>
-                                </div>
                                 <div class="form__content">
                                     <select class="form__input form__input--select" id="province" name="province">
-                                        
+                                        @foreach($provinces as $province)
+                                        <option>{{ $province }}</option>
+                                        @endforeach
                                     </select>
                                     <div class="triangle triangle--down"></div>
                                     <label class="form__label" for="">Province</label>
@@ -159,7 +152,6 @@
     </div>
 @endsection
 @section('additional_scripts')
-<script src="{{ asset('assets/app/js/ntbmac-report.js') }}"></script>
     <script src="{{ asset('assets/app/js/reports/form.js') }}"></script>
     @if(!is_null($report))
         <script src="{{ asset('assets/app/js/report.js') }}"></script>

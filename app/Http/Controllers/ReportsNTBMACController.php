@@ -21,7 +21,6 @@ class ReportsNTBMACController extends Controller
     public function generate()
     {
         $region = Geolocation::select('id')->where('name1', auth()->user()->region)->first();
-        $regions = Geolocation::where('glocation_level_id', 1)->get();
         $provinces = Geolocation::where('PARENT_ID', $region === null ? 'NCR' : $region->id)->pluck('name1', 'id');
         $report = null;
         $dateFrom = '';
@@ -90,8 +89,7 @@ class ReportsNTBMACController extends Controller
         }
         return view('reports.ntbmac.form')
             ->with('provinces', $provinces)
-            ->with('report', $report)
-            ->with('regions', $regions);
+            ->with('report', $report);
     }
 
     public function getAgeGenderKeys(&$report)
