@@ -164,6 +164,7 @@ class EnrollmentsController extends Controller
             'histopathological_result' => $tbMacForm->laboratoryResults->histopathological_result,
             'remarks' => $tbMacForm->laboratoryResults->remarks,
             'attachments' => $attachments,
+            'suggested_regimen_others' => $tbMacForm->enrollmentForm->suggested_regimen_others,
             'recommendations' => $recommendations,
         ];
 
