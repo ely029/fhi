@@ -13,8 +13,12 @@ class ReportsController extends Controller
 {
     public function index()
     {
+        $reports = Report::with('preparedBy')
+                ->where('region', auth()->user()->region)
+                ->orderBy('created_at', 'desc')
+                ->paginate();
         return view('reports.index')
-            ->with('reports', Report::with('preparedBy')->orderBy('created_at', 'desc')->paginate());
+            ->with('reports', $reports);
     }
 
     public function generate()

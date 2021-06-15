@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Enrollments\StoreRequest;
 use App\Models\BacteriologicalResult;
+use App\Models\Geolocation;
 use App\Models\Patient;
 use App\Models\Recommendation;
 use App\Models\TBMacForm;
@@ -41,7 +42,10 @@ class EnrollmentRegimentController extends Controller
 
     public function create()
     {
-        return view('enrollments.form');
+        $region = Geolocation::where('name1', auth()->user()->region)->first();
+        $provinces = Geolocation::where('PARENT_ID', ($region === null ? 'NCR' : $region->id))->pluck('name1', 'id');
+        return view('enrollments.form')
+            ->with('provinces', count($provinces) > 1 ? $provinces : ['Metro Manila']);
     }
 
     public function show(TBMacForm $tbMacForm)
