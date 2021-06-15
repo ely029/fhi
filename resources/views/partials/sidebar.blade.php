@@ -58,18 +58,20 @@
             </a>
           </li>
           <li class="sidebar__item">
-          @if(auth()->user()->role_id == 7 || auth()->user()->role_id == 8)
-          <a class="sidebar__link" href="{{ url('/ntbmac/reports')}}">
-          @else
-          <a class="sidebar__link" href="{{ url('reports')}}">
-          @endif
-              <div class="sidebar__wrapper">
-                <img class="image" src="{{ asset('assets/app/img/icon-reports.png') }}" alt="Reports icon for fhi" />
-                <img class="image image--white" src="{{ asset('assets/app/img/icon-reports-white.png') }}" alt="Reports icon on hover for fhi" />
-              </div>
-              <span class="sidebar__text">Reports</span>
-            </a>
-          </li>
+          @if(in_array(auth()->user()->role_id,[4,6,7,8]))
+            @if(auth()->user()->role_id == 7 || auth()->user()->role_id == 8)
+            <a class="sidebar__link" href="{{ url('/ntbmac/reports')}}">
+            @else
+            <a class="sidebar__link" href="{{ url('reports')}}">
+            @endif
+                <div class="sidebar__wrapper">
+                  <img class="image" src="{{ asset('assets/app/img/icon-reports.png') }}" alt="Reports icon for fhi" />
+                  <img class="image image--white" src="{{ asset('assets/app/img/icon-reports-white.png') }}" alt="Reports icon on hover for fhi" />
+                </div>
+                <span class="sidebar__text">Reports</span>
+              </a>
+            </li>
+            @endif
           @endif
         </ul>
         @endif

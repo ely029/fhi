@@ -198,7 +198,7 @@
         <table class="table table--reports table--full">
           <thead>
             <tr>
-              <th class="table__head">No. of cases resolved by N-TB MAC</th>
+              <th class="table__head">No. of cases resolved by N-TB MAC Chair</th>
             </tr>
           </thead>
           <tbody>

@@ -60,6 +60,7 @@ class ReportsController extends Controller
 
             $this->getAgeGenderKeys($report);
             // rtb presentation
+            $report['total_cases'] = $totalCases->count();
             $report['resolved_cases_enrollment'] = 0;
             $report['resolved_cases_case_management'] = 0;
             $report['resolved_cases_treatment_outcome'] = 0;
@@ -75,9 +76,9 @@ class ReportsController extends Controller
             $report['treatment_total_case'] = isset($totalCases['treatment_outcome']) ? count($totalCases['treatment_outcome']) : 0;
             $this->getTotalMaleFemale($report);
             $this->getTotalAgeRange($report);
-            $report['total_cases'] = $totalCases->count();
-            $report['total_resolved'] = $report['resolved_cases_enrollment'] + $report['resolved_cases_enrollment'] + $report['resolved_cases_treatment_outcome'];
-            $report['total_not_resolved'] = $report['not_resolved_cases_enrollment'] + $report['not_resolved_cases_enrollment'] + $report['not_resolved_cases_treatment_outcome'];
+ 
+            $report['total_resolved'] = $report['resolved_cases_enrollment'] + $report['resolved_cases_case_management'] + $report['resolved_cases_treatment_outcome'];
+            $report['total_not_resolved'] = $report['not_resolved_cases_enrollment'] + $report['not_resolved_cases_case_management'] + $report['not_resolved_cases_treatment_outcome'];
             // ntb presentation
             $totalCasesForNTBMAC = TBMacForm::with(['patient','recommendations:status,form_id'])->whereHas('patient', function ($query) {
                 $query->where('province', request('province'));
