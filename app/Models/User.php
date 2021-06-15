@@ -100,7 +100,6 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'last_login' => 'date',
     ];
 
     // Improves performance since hasAccess is always called in the middleware
