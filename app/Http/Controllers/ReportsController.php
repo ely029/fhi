@@ -197,9 +197,9 @@ class ReportsController extends Controller
     public function getNotResolvedStatus()
     {
         return [
-            'enrollment' => ['Need Further Details','Referred to national','Referred to regional chair','New Enrollment'],
-            'case_management' => ['Need Further Details','Referred to national','Referred to Regional Chair','New Case'],
-            'treatment_outcome' => ['Need Further Details','Referred to national','Referred to Regional Chair','New Case'],
+            'enrollment' => ['Need Further Details','Referred to national','Referred to regional chair','New Enrollment','Referred back to regional chair'],
+            'case_management' => ['Need Further Details','Referred to national','Referred to Regional Chair','New Case','Referred back to regional chair'],
+            'treatment_outcome' => ['Need Further Details','Referred to national','Referred to Regional Chair','New Case','Referred back to regional chair'],
         ];
     }
 
@@ -332,7 +332,7 @@ class ReportsController extends Controller
         foreach ($totalCases as $case) {
             $dateElevated = null;
             $finalActionFromNTBChair = null;
-            $case->recommendations->map(function ($item)use(&$dateElevated, &$finalActionFromNTBChair) {
+            $case->recommendations->map(function ($item) use (&$dateElevated, &$finalActionFromNTBChair) {
                 if ($item->status === 'Referred to national') {
                     $dateElevated = $item->created_at;
                 }
@@ -343,7 +343,7 @@ class ReportsController extends Controller
             if (is_null($finalActionFromNTBChair)) {
                 continue;
             }
-    
+
             $turnAroundTime = $dateElevated->diffInDays($finalActionFromNTBChair);
             if ($turnAroundTime === 0) {
                 continue;
