@@ -58,7 +58,7 @@ class CaseManagementController extends Controller
         $patient = Patient::create($request);
         $caseManagementBactResult = new CaseManagementBacteriologicalResults();
         $request['status'] = 'New Case';
-        $request['region'] = 'NCR';
+        $request['region'] = auth()->user()->region ?? 'NCR';
         $request['role_id'] = 4;
         $request['form_type'] = 'case_management';
         $request['patient_id'] = $patient->id;
@@ -156,7 +156,7 @@ class CaseManagementController extends Controller
         if (in_array(auth()->user()->role_id, [4,5,6])) {
             $condition = 'region';
             // change to auth user region
-            $value = 'NCR';
+            $value = auth()->user()->region ?? 'NCR';
         } elseif (in_array(auth()->user()->role_id, [7,8])) {
             $condition = 'form_type';
             $value = 'case_management';

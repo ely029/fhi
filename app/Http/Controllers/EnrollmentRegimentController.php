@@ -59,7 +59,7 @@ class EnrollmentRegimentController extends Controller
         $request['form_type'] = 'enrollment';
         $request['status'] = 'New Enrollment';
         $request['role_id'] = 4;
-        $request['region'] = 'NCR';
+        $request['region'] = auth()->user()->region ?? 'NCR';
         $request['cxr_reading'] = $request['cxr_reading'] ?? null;
 
         $patient = Patient::create($request);
@@ -289,7 +289,7 @@ class EnrollmentRegimentController extends Controller
         if (in_array(auth()->user()->role_id, [4,5,6])) {
             $condition = 'region';
             // change to auth user region
-            $value = 'NCR';
+            $value = auth()->user()->region ?? 'NCR';
         } elseif (in_array(auth()->user()->role_id, [7,8])) {
             $condition = 'form_type';
             $value = 'enrollment';

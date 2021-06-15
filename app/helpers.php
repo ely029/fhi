@@ -416,15 +416,15 @@ function getDynamicQuery()
         ],
         4 => [
             'condition' => 'region',
-            'value' => 'NCR',
+            'value' => auth()->user()->region ?? 'NCR',
         ],
         5 => [
             'condition' => 'region',
-            'value' => 'NCR',
+            'value' => auth()->user()->region ?? 'NCR',
         ],
         6 => [
             'condition' => 'region',
-            'value' => 'NCR',
+            'value' => auth()->user()->region ?? 'NCR',
         ],
         7 => [
             'condition' => 'form_type',

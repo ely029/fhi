@@ -49,7 +49,7 @@ class TreatmentOutcomesController extends Controller
         $request['form_type'] = 'treatment_outcome';
         $request['status'] = 'New Case';
         $request['role_id'] = 4;
-        $request['region'] = 'NCR';
+        $request['region'] = auth()->user()->region ?? 'NCR';
         $request['first_name'] = '';
         $request['middle_name'] = '';
         $patient = Patient::create($request);
