@@ -86,6 +86,8 @@ class EnrollmentsController extends Controller
         $request['submitted_by'] = auth()->user()->id;
         $request['role_id'] = auth()->user()->role_id;
         $request['status'] = 'New Enrollment';
+        $request['form_id'] = $tbMacForm->id;
+        $request['recommendation'] = 'new enrollment';
         Recommendation::create($request);
         return response()->json('Enrollment form submitted successfully');
     }
