@@ -23,7 +23,7 @@
   <div class="section__container">
     @include('partials.alerts')
     <form class="form form--quarter">
-      <h3 class="section__heading section__heading--unset">{{ auth()->user()->name }}</h3>
+      <h3 class="section__heading section__heading--unset">{{ auth()->user()->itis_name }}</h3>
 
       <br />
       <div class="grid grid--two grid--start">
