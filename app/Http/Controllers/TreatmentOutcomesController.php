@@ -43,7 +43,7 @@ class TreatmentOutcomesController extends Controller
         $region = Geolocation::where('name1', auth()->user()->region)->first();
         $provinces = Geolocation::where('PARENT_ID', ($region === null ? 'NCR' : $region->id))->pluck('name1', 'id');
         return view('treatment-outcomes.form')
-            ->with('provinces', count($provinces) > 1 ? $provinces : ['Metro Manila']);;
+            ->with('provinces', count($provinces) > 1 ? $provinces : ['Metro Manila']);
     }
 
     public function store(StoreRequest $request)
