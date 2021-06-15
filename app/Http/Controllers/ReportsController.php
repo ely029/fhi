@@ -76,7 +76,7 @@ class ReportsController extends Controller
             $report['treatment_total_case'] = isset($totalCases['treatment_outcome']) ? count($totalCases['treatment_outcome']) : 0;
             $this->getTotalMaleFemale($report);
             $this->getTotalAgeRange($report);
- 
+
             $report['total_resolved'] = $report['resolved_cases_enrollment'] + $report['resolved_cases_case_management'] + $report['resolved_cases_treatment_outcome'];
             $report['total_not_resolved'] = $report['not_resolved_cases_enrollment'] + $report['not_resolved_cases_case_management'] + $report['not_resolved_cases_treatment_outcome'];
             // ntb presentation
