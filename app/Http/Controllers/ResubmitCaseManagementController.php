@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CaseManagementAttachments;
 use App\Models\CaseManagementBacteriologicalResults;
+use App\Models\Geolocation;
 use App\Models\TBMacForm;
 
 class ResubmitCaseManagementController extends Controller
@@ -13,9 +14,11 @@ class ResubmitCaseManagementController extends Controller
     public function edit(TBMacForm $tbMacForm)
     {
         $tbMacForm = $tbMacForm->load(['submittedBy','caseManagementForm','caseManagementBacteriologicalResults', 'caseManagementLaboratoryResult', 'attachments', 'patient']);
-
+        $region = Geolocation::where('name1', auth()->user()->region)->first();
+        $provinces = Geolocation::where('PARENT_ID', ($region === null ? 'NCR' : $region->id))->pluck('name1', 'id');
         return view('case-management.resubmit.form')
-            ->with('tbMacForm', $tbMacForm);
+            ->with('tbMacForm', $tbMacForm)
+            ->with('provinces', count($provinces) > 1 ? $provinces : ['Metro Manila']);
     }
 
     public function reSubmit(TBMacForm $tbMacForm)

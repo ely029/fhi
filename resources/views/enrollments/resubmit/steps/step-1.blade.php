@@ -8,7 +8,7 @@
       </div>
       <div class="form__content">
         <select class="form__input form__input--select" name="province">
-          @foreach (provinces() as $province)
+          @foreach ($provinces as $province)
             <option value="{{ $province }}" {{ $tbMacForm->patient->province == $province ? 'selected' : '' }}>{{ $province}}</option>
           @endforeach
         </select>

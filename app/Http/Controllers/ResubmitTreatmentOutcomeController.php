@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Models\Geolocation;
 use App\Models\TBMacForm;
 use Illuminate\Support\Facades\Storage;
 
@@ -14,9 +15,11 @@ class ResubmitTreatmentOutcomeController extends Controller
         if (! in_array($tbMacForm->status, ['Not for Referral','Need Further Details'])) {
             abort(403);
         }
-
+        $region = Geolocation::where('name1', auth()->user()->region)->first();
+        $provinces = Geolocation::where('PARENT_ID', ($region === null ? 'NCR' : $region->id))->pluck('name1', 'id');
         return view('treatment-outcomes.resubmit.form')
-            ->with('tbMacForm', $tbMacForm);
+            ->with('tbMacForm', $tbMacForm)
+            ->with('provinces', count($provinces) > 1 ? $provinces : ['Metro Manila']);
     }
 
     public function resubmit(TBMacForm $tbMacForm)

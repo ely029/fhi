@@ -17,7 +17,7 @@
     <input class="form__input" id="facilityCode" type="number" value="{{ $tbMacForm->patient->facility_code }}" min="0" placeholder="Facility code" name="facility_code" required/><label class="form__label" for="">Health facility code</label></div>
     <div class="form__content form-group">
         <select class="form__input form__input--select " id="province" name="province">
-        @foreach(provinces() as $province)
+        @foreach($provinces as $province)
         <option value="{{ $province }}" {{ $tbMacForm->patient->province == $province ? 'selected' : '' }}>{{ $province}}</option>
         @endforeach
         </select>

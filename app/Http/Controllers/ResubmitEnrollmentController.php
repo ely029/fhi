@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Models\BacteriologicalResult;
+use App\Models\Geolocation;
 use App\Models\TBMacForm;
 use App\Models\TBMacFormAttachment;
 use Illuminate\Support\Facades\Storage;
@@ -16,9 +17,11 @@ class ResubmitEnrollmentController extends Controller
         if (! in_array($tbMacForm->status, ['Not For Referral','Need Further Details'])) {
             abort(403);
         }
-
+        $region = Geolocation::where('name1', auth()->user()->region)->first();
+        $provinces = Geolocation::where('PARENT_ID', ($region === null ? 'NCR' : $region->id))->pluck('name1', 'id');
         return view('enrollments.resubmit.form')
-            ->with('tbMacForm', $tbMacForm);
+            ->with('tbMacForm', $tbMacForm)
+            ->with('provinces', count($provinces) > 1 ? $provinces : ['Metro Manila']);
     }
     public function show(TBMacForm $tbMacForm)
     {
