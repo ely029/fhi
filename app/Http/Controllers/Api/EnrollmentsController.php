@@ -133,6 +133,7 @@ class EnrollmentsController extends Controller
         });
 
         $data = [
+            'presentation_number' => $tbMacForm->presentation_number,
             'submitted_by' => $submitted_by,
             'date_created' => $tbMacForm->created_at->format('m-d-Y'),
             'patient_code' => $tbMacForm->patient->code,
