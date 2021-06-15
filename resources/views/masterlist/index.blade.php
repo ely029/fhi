@@ -70,7 +70,7 @@
                 $age = Carbon\Carbon::parse($details->birthday)->age;
                 $gender = Str::upper(Str::substr($details->gender, 0, 1));
                 @endphp
-                @if(in_array($details->recom_status,['New Enrollment', 'For Enrollment', 'Not For Enrollment', 'Need Further Details', 'Referred to national', 'Enrolled', 'Not Enrolled']) && ($details->role_id == 3  || $details->role_id == 6))
+                @if(in_array($details->recom_status,['New Enrollment', 'For Enrollment', 'Not For Enrollment', 'Need Further Details', 'Referred to national', 'Enrolled', 'Not Enrolled']) && ($details->role_id == 3  || $details->role_id == 6) && ($details->role_id == 3  || $details->role_id == 6))
                 @if(auth()->user()->role_id == 4) 
               <tr class="table_row_enrollment sec table__row-{{ $details->id }}">
               @else
