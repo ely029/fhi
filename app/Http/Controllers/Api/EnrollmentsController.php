@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\BacteriologicalResult;
 use App\Models\Filters\TBMacFormFilters;
 use App\Models\Patient;
+use App\Models\Recommendation;
 use App\Models\TBMacForm;
 use App\Models\TBMacFormAttachment;
 use App\Traits\MediaAttachment;
@@ -81,6 +82,11 @@ class EnrollmentsController extends Controller
                 $this->createBacteriologicalStatus($request, $status, $tbMacForm);
             }
         }
+
+        $request['submitted_by'] = auth()->user()->id;
+        $request['role_id'] = auth()->user()->role_id;
+        $request['status'] = 'New Enrollment';
+        Recommendation::create($request);
         return response()->json('Enrollment form submitted successfully');
     }
 
@@ -121,7 +127,20 @@ class EnrollmentsController extends Controller
             ];
         }
 
-        $recommendations = $tbMacForm->recommendations->map(function ($item) {
+        // $recommendations = $tbMacForm->recommendations->map(function ($item) {
+        //     return [
+        //         'name' => $item->users->name,
+        //         'role' => $item->users->role->name,
+        //         'role_id' => $item->role_id,
+        //         'date_created' => $item->created_at->format('m-d-Y'),
+        //         'status' => $item->status === '0' ? 'Referred to National Chair' : $item->status,
+        //         'recommendation' => $item->recommendation,
+        //     ];
+        // });
+
+        $recommendations = $tbMacForm->recommendations->filter(function ($item) {
+            return $item->status !== 'New Enrollment';
+        })->map(function ($item) {
             return [
                 'name' => $item->users->name,
                 'role' => $item->users->role->name,
@@ -130,9 +149,10 @@ class EnrollmentsController extends Controller
                 'status' => $item->status === '0' ? 'Referred to National Chair' : $item->status,
                 'recommendation' => $item->recommendation,
             ];
-        });
+        })->values();
 
         $data = [
+            'presentation_number' => $tbMacForm->presentation_number,
             'submitted_by' => $submitted_by,
             'date_created' => $tbMacForm->created_at->format('m-d-Y'),
             'patient_code' => $tbMacForm->patient->code,

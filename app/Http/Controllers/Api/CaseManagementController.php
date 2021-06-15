@@ -105,6 +105,13 @@ class CaseManagementController extends Controller
         unset($request['remarks']);
         $form->caseManagementLaboratoryResults()->create($request);
 
+        $request['submitted_by'] = auth()->user()->id;
+        $request['role_id'] = auth()->user()->role_id;
+        $request['status'] = 'New Case';
+        $request['recommendation'] = 'new case';
+        $request['form_id'] = $form->id;
+        Recommendation::create($request);
+
         return response()->json('New Case Successfully Created', 200);
     }
 

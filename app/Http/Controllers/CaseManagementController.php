@@ -8,6 +8,7 @@ use App\Models\CaseManagementAttachments;
 use App\Models\CaseManagementBacteriologicalResults;
 use App\Models\Geolocation;
 use App\Models\Patient;
+use App\Models\Recommendation;
 use App\Models\TBMacForm;
 use App\Traits\MediaAttachment;
 
@@ -100,6 +101,13 @@ class CaseManagementController extends Controller
         $form->caseManagementForm()->create($request);
         unset($request['remarks']);
         $form->caseManagementLaboratoryResults()->create($request);
+
+        $request['submitted_by'] = auth()->user()->id;
+        $request['role_id'] = auth()->user()->role_id;
+        $request['status'] = 'New Case';
+        $request['recommendation'] = 'new case';
+        $request['form_id'] = $form->id;
+        Recommendation::create($request);
 
         return redirect('case-management/show/'.$form->id)->with([
             'alert.message' => 'New case created.',

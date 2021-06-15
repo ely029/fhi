@@ -74,6 +74,7 @@ class EnrollmentResubmitController extends Controller
         }
 
         $data = [
+            'presentation_number' => $tbMacForm->presentation_number,
             'facility_code' => $facility_code,
             'province' => $tbMacForm->patient->province,
             'gender' => $tbMacForm->patient->gender,

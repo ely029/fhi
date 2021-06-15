@@ -74,6 +74,7 @@ class TreatmentOutcomeResubmitController extends Controller
         }
 
         $data = [];
+        $data['presentation_number'] = $tbMacForm->presentation_number;
         $data['tb_case_number'] = $tbMacForm->treatmentOutcomeForm->tb_case_number;
         $data['last_name'] = $tbMacForm->patient->last_name;
         $data['first_name'] = $tbMacForm->patient->first_name;
