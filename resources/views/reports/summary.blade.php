@@ -266,11 +266,11 @@
       <tbody>
         <tr>
           <th class="table__head">R-TB MAC Average Turnaround Time</th>
-          <td class="table__details">666</td>
+          <td class="table__details">{{ $report['rtb_mac_average_ta_time'] }}</td>
         </tr>
         <tr>
           <th class="table__head">N-TB MAC Average Turnaround Time</th>
-          <td class="table__details">666</td>
+          <td class="table__details">{{ $report['ntb_mac_average_ta_time'] }}</td>
         </tr>
         <tr>
           <th class="table__head">Average no. of Presentations per week</th>

@@ -51,12 +51,13 @@ class ReportsController extends Controller
                 $dateFrom = $yearlyDates['date_from'];
                 $dateTo = $yearlyDates['date_to'];
             }
-            $totalCases = TBMacForm::with('patient')->whereHas('patient', function ($query) {
+            $totalCases = TBMacForm::with(['patient','recommendations:status,created_at,role_id,form_id'])->whereHas('patient', function ($query) {
                 $query->where('province', request('province'));
             })->whereDate('updated_at', '>=', $dateFrom)
                 ->whereDate('updated_at', '<=', $dateTo)
                 ->where('region', auth()->user()->region)
                 ->get();
+            $this->getRTBMacAverageTime($report, $totalCases);
 
             $this->getAgeGenderKeys($report);
             // rtb presentation
@@ -80,7 +81,7 @@ class ReportsController extends Controller
             $report['total_resolved'] = $report['resolved_cases_enrollment'] + $report['resolved_cases_case_management'] + $report['resolved_cases_treatment_outcome'];
             $report['total_not_resolved'] = $report['not_resolved_cases_enrollment'] + $report['not_resolved_cases_case_management'] + $report['not_resolved_cases_treatment_outcome'];
             // ntb presentation
-            $totalCasesForNTBMAC = TBMacForm::with(['patient','recommendations:status,form_id'])->whereHas('patient', function ($query) {
+            $totalCasesForNTBMAC = TBMacForm::with(['patient','recommendations:status,created_at,role_id,form_id'])->whereHas('patient', function ($query) {
                 $query->where('province', request('province'));
             })->whereHas('recommendations', function ($query) {
                 $query->where('status', 'Referred to national');
@@ -90,6 +91,8 @@ class ReportsController extends Controller
                 ->get();
 
             $this->getReportForNTBMAC($report, $totalCasesForNTBMAC);
+            // $this->getReportOtherInfo($report, $dateFrom, $dateTo);
+            $this->getNTBMacAverageTime($report, $totalCasesForNTBMAC);
         }
         return view('reports.form')
             ->with('provinces', $provinces)
@@ -283,5 +286,71 @@ class ReportsController extends Controller
         }
         $report['ntb_presentation']['total_resolved'] = array_sum($report['ntb_presentation']['resolved']);
         $report['ntb_presentation']['total_not_resolved'] = array_sum($report['ntb_presentation']['not_resolved']);
+    }
+
+    // private function getReportOtherInfo(&$report, $dateFrom, $dateTo)
+    // {
+
+    //     $totalCasesForNTBMACPerWeek = TBMacForm::with(['patient','recommendations:status,form_id'])->whereHas('patient', function ($query) {
+    //         $query->where('province', request('province'));
+    //     })->whereHas('recommendations', function ($query) {
+    //         $query->where('status', 'Referred to national');
+    //     })->whereDate('updated_at', '>=', $dateFrom)
+    //         ->whereDate('updated_at', '<=', $dateTo)
+    //         ->where('region', auth()->user()->region)
+    //         // ->select('created_at', \DB::raw('count(id) as weekly_count'))
+    //         // ->groupBy(\DB::raw('day(created_at)'))
+    //         ->get();
+    //         // dd($totalCasesForNTBMACPerWeek);
+    //     $report['ntb_ave_ta_time'] = '';
+    // }
+
+    private function getRTBMacAverageTime(&$report, $totalCases)
+    {
+        $rtbmacTaTime = [];
+        foreach ($totalCases as $case) {
+            $caseCreated = $case->created_at;
+            $finalActionFromRTBChair = $case->recommendations->filter(function ($item) {
+                return $item->role_id === 6;
+            })->first();
+            if (is_null($finalActionFromRTBChair)) {
+                continue;
+            }
+            $turnAroundTime = $caseCreated->diffInDays($finalActionFromRTBChair->created_at);
+            if ($turnAroundTime === 0) {
+                continue;
+            }
+            $rtbmacTaTime[] = $turnAroundTime;
+        }
+
+        $report['rtb_mac_average_ta_time'] = count($rtbmacTaTime) ? ceil(array_sum($rtbmacTaTime) / count($rtbmacTaTime)) : 0;
+    }
+
+    private function getNTBMacAverageTime(&$report, $totalCases)
+    {
+        $ntbmacTaTime = [];
+        foreach ($totalCases as $case) {
+            $dateElevated = null;
+            $finalActionFromNTBChair = null;
+            $case->recommendations->map(function ($item)use(&$dateElevated, &$finalActionFromNTBChair) {
+                if ($item->status === 'Referred to national') {
+                    $dateElevated = $item->created_at;
+                }
+                if ($item->role_id === 8) {
+                    $finalActionFromNTBChair = $item->created_at;
+                }
+            });
+            if (is_null($finalActionFromNTBChair)) {
+                continue;
+            }
+    
+            $turnAroundTime = $dateElevated->diffInDays($finalActionFromNTBChair);
+            if ($turnAroundTime === 0) {
+                continue;
+            }
+            $ntbmacTaTime[] = $turnAroundTime;
+        }
+
+        $report['ntb_mac_average_ta_time'] = count($ntbmacTaTime) > 0 ? ceil(array_sum($ntbmacTaTime) / count($ntbmacTaTime)) : 0;
     }
 }
