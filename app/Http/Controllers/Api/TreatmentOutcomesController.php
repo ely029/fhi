@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\TreatmentOutcomes\StoreRequest;
 use App\Models\Filters\TBMacFormFilters;
 use App\Models\Patient;
+use App\Models\Recommendation;
 use App\Models\TBMacForm;
 use Illuminate\Support\Str;
 
@@ -75,6 +76,13 @@ class TreatmentOutcomesController extends Controller
                 ]);
             }
         }
+
+        $request['submitted_by'] = auth()->user()->id;
+        $request['role_id'] = auth()->user()->role_id;
+        $request['status'] = 'New Case';
+        $request['recommendation'] = 'new case';
+        $request['form_id'] = $tbMacForm->id;
+        Recommendation::create($request);
 
         $this->createScreenings($request, $tbMacForm);
         $this->createLPADST($request, $tbMacForm);

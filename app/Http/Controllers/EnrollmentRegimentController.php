@@ -84,6 +84,13 @@ class EnrollmentRegimentController extends Controller
             }
         }
 
+        $request['submitted_by'] = auth()->user()->id;
+        $request['role_id'] = auth()->user()->role_id;
+        $request['status'] = 'New Enrollment';
+        $request['recommendation'] = 'new enrollment';
+        $request['form_id'] = $tbMacForm->id;
+        Recommendation::create($request);
+
         return redirect('enrollments/'.$tbMacForm->id)->with([
             'alert.message' => 'New case for enrollment created.',
         ]);

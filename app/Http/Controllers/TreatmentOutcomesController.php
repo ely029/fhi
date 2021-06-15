@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TreatmentOutcomes\StoreRequest;
 use App\Models\Geolocation;
 use App\Models\Patient;
+use App\Models\Recommendation;
 use App\Models\TBMacForm;
 
 class TreatmentOutcomesController extends Controller
@@ -71,6 +72,13 @@ class TreatmentOutcomesController extends Controller
         $this->createScreenings($request, $tbMacForm);
         $this->createLPADST($request, $tbMacForm);
         $this->createMonthlyScreenings($request, $tbMacForm);
+
+        $request['submitted_by'] = auth()->user()->id;
+        $request['role_id'] = auth()->user()->role_id;
+        $request['status'] = 'New Case';
+        $request['recommendation'] = 'new case';
+        $request['form_id'] = $tbMacForm->id;
+        Recommendation::create($request);
 
         return redirect('treatment-outcomes/'.$tbMacForm->id)->with([
             'alert.message' => 'New case for treatment outcome created.',

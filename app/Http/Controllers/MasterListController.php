@@ -24,7 +24,7 @@ class MasterListController extends Controller
             ->where('tb_mac_forms.form_type', 'case_management')
             //->whereIn('recommendation.status', ['Approved', 'Other suggestions', 'Need Further Details', 'Referred to national'])
             ->whereBetween('tb_mac_forms.created_at', [$firstDay, $lastDay])
-            ->orderByDesc('tb_mac_forms.id')
+            ->orderByDesc('tb_mac_forms.created_at')
             ->get();
         $treatmentOutcome = DB::table('tb_mac_forms')
             ->leftJoin('recommendation', 'tb_mac_forms.id', 'recommendation.form_id')
@@ -35,7 +35,7 @@ class MasterListController extends Controller
             ->where('tb_mac_forms.form_type', 'treatment_outcome')
             //->whereIn('recommendation.status', ['Approved', 'Other suggestions', 'Need Further Details', 'Referred to national'])
             ->whereBetween('tb_mac_forms.created_at', [$firstDay, $lastDay])
-            ->orderByDesc('tb_mac_forms.id')
+            ->orderByDesc('tb_mac_forms.created_at')
             ->get();
         $enrollment = DB::table('tb_mac_forms')
             ->leftJoin('recommendation', 'tb_mac_forms.id', 'recommendation.form_id')
@@ -46,7 +46,7 @@ class MasterListController extends Controller
             ->where('tb_mac_forms.form_type', 'enrollment')
             //->whereIn('recommendation.status', ['For enrollment', 'Not for Enrollment', 'Need Further Details', 'Referred to national'])
             ->whereBetween('tb_mac_forms.created_at', [$firstDay, $lastDay])
-            ->orderBy('tb_mac_forms.id', 'asc')
+            ->orderByDesc('tb_mac_forms.created_at')
             ->get();
         return view('masterlist.index')
             ->with('caseManagement', $caseManagement)
