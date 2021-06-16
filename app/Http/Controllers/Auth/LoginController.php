@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Geolocation;
-use App\Models\ITIS;
+// use App\Models\ITIS;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -104,7 +104,7 @@ class LoginController extends Controller
         //         'facility_code' => $itisUser->USER_DEFAULT_STATION_ID,
         //     ]);
         // }
-        
+
         // Auth::login($user);
         // return response()->json('Success');
 
@@ -113,11 +113,11 @@ class LoginController extends Controller
         if ($user) {
             Auth::login($user);
             return response()->json('Success');
-        } else {
-            return response()->json([
-                'data' => 'Not Authorized',
-            ]);
         }
+
+        return response()->json([
+            'data' => 'Not Authorized',
+        ]);
     }
 
     public function getGlocations($code)
