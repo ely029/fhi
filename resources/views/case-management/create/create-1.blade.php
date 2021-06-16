@@ -9,9 +9,6 @@
     <input class="form__input" id="lastName" name="last_name" type="text" placeholder="Last name" required /><label class="form__label" for="">Last name</label></div>
     </div>
     <div class="grid grid--two form-step-1">
-    
-    </div>
-    <div class="grid grid--two form-step-1">
     <div class="form__content form-group">
     <div class="help-block with-errors"></div>    
     <input class="form__input" id="facilityCode" type="number" min="0" placeholder="Facility code" name="facility_code" required/><label class="form__label" for="">Health facility code</label></div>
