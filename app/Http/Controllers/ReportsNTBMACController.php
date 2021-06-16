@@ -8,6 +8,7 @@ use App\Models\Geolocation;
 use App\Models\Report;
 use App\Models\TBMacForm;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class ReportsNTBMACController extends Controller
 {
@@ -23,7 +24,9 @@ class ReportsNTBMACController extends Controller
     public function generate()
     {
         $region = Geolocation::select('id')->where('name1', auth()->user()->region)->first();
+        $regions = Geolocation::where('glocation_level_id', 1)->get();
         $provinces = Geolocation::where('PARENT_ID', $region === null ? 'NCR' : $region->id)->pluck('name1', 'id');
+        $get_region = Geolocation::where('id', request('region'))->first();
         $report = null;
         $dateFrom = '';
         $dateTo = '';
@@ -35,7 +38,7 @@ class ReportsNTBMACController extends Controller
             $dateFrom = '';
             $dateTo = '';
             if (request('period') === 'quarterly') {
-                $report['period'] = request('quarter').' '.request('year');
+                $report['period'] = request('quarter').' '.request('year'); 
                 $quarterDates = $this->getDateFromToQuarterly();
                 $dateFrom = $quarterDates['date_from'];
                 $dateTo = $quarterDates['date_to'];
@@ -54,7 +57,7 @@ class ReportsNTBMACController extends Controller
                 $query->where('province', request('province'));
             })->whereDate('updated_at', '>=', $dateFrom)
                 ->whereDate('updated_at', '<=', $dateTo)
-                ->where('region', request('region'))
+                ->where('region', $get_region->name1)
                 ->get();
             $this->getRTBMacAverageTime($report, $totalCases);
 
@@ -86,7 +89,7 @@ class ReportsNTBMACController extends Controller
                 $query->where('status', 'Referred to national');
             })->whereDate('updated_at', '>=', $dateFrom)
                 ->whereDate('updated_at', '<=', $dateTo)
-                ->where('region', request('region'))
+                ->where('region', $get_region->name1)
                 ->get();
 
             $this->getReportForNTBMAC($report, $totalCasesForNTBMAC);
@@ -95,7 +98,8 @@ class ReportsNTBMACController extends Controller
         }
         return view('reports.ntbmac.form')
             ->with('provinces', $provinces)
-            ->with('report', $report);
+            ->with('report', $report)
+            ->with('regions', $regions);
     }
 
     public function getAgeGenderKeys(&$report)
@@ -323,6 +327,11 @@ class ReportsNTBMACController extends Controller
         }
 
         $report['rtb_mac_average_ta_time'] = count($rtbmacTaTime) ? ceil(array_sum($rtbmacTaTime) / count($rtbmacTaTime)) : 0;
+    }
+    public function province()
+    {
+        $request = request()->all();
+        return DB::table('glocations')->select('name1', 'id')->where('id', 'like', substr($request['region'], 0, 2).'%')->where('glocation_level_id', 2)->get();
     }
 
     private function getNTBMacAverageTime(&$report, $totalCases)
