@@ -57,18 +57,38 @@ class ReportsController extends Controller
                 ->whereDate('updated_at', '<=', $dateTo)
                 ->where('region', auth()->user()->region)
                 ->get();
-            $this->getRTBMacAverageTime($report, $totalCases);
-            $this->getRTBMacOtherInfo($report, $totalCases);
-            $this->getAgeGenderKeys($report);
-            // rtb presentation
-            // $report['total_cases'] = $totalCases->count();
+
+            $this->getRTBMacUnanswered($report, $totalCases);
+
+            $totalCases = $totalCases->groupBy('form_type');
             $report['resolved_cases_enrollment'] = 0;
             $report['resolved_cases_case_management'] = 0;
             $report['resolved_cases_treatment_outcome'] = 0;
             $report['not_resolved_cases_enrollment'] = 0;
             $report['not_resolved_cases_case_management'] = 0;
             $report['not_resolved_cases_treatment_outcome'] = 0;
-            $totalCases = $totalCases->groupBy('form_type');
+
+            foreach ($totalCases as $formType => $cases) {
+                $this->getRTBMacResolvedNotResolved($report, $cases, $formType);
+            }
+            $this->getAgeGenderKeys($report);
+
+            $totalCasesForRTBMAC = TBMacForm::with(['patient','recommendations:status,created_at,role_id,form_id'])->whereHas('patient', function ($query) {
+                $query->where('province', request('province'));
+            })->whereHas('recommendations', function ($query) {
+                $query->where('status', 'Referred to Regional');
+            })->whereDate('updated_at', '>=', $dateFrom)
+                ->whereDate('updated_at', '<=', $dateTo)
+                ->where('region', auth()->user()->region)
+                ->get();
+
+            $this->getRTBMacAverageTime($report, $totalCasesForRTBMAC);
+            $this->getRTBMacOtherInfo($report, $totalCasesForRTBMAC);
+
+            // rtb presentation
+            $report['total_cases'] = $totalCasesForRTBMAC->count();
+
+            $totalCases = $totalCasesForRTBMAC->groupBy('form_type');
             foreach ($totalCases as $formType => $cases) {
                 $this->getAgeFourteen($cases, $report, $formType);
             }
@@ -247,11 +267,6 @@ class ReportsController extends Controller
                 $report['age_gender'][$formType]['15_above'][$case->patient->gender] += 1;
             }
             $report['age_gender'][$formType]['total_'.$case->patient->gender] += 1;
-            if (in_array($case->status, $this->getResolvedStatus()[$formType])) {
-                $report['resolved_cases_'.$formType] += 1;
-            } elseif (in_array($case->status, $this->getNotResolvedStatus()[$formType])) {
-                $report['not_resolved_cases_'.$formType] += 1;
-            }
         }
     }
 
@@ -341,24 +356,7 @@ class ReportsController extends Controller
     private function getRTBMacAverageTime(&$report, $totalCases)
     {
         $rtbmacTaTime = [];
-        $totalUnansweredFromSec = 0;
-        $totalNeedFurtherDetails = 0;
-        $totalCasesForRTB = 0;
         foreach ($totalCases as $case) {
-            // get total unanswered and need further details from sec
-            if (in_array($case->status, ['New Enrollment', 'New Case'])) {
-                $totalUnansweredFromSec += 1;
-            }
-            if ($case->status === 'Need Further Details') {
-                $totalNeedFurtherDetails += 1;
-            }
-
-            // get all who referred to regional
-            $recommendations = $case->recommendations->pluck('status')->toArray();
-
-            if (in_array('Referred to Regional', $recommendations)) {
-                $totalCasesForRTB += 1;
-            }
             $caseCreated = $case->created_at;
             $finalActionFromRTBChair = $case->recommendations->filter(function ($item) {
                 return $item->role_id === 6;
@@ -372,10 +370,36 @@ class ReportsController extends Controller
             }
             $rtbmacTaTime[] = $turnAroundTime;
         }
-        $report['total_cases'] = $totalCasesForRTB;
+        $report['rtb_mac_average_ta_time'] = count($rtbmacTaTime) > 0 ? ceil(array_sum($rtbmacTaTime) / count($rtbmacTaTime)) : 0;
+    }
+
+    private function getRTBMacResolvedNotResolved(&$report, $totalCases, $formType)
+    {
+        foreach ($totalCases as $case) {
+            if (in_array($case->status, $this->getResolvedStatus()[$formType])) {
+                $report['resolved_cases_'.$formType] += 1;
+            } elseif (in_array($case->status, $this->getNotResolvedStatus()[$formType])) {
+                $report['not_resolved_cases_'.$formType] += 1;
+            }
+        }
+    }
+
+    private function getRTBMacUnanswered(&$report, $totalCases)
+    {
+        $totalUnansweredFromSec = 0;
+        $totalNeedFurtherDetails = 0;
+        foreach ($totalCases as $case) {
+            $recommendations = $case->recommendations->pluck('status')->toArray();
+            // get total unanswered and need further details from sec
+            if (in_array($case->status, ['New Enrollment', 'New Case'])) {
+                $totalUnansweredFromSec += 1;
+            }
+            if ($case->status === 'Need Further Details' && count($recommendations) <= 2) {
+                $totalNeedFurtherDetails += 1;
+            }
+        }
         $report['total_unanswered_from_sec'] = $totalUnansweredFromSec;
         $report['total_need_further_details'] = $totalNeedFurtherDetails;
-        $report['rtb_mac_average_ta_time'] = count($rtbmacTaTime) > 0 ? ceil(array_sum($rtbmacTaTime) / count($rtbmacTaTime)) : 0;
     }
 
     private function getNTBMacAverageTime(&$report, $totalCases)
