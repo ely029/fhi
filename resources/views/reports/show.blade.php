@@ -157,8 +157,8 @@
                                 <tr>
                                   <td></td>
                                   <td></td>
-                                  <td>{{ $report['total_unanswered_from_sec']}} unanswered forms from the secretariat
-                                    <br>{{ $report['total_need_further_details']}} need further details from the secretariat</td>
+                                  <td>{{ $reportData['total_unanswered_from_sec']}} unanswered forms from the secretariat
+                                    <br>{{ $reportData['total_need_further_details']}} need further details from the secretariat</td>
                                     <td>
                               </tr>
                             </tbody>
@@ -327,27 +327,27 @@
                           <tbody>
                             <tr>
                               <th class="table__head">R-TB MAC Average Turnaround Time</th>
-                              <td class="table__details">{{ $report['rtb_mac_average_ta_time'] }}</td>
+                              <td class="table__details">{{ $reportData['rtb_mac_average_ta_time'] }}</td>
                             </tr>
                             <tr>
                               <th class="table__head">N-TB MAC Average Turnaround Time</th>
-                              <td class="table__details">{{ $report['ntb_mac_average_ta_time'] }}</td>
+                              <td class="table__details">{{ $reportData['ntb_mac_average_ta_time'] }}</td>
                             </tr>
                             <tr>
                               <th class="table__head">Average no. of Presentations per week R-TB MAC</th>
-                              <td class="table__details">{{ $report['rtb_average_per_week'] }}</td>
+                              <td class="table__details">{{ $reportData['rtb_average_per_week'] }}</td>
                             </tr>
                             <tr>
                               <th class="table__head">Average no. of Presentations per month R-TB MAC</th>
-                              <td class="table__details">{{ $report['rtb_average_per_month'] }}</td>
+                              <td class="table__details">{{ $reportData['rtb_average_per_month'] }}</td>
                             </tr>
                             <tr>
                               <th class="table__head">Average no. of Presentations per week N-TB MAC</th>
-                              <td class="table__details">{{ $report['ntb_average_per_week'] }}</td>
+                              <td class="table__details">{{ $reportData['ntb_average_per_week'] }}</td>
                             </tr>
                             <tr>
                               <th class="table__head">Average no. of Presentations per month N-TB MAC</th>
-                              <td class="table__details">{{ $report['ntb_average_per_month'] }}</td>
+                              <td class="table__details">{{ $reportData['ntb_average_per_month'] }}</td>
                             </tr>
                           </tbody>
                         </table>
