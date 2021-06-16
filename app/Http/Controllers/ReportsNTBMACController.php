@@ -32,6 +32,7 @@ class ReportsNTBMACController extends Controller
         $dateTo = '';
         if (request('period')) {
             $report['province'] = request('province');
+            $report['region'] = request('region');
             $report['health_facility'] = request('health_facility');
             $report['date_generated'] = Carbon::now('Asia/Manila')->format('F d, Y');
             $report['prepared_by'] = auth()->user()->itis_name;
@@ -247,6 +248,19 @@ class ReportsNTBMACController extends Controller
         return DB::table('glocations')->select('name1', 'id')->where('id', 'like', substr($request['region'], 0, 2).'%')->where('glocation_level_id', 2)->get();
     }
 
+    public function store()
+    {
+        $request = request()->all();
+
+        $request['prepared_by'] = auth()->user()->id;
+        $request['report_data'] = json_decode($request['report_data']);
+        $get_region = Geolocation::where('id', $request['region'])->first();
+        $request['region'] = $get_region->name1;
+        Report::create($request);
+        return redirect('/ntbmac/reports')->with([
+            'alert.message' => 'Report submitted successfully.',
+        ]);
+    }
     private function getAgeFourteen($cases, &$report, $formType)
     {
         foreach ($cases as $case) {

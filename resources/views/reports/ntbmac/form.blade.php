@@ -144,7 +144,7 @@
                                     <input type="hidden" name="region" value="{{ auth()->user()->region }}">
                                 @endif
                                 <input type="hidden" name="report_data" value="{{ json_encode($report) }}">
-                                <textarea name="remarks" class="form__input form__input--message" placeholder="Enter remarks"></textarea><label class="form__label" for="">Remarks</label>
+                                <textarea required name="remarks" class="form__input form__input--message" placeholder="Enter remarks"></textarea><label class="form__label" for="">Remarks</label>
                                 </div>
                             <div class="modal__button modal__button--end">
                                 <button class="button" type="submit">Submit</button>

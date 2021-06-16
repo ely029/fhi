@@ -67,6 +67,13 @@
                             <div class="form__content"><span class="form__text">{{ $report->preparedBy->itis_name }}</span>
                                 <label class="form__label">Prepared by</label></div>
                         </div>
+                        <div class="grid">
+                      
+                            <div class="form__content">
+                                <span class="form__text">{{ $report->remarks }}</span>
+                                <label class="form__label">Remarks</label>
+                            </div>
+                        </div>
                         <div class="grid grid--three grid--start">
                             <div class="grid grid--column">
                                 <table class="table table--reports table--full">
