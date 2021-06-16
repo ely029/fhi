@@ -53,6 +53,8 @@ class ReportsController extends Controller
             }
             $totalCases = TBMacForm::with(['patient','recommendations:status,created_at,role_id,form_id'])->whereHas('patient', function ($query) {
                 $query->where('province', request('province'));
+            })->whereHas('recommendations', function ($query) {
+                $query->where('status', 'Referred to regional');
             })->whereDate('updated_at', '>=', $dateFrom)
                 ->whereDate('updated_at', '<=', $dateTo)
                 ->where('region', auth()->user()->region)
@@ -299,7 +301,7 @@ class ReportsController extends Controller
             $perMonth[$month] = count($items);
         }
 
-        $report['ntb_average_per_month'] = ceil(array_sum($perMonth) / count($perMonth));
+        $report['ntb_average_per_month'] = count($perMonth) > 0 ? ceil(array_sum($perMonth) / count($perMonth)) : 0;
 
         // Weekly
         $groupByWeek = $totalCases->groupBy(function ($item) {
@@ -310,7 +312,7 @@ class ReportsController extends Controller
         foreach ($groupByWeek as $week => $items) {
             $perWeek[$week] = count($items);
         }
-        $report['ntb_average_per_week'] = ceil(array_sum($perWeek) / count($perWeek));
+        $report['ntb_average_per_week'] = count($perWeek) > 0 ? ceil(array_sum($perWeek) / count($perWeek)) : 0;
     }
 
     private function getRTBMacOtherInfo(&$report, $totalCases)
@@ -324,7 +326,7 @@ class ReportsController extends Controller
             $perMonth[$month] = count($items);
         }
 
-        $report['rtb_average_per_month'] = ceil(array_sum($perMonth) / count($perMonth));
+        $report['rtb_average_per_month'] = count($perMonth) > 0 ? ceil(array_sum($perMonth) / count($perMonth)) : 0;
 
         // Weekly
         $groupByWeek = $totalCases->groupBy(function ($item) {
@@ -335,13 +337,23 @@ class ReportsController extends Controller
         foreach ($groupByWeek as $week => $items) {
             $perWeek[$week] = count($items);
         }
-        $report['rtb_average_per_week'] = ceil(array_sum($perWeek) / count($perWeek));
+        $report['rtb_average_per_week'] = count($perWeek) > 0 ? ceil(array_sum($perWeek) / count($perWeek)) : 0;
     }
 
     private function getRTBMacAverageTime(&$report, $totalCases)
     {
         $rtbmacTaTime = [];
+        $totalUnansweredFromSec = 0;
+        $totalNeedFurtherDetails = 0;
         foreach ($totalCases as $case) {
+            // get total unanswered and need further details from sec
+            if (in_array($case->status, ['New Enrollment', 'New Case'])) {
+                $totalUnansweredFromSec += 1;
+            }
+            if ($case->status === 'Need Further Details') {
+                $totalNeedFurtherDetails += 1;
+            }
+
             $caseCreated = $case->created_at;
             $finalActionFromRTBChair = $case->recommendations->filter(function ($item) {
                 return $item->role_id === 6;
@@ -355,8 +367,9 @@ class ReportsController extends Controller
             }
             $rtbmacTaTime[] = $turnAroundTime;
         }
-
-        $report['rtb_mac_average_ta_time'] = count($rtbmacTaTime) ? ceil(array_sum($rtbmacTaTime) / count($rtbmacTaTime)) : 0;
+        $report['total_unanswered_from_sec'] = $totalUnansweredFromSec;
+        $report['total_need_further_details'] = $totalNeedFurtherDetails;
+        $report['rtb_mac_average_ta_time'] = count($rtbmacTaTime) > 0 ? ceil(array_sum($rtbmacTaTime) / count($rtbmacTaTime)) : 0;
     }
 
     private function getNTBMacAverageTime(&$report, $totalCases)
