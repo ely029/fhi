@@ -7,7 +7,7 @@ jQuery('document').ready(function($){
     .done(function( data ) {
         $("#province").empty();
         jQuery.each(data, function(index, item) {
-           $('#province').append('<option value='+item.name1+'>'+item.name1+'</option>');
+           $('#province').append("<option value="+item.name1+">"+item.name1+"</option>");
         });
     });      
 
@@ -21,7 +21,7 @@ jQuery('document').ready(function($){
         .done(function( data ) {
             $("#province").empty();
             jQuery.each(data, function(index, item) {
-               $('#province').append('<option value='+item.name1+'>'+item.name1+'</option>');
+               $('#province').append("<option value="+item.name1+">"+item.name1+"</option>");
             });
         });
     });
