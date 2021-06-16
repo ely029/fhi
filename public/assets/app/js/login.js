@@ -21,9 +21,13 @@ jQuery( document ).ready(function( $ ) {
 
         // $(".login").submit();
 
+        // let data = {
+        //     username : encryptedUsername.toString(),
+        //     password : encryptedPassword.toString(),
+        // };
         let data = {
-            username : encryptedUsername.toString(),
-            password : encryptedPassword.toString(),
+            username : username,
+            password : password,
         };
      
         $.get("/itis/login", data, function(response) {
