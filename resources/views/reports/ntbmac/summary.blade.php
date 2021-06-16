@@ -71,7 +71,9 @@
             <tr>
                 <th class="table__head">Reason for Presentation to</th>
                 <th class="table__head">Resolved</th>
-                <th class="table__head">Not Resolved</th>
+                <th class="table__head">Not Resolved
+                  <br>(Total count of the un-answered forms from the secretariat.)*
+                </th>
                 <th class="table__head">Total</th>
             </tr>
         </thead>
@@ -177,7 +179,7 @@
 <li class="card__item">
     <div class="grid grid--start">
       <div class="form__content">
-        <span class="form__text">1st Quarter 2021 </span>
+        <span class="form__text">{{ $report['period'] }}</span>
         <h2 class="section__heading">Summary</h2>
       </div>
     </div>
@@ -198,7 +200,7 @@
         <table class="table table--reports table--full">
           <thead>
             <tr>
-              <th class="table__head">No. of cases resolved by N-TB MAC</th>
+              <th class="table__head">No. of cases resolved by N-TB MAC Chair</th>
             </tr>
           </thead>
           <tbody>
@@ -266,11 +268,11 @@
       <tbody>
         <tr>
           <th class="table__head">R-TB MAC Average Turnaround Time</th>
-          <td class="table__details">666</td>
+          <td class="table__details">{{ $report['rtb_mac_average_ta_time'] }}</td>
         </tr>
         <tr>
           <th class="table__head">N-TB MAC Average Turnaround Time</th>
-          <td class="table__details">666</td>
+          <td class="table__details">{{ $report['ntb_mac_average_ta_time'] }}</td>
         </tr>
         <tr>
           <th class="table__head">Average no. of Presentations per week</th>

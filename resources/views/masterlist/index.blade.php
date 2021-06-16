@@ -94,7 +94,7 @@
                 @endif
                 <input type="hidden" value="{{ $details->id}}" id="form_id">
                 <input type="hidden" value="{{ $details->remarks}}" id="sec_remarks">
-                <input type="hidden" value="case_management" id="form_type">
+                <input type="hidden" value="enrollment" id="form_type">
               </tr>
               @endif
               @endforeach
@@ -162,7 +162,7 @@
                 @endif
                 <input type="hidden" value="{{ $details->id}}" id="form_id">
                 <input type="hidden" value="{{ $details->remarks}}" id="sec_remarks">
-                <input type="hidden" value="case_management" id="form_type">
+                <input type="hidden" value="treatment_outcome" id="form_type">
               </tr>
               @endif
               @endforeach
