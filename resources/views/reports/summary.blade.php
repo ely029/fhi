@@ -71,9 +71,7 @@
             <tr>
                 <th class="table__head">Reason for Presentation to</th>
                 <th class="table__head">Resolved</th>
-                <th class="table__head">Not Resolved
-                  <br>(Total count of the un-answered forms from the secretariat.)*
-                </th>
+                <th class="table__head">Not Resolved</th>
                 <th class="table__head">Total</th>
             </tr>
         </thead>
@@ -101,6 +99,13 @@
                 <td class="table__details table__details--green">{{ $report['total_resolved'] }}</td>
                 <td class="table__details table__details--green">{{ $report['total_not_resolved'] }}</td>
                 <td class="table__details table__details--green">{{ $report['total_resolved'] + $report['total_not_resolved'] }}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>{{ $report['total_unanswered_from_sec']}} unanswered forms from the secretariat
+                  <br>{{ $report['total_need_further_details']}} need further details from the secretariat</td>
+                  <td>
             </tr>
         </tbody>
     </table>

@@ -154,6 +154,13 @@
                                     <td class="table__details table__details--green">{{ $reportData['total_not_resolved'] }}</td>
                                     <td class="table__details table__details--green">{{ $reportData['total_resolved'] + $reportData['total_not_resolved'] }}</td>
                                 </tr>
+                                <tr>
+                                  <td></td>
+                                  <td></td>
+                                  <td>{{ $reportData['total_unanswered_from_sec']}} unanswered forms from the secretariat
+                                    <br>{{ $reportData['total_need_further_details']}} need further details from the secretariat</td>
+                                    <td>
+                              </tr>
                             </tbody>
                         </table>
                     </li>
@@ -231,7 +238,7 @@
                     <li class="card__item">
                         <div class="grid grid--start">
                           <div class="form__content">
-                            <span class="form__text">1st Quarter 2021 </span>
+                            <span class="form__text">{{ $report->period }}</span>
                             <h2 class="section__heading">Summary</h2>
                           </div>
                         </div>
@@ -252,7 +259,7 @@
                             <table class="table table--reports table--full">
                               <thead>
                                 <tr>
-                                  <th class="table__head">No. of cases resolved by N-TB MAC</th>
+                                  <th class="table__head">No. of cases resolved by N-TB MAC Chair</th>
                                 </tr>
                               </thead>
                               <tbody>
@@ -320,19 +327,27 @@
                           <tbody>
                             <tr>
                               <th class="table__head">R-TB MAC Average Turnaround Time</th>
-                              <td class="table__details">666</td>
+                              <td class="table__details">{{ $reportData['rtb_mac_average_ta_time'] }}</td>
                             </tr>
                             <tr>
                               <th class="table__head">N-TB MAC Average Turnaround Time</th>
-                              <td class="table__details">666</td>
+                              <td class="table__details">{{ $reportData['ntb_mac_average_ta_time'] }}</td>
                             </tr>
                             <tr>
-                              <th class="table__head">Average no. of Presentations per week</th>
-                              <td class="table__details">666</td>
+                              <th class="table__head">Average no. of Presentations per week R-TB MAC</th>
+                              <td class="table__details">{{ $reportData['rtb_average_per_week'] }}</td>
                             </tr>
                             <tr>
-                              <th class="table__head">Average no. of Presentations per month</th>
-                              <td class="table__details">666</td>
+                              <th class="table__head">Average no. of Presentations per month R-TB MAC</th>
+                              <td class="table__details">{{ $reportData['rtb_average_per_month'] }}</td>
+                            </tr>
+                            <tr>
+                              <th class="table__head">Average no. of Presentations per week N-TB MAC</th>
+                              <td class="table__details">{{ $reportData['ntb_average_per_week'] }}</td>
+                            </tr>
+                            <tr>
+                              <th class="table__head">Average no. of Presentations per month N-TB MAC</th>
+                              <td class="table__details">{{ $reportData['ntb_average_per_month'] }}</td>
                             </tr>
                           </tbody>
                         </table>
