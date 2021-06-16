@@ -275,12 +275,20 @@
           <td class="table__details">{{ $report['ntb_mac_average_ta_time'] }}</td>
         </tr>
         <tr>
-          <th class="table__head">Average no. of Presentations per week</th>
-          <td class="table__details">666</td>
+          <th class="table__head">Average no. of Presentations per week R-TB MAC</th>
+          <td class="table__details">{{ $report['rtb_average_per_week'] }}</td>
         </tr>
         <tr>
-          <th class="table__head">Average no. of Presentations per month</th>
-          <td class="table__details">666</td>
+          <th class="table__head">Average no. of Presentations per month R-TB MAC</th>
+          <td class="table__details">{{ $report['rtb_average_per_month'] }}</td>
+        </tr>
+        <tr>
+          <th class="table__head">Average no. of Presentations per week N-TB MAC</th>
+          <td class="table__details">{{ $report['ntb_average_per_week'] }}</td>
+        </tr>
+        <tr>
+          <th class="table__head">Average no. of Presentations per month N-TB MAC</th>
+          <td class="table__details">{{ $report['ntb_average_per_month'] }}</td>
         </tr>
       </tbody>
     </table>

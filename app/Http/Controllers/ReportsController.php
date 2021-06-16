@@ -58,7 +58,7 @@ class ReportsController extends Controller
                 ->where('region', auth()->user()->region)
                 ->get();
             $this->getRTBMacAverageTime($report, $totalCases);
-
+            $this->getRTBMacOtherInfo($report, $totalCases);
             $this->getAgeGenderKeys($report);
             // rtb presentation
             $report['total_cases'] = $totalCases->count();
@@ -91,7 +91,7 @@ class ReportsController extends Controller
                 ->get();
 
             $this->getReportForNTBMAC($report, $totalCasesForNTBMAC);
-            // $this->getReportOtherInfo($report, $dateFrom, $dateTo);
+            $this->getNTBMacOtherInfo($report, $totalCasesForNTBMAC);
             $this->getNTBMacAverageTime($report, $totalCasesForNTBMAC);
         }
         return view('reports.form')
@@ -288,22 +288,55 @@ class ReportsController extends Controller
         $report['ntb_presentation']['total_not_resolved'] = array_sum($report['ntb_presentation']['not_resolved']);
     }
 
-    // private function getReportOtherInfo(&$report, $dateFrom, $dateTo)
-    // {
+    private function getNTBMacOtherInfo(&$report, $totalCases)
+    {
+        // Monthly
+        $groupByMonth = $totalCases->groupBy(function ($item) {
+            return Carbon::parse($item->created_at)->format('m');
+        });
+        $perMonth = [];
+        foreach ($groupByMonth as $month => $items) {
+            $perMonth[$month] = count($items);
+        }
 
-    //     $totalCasesForNTBMACPerWeek = TBMacForm::with(['patient','recommendations:status,form_id'])->whereHas('patient', function ($query) {
-    //         $query->where('province', request('province'));
-    //     })->whereHas('recommendations', function ($query) {
-    //         $query->where('status', 'Referred to national');
-    //     })->whereDate('updated_at', '>=', $dateFrom)
-    //         ->whereDate('updated_at', '<=', $dateTo)
-    //         ->where('region', auth()->user()->region)
-    //         // ->select('created_at', \DB::raw('count(id) as weekly_count'))
-    //         // ->groupBy(\DB::raw('day(created_at)'))
-    //         ->get();
-    //         // dd($totalCasesForNTBMACPerWeek);
-    //     $report['ntb_ave_ta_time'] = '';
-    // }
+        $report['ntb_average_per_month'] = ceil(array_sum($perMonth) / count($perMonth));
+
+        // Weekly
+        $groupByWeek = $totalCases->groupBy(function ($item) {
+            return Carbon::parse($item->created_at)->format('W');
+        });
+
+        $perWeek = [];
+        foreach ($groupByWeek as $week => $items) {
+            $perWeek[$week] = count($items);
+        }
+        $report['ntb_average_per_week'] = ceil(array_sum($perWeek) / count($perWeek));
+    }
+
+    private function getRTBMacOtherInfo(&$report, $totalCases)
+    {
+        // Monthly
+        $groupByMonth = $totalCases->groupBy(function ($item) {
+            return Carbon::parse($item->created_at)->format('m');
+        });
+        $perMonth = [];
+        foreach ($groupByMonth as $month => $items) {
+            $perMonth[$month] = count($items);
+        }
+
+        $report['rtb_average_per_month'] = ceil(array_sum($perMonth) / count($perMonth));
+
+        // Weekly
+        $groupByWeek = $totalCases->groupBy(function ($item) {
+            return Carbon::parse($item->created_at)->format('W');
+        });
+
+        $perWeek = [];
+        foreach ($groupByWeek as $week => $items) {
+            $perWeek[$week] = count($items);
+        }
+        $report['rtb_average_per_week'] = ceil(array_sum($perWeek) / count($perWeek));
+    }
 
     private function getRTBMacAverageTime(&$report, $totalCases)
     {
