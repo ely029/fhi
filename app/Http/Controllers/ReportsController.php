@@ -53,8 +53,6 @@ class ReportsController extends Controller
             }
             $totalCases = TBMacForm::with(['patient','recommendations:status,created_at,role_id,form_id'])->whereHas('patient', function ($query) {
                 $query->where('province', request('province'));
-            })->whereHas('recommendations', function ($query) {
-                $query->where('status', 'Referred to regional');
             })->whereDate('updated_at', '>=', $dateFrom)
                 ->whereDate('updated_at', '<=', $dateTo)
                 ->where('region', auth()->user()->region)
@@ -63,7 +61,7 @@ class ReportsController extends Controller
             $this->getRTBMacOtherInfo($report, $totalCases);
             $this->getAgeGenderKeys($report);
             // rtb presentation
-            $report['total_cases'] = $totalCases->count();
+            // $report['total_cases'] = $totalCases->count();
             $report['resolved_cases_enrollment'] = 0;
             $report['resolved_cases_case_management'] = 0;
             $report['resolved_cases_treatment_outcome'] = 0;
@@ -345,6 +343,7 @@ class ReportsController extends Controller
         $rtbmacTaTime = [];
         $totalUnansweredFromSec = 0;
         $totalNeedFurtherDetails = 0;
+        $totalCasesForRTB = 0;
         foreach ($totalCases as $case) {
             // get total unanswered and need further details from sec
             if (in_array($case->status, ['New Enrollment', 'New Case'])) {
@@ -354,6 +353,12 @@ class ReportsController extends Controller
                 $totalNeedFurtherDetails += 1;
             }
 
+            // get all who referred to regional
+            $recommendations = $case->recommendations->pluck('status')->toArray();
+
+            if (in_array('Referred to Regional', $recommendations)) {
+                $totalCasesForRTB += 1;
+            }
             $caseCreated = $case->created_at;
             $finalActionFromRTBChair = $case->recommendations->filter(function ($item) {
                 return $item->role_id === 6;
@@ -367,6 +372,7 @@ class ReportsController extends Controller
             }
             $rtbmacTaTime[] = $turnAroundTime;
         }
+        $report['total_cases'] = $totalCasesForRTB;
         $report['total_unanswered_from_sec'] = $totalUnansweredFromSec;
         $report['total_need_further_details'] = $totalNeedFurtherDetails;
         $report['rtb_mac_average_ta_time'] = count($rtbmacTaTime) > 0 ? ceil(array_sum($rtbmacTaTime) / count($rtbmacTaTime)) : 0;
