@@ -38,7 +38,7 @@ class ReportsNTBMACController extends Controller
             $dateFrom = '';
             $dateTo = '';
             if (request('period') === 'quarterly') {
-                $report['period'] = request('quarter').' '.request('year'); 
+                $report['period'] = request('quarter').' '.request('year');
                 $quarterDates = $this->getDateFromToQuarterly();
                 $dateFrom = $quarterDates['date_from'];
                 $dateTo = $quarterDates['date_to'];
@@ -241,6 +241,12 @@ class ReportsNTBMACController extends Controller
             ->with('reportData', $reportData);
     }
 
+    public function province()
+    {
+        $request = request()->all();
+        return DB::table('glocations')->select('name1', 'id')->where('id', 'like', substr($request['region'], 0, 2).'%')->where('glocation_level_id', 2)->get();
+    }
+
     private function getAgeFourteen($cases, &$report, $formType)
     {
         foreach ($cases as $case) {
@@ -327,11 +333,6 @@ class ReportsNTBMACController extends Controller
         }
 
         $report['rtb_mac_average_ta_time'] = count($rtbmacTaTime) ? ceil(array_sum($rtbmacTaTime) / count($rtbmacTaTime)) : 0;
-    }
-    public function province()
-    {
-        $request = request()->all();
-        return DB::table('glocations')->select('name1', 'id')->where('id', 'like', substr($request['region'], 0, 2).'%')->where('glocation_level_id', 2)->get();
     }
 
     private function getNTBMacAverageTime(&$report, $totalCases)
