@@ -141,8 +141,7 @@ Route::group(['middleware' => ['auth','role_request_approved']], static function
     Route::get('/ntbmac/reports/generate', [ReportsNTBMACController::class, 'generate']);
     Route::get('/ntbmac/reports/{report}', [ReportsNTBMACController::class, 'show']);
     Route::post('/ntbmac/reports/submit', [ReportsNTBMACController::class, 'store']);
-    //get the province from selected region
-    Route::get('/province', [ReportsNTBMACController::class, 'province']);
 });
-
+//get the province from selected region
+Route::get('/province', [ReportsNTBMACController::class, 'province']);
 Route::get('itis/login', [LoginController::class, 'itisLogin']);
