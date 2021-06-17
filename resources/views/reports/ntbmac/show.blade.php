@@ -43,7 +43,7 @@
             <form class="form" action="">
                 <ul class="card card--reverse">
                     <li class="card__item">
-                        <div class="grid grid--start">
+                        <div class="grid grid--start grid--five">
                             <div class="form__content">
                                 <span class="form__text"></span>
                                 <h2 class="section__heading">Summary</h2>

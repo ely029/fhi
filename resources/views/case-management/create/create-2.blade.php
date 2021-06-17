@@ -190,18 +190,18 @@
           <tr class="table__row form-step-2">
               <td class="table__details"><span class="base-letter">B</span><span class="counter"></span></td>
               <td class="table__details form-group">
-              <div class="help-block with-errors with-errors--table"></div>
-                  <input class="form__input form__input--full" required type="date" name="date_collected[]" />
+                <div class="help-block with-errors with-errors--table"></div>
+                <input class="form__input form__input--full" required type="date" name="date_collected[]" />
               </td>
               <td class="table__details">
-              <div class="form__content">
-                  <select class="form__input form__input--select form__input--full" name="smear_microscopy[]">
-                  @foreach(smear_microscopy() as $smear)
-                    <option value="{{ $smear }}">{{ $smear}}</option>
-                  @endforeach
-                  </select>
-                  <div class="triangle triangle--down"></div>
-              </div>
+                <div class="form__content">
+                    <select class="form__input form__input--select form__input--full" name="smear_microscopy[]">
+                    @foreach(smear_microscopy() as $smear)
+                        <option value="{{ $smear }}">{{ $smear}}</option>
+                    @endforeach
+                    </select>
+                    <div class="triangle triangle--down"></div>
+                </div>
               </td>
               <td class="table__details">
                 <div class="form__content">
