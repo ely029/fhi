@@ -50,7 +50,7 @@
                             </div>
                             <input class="button" id="submit_report" type="button" value="Export" />
                         </div>
-                        <div class="grid grid--start">
+                        <div class="grid grid--start grid--five">
                             <div class="form__content">
                                 <span class="form__text">{{ $report->period }}</span>
                                 <label class="form__label">Period</label></div>
