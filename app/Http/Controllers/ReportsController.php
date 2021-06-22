@@ -360,7 +360,7 @@ class ReportsController extends Controller
             $caseCreated = $case->created_at;
             $finalActionFromRTBChair = $case->recommendations->filter(function ($item) {
                 return $item->role_id === 6;
-            })->first();
+            })->last();
             if (is_null($finalActionFromRTBChair)) {
                 continue;
             }
