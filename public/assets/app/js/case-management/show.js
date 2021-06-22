@@ -3,6 +3,7 @@ $('.hide--button').hide();
     $('#recommendation-button').click(function(){
         $('#case_management_modal').modal('show');
         let action = $("#action-dropdown").val();
+        checkOptionalRemarks(action);
         if(action == 'Referred to Regional'){
             $("#modal-title").text('Refer To R-TB MAC');
             $("#modal-text").text("You are about to confirm 'Refer To R-TB MAC' for this case and patient. If you have additional remarks, enter them below.");
@@ -82,4 +83,21 @@ $('.hide--button').hide();
         }
      
     });
+
+    $("#action-dropdown").on('change', function(){
+        let selected = $(this).val();
+        checkOptionalRemarks(selected);
+
+    });
+
+    function checkOptionalRemarks(selected){
+        // Enrolled, Refer to R-TB MAC, For enrollment, Resolved
+        let optionalRemarks = ['Referred to Regional','Approved','Resolved'];
+    
+        if(optionalRemarks.includes(selected)){
+            $(".remarks").removeAttr('required');
+        }else{
+            $(".remarks").attr('required', true);
+        }
+    }
 });
