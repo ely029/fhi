@@ -8,7 +8,7 @@
                     @csrf
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
                        <input type="hidden" name="status" value="Referred to Regional"/>
-                       <div class="form__content"><textarea name="recommendation" class="form__input form__input--message" placeholder="Enter remarks" required></textarea><label class="form__label" for="">Remarks</label></div>
+                       <div class="form__content"><textarea name="recommendation" class="form__input form__input--message remarks" required placeholder="Enter remarks"></textarea><label class="form__label" for="">Remarks</label></div>
                        <div class="modal__button modal__button--end"><input class="button" type="submit" value="Submit" /></div>
                     </form>
                   </div>
@@ -59,7 +59,7 @@
                     @csrf
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
                        <input type="hidden" name="status" value="For Enrollment"/>
-                      <div class="form__content"><textarea name="recommendation" class="form__input form__input--message" placeholder="Enter remarks" required></textarea><label class="form__label" for="">Remarks</label></div>
+                      <div class="form__content"><textarea name="recommendation" class="form__input form__input--message remarks" placeholder="Enter remarks" required></textarea><label class="form__label" for="">Remarks</label></div>
                       <div class="modal__button modal__button--end"><input class="button" type="submit" value="Submit" /></div>
                     </form>
                   </div>
@@ -76,7 +76,7 @@
                     @csrf
                        <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
                        <input type="hidden" name="status" value="Enrolled"/>
-                      <div class="form__content"><textarea name="recommendation" class="form__input form__input--message" placeholder="Enter remarks" required></textarea><label class="form__label" for="">Remarks</label></div>
+                      <div class="form__content"><textarea name="recommendation" class="form__input form__input--message remakrs" placeholder="Enter remarks" required></textarea><label class="form__label" for="">Remarks</label></div>
                       <div class="modal__button modal__button--end"><input class="button" type="submit" value="Submit" /></div>
                     </form>
                   </div>
@@ -212,7 +212,7 @@
                   @csrf
                      <input type="hidden" value="{{ $tbMacForm->id}}" name="form_id"/>
                      <input type="hidden" name="status" value=""/>
-                    <div class="form__content"><textarea name="recommendation" class="form__input form__input--message" placeholder="Enter remarks" required></textarea><label class="form__label" for="">Remarks</label></div>
+                    <div class="form__content"><textarea name="recommendation" class="form__input form__input--message remarks" placeholder="Enter remarks" required></textarea><label class="form__label" for="">Remarks</label></div>
                     <div class="modal__button modal__button--end"><input class="button" type="submit" value="Submit" /></div>
                   </form>
                 </div>

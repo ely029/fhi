@@ -6,6 +6,7 @@ jQuery( document ).ready(function( $ ) {
     });
 
     $('#refer-button').click(function(){
+        checkOptionalRemarks($("#refer").val());
             if ($('#refer').val() == '1') {
                 $('#refer-to-regional').modal('show');
             }
@@ -70,6 +71,23 @@ jQuery( document ).ready(function( $ ) {
     let recommendationModal = $("#recommendation-successful");
     if(recommendationModal.length > 0){
         recommendationModal.modal('show');
+    }
+
+    $("#refer").on('change', function(){
+        let selected = $(this).val();
+        checkOptionalRemarks(selected);
+
+    });
+
+    function checkOptionalRemarks(selected){
+        // Enrolled, Refer to R-TB MAC, For enrollment, Resolved
+        let optionalRemarks = ['1','6','10','Resolved'];
+    
+        if(optionalRemarks.includes(selected)){
+            $(".remarks").removeAttr('required');
+        }else{
+            $(".remarks").attr('required', true);
+        }
     }
 
 });
