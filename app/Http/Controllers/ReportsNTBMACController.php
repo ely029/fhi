@@ -26,7 +26,9 @@ class ReportsNTBMACController extends Controller
         $region = Geolocation::select('id')->where('name1', auth()->user()->region)->first();
         $regions = Geolocation::where('glocation_level_id', 1)->get();
         $provinces = Geolocation::where('PARENT_ID', $region === null ? 'NCR' : $region->id)->pluck('name1', 'id');
-        $get_region = Geolocation::where('id', request('region'))->first();
+        $selected_region = Geolocation::where('id', request('region') === null ? '' : request('region'))->first();
+        $selected_province = Geolocation::where('name1', request('province'))->first();
+        $selected_provinces = Geolocation::where('id', 'like', request('region') === null ? '' : substr(request('region'),0,2).'%')->where('glocation_level_id', 2)->get();
         $report = null;
         $dateFrom = '';
         $dateTo = '';
@@ -58,7 +60,7 @@ class ReportsNTBMACController extends Controller
                 $query->where('province', request('province'));
             })->whereDate('updated_at', '>=', $dateFrom)
                 ->whereDate('updated_at', '<=', $dateTo)
-                ->where('region', $get_region->name1)
+                ->where('region', $selected_region->name1)
                 ->get();
             $this->getRTBMacAverageTime($report, $totalCases);
 
@@ -90,7 +92,7 @@ class ReportsNTBMACController extends Controller
                 $query->where('status', 'Referred to national');
             })->whereDate('updated_at', '>=', $dateFrom)
                 ->whereDate('updated_at', '<=', $dateTo)
-                ->where('region', $get_region->name1)
+                ->where('region', $selected_region->name1)
                 ->get();
 
             $this->getReportForNTBMAC($report, $totalCasesForNTBMAC);
@@ -100,6 +102,9 @@ class ReportsNTBMACController extends Controller
         return view('reports.ntbmac.form')
             ->with('provinces', $provinces)
             ->with('report', $report)
+            ->with('regionSelected', $selected_region)
+            ->with('provinceSelected', $selected_province)
+            ->with('provincesSelected', $selected_provinces)
             ->with('regions', $regions);
     }
 

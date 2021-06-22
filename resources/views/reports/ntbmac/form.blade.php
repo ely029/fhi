@@ -94,15 +94,27 @@
                             <div class="grid grid--half grid--column">
                             <div class="form__content">
                                     <select class="form__input form__input--select" id="region" name="region">
-                                    @foreach($regions as $region)
+                                    @if ($regionSelected === null)
+                                    @foreach(ntbmacRegion() as $region)
                                     <option value="{{ $region->id }}">{{ $region->name1 }}</option>
                                     @endforeach
+                                    @else
+                                    @foreach(ntbmacRegion() as $region)
+                                    <option value="{{ $region->name1 == $regionSelected->name1 ? $regionSelected->id : $region->id }}"{{ $region->name1 == $regionSelected->name1 ? 'selected' : ''}}>{{ $region->name1 == $regionSelected->name1 ? $regionSelected->name1 : $region->name1}}</option>
+                                    @endforeach
+                                    @endif
                                     </select>
                                     <div class="triangle triangle--down"></div>
                                     <label class="form__label" for="">Region</label>
                                 </div>
                                 <div class="form__content">
                                     <select class="form__input form__input--select" id="province" name="province">
+                                    @if ($provinceSelected === null)
+                                    @else
+                                    @foreach($provincesSelected as $province)
+                                    <option value="{{ $province->id == $provinceSelected->id ? $provinceSelected->name1 : $province->name1 }}"{{ $province->name1 == request()->get('province') ? 'selected' : '' }}>{{ $province->name1 == $provinceSelected->name1 ? $provinceSelected->name1 : $province->name1 }}</option>
+                                    @endforeach
+                                    @endif
                                     </select>
                                     <div class="triangle triangle--down"></div>
                                     <label class="form__label" for="">Province</label>
@@ -159,7 +171,11 @@
 @endsection
 @section('additional_scripts')
     <script src="{{ asset('assets/app/js/reports/form.js') }}"></script>
-    <script src="{{ asset('assets/app/js/ntbmac-report.js') }}"></script>
+    @if(request()->get('province') === null)
+    <script src="{{ asset('assets/app/js/ntbmac-report-index.js') }}"></script>
+    @else
+    <script src="{{ asset('assets/app/js/ntbmac-report-change.js') }}"></script>
+    @endif
     @if(!is_null($report))
         <script src="{{ asset('assets/app/js/report.js') }}"></script>
     @endif

@@ -115,6 +115,14 @@ function provinces()
         'Zamboanga Sibugay',
     ];
 }
+function ntbmacRegion()
+{
+    return DB::table('glocations')->select('name1', 'id')->where('glocation_level_id', 1)->get();
+}
+function ntbmacProvince()
+{
+    return DB::table('glocations')->select('name1', 'id')->where('glocation_level_id', 2)->get();
+}
 
 function month_treatment()
 {
