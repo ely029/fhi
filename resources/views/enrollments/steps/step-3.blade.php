@@ -3,13 +3,13 @@
       <h2 class="section__heading">Case information 2</h2>
       <div class="grid form-step-3">
         <div class="form__content form-group">
-          <select class="form__input form__input--select" name="drug_susceptibility">
+          <select class="form__input form__input--select" name="drug_susceptibility" id="drug_susceptibility">
             <option>Drug-susceptible</option>
             <option>Bacteriologically-confirmed RR-TB</option>
             <option>Bacteriologically-confirmed MDR-TB</option>
             <option>Bacteriologically-confirmed Pre-XDR-TB</option>
             <option>Bacteriologically-confirmed XDR-TB</option>
-            <option>Clinically-confirmed MDR-TB</option>
+            <option>Clinically-diagnosed MDR-TB</option>
             <option>Other Drug-resistant TB</option>
           </select>
           <div class="triangle triangle--down"></div>
@@ -59,26 +59,26 @@
         
       </div>
     </div>
-    <div class="form__container form-step-3">
+    <div class="form__container form-step-3 clinically-diagnosed">
       <h2 class="section__heading">If for treatment of clinically diagnosed cases</h2>
       <div class="form__content form-group">
         <div class="help-block with-errors"></div>
-        <textarea class="form__input form__input--message" name="clinical_status" placeholder="Clinical Status" required></textarea>
+        <textarea class="form__input form__input--message" name="clinical_status" placeholder="Clinical Status"></textarea>
         <label class="form__label" for="">Clinical status</label>
       </div>
       <div class="form__content form-group label-with-error-above">
         <div class="help-block with-errors"></div>
-        <input class="form__input" type="text" name="signs_and_symptoms" placeholder="Signs and symptoms" required />
+        <input class="form__input" type="text" name="signs_and_symptoms" placeholder="Signs and symptoms" />
         <label class="form__label" for="">Signs and symptoms</label>
       </div>
       <div class="form__content form-group label-with-error-above">
         <div class="help-block with-errors"></div>
-        <input class="form__input" type="text" name="vital_signs" placeholder="Vital signs" required />
+        <input class="form__input" type="text" name="vital_signs" placeholder="Vital signs" />
         <label class="form__label" for="">Vital signs</label>
       </div>
       <div class="form__content form-group label-with-error-above">
         <div class="help-block with-errors"></div>
-        <input class="form__input" type="text" name="diag_and_lab_findings" placeholder="Pertinent diagnostic and laboratory findings" required />
+        <input class="form__input" type="text" name="diag_and_lab_findings" placeholder="Pertinent diagnostic and laboratory findings" />
         <label class="form__label" for="">Pertinent diagnostic and laboratory findings</label>
       </div>
     </div>
