@@ -28,7 +28,7 @@ class ReportsNTBMACController extends Controller
         $provinces = Geolocation::where('PARENT_ID', $region === null ? 'NCR' : $region->id)->pluck('name1', 'id');
         $selected_region = Geolocation::where('id', request('region') === null ? '' : request('region'))->first();
         $selected_province = Geolocation::where('name1', request('province'))->first();
-        $selected_provinces = Geolocation::where('id', 'like', request('region') === null ? '' : substr(request('region'),0,2).'%')->where('glocation_level_id', 2)->get();
+        $selected_provinces = Geolocation::where('id', 'like', request('region') === null ? '' : substr(request('region'), 0, 2).'%')->where('glocation_level_id', 2)->get();
         $report = null;
         $dateFrom = '';
         $dateTo = '';
