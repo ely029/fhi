@@ -186,8 +186,13 @@ class CaseManagementController extends Controller
             return $item->status === 'New Case';
         });
 
+        $needFurtherDetails = $cases->filter(function ($item) {
+            return $item->status === 'Need Further Details';
+        });
+
         return view('case-management.index')
             ->with('pending', $pending)
+            ->with('needFurtherDetails', $needFurtherDetails)
             ->with('allCases', $cases);
     }
 
@@ -222,6 +227,10 @@ class CaseManagementController extends Controller
             return $item->status === 'Referred to Regional Chair';
         });
 
+        $needFurtherDetails = $cases->filter(function ($item) {
+            return $item->status === 'Need Further Details';
+        });
+
         $completed = $cases->filter(function ($item) {
             return in_array($item->status, ['Approved','Other suggestions','Need Further Details']);
         });
@@ -230,6 +239,7 @@ class CaseManagementController extends Controller
             ->with('pending', $pending)
             ->with('referredCases', $referredCases)
             ->with('completed', $completed)
+            ->with('needFurtherDetails', $needFurtherDetails)
             ->with('allCases', $cases);
     }
 

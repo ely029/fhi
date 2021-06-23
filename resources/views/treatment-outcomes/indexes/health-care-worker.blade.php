@@ -5,21 +5,6 @@
 
     <div class="section__content">
     <ul class="tabs__list tabs__list--table">
-        {{-- <a href="{{ url('treatment-outcomes') }}">
-            <li class="tabs__item js-tabs {{ request('status') == '' ? 'tabs__item--current' : ''}}">All cases({{$cases->count()}})</li>
-        </a>
-        <a href="{{ url('treatment-outcomes?status=For approval') }}">
-            <li class="tabs__item js-tabs {{ request('status') == 'For approval' ? 'tabs__item--current' : ''}}">For approval({{$forApproval->count()}})</li>
-        </a>
-        <a href="{{ url('treatment-outcomes?status=Other suggestions') }}">
-            <li class="tabs__item js-tabs {{ request('status') == 'Other suggestions' ? 'tabs__item--current' : ''}}">Other suggestions({{$otherSuggestion->count()}})</li>
-        </a>
-        <a href="{{ url('treatment-outcomes?status=Need Further Details') }}">
-            <li class="tabs__item js-tabs {{ request('status') == 'Need Further Details' ? 'tabs__item--current' : ''}}">Need further details({{$needFurtherDetails->count()}})</li>
-        </a>
-        <a href="{{ url('treatment-outcomes?status=Not for Referral') }}">
-            <li class="tabs__item js-tabs {{ request('status') == 'Not for Referral' ? 'tabs__item--current' : ''}}">Not for referral({{$notForReferral->count()}})</li>
-        </a>--}} 
         <li class="tabs__item js-tabs js-tabs-current">All cases ({{$allCases->count()}})</li>
         <li class="tabs__item js-tabs">For approval ({{$forApproval->count()}})</li>
         <li class="tabs__item js-tabs">Other suggestions ({{$otherSuggestion->count()}})</li>
@@ -27,7 +12,7 @@
         <li class="tabs__item js-tabs">Not for referral ({{$notForReferral->count()}})</li>
     </ul>
 
-    <div class="js-tabs-details js-tabs-details-active">
+    <div class="tabs__details js-tabs-details js-tabs-details-active">
         <table class="table table--filter js-table">
         <thead>
             <tr>
@@ -36,7 +21,7 @@
                 <th class="table__head">Age</th>
                 <th class="table__head">Sex</th>
                 <th class="table__head">Current drug susceptibility</th>
-                <th class="table__head">Date submitted by Health Care Worker</th>
+                <th class="table__head">Date submitted</th>
                 <th class="table__head">Status</th>
             </tr>
         </thead>
@@ -56,7 +41,7 @@
         </tbody>
         </table>
     </div>
-    <div class="js-tabs-details">
+    <div class="tabs__details js-tabs-details">
         <table class="table table--filter js-table">
         <thead>
             <tr>
@@ -65,7 +50,7 @@
                 <th class="table__head">Age</th>
                 <th class="table__head">Sex</th>
                 <th class="table__head">Current drug susceptibility</th>
-                <th class="table__head">Date submitted by Health Care Worker</th>
+                <th class="table__head">Date submitted</th>
                 <th class="table__head">Status</th>
             </tr>
         </thead>
@@ -84,7 +69,7 @@
         </tbody>
         </table>
     </div>
-    <div class="js-tabs-details">
+    <div class="tabs__details js-tabs-details">
         <table class="table table--filter js-table">
         <thead>
             <tr>
@@ -93,7 +78,7 @@
                 <th class="table__head">Age</th>
                 <th class="table__head">Sex</th>
                 <th class="table__head">Current drug susceptibility</th>
-                <th class="table__head">Date submitted by Health Care Worker</th>
+                <th class="table__head">Date submitted</th>
                 <th class="table__head">Status</th>
             </tr>
         </thead>
@@ -112,7 +97,7 @@
         </tbody>
         </table>
     </div>
-    <div class="js-tabs-details">
+    <div class="js-tabs-details tabs__details">
         <table class="table table--filter js-table">
         <thead>
             <tr>
@@ -121,7 +106,7 @@
                 <th class="table__head">Age</th>
                 <th class="table__head">Sex</th>
                 <th class="table__head">Current drug susceptibility</th>
-                <th class="table__head">Date submitted by Health Care Worker</th>
+                <th class="table__head">Date submitted</th>
                 <th class="table__head">Status</th>
             </tr>
         </thead>
@@ -140,7 +125,7 @@
         </tbody>
         </table>
     </div>
-    <div class="js-tabs-details">
+    <div class="js-tabs-details tabs__details">
         <table class="table table--filter js-table">
         <thead>
             <tr>
@@ -149,7 +134,7 @@
                 <th class="table__head">Age</th>
                 <th class="table__head">Sex</th>
                 <th class="table__head">Current drug susceptibility</th>
-                <th class="table__head">Date submitted by Health Care Worker</th>
+                <th class="table__head">Date submitted</th>
                 <th class="table__head">Status</th>
             </tr>
         </thead>

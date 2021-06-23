@@ -18,6 +18,7 @@
         <li class="tabs__item js-tabs js-tabs-current">Pending ({{ $referredCases->count() }})</li>
         <li class="tabs__item js-tabs">Completed ({{ $completed->count() }})</li>
         <li class="tabs__item js-tabs">Pending from N-TB MAC Chair ({{ $pending->count() }})</li>
+        <li class="tabs__item js-tabs">Need Further Details ({{ $needFurtherDetails->count() }})</li>
         <li class="tabs__item js-tabs">All cases ({{ $cases->count() }})</li>
     </ul>
       <div class="tabs__details js-tabs-details js-tabs-details-active">
@@ -29,7 +30,7 @@
               <th class="table__head">Age</th>
               <th class="table__head">Sex</th>
               <th class="table__head">Current drug susceptibility</th>
-              <th class="table__head">Date submitted by Health Care Worker</th>
+              <th class="table__head">Date submitted</th>
               <th class="table__head">Status</th>
             </tr>
           </thead>
@@ -57,7 +58,7 @@
               <th class="table__head">Age</th>
               <th class="table__head">Sex</th>
               <th class="table__head">Current drug susceptibility</th>
-              <th class="table__head">Date submitted by Health Care Worker</th>
+              <th class="table__head">Date submitted</th>
               <th class="table__head">Status</th>
             </tr>
           </thead>
@@ -85,7 +86,7 @@
               <th class="table__head">Age</th>
               <th class="table__head">Sex</th>
               <th class="table__head">Current drug susceptibility</th>
-              <th class="table__head">Date submitted by Health Care Worker</th>
+              <th class="table__head">Date submitted</th>
               <th class="table__head">Status</th>
             </tr>
           </thead>
@@ -113,7 +114,35 @@
               <th class="table__head">Age</th>
               <th class="table__head">Sex</th>
               <th class="table__head">Current drug susceptibility</th>
-              <th class="table__head">Date submitted by Health Care Worker</th>
+              <th class="table__head">Date submitted</th>
+              <th class="table__head">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+          @foreach($needFurtherDetails as $case)
+        <tr class="table__row js-view" data-href="{{url('/treatment-outcomes/'.$case->id.'?from_tab='.$case->status)}}">
+            <td class="table__details">{{ $case->presentation_number }}</td>
+            <td class="table__details">{{ empty($case->patient->initials) ? '' : $case->patient->initials}}</td>
+            <td class="table__details">{{ empty($case->patient->age) ? '' : $case->patient->age}}</td>
+            <td class="table__details">{{ empty($case->patient->gender) ? '' : $case->patient->gender}}</td>
+            <td class="table__details">{{ $case->treatmentOutcomeForm->current_drug_susceptibility }}</td>
+            <td class="table__details">{{ $case->created_at->format('m-d-Y')}}</td>
+            <td class="table__details">{{ $case->status }}</td>
+            </tr>
+        @endforeach
+          </tbody>
+        </table>
+      </div>
+      <div class="tabs__details js-tabs-details">
+        <table class="table table--filter js-table">
+          <thead>
+            <tr>
+              <th class="table__head">Presentation no.</th>
+              <th class="table__head">Patient initials</th>
+              <th class="table__head">Age</th>
+              <th class="table__head">Sex</th>
+              <th class="table__head">Current drug susceptibility</th>
+              <th class="table__head">Date submitted</th>
               <th class="table__head">Status</th>
             </tr>
           </thead>

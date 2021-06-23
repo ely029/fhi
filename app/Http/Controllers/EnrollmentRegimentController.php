@@ -344,8 +344,13 @@ class EnrollmentRegimentController extends Controller
             return $item->status === 'New Enrollment';
         });
 
+        $needFurtherDetails = $enrollments->filter(function ($item) {
+            return $item->status === 'Need Further Details';
+        });
+
         return view('enrollments.index')
             ->with('pending', $pending)
+            ->with('needFurtherDetails', $needFurtherDetails)
             ->with('allEnrollment', $enrollments);
     }
 
@@ -388,11 +393,16 @@ class EnrollmentRegimentController extends Controller
             return $item->status === 'Referred To Regional';
         });
 
+        $needFurtherDetails = $enrollments->filter(function ($item) {
+            return $item->status === 'Need Further Details';
+        });
+
         return view('enrollments.index')
             ->with('referred', $referred)
             ->with('pendingFromNTBMacChair', $pendingFromNTBMacChair)
             ->with('completed', $completed)
             ->with('referredToRegional', $referredToRegional)
+            ->with('needFurtherDetails', $needFurtherDetails)
             ->with('allEnrollments', $enrollments);
     }
 
