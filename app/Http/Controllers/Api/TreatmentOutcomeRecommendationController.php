@@ -13,7 +13,7 @@ class TreatmentOutcomeRecommendationController extends Controller
     {
         $request = request()->all();
         $validator = \Validator::make($request, [
-            'remarks' => 'required',
+            'remarks' => 'required_unless:status,Resolved,Referred to Regional,Approved,Resolved',
             'status' => treatmentOutcomeStatus()[auth()->user()->role_id],
         ]);
         if ($validator->fails()) {
@@ -27,7 +27,7 @@ class TreatmentOutcomeRecommendationController extends Controller
             $tbMacForm->status = in_array($request['status'], ['Recommended for Approval','Recommended for other suggestions','Recommended for need further details']) ? 'Referred to Regional Chair' : $request['status'];
         }
         $tbMacForm->save();
-        $request['recommendation'] = $request['remarks'];
+        $request['recommendation'] = $request['remarks'] ?? null;
         $request['submitted_by'] = auth()->user()->id;
         $request['role_id'] = auth()->user()->role_id;
         $tbMacForm->recommendations()->create($request);

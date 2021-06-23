@@ -39,8 +39,9 @@ class EnrollmentRecommendationsController extends Controller
     public function store(TBMacForm $tbMacForm)
     {
         $request = request()->all();
+        $request['remarks'] = request('remarks');   
         $validator = \Validator::make($request, [
-            'remarks' => 'required',
+            'remarks' => 'required_unless:status,Enrolled,Refer to RTBMAC,For Enrollment,Resolved',
             'status' => $this->statusValidation(),
         ]);
         if ($validator->fails()) {

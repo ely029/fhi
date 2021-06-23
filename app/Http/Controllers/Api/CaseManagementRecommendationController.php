@@ -15,7 +15,7 @@ class CaseManagementRecommendationController extends Controller
     {
         $request = request()->all();
         $validator = \Validator::make($request, [
-            'remarks' => 'required',
+            'remarks' => 'required_unless:status,Resolved,Referred to Regional,Approved,Resolved',
             'status' => caseManagementRecommendationStatus()[auth()->user()->role_id],
         ]);
         if ($validator->fails()) {
