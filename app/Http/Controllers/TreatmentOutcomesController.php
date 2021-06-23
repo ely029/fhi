@@ -182,8 +182,13 @@ class TreatmentOutcomesController extends Controller
             return $item->status === 'New Case';
         });
 
+        $needFurtherDetails = $cases->filter(function ($item) {
+            return $item->status === 'Need Further Details';
+        });
+
         return view('treatment-outcomes.index')
             ->with('pending', $pending)
+            ->with('needFurtherDetails', $needFurtherDetails)
             ->with('allCases', $cases)
             ->with('cases', $cases);
     }
@@ -219,6 +224,10 @@ class TreatmentOutcomesController extends Controller
             return $item->status === 'Referred to Regional Chair';
         });
 
+        $needFurtherDetails = $cases->filter(function ($item) {
+            return $item->status === 'Need Further Details';
+        });
+
         $completed = $cases->filter(function ($item) {
             return in_array($item->status, ['Approved','Other suggestions','Need Further Details']);
         });
@@ -227,6 +236,7 @@ class TreatmentOutcomesController extends Controller
             ->with('pending', $pending)
             ->with('referredCases', $referredCases)
             ->with('completed', $completed)
+            ->with('needFurtherDetails', $needFurtherDetails)
             ->with('cases', $cases);
     }
 

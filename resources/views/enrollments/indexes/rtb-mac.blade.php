@@ -17,7 +17,7 @@
               <th class="table__head">Province</th>
               <th class="table__head">Patient</th>
               <th class="table__head">Drug susceptibility</th>
-              <th class="table__head">Date</th>
+              <th class="table__head">Date submitted</th>
               <th class="table__head">Status</th>
             </tr>
           </thead>
@@ -47,7 +47,7 @@
               <th class="table__head">Province</th>
               <th class="table__head">Patient</th>
               <th class="table__head">Drug susceptibility</th>
-              <th class="table__head">Date</th>
+              <th class="table__head">Date submitted</th>
               <th class="table__head">Status</th>
             </tr>
           </thead>
@@ -77,7 +77,7 @@
               <th class="table__head">Province</th>
               <th class="table__head">Patient</th>
               <th class="table__head">Drug susceptibility</th>
-              <th class="table__head">Date</th>
+              <th class="table__head">Date submitted</th>
               <th class="table__head">Status</th>
             </tr>
           </thead>
@@ -107,7 +107,7 @@
               <th class="table__head">Province</th>
               <th class="table__head">Patient</th>
               <th class="table__head">Drug susceptibility</th>
-              <th class="table__head">Date</th>
+              <th class="table__head">Date submitted</th>
               <th class="table__head">Status</th>
             </tr>
           </thead>
