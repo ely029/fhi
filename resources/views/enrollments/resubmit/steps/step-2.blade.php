@@ -37,6 +37,37 @@
     <div class="form__container">
       <h2 class="section__heading">Current bacteriological result</h2>
       <ul class="form__group">
+      <li class="form__group-item">
+        <div class="grid grid--three">
+          <div class="form__content">
+            <select class="form__input form__input--select">
+              <option>sample</option>
+            </select>
+            <div class="triangle triangle--down"></div>
+            <label class="form__label" for="">Xpert Type</label>
+          </div>
+          <div class="form__content"><input class="form__input js-date" type="date" /><label class="form__label" for="">Date collected</label></div>
+          <div class="form__content"><input class="form__input" type="text" placeholder="Name of laboratory" /><label class="form__label" for="">Name of laboratory</label></div>
+        </div>
+        <div class="grid grid--two">
+          <div class="form__content">
+            <select class="form__input form__input--select">
+              <option>sample</option>
+            </select>
+            <div class="triangle triangle--down"></div>
+            <label class="form__label" for="">Result MTB</label>
+          </div>
+          <div class="form__content">
+            <select class="form__input form__input--select">
+              <option>sample</option>
+            </select>
+            <div class="triangle triangle--down"></div>
+            <label class="form__label" for="">Rifampicin Resistance</label>
+          </div>
+          <img class="image image--close image--relative js-delete-section-1" src="src/img/icon-close.png" />
+        </div>
+        <button class="button button--transparent button--add" id="js-add-section-1" type="button">Add one more</button>
+      </li>
         <li class="form__group-item">
           @php
             $bacteriologicalResults = $tbMacForm->bacteriologicalResults->filter(function ($item) {
@@ -180,6 +211,73 @@
           </div>
         </li>
         <li class="form__group-item">
+          <label class="form__sublabel" id="enroll4">Line Probe Assay (LPA) <input class="form__trigger" id="js-toggle-enroll4" type="checkbox" /><span class="form__checkmark"> </span></label>
+          <div class="form__trigger-content" id="js-toggle-content-enroll4">
+            <div id="js-section4">
+              <div class="grid grid--two">
+                <div class="form__content"><input class="form__input" type="date" placeholder="Date done" /><label class="form__label" for="">Date done</label></div>
+                <div class="form__content"><input class="form__input" type="text" placeholder="Name of laboratory" /><label class="form__label" for="">Name of laboratory</label></div>
+              </div>
+              <div class="grid grid--two">
+                <div class="form__content">
+                  <select class="form__input form__input--select">
+                    <option> </option>
+                    <option> </option>
+                    <option> </option>
+                  </select>
+                  <div class="triangle triangle--down"></div>
+                  <label class="form__label" for="">Mycobacterium Tuberculosis (MTB)</label>
+                </div>
+              </div>
+              <div class="grid grid--two">
+                <div class="form__content">
+                  <select class="form__input form__input--select">
+                    <option> </option>
+                    <option> </option>
+                    <option> </option>
+                  </select>
+                  <div class="triangle triangle--down"></div>
+                  <label class="form__label" for="">Isoniazid (h)*</label>
+                </div>
+              </div>
+              <div class="grid grid--two">
+                <div class="form__content">
+                  <select class="form__input form__input--select">
+                    <option> </option>
+                    <option> </option>
+                    <option> </option>
+                  </select>
+                  <div class="triangle triangle--down"></div>
+                  <label class="form__label" for="">Rifampicin (r)*</label>
+                </div>
+              </div>
+              <div class="grid grid--two">
+                <div class="form__content">
+                  <select class="form__input form__input--select">
+                    <option> </option>
+                    <option> </option>
+                    <option> </option>
+                  </select>
+                  <div class="triangle triangle--down"></div>
+                  <label class="form__label" for="">Fluoroquinolone (fq)</label>
+                </div>
+              </div>
+              <div class="grid grid--two">
+                <div class="form__content">
+                  <select class="form__input form__input--select">
+                    <option> </option>
+                    <option> </option>
+                    <option> </option>
+                  </select>
+                  <div class="triangle triangle--down"></div>
+                  <label class="form__label" for="">Second Line Injectable (sli)*</label>
+                </div>
+              </div>
+            </div>
+            <button class="button button--transparent" id="js-add-section4" type="button">Add one more</button>
+          </div>
+        </li>
+        <!-- <li class="form__group-item">
           <label class="form__sublabel" id="enroll4">Line Probe Assay (LPA) 
             <input class="form__trigger bacteriological-check" data-type="lpa" id="js-toggle-enroll4" type="checkbox" />
             <span class="form__checkmark"> </span>
@@ -267,7 +365,7 @@
             </div>
             <button class="button button--transparent" id="js-add-section4" type="button">Add one more</button>
           </div>
-        </li>
+        </li> -->
         <li class="form__group-item">
           <label class="form__sublabel" id="enroll5">Smear Microscopy 
             <input class="form__trigger bacteriological-check" data-type="smear_mic" id="js-toggle-enroll5" type="checkbox" />
@@ -471,6 +569,119 @@
       <h2 class="section__heading">DST from Other Laboratory</h2>
       <ul class="form__group">
         <li class="form__group-item">
+            <label class="form__sublabel" id="enroll9">Drug Susceptibility Test (DST)<input class="form__trigger" id="js-toggle-enroll9" type="checkbox" /><span class="form__checkmark"> </span></label>
+            <div class="form__trigger-content" id="js-toggle-content-enroll9">
+              <div id="js-section9">
+                <div class="grid grid--two">
+                  <div class="form__content"><input class="form__input js-date" type="date" /><label class="form__label" for="">Date done</label></div>
+                  <div class="form__content"><input class="form__input" type="text" placeholder="Name of laboratory" /><label class="form__label" for="">Name of laboratory </label></div>
+                </div>
+                <div class="grid grid--two">
+                  <div class="form__content">
+                    <select class="form__input form__input--select">
+                      <option> </option>
+                      <option> </option>
+                      <option> </option>
+                    </select>
+                    <div class="triangle triangle--down"></div>
+                    <label class="form__label" for="">H</label>
+                  </div>
+                  <div class="form__content">
+                    <select class="form__input form__input--select">
+                      <option> </option>
+                      <option> </option>
+                      <option> </option>
+                    </select>
+                    <div class="triangle triangle--down"></div>
+                    <label class="form__label" for="">Km</label>
+                  </div>
+                </div>
+                <div class="grid grid--two">
+                  <div class="form__content">
+                    <select class="form__input form__input--select">
+                      <option> </option>
+                      <option> </option>
+                      <option> </option>
+                    </select>
+                    <div class="triangle triangle--down"></div>
+                    <label class="form__label" for="">R</label>
+                  </div>
+                  <div class="form__content">
+                    <select class="form__input form__input--select">
+                      <option> </option>
+                      <option> </option>
+                      <option> </option>
+                    </select>
+                    <div class="triangle triangle--down"></div>
+                    <label class="form__label" for="">Cm</label>
+                  </div>
+                </div>
+                <div class="grid grid--two">
+                  <div class="form__content">
+                    <select class="form__input form__input--select">
+                      <option> </option>
+                      <option> </option>
+                      <option> </option>
+                    </select>
+                    <div class="triangle triangle--down"></div>
+                    <label class="form__label" for="">Z</label>
+                  </div>
+                  <div class="form__content">
+                    <select class="form__input form__input--select">
+                      <option> </option>
+                      <option> </option>
+                      <option> </option>
+                    </select>
+                    <div class="triangle triangle--down"></div>
+                    <label class="form__label" for="">Ofx</label>
+                  </div>
+                </div>
+                <div class="grid grid--two">
+                  <div class="form__content">
+                    <select class="form__input form__input--select">
+                      <option> </option>
+                      <option> </option>
+                      <option> </option>
+                    </select>
+                    <div class="triangle triangle--down"></div>
+                    <label class="form__label" for="">E</label>
+                  </div>
+                  <div class="form__content">
+                    <select class="form__input form__input--select">
+                      <option> </option>
+                      <option> </option>
+                      <option> </option>
+                    </select>
+                    <div class="triangle triangle--down"></div>
+                    <label class="form__label" for="">Lfx </label>
+                  </div>
+                </div>
+                <div class="grid grid--two">
+                  <div class="form__content">
+                    <select class="form__input form__input--select">
+                      <option> </option>
+                      <option> </option>
+                      <option> </option>
+                    </select>
+                    <div class="triangle triangle--down"></div>
+                    <label class="form__label" for="">S</label>
+                  </div>
+                  <div class="form__content">
+                    <select class="form__input form__input--select">
+                      <option> </option>
+                      <option> </option>
+                      <option> </option>
+                    </select>
+                    <div class="triangle triangle--down"></div>
+                    <label class="form__label" for="">Mfx </label>
+                  </div>
+                </div>
+              </div>
+              <button class="button button--transparent" id="js-add-section9" type="button">Add one more</button>
+            </div>
+          </li>
+          
+        <!-- <li class="form__group-item">
           <label class="form__sublabel" id="enroll11">Drug Susceptibility Test (DST)
             <input class="form__trigger bacteriological-check" data-type="dst_from_other_lab" id="js-toggle-enroll11" type="checkbox" />
             <span class="form__checkmark"> </span></label>
@@ -498,7 +709,7 @@
             </div>
             <button class="button button--transparent" id="js-add-section11" type="button">Add one more</button>
           </div>
-        </li>
+        </li> -->
       </ul>
     </div>
   </div>
