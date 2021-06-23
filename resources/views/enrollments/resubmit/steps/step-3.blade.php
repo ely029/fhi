@@ -10,7 +10,7 @@
             <option>Bacteriologically-confirmed MDR-TB</option>
             <option>Bacteriologically-confirmed Pre-XDR-TB</option>
             <option>Bacteriologically-confirmed XDR-TB</option>
-            <option>Clinically-confirmed MDR-TB</option>
+            <option>Clinically-diagnosed MDR-TB</option>
             <option>Other Drug-resistant TB</option>
           </select>
           <div class="triangle triangle--down"></div>
@@ -60,29 +60,29 @@
           
         </div>
     </div>
-    <div class="form__container form-step-3">
+    <div class="form__container form-step-3 clinically-diagnosed">
       <h2 class="section__heading">If for treatment of clinically diagnosed cases</h2>
       <div class="form__content form-group">
         <div class="help-block with-errors"></div>
-          <textarea class="form__input form__input--message" name="clinical_status" placeholder="Clinical Status" required>{{ $tbMacForm->enrollmentForm->clinical_status }}</textarea>
+          <textarea class="form__input form__input--message" name="clinical_status" placeholder="Clinical Status" >{{ $tbMacForm->enrollmentForm->clinical_status }}</textarea>
           <label class="form__label" for="">Clinical status</label>
           
         </div>
       <div class="form__content form-group">
         <div class="help-block with-errors"></div>
-          <input class="form__input" type="text" name="signs_and_symptoms" placeholder="Signs and symptoms" required value="{{ $tbMacForm->enrollmentForm->signs_and_symptoms }}" />
+          <input class="form__input" type="text" name="signs_and_symptoms" placeholder="Signs and symptoms"  value="{{ $tbMacForm->enrollmentForm->signs_and_symptoms }}" />
           <label class="form__label" for="">Signs and symptoms</label>
           
         </div>
       <div class="form__content form-group">
         <div class="help-block with-errors"></div>
-          <input class="form__input" type="text" name="vital_signs" placeholder="Vital signs" required value="{{ $tbMacForm->enrollmentForm->vital_signs }}"/>
+          <input class="form__input" type="text" name="vital_signs" placeholder="Vital signs"  value="{{ $tbMacForm->enrollmentForm->vital_signs }}"/>
           <label class="form__label" for="">Vital signs</label>
           
         </div>
       <div class="form__content form-group">
         <div class="help-block with-errors"></div>
-          <input class="form__input" type="text" name="diag_and_lab_findings" placeholder="Pertinent diagnostic and laboratory findings" required value="{{ $tbMacForm->enrollmentForm->diag_and_lab_findings }}"/>
+          <input class="form__input" type="text" name="diag_and_lab_findings" placeholder="Pertinent diagnostic and laboratory findings"  value="{{ $tbMacForm->enrollmentForm->diag_and_lab_findings }}"/>
           <label class="form__label" for="">Pertinent diagnostic and laboratory findings</label>
           
         </div>

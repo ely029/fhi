@@ -523,4 +523,14 @@ jQuery( document ).ready(function( $ ) {
         $('.button--next').prop('disabled', true);
     });
 
+    $("#drug_susceptibility-select").on('change', function(){
+        let value = $(this).val();
+        if(value == 'Clinically-diagnosed MDR-TB'){
+            $(".clinically-diagnosed").find('input, textarea').attr('required', true);
+        }else{
+            $(".clinically-diagnosed").find('input, textarea').removeAttr('required');
+        }
+        
+    });
+
 });

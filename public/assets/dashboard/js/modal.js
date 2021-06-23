@@ -80,6 +80,7 @@ jQuery( document ).ready(function( $ ) {
     });
 
     function checkOptionalRemarks(selected){
+        console.log(selected);
         // Enrolled, Refer to R-TB MAC, For enrollment, Resolved
         let optionalRemarks = ['1','6','10','Resolved'];
     

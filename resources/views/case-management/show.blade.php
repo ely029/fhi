@@ -524,7 +524,7 @@
                
                   </div>
                   <span class="form__text">
-                    {{$recommendation->recommendation }}
+                    {{ $recommendation->recommendation ?? '-' }}
                   </span>
                 </div>
               </div>
