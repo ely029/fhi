@@ -20,7 +20,7 @@
                 <th class="table__head">Age</th>
                 <th class="table__head">Sex</th>
                 <th class="table__head">Drug susceptibility</th>
-                <th class="table__head">Date submitted by Health Care Worker</th>
+                <th class="table__head">Date submitted</th>
                 <th class="table__head">Status</th>
               </tr>
             </thead>
