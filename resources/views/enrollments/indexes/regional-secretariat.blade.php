@@ -4,7 +4,7 @@
     <div class="section__content">
       <ul class="tabs__list tabs__list--table">
         <li class="tabs__item js-tabs js-tabs-current">Pending ({{ $pending->count() }})</li>
-        <li class="tabs__item js-tabs">Need Further Details ({{ $needFurtherDetails->count() }})</li>
+        <li class="tabs__item js-tabs">Need further Details ({{ $needFurtherDetails->count() }})</li>
         <li class="tabs__item js-tabs">All enrollments ({{ $allEnrollment->count() }})</li>
       </ul>
       <div class="tabs__details js-tabs-details js-tabs-details-active">

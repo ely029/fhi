@@ -10,7 +10,7 @@
             <li class="tabs__item {{ request('status') == '' ? 'tabs__item--current' : ''}}">All cases({{ $cases->count() }})</li>
         </a>--}}
         <li class="tabs__item js-tabs js-tabs-current">Pending ({{$pending->count()}})</li>
-        <li class="tabs__item js-tabs">Need Further Details ({{$needFurtherDetails->count()}})</li>
+        <li class="tabs__item js-tabs">Need further Details ({{$needFurtherDetails->count()}})</li>
         <li class="tabs__item js-tabs">All cases ({{$cases->count()}})</li>
     </ul>
       <div class="tabs__details js-tabs-details js-tabs-details-active">
